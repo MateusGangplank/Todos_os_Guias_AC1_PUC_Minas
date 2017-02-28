@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00AE2FC0 .scope module, "testnotgate" "testnotgate" 2 20;
+ .timescale 0 0;
+v00AEDF78_0 .var "a", 0 0;
+v00AEDFD0_0 .net "s", 0 0, L_00AEDC88; 1 drivers
+S_00AE3428 .scope module, "NOT1" "notgate" 2 31, 2 11, S_00AE2FC0;
+ .timescale 0 0;
+L_00AEDC88 .functor NOT 1, v00AEDF78_0, C4<0>, C4<0>, C4<0>;
+v00AE30D0_0 .net "p", 0 0, v00AEDF78_0; 1 drivers
+v00AE34B0_0 .alias "s", 0 0, v00AEDFD0_0;
+S_00AE33A0 .scope begin, "start" "start" 2 34, 2 34, S_00AE2FC0;
+ .timescale 0 0;
+S_00AE3048 .scope begin, "main" "main" 2 40, 2 40, S_00AE2FC0;
+ .timescale 0 0;
+    .scope S_00AE2FC0;
+T_0 ;
+    %fork t_1, S_00AE33A0;
+    %jmp t_0;
+    .scope S_00AE33A0;
+t_1 ;
+    %set/v v00AEDF78_0, 0, 1;
+    %end;
+    .scope S_00AE2FC0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00AE2FC0;
+T_1 ;
+    %fork t_3, S_00AE3048;
+    %jmp t_2;
+    .scope S_00AE3048;
+t_3 ;
+    %vpi_call 2 42 "$display", "Exemplo0002 - Isabel Bicalho Amaro - 451580";
+    %vpi_call 2 43 "$display", "Test NOT gate";
+    %vpi_call 2 44 "$display", "\012~a = s\012";
+    %set/v v00AEDF78_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "~%b = %b", v00AEDF78_0, v00AEDFD0_0;
+    %set/v v00AEDF78_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "~%b = %b", v00AEDF78_0, v00AEDFD0_0;
+    %end;
+    .scope S_00AE2FC0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Isabel\Documents\PUC\2º Período\Arquitetura de Computadores\Guias\Guia 1\Exemplo0002.v";

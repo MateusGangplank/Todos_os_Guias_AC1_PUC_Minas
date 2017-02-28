@@ -1,0 +1,72 @@
+// --------------------------------------
+// Exemplo0035 
+// Nome:Alvaro Henrique de Araujo Rungue
+// Matricula: 395487
+// --------------------------------------
+
+module portasNativas( s1 , s2 , s3 , s4 , s5 , s6 , s7 , s8 , a , b );
+
+output s1,s2,s3,s4,s5,s6,s7,s8;
+input a,b;
+
+//-- Definicao das portas
+
+//-- NOT
+not NOT1( s1 , a );
+not NOT1( s2 , b );
+
+//-- OR
+or OR1( s3 , a , b );
+
+//-- NOR
+nor NOR1( s4 , a , b );
+
+//-- AND
+and AND1( s5 , a , b );
+
+//-- NAND
+nand NAND1( s6 , a , b );
+
+//-- XOR
+xor XOR1( s7 , a , b );
+
+//-- XNOR
+xnor XNOR1( s8 , a , b );
+
+endmodule //-- fim portasNativas
+
+module teste;
+
+//-- Dados ---------------------------
+
+	reg x; 
+	reg y; 
+	wire s1; //--Saida Not A
+	wire s2; //--Saido Not B
+	wire s3; //--Saida Or
+	wire s4; //--Saida Nor
+	wire s5; //--Saida And
+	wire s6; //--Saida Nand
+	wire s7; //--Saida Xor
+	wire s8; //--Saida XNor
+
+// -- chamada do modulo
+	portasNativas PORTANAT( s1 , s2 , s3 , s4 , s5 , s6 , s7 , s8 , x , y ); 
+	
+// ---------------------------------------------------------------------------------
+
+initial begin 
+	$display("Exemplo0035 - Alvaro Henrique de Araujo Rungue - 395487"); 
+	$display("Portas Nativas."); 
+	x = 0; y = 1;
+	
+//--testes do modulo 
+
+	$display("  a   b      (NOT A) (NOT B)  OR   NOR  AND  NAND XOR  XNOR");
+	#1 $display("%3b %3b  - %3b     %3b	    %3b	 %3b  %3b  %3b  %3b  %3b", x , y , s1 , s2 , s3 , s4 , s5 , s6 , s7 , s8 );
+	
+end 
+
+endmodule //-- Fim teste
+
+// OBS.: EXPERIMENTE USAR reg [7:0] PARA AS SAIDAS

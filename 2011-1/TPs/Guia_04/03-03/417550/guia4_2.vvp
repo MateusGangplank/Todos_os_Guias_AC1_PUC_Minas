@@ -1,0 +1,84 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A09F80 .scope module, "teste_soma_completa" "teste_soma_completa" 2 27;
+ .timescale 0 0;
+v0071F268_0 .net "Soma2", 0 0, L_00A03228; 1 drivers
+v0071F2C0_0 .var "Vin1", 0 0;
+v0071F318_0 .net "Vout2", 0 0, L_00A031F0; 1 drivers
+v0071F370_0 .var "a", 0 0;
+v0071F3C8_0 .var "b", 0 0;
+S_00A0A008 .scope module, "s1" "soma_completa" 2 33, 2 14, S_00A09F80;
+ .timescale 0 0;
+L_00A031F0 .functor OR 1, L_00A03260, L_00A032D0, C4<0>, C4<0>;
+v00A04548_0 .alias "Soma1", 0 0, v0071F268_0;
+v0071F000_0 .net "Vin", 0 0, v0071F2C0_0; 1 drivers
+v0071F058_0 .alias "Vout1", 0 0, v0071F318_0;
+v0071F0B0_0 .net "t1", 0 0, L_00A03298; 1 drivers
+v0071F108_0 .net "t2", 0 0, L_00A032D0; 1 drivers
+v0071F160_0 .net "t3", 0 0, L_00A03260; 1 drivers
+v0071F1B8_0 .net "w", 0 0, v0071F370_0; 1 drivers
+v0071F210_0 .net "z", 0 0, v0071F3C8_0; 1 drivers
+S_00A0A118 .scope module, "m1" "meia_soma" 2 19, 2 5, S_00A0A008;
+ .timescale 0 0;
+L_00A03298 .functor XOR 1, v0071F370_0, v0071F3C8_0, C4<0>, C4<0>;
+L_00A032D0 .functor AND 1, v0071F370_0, v0071F3C8_0, C4<1>, C4<1>;
+v00A0E1E0_0 .alias "Soma", 0 0, v0071F108_0;
+v00A04440_0 .alias "Vout", 0 0, v0071F0B0_0;
+v00A04498_0 .alias "x", 0 0, v0071F1B8_0;
+v00A044F0_0 .alias "y", 0 0, v0071F210_0;
+S_00A0A090 .scope module, "m2" "meia_soma" 2 21, 2 5, S_00A0A008;
+ .timescale 0 0;
+L_00A03228 .functor XOR 1, v0071F2C0_0, L_00A03298, C4<0>, C4<0>;
+L_00A03260 .functor AND 1, v0071F2C0_0, L_00A03298, C4<1>, C4<1>;
+v00724EE0_0 .alias "Soma", 0 0, v0071F160_0;
+v00745F48_0 .alias "Vout", 0 0, v0071F268_0;
+v00A0E130_0 .alias "x", 0 0, v0071F000_0;
+v00A0E188_0 .alias "y", 0 0, v0071F0B0_0;
+    .scope S_00A09F80;
+T_0 ;
+    %vpi_call 2 40 "$display", "\012 Guia 04-2";
+    %vpi_call 2 41 "$display", "\012 Soma Completa com subcircuitos";
+    %vpi_call 2 42 "$display", "\012 a  b  Vin  Vout S  ";
+    %vpi_call 2 43 "$monitor", " %b  %b  %b     %b   %b", v0071F370_0, v0071F3C8_0, v0071F2C0_0, v0071F318_0, v0071F268_0;
+    %set/v v0071F370_0, 0, 1;
+    %set/v v0071F3C8_0, 0, 1;
+    %set/v v0071F2C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 0, 1;
+    %set/v v0071F3C8_0, 0, 1;
+    %set/v v0071F2C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 0, 1;
+    %set/v v0071F3C8_0, 1, 1;
+    %set/v v0071F2C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 0, 1;
+    %set/v v0071F3C8_0, 1, 1;
+    %set/v v0071F2C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 1, 1;
+    %set/v v0071F3C8_0, 0, 1;
+    %set/v v0071F2C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 1, 1;
+    %set/v v0071F3C8_0, 0, 1;
+    %set/v v0071F2C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 1, 1;
+    %set/v v0071F3C8_0, 1, 1;
+    %set/v v0071F2C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071F370_0, 1, 1;
+    %set/v v0071F3C8_0, 1, 1;
+    %set/v v0071F2C0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\CIMG\Arcevo Técnico\Arquitetura\guia4\guia4_2.v";

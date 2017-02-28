@@ -1,0 +1,124 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A69680 .scope module, "test_regDesl" "test_regDesl" 2 35;
+ .timescale 0 0;
+v005C3278_0 .net "clk", 0 0, v00A64608_0; 1 drivers
+v005C32D0_0 .var "data", 0 0;
+v005C3328_0 .net "q0", 0 0, v00A6F7E0_0; 1 drivers
+v005C3380_0 .net "q1", 0 0, v00A62DE8_0; 1 drivers
+v005C33D8_0 .net "q2", 0 0, v00A6CDD0_0; 1 drivers
+v005C3430_0 .net "q3", 0 0, v00A64558_0; 1 drivers
+v005C3488_0 .net "qnot0", 0 0, v00A6F908_0; 1 drivers
+v005C34E0_0 .net "qnot1", 0 0, v00A63890_0; 1 drivers
+v005C3538_0 .net "qnot2", 0 0, v00A6CE28_0; 1 drivers
+v005C3590_0 .net "qnot3", 0 0, v00A645B0_0; 1 drivers
+S_00A69928 .scope module, "CLK1" "clock" 2 40, 2 17, S_00A69680;
+ .timescale 0 0;
+v00A64608_0 .var "clk", 0 0;
+S_00A698A0 .scope module, "DFF1" "dff" 2 42, 2 7, S_00A69680;
+ .timescale 0 0;
+v00A6CE80_0 .alias "clk", 0 0, v005C3278_0;
+v00A6CED8_0 .net "d", 0 0, v005C32D0_0; 1 drivers
+v00A64558_0 .var "q", 0 0;
+v00A645B0_0 .var "qnot", 0 0;
+S_00A69818 .scope module, "DFF2" "dff" 2 43, 2 7, S_00A69680;
+ .timescale 0 0;
+v00A638E8_0 .alias "clk", 0 0, v005C3278_0;
+v00A63940_0 .alias "d", 0 0, v005C3430_0;
+v00A6CDD0_0 .var "q", 0 0;
+v00A6CE28_0 .var "qnot", 0 0;
+S_00A69790 .scope module, "DFF3" "dff" 2 44, 2 7, S_00A69680;
+ .timescale 0 0;
+v00A62D38_0 .alias "clk", 0 0, v005C3278_0;
+v00A62D90_0 .alias "d", 0 0, v005C33D8_0;
+v00A62DE8_0 .var "q", 0 0;
+v00A63890_0 .var "qnot", 0 0;
+S_00A69708 .scope module, "DFF4" "dff" 2 45, 2 7, S_00A69680;
+ .timescale 0 0;
+v00A6E658_0 .alias "clk", 0 0, v005C3278_0;
+v00A6F6B8_0 .alias "d", 0 0, v005C3380_0;
+v00A6F7E0_0 .var "q", 0 0;
+v00A6F908_0 .var "qnot", 0 0;
+E_00A6EEE0 .event posedge, v00A6E658_0;
+    .scope S_00A69928;
+T_0 ;
+    %set/v v00A64608_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00A69928;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00A64608_0, 1;
+    %inv 8, 1;
+    %set/v v00A64608_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00A698A0;
+T_2 ;
+    %wait E_00A6EEE0;
+    %load/v 8, v00A6CED8_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A64558_0, 0, 8;
+    %load/v 8, v00A64558_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A645B0_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_00A69818;
+T_3 ;
+    %wait E_00A6EEE0;
+    %load/v 8, v00A63940_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A6CDD0_0, 0, 8;
+    %load/v 8, v00A6CDD0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A6CE28_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00A69790;
+T_4 ;
+    %wait E_00A6EEE0;
+    %load/v 8, v00A62D90_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A62DE8_0, 0, 8;
+    %load/v 8, v00A62DE8_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A63890_0, 0, 8;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_00A69708;
+T_5 ;
+    %wait E_00A6EEE0;
+    %load/v 8, v00A6F6B8_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A6F7E0_0, 0, 8;
+    %load/v 8, v00A6F7E0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00A6F908_0, 0, 8;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_00A69680;
+T_6 ;
+    %vpi_call 2 50 "$display", "Exercicio1 - Gustavo Barbosa - 427410";
+    %vpi_call 2 51 "$display", "Test Shift Register";
+    %vpi_call 2 52 "$display", "data q0 q1 q2 q3";
+    %vpi_call 2 54 "$monitor", "%1b %1b %1b %1b %1b", v005C32D0_0, v005C3328_0, v005C3380_0, v005C33D8_0, v005C3430_0;
+    %delay 12, 0;
+    %set/v v005C32D0_0, 1, 1;
+    %delay 12, 0;
+    %set/v v005C32D0_0, 0, 1;
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio1.v";

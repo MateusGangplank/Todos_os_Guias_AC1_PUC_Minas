@@ -1,0 +1,53 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006C9D48 .scope module, "testcomplement1" "testcomplement1" 2 18;
+ .timescale 0 0;
+v006C31B0_0 .var "a", 7 0;
+v00349130_0 .net "s", 7 0, L_00349290; 1 drivers
+S_006C9DD0 .scope module, "C1" "complement2" 2 23, 2 14, S_006C9D48;
+ .timescale 0 0;
+L_006CEA38 .functor NOT 9, L_00349188, C4<000000000>, C4<000000000>, C4<000000000>;
+v006CE180_0 .net *"_s0", 8 0, L_00349188; 1 drivers
+v006CCCA8_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v006CFF50_0 .net *"_s11", 31 0, L_003491E0; 1 drivers
+v006C2BC8_0 .net *"_s12", 31 0, L_00349238; 1 drivers
+v006C2C20_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v006C2C78_0 .net *"_s4", 8 0, L_006CEA38; 1 drivers
+v006C30A8_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v006C3100_0 .net "q", 7 0, v006C31B0_0; 1 drivers
+v006C3158_0 .alias "s", 7 0, v00349130_0;
+L_00349188 .concat [ 8 1 0 0], v006C31B0_0, C4<0>;
+L_003491E0 .concat [ 9 23 0 0], L_006CEA38, C4<00000000000000000000000>;
+L_00349238 .arith/sum 32, L_003491E0, C4<00000000000000000000000000000001>;
+L_00349290 .part L_00349238, 0, 8;
+    .scope S_006C9D48;
+T_0 ;
+    %vpi_call 2 28 "$display", "Exercicio0007 - Breno Macena - 462017";
+    %vpi_call 2 29 "$display", "Test number system\012";
+    %movi 8, 25, 8;
+    %set/v v006C31B0_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "a = %d(10) = %b(2) | C2(a) = %b", v006C31B0_0, v006C31B0_0, v00349130_0;
+    %movi 8, 180, 8;
+    %set/v v006C31B0_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "a = %b(2) | C2(a) = %b", v006C31B0_0, v00349130_0;
+    %movi 8, 28, 8;
+    %set/v v006C31B0_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "a = %o(8) = %b(2) | C2(a) = %b", v006C31B0_0, v006C31B0_0, v00349130_0;
+    %movi 8, 125, 8;
+    %set/v v006C31B0_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "a = %h(16) = %b(2) | C2(a) = %b", v006C31B0_0, v006C31B0_0, v00349130_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\BRENO\Desktop\Guia02\Exercicio0007.v";

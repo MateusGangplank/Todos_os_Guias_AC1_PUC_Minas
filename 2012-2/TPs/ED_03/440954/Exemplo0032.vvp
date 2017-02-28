@@ -1,0 +1,69 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E97A0 .scope module, "test_f4" "test_f4" 2 24;
+ .timescale 0 0;
+v0063C050_0 .var "a", 0 0;
+v0063C0A8_0 .var "b", 0 0;
+v0063C100_0 .var "chave", 0 0;
+v0063C158_0 .net "x", 0 0, L_0063C400; 1 drivers
+S_005E9828 .scope module, "modulo" "f4" 2 31, 2 10, S_005E97A0;
+ .timescale 0 0;
+L_005E69A8 .functor AND 1, v0063C050_0, v0063C0A8_0, C4<1>, C4<1>;
+L_0063C240 .functor OR 1, v0063C050_0, v0063C0A8_0, C4<0>, C4<0>;
+L_0063C278 .functor AND 1, L_005E69A8, v0063C100_0, C4<1>, C4<1>;
+L_0063C320 .functor AND 1, L_0063C240, L_0063C390, C4<1>, C4<1>;
+L_0063C390 .functor NOT 1, v0063C100_0, C4<0>, C4<0>, C4<0>;
+L_0063C400 .functor OR 1, L_0063C278, L_0063C320, C4<0>, C4<0>;
+v005E6D50_0 .net *"_s0", 0 0, L_0063C390; 1 drivers
+v0063BC70_0 .net "a", 0 0, v0063C050_0; 1 drivers
+v0063BCE0_0 .net "b", 0 0, v0063C0A8_0; 1 drivers
+v0063BD68_0 .net "chave", 0 0, v0063C100_0; 1 drivers
+v0063BDD8_0 .alias "s", 0 0, v0063C158_0;
+v0063BE30_0 .net "s1", 0 0, L_005E69A8; 1 drivers
+v0063BEA0_0 .net "s2", 0 0, L_0063C240; 1 drivers
+v0063BF38_0 .net "s3", 0 0, L_0063C278; 1 drivers
+v0063BFA8_0 .net "s4", 0 0, L_0063C320; 1 drivers
+    .scope S_005E97A0;
+T_0 ;
+    %set/v v0063C050_0, 0, 1;
+    %set/v v0063C0A8_0, 0, 1;
+    %set/v v0063C100_0, 0, 1;
+    %vpi_call 2 38 "$display", "Exemplo0032 - Djonatas Tulio Rodrigues Costa - 440954";
+    %vpi_call 2 39 "$display", "Test LU's module\012";
+    %vpi_call 2 41 "$display", "\012Chave = 0, operacao OR";
+    %vpi_call 2 42 "$monitor", "%b --- %b = %b", v0063C050_0, v0063C0A8_0, v0063C158_0;
+    %delay 1, 0;
+    %set/v v0063C050_0, 0, 1;
+    %set/v v0063C0A8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063C050_0, 1, 1;
+    %set/v v0063C0A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0063C050_0, 1, 1;
+    %set/v v0063C0A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "\012Chave = 1, operacao AND";
+    %delay 1, 0;
+    %set/v v0063C050_0, 0, 1;
+    %set/v v0063C0A8_0, 0, 1;
+    %set/v v0063C100_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063C050_0, 0, 1;
+    %set/v v0063C0A8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063C050_0, 1, 1;
+    %set/v v0063C0A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0063C050_0, 1, 1;
+    %set/v v0063C0A8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\DJONATAS\Desktop\arquitetura\440954\guia_03\Exemplo0032.v";

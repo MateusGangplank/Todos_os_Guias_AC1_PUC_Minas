@@ -1,0 +1,65 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003CE1F0 .scope module, "testxnorgate" "testxnorgate" 2 21;
+ .timescale 0 0;
+v003CEBB0_0 .var "a", 0 0;
+v003CEC08_0 .var "b", 0 0;
+v003CEC60_0 .net "s", 0 0, L_0032C538; 1 drivers
+S_003C2FD0 .scope module, "XNOR1" "xnorgate" 2 27, 2 10, S_003CE1F0;
+ .timescale 0 0;
+L_003C3058 .functor NOT 1, v003CEBB0_0, C4<0>, C4<0>, C4<0>;
+L_003CECF0 .functor AND 1, L_003C3058, v003CEC08_0, C4<1>, C4<1>;
+L_0032C490 .functor NOT 1, v003CEC08_0, C4<0>, C4<0>, C4<0>;
+L_0032C4C8 .functor AND 1, v003CEBB0_0, L_0032C490, C4<1>, C4<1>;
+L_0032C538 .functor OR 1, L_003CECF0, L_0032C4C8, C4<0>, C4<0>;
+v003CE278_0 .net *"_s0", 0 0, L_003C3058; 1 drivers
+v003CFF68_0 .net *"_s2", 0 0, L_003CECF0; 1 drivers
+v003C3C40_0 .net *"_s4", 0 0, L_0032C490; 1 drivers
+v003C3C98_0 .net *"_s6", 0 0, L_0032C4C8; 1 drivers
+v003C3CF0_0 .net "a", 0 0, v003CEBB0_0; 1 drivers
+v003C3D48_0 .net "b", 0 0, v003CEC08_0; 1 drivers
+v003CEB58_0 .alias "s", 0 0, v003CEC60_0;
+S_003C2F48 .scope begin, "start" "start" 2 30, 2 30, S_003CE1F0;
+ .timescale 0 0;
+    .scope S_003CE1F0;
+T_0 ;
+    %fork t_1, S_003C2F48;
+    %jmp t_0;
+    .scope S_003C2F48;
+t_1 ;
+    %set/v v003CEBB0_0, 0, 1;
+    %set/v v003CEC08_0, 0, 1;
+    %end;
+    .scope S_003CE1F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003CE1F0;
+T_1 ;
+    %vpi_call 2 38 "$display", "Exemplo0011 - Ana Carolina - 449517 ";
+    %vpi_call 2 39 "$display", "Test XNOR gate";
+    %vpi_call 2 40 "$display", "\012 ~(a|b) = s \012";
+    %vpi_call 2 41 "$monitor", " ~(%b | %b) = %b", v003CEBB0_0, v003CEC08_0, v003CEC60_0;
+    %delay 1, 0;
+    %set/v v003CEBB0_0, 0, 1;
+    %set/v v003CEC08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CEBB0_0, 0, 1;
+    %set/v v003CEC08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CEBB0_0, 1, 1;
+    %set/v v003CEC08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CEBB0_0, 1, 1;
+    %set/v v003CEC08_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0011.v";

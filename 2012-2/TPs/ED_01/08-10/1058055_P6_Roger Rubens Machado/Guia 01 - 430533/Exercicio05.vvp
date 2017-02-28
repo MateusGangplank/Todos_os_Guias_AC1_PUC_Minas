@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0090E290 .scope module, "testnorgate" "testnorgate" 2 11;
+ .timescale 0 0;
+v0090FEE8_0 .var "a", 0 0;
+v0090FF40_0 .var "b", 0 0;
+v0090E4F0_0 .net "s", 0 0, L_0090E580; 1 drivers
+S_009030C0 .scope module, "NOR1" "norgate" 2 15, 2 7, S_0090E290;
+ .timescale 0 0;
+L_00902CB0 .functor NOT 1, v0090FEE8_0, C4<0>, C4<0>, C4<0>;
+L_009031F8 .functor NOT 1, v0090FF40_0, C4<0>, C4<0>, C4<0>;
+L_0090E580 .functor OR 1, L_00902CB0, L_009031F8, C4<0>, C4<0>;
+v00903148_0 .net *"_s0", 0 0, L_00902CB0; 1 drivers
+v009031A0_0 .net *"_s2", 0 0, L_009031F8; 1 drivers
+v0090FDE0_0 .net "p", 0 0, v0090FEE8_0; 1 drivers
+v0090FE38_0 .net "q", 0 0, v0090FF40_0; 1 drivers
+v0090FE90_0 .alias "s", 0 0, v0090E4F0_0;
+S_00902C28 .scope begin, "start" "start" 2 17, 2 17, S_0090E290;
+ .timescale 0 0;
+S_00902BA0 .scope begin, "main" "main" 2 22, 2 22, S_0090E290;
+ .timescale 0 0;
+    .scope S_0090E290;
+T_0 ;
+    %fork t_1, S_00902C28;
+    %jmp t_0;
+    .scope S_00902C28;
+t_1 ;
+    %set/v v0090FEE8_0, 0, 1;
+    %set/v v0090FF40_0, 0, 1;
+    %end;
+    .scope S_0090E290;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0090E290;
+T_1 ;
+    %fork t_3, S_00902BA0;
+    %jmp t_2;
+    .scope S_00902BA0;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio05 - Roger Rubens Machado - 430533";
+    %vpi_call 2 24 "$display", "Test nor gate";
+    %vpi_call 2 25 "$display", "\012\011\011\011(~a | ~b) = s\012";
+    %vpi_call 2 26 "$monitor", "%d\011(~%b | ~%b) = %b", $time, v0090FEE8_0, v0090FF40_0, v0090E4F0_0;
+    %delay 1, 0;
+    %set/v v0090FEE8_0, 0, 1;
+    %set/v v0090FF40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090FEE8_0, 0, 1;
+    %set/v v0090FF40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0090FEE8_0, 1, 1;
+    %set/v v0090FF40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090FEE8_0, 1, 1;
+    %set/v v0090FF40_0, 1, 1;
+    %end;
+    .scope S_0090E290;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Roger Rubens\Documents\Ciência da Computação\Arquitetura de Computadores I\Guias resolvidos\Guia 01\Exercicio05.v";

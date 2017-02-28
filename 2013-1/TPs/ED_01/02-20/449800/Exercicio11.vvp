@@ -1,0 +1,123 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003CA158 .scope module, "testgate" "testgate" 2 11;
+ .timescale 0 0;
+v00325220_0 .var "a", 0 7;
+v00325278_0 .net "s", 0 0, L_003CF220; 1 drivers
+S_003CA2F0 .scope module, "azase" "gate" 2 14, 2 6, S_003CA158;
+ .timescale 0 0;
+L_003CEE30 .functor OR 1, L_003252D0, L_00325328, C4<0>, C4<0>;
+L_003CEE68 .functor OR 1, L_003CEE30, L_00325380, C4<0>, C4<0>;
+L_003CEF80 .functor OR 1, L_003CEE68, L_003253D8, C4<0>, C4<0>;
+L_003CF028 .functor OR 1, L_003CEF80, L_00325430, C4<0>, C4<0>;
+L_003CF0D0 .functor OR 1, L_003CF028, L_00325488, C4<0>, C4<0>;
+L_003CF178 .functor OR 1, L_003CF0D0, L_003254E0, C4<0>, C4<0>;
+L_003CF220 .functor OR 1, L_003CF178, L_00325538, C4<0>, C4<0>;
+v003C49C0_0 .net *"_s1", 0 0, L_003252D0; 1 drivers
+v003C4A18_0 .net *"_s11", 0 0, L_003253D8; 1 drivers
+v003C4A70_0 .net *"_s12", 0 0, L_003CEF80; 1 drivers
+v003C2B98_0 .net *"_s15", 0 0, L_00325430; 1 drivers
+v003C2BF0_0 .net *"_s16", 0 0, L_003CF028; 1 drivers
+v003C2C48_0 .net *"_s19", 0 0, L_00325488; 1 drivers
+v003CCB70_0 .net *"_s20", 0 0, L_003CF0D0; 1 drivers
+v003CCBC8_0 .net *"_s23", 0 0, L_003254E0; 1 drivers
+v003CCC20_0 .net *"_s24", 0 0, L_003CF178; 1 drivers
+v003CCC78_0 .net *"_s27", 0 0, L_00325538; 1 drivers
+v00325010_0 .net *"_s3", 0 0, L_00325328; 1 drivers
+v00325068_0 .net *"_s4", 0 0, L_003CEE30; 1 drivers
+v003250C0_0 .net *"_s7", 0 0, L_00325380; 1 drivers
+v00325118_0 .net *"_s8", 0 0, L_003CEE68; 1 drivers
+v00325170_0 .net "p", 0 7, v00325220_0; 1 drivers
+v003251C8_0 .alias "s", 0 0, v00325278_0;
+L_003252D0 .part v00325220_0, 7, 1;
+L_00325328 .part v00325220_0, 6, 1;
+L_00325380 .part v00325220_0, 5, 1;
+L_003253D8 .part v00325220_0, 4, 1;
+L_00325430 .part v00325220_0, 3, 1;
+L_00325488 .part v00325220_0, 2, 1;
+L_003254E0 .part v00325220_0, 1, 1;
+L_00325538 .part v00325220_0, 0, 1;
+S_003CA268 .scope begin, "start" "start" 2 15, 2 15, S_003CA158;
+ .timescale 0 0;
+S_003CA1E0 .scope begin, "main" "main" 2 18, 2 18, S_003CA158;
+ .timescale 0 0;
+    .scope S_003CA158;
+T_0 ;
+    %fork t_1, S_003CA268;
+    %jmp t_0;
+    .scope S_003CA268;
+t_1 ;
+    %movi 8, 170, 8;
+    %set/v v00325220_0, 8, 8;
+    %end;
+    .scope S_003CA158;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003CA158;
+T_1 ;
+    %fork t_3, S_003CA1E0;
+    %jmp t_2;
+    .scope S_003CA1E0;
+t_3 ;
+    %vpi_call 2 19 "$monitor", "%b = %b", v00325220_0, v00325278_0;
+    %delay 1, 0;
+    %set/v v00325220_0, 0, 8;
+    %delay 1, 0;
+    %set/v v00325220_0, 1, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 239, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 24, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 191, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 63, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 192, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 252, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 3, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 250, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 5, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 235, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 26, 8;
+    %set/v v00325220_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 219, 8;
+    %set/v v00325220_0, 8, 8;
+    %end;
+    .scope S_003CA158;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Volcan300\Dropbox\note to PC\PUC Minas\2º Período\Arquitetura de Computadores I\Atividades feitas\Guia01\Exercicio11.v";

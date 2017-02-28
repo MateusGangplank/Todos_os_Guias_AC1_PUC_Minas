@@ -1,0 +1,189 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00709A70 .scope module, "teste" "teste" 2 53;
+ .timescale 0 0;
+v0064F5C0_0 .var "a0", 0 0;
+v0064F618_0 .var "a1", 0 0;
+v0064F670_0 .var "a2", 0 0;
+v0064F6C8_0 .var "a3", 0 0;
+v0064F720_0 .net "s0", 0 0, L_006259B8; 1 drivers
+v0064F778_0 .net "s1", 0 0, L_00625A60; 1 drivers
+v0064F7D0_0 .net "s2", 0 0, L_00625BB0; 1 drivers
+v0064F828_0 .net "s3", 0 0, L_00625D00; 1 drivers
+S_0070B698 .scope module, "INC1" "incremento_1" 2 57, 2 45, S_00709A70;
+ .timescale 0 0;
+v0064F300_0 .net "a0", 0 0, v0064F5C0_0; 1 drivers
+v0064F358_0 .net "a1", 0 0, v0064F618_0; 1 drivers
+v0064F3B0_0 .net "a2", 0 0, v0064F670_0; 1 drivers
+v0064F408_0 .net "a3", 0 0, v0064F6C8_0; 1 drivers
+v0064F460_0 .alias "s0", 0 0, v0064F720_0;
+v0064F4B8_0 .alias "s1", 0 0, v0064F778_0;
+v0064F510_0 .alias "s2", 0 0, v0064F7D0_0;
+v0064F568_0 .alias "s3", 0 0, v0064F828_0;
+S_0070B610 .scope module, "ADD1" "adder_4bits" 2 49, 2 33, S_0070B698;
+ .timescale 0 0;
+v00611968_0 .alias "a0", 0 0, v0064F300_0;
+v006119C0_0 .alias "a1", 0 0, v0064F358_0;
+v00611A18_0 .alias "a2", 0 0, v0064F3B0_0;
+v00611A70_0 .alias "a3", 0 0, v0064F408_0;
+v00611AC8_0 .net "b0", 0 0, C4<0>; 1 drivers
+v00611B20_0 .net "b1", 0 0, C4<0>; 1 drivers
+v00611B78_0 .net "b2", 0 0, C4<0>; 1 drivers
+v0064EFE8_0 .net "b3", 0 0, C4<1>; 1 drivers
+v0064F040_0 .net "c0", 0 0, L_006258D8; 1 drivers
+v0064F098_0 .net "c1", 0 0, L_00625A98; 1 drivers
+v0064F0F0_0 .net "c2", 0 0, L_00625BE8; 1 drivers
+v0064F148_0 .net "c3", 0 0, L_00625D38; 1 drivers
+v0064F1A0_0 .alias "s0", 0 0, v0064F720_0;
+v0064F1F8_0 .alias "s1", 0 0, v0064F778_0;
+v0064F250_0 .alias "s2", 0 0, v0064F7D0_0;
+v0064F2A8_0 .alias "s3", 0 0, v0064F828_0;
+S_0070B7A8 .scope module, "HA1" "halfAdder" 2 38, 2 23, S_0070B610;
+ .timescale 0 0;
+L_006259B8 .functor XOR 1, v0064F5C0_0, C4<0>, C4<0>, C4<0>;
+L_006258D8 .functor AND 1, v0064F5C0_0, C4<0>, C4<1>, C4<1>;
+v00611808_0 .alias "a", 0 0, v0064F300_0;
+v00611860_0 .alias "b", 0 0, v00611AC8_0;
+v006118B8_0 .alias "c0", 0 0, v0064F040_0;
+v00611910_0 .alias "s0", 0 0, v0064F720_0;
+S_0070B720 .scope module, "FA1" "fullAdder" 2 39, 2 10, S_0070B610;
+ .timescale 0 0;
+L_006259F0 .functor XOR 1, L_006258D8, C4<0>, C4<0>, C4<0>;
+L_00625A28 .functor AND 1, L_006258D8, C4<0>, C4<1>, C4<1>;
+L_00625A60 .functor XOR 1, L_006259F0, v0064F618_0, C4<0>, C4<0>;
+L_006257C0 .functor AND 1, L_006259F0, v0064F618_0, C4<1>, C4<1>;
+L_00625A98 .functor OR 1, L_006257C0, L_00625A28, C4<0>, C4<0>;
+v00611548_0 .alias "a", 0 0, v0064F040_0;
+v006115A0_0 .alias "b", 0 0, v0064F358_0;
+v006115F8_0 .alias "c", 0 0, v00611B20_0;
+v00611650_0 .alias "c0", 0 0, v0064F098_0;
+v006116A8_0 .net "c1", 0 0, L_00625A28; 1 drivers
+v00611700_0 .net "c2", 0 0, L_006257C0; 1 drivers
+v00611758_0 .alias "s0", 0 0, v0064F778_0;
+v006117B0_0 .net "s1", 0 0, L_006259F0; 1 drivers
+S_0070B500 .scope module, "FA2" "fullAdder" 2 40, 2 10, S_0070B610;
+ .timescale 0 0;
+L_00625B40 .functor XOR 1, L_00625A98, C4<0>, C4<0>, C4<0>;
+L_00625B78 .functor AND 1, L_00625A98, C4<0>, C4<1>, C4<1>;
+L_00625BB0 .functor XOR 1, L_00625B40, v0064F670_0, C4<0>, C4<0>;
+L_00625868 .functor AND 1, L_00625B40, v0064F670_0, C4<1>, C4<1>;
+L_00625BE8 .functor OR 1, L_00625868, L_00625B78, C4<0>, C4<0>;
+v00611288_0 .alias "a", 0 0, v0064F098_0;
+v006112E0_0 .alias "b", 0 0, v0064F3B0_0;
+v00611338_0 .alias "c", 0 0, v00611B78_0;
+v00611390_0 .alias "c0", 0 0, v0064F0F0_0;
+v006113E8_0 .net "c1", 0 0, L_00625B78; 1 drivers
+v00611440_0 .net "c2", 0 0, L_00625868; 1 drivers
+v00611498_0 .alias "s0", 0 0, v0064F7D0_0;
+v006114F0_0 .net "s1", 0 0, L_00625B40; 1 drivers
+S_0070B588 .scope module, "FA3" "fullAdder" 2 41, 2 10, S_0070B610;
+ .timescale 0 0;
+L_00625C90 .functor XOR 1, L_00625BE8, C4<1>, C4<0>, C4<0>;
+L_00625CC8 .functor AND 1, L_00625BE8, C4<1>, C4<1>, C4<1>;
+L_00625D00 .functor XOR 1, L_00625C90, v0064F6C8_0, C4<0>, C4<0>;
+L_006258A0 .functor AND 1, L_00625C90, v0064F6C8_0, C4<1>, C4<1>;
+L_00625D38 .functor OR 1, L_006258A0, L_00625CC8, C4<0>, C4<0>;
+v00610FC8_0 .alias "a", 0 0, v0064F0F0_0;
+v00611020_0 .alias "b", 0 0, v0064F408_0;
+v00611078_0 .alias "c", 0 0, v0064EFE8_0;
+v006110D0_0 .alias "c0", 0 0, v0064F148_0;
+v00611128_0 .net "c1", 0 0, L_00625CC8; 1 drivers
+v00611180_0 .net "c2", 0 0, L_006258A0; 1 drivers
+v006111D8_0 .alias "s0", 0 0, v0064F828_0;
+v00611230_0 .net "s1", 0 0, L_00625C90; 1 drivers
+    .scope S_00709A70;
+T_0 ;
+    %vpi_call 2 62 "$display", "Guia07";
+    %vpi_call 2 63 "$display", "\012 Nome: Washington Luis \012 Matricula: 407456 \012";
+    %vpi_call 2 64 "$display", " ";
+    %vpi_call 2 65 "$monitor", "Complemento de 2 de %b%b%b%b = %b%b%b%b", v0064F6C8_0, v0064F670_0, v0064F618_0, v0064F5C0_0, v0064F828_0, v0064F7D0_0, v0064F778_0, v0064F720_0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 0, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 0, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 0, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064F6C8_0, 1, 1;
+    %set/v v0064F670_0, 1, 1;
+    %set/v v0064F618_0, 1, 1;
+    %set/v v0064F5C0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Washington Luis\Documents\Architecture\Guia07\Incremento_1.vhdl";

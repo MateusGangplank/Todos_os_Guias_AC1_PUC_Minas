@@ -1,0 +1,254 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007B1950 .scope module, "test_subtrator_completo2" "test_subtrator_completo2" 2 48;
+ .timescale 0 0;
+v007F2450_0 .var "cIn", 0 0;
+v007F24A8_0 .net "cOut", 0 0, L_007F4918; 1 drivers
+RS_007C5574 .resolv tri, L_007F2818, L_007F2B88, L_007F3780, L_007F3B48;
+v007F2500_0 .net8 "s", 3 0, RS_007C5574; 4 drivers
+v007F2558_0 .var "x", 3 0;
+v007F25B0_0 .var "y", 3 0;
+S_007B18C8 .scope module, "modulo" "subtrator_completo2" 2 60, 2 33, S_007B1950;
+ .timescale 0 0;
+v007F2240_0 .net "carryIn", 0 0, v007F2450_0; 1 drivers
+v007F2298_0 .alias "carryOut", 0 0, v007F24A8_0;
+v007F22F0_0 .net "entrada1", 3 0, v007F2558_0; 1 drivers
+v007F2348_0 .net "entrada2", 3 0, v007F25B0_0; 1 drivers
+RS_007C555C .resolv tri, L_007F2870, L_007F3410, L_007F37D8, C4<zzz>;
+v007F23A0_0 .net8 "s", 2 0, RS_007C555C; 3 drivers
+v007F23F8_0 .alias "saida", 3 0, v007F2500_0;
+L_007F2818 .part/pv L_007F2D28, 0, 1, 4;
+L_007F2870 .part/pv L_007F2C80, 0, 1, 3;
+L_007F28C8 .part v007F2558_0, 0, 1;
+L_007F2920 .part v007F25B0_0, 0, 1;
+L_007F2B88 .part/pv L_007F31F8, 1, 1, 4;
+L_007F3410 .part/pv L_007F3150, 1, 1, 3;
+L_007F3468 .part v007F2558_0, 1, 1;
+L_007F34C0 .part v007F25B0_0, 1, 1;
+L_007F3518 .part RS_007C555C, 0, 1;
+L_007F3780 .part/pv L_007F4608, 2, 1, 4;
+L_007F37D8 .part/pv L_007F4560, 2, 1, 3;
+L_007F3830 .part v007F2558_0, 2, 1;
+L_007F3888 .part v007F25B0_0, 2, 1;
+L_007F38E0 .part RS_007C555C, 1, 1;
+L_007F3B48 .part/pv L_007F49C0, 3, 1, 4;
+L_007F3BA0 .part v007F2558_0, 3, 1;
+L_007F3BF8 .part v007F25B0_0, 3, 1;
+L_007F3C50 .part RS_007C555C, 2, 1;
+S_007B22E0 .scope module, "SC1" "subtrator_completo" 2 37, 2 22, S_007B18C8;
+ .timescale 0 0;
+L_007F2C80 .functor OR 1, L_007F2768, L_007F27C0, C4<0>, C4<0>;
+v007F1F80_0 .net *"_s11", 0 0, L_007F27C0; 1 drivers
+v007F1FD8_0 .net *"_s9", 0 0, L_007F2768; 1 drivers
+v007F2030_0 .alias "carryIn", 0 0, v007F2240_0;
+v007F2088_0 .net "carryOut", 0 0, L_007F2C80; 1 drivers
+v007F20E0_0 .net "entrada1", 0 0, L_007F28C8; 1 drivers
+v007F2138_0 .net "entrada2", 0 0, L_007F2920; 1 drivers
+RS_007C5514 .resolv tri, L_007F2608, L_007F2660, L_007F26B8, C4<zzz>;
+v007F2190_0 .net8 "s", 2 0, RS_007C5514; 3 drivers
+v007F21E8_0 .net "saida", 0 0, L_007F2D28; 1 drivers
+L_007F2608 .part/pv L_0070E3A8, 0, 1, 3;
+L_007F2660 .part/pv L_0070E418, 1, 1, 3;
+L_007F26B8 .part/pv L_007F2DD0, 2, 1, 3;
+L_007F2710 .part RS_007C5514, 0, 1;
+L_007F2768 .part RS_007C5514, 1, 1;
+L_007F27C0 .part RS_007C5514, 2, 1;
+S_007B1EA0 .scope module, "MS1" "meio_subtrator" 2 26, 2 11, S_007B22E0;
+ .timescale 0 0;
+L_0070E338 .functor NOT 1, L_007F28C8, C4<0>, C4<0>, C4<0>;
+L_0070E3A8 .functor XOR 1, L_007F28C8, L_007F2920, C4<0>, C4<0>;
+L_0070E418 .functor AND 1, L_0070E338, L_007F2920, C4<1>, C4<1>;
+v007F1DC8_0 .net "carryOut", 0 0, L_0070E418; 1 drivers
+v007F1E20_0 .alias "entrada1", 0 0, v007F20E0_0;
+v007F1E78_0 .alias "entrada2", 0 0, v007F2138_0;
+v007F1ED0_0 .net "saida", 0 0, L_0070E3A8; 1 drivers
+v007F1F28_0 .net "saida_not", 0 0, L_0070E338; 1 drivers
+S_007B1F28 .scope module, "MS2" "meio_subtrator" 2 27, 2 11, S_007B22E0;
+ .timescale 0 0;
+L_007F2CF0 .functor NOT 1, L_007F2710, C4<0>, C4<0>, C4<0>;
+L_007F2D28 .functor XOR 1, L_007F2710, v007F2450_0, C4<0>, C4<0>;
+L_007F2DD0 .functor AND 1, L_007F2CF0, v007F2450_0, C4<1>, C4<1>;
+v007F1C10_0 .net "carryOut", 0 0, L_007F2DD0; 1 drivers
+v007F1C68_0 .net "entrada1", 0 0, L_007F2710; 1 drivers
+v007F1CC0_0 .alias "entrada2", 0 0, v007F2240_0;
+v007F1D18_0 .alias "saida", 0 0, v007F21E8_0;
+v007F1D70_0 .net "saida_not", 0 0, L_007F2CF0; 1 drivers
+S_007B23F0 .scope module, "SC2" "subtrator_completo" 2 38, 2 22, S_007B18C8;
+ .timescale 0 0;
+L_007F3150 .functor OR 1, L_007F2AD8, L_007F2B30, C4<0>, C4<0>;
+v007F1920_0 .net *"_s11", 0 0, L_007F2B30; 1 drivers
+v007F1978_0 .net *"_s9", 0 0, L_007F2AD8; 1 drivers
+v007F19D0_0 .net "carryIn", 0 0, L_007F3518; 1 drivers
+v007F1A28_0 .net "carryOut", 0 0, L_007F3150; 1 drivers
+v007F1A80_0 .net "entrada1", 0 0, L_007F3468; 1 drivers
+v007F1AD8_0 .net "entrada2", 0 0, L_007F34C0; 1 drivers
+RS_007C53C4 .resolv tri, L_007F2978, L_007F29D0, L_007F2A28, C4<zzz>;
+v007F1B30_0 .net8 "s", 2 0, RS_007C53C4; 3 drivers
+v007F1B88_0 .net "saida", 0 0, L_007F31F8; 1 drivers
+L_007F2978 .part/pv L_007F3038, 0, 1, 3;
+L_007F29D0 .part/pv L_007F30A8, 1, 1, 3;
+L_007F2A28 .part/pv L_007F32D8, 2, 1, 3;
+L_007F2A80 .part RS_007C53C4, 0, 1;
+L_007F2AD8 .part RS_007C53C4, 1, 1;
+L_007F2B30 .part RS_007C53C4, 2, 1;
+S_007B1840 .scope module, "MS1" "meio_subtrator" 2 26, 2 11, S_007B23F0;
+ .timescale 0 0;
+L_007F2FC8 .functor NOT 1, L_007F3468, C4<0>, C4<0>, C4<0>;
+L_007F3038 .functor XOR 1, L_007F3468, L_007F34C0, C4<0>, C4<0>;
+L_007F30A8 .functor AND 1, L_007F2FC8, L_007F34C0, C4<1>, C4<1>;
+v007F1768_0 .net "carryOut", 0 0, L_007F30A8; 1 drivers
+v007F17C0_0 .alias "entrada1", 0 0, v007F1A80_0;
+v007F1818_0 .alias "entrada2", 0 0, v007F1AD8_0;
+v007F1870_0 .net "saida", 0 0, L_007F3038; 1 drivers
+v007F18C8_0 .net "saida_not", 0 0, L_007F2FC8; 1 drivers
+S_007B2368 .scope module, "MS2" "meio_subtrator" 2 27, 2 11, S_007B23F0;
+ .timescale 0 0;
+L_007F31C0 .functor NOT 1, L_007F2A80, C4<0>, C4<0>, C4<0>;
+L_007F31F8 .functor XOR 1, L_007F2A80, L_007F3518, C4<0>, C4<0>;
+L_007F32D8 .functor AND 1, L_007F31C0, L_007F3518, C4<1>, C4<1>;
+v007F15B0_0 .net "carryOut", 0 0, L_007F32D8; 1 drivers
+v007F1608_0 .net "entrada1", 0 0, L_007F2A80; 1 drivers
+v007F1660_0 .alias "entrada2", 0 0, v007F19D0_0;
+v007F16B8_0 .alias "saida", 0 0, v007F1B88_0;
+v007F1710_0 .net "saida_not", 0 0, L_007F31C0; 1 drivers
+S_007B28B8 .scope module, "SC3" "subtrator_completo" 2 39, 2 22, S_007B18C8;
+ .timescale 0 0;
+L_007F4560 .functor OR 1, L_007F36D0, L_007F3728, C4<0>, C4<0>;
+v007F12F0_0 .net *"_s11", 0 0, L_007F3728; 1 drivers
+v007F1348_0 .net *"_s9", 0 0, L_007F36D0; 1 drivers
+v007F13A0_0 .net "carryIn", 0 0, L_007F38E0; 1 drivers
+v007F13F8_0 .net "carryOut", 0 0, L_007F4560; 1 drivers
+v007F1450_0 .net "entrada1", 0 0, L_007F3830; 1 drivers
+v007F14A8_0 .net "entrada2", 0 0, L_007F3888; 1 drivers
+RS_007C5274 .resolv tri, L_007F3570, L_007F35C8, L_007F3620, C4<zzz>;
+v007F1500_0 .net8 "s", 2 0, RS_007C5274; 3 drivers
+v007F1558_0 .net "saida", 0 0, L_007F4608; 1 drivers
+L_007F3570 .part/pv L_007F3000, 0, 1, 3;
+L_007F35C8 .part/pv L_007F44B8, 1, 1, 3;
+L_007F3620 .part/pv L_007F46E8, 2, 1, 3;
+L_007F3678 .part RS_007C5274, 0, 1;
+L_007F36D0 .part RS_007C5274, 1, 1;
+L_007F3728 .part RS_007C5274, 2, 1;
+S_007B2478 .scope module, "MS1" "meio_subtrator" 2 26, 2 11, S_007B28B8;
+ .timescale 0 0;
+L_007F32A0 .functor NOT 1, L_007F3830, C4<0>, C4<0>, C4<0>;
+L_007F3000 .functor XOR 1, L_007F3830, L_007F3888, C4<0>, C4<0>;
+L_007F44B8 .functor AND 1, L_007F32A0, L_007F3888, C4<1>, C4<1>;
+v007F1138_0 .net "carryOut", 0 0, L_007F44B8; 1 drivers
+v007F1190_0 .alias "entrada1", 0 0, v007F1450_0;
+v007F11E8_0 .alias "entrada2", 0 0, v007F14A8_0;
+v007F1240_0 .net "saida", 0 0, L_007F3000; 1 drivers
+v007F1298_0 .net "saida_not", 0 0, L_007F32A0; 1 drivers
+S_007B2500 .scope module, "MS2" "meio_subtrator" 2 27, 2 11, S_007B28B8;
+ .timescale 0 0;
+L_007F45D0 .functor NOT 1, L_007F3678, C4<0>, C4<0>, C4<0>;
+L_007F4608 .functor XOR 1, L_007F3678, L_007F38E0, C4<0>, C4<0>;
+L_007F46E8 .functor AND 1, L_007F45D0, L_007F38E0, C4<1>, C4<1>;
+v007F0F80_0 .net "carryOut", 0 0, L_007F46E8; 1 drivers
+v007F0FD8_0 .net "entrada1", 0 0, L_007F3678; 1 drivers
+v007F1030_0 .alias "entrada2", 0 0, v007F13A0_0;
+v007F1088_0 .alias "saida", 0 0, v007F1558_0;
+v007F10E0_0 .net "saida_not", 0 0, L_007F45D0; 1 drivers
+S_007B2A50 .scope module, "SC4" "subtrator_completo" 2 40, 2 22, S_007B18C8;
+ .timescale 0 0;
+L_007F4918 .functor OR 1, L_007F3A98, L_007F3AF0, C4<0>, C4<0>;
+v007F0CC0_0 .net *"_s11", 0 0, L_007F3AF0; 1 drivers
+v007F0D18_0 .net *"_s9", 0 0, L_007F3A98; 1 drivers
+v007F0D70_0 .net "carryIn", 0 0, L_007F3C50; 1 drivers
+v007F0DC8_0 .alias "carryOut", 0 0, v007F24A8_0;
+v007F0E20_0 .net "entrada1", 0 0, L_007F3BA0; 1 drivers
+v007F0E78_0 .net "entrada2", 0 0, L_007F3BF8; 1 drivers
+RS_007C5124 .resolv tri, L_007F3938, L_007F3990, L_007F39E8, C4<zzz>;
+v007F0ED0_0 .net8 "s", 2 0, RS_007C5124; 3 drivers
+v007F0F28_0 .net "saida", 0 0, L_007F49C0; 1 drivers
+L_007F3938 .part/pv L_007F4800, 0, 1, 3;
+L_007F3990 .part/pv L_007F4870, 1, 1, 3;
+L_007F39E8 .part/pv L_007F4AA0, 2, 1, 3;
+L_007F3A40 .part RS_007C5124, 0, 1;
+L_007F3A98 .part RS_007C5124, 1, 1;
+L_007F3AF0 .part RS_007C5124, 2, 1;
+S_007B2940 .scope module, "MS1" "meio_subtrator" 2 26, 2 11, S_007B2A50;
+ .timescale 0 0;
+L_007F46B0 .functor NOT 1, L_007F3BA0, C4<0>, C4<0>, C4<0>;
+L_007F4800 .functor XOR 1, L_007F3BA0, L_007F3BF8, C4<0>, C4<0>;
+L_007F4870 .functor AND 1, L_007F46B0, L_007F3BF8, C4<1>, C4<1>;
+v007B53B8_0 .net "carryOut", 0 0, L_007F4870; 1 drivers
+v007B5410_0 .alias "entrada1", 0 0, v007F0E20_0;
+v007B5468_0 .alias "entrada2", 0 0, v007F0E78_0;
+v007F0C10_0 .net "saida", 0 0, L_007F4800; 1 drivers
+v007F0C68_0 .net "saida_not", 0 0, L_007F46B0; 1 drivers
+S_007B29C8 .scope module, "MS2" "meio_subtrator" 2 27, 2 11, S_007B2A50;
+ .timescale 0 0;
+L_007F4988 .functor NOT 1, L_007F3A40, C4<0>, C4<0>, C4<0>;
+L_007F49C0 .functor XOR 1, L_007F3A40, L_007F3C50, C4<0>, C4<0>;
+L_007F4AA0 .functor AND 1, L_007F4988, L_007F3C50, C4<1>, C4<1>;
+v007B5200_0 .net "carryOut", 0 0, L_007F4AA0; 1 drivers
+v007B5258_0 .net "entrada1", 0 0, L_007F3A40; 1 drivers
+v007B52B0_0 .alias "entrada2", 0 0, v007F0D70_0;
+v007B5308_0 .alias "saida", 0 0, v007F0F28_0;
+v007B5360_0 .net "saida_not", 0 0, L_007F4988; 1 drivers
+    .scope S_007B1950;
+T_0 ;
+    %vpi_call 2 65 "$display", "Exemplo0021 - Michelle da Costa Silva - 427448";
+    %vpi_call 2 66 "$display", "Test ALU's subtrator completo \012";
+    %vpi_call 2 67 "$display", "x - y - carryIn = carryOut  saida \012";
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 0, 1;
+    %vpi_call 2 70 "$monitor", "%4b - %4b - %b = %b %4b", v007F2558_0, v007F25B0_0, v007F2450_0, v007F24A8_0, v007F2500_0;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 12, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 12, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 14, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 6, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 14, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 6, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 4, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 4, 4;
+    %set/v v007F2558_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v007F25B0_0, 8, 4;
+    %set/v v007F2450_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Terceiro Periodo\AC1\427448\Guia4\Exemplo0022.v";

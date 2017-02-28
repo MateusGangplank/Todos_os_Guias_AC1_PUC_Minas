@@ -1,0 +1,48 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006F3CB8 .scope module, "testhalfAdder" "testhalfAdder" 2 24;
+ .timescale 0 0;
+v006FE770_0 .var "a", 0 0;
+v006FE7C8_0 .var "b", 0 0;
+v006FE820_0 .net "s", 0 0, L_006FFD88; 1 drivers
+v006FE878_0 .net "v1", 0 0, L_006FFD18; 1 drivers
+S_006F3D40 .scope module, "HALF" "halfAdder" 2 28, 2 9, S_006F3CB8;
+ .timescale 0 0;
+L_006FE8D0 .functor OR 1, v006FE770_0, v006FE7C8_0, C4<0>, C4<0>;
+L_006FFD18 .functor AND 1, v006FE770_0, v006FE7C8_0, C4<1>, C4<1>;
+L_006FFD88 .functor AND 1, L_006FFE30, L_006FE8D0, C4<1>, C4<1>;
+L_006FFE30 .functor NOT 1, L_006FFD18, C4<0>, C4<0>, C4<0>;
+v006F3DC8_0 .net *"_s0", 0 0, L_006FFE30; 1 drivers
+v006FE298_0 .net "a", 0 0, v006FE770_0; 1 drivers
+v006F2978_0 .net "b", 0 0, v006FE7C8_0; 1 drivers
+v006F29D0_0 .alias "s1", 0 0, v006FE820_0;
+v006F2A28_0 .alias "s2", 0 0, v006FE878_0;
+v006F2A80_0 .net "s3", 0 0, L_006FE8D0; 1 drivers
+    .scope S_006F3CB8;
+T_0 ;
+    %vpi_call 2 31 "$display", "Guia 03 - Karen Alves Pereira - 407451";
+    %vpi_call 2 32 "$display", "Operador de meia-soma";
+    %vpi_call 2 33 "$display", "\012a b s v1";
+    %vpi_call 2 34 "$monitor", "%b %b %b %b", v006FE770_0, v006FE7C8_0, v006FE820_0, v006FE878_0;
+    %set/v v006FE770_0, 0, 1;
+    %set/v v006FE7C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006FE770_0, 0, 1;
+    %set/v v006FE7C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006FE770_0, 1, 1;
+    %set/v v006FE7C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006FE770_0, 1, 1;
+    %set/v v006FE7C8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 03\Guia03_meiasoma.v";

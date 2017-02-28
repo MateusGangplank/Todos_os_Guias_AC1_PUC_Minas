@@ -1,0 +1,87 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01A31D60 .scope module, "test_fullAdder" "test_fullAdder" 2 21;
+ .timescale 0 0;
+v01A2D960_0 .var "c", 0 0;
+v01A2D9B8_0 .net "s0", 0 0, L_01A55DA0; 1 drivers
+v01A2DA10_0 .net "s1", 0 0, L_01A55E48; 1 drivers
+v01A2DA68_0 .var "x", 0 0;
+v01A2DAC0_0 .var "y", 0 0;
+S_01A31E70 .scope module, "modulo" "fullAdder" 2 29, 2 10, S_01A31D60;
+ .timescale 0 0;
+L_0036DDA8 .functor XOR 1, v01A2DA68_0, v01A2DAC0_0, C4<0>, C4<0>;
+L_00363330 .functor AND 1, v01A2DAC0_0, v01A2D960_0, C4<1>, C4<1>;
+L_01A55D18 .functor AND 1, v01A2DA68_0, v01A2D960_0, C4<1>, C4<1>;
+L_01A55D68 .functor AND 1, v01A2DA68_0, v01A2DAC0_0, C4<1>, C4<1>;
+L_01A55DA0 .functor XOR 1, L_0036DDA8, v01A2D960_0, C4<0>, C4<0>;
+L_01A55E48 .functor OR 1, L_00363330, L_01A55D18, L_01A55D68, C4<0>;
+v01A33D00_0 .net "a", 0 0, v01A2DA68_0; 1 drivers
+v01A33D58_0 .net "and1", 0 0, L_00363330; 1 drivers
+v0036DD50_0 .net "and2", 0 0, L_01A55D18; 1 drivers
+v00363210_0 .net "and3", 0 0, L_01A55D68; 1 drivers
+v00363268_0 .net "b", 0 0, v01A2DAC0_0; 1 drivers
+v01A2D800_0 .net "c", 0 0, v01A2D960_0; 1 drivers
+v01A2D858_0 .alias "s0", 0 0, v01A2D9B8_0;
+v01A2D8B0_0 .alias "s1", 0 0, v01A2DA10_0;
+v01A2D908_0 .net "xorAB", 0 0, L_0036DDA8; 1 drivers
+S_01A31DE8 .scope begin, "start" "start" 2 31, 2 31, S_01A31D60;
+ .timescale 0 0;
+    .scope S_01A31D60;
+T_0 ;
+    %fork t_1, S_01A31DE8;
+    %jmp t_0;
+    .scope S_01A31DE8;
+t_1 ;
+    %set/v v01A2DA68_0, 0, 1;
+    %set/v v01A2DAC0_0, 0, 1;
+    %set/v v01A2D960_0, 0, 1;
+    %end;
+    .scope S_01A31D60;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_01A31D60;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exemplo0021 - Marcio Santana Correa - 345368";
+    %vpi_call 2 40 "$display", "Test ALU's full adder";
+    %vpi_call 2 41 "$display", "a + b + c = s1 s0";
+    %vpi_call 2 42 "$monitor", "%b + %b + %b = %b  %b", v01A2DA68_0, v01A2DAC0_0, v01A2D960_0, v01A2DA10_0, v01A2D9B8_0;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 0, 1;
+    %set/v v01A2DAC0_0, 0, 1;
+    %set/v v01A2D960_0, 1, 1;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 0, 1;
+    %set/v v01A2DAC0_0, 1, 1;
+    %set/v v01A2D960_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 0, 1;
+    %set/v v01A2DAC0_0, 1, 1;
+    %set/v v01A2D960_0, 1, 1;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 1, 1;
+    %set/v v01A2DAC0_0, 0, 1;
+    %set/v v01A2D960_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 1, 1;
+    %set/v v01A2DAC0_0, 0, 1;
+    %set/v v01A2D960_0, 1, 1;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 1, 1;
+    %set/v v01A2DAC0_0, 1, 1;
+    %set/v v01A2D960_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01A2DA68_0, 1, 1;
+    %set/v v01A2DAC0_0, 1, 1;
+    %set/v v01A2D960_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\PucMinas\ArqComp 1\Guias\382175\Exemplo0021.v";

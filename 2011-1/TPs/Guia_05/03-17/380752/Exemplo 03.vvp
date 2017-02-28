@@ -1,0 +1,172 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A0C9C0 .scope module, "testcircuito" "testcircuito" 2 40;
+ .timescale 0 0;
+v00A0FE70_0 .var "a0", 0 0;
+v00A0FEC8_0 .var "a1", 0 0;
+v00A0FF20_0 .var "b0", 0 0;
+v00A0FF78_0 .var "b1", 0 0;
+v00A47018_0 .net "s0", 0 0, L_00A0A1C8; 1 drivers
+v00A47070_0 .net "s1", 0 0, L_00A0A158; 1 drivers
+v00A470C8_0 .net "s2", 0 0, L_00A0A270; 1 drivers
+v00A47120_0 .net "s3", 0 0, L_00A0A238; 1 drivers
+S_00A0CA40 .scope module, "CIRCUITO1" "circuito" 2 44, 2 25, S_00A0C9C0;
+ .timescale 0 0;
+L_00A0A350 .functor AND 1, v00A0FE70_0, v00A0FF20_0, C4<1>, C4<1>;
+L_00A0A430 .functor AND 1, v00A0FE70_0, v00A0FF78_0, C4<1>, C4<1>;
+L_00A0A4A0 .functor AND 1, v00A0FEC8_0, v00A0FF20_0, C4<1>, C4<1>;
+L_00A0A510 .functor AND 1, v00A0FEC8_0, v00A0FF78_0, C4<1>, C4<1>;
+v00A0F9A0_0 .net "a0", 0 0, v00A0FE70_0; 1 drivers
+v00A0F9F8_0 .net "a1", 0 0, v00A0FEC8_0; 1 drivers
+v00A0FA50_0 .net "b0", 0 0, v00A0FF20_0; 1 drivers
+v00A0FAA8_0 .net "b1", 0 0, v00A0FF78_0; 1 drivers
+v00A0FB00_0 .alias "s0", 0 0, v00A47018_0;
+v00A0FB58_0 .alias "s1", 0 0, v00A47070_0;
+v00A0FBB0_0 .alias "s2", 0 0, v00A470C8_0;
+v00A0FC08_0 .alias "s3", 0 0, v00A47120_0;
+v00A0FC60_0 .net "s4", 0 0, L_00A0A350; 1 drivers
+v00A0FCB8_0 .net "s5", 0 0, L_00A0A430; 1 drivers
+v00A0FD10_0 .net "s6", 0 0, L_00A0A4A0; 1 drivers
+v00A0FD68_0 .net "s7", 0 0, L_00A0A510; 1 drivers
+v00A0FDC0_0 .net "s8", 0 0, L_00A0A580; 1 drivers
+v00A0FE18_0 .net "s9", 0 0, L_00A0A190; 1 drivers
+S_00A0CCC0 .scope module, "SUBM1" "subcircuitoMeia" 2 34, 2 5, S_00A0CA40;
+ .timescale 0 0;
+L_00A0A580 .functor AND 1, C4<0>, L_00A0A350, C4<1>, C4<1>;
+L_00A0A1C8 .functor XOR 1, C4<0>, L_00A0A350, C4<0>, C4<0>;
+v00A0F840_0 .net "a", 0 0, C4<0>; 1 drivers
+v00A0F898_0 .alias "b", 0 0, v00A0FC60_0;
+v00A0F8F0_0 .alias "s0", 0 0, v00A47018_0;
+v00A0F948_0 .alias "s1", 0 0, v00A0FDC0_0;
+S_00A0CB40 .scope module, "SUBC1" "subcircuitoComp" 2 35, 2 14, S_00A0CA40;
+ .timescale 0 0;
+L_00A0A190 .functor OR 1, L_00A0A388, L_00A0A628, C4<0>, C4<0>;
+v00A0F580_0 .alias "a", 0 0, v00A0FDC0_0;
+v00A0F5D8_0 .alias "b", 0 0, v00A0FCB8_0;
+v00A0F630_0 .alias "c", 0 0, v00A0FD10_0;
+v00A0F688_0 .alias "s0", 0 0, v00A47070_0;
+v00A0F6E0_0 .alias "s1", 0 0, v00A0FE18_0;
+v00A0F738_0 .net "s2", 0 0, L_00A0A200; 1 drivers
+v00A0F790_0 .net "s3", 0 0, L_00A0A388; 1 drivers
+v00A0F7E8_0 .net "s4", 0 0, L_00A0A628; 1 drivers
+S_00A0CC40 .scope module, "SUB1" "subcircuitoMeia" 2 19, 2 5, S_00A0CB40;
+ .timescale 0 0;
+L_00A0A388 .functor AND 1, L_00A0A580, L_00A0A430, C4<1>, C4<1>;
+L_00A0A200 .functor XOR 1, L_00A0A580, L_00A0A430, C4<0>, C4<0>;
+v00A0F420_0 .alias "a", 0 0, v00A0FDC0_0;
+v00A0F478_0 .alias "b", 0 0, v00A0FCB8_0;
+v00A0F4D0_0 .alias "s0", 0 0, v00A0F738_0;
+v00A0F528_0 .alias "s1", 0 0, v00A0F790_0;
+S_00A0CBC0 .scope module, "SUB2" "subcircuitoMeia" 2 20, 2 5, S_00A0CB40;
+ .timescale 0 0;
+L_00A0A628 .functor AND 1, L_00A0A4A0, L_00A0A200, C4<1>, C4<1>;
+L_00A0A158 .functor XOR 1, L_00A0A4A0, L_00A0A200, C4<0>, C4<0>;
+v00A0F2C0_0 .alias "a", 0 0, v00A0FD10_0;
+v00A0F318_0 .alias "b", 0 0, v00A0F738_0;
+v00A0F370_0 .alias "s0", 0 0, v00A47070_0;
+v00A0F3C8_0 .alias "s1", 0 0, v00A0F7E8_0;
+S_00A0CAC0 .scope module, "SUBM2" "subcircuitoMeia" 2 36, 2 5, S_00A0CA40;
+ .timescale 0 0;
+L_00A0A238 .functor AND 1, L_00A0A190, L_00A0A510, C4<1>, C4<1>;
+L_00A0A270 .functor XOR 1, L_00A0A190, L_00A0A510, C4<0>, C4<0>;
+v00A0F160_0 .alias "a", 0 0, v00A0FE18_0;
+v00A0F1B8_0 .alias "b", 0 0, v00A0FD68_0;
+v00A0F210_0 .alias "s0", 0 0, v00A470C8_0;
+v00A0F268_0 .alias "s1", 0 0, v00A47120_0;
+    .scope S_00A0C9C0;
+T_0 ;
+    %vpi_call 2 47 "$display", "Exemplo 01 - Bruno Rafael Nicolletti - 380752";
+    %vpi_call 2 48 "$display", "Test Circuito Soma de 2 Binarios com 3 bits cada";
+    %vpi_call 2 49 "$display", "\012a1 a0 x b1 b0 = s3 s2 s1 s0";
+    %vpi_call 2 50 "$monitor", " %b  %b x  %b  %b =  %b  %b  %b  %b", v00A0FEC8_0, v00A0FE70_0, v00A0FF78_0, v00A0FF20_0, v00A47120_0, v00A470C8_0, v00A47070_0, v00A47018_0;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 0, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 0, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 0, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A0FEC8_0, 1, 1;
+    %set/v v00A0FE70_0, 1, 1;
+    %set/v v00A0FF78_0, 1, 1;
+    %set/v v00A0FF20_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Bruno\Ciencia_da_Computacao\2010-2\AC_1\Guias\Guia 5\Exemplo 03.v";

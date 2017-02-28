@@ -1,0 +1,47 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0069ECB8 .scope module, "testORgate" "testORgate" 2 30;
+ .timescale 0 0;
+v006930F0_0 .net "o", 0 0, L_0069F4C8; 1 drivers
+v0069FE68_0 .var "u", 0 0;
+v0069FEC0_0 .var "y", 0 0;
+S_00694300 .scope module, "OR1" "Orgate" 2 38, 2 12, S_0069ECB8;
+ .timescale 0 0;
+L_00694438 .functor NAND 1, v0069FEC0_0, C4<1>, C4<1>, C4<1>;
+L_0069FF50 .functor NAND 1, v0069FE68_0, C4<1>, C4<1>, C4<1>;
+L_0069F420 .functor AND 1, L_00694438, L_0069FF50, C4<1>, C4<1>;
+L_0069F4C8 .functor NOT 1, L_0069F420, C4<0>, C4<0>, C4<0>;
+v0069ED40_0 .net *"_s0", 0 0, L_0069F420; 1 drivers
+v00694388_0 .net "g", 0 0, v0069FE68_0; 1 drivers
+v006943E0_0 .alias "j", 0 0, v006930F0_0;
+v00692FE8_0 .net "k", 0 0, v0069FEC0_0; 1 drivers
+v00693040_0 .net "temp1", 0 0, L_00694438; 1 drivers
+v00693098_0 .net "temp2", 0 0, L_0069FF50; 1 drivers
+    .scope S_0069ECB8;
+T_0 ;
+    %vpi_call 2 44 "$display", "\012 Marley Ribeiro-414510\012";
+    %vpi_call 2 45 "$display", "Teste or gate baseado em NAND \012";
+    %vpi_call 2 46 "$display", "\012 y\011| u = s\012";
+    %vpi_call 2 47 "$monitor", "%b | %b = %b", v0069FEC0_0, v0069FE68_0, v006930F0_0;
+    %set/v v0069FEC0_0, 1, 1;
+    %set/v v0069FE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069FEC0_0, 1, 1;
+    %set/v v0069FE68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069FEC0_0, 0, 1;
+    %set/v v0069FE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069FEC0_0, 0, 1;
+    %set/v v0069FE68_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "M:\AC I\Guias\Guia 2\or.v";

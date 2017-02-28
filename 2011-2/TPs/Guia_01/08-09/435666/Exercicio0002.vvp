@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C0E0E0 .scope module, "testnorgate" "testnorgate" 2 16;
+ .timescale 0 0;
+v00C03210_0 .var "a", 0 0;
+v00C03268_0 .var "b", 0 0;
+v00C032C0_0 .net "s", 0 0, L_00C02E08; 1 drivers
+S_00C02D80 .scope module, "OR1" "norgate" 2 21, 2 9, S_00C0E0E0;
+ .timescale 0 0;
+L_00C02E08 .functor NOR 1, v00C03210_0, v00C03268_0, C4<0>, C4<0>;
+v00C0E168_0 .net "p", 0 0, v00C03210_0; 1 drivers
+v00C0FF80_0 .net "q", 0 0, v00C03268_0; 1 drivers
+v00C031B8_0 .alias "s", 0 0, v00C032C0_0;
+S_00C02CF8 .scope begin, "start" "start" 2 23, 2 23, S_00C0E0E0;
+ .timescale 0 0;
+    .scope S_00C0E0E0;
+T_0 ;
+    %fork t_1, S_00C02CF8;
+    %jmp t_0;
+    .scope S_00C02CF8;
+t_1 ;
+    %set/v v00C03210_0, 0, 1;
+    %set/v v00C03268_0, 0, 1;
+    %end;
+    .scope S_00C0E0E0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00C0E0E0;
+T_1 ;
+    %vpi_call 2 28 "$display", "Exemplo2 - Julio Miranda Machado- 435666-7";
+    %vpi_call 2 29 "$display", "Test NOR gate";
+    %vpi_call 2 30 "$display", "\012\011time\011a & b = s\012";
+    %set/v v00C03210_0, 0, 1;
+    %set/v v00C03268_0, 0, 1;
+    %vpi_call 2 32 "$monitor", "%d\011~(%b|%b) = %b ", $time, v00C03210_0, v00C03268_0, v00C032C0_0;
+    %delay 1, 0;
+    %set/v v00C03210_0, 0, 1;
+    %set/v v00C03268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00C03210_0, 1, 1;
+    %set/v v00C03268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00C03210_0, 1, 1;
+    %set/v v00C03268_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Faculdade\2perido\Guia01\Exercicio0002.v";

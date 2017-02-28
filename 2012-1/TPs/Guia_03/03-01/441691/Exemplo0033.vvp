@@ -1,0 +1,95 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00679498 .scope module, "test_mux_f4" "test_mux_f4" 2 40;
+ .timescale 0 0;
+v0067B7A8_0 .net "g", 0 0, L_006CC910; 1 drivers
+v0067B800_0 .net "h", 0 0, L_006CC9B8; 1 drivers
+v0067B858_0 .var "x", 0 0;
+v0067B8B0_0 .var "y", 0 0;
+v0067B908_0 .var "z", 0 0;
+S_00679520 .scope module, "modulo1" "f4" 2 44, 2 28, S_00679498;
+ .timescale 0 0;
+L_006BE4B8 .functor NOR 1, v0067B858_0, v0067B8B0_0, C4<0>, C4<0>;
+L_0067E7C8 .functor OR 1, v0067B858_0, v0067B8B0_0, C4<0>, C4<0>;
+L_006CC670 .functor NAND 1, v0067B858_0, v0067B8B0_0, C4<1>, C4<1>;
+L_006CC6E0 .functor AND 1, v0067B858_0, v0067B8B0_0, C4<1>, C4<1>;
+v0067B490_0 .net "a", 0 0, v0067B858_0; 1 drivers
+v0067B4E8_0 .net "b", 0 0, v0067B8B0_0; 1 drivers
+v0067B540_0 .net "c", 0 0, L_006BE4B8; 1 drivers
+v0067B598_0 .net "chave2", 0 0, v0067B908_0; 1 drivers
+v0067B5F0_0 .net "d", 0 0, L_0067E7C8; 1 drivers
+v0067B648_0 .net "e", 0 0, L_006CC670; 1 drivers
+v0067B6A0_0 .net "f", 0 0, L_006CC6E0; 1 drivers
+v0067B6F8_0 .alias "s3", 0 0, v0067B7A8_0;
+v0067B750_0 .alias "s4", 0 0, v0067B800_0;
+S_006795A8 .scope module, "MUX1" "mux" 2 37, 2 9, S_00679520;
+ .timescale 0 0;
+L_006CC750 .functor AND 1, L_006BE4B8, v0067B908_0, C4<1>, C4<1>;
+L_006CC788 .functor NOT 1, v0067B908_0, C4<0>, C4<0>, C4<0>;
+L_006CC7C0 .functor AND 1, L_0067E7C8, L_006CC788, C4<1>, C4<1>;
+L_006CC830 .functor AND 1, L_006CC670, v0067B908_0, C4<1>, C4<1>;
+L_006CC868 .functor NOT 1, v0067B908_0, C4<0>, C4<0>, C4<0>;
+L_006CC8A0 .functor AND 1, L_006CC6E0, L_006CC868, C4<1>, C4<1>;
+L_006CC910 .functor OR 1, L_006CC750, L_006CC7C0, C4<0>, C4<0>;
+L_006CC9B8 .functor OR 1, L_006CC830, L_006CC8A0, C4<0>, C4<0>;
+v0067B018_0 .alias "chave1", 0 0, v0067B598_0;
+v0067B070_0 .net "n1", 0 0, L_006CC788; 1 drivers
+v0067B0C8_0 .net "n2", 0 0, L_006CC868; 1 drivers
+v0067B120_0 .alias "s1", 0 0, v0067B7A8_0;
+v0067B178_0 .alias "s2", 0 0, v0067B800_0;
+v0067B1D0_0 .net "t1", 0 0, L_006CC750; 1 drivers
+v0067B228_0 .net "t2", 0 0, L_006CC7C0; 1 drivers
+v0067B280_0 .net "t3", 0 0, L_006CC830; 1 drivers
+v0067B2D8_0 .net "t4", 0 0, L_006CC8A0; 1 drivers
+v0067B330_0 .alias "w", 0 0, v0067B6A0_0;
+v0067B388_0 .alias "x", 0 0, v0067B540_0;
+v0067B3E0_0 .alias "y", 0 0, v0067B5F0_0;
+v0067B438_0 .alias "z", 0 0, v0067B648_0;
+    .scope S_00679498;
+T_0 ;
+    %vpi_call 2 47 "$display", "Exemplo0033 - Gabriel Luiz M. G. Vieira - 441691";
+    %vpi_call 2 48 "$display", "Test LU's module";
+    %set/v v0067B858_0, 0, 1;
+    %set/v v0067B8B0_0, 0, 1;
+    %set/v v0067B908_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$monitor", "%3b %3b -Chave- %3b - s3 = %3b  s4 = %3b", v0067B858_0, v0067B8B0_0, v0067B908_0, v0067B7A8_0, v0067B800_0;
+    %delay 1, 0;
+    %set/v v0067B858_0, 0, 1;
+    %set/v v0067B8B0_0, 0, 1;
+    %set/v v0067B908_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0067B858_0, 0, 1;
+    %set/v v0067B8B0_0, 1, 1;
+    %set/v v0067B908_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0067B858_0, 0, 1;
+    %set/v v0067B8B0_0, 1, 1;
+    %set/v v0067B908_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0067B858_0, 1, 1;
+    %set/v v0067B8B0_0, 0, 1;
+    %set/v v0067B908_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0067B858_0, 1, 1;
+    %set/v v0067B8B0_0, 0, 1;
+    %set/v v0067B908_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0067B858_0, 1, 1;
+    %set/v v0067B8B0_0, 1, 1;
+    %set/v v0067B908_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0067B858_0, 1, 1;
+    %set/v v0067B8B0_0, 1, 1;
+    %set/v v0067B908_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Gabriel\PUC\2º\ARQ\Guia03\Exemplo0033.v";

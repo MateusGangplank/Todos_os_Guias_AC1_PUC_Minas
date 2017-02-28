@@ -1,0 +1,60 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00999268 .scope module, "testhalfAddernand" "testhalfAddernand" 2 34;
+ .timescale 0 0;
+v0099B4E8_0 .var "a", 0 0;
+v0099B540_0 .var "b", 0 0;
+v0099B598_0 .net "s", 0 0, L_008711C0; 1 drivers
+v0099B5F0_0 .net "v1", 0 0, L_0099EAB0; 1 drivers
+S_009992F0 .scope module, "HALF1" "halfAddernand" 2 38, 2 9, S_00999268;
+ .timescale 0 0;
+L_0099F170 .functor NAND 1, v0099B4E8_0, v0099B4E8_0, C4<1>, C4<1>;
+L_0099EA78 .functor NAND 1, v0099B540_0, v0099B540_0, C4<1>, C4<1>;
+L_0099EAE8 .functor NAND 1, L_0099F170, L_0099EA78, C4<1>, C4<1>;
+L_0099D5D8 .functor NAND 1, v0099B4E8_0, v0099B540_0, C4<1>, C4<1>;
+L_0099EAB0 .functor NAND 1, L_0099D5D8, L_0099D5D8, C4<1>, C4<1>;
+L_0099D6B0 .functor NAND 1, L_0099EAE8, L_0099EAE8, C4<1>, C4<1>;
+L_00871070 .functor NAND 1, L_0099EAB0, L_0099EAB0, C4<1>, C4<1>;
+L_008710A8 .functor NAND 1, L_0099D6B0, L_00871070, C4<1>, C4<1>;
+L_00871150 .functor NAND 1, L_008710A8, L_00871070, C4<1>, C4<1>;
+L_008711C0 .functor NAND 1, L_00871150, L_00871150, C4<1>, C4<1>;
+v0099B0C8_0 .net "a", 0 0, v0099B4E8_0; 1 drivers
+v0099B120_0 .net "b", 0 0, v0099B540_0; 1 drivers
+v0099B178_0 .alias "s", 0 0, v0099B598_0;
+v0099B1D0_0 .net "tem1", 0 0, L_0099F170; 1 drivers
+v0099B228_0 .net "tem2", 0 0, L_0099EA78; 1 drivers
+v0099B280_0 .net "tem3", 0 0, L_0099EAE8; 1 drivers
+v0099B2D8_0 .net "tem4", 0 0, L_0099D5D8; 1 drivers
+v0099B330_0 .net "tem6", 0 0, L_0099D6B0; 1 drivers
+v0099B388_0 .net "tem7", 0 0, L_00871070; 1 drivers
+v0099B3E0_0 .net "tem8", 0 0, L_008710A8; 1 drivers
+v0099B438_0 .net "tem9", 0 0, L_00871150; 1 drivers
+v0099B490_0 .alias "v1", 0 0, v0099B5F0_0;
+    .scope S_00999268;
+T_0 ;
+    %vpi_call 2 41 "$display", "Guia 03 - Karen Alves Pereira - 407451";
+    %vpi_call 2 42 "$display", "Operador de meia-soma apenas com portas NAND";
+    %vpi_call 2 43 "$display", "\012a b s v1";
+    %vpi_call 2 44 "$monitor", "%b %b %b %b", v0099B4E8_0, v0099B540_0, v0099B598_0, v0099B5F0_0;
+    %set/v v0099B4E8_0, 0, 1;
+    %set/v v0099B540_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0099B4E8_0, 0, 1;
+    %set/v v0099B540_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0099B4E8_0, 1, 1;
+    %set/v v0099B540_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0099B4E8_0, 1, 1;
+    %set/v v0099B540_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 03\Guia03_meiasomanand.v";

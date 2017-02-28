@@ -1,0 +1,75 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEB48 .scope module, "testnandgate" "testnandgate" 2 23;
+ .timescale 0 0;
+v006A7008_0 .var "a", 0 0;
+v006A7060_0 .var "b", 0 0;
+v006A70B8_0 .var "c", 0 0;
+v006A7110_0 .net "s", 0 0, L_006A7248; 1 drivers
+S_00676D18 .scope module, "NAND1" "nandgate" 2 28, 2 11, S_003EEB48;
+ .timescale 0 0;
+L_003EEDF8 .functor AND 1, v006A7008_0, v006A7060_0, C4<1>, C4<1>;
+L_006A71A0 .functor AND 1, L_003EEDF8, v006A70B8_0, C4<1>, C4<1>;
+L_006A7248 .functor NOT 1, L_006A71A0, C4<0>, C4<0>, C4<0>;
+v00676D98_0 .net *"_s0", 0 0, L_003EEDF8; 1 drivers
+v006A6DD0_0 .net *"_s2", 0 0, L_006A71A0; 1 drivers
+v006A6E40_0 .net "p", 0 0, v006A7008_0; 1 drivers
+v006A6EC8_0 .net "q", 0 0, v006A7060_0; 1 drivers
+v006A6F38_0 .net "r", 0 0, v006A70B8_0; 1 drivers
+v006A6F90_0 .alias "s", 0 0, v006A7110_0;
+    .scope S_003EEB48;
+T_0 ;
+    %vpi_call 2 33 "$display", "Guia 01 - Exercicio 01 \012Marco Antonio Maciel Belo - 410796";
+    %vpi_call 2 34 "$display", "Nandgate";
+    %vpi_call 2 35 "$display", "\012~(a & b & c) = s\012";
+    %set/v v006A7008_0, 0, 1;
+    %set/v v006A7060_0, 0, 1;
+    %set/v v006A70B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 0, 1;
+    %set/v v006A7060_0, 0, 1;
+    %set/v v006A70B8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 0, 1;
+    %set/v v006A7060_0, 1, 1;
+    %set/v v006A70B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 0, 1;
+    %set/v v006A7060_0, 1, 1;
+    %set/v v006A70B8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 1, 1;
+    %set/v v006A7060_0, 0, 1;
+    %set/v v006A70B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 1, 1;
+    %set/v v006A7060_0, 0, 1;
+    %set/v v006A70B8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 1, 1;
+    %set/v v006A7060_0, 1, 1;
+    %set/v v006A70B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %set/v v006A7008_0, 1, 1;
+    %set/v v006A7060_0, 1, 1;
+    %set/v v006A70B8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "~(%b & %b & %b) = %b", v006A7008_0, v006A7060_0, v006A70B8_0, v006A7110_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Faculdade\Arquitetura I\Exercicios\Guia 01\guia01_exercicio01.v";

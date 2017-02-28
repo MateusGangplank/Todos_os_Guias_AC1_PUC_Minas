@@ -1,0 +1,59 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00037448 .scope module, "teste" "teste" 2 23;
+ .timescale 0 0;
+v00639F00_0 .var "a", 0 0;
+v00639F58_0 .var "chave", 0 0;
+v00639FB0_0 .net "s", 0 0, L_0063A1B0; 1 drivers
+S_00037558 .scope module, "test" "LU" 2 28, 2 5, S_00037448;
+ .timescale 0 0;
+L_00036778 .functor AND 1, v00639F00_0, v00639F58_0, C4<1>, C4<1>;
+L_0063A040 .functor OR 1, v00639F00_0, v00639F58_0, C4<0>, C4<0>;
+L_0063A078 .functor AND 1, L_00036778, C4<1>, C4<1>, C4<1>;
+L_0063A0E8 .functor NOT 1, v00639F58_0, C4<0>, C4<0>, C4<0>;
+L_0063A008 .functor AND 1, L_0063A040, L_0063A0E8, C4<1>, C4<1>;
+L_0063A1B0 .functor OR 1, L_0063A078, L_0063A008, C4<0>, C4<0>;
+v00035070_0 .net "a", 0 0, v00639F00_0; 1 drivers
+v00639BC8_0 .net "chave", 0 0, v00639F58_0; 1 drivers
+v00639C38_0 .net "notchave", 0 0, L_0063A0E8; 1 drivers
+v00639CC0_0 .alias "s", 0 0, v00639FB0_0;
+v00639D30_0 .net "s0", 0 0, L_00036778; 1 drivers
+v00639D88_0 .net "s1", 0 0, L_0063A040; 1 drivers
+v00639DF8_0 .net "s2", 0 0, L_0063A078; 1 drivers
+v00639E90_0 .net "s3", 0 0, L_0063A008; 1 drivers
+S_000374D0 .scope begin, "main" "main" 2 30, 2 30, S_00037448;
+ .timescale 0 0;
+    .scope S_00037448;
+T_0 ;
+    %fork t_1, S_000374D0;
+    %jmp t_0;
+    .scope S_000374D0;
+t_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0032 - Ana Carolina - 449517";
+    %vpi_call 2 33 "$display", "ULA teste";
+    %set/v v00639F58_0, 0, 1;
+    %set/v v00639F00_0, 0, 1;
+    %vpi_call 2 37 "$display", "\012chave = 0 (operacao and) chave = 1 (operacao or)";
+    %delay 1, 0;
+    %vpi_call 2 39 "$monitor", "%b = saida %b chave = %b", v00639F00_0, v00639FB0_0, v00639F58_0;
+    %delay 1, 0;
+    %set/v v00639F58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00639F58_0, 0, 1;
+    %set/v v00639F00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00639F58_0, 1, 1;
+    %end;
+    .scope S_00037448;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0032.v";

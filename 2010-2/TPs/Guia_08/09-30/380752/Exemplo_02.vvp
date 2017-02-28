@@ -1,0 +1,134 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0032B0D8 .scope module, "testcircuito" "testcircuito" 2 23;
+ .timescale 0 0;
+v0032DB28_0 .var "a", 0 0;
+v0032DB80_0 .var "b", 0 0;
+v0032DBD8_0 .var "c", 0 0;
+v0032DC30_0 .var "d", 0 0;
+v0032DC88_0 .net "f", 0 0, L_00329438; 1 drivers
+S_0032B158 .scope module, "CIRC1" "circuito" 2 27, 2 5, S_0032B0D8;
+ .timescale 0 0;
+L_003292B0 .functor NOT 1, v0032DB28_0, C4<0>, C4<0>, C4<0>;
+L_00329320 .functor NOT 1, v0032DB80_0, C4<0>, C4<0>, C4<0>;
+L_00329390 .functor NOT 1, v0032DBD8_0, C4<0>, C4<0>, C4<0>;
+L_00329400 .functor NOT 1, v0032DC30_0, C4<0>, C4<0>, C4<0>;
+L_00329470 .functor AND 1, L_003292B0, L_00329320, L_00329400, C4<1>;
+L_00329550 .functor AND 1, L_003292B0, L_00329390, L_00329400, C4<1>;
+L_003295C0 .functor AND 1, L_00329320, L_00329390, L_00329400, C4<1>;
+L_00329518 .functor AND 1, v0032DB28_0, L_00329320, v0032DC30_0, C4<1>;
+L_003294E0 .functor AND 1, v0032DB28_0, L_00329390, v0032DC30_0, C4<1>;
+L_00329438/0/0 .functor OR 1, L_00329470, L_00329550, L_003295C0, L_00329518;
+L_00329438/0/4 .functor OR 1, L_003294E0, C4<0>, C4<0>, C4<0>;
+L_00329438 .functor OR 1, L_00329438/0/0, L_00329438/0/4, C4<0>, C4<0>;
+v0032D658_0 .net "a", 0 0, v0032DB28_0; 1 drivers
+v0032D6B0_0 .net "b", 0 0, v0032DB80_0; 1 drivers
+v0032D708_0 .net "c", 0 0, v0032DBD8_0; 1 drivers
+v0032D760_0 .net "d", 0 0, v0032DC30_0; 1 drivers
+v0032D7B8_0 .alias "f", 0 0, v0032DC88_0;
+v0032D810_0 .net "s0", 0 0, L_003292B0; 1 drivers
+v0032D868_0 .net "s1", 0 0, L_00329320; 1 drivers
+v0032D8C0_0 .net "s2", 0 0, L_00329390; 1 drivers
+v0032D918_0 .net "s3", 0 0, L_00329400; 1 drivers
+v0032D970_0 .net "s4", 0 0, L_00329470; 1 drivers
+v0032D9C8_0 .net "s5", 0 0, L_00329550; 1 drivers
+v0032DA20_0 .net "s6", 0 0, L_003295C0; 1 drivers
+v0032DA78_0 .net "s7", 0 0, L_00329518; 1 drivers
+v0032DAD0_0 .net "s8", 0 0, L_003294E0; 1 drivers
+    .scope S_0032B0D8;
+T_0 ;
+    %vpi_call 2 30 "$display", "Exemplo 02 - Bruno Rafael Nicolletti - 380752";
+    %vpi_call 2 31 "$display", "Test Circuito Logico para Funcao com Quine-McCluskey";
+    %vpi_call 2 32 "$display", "\012 a  b  c  d =  f";
+    %vpi_call 2 33 "$monitor", " %b  %b  %b  %b =  %b", v0032DB28_0, v0032DB80_0, v0032DBD8_0, v0032DC30_0, v0032DC88_0;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 0, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 0, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 0, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0032DB28_0, 1, 1;
+    %set/v v0032DB80_0, 1, 1;
+    %set/v v0032DBD8_0, 1, 1;
+    %set/v v0032DC30_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Bruno\Ciencia_da_Computacao\2010-2\AC_1\Guias\Guia 8\Exemplo_02.v";

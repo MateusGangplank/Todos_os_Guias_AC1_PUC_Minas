@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0037E018 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v0037FE78_0 .var "a", 0 0;
+v0037FED0_0 .var "b", 0 0;
+v0037FF28_0 .net "s", 0 0, L_0037FF80; 1 drivers
+S_00373380 .scope module, "NAND1" "nandgate" 2 24, 2 10, S_0037E018;
+ .timescale 0 0;
+L_0037E380 .functor AND 1, v0037FE78_0, v0037FED0_0, C4<1>, C4<1>;
+L_0037FF80 .functor NOT 1, L_0037E380, C4<0>, C4<0>, C4<0>;
+v0037E0A0_0 .net *"_s0", 0 0, L_0037E380; 1 drivers
+v00373408_0 .net "p", 0 0, v0037FE78_0; 1 drivers
+v00373460_0 .net "q", 0 0, v0037FED0_0; 1 drivers
+v0037FE20_0 .alias "s", 0 0, v0037FF28_0;
+S_00372F20 .scope begin, "start" "start" 2 27, 2 27, S_0037E018;
+ .timescale 0 0;
+S_00372E98 .scope begin, "main" "main" 2 32, 2 32, S_0037E018;
+ .timescale 0 0;
+    .scope S_0037E018;
+T_0 ;
+    %fork t_1, S_00372F20;
+    %jmp t_0;
+    .scope S_00372F20;
+t_1 ;
+    %set/v v0037FE78_0, 0, 1;
+    %set/v v0037FED0_0, 0, 1;
+    %end;
+    .scope S_0037E018;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0037E018;
+T_1 ;
+    %fork t_3, S_00372E98;
+    %jmp t_2;
+    .scope S_00372E98;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exemplo 0006 - Michelle da Costa Silva - 427448";
+    %vpi_call 2 34 "$display", "\012Tabela-verdade NAND gate";
+    %vpi_call 2 35 "$display", "\012a b s\012";
+    %set/v v0037FE78_0, 0, 1;
+    %set/v v0037FED0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b %b %b", v0037FE78_0, v0037FED0_0, v0037FF28_0;
+    %set/v v0037FE78_0, 0, 1;
+    %set/v v0037FED0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b %b %b", v0037FE78_0, v0037FED0_0, v0037FF28_0;
+    %set/v v0037FE78_0, 1, 1;
+    %set/v v0037FED0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b %b %b", v0037FE78_0, v0037FED0_0, v0037FF28_0;
+    %set/v v0037FE78_0, 1, 1;
+    %set/v v0037FED0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b %b %b", v0037FE78_0, v0037FED0_0, v0037FF28_0;
+    %end;
+    .scope S_0037E018;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Segundo Periodo\ACI\427448\guia01\Exemplo0006.v";

@@ -1,0 +1,78 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00378D20 .scope module, "testhalfsubtractor" "testhalfsubtractor" 2 31;
+ .timescale 0 0;
+v0037AF80_0 .var "a", 0 0;
+v0037AFD8_0 .var "b", 0 0;
+v0037B030_0 .net "s0", 0 0, L_0037FE20; 1 drivers
+v0037B088_0 .net "s1", 0 0, L_0037ED70; 1 drivers
+S_00378EB8 .scope module, "hs1" "halfsubtractor" 2 35, 2 11, S_00378D20;
+ .timescale 0 0;
+L_00372E08 .functor NAND 1, v0037AF80_0, v0037AFD8_0, C4<1>, C4<1>;
+L_00372EB0 .functor NAND 1, v0037AF80_0, v0037AF80_0, C4<1>, C4<1>;
+L_00372E40 .functor NAND 1, L_00372EB0, v0037AFD8_0, C4<1>, C4<1>;
+L_0037ED70 .functor NAND 1, L_00372E40, L_00372E40, C4<1>, C4<1>;
+L_0037EE18 .functor NAND 1, v0037AF80_0, v0037AFD8_0, C4<1>, C4<1>;
+L_00372E78 .functor NAND 1, v0037AF80_0, L_0037EE18, C4<1>, C4<1>;
+L_0037FDE8 .functor NAND 1, L_0037EE18, v0037AFD8_0, C4<1>, C4<1>;
+L_0037FE20 .functor NAND 1, L_00372E78, L_0037FDE8, C4<1>, C4<1>;
+v0037AC10_0 .net "a", 0 0, v0037AF80_0; 1 drivers
+v0037AC68_0 .net "b", 0 0, v0037AFD8_0; 1 drivers
+v0037ACC0_0 .alias "s0", 0 0, v0037B030_0;
+v0037AD18_0 .alias "s1", 0 0, v0037B088_0;
+v0037AD70_0 .net "s2", 0 0, L_00372E08; 1 drivers
+v0037ADC8_0 .net "s3", 0 0, L_0037EE18; 1 drivers
+v0037AE20_0 .net "s4", 0 0, L_00372E78; 1 drivers
+v0037AE78_0 .net "s5", 0 0, L_0037FDE8; 1 drivers
+v0037AED0_0 .net "s6", 0 0, L_00372EB0; 1 drivers
+v0037AF28_0 .net "s7", 0 0, L_00372E40; 1 drivers
+S_00378E30 .scope begin, "start" "start" 2 37, 2 37, S_00378D20;
+ .timescale 0 0;
+S_00378DA8 .scope begin, "main" "main" 2 42, 2 42, S_00378D20;
+ .timescale 0 0;
+    .scope S_00378D20;
+T_0 ;
+    %fork t_1, S_00378E30;
+    %jmp t_0;
+    .scope S_00378E30;
+t_1 ;
+    %set/v v0037AF80_0, 0, 1;
+    %set/v v0037AFD8_0, 0, 1;
+    %end;
+    .scope S_00378D20;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00378D20;
+T_1 ;
+    %fork t_3, S_00378DA8;
+    %jmp t_2;
+    .scope S_00378DA8;
+t_3 ;
+    %vpi_call 2 43 "$display", "Guia03_03 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 44 "$display", "\012Test Half-Subtractor NAND";
+    %vpi_call 2 45 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 46 "$monitor", " %b & %b = %b %b", v0037AF80_0, v0037AFD8_0, v0037B030_0, v0037B088_0;
+    %delay 1, 0;
+    %set/v v0037AF80_0, 0, 1;
+    %set/v v0037AFD8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037AF80_0, 1, 1;
+    %set/v v0037AFD8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037AF80_0, 1, 1;
+    %set/v v0037AFD8_0, 1, 1;
+    %end;
+    .scope S_00378D20;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Y:\AULA\2011\AC I\Guia03\Guia03_03.v";

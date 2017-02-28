@@ -1,0 +1,126 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006C9B68 .scope module, "testComp" "testComp" 2 24;
+ .timescale 0 0;
+v007452B0_0 .net "s", 0 0, L_0071FF10; 1 drivers
+v00745308_0 .var "w", 0 0;
+v00745360_0 .var "x", 0 0;
+v007453B8_0 .var "y", 0 0;
+v00745410_0 .var "z", 0 0;
+S_006C9BF0 .scope module, "modulo" "Comp" 2 31, 2 9, S_006C9B68;
+ .timescale 0 0;
+L_0071FC00 .functor NOT 1, v00745308_0, C4<0>, C4<0>, C4<0>;
+L_0071FC70 .functor NOT 1, v00745410_0, C4<0>, C4<0>, C4<0>;
+L_0071FCE0 .functor XNOR 1, v00745360_0, v00745308_0, C4<0>, C4<0>;
+L_0071FD50 .functor AND 1, L_0071FC70, v007453B8_0, C4<1>, C4<1>;
+L_0071FDF8 .functor AND 1, L_0071FC00, v00745360_0, C4<1>, C4<1>;
+L_0071FE68 .functor AND 1, L_0071FCE0, L_0071FD50, C4<1>, C4<1>;
+L_0071FF10 .functor OR 1, L_0071FDF8, L_0071FE68, C4<0>, C4<0>;
+v006C3030_0 .net "a", 0 0, v00745360_0; 1 drivers
+v006C3088_0 .net "b", 0 0, v007453B8_0; 1 drivers
+v006C30E0_0 .net "c", 0 0, v00745308_0; 1 drivers
+v00744FF0_0 .net "d", 0 0, v00745410_0; 1 drivers
+v00745048_0 .net "not1", 0 0, L_0071FC00; 1 drivers
+v007450A0_0 .net "not2", 0 0, L_0071FC70; 1 drivers
+v007450F8_0 .alias "s", 0 0, v007452B0_0;
+v00745150_0 .net "t1", 0 0, L_0071FCE0; 1 drivers
+v007451A8_0 .net "t2", 0 0, L_0071FD50; 1 drivers
+v00745200_0 .net "t3", 0 0, L_0071FDF8; 1 drivers
+v00745258_0 .net "t4", 0 0, L_0071FE68; 1 drivers
+    .scope S_006C9B68;
+T_0 ;
+    %vpi_call 2 34 "$display", "Exemplo0035 - Lucas Cardoso - 441694";
+    %vpi_call 2 35 "$display", "Test AU's module";
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 0, 1;
+    %vpi_call 2 38 "$display", "\012a b c d iguas";
+    %delay 1, 0;
+    %vpi_call 2 39 "$monitor", "%b %b %b %b %b", v00745360_0, v00745410_0, v007453B8_0, v00745308_0, v007452B0_0;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 0, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 0, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 0, 1;
+    %set/v v00745308_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00745360_0, 1, 1;
+    %set/v v00745410_0, 1, 1;
+    %set/v v007453B8_0, 1, 1;
+    %set/v v00745308_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Lucas\Puc\441694\AC1\Guia05\Exercicio0035.v";

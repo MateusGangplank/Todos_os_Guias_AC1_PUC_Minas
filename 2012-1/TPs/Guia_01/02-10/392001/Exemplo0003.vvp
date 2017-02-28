@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A5FF40 .scope module, "testandgate" "testandgate" 2 18;
+ .timescale 0 0;
+v00A53208_0 .var "a", 0 0;
+v00A5E068_0 .var "b", 0 0;
+v00A5E0C0_0 .net "s", 0 0, L_00A52D40; 1 drivers
+S_00A52CB8 .scope module, "AND1" "andgate" 2 23, 2 10, S_00A5FF40;
+ .timescale 0 0;
+L_00A52D40 .functor AND 1, v00A53208_0, v00A5E068_0, C4<1>, C4<1>;
+v00A53100_0 .net "p", 0 0, v00A53208_0; 1 drivers
+v00A53158_0 .net "q", 0 0, v00A5E068_0; 1 drivers
+v00A531B0_0 .alias "s", 0 0, v00A5E0C0_0;
+S_00A52C30 .scope begin, "start" "start" 2 25, 2 25, S_00A5FF40;
+ .timescale 0 0;
+    .scope S_00A5FF40;
+T_0 ;
+    %fork t_1, S_00A52C30;
+    %jmp t_0;
+    .scope S_00A52C30;
+t_1 ;
+    %set/v v00A53208_0, 0, 1;
+    %set/v v00A5E068_0, 0, 1;
+    %end;
+    .scope S_00A5FF40;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00A5FF40;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0003 - Flavio Andrade Amaral Motta - 392001";
+    %vpi_call 2 33 "$display", "Test AND gate";
+    %vpi_call 2 34 "$display", "\012a & b = s\012";
+    %set/v v00A53208_0, 0, 1;
+    %set/v v00A5E068_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v00A53208_0, v00A5E068_0, v00A5E0C0_0;
+    %set/v v00A53208_0, 0, 1;
+    %set/v v00A5E068_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00A53208_0, v00A5E068_0, v00A5E0C0_0;
+    %set/v v00A53208_0, 1, 1;
+    %set/v v00A5E068_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00A53208_0, v00A5E068_0, v00A5E0C0_0;
+    %set/v v00A53208_0, 1, 1;
+    %set/v v00A5E068_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v00A53208_0, v00A5E068_0, v00A5E0C0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Marcos\Downloads\Programacao\Programas\Exemplo0003.v";

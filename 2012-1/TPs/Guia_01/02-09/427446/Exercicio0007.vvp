@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008031D0 .scope module, "testxnorgate" "testxnorgate" 2 21;
+ .timescale 0 0;
+v0080F798_0 .var "a", 0 0;
+v0080F7F0_0 .var "b", 0 0;
+v0080F848_0 .net "s", 0 0, L_009AC170; 1 drivers
+S_00803F48 .scope module, "XNOR1" "xnorgate" 2 27, 2 11, S_008031D0;
+ .timescale 0 0;
+L_00804080 .functor AND 1, v0080F798_0, v0080F7F0_0, C4<1>, C4<1>;
+L_009AC058 .functor NOT 1, v0080F798_0, C4<0>, C4<0>, C4<0>;
+L_009AC090 .functor NOT 1, v0080F7F0_0, C4<0>, C4<0>, C4<0>;
+L_009AC0C8 .functor AND 1, L_009AC058, L_009AC090, C4<1>, C4<1>;
+L_009AC170 .functor OR 1, L_00804080, L_009AC0C8, C4<0>, C4<0>;
+v008032E0_0 .net *"_s0", 0 0, L_00804080; 1 drivers
+v00803FD0_0 .net *"_s2", 0 0, L_009AC058; 1 drivers
+v00804028_0 .net *"_s4", 0 0, L_009AC090; 1 drivers
+v0080F638_0 .net *"_s6", 0 0, L_009AC0C8; 1 drivers
+v0080F690_0 .net "p", 0 0, v0080F798_0; 1 drivers
+v0080F6E8_0 .net "q", 0 0, v0080F7F0_0; 1 drivers
+v0080F740_0 .alias "s", 0 0, v0080F848_0;
+S_00803258 .scope begin, "start" "start" 2 30, 2 30, S_008031D0;
+ .timescale 0 0;
+    .scope S_008031D0;
+T_0 ;
+    %fork t_1, S_00803258;
+    %jmp t_0;
+    .scope S_00803258;
+t_1 ;
+    %set/v v0080F798_0, 0, 1;
+    %set/v v0080F7F0_0, 0, 1;
+    %end;
+    .scope S_008031D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008031D0;
+T_1 ;
+    %vpi_call 2 36 "$display", "Exercicio0007 - Mateus Guilherme do Carmo Cruz - 427446";
+    %vpi_call 2 37 "$display", "Test XNOR gate";
+    %vpi_call 2 38 "$display", "\012a ~^ b = s\012";
+    %vpi_call 2 39 "$monitor", "%b ~^ %b = %b", v0080F798_0, v0080F7F0_0, v0080F848_0;
+    %delay 1, 0;
+    %set/v v0080F798_0, 0, 1;
+    %set/v v0080F7F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0080F798_0, 1, 1;
+    %set/v v0080F7F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0080F798_0, 1, 1;
+    %set/v v0080F7F0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio0007.v";

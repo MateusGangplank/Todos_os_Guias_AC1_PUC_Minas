@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0031E260 .scope module, "testnorgate" "testnorgate" 2 18;
+ .timescale 0 0;
+v0031FF00_0 .var "a", 0 0;
+v0031FF58_0 .var "b", 0 0;
+v0031E430_0 .net "s", 0 0, L_0031E4C0; 1 drivers
+S_00313008 .scope module, "NOR1" "norgate" 2 25, 2 11, S_0031E260;
+ .timescale 0 0;
+L_0031FFB0 .functor NOT 1, v0031FF00_0, C4<0>, C4<0>, C4<0>;
+L_00313140 .functor NOT 1, v0031FF58_0, C4<0>, C4<0>, C4<0>;
+L_0031E4C0 .functor AND 1, L_0031FFB0, L_00313140, C4<1>, C4<1>;
+v00313090_0 .net *"_s0", 0 0, L_0031FFB0; 1 drivers
+v003130E8_0 .net *"_s2", 0 0, L_00313140; 1 drivers
+v0031FDF8_0 .net "p", 0 0, v0031FF00_0; 1 drivers
+v0031FE50_0 .net "q", 0 0, v0031FF58_0; 1 drivers
+v0031FEA8_0 .alias "s", 0 0, v0031E430_0;
+S_00312B70 .scope begin, "start" "start" 2 28, 2 28, S_0031E260;
+ .timescale 0 0;
+S_00312AE8 .scope begin, "main" "main" 2 33, 2 33, S_0031E260;
+ .timescale 0 0;
+    .scope S_0031E260;
+T_0 ;
+    %fork t_1, S_00312B70;
+    %jmp t_0;
+    .scope S_00312B70;
+t_1 ;
+    %set/v v0031FF00_0, 0, 1;
+    %set/v v0031FF58_0, 0, 1;
+    %end;
+    .scope S_0031E260;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0031E260;
+T_1 ;
+    %fork t_3, S_00312AE8;
+    %jmp t_2;
+    .scope S_00312AE8;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exemplo0010 - Josemar Alves Caetano - 448662";
+    %vpi_call 2 35 "$display", "Teste NOR gate usando De Morgan.";
+    %vpi_call 2 36 "$display", "\011~a & ~b)\012";
+    %vpi_call 2 38 "$monitor", "\011~%b & ~%b) = %b", v0031FF00_0, v0031FF58_0, v0031E430_0;
+    %delay 1, 0;
+    %set/v v0031FF00_0, 0, 1;
+    %set/v v0031FF58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0031FF00_0, 1, 1;
+    %set/v v0031FF58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0031FF00_0, 1, 1;
+    %set/v v0031FF58_0, 1, 1;
+    %end;
+    .scope S_0031E260;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\3º Período\Exercícios resolvidos (AC II)\Guia 01\Exemplo0010.v";

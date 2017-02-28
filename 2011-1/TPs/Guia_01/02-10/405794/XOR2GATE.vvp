@@ -1,0 +1,57 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672E40 .scope module, "testexorgate" "testexorgate" 2 27;
+ .timescale 0 0;
+v006A3810_0 .var "a", 0 0;
+v006A3868_0 .var "b", 0 0;
+v006A38C0_0 .net "c", 0 0, L_006A3A68; 1 drivers
+S_003EF4E8 .scope module, "XOR1" "xorgate" 2 33, 2 12, S_00672E40;
+ .timescale 0 0;
+L_00673180 .functor NOT 1, v006A3810_0, C4<0>, C4<0>, C4<0>;
+L_006A3918 .functor AND 1, L_00673180, v006A3868_0, C4<1>, C4<1>;
+L_006A39C0 .functor NOT 1, v006A3868_0, C4<0>, C4<0>, C4<0>;
+L_006A39F8 .functor AND 1, v006A3810_0, L_006A39C0, C4<1>, C4<1>;
+L_006A3A68 .functor OR 1, L_006A3918, L_006A39F8, C4<0>, C4<0>;
+v003EF568_0 .net *"_s0", 0 0, L_00673180; 1 drivers
+v006A3548_0 .net *"_s2", 0 0, L_006A3918; 1 drivers
+v006A35B8_0 .net *"_s4", 0 0, L_006A39C0; 1 drivers
+v006A3640_0 .net *"_s6", 0 0, L_006A39F8; 1 drivers
+v006A36B0_0 .net "a", 0 0, v006A3810_0; 1 drivers
+v006A3708_0 .net "b", 0 0, v006A3868_0; 1 drivers
+v006A3778_0 .alias "c", 0 0, v006A38C0_0;
+    .scope S_00672E40;
+T_0 ;
+    %vpi_call 2 39 "$display", "\012 Guia 01 - Caio Ragacci Pimentel - 405794";
+    %vpi_call 2 40 "$display", " TESTE - Porta XOR ";
+    %vpi_call 2 41 "$display", "\012 a & b & c = ~d \012";
+    %delay 1, 0;
+    %set/v v006A3810_0, 0, 1;
+    %set/v v006A3868_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b ^ %b = %b", v006A3810_0, v006A3868_0, v006A38C0_0;
+    %delay 1, 0;
+    %set/v v006A3810_0, 0, 1;
+    %set/v v006A3868_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b ^ %b = %b", v006A3810_0, v006A3868_0, v006A38C0_0;
+    %delay 1, 0;
+    %set/v v006A3810_0, 1, 1;
+    %set/v v006A3868_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b ^ %b = %b", v006A3810_0, v006A3868_0, v006A38C0_0;
+    %delay 1, 0;
+    %set/v v006A3810_0, 1, 1;
+    %set/v v006A3868_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b ^ %b = %b", v006A3810_0, v006A3868_0, v006A38C0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_01\XOR2GATE.v";

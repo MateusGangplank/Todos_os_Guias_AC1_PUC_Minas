@@ -1,0 +1,50 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006E2FE8 .scope module, "teste" "teste" 2 10;
+ .timescale 0 0;
+v006EFE60_0 .var "a", 0 0;
+v006EFEB8_0 .var "b", 0 0;
+v006EFF10_0 .net "s", 0 0, L_006ED680; 1 drivers
+S_006E3070 .scope module, "T1" "tabelaXNOR" 2 13, 2 6, S_006E2FE8;
+ .timescale 0 0;
+L_006EFF68 .functor NOT 1, v006EFE60_0, C4<0>, C4<0>, C4<0>;
+L_006ED530 .functor NOT 1, v006EFEB8_0, C4<0>, C4<0>, C4<0>;
+L_006ED5A0 .functor AND 1, L_006EFF68, L_006ED530, C4<1>, C4<1>;
+L_006ED648 .functor AND 1, v006EFE60_0, v006EFEB8_0, C4<1>, C4<1>;
+L_006ED680 .functor OR 1, L_006ED5A0, L_006ED648, C4<0>, C4<0>;
+v006E30F8_0 .net *"_s0", 0 0, L_006EFF68; 1 drivers
+v006EF288_0 .net *"_s2", 0 0, L_006ED530; 1 drivers
+v006E3D38_0 .net *"_s4", 0 0, L_006ED5A0; 1 drivers
+v006E3D90_0 .net *"_s6", 0 0, L_006ED648; 1 drivers
+v006E3DE8_0 .alias "s", 0 0, v006EFF10_0;
+v006E3E40_0 .net "x", 0 0, v006EFE60_0; 1 drivers
+v006EFE08_0 .net "y", 0 0, v006EFEB8_0; 1 drivers
+    .scope S_006E2FE8;
+T_0 ;
+    %delay 1, 0;
+    %set/v v006EFE60_0, 0, 1;
+    %set/v v006EFEB8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 19 "$display", "Exercicio07 - Wadson Gomes Ferreira - 460631";
+    %vpi_call 2 20 "$display", "Tabela-Verdade XNOR usando propriedade";
+    %vpi_call 2 21 "$monitor", "a=%b , b=%b => %b", v006EFE60_0, v006EFEB8_0, v006EFF10_0;
+    %delay 1, 0;
+    %set/v v006EFE60_0, 1, 1;
+    %set/v v006EFEB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EFE60_0, 0, 1;
+    %set/v v006EFEB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EFE60_0, 1, 1;
+    %set/v v006EFEB8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio07.v";

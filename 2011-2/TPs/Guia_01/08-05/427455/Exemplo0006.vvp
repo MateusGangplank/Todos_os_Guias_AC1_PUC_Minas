@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0097FC28 .scope module, "testandgate" "testandgate" 2 19;
+ .timescale 0 0;
+v002D0C80_0 .var "a", 0 0;
+v002D0CD8_0 .var "b", 0 0;
+v002D0D30_0 .net "s", 0 0, L_00316050; 1 drivers
+S_00972CA0 .scope module, "NAND1" "andgate" 2 24, 2 10, S_0097FC28;
+ .timescale 0 0;
+L_002D11A8 .functor AND 1, v002D0C80_0, v002D0CD8_0, C4<1>, C4<1>;
+L_00316050 .functor NOT 1, L_002D11A8, C4<0>, C4<0>, C4<0>;
+v00972D28_0 .net *"_s0", 0 0, L_002D11A8; 1 drivers
+v00972D80_0 .net "p", 0 0, v002D0C80_0; 1 drivers
+v00315F18_0 .net "q", 0 0, v002D0CD8_0; 1 drivers
+v00315F70_0 .alias "s", 0 0, v002D0D30_0;
+S_0097FCB0 .scope begin, "start" "start" 2 26, 2 26, S_0097FC28;
+ .timescale 0 0;
+    .scope S_0097FC28;
+T_0 ;
+    %fork t_1, S_0097FCB0;
+    %jmp t_0;
+    .scope S_0097FCB0;
+t_1 ;
+    %set/v v002D0C80_0, 0, 1;
+    %set/v v002D0CD8_0, 0, 1;
+    %end;
+    .scope S_0097FC28;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0097FC28;
+T_1 ;
+    %vpi_call 2 33 "$display", "Exemplo0003 - Pedro Ballona - 427455";
+    %vpi_call 2 34 "$display", "Test NAND gate";
+    %vpi_call 2 35 "$display", "\012a & b = s\012";
+    %set/v v002D0C80_0, 0, 1;
+    %set/v v002D0CD8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b & %b = %b", v002D0C80_0, v002D0CD8_0, v002D0D30_0;
+    %set/v v002D0C80_0, 0, 1;
+    %set/v v002D0CD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b = %b", v002D0C80_0, v002D0CD8_0, v002D0D30_0;
+    %set/v v002D0C80_0, 1, 1;
+    %set/v v002D0CD8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b & %b = %b", v002D0C80_0, v002D0CD8_0, v002D0D30_0;
+    %set/v v002D0C80_0, 1, 1;
+    %set/v v002D0CD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b & %b = %b", v002D0C80_0, v002D0CD8_0, v002D0D30_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\New Pedro\escola\puc cc\2o period - 2S2011\ARQ1 - Arquitetura de computadores\exercicios\guia1\Exemplo0006.v";

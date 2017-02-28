@@ -1,0 +1,47 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005D0DB8 .scope module, "test_f4" "test_f4" 2 22;
+ .timescale 0 0;
+v005FA1F0_0 .var "x", 3 0;
+v005FA248_0 .var "y", 3 0;
+v005FA2A0_0 .net "z", 3 0, L_003E6CC8; 1 drivers
+v005FA2F8_0 .net "z1", 3 0, L_005FA490; 1 drivers
+RS_005D109C .resolv tri, L_005FA500, L_005FA600, C4<zzzzzzzz>, C4<zzzzzzzz>;
+v005FA350_0 .net8 "zFim", 7 0, RS_005D109C; 2 drivers
+S_003EB188 .scope module, "modulo" "f4" 2 30, 2 10, S_005D0DB8;
+ .timescale 0 0;
+L_003E6CC8 .functor OR 4, v005FA1F0_0, v005FA248_0, C4<0000>, C4<0000>;
+L_005FA490 .functor AND 4, v005FA1F0_0, v005FA248_0, C4<1111>, C4<1111>;
+L_005FA590 .functor BUFZ 4, L_003E6CC8, C4<0000>, C4<0000>, C4<0000>;
+L_005FA658 .functor BUFZ 4, L_005FA490, C4<0000>, C4<0000>, C4<0000>;
+v003EB7B0_0 .net *"_s11", 3 0, L_005FA658; 1 drivers
+v005F9F28_0 .net *"_s7", 3 0, L_005FA590; 1 drivers
+v005F9F98_0 .net "a", 3 0, v005FA1F0_0; 1 drivers
+v005FA020_0 .net "b", 3 0, v005FA248_0; 1 drivers
+v005FA090_0 .alias "s", 3 0, v005FA2A0_0;
+v005FA0E8_0 .alias "s1", 3 0, v005FA2F8_0;
+v005FA158_0 .alias "sFim", 7 0, v005FA350_0;
+L_005FA500 .part/pv L_005FA590, 0, 4, 8;
+L_005FA600 .part/pv L_005FA658, 4, 4, 8;
+    .scope S_005D0DB8;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exemplo0031 - Felipe Ferreira Andrade do Carmo - 427402";
+    %vpi_call 2 36 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005FA1F0_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005FA248_0, 8, 4;
+    %vpi_call 2 41 "$display", "\012  a \011  b \011  a&b-a|b";
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%3b    %3b     %3b", v005FA1F0_0, v005FA248_0, v005FA350_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Conteudo\2 semestre\ARQ I\Guia 3\1-Exemplo0031.v";

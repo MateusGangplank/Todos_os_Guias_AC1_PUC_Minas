@@ -1,0 +1,152 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B2A560 .scope module, "testq04" "testq04" 2 33;
+ .timescale 0 0;
+v0059ED70_0 .var "a", 0 0;
+v0059EDC8_0 .var "b", 0 0;
+v0059EE20_0 .var "c", 1 0;
+v0059EE78_0 .net "s0", 0 0, L_005B1078; 1 drivers
+S_00B2A4D8 .scope module, "Q03" "q04" 2 39, 2 18, S_00B2A560;
+ .timescale 0 0;
+L_005B0A58 .functor XOR 1, v0059ED70_0, v0059EDC8_0, C4<0>, C4<0>;
+L_005B0B38 .functor OR 1, v0059ED70_0, v0059EDC8_0, C4<0>, C4<0>;
+L_005B0DA0 .functor XNOR 1, v0059ED70_0, v0059EDC8_0, C4<0>, C4<0>;
+L_005B0B00 .functor NOR 1, v0059ED70_0, v0059EDC8_0, C4<0>, C4<0>;
+v0059EA00_0 .net "chave", 1 0, v0059EE20_0; 1 drivers
+v0059EA58_0 .net "p", 0 0, v0059ED70_0; 1 drivers
+v0059EAB0_0 .net "q", 0 0, v0059EDC8_0; 1 drivers
+v0059EB08_0 .alias "s0", 0 0, v0059EE78_0;
+v0059EB60_0 .net "temp1", 0 0, L_005B0A58; 1 drivers
+v0059EBB8_0 .net "temp2", 0 0, L_005B0B38; 1 drivers
+v0059EC10_0 .net "temp3", 0 0, L_005B0DA0; 1 drivers
+v0059EC68_0 .net "temp4", 0 0, L_005B0B00; 1 drivers
+v0059ECC0_0 .net "temp5", 0 0, L_005B0CC0; 1 drivers
+v0059ED18_0 .net "temp6", 0 0, L_005B0F28; 1 drivers
+L_0059EED0 .part v0059EE20_0, 0, 1;
+L_0059EF28 .part v0059EE20_0, 0, 1;
+L_0059EF80 .part v0059EE20_0, 1, 1;
+S_00B2A780 .scope module, "lol" "multiplexador" 2 24, 2 7, S_00B2A4D8;
+ .timescale 0 0;
+L_005B0BA8 .functor NOT 1, L_0059EED0, C4<0>, C4<0>, C4<0>;
+L_005B0BE0 .functor AND 1, L_005B0A58, L_005B0BA8, C4<1>, C4<1>;
+L_005B0C50 .functor AND 1, L_005B0B38, L_0059EED0, C4<1>, C4<1>;
+L_005B0CC0 .functor OR 1, L_005B0BE0, L_005B0C50, C4<0>, C4<0>;
+v0059E798_0 .net "chave", 0 0, L_0059EED0; 1 drivers
+v0059E7F0_0 .alias "p", 0 0, v0059EB60_0;
+v0059E848_0 .alias "q", 0 0, v0059EBB8_0;
+v0059E8A0_0 .alias "s", 0 0, v0059ECC0_0;
+v0059E8F8_0 .net "tmp1", 0 0, L_005B0BE0; 1 drivers
+v0059E950_0 .net "tmp2", 0 0, L_005B0C50; 1 drivers
+v0059E9A8_0 .net "tmp3", 0 0, L_005B0BA8; 1 drivers
+S_00B2A6F8 .scope module, "lols" "multiplexador" 2 27, 2 7, S_00B2A4D8;
+ .timescale 0 0;
+L_005B0E10 .functor NOT 1, L_0059EF28, C4<0>, C4<0>, C4<0>;
+L_005B0E48 .functor AND 1, L_005B0DA0, L_005B0E10, C4<1>, C4<1>;
+L_005B0EB8 .functor AND 1, L_005B0B00, L_0059EF28, C4<1>, C4<1>;
+L_005B0F28 .functor OR 1, L_005B0E48, L_005B0EB8, C4<0>, C4<0>;
+v0059E530_0 .net "chave", 0 0, L_0059EF28; 1 drivers
+v0059E588_0 .alias "p", 0 0, v0059EC10_0;
+v0059E5E0_0 .alias "q", 0 0, v0059EC68_0;
+v0059E638_0 .alias "s", 0 0, v0059ED18_0;
+v0059E690_0 .net "tmp1", 0 0, L_005B0E48; 1 drivers
+v0059E6E8_0 .net "tmp2", 0 0, L_005B0EB8; 1 drivers
+v0059E740_0 .net "tmp3", 0 0, L_005B0E10; 1 drivers
+S_00B2A670 .scope module, "lol3" "multiplexador" 2 28, 2 7, S_00B2A4D8;
+ .timescale 0 0;
+L_005B0FD0 .functor NOT 1, L_0059EF80, C4<0>, C4<0>, C4<0>;
+L_005B1008 .functor AND 1, L_005B0CC0, L_005B0FD0, C4<1>, C4<1>;
+L_005B1040 .functor AND 1, L_005B0F28, L_0059EF80, C4<1>, C4<1>;
+L_005B1078 .functor OR 1, L_005B1008, L_005B1040, C4<0>, C4<0>;
+v0059E2C8_0 .net "chave", 0 0, L_0059EF80; 1 drivers
+v0059E320_0 .alias "p", 0 0, v0059ECC0_0;
+v0059E378_0 .alias "q", 0 0, v0059ED18_0;
+v0059E3D0_0 .alias "s", 0 0, v0059EE78_0;
+v0059E428_0 .net "tmp1", 0 0, L_005B1008; 1 drivers
+v0059E480_0 .net "tmp2", 0 0, L_005B1040; 1 drivers
+v0059E4D8_0 .net "tmp3", 0 0, L_005B0FD0; 1 drivers
+    .scope S_00B2A560;
+T_0 ;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %set/v v0059EE20_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 49 "$monitor", "%3b %3b %3b = %3b", v0059ED70_0, v0059EDC8_0, v0059EE20_0, v0059EE78_0;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %movi 8, 1, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %movi 8, 2, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %set/v v0059EE20_0, 1, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %set/v v0059EE20_0, 0, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %movi 8, 1, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %movi 8, 2, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 0, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %set/v v0059EE20_0, 1, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %set/v v0059EE20_0, 0, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %movi 8, 1, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %movi 8, 2, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 0, 1;
+    %set/v v0059EE20_0, 1, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %set/v v0059EE20_0, 0, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %movi 8, 1, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %movi 8, 2, 2;
+    %set/v v0059EE20_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059ED70_0, 1, 1;
+    %set/v v0059EDC8_0, 1, 1;
+    %set/v v0059EE20_0, 1, 2;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Lucas\Documents\Guia0001\Guia03\Exemplo04.vhdl";

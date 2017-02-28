@@ -1,0 +1,48 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C2C80 .scope module, "testador" "testador" 2 19;
+ .timescale 0 0;
+v003CDEF8_0 .var "a", 0 0;
+v003CDF50_0 .var "b", 0 0;
+v003CDFA8_0 .net "s", 0 0, L_003CE070; 1 drivers
+S_003C2D08 .scope module, "NOR1" "pnor" 2 26, 2 10, S_003C2C80;
+ .timescale 0 0;
+L_003C2D90 .functor OR 1, v003CDEF8_0, v003CDF50_0, C4<0>, C4<0>;
+L_003CE070 .functor NOT 1, L_003C2D90, C4<0>, C4<0>, C4<0>;
+v003C3178_0 .net *"_s0", 0 0, L_003C2D90; 1 drivers
+v003C31D0_0 .net "p", 0 0, v003CDEF8_0; 1 drivers
+v003C3228_0 .net "q", 0 0, v003CDF50_0; 1 drivers
+v003C3280_0 .alias "s", 0 0, v003CDFA8_0;
+    .scope S_003C2C80;
+T_0 ;
+    %set/v v003CDEF8_0, 0, 1;
+    %set/v v003CDF50_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003C2C80;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exercicio 002";
+    %vpi_call 2 40 "$display", "Autor: Rodolfo Herman";
+    %vpi_call 2 41 "$display", "Testar porta NOR";
+    %vpi_call 2 42 "$display", "~(a | b) = s \012";
+    %vpi_call 2 43 "$monitor", "~(%b | %b) = %b", v003CDEF8_0, v003CDF50_0, v003CDFA8_0;
+    %delay 1, 0;
+    %set/v v003CDEF8_0, 0, 1;
+    %set/v v003CDF50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CDEF8_0, 1, 1;
+    %set/v v003CDF50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CDEF8_0, 1, 1;
+    %set/v v003CDF50_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio002.v";

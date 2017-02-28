@@ -1,0 +1,52 @@
+// Guia 02 - Or 
+// Nome : Jessica Luisa Betonico Andrade
+// Matricula: 412748	
+
+//-------------------------------------------------
+// -- Uma or gate feita por NAND gate --
+// ------------------------------------------------
+
+module ORgate(s, p , q);
+  output s;			// Saida
+  input p, q;		// entrada das portas
+  
+  wire temp1, temp2;	// portas auxiliares
+  
+  nand NAND1(temp1, p); // operaçao nand com a porta p
+  nand NAND2(temp2, q); // operaçao nand com a porta q
+  
+  assign s = ~(temp1 & temp2); // operação final
+  
+endmodule // ORgate
+// fim modulo
+
+// modulo final
+module testandogate;
+
+  reg a, b; // portas de entrada
+  wire s;	// porta de saida
+  
+ // instancia
+ 
+ ORgate OR1(s, a, b);
+ 
+ // parte principal
+ 
+ initial begin
+    $display("GUIA_02_1 - Jessica Luisa Betonico Andrade -  412748 ");
+	 $display("Test OR gate construida por NANDS");
+	 $display("\n a | b = s \n");
+	 $monitor("%b | %b  = %b", a, b, s);
+	 
+	 a=0; b=0;
+	 
+ #1 a=0; b=1;
+ #1 a=1; b=0;
+ #1 a=1; b=1;
+ 
+ 
+end
+
+endmodule// testandogate
+
+  

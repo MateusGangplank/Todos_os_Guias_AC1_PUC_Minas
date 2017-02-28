@@ -1,0 +1,44 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0097E4B8 .scope module, "Exe_XOR" "Exe_XOR" 2 18;
+ .timescale 0 0;
+v00972FC8_0 .var "a", 0 0;
+v00973020_0 .var "b", 0 0;
+v00973078_0 .net "e", 0 0, L_0097E540; 1 drivers
+S_00972A98 .scope module, "XOR1" "XOR" 2 23, 2 9, S_0097E4B8;
+ .timescale 0 0;
+L_0097E540 .functor XOR 1, v00972FC8_0, v00973020_0, C4<0>, C4<0>;
+v00972B20_0 .net "e1", 0 0, v00972FC8_0; 1 drivers
+v00972B78_0 .net "e2", 0 0, v00973020_0; 1 drivers
+v00972F70_0 .alias "s1", 0 0, v00973078_0;
+    .scope S_0097E4B8;
+T_0 ;
+    %vpi_call 2 27 "$display", "Guia 01 Ex04";
+    %vpi_call 2 28 "$display", "Vinicius dos Santos Bordoni";
+    %vpi_call 2 29 "$display", "365595";
+    %vpi_call 2 30 "$display", "Teste da porta XOR com 2 entradas.";
+    %vpi_call 2 31 "$display", "\012 e1 e2 e3\012";
+    %vpi_call 2 32 "$monitor", " %b  %b  %b", v00972FC8_0, v00973020_0, v00973078_0;
+    %delay 1, 0;
+    %set/v v00972FC8_0, 0, 1;
+    %set/v v00973020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00972FC8_0, 0, 1;
+    %set/v v00973020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00972FC8_0, 1, 1;
+    %set/v v00973020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00972FC8_0, 1, 1;
+    %set/v v00973020_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\365595\guia01-04.v";

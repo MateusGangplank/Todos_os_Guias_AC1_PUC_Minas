@@ -1,0 +1,115 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002F8000 .scope module, "fullAdder3bits" "fullAdder3bits" 2 19;
+ .timescale 0 0;
+v002F46A8_0 .net "a", 2 0, C4<zzz>; 0 drivers
+v002F4700_0 .net "b", 2 0, C4<zzz>; 0 drivers
+v002F4758_0 .net "carryIn", 0 0, C4<z>; 0 drivers
+RS_002F923C .resolv tri, L_002F48B8, L_002F4A18, L_002F4BD0, C4<zzz>;
+v002F47B0_0 .net8 "carryOut", 2 0, RS_002F923C; 3 drivers
+RS_002F9254 .resolv tri, L_002F4860, L_002F49C0, L_002F4B78, C4<zzz>;
+v002F4808_0 .net8 "s", 2 0, RS_002F9254; 3 drivers
+L_002F4860 .part/pv L_002D0B88, 0, 1, 3;
+L_002F48B8 .part/pv L_003E4080, 0, 1, 3;
+L_002F4910 .part C4<zzz>, 0, 1;
+L_002F4968 .part C4<zzz>, 0, 1;
+L_002F49C0 .part/pv L_0031AFF0, 1, 1, 3;
+L_002F4A18 .part/pv L_0031B108, 1, 1, 3;
+L_002F4A70 .part C4<zzz>, 1, 1;
+L_002F4AC8 .part C4<zzz>, 1, 1;
+L_002F4B20 .part RS_002F923C, 0, 1;
+L_002F4B78 .part/pv L_0031B338, 2, 1, 3;
+L_002F4BD0 .part/pv L_0031B450, 2, 1, 3;
+L_002F4C28 .part C4<zzz>, 2, 1;
+L_002F4C80 .part C4<zzz>, 2, 1;
+L_002F4CD8 .part RS_002F923C, 1, 1;
+S_002F8330 .scope module, "fa1" "fullAdder" 2 21, 2 12, S_002F8000;
+ .timescale 0 0;
+L_003E4080 .functor OR 1, L_003E4048, L_002D0B18, C4<0>, C4<0>;
+v002F43E8_0 .net "a", 0 0, L_002F4910; 1 drivers
+v002F4440_0 .net "b", 0 0, L_002F4968; 1 drivers
+v002F4498_0 .alias "carryIn", 0 0, v002F4758_0;
+v002F44F0_0 .net "carryOut", 0 0, L_003E4080; 1 drivers
+v002F4548_0 .net "s", 0 0, L_002D0B88; 1 drivers
+v002F45A0_0 .net "w0", 0 0, L_003E40B8; 1 drivers
+v002F45F8_0 .net "w1", 0 0, L_002D0B18; 1 drivers
+v002F4650_0 .net "w2", 0 0, L_003E4048; 1 drivers
+S_002F8220 .scope module, "hf1" "halfAdder" 2 14, 2 7, S_002F8330;
+ .timescale 0 0;
+L_003E40B8 .functor XOR 1, L_002F4910, L_002F4968, C4<0>, C4<0>;
+L_002D0B18 .functor AND 1, L_002F4910, L_002F4968, C4<1>, C4<1>;
+v002F4288_0 .alias "a", 0 0, v002F43E8_0;
+v002F42E0_0 .alias "b", 0 0, v002F4440_0;
+v002F4338_0 .alias "s0", 0 0, v002F45A0_0;
+v002F4390_0 .alias "s1", 0 0, v002F45F8_0;
+S_002F82A8 .scope module, "hf2" "halfAdder" 2 15, 2 7, S_002F8330;
+ .timescale 0 0;
+L_002D0B88 .functor XOR 1, L_003E40B8, C4<z>, C4<0>, C4<0>;
+L_003E4048 .functor AND 1, L_003E40B8, C4<z>, C4<1>, C4<1>;
+v002F4128_0 .alias "a", 0 0, v002F45A0_0;
+v002F4180_0 .alias "b", 0 0, v002F4758_0;
+v002F41D8_0 .alias "s0", 0 0, v002F4548_0;
+v002F4230_0 .alias "s1", 0 0, v002F4650_0;
+S_002F8440 .scope module, "fa2" "fullAdder" 2 22, 2 12, S_002F8000;
+ .timescale 0 0;
+L_0031B108 .functor OR 1, L_0031B098, L_002D00C0, C4<0>, C4<0>;
+v002F3E68_0 .net "a", 0 0, L_002F4A70; 1 drivers
+v002F3EC0_0 .net "b", 0 0, L_002F4AC8; 1 drivers
+v002F3F18_0 .net "carryIn", 0 0, L_002F4B20; 1 drivers
+v002F3F70_0 .net "carryOut", 0 0, L_0031B108; 1 drivers
+v002F3FC8_0 .net "s", 0 0, L_0031AFF0; 1 drivers
+v002F4020_0 .net "w0", 0 0, L_002D0AE0; 1 drivers
+v002F4078_0 .net "w1", 0 0, L_002D00C0; 1 drivers
+v002F40D0_0 .net "w2", 0 0, L_0031B098; 1 drivers
+S_002F7EF0 .scope module, "hf1" "halfAdder" 2 14, 2 7, S_002F8440;
+ .timescale 0 0;
+L_002D0AE0 .functor XOR 1, L_002F4A70, L_002F4AC8, C4<0>, C4<0>;
+L_002D00C0 .functor AND 1, L_002F4A70, L_002F4AC8, C4<1>, C4<1>;
+v002D2CC0_0 .alias "a", 0 0, v002F3E68_0;
+v002D2D18_0 .alias "b", 0 0, v002F3EC0_0;
+v002F3DB8_0 .alias "s0", 0 0, v002F4020_0;
+v002F3E10_0 .alias "s1", 0 0, v002F4078_0;
+S_002F83B8 .scope module, "hf2" "halfAdder" 2 15, 2 7, S_002F8440;
+ .timescale 0 0;
+L_0031AFF0 .functor XOR 1, L_002D0AE0, L_002F4B20, C4<0>, C4<0>;
+L_0031B098 .functor AND 1, L_002D0AE0, L_002F4B20, C4<1>, C4<1>;
+v002D2B60_0 .alias "a", 0 0, v002F4020_0;
+v002D2BB8_0 .alias "b", 0 0, v002F3F18_0;
+v002D2C10_0 .alias "s0", 0 0, v002F3FC8_0;
+v002D2C68_0 .alias "s1", 0 0, v002F40D0_0;
+S_002F7F78 .scope module, "fa3" "fullAdder" 2 23, 2 12, S_002F8000;
+ .timescale 0 0;
+L_0031B450 .functor OR 1, L_0031B3E0, L_0031B2C8, C4<0>, C4<0>;
+v002D28A0_0 .net "a", 0 0, L_002F4C28; 1 drivers
+v002D28F8_0 .net "b", 0 0, L_002F4C80; 1 drivers
+v002D2950_0 .net "carryIn", 0 0, L_002F4CD8; 1 drivers
+v002D29A8_0 .net "carryOut", 0 0, L_0031B450; 1 drivers
+v002D2A00_0 .net "s", 0 0, L_0031B338; 1 drivers
+v002D2A58_0 .net "w0", 0 0, L_0031B060; 1 drivers
+v002D2AB0_0 .net "w1", 0 0, L_0031B2C8; 1 drivers
+v002D2B08_0 .net "w2", 0 0, L_0031B3E0; 1 drivers
+S_002F84C8 .scope module, "hf1" "halfAdder" 2 14, 2 7, S_002F7F78;
+ .timescale 0 0;
+L_0031B060 .functor XOR 1, L_002F4C28, L_002F4C80, C4<0>, C4<0>;
+L_0031B2C8 .functor AND 1, L_002F4C28, L_002F4C80, C4<1>, C4<1>;
+v002D2740_0 .alias "a", 0 0, v002D28A0_0;
+v002D2798_0 .alias "b", 0 0, v002D28F8_0;
+v002D27F0_0 .alias "s0", 0 0, v002D2A58_0;
+v002D2848_0 .alias "s1", 0 0, v002D2AB0_0;
+S_002F8550 .scope module, "hf2" "halfAdder" 2 15, 2 7, S_002F7F78;
+ .timescale 0 0;
+L_0031B338 .functor XOR 1, L_0031B060, L_002F4CD8, C4<0>, C4<0>;
+L_0031B3E0 .functor AND 1, L_0031B060, L_002F4CD8, C4<1>, C4<1>;
+v002D25E0_0 .alias "a", 0 0, v002D2A58_0;
+v002D2638_0 .alias "b", 0 0, v002D2950_0;
+v002D2690_0 .alias "s0", 0 0, v002D2A00_0;
+v002D26E8_0 .alias "s1", 0 0, v002D2B08_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\COMPUTAÇAO 2° SEMESTRE 2012\AC-1\GUIA-05\FullAdder.v";

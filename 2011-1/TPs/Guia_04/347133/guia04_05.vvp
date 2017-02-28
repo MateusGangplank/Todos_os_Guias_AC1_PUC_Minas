@@ -1,0 +1,130 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E8FA8 .scope module, "testediferencacompleta" "testediferencacompleta" 2 42;
+ .timescale 0 0;
+v005FFF90_0 .var "a", 0 0;
+v00600020_0 .var "b", 0 0;
+v006000B0_0 .net "s0", 0 0, L_006007E0; 1 drivers
+v00600140_0 .net "s1", 0 0, L_00600888; 1 drivers
+v00600198_0 .var "v", 0 0;
+S_003E9140 .scope module, "DIFERENCACOMPLETA1" "diferencacompleta" 2 47, 2 24, S_003E8FA8;
+ .timescale 0 0;
+L_00600888 .functor OR 1, L_00600078, L_00600630, C4<0>, C4<0>;
+v005FFCD0_0 .net "a", 0 0, v005FFF90_0; 1 drivers
+v005FFD28_0 .net "b", 0 0, v00600020_0; 1 drivers
+v005FFD80_0 .net "q0", 0 0, L_00600448; 1 drivers
+v005FFDD8_0 .net "q1", 0 0, L_00600078; 1 drivers
+v005FFE30_0 .net "q2", 0 0, L_00600630; 1 drivers
+v005FFE88_0 .alias "s0", 0 0, v006000B0_0;
+v005FFEE0_0 .alias "s1", 0 0, v00600140_0;
+v005FFF38_0 .net "v", 0 0, v00600198_0; 1 drivers
+S_005FF7E8 .scope module, "MD1" "meiadiferenca" 2 32, 2 4, S_003E9140;
+ .timescale 0 0;
+L_00600228 .functor NAND 1, v005FFF90_0, v00600020_0, C4<1>, C4<1>;
+L_00600260 .functor NAND 1, v005FFF90_0, v005FFF90_0, C4<1>, C4<1>;
+L_005FFFE8 .functor NAND 1, L_00600260, v00600020_0, C4<1>, C4<1>;
+L_00600078 .functor NAND 1, L_005FFFE8, L_005FFFE8, C4<1>, C4<1>;
+L_00600340 .functor NAND 1, v005FFF90_0, v00600020_0, C4<1>, C4<1>;
+L_00600378 .functor NAND 1, v005FFF90_0, L_00600340, C4<1>, C4<1>;
+L_006003E8 .functor NAND 1, L_00600340, v00600020_0, C4<1>, C4<1>;
+L_00600448 .functor NAND 1, L_00600378, L_006003E8, C4<1>, C4<1>;
+v005FF870_0 .alias "a", 0 0, v005FFCD0_0;
+v005FF8E0_0 .alias "b", 0 0, v005FFD28_0;
+v005FF950_0 .alias "s0", 0 0, v005FFD80_0;
+v005FF9C0_0 .alias "s1", 0 0, v005FFDD8_0;
+v005FFA18_0 .net "s2", 0 0, L_00600228; 1 drivers
+v005FFA70_0 .net "s3", 0 0, L_00600340; 1 drivers
+v005FFAE0_0 .net "s4", 0 0, L_00600378; 1 drivers
+v005FFB50_0 .net "s5", 0 0, L_006003E8; 1 drivers
+v005FFBC0_0 .net "s6", 0 0, L_00600260; 1 drivers
+v005FFC60_0 .net "s7", 0 0, L_005FFFE8; 1 drivers
+S_003E91C8 .scope module, "MD2" "meiadiferenca" 2 33, 2 4, S_003E9140;
+ .timescale 0 0;
+L_006004F0 .functor NAND 1, v00600198_0, L_00600448, C4<1>, C4<1>;
+L_003E6BD0 .functor NAND 1, v00600198_0, v00600198_0, C4<1>, C4<1>;
+L_006001F0 .functor NAND 1, L_003E6BD0, L_00600448, C4<1>, C4<1>;
+L_00600630 .functor NAND 1, L_006001F0, L_006001F0, C4<1>, C4<1>;
+L_006006D8 .functor NAND 1, v00600198_0, L_00600448, C4<1>, C4<1>;
+L_00600710 .functor NAND 1, v00600198_0, L_006006D8, C4<1>, C4<1>;
+L_00600780 .functor NAND 1, L_006006D8, L_00600448, C4<1>, C4<1>;
+L_006007E0 .functor NAND 1, L_00600710, L_00600780, C4<1>, C4<1>;
+v005E39F0_0 .alias "a", 0 0, v005FFF38_0;
+v005E3A98_0 .alias "b", 0 0, v005FFD80_0;
+v005FF410_0 .alias "s0", 0 0, v006000B0_0;
+v005FF498_0 .alias "s1", 0 0, v005FFE30_0;
+v005FF508_0 .net "s2", 0 0, L_006004F0; 1 drivers
+v005FF560_0 .net "s3", 0 0, L_006006D8; 1 drivers
+v005FF5D0_0 .net "s4", 0 0, L_00600710; 1 drivers
+v005FF668_0 .net "s5", 0 0, L_00600780; 1 drivers
+v005FF6D8_0 .net "s6", 0 0, L_003E6BD0; 1 drivers
+v005FF778_0 .net "s7", 0 0, L_006001F0; 1 drivers
+S_003E90B8 .scope begin, "start" "start" 2 49, 2 49, S_003E8FA8;
+ .timescale 0 0;
+S_003E9030 .scope begin, "main" "main" 2 55, 2 55, S_003E8FA8;
+ .timescale 0 0;
+    .scope S_003E8FA8;
+T_0 ;
+    %fork t_1, S_003E90B8;
+    %jmp t_0;
+    .scope S_003E90B8;
+t_1 ;
+    %set/v v005FFF90_0, 0, 1;
+    %set/v v00600020_0, 0, 1;
+    %set/v v00600198_0, 0, 1;
+    %end;
+    .scope S_003E8FA8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E8FA8;
+T_1 ;
+    %fork t_3, S_003E9030;
+    %jmp t_2;
+    .scope S_003E9030;
+t_3 ;
+    %vpi_call 2 56 "$display", "Nome: Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 57 "$display", "Diferenca completa usandos duas meia diferenca com portas NAND.";
+    %vpi_call 2 58 "$display", "\012v a b = s1 s0\012";
+    %vpi_call 2 59 "$monitor", " %b %b %b = %b %b", v00600198_0, v005FFF90_0, v00600020_0, v00600140_0, v006000B0_0;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 0, 1;
+    %set/v v00600020_0, 1, 1;
+    %set/v v00600198_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 1, 1;
+    %set/v v00600020_0, 0, 1;
+    %set/v v00600198_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 1, 1;
+    %set/v v00600020_0, 1, 1;
+    %set/v v00600198_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 0, 1;
+    %set/v v00600020_0, 0, 1;
+    %set/v v00600198_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 0, 1;
+    %set/v v00600020_0, 1, 1;
+    %set/v v00600198_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 1, 1;
+    %set/v v00600020_0, 0, 1;
+    %set/v v00600198_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FFF90_0, 1, 1;
+    %set/v v00600020_0, 1, 1;
+    %set/v v00600198_0, 1, 1;
+    %end;
+    .scope S_003E8FA8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\Guia04\guia04_05.v";

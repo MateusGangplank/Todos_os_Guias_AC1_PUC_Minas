@@ -1,0 +1,88 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00328ED8 .scope module, "variaveis" "variaveis" 2 16;
+ .timescale 0 0;
+v00322EA0_0 .net "p", 0 0, L_00322EF8; 1 drivers
+v00323288_0 .net "q", 0 0, L_003297F8; 1 drivers
+v003232E0_0 .var "r", 0 0;
+v00323338_0 .var "s", 0 0;
+v00323390_0 .var "t", 0 0;
+S_0032AC60 .scope module, "primeiro" "inicio" 2 20, 2 8, S_00328ED8;
+ .timescale 0 0;
+L_00322EF8 .functor AND 1, v003232E0_0, v00323338_0, C4<1>, C4<1>;
+v0032CC18_0 .net "a", 0 0, v003232E0_0; 1 drivers
+v00322DF0_0 .net "b", 0 0, v00323338_0; 1 drivers
+v00322E48_0 .alias "x", 0 0, v00322EA0_0;
+S_0032ABD8 .scope module, "segundo" "final" 2 25, 2 12, S_00328ED8;
+ .timescale 0 0;
+L_003297F8 .functor AND 1, L_00322EF8, v00323390_0, C4<1>, C4<1>;
+v00324350_0 .alias "j", 0 0, v00322EA0_0;
+v003243A8_0 .net "k", 0 0, v00323390_0; 1 drivers
+v0032CBC0_0 .alias "w", 0 0, v00323288_0;
+S_003242C8 .scope begin, "start" "start" 2 21, 2 21, S_00328ED8;
+ .timescale 0 0;
+S_00329108 .scope begin, "starttwo" "starttwo" 2 26, 2 26, S_00328ED8;
+ .timescale 0 0;
+    .scope S_00328ED8;
+T_0 ;
+    %fork t_1, S_003242C8;
+    %jmp t_0;
+    .scope S_003242C8;
+t_1 ;
+    %set/v v003232E0_0, 0, 1;
+    %set/v v00323338_0, 0, 1;
+    %end;
+    .scope S_00328ED8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00328ED8;
+T_1 ;
+    %fork t_3, S_00329108;
+    %jmp t_2;
+    .scope S_00329108;
+t_3 ;
+    %set/v v00323390_0, 0, 1;
+    %end;
+    .scope S_00328ED8;
+t_2 %join;
+    %end;
+    .thread T_1;
+    .scope S_00328ED8;
+T_2 ;
+    %vpi_call 2 32 "$display", "MILLER - 449048";
+    %vpi_call 2 33 "$display", "AND com 3 entradas, utilizando 2 portas de 2 entradas.";
+    %vpi_call 2 34 "$display", " ";
+    %vpi_call 2 35 "$monitor", "( %b & %b & %b = %b )", v003232E0_0, v00323338_0, v00323390_0, v00323288_0;
+    %delay 1, 0;
+    %delay 1, 0;
+    %set/v v003232E0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003232E0_0, 1, 1;
+    %set/v v00323338_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003232E0_0, 0, 1;
+    %set/v v00323338_0, 0, 1;
+    %set/v v00323390_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00323338_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00323390_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003232E0_0, 1, 1;
+    %set/v v00323390_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003232E0_0, 1, 1;
+    %set/v v00323338_0, 1, 1;
+    %set/v v00323390_0, 1, 1;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Exercicio 9.v";

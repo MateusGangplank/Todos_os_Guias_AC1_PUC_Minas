@@ -1,0 +1,60 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C7FEC8 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v00C73078_0 .var "a", 0 0;
+v00C730D0_0 .var "b", 0 0;
+v00C73128_0 .net "s", 0 0, L_00C7E020; 1 drivers
+S_00C72B50 .scope module, "OR1" "orgate" 2 23, 2 10, S_00C7FEC8;
+ .timescale 0 0;
+L_00C7E020 .functor OR 1, v00C73078_0, v00C730D0_0, C4<0>, C4<0>;
+v00C72BD8_0 .net "p", 0 0, v00C73078_0; 1 drivers
+v00C72C30_0 .net "q", 0 0, v00C730D0_0; 1 drivers
+v00C73020_0 .alias "s", 0 0, v00C73128_0;
+S_00C7FF50 .scope begin, "start" "start" 2 25, 2 25, S_00C7FEC8;
+ .timescale 0 0;
+    .scope S_00C7FEC8;
+T_0 ;
+    %fork t_1, S_00C7FF50;
+    %jmp t_0;
+    .scope S_00C7FF50;
+t_1 ;
+    %set/v v00C73078_0, 0, 1;
+    %set/v v00C730D0_0, 0, 1;
+    %end;
+    .scope S_00C7FEC8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00C7FEC8;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0004 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 33 "$display", "Test OR gate";
+    %vpi_call 2 34 "$display", "\012a & b = s\012";
+    %set/v v00C73078_0, 0, 1;
+    %set/v v00C730D0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v00C73078_0, v00C730D0_0, v00C73128_0;
+    %set/v v00C73078_0, 0, 1;
+    %set/v v00C730D0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00C73078_0, v00C730D0_0, v00C73128_0;
+    %set/v v00C73078_0, 1, 1;
+    %set/v v00C730D0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00C73078_0, v00C730D0_0, v00C73128_0;
+    %set/v v00C73078_0, 1, 1;
+    %set/v v00C730D0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v00C73078_0, v00C730D0_0, v00C73128_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 01\Exemplo0004.v";

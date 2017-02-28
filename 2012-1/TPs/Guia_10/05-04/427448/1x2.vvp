@@ -1,0 +1,162 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0099A3B8 .scope module, "Mem_1por2" "Mem_1por2" 2 15;
+ .timescale 0 0;
+v006F3AF0_0 .net "addr", 0 0, C4<z>; 0 drivers
+v006F3B48_0 .net "clk", 0 0, C4<z>; 0 drivers
+v006F3BA0_0 .net "clr", 0 0, C4<z>; 0 drivers
+v006F3BF8_0 .net "entrada", 1 0, C4<zz>; 0 drivers
+v006F3C50_0 .net "rw", 0 0, C4<z>; 0 drivers
+RS_006C31AC .resolv tri, L_006F3D00, L_006F3DB0, C4<zz>, C4<zz>;
+v006F3CA8_0 .net8 "saida", 1 0, RS_006C31AC; 2 drivers
+L_006F3D00 .part/pv L_0099CB10, 0, 1, 2;
+L_006F3D58 .part C4<zz>, 0, 1;
+L_006F3DB0 .part/pv L_0099DB10, 1, 1, 2;
+L_006F3E08 .part C4<zz>, 1, 1;
+S_0099A4C8 .scope module, "MEM1" "Mem_1por1" 2 17, 3 43, S_0099A3B8;
+ .timescale 0 0;
+L_0099D090 .functor AND 1, C4<z>, C4<z>, C4<z>, C4<1>;
+L_0099CB10 .functor AND 1, C4<z>, v006F3728_0, C4<1>, C4<1>;
+v006F37D8_0 .alias "addr", 0 0, v006F3AF0_0;
+v006F3830_0 .alias "clk", 0 0, v006F3B48_0;
+v006F3888_0 .alias "clr", 0 0, v006F3BA0_0;
+v006F38E0_0 .net "entrada", 0 0, L_006F3D58; 1 drivers
+v006F3938_0 .net "q", 0 0, v006F3728_0; 1 drivers
+v006F3990_0 .net "qnot", 0 0, v006F3780_0; 1 drivers
+v006F39E8_0 .alias "rw", 0 0, v006F3C50_0;
+v006F3A40_0 .net "s", 0 0, L_0099D090; 1 drivers
+v006F3A98_0 .net "saida", 0 0, L_0099CB10; 1 drivers
+S_0099A550 .scope module, "JKFF1" "jkff" 3 49, 3 11, S_0099A4C8;
+ .timescale 0 0;
+v006F35C8_0 .alias "clk", 0 0, v006F3B48_0;
+v006F3620_0 .alias "clr", 0 0, v006F3BA0_0;
+v006F3678_0 .alias "j", 0 0, v006F38E0_0;
+v006F36D0_0 .alias "k", 0 0, v006F38E0_0;
+v006F3728_0 .var "q", 0 0;
+v006F3780_0 .var "qnot", 0 0;
+S_0099A330 .scope module, "MEM2" "Mem_1por1" 2 18, 3 43, S_0099A3B8;
+ .timescale 0 0;
+L_0099CB80 .functor AND 1, C4<z>, C4<z>, C4<z>, C4<1>;
+L_0099DB10 .functor AND 1, C4<z>, v00992F50_0, C4<1>, C4<1>;
+v0099DA60_0 .alias "addr", 0 0, v006F3AF0_0;
+v0099DAB8_0 .alias "clk", 0 0, v006F3B48_0;
+v0099CF88_0 .alias "clr", 0 0, v006F3BA0_0;
+v0099CFE0_0 .net "entrada", 0 0, L_006F3E08; 1 drivers
+v0099D038_0 .net "q", 0 0, v00992F50_0; 1 drivers
+v006F3468_0 .net "qnot", 0 0, v0099DA08_0; 1 drivers
+v006F34C0_0 .alias "rw", 0 0, v006F3C50_0;
+v006F3518_0 .net "s", 0 0, L_0099CB80; 1 drivers
+v006F3570_0 .net "saida", 0 0, L_0099DB10; 1 drivers
+S_0099A2A8 .scope module, "JKFF1" "jkff" 3 49, 3 11, S_0099A330;
+ .timescale 0 0;
+v0099BFD0_0 .alias "clk", 0 0, v006F3B48_0;
+v0099C028_0 .alias "clr", 0 0, v006F3BA0_0;
+v00992EA0_0 .alias "j", 0 0, v0099CFE0_0;
+v00992EF8_0 .alias "k", 0 0, v0099CFE0_0;
+v00992F50_0 .var "q", 0 0;
+v0099DA08_0 .var "qnot", 0 0;
+E_0099BBF8 .event posedge, v0099C028_0, v0099BFD0_0;
+    .scope S_0099A550;
+T_0 ;
+    %wait E_0099BBF8;
+    %load/v 8, v006F3620_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %set/v v006F3728_0, 0, 1;
+    %set/v v006F3780_0, 1, 1;
+T_0.0 ;
+    %load/v 8, v006F3678_0, 1;
+    %load/v 9, v006F36D0_0, 1;
+    %inv 9, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006F3728_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006F3780_0, 0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v006F3678_0, 1;
+    %inv 8, 1;
+    %load/v 9, v006F36D0_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.4, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006F3728_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006F3780_0, 0, 1;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/v 8, v006F3678_0, 1;
+    %load/v 9, v006F36D0_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.6, 8;
+    %load/v 8, v006F3728_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006F3728_0, 0, 8;
+    %load/v 8, v006F3780_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006F3780_0, 0, 8;
+T_0.6 ;
+T_0.5 ;
+T_0.3 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0099A2A8;
+T_1 ;
+    %wait E_0099BBF8;
+    %load/v 8, v0099C028_0, 1;
+    %jmp/0xz  T_1.0, 8;
+    %set/v v00992F50_0, 0, 1;
+    %set/v v0099DA08_0, 1, 1;
+T_1.0 ;
+    %load/v 8, v00992EA0_0, 1;
+    %load/v 9, v00992EF8_0, 1;
+    %inv 9, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00992F50_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0099DA08_0, 0, 0;
+    %jmp T_1.3;
+T_1.2 ;
+    %load/v 8, v00992EA0_0, 1;
+    %inv 8, 1;
+    %load/v 9, v00992EF8_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.4, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00992F50_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0099DA08_0, 0, 1;
+    %jmp T_1.5;
+T_1.4 ;
+    %load/v 8, v00992EA0_0, 1;
+    %load/v 9, v00992EF8_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.6, 8;
+    %load/v 8, v00992F50_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00992F50_0, 0, 8;
+    %load/v 8, v0099DA08_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0099DA08_0, 0, 8;
+T_1.6 ;
+T_1.5 ;
+T_1.3 ;
+    %jmp T_1;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Terceiro Periodo\AC1\427448\Guia10\1x2.v";
+    "./1x1.v";

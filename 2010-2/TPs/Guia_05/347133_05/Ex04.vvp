@@ -1,0 +1,735 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006B57B8 .scope module, "testOperacao" "testOperacao" 2 103;
+ .timescale 0 0;
+v006F8E18_0 .var "a0", 0 0;
+v006F8E70_0 .var "a1", 0 0;
+v006F8EC8_0 .var "a2", 0 0;
+v006F8F20_0 .var "b0", 0 0;
+v006F8FB0_0 .var "b1", 0 0;
+v006F9040_0 .var "b2", 0 0;
+v006F90D0_0 .var "c", 0 0;
+v006F9128_0 .net "s00", 0 0, L_006F9A40; 1 drivers
+v006F9180_0 .net "s10", 0 0, L_006FA688; 1 drivers
+v006F91D8_0 .net "s20", 0 0, L_006FB1A0; 1 drivers
+v006F9230_0 .net "s30", 0 0, L_006FB380; 1 drivers
+S_003EEDC0 .scope module, "OP1" "operacao" 2 108, 2 82, S_006B57B8;
+ .timescale 0 0;
+L_006FB380 .functor BUFZ 1, L_006B6E48, C4<0>, C4<0>, C4<0>;
+v006F8650_0 .net "a0", 0 0, v006F8E18_0; 1 drivers
+v006F86E0_0 .net "a1", 0 0, v006F8E70_0; 1 drivers
+v006F8770_0 .net "a2", 0 0, v006F8EC8_0; 1 drivers
+v006F8818_0 .net "b0", 0 0, v006F8F20_0; 1 drivers
+v006F8870_0 .net "b1", 0 0, v006F8FB0_0; 1 drivers
+v006F88C8_0 .net "b2", 0 0, v006F9040_0; 1 drivers
+v006F8920_0 .net "c", 0 0, v006F90D0_0; 1 drivers
+v006F89A0_0 .net "s0", 0 0, L_006F93D0; 1 drivers
+v006F89F8_0 .alias "s00", 0 0, v006F9128_0;
+v006F8AB8_0 .net "s01", 0 0, L_006F8370; 1 drivers
+v006F8B10_0 .net "s1", 0 0, L_006F9DB0; 1 drivers
+v006F8B68_0 .alias "s10", 0 0, v006F9180_0;
+v006F8BF8_0 .net "s11", 0 0, L_006F7030; 1 drivers
+v006F8CB8_0 .net "s2", 0 0, L_006FA990; 1 drivers
+v006F8D10_0 .alias "s20", 0 0, v006F91D8_0;
+v006F8D68_0 .net "s21", 0 0, L_006B6E48; 1 drivers
+v006F8DC0_0 .alias "s30", 0 0, v006F9230_0;
+S_006F83A8 .scope module, "XOR0" "xorNandGate" 2 88, 2 65, S_003EEDC0;
+ .timescale 0 0;
+L_006F92C0 .functor NAND 1, v006F8F20_0, v006F90D0_0, C4<1>, C4<1>;
+L_006F92F8 .functor NAND 1, L_006F92C0, v006F8F20_0, C4<1>, C4<1>;
+L_006F8F78 .functor NAND 1, L_006F92C0, v006F90D0_0, C4<1>, C4<1>;
+L_006F93D0 .functor NAND 1, L_006F92F8, L_006F8F78, C4<1>, C4<1>;
+v006F8428_0 .alias "a", 0 0, v006F8818_0;
+v006F8480_0 .alias "b", 0 0, v006F8920_0;
+v006F84D8_0 .alias "s0", 0 0, v006F89A0_0;
+v006F8530_0 .net "s1", 0 0, L_006F92C0; 1 drivers
+v006F8588_0 .net "s2", 0 0, L_006F92F8; 1 drivers
+v006F85E0_0 .net "s3", 0 0, L_006F8F78; 1 drivers
+S_006F7330 .scope module, "SC0" "somaCompleta" 2 89, 2 49, S_003EEDC0;
+ .timescale 0 0;
+v006F8040_0 .alias "a", 0 0, v006F8650_0;
+v006F8098_0 .alias "b", 0 0, v006F89A0_0;
+v006F80F0_0 .alias "c", 0 0, v006F8920_0;
+v006F8148_0 .alias "s0", 0 0, v006F9128_0;
+v006F81A0_0 .alias "s1", 0 0, v006F8AB8_0;
+v006F81F8_0 .net "s2", 0 0, L_006F9710; 1 drivers
+v006F8288_0 .net "s3", 0 0, L_006F95F8; 1 drivers
+v006F8318_0 .net "s4", 0 0, L_006F9900; 1 drivers
+S_006F7B90 .scope module, "MS0" "meiaSoma" 2 55, 2 11, S_006F7330;
+ .timescale 0 0;
+L_006F9440 .functor NAND 1, v006F8E18_0, v006F8E18_0, C4<1>, C4<1>;
+L_006F86A8 .functor NAND 1, L_006F93D0, L_006F93D0, C4<1>, C4<1>;
+L_006F94E0 .functor NAND 1, v006F8E18_0, L_006F93D0, C4<1>, C4<1>;
+L_006F9518 .functor NAND 1, L_006F9440, L_006F86A8, C4<1>, C4<1>;
+L_006F95C0 .functor NAND 1, v006F8E18_0, L_006F93D0, C4<1>, C4<1>;
+L_006F95F8 .functor NAND 1, L_006F94E0, L_006F94E0, C4<1>, C4<1>;
+L_006F9668 .functor NAND 1, L_006F9518, L_006F95C0, C4<1>, C4<1>;
+L_006F9710 .functor NAND 1, L_006F9668, L_006F9668, C4<1>, C4<1>;
+v006F7C10_0 .alias "a", 0 0, v006F8650_0;
+v006F7C80_0 .alias "b", 0 0, v006F89A0_0;
+v006F7CF0_0 .alias "s0", 0 0, v006F81F8_0;
+v006F7D60_0 .alias "s1", 0 0, v006F8288_0;
+v006F7DB8_0 .net "s2", 0 0, L_006F9440; 1 drivers
+v006F7E10_0 .net "s3", 0 0, L_006F86A8; 1 drivers
+v006F7E68_0 .net "s4", 0 0, L_006F94E0; 1 drivers
+v006F7EC0_0 .net "s5", 0 0, L_006F9518; 1 drivers
+v006F7F30_0 .net "s6", 0 0, L_006F95C0; 1 drivers
+v006F7FD0_0 .net "s7", 0 0, L_006F9668; 1 drivers
+S_006F7668 .scope module, "MS1" "meiaSoma" 2 56, 2 11, S_006F7330;
+ .timescale 0 0;
+L_006F9780 .functor NAND 1, L_006F9710, L_006F9710, C4<1>, C4<1>;
+L_006F8250 .functor NAND 1, v006F90D0_0, v006F90D0_0, C4<1>, C4<1>;
+L_006F97D0 .functor NAND 1, L_006F9710, v006F90D0_0, C4<1>, C4<1>;
+L_006F9808 .functor NAND 1, L_006F9780, L_006F8250, C4<1>, C4<1>;
+L_006F98C8 .functor NAND 1, L_006F9710, v006F90D0_0, C4<1>, C4<1>;
+L_006F9900 .functor NAND 1, L_006F97D0, L_006F97D0, C4<1>, C4<1>;
+L_006F9970 .functor NAND 1, L_006F9808, L_006F98C8, C4<1>, C4<1>;
+L_006F9A40 .functor NAND 1, L_006F9970, L_006F9970, C4<1>, C4<1>;
+v006F76E8_0 .alias "a", 0 0, v006F81F8_0;
+v006F7758_0 .alias "b", 0 0, v006F8920_0;
+v006F77E8_0 .alias "s0", 0 0, v006F9128_0;
+v006F7870_0 .alias "s1", 0 0, v006F8318_0;
+v006F78C8_0 .net "s2", 0 0, L_006F9780; 1 drivers
+v006F7920_0 .net "s3", 0 0, L_006F8250; 1 drivers
+v006F7978_0 .net "s4", 0 0, L_006F97D0; 1 drivers
+v006F7A10_0 .net "s5", 0 0, L_006F9808; 1 drivers
+v006F7A80_0 .net "s6", 0 0, L_006F98C8; 1 drivers
+v006F7B20_0 .net "s7", 0 0, L_006F9970; 1 drivers
+S_006F73B0 .scope module, "OR1" "orNandGate" 2 57, 2 33, S_006F7330;
+ .timescale 0 0;
+L_006F9AE0 .functor NAND 1, L_006F95F8, L_006F95F8, C4<1>, C4<1>;
+L_006F82E0 .functor NAND 1, L_006F9900, L_006F9900, C4<1>, C4<1>;
+L_006F8370 .functor NAND 1, L_006F9AE0, L_006F82E0, C4<1>, C4<1>;
+v006F7430_0 .alias "a", 0 0, v006F8288_0;
+v006F7488_0 .alias "b", 0 0, v006F8318_0;
+v006F74F8_0 .alias "s0", 0 0, v006F8AB8_0;
+v006F75A0_0 .net "s1", 0 0, L_006F9AE0; 1 drivers
+v006F7610_0 .net "s2", 0 0, L_006F82E0; 1 drivers
+S_006F7068 .scope module, "XOR1" "xorNandGate" 2 90, 2 65, S_003EEDC0;
+ .timescale 0 0;
+L_006F9C88 .functor NAND 1, v006F8FB0_0, v006F90D0_0, C4<1>, C4<1>;
+L_006F9CD8 .functor NAND 1, L_006F9C88, v006F8FB0_0, C4<1>, C4<1>;
+L_006F9008 .functor NAND 1, L_006F9C88, v006F90D0_0, C4<1>, C4<1>;
+L_006F9DB0 .functor NAND 1, L_006F9CD8, L_006F9008, C4<1>, C4<1>;
+v006F70E8_0 .alias "a", 0 0, v006F8870_0;
+v006F7140_0 .alias "b", 0 0, v006F8920_0;
+v006F7198_0 .alias "s0", 0 0, v006F8B10_0;
+v006F7228_0 .net "s1", 0 0, L_006F9C88; 1 drivers
+v006F7280_0 .net "s2", 0 0, L_006F9CD8; 1 drivers
+v006F72D8_0 .net "s3", 0 0, L_006F9008; 1 drivers
+S_006F5FF8 .scope module, "SC1" "somaCompleta" 2 91, 2 49, S_003EEDC0;
+ .timescale 0 0;
+v006F6D00_0 .alias "a", 0 0, v006F86E0_0;
+v006F6D58_0 .alias "b", 0 0, v006F8B10_0;
+v006F6DB0_0 .alias "c", 0 0, v006F8AB8_0;
+v006F6E08_0 .alias "s0", 0 0, v006F9180_0;
+v006F6E60_0 .alias "s1", 0 0, v006F8BF8_0;
+v006F6EB8_0 .net "s2", 0 0, L_006FA290; 1 drivers
+v006F6F48_0 .net "s3", 0 0, L_006FA150; 1 drivers
+v006F6FD8_0 .net "s4", 0 0, L_006FA548; 1 drivers
+S_006F6850 .scope module, "MS0" "meiaSoma" 2 55, 2 11, S_006F5FF8;
+ .timescale 0 0;
+L_006F9EA0 .functor NAND 1, v006F8E70_0, v006F8E70_0, C4<1>, C4<1>;
+L_006F8738 .functor NAND 1, L_006F9DB0, L_006F9DB0, C4<1>, C4<1>;
+L_006F9F58 .functor NAND 1, v006F8E70_0, L_006F9DB0, C4<1>, C4<1>;
+L_006F9F90 .functor NAND 1, L_006F9EA0, L_006F8738, C4<1>, C4<1>;
+L_006FA050 .functor NAND 1, v006F8E70_0, L_006F9DB0, C4<1>, C4<1>;
+L_006FA150 .functor NAND 1, L_006F9F58, L_006F9F58, C4<1>, C4<1>;
+L_006FA1C0 .functor NAND 1, L_006F9F90, L_006FA050, C4<1>, C4<1>;
+L_006FA290 .functor NAND 1, L_006FA1C0, L_006FA1C0, C4<1>, C4<1>;
+v006F68D0_0 .alias "a", 0 0, v006F86E0_0;
+v006F6940_0 .alias "b", 0 0, v006F8B10_0;
+v006F69B0_0 .alias "s0", 0 0, v006F6EB8_0;
+v006F6A20_0 .alias "s1", 0 0, v006F6F48_0;
+v006F6A78_0 .net "s2", 0 0, L_006F9EA0; 1 drivers
+v006F6AD0_0 .net "s3", 0 0, L_006F8738; 1 drivers
+v006F6B28_0 .net "s4", 0 0, L_006F9F58; 1 drivers
+v006F6B80_0 .net "s5", 0 0, L_006F9F90; 1 drivers
+v006F6BF0_0 .net "s6", 0 0, L_006FA050; 1 drivers
+v006F6C90_0 .net "s7", 0 0, L_006FA1C0; 1 drivers
+S_006F6348 .scope module, "MS1" "meiaSoma" 2 56, 2 11, S_006F5FF8;
+ .timescale 0 0;
+L_006FA300 .functor NAND 1, L_006FA290, L_006FA290, C4<1>, C4<1>;
+L_006F6F10 .functor NAND 1, L_006F8370, L_006F8370, C4<1>, C4<1>;
+L_006FA350 .functor NAND 1, L_006FA290, L_006F8370, C4<1>, C4<1>;
+L_006FA450 .functor NAND 1, L_006FA300, L_006F6F10, C4<1>, C4<1>;
+L_006FA510 .functor NAND 1, L_006FA290, L_006F8370, C4<1>, C4<1>;
+L_006FA548 .functor NAND 1, L_006FA350, L_006FA350, C4<1>, C4<1>;
+L_006FA5B8 .functor NAND 1, L_006FA450, L_006FA510, C4<1>, C4<1>;
+L_006FA688 .functor NAND 1, L_006FA5B8, L_006FA5B8, C4<1>, C4<1>;
+v006F63C8_0 .alias "a", 0 0, v006F6EB8_0;
+v006F6438_0 .alias "b", 0 0, v006F8AB8_0;
+v006F64A8_0 .alias "s0", 0 0, v006F9180_0;
+v006F6530_0 .alias "s1", 0 0, v006F6FD8_0;
+v006F6588_0 .net "s2", 0 0, L_006FA300; 1 drivers
+v006F65E0_0 .net "s3", 0 0, L_006F6F10; 1 drivers
+v006F6638_0 .net "s4", 0 0, L_006FA350; 1 drivers
+v006F66D0_0 .net "s5", 0 0, L_006FA450; 1 drivers
+v006F6740_0 .net "s6", 0 0, L_006FA510; 1 drivers
+v006F67E0_0 .net "s7", 0 0, L_006FA5B8; 1 drivers
+S_006F6078 .scope module, "OR1" "orNandGate" 2 57, 2 33, S_006F5FF8;
+ .timescale 0 0;
+L_006FA6C0 .functor NAND 1, L_006FA150, L_006FA150, C4<1>, C4<1>;
+L_006F6FA0 .functor NAND 1, L_006FA548, L_006FA548, C4<1>, C4<1>;
+L_006F7030 .functor NAND 1, L_006FA6C0, L_006F6FA0, C4<1>, C4<1>;
+v006F60F8_0 .alias "a", 0 0, v006F6F48_0;
+v006F6168_0 .alias "b", 0 0, v006F6FD8_0;
+v006F61D8_0 .alias "s0", 0 0, v006F8BF8_0;
+v006F6280_0 .net "s1", 0 0, L_006FA6C0; 1 drivers
+v006F62F0_0 .net "s2", 0 0, L_006F6FA0; 1 drivers
+S_006F5D30 .scope module, "XOR2" "xorNandGate" 2 92, 2 65, S_003EEDC0;
+ .timescale 0 0;
+L_006FA868 .functor NAND 1, v006F9040_0, v006F90D0_0, C4<1>, C4<1>;
+L_006FA8B8 .functor NAND 1, L_006FA868, v006F9040_0, C4<1>, C4<1>;
+L_006F9098 .functor NAND 1, L_006FA868, v006F90D0_0, C4<1>, C4<1>;
+L_006FA990 .functor NAND 1, L_006FA8B8, L_006F9098, C4<1>, C4<1>;
+v006F5DB0_0 .alias "a", 0 0, v006F88C8_0;
+v006F5E08_0 .alias "b", 0 0, v006F8920_0;
+v006F5E60_0 .alias "s0", 0 0, v006F8CB8_0;
+v006F5EF0_0 .net "s1", 0 0, L_006FA868; 1 drivers
+v006F5F48_0 .net "s2", 0 0, L_006FA8B8; 1 drivers
+v006F5FA0_0 .net "s3", 0 0, L_006F9098; 1 drivers
+S_003EEE40 .scope module, "SC2" "somaCompleta" 2 93, 2 49, S_003EEDC0;
+ .timescale 0 0;
+v006F5A70_0 .alias "a", 0 0, v006F8770_0;
+v006F5AC8_0 .alias "b", 0 0, v006F8CB8_0;
+v006F5B20_0 .alias "c", 0 0, v006F8BF8_0;
+v006F5B78_0 .alias "s0", 0 0, v006F91D8_0;
+v006F5BD0_0 .alias "s1", 0 0, v006F8D68_0;
+v006F5C28_0 .net "s2", 0 0, L_006FADA8; 1 drivers
+v006F5C80_0 .net "s3", 0 0, L_006FAC68; 1 drivers
+v006F5CD8_0 .net "s4", 0 0, L_006FB060; 1 drivers
+S_006F55F0 .scope module, "MS0" "meiaSoma" 2 55, 2 11, S_003EEE40;
+ .timescale 0 0;
+L_006FAA80 .functor NAND 1, v006F8EC8_0, v006F8EC8_0, C4<1>, C4<1>;
+L_006F87E0 .functor NAND 1, L_006FA990, L_006FA990, C4<1>, C4<1>;
+L_006FAB38 .functor NAND 1, v006F8EC8_0, L_006FA990, C4<1>, C4<1>;
+L_006FAB70 .functor NAND 1, L_006FAA80, L_006F87E0, C4<1>, C4<1>;
+L_006FAC30 .functor NAND 1, v006F8EC8_0, L_006FA990, C4<1>, C4<1>;
+L_006FAC68 .functor NAND 1, L_006FAB38, L_006FAB38, C4<1>, C4<1>;
+L_006FACD8 .functor NAND 1, L_006FAB70, L_006FAC30, C4<1>, C4<1>;
+L_006FADA8 .functor NAND 1, L_006FACD8, L_006FACD8, C4<1>, C4<1>;
+v006F5670_0 .alias "a", 0 0, v006F8770_0;
+v006F56E0_0 .alias "b", 0 0, v006F8CB8_0;
+v006F5750_0 .alias "s0", 0 0, v006F5C28_0;
+v006F57C0_0 .alias "s1", 0 0, v006F5C80_0;
+v006F5818_0 .net "s2", 0 0, L_006FAA80; 1 drivers
+v006F5870_0 .net "s3", 0 0, L_006F87E0; 1 drivers
+v006F58C8_0 .net "s4", 0 0, L_006FAB38; 1 drivers
+v006F5920_0 .net "s5", 0 0, L_006FAB70; 1 drivers
+v006F5990_0 .net "s6", 0 0, L_006FAC30; 1 drivers
+v006F5A00_0 .net "s7", 0 0, L_006FACD8; 1 drivers
+S_006F5140 .scope module, "MS1" "meiaSoma" 2 56, 2 11, S_003EEE40;
+ .timescale 0 0;
+L_006FAE18 .functor NAND 1, L_006FADA8, L_006FADA8, C4<1>, C4<1>;
+L_00673838 .functor NAND 1, L_006F7030, L_006F7030, C4<1>, C4<1>;
+L_006FAE68 .functor NAND 1, L_006FADA8, L_006F7030, C4<1>, C4<1>;
+L_006FAF68 .functor NAND 1, L_006FAE18, L_00673838, C4<1>, C4<1>;
+L_006FB028 .functor NAND 1, L_006FADA8, L_006F7030, C4<1>, C4<1>;
+L_006FB060 .functor NAND 1, L_006FAE68, L_006FAE68, C4<1>, C4<1>;
+L_006FB0D0 .functor NAND 1, L_006FAF68, L_006FB028, C4<1>, C4<1>;
+L_006FB1A0 .functor NAND 1, L_006FB0D0, L_006FB0D0, C4<1>, C4<1>;
+v006F51C0_0 .alias "a", 0 0, v006F5C28_0;
+v006F5230_0 .alias "b", 0 0, v006F8BF8_0;
+v006F52A0_0 .alias "s0", 0 0, v006F91D8_0;
+v006F5328_0 .alias "s1", 0 0, v006F5CD8_0;
+v006F5380_0 .net "s2", 0 0, L_006FAE18; 1 drivers
+v006F53D8_0 .net "s3", 0 0, L_00673838; 1 drivers
+v006F5430_0 .net "s4", 0 0, L_006FAE68; 1 drivers
+v006F54A0_0 .net "s5", 0 0, L_006FAF68; 1 drivers
+v006F5510_0 .net "s6", 0 0, L_006FB028; 1 drivers
+v006F5580_0 .net "s7", 0 0, L_006FB0D0; 1 drivers
+S_00671968 .scope module, "OR1" "orNandGate" 2 57, 2 33, S_003EEE40;
+ .timescale 0 0;
+L_006FB1D8 .functor NAND 1, L_006FAC68, L_006FAC68, C4<1>, C4<1>;
+L_006B5DB0 .functor NAND 1, L_006FB060, L_006FB060, C4<1>, C4<1>;
+L_006B6E48 .functor NAND 1, L_006FB1D8, L_006B5DB0, C4<1>, C4<1>;
+v006719E8_0 .alias "a", 0 0, v006F5C80_0;
+v006F4F80_0 .alias "b", 0 0, v006F5CD8_0;
+v006F4FF0_0 .alias "s0", 0 0, v006F8D68_0;
+v006F5078_0 .net "s1", 0 0, L_006FB1D8; 1 drivers
+v006F50E8_0 .net "s2", 0 0, L_006B5DB0; 1 drivers
+S_00672730 .scope begin, "start" "start" 2 110, 2 110, S_006B57B8;
+ .timescale 0 0;
+S_006726B0 .scope begin, "main" "main" 2 115, 2 115, S_006B57B8;
+ .timescale 0 0;
+    .scope S_006B57B8;
+T_0 ;
+    %fork t_1, S_00672730;
+    %jmp t_0;
+t_1 ;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %set/v v006F90D0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006B57B8;
+T_1 ;
+    %fork t_3, S_006726B0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 116 "$display", "Guia 05 - Exercicio 04 - Eduardo de Abreu Fortes - 384047";
+    %vpi_call 2 117 "$display", "Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 118 "$display", "Test Soma completa com 3 bits usando apenas portas NAND";
+    %vpi_call 2 119 "$display", "\012a2 a1 a0 + b2 b1 b0 = s30 s20 s10 s00\012";
+    %vpi_call 2 120 "$monitor", "%b %b %b  +  %b %b %b  =  %b %b %b %b", v006F8EC8_0, v006F8E70_0, v006F8E18_0, v006F9040_0, v006F8FB0_0, v006F8F20_0, v006F9230_0, v006F91D8_0, v006F9180_0, v006F9128_0;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 0, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 0, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 0, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 0, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 0, 1;
+    %set/v v006F9040_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006F8E18_0, 1, 1;
+    %set/v v006F8E70_0, 1, 1;
+    %set/v v006F8EC8_0, 1, 1;
+    %set/v v006F8F20_0, 1, 1;
+    %set/v v006F8FB0_0, 1, 1;
+    %set/v v006F9040_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\Henrique\Guia05 - 347133\Ex04.V";

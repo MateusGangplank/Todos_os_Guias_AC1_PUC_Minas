@@ -1,0 +1,85 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0087B080 .scope module, "test_complementoDe2" "test_complementoDe2" 2 31;
+ .timescale 0 0;
+RS_006D03D4 .resolv tri, L_006CE0F8, L_006CE150, L_006CE258, C4<zzz>;
+v006CDE90_0 .net8 "complemento", 2 0, RS_006D03D4; 3 drivers
+v006CDEE8_0 .var "x", 2 0;
+S_0087B108 .scope module, "fa1" "complementoDe2" 2 36, 2 9, S_0087B080;
+ .timescale 0 0;
+L_0087E988 .functor NOT 1, L_006CDF40, C4<0>, C4<0>, C4<0>;
+L_0087FC58 .functor AND 1, L_0087E988, L_006CDF98, C4<1>, C4<1>;
+L_0087FD00 .functor XOR 1, L_006CDFF0, L_006CE048, C4<0>, C4<0>;
+L_00700F10 .functor NOT 1, L_006CE0A0, C4<0>, C4<0>, C4<0>;
+L_00700F80 .functor AND 1, L_0087FD00, L_00700F10, C4<1>, C4<1>;
+L_00701060 .functor OR 1, L_00700F80, L_0087FC58, C4<0>, C4<0>;
+L_00701140 .functor XOR 1, L_006CE1A8, L_006CE200, C4<0>, C4<0>;
+L_00701028 .functor BUF 1, L_006CE2B0, C4<0>, C4<0>, C4<0>;
+v006CD860_0 .net *"_s1", 0 0, L_006CDF40; 1 drivers
+v006CD8B8_0 .net *"_s10", 0 0, L_00701060; 1 drivers
+v006CD910_0 .net *"_s12", 0 0, L_00701140; 1 drivers
+v006CD968_0 .net *"_s15", 0 0, L_006CE1A8; 1 drivers
+v006CD9C0_0 .net *"_s17", 0 0, L_006CE200; 1 drivers
+v006CDA18_0 .net *"_s18", 0 0, L_00701028; 1 drivers
+v006CDA70_0 .net *"_s21", 0 0, L_006CE2B0; 1 drivers
+v006CDAC8_0 .net *"_s3", 0 0, L_006CDF98; 1 drivers
+v006CDB20_0 .net *"_s5", 0 0, L_006CDFF0; 1 drivers
+v006CDB78_0 .net *"_s7", 0 0, L_006CE048; 1 drivers
+v006CDBD0_0 .net *"_s9", 0 0, L_006CE0A0; 1 drivers
+v006CDC28_0 .net "a", 2 0, v006CDEE8_0; 1 drivers
+v006CDC80_0 .alias "s", 2 0, v006CDE90_0;
+v006CDCD8_0 .net "temp1", 0 0, L_0087E988; 1 drivers
+v006CDD30_0 .net "temp2", 0 0, L_0087FC58; 1 drivers
+v006CDD88_0 .net "temp3", 0 0, L_0087FD00; 1 drivers
+v006CDDE0_0 .net "temp4", 0 0, L_00700F10; 1 drivers
+v006CDE38_0 .net "temp5", 0 0, L_00700F80; 1 drivers
+L_006CDF40 .part v006CDEE8_0, 2, 1;
+L_006CDF98 .part v006CDEE8_0, 0, 1;
+L_006CDFF0 .part v006CDEE8_0, 2, 1;
+L_006CE048 .part v006CDEE8_0, 1, 1;
+L_006CE0A0 .part v006CDEE8_0, 0, 1;
+L_006CE0F8 .part/pv L_00701060, 2, 1, 3;
+L_006CE150 .part/pv L_00701140, 1, 1, 3;
+L_006CE1A8 .part v006CDEE8_0, 1, 1;
+L_006CE200 .part v006CDEE8_0, 0, 1;
+L_006CE258 .part/pv L_00701028, 0, 1, 3;
+L_006CE2B0 .part v006CDEE8_0, 0, 1;
+    .scope S_0087B080;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo0025 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 41 "$display", "Test ALU\222s complementoDe2";
+    %set/v v006CDEE8_0, 0, 3;
+    %vpi_call 2 45 "$display", "entrada      saida  ";
+    %delay 1, 0;
+    %vpi_call 2 46 "$monitor", "%3b             %3b", v006CDEE8_0, v006CDE90_0;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v006CDEE8_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v006CDEE8_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v006CDEE8_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 4, 3;
+    %set/v v006CDEE8_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v006CDEE8_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 6, 3;
+    %set/v v006CDEE8_0, 8, 3;
+    %delay 1, 0;
+    %set/v v006CDEE8_0, 1, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc_2_periodo\Arquitetura_1\Exercicios_Resolvidos\Guia04\Exemplo0025.v";

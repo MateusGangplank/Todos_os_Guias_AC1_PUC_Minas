@@ -1,0 +1,62 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672D90 .scope module, "testeportaAND" "testeportaAND" 2 23;
+ .timescale 0 0;
+v006A3828_0 .var "a", 0 0;
+v006A3880_0 .var "b", 0 0;
+v006A38D8_0 .net "s", 0 0, L_006A39E0; 1 drivers
+v006A3930_0 .net "s1", 0 0, L_00673750; 1 drivers
+v006A3988_0 .net "s2", 0 0, L_00673858; 1 drivers
+S_006A3630 .scope module, "NOR1" "portaAND" 2 28, 2 13, S_00672D90;
+ .timescale 0 0;
+L_006A3A18 .functor OR 1, v006A3828_0, v006A3828_0, C4<0>, C4<0>;
+L_00673750 .functor NOT 1, L_006A3A18, C4<0>, C4<0>, C4<0>;
+v006A36B0_0 .net *"_s0", 0 0, L_006A3A18; 1 drivers
+v006A3708_0 .net "a", 0 0, v006A3828_0; 1 drivers
+v006A3760_0 .alias "b", 0 0, v006A3708_0;
+v006A37D0_0 .alias "s", 0 0, v006A3930_0;
+S_00673470 .scope module, "NOR2" "portaAND" 2 29, 2 13, S_00672D90;
+ .timescale 0 0;
+L_006A3AF0 .functor OR 1, v006A3880_0, v006A3880_0, C4<0>, C4<0>;
+L_00673858 .functor NOT 1, L_006A3AF0, C4<0>, C4<0>, C4<0>;
+v006A3488_0 .net *"_s0", 0 0, L_006A3AF0; 1 drivers
+v006A34F8_0 .net "a", 0 0, v006A3880_0; 1 drivers
+v006A3568_0 .alias "b", 0 0, v006A34F8_0;
+v006A35D8_0 .alias "s", 0 0, v006A3988_0;
+S_00673100 .scope module, "NOR3" "portaAND" 2 30, 2 13, S_00672D90;
+ .timescale 0 0;
+L_006A3BC8 .functor OR 1, L_00673750, L_00673858, C4<0>, C4<0>;
+L_006A39E0 .functor NOT 1, L_006A3BC8, C4<0>, C4<0>, C4<0>;
+v003EF400_0 .net *"_s0", 0 0, L_006A3BC8; 1 drivers
+v006A3320_0 .alias "a", 0 0, v006A3930_0;
+v006A3390_0 .alias "b", 0 0, v006A3988_0;
+v006A3418_0 .alias "s", 0 0, v006A38D8_0;
+    .scope S_00672D90;
+T_0 ;
+    %vpi_call 2 36 "$display", "\012 Guia 02 - Caio Ragacci Pimentel - 405794 ";
+    %vpi_call 2 37 "$display", "\012 Tabela - Verdade da Porta AND";
+    %vpi_call 2 38 "$display", "\012 A & B = S\012";
+    %delay 1, 0;
+    %set/v v006A3828_0, 0, 1;
+    %set/v v006A3880_0, 0, 1;
+    %vpi_call 2 42 "$monitor", " %b & %b = %b", v006A3828_0, v006A3880_0, v006A38D8_0;
+    %delay 1, 0;
+    %set/v v006A3828_0, 0, 1;
+    %set/v v006A3880_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3828_0, 1, 1;
+    %set/v v006A3880_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3828_0, 1, 1;
+    %set/v v006A3880_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_02\Guia02_02.v";

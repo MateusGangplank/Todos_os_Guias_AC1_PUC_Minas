@@ -1,0 +1,146 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003FA0B8 .scope module, "test_fullAdder" "test_fullAdder" 2 41;
+ .timescale 0 0;
+v00327180_0 .var "carryIn", 0 0;
+v003271D8_0 .net "carryOut", 0 0, L_00352028; 1 drivers
+RS_0032C2E4 .resolv tri, L_00327338, L_003274F0, L_003276A8, C4<zzz>;
+v00327230_0 .net8 "soma", 2 0, RS_0032C2E4; 3 drivers
+v00327288_0 .var "x", 2 0;
+v003272E0_0 .var "y", 2 0;
+S_003FA030 .scope module, "FULL" "fullAdder1" 2 49, 2 27, S_003FA0B8;
+ .timescale 0 0;
+v00318FE8_0 .net "a", 2 0, v00327288_0; 1 drivers
+v00319040_0 .net "b", 2 0, v003272E0_0; 1 drivers
+v00319098_0 .net "carryIn", 0 0, v00327180_0; 1 drivers
+v00327020_0 .alias "carryOut", 0 0, v003271D8_0;
+v00327078_0 .alias "s", 2 0, v00327230_0;
+v003270D0_0 .net "s1", 0 0, L_003519E8; 1 drivers
+v00327128_0 .net "s2", 0 0, L_00351CC0; 1 drivers
+L_00327338 .part/pv L_0031A618, 0, 1, 3;
+L_00327390 .part v00327288_0, 0, 1;
+L_003273E8 .part v003272E0_0, 0, 1;
+L_00327440 .part v00327288_0, 0, 1;
+L_00327498 .part v003272E0_0, 0, 1;
+L_003274F0 .part/pv L_00351AC8, 1, 1, 3;
+L_00327548 .part v00327288_0, 1, 1;
+L_003275A0 .part v003272E0_0, 1, 1;
+L_003275F8 .part v00327288_0, 1, 1;
+L_00327650 .part v003272E0_0, 1, 1;
+L_003276A8 .part/pv L_00351DA0, 2, 1, 3;
+L_00327700 .part v00327288_0, 2, 1;
+L_00327758 .part v003272E0_0, 2, 1;
+L_003277B0 .part v00327288_0, 2, 1;
+L_00327808 .part v003272E0_0, 2, 1;
+S_003FA470 .scope module, "ADD1" "Adder" 2 30, 2 9, S_003FA030;
+ .timescale 0 0;
+L_0031A5E0 .functor XOR 1, L_00327390, L_003273E8, C4<0>, C4<0>;
+L_0031A618 .functor XOR 1, L_0031A5E0, v00327180_0, C4<0>, C4<0>;
+v00318E30_0 .net "a", 0 0, L_00327390; 1 drivers
+v00318E88_0 .net "b", 0 0, L_003273E8; 1 drivers
+v00318EE0_0 .alias "carryIn", 0 0, v00319098_0;
+v00318F38_0 .net "s", 0 0, L_0031A618; 1 drivers
+v00318F90_0 .net "s0", 0 0, L_0031A5E0; 1 drivers
+S_003FA4F8 .scope module, "FULL1" "fullAdder" 2 31, 2 17, S_003FA030;
+ .timescale 0 0;
+L_00351898 .functor XOR 1, L_00327440, L_00327498, C4<0>, C4<0>;
+L_003518D0 .functor AND 1, L_00351898, v00327180_0, C4<1>, C4<1>;
+L_00351940 .functor AND 1, L_00327440, L_00327498, C4<1>, C4<1>;
+L_003519E8 .functor OR 1, L_003518D0, L_00351940, C4<0>, C4<0>;
+v00318BC8_0 .net "a", 0 0, L_00327440; 1 drivers
+v00318C20_0 .net "b", 0 0, L_00327498; 1 drivers
+v00318C78_0 .alias "carryIn", 0 0, v00319098_0;
+v00318CD0_0 .alias "carryOut", 0 0, v003270D0_0;
+v00318D28_0 .net "s1", 0 0, L_00351898; 1 drivers
+v00318D80_0 .net "s2", 0 0, L_003518D0; 1 drivers
+v00318DD8_0 .net "s3", 0 0, L_00351940; 1 drivers
+S_003FA580 .scope module, "ADD2" "Adder" 2 33, 2 9, S_003FA030;
+ .timescale 0 0;
+L_00351A90 .functor XOR 1, L_00327548, L_003275A0, C4<0>, C4<0>;
+L_00351AC8 .functor XOR 1, L_00351A90, L_003519E8, C4<0>, C4<0>;
+v00318A10_0 .net "a", 0 0, L_00327548; 1 drivers
+v00318A68_0 .net "b", 0 0, L_003275A0; 1 drivers
+v00318AC0_0 .alias "carryIn", 0 0, v003270D0_0;
+v00318B18_0 .net "s", 0 0, L_00351AC8; 1 drivers
+v00318B70_0 .net "s0", 0 0, L_00351A90; 1 drivers
+S_003FA608 .scope module, "FULL2" "fullAdder" 2 34, 2 17, S_003FA030;
+ .timescale 0 0;
+L_00351860 .functor XOR 1, L_003275F8, L_00327650, C4<0>, C4<0>;
+L_00351BA8 .functor AND 1, L_00351860, v00327180_0, C4<1>, C4<1>;
+L_00351C18 .functor AND 1, L_003275F8, L_00327650, C4<1>, C4<1>;
+L_00351CC0 .functor OR 1, L_00351BA8, L_00351C18, C4<0>, C4<0>;
+v003187A8_0 .net "a", 0 0, L_003275F8; 1 drivers
+v00318800_0 .net "b", 0 0, L_00327650; 1 drivers
+v00318858_0 .alias "carryIn", 0 0, v00319098_0;
+v003188B0_0 .alias "carryOut", 0 0, v00327128_0;
+v00318908_0 .net "s1", 0 0, L_00351860; 1 drivers
+v00318960_0 .net "s2", 0 0, L_00351BA8; 1 drivers
+v003189B8_0 .net "s3", 0 0, L_00351C18; 1 drivers
+S_003FA690 .scope module, "ADD3" "Adder" 2 36, 2 9, S_003FA030;
+ .timescale 0 0;
+L_00351D68 .functor XOR 1, L_00327700, L_00327758, C4<0>, C4<0>;
+L_00351DA0 .functor XOR 1, L_00351D68, L_00351CC0, C4<0>, C4<0>;
+v003185F0_0 .net "a", 0 0, L_00327700; 1 drivers
+v00318648_0 .net "b", 0 0, L_00327758; 1 drivers
+v003186A0_0 .alias "carryIn", 0 0, v00327128_0;
+v003186F8_0 .net "s", 0 0, L_00351DA0; 1 drivers
+v00318750_0 .net "s0", 0 0, L_00351D68; 1 drivers
+S_003F9FA8 .scope module, "FULL3" "fullAdder" 2 37, 2 17, S_003FA030;
+ .timescale 0 0;
+L_00351EB8 .functor XOR 1, L_003277B0, L_00327808, C4<0>, C4<0>;
+L_00351EF0 .functor AND 1, L_00351EB8, v00327180_0, C4<1>, C4<1>;
+L_00351F60 .functor AND 1, L_003277B0, L_00327808, C4<1>, C4<1>;
+L_00352028 .functor OR 1, L_00351EF0, L_00351F60, C4<0>, C4<0>;
+v00318388_0 .net "a", 0 0, L_003277B0; 1 drivers
+v003183E0_0 .net "b", 0 0, L_00327808; 1 drivers
+v00318438_0 .alias "carryIn", 0 0, v00319098_0;
+v00318490_0 .alias "carryOut", 0 0, v003271D8_0;
+v003184E8_0 .net "s1", 0 0, L_00351EB8; 1 drivers
+v00318540_0 .net "s2", 0 0, L_00351EF0; 1 drivers
+v00318598_0 .net "s3", 0 0, L_00351F60; 1 drivers
+    .scope S_003FA0B8;
+T_0 ;
+    %vpi_call 2 52 "$display", "Exemplo0021 - Breno Macena - 462017";
+    %vpi_call 2 53 "$display", "Test ALU\222s full adder";
+    %delay 1, 0;
+    %set/v v00327288_0, 0, 3;
+    %set/v v003272E0_0, 0, 3;
+    %set/v v00327180_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 56 "$monitor", "%b + %b + %b = %b %b", v00327288_0, v003272E0_0, v00327180_0, v003271D8_0, v00327230_0;
+    %delay 1, 0;
+    %set/v v00327288_0, 0, 3;
+    %set/v v003272E0_0, 0, 3;
+    %set/v v00327180_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00327288_0, 0, 3;
+    %movi 8, 1, 3;
+    %set/v v003272E0_0, 8, 3;
+    %set/v v00327180_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v00327288_0, 8, 3;
+    %set/v v003272E0_0, 0, 3;
+    %set/v v00327180_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00327288_0, 0, 3;
+    %movi 8, 1, 3;
+    %set/v v003272E0_0, 8, 3;
+    %set/v v00327180_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v00327288_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v003272E0_0, 8, 3;
+    %set/v v00327180_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0021.v";

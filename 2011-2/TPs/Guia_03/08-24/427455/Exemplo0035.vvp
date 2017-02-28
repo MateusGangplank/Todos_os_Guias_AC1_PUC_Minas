@@ -1,0 +1,78 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00651B28 .scope module, "test_f4" "test_f4" 2 34;
+ .timescale 0 0;
+v006A1058_0 .net "s1", 3 0, L_00666BD8; 1 drivers
+v006A10B0_0 .net "s2", 3 0, L_00666CB8; 1 drivers
+v006A1108_0 .net "s3", 3 0, L_00666D60; 1 drivers
+v006A1160_0 .net "s4", 3 0, L_00666DD0; 1 drivers
+v006A11B8_0 .net "s5", 3 0, L_00666D28; 1 drivers
+v006A1210_0 .net "s6", 3 0, L_00666E40; 1 drivers
+v006A1268_0 .net "s7", 3 0, L_00666EB0; 1 drivers
+v006A12C0_0 .net "s8", 3 0, L_00666F20; 1 drivers
+v006A1318_0 .var "x", 3 0;
+v006A1370_0 .var "y", 3 0;
+S_00651AA0 .scope module, "modulo" "ODDMENT" 2 49, 2 10, S_00651B28;
+ .timescale 0 0;
+L_00666BD8 .functor NOT 4, v006A1318_0, C4<0000>, C4<0000>, C4<0000>;
+L_00666CB8 .functor NOT 4, v006A1370_0, C4<0000>, C4<0000>, C4<0000>;
+L_00666D60 .functor OR 4, v006A1318_0, v006A1370_0, C4<0000>, C4<0000>;
+L_00666DD0 .functor AND 4, v006A1318_0, v006A1370_0, C4<1111>, C4<1111>;
+L_00666D28 .functor NOR 4, v006A1318_0, v006A1370_0, C4<0000>, C4<0000>;
+L_00666E40 .functor NAND 4, v006A1318_0, v006A1370_0, C4<1111>, C4<1111>;
+L_00666EB0 .functor XOR 4, v006A1318_0, v006A1370_0, C4<0000>, C4<0000>;
+L_00666F20 .functor XNOR 4, v006A1318_0, v006A1370_0, C4<0000>, C4<0000>;
+v00653BE8_0 .net "a", 3 0, v006A1318_0; 1 drivers
+v00674568_0 .net "b", 3 0, v006A1370_0; 1 drivers
+v006745C0_0 .alias "s1", 3 0, v006A1058_0;
+v00674618_0 .alias "s2", 3 0, v006A10B0_0;
+v0063FCF8_0 .alias "s3", 3 0, v006A1108_0;
+v0063FD50_0 .alias "s4", 3 0, v006A1160_0;
+v0063FDA8_0 .alias "s5", 3 0, v006A11B8_0;
+v00654288_0 .alias "s6", 3 0, v006A1210_0;
+v006542E0_0 .alias "s7", 3 0, v006A1268_0;
+v006A1000_0 .alias "s8", 3 0, v006A12C0_0;
+    .scope S_00651B28;
+T_0 ;
+    %vpi_call 2 54 "$display", "Exemplo0032 - Pedro Ballona - 427455";
+    %vpi_call 2 55 "$display", "Test LU's module";
+    %movi 8, 6, 4;
+    %set/v v006A1318_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v006A1370_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 60 "$display", "%3b %3b NOTX = %3b NOTY = %3b OR = %3b  AND = %3b NOR = %3b NAND = %3b XOR = %3b XNOR = %3b ", v006A1318_0, v006A1370_0, v006A1058_0, v006A10B0_0, v006A1108_0, v006A1160_0, v006A11B8_0, v006A1210_0, v006A1268_0, v006A12C0_0;
+    %movi 8, 7, 4;
+    %set/v v006A1318_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v006A1370_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 65 "$display", "%3b %3b NOTX = %3b NOTY = %3b OR = %3b  AND = %3b NOR = %3b NAND = %3b XOR = %3b XNOR = %3b ", v006A1318_0, v006A1370_0, v006A1058_0, v006A10B0_0, v006A1108_0, v006A1160_0, v006A11B8_0, v006A1210_0, v006A1268_0, v006A12C0_0;
+    %movi 8, 7, 4;
+    %set/v v006A1318_0, 8, 4;
+    %set/v v006A1370_0, 1, 4;
+    %delay 1, 0;
+    %vpi_call 2 70 "$display", "%3b %3b NOTX = %3b NOTY = %3b OR = %3b  AND = %3b NOR = %3b NAND = %3b XOR = %3b XNOR = %3b ", v006A1318_0, v006A1370_0, v006A1058_0, v006A10B0_0, v006A1108_0, v006A1160_0, v006A11B8_0, v006A1210_0, v006A1268_0, v006A12C0_0;
+    %movi 8, 14, 4;
+    %set/v v006A1318_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v006A1370_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 75 "$display", "%3b %3b NOTX = %3b NOTY = %3b OR = %3b  AND = %3b NOR = %3b NAND = %3b XOR = %3b XNOR = %3b ", v006A1318_0, v006A1370_0, v006A1058_0, v006A10B0_0, v006A1108_0, v006A1160_0, v006A11B8_0, v006A1210_0, v006A1268_0, v006A12C0_0;
+    %movi 8, 4, 4;
+    %set/v v006A1318_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v006A1370_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 80 "$display", "%3b %3b NOTX = %3b NOTY = %3b OR = %3b  AND = %3b NOR = %3b NAND = %3b XOR = %3b XNOR = %3b ", v006A1318_0, v006A1370_0, v006A1058_0, v006A10B0_0, v006A1108_0, v006A1160_0, v006A11B8_0, v006A1210_0, v006A1268_0, v006A12C0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\New Pedro\escola\puc cc\2o period - 2S2011\ARQ1 - Arquitetura de computadores\exercicios\guia3\Exemplo0035.v";

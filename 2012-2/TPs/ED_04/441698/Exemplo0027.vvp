@@ -1,0 +1,152 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0026B4C8 .scope module, "test_igualdade" "test_igualdade" 2 44;
+ .timescale 0 0;
+v00592250_0 .var "chave", 0 0;
+v005922A8_0 .net "resultado", 0 0, L_0059FE50; 1 drivers
+v00592300_0 .var "x", 2 0;
+v00592358_0 .var "y", 2 0;
+S_0026B5D8 .scope module, "au1" "AU" 2 51, 2 35, S_0026B4C8;
+ .timescale 0 0;
+v00592040_0 .net "a", 2 0, v00592300_0; 1 drivers
+v00592098_0 .net "b", 2 0, v00592358_0; 1 drivers
+v005920F0_0 .net "chave", 0 0, v00592250_0; 1 drivers
+v00592148_0 .alias "s", 0 0, v005922A8_0;
+v005921A0_0 .net "s1", 0 0, L_005A4388; 1 drivers
+v005921F8_0 .net "s2", 0 0, L_005A4698; 1 drivers
+L_0059FE50 .functor MUXZ 1, L_005A4388, L_005A4698, v00592250_0, C4<>;
+S_0026B6E8 .scope module, "ig1" "igualdade" 2 38, 2 10, S_0026B5D8;
+ .timescale 0 0;
+L_005A4200 .functor XNOR 1, L_005923B0, L_00592408, C4<0>, C4<0>;
+L_005A41C8 .functor XNOR 1, L_00592460, L_005924B8, C4<0>, C4<0>;
+L_005A42E0 .functor XNOR 1, L_00592510, L_00592568, C4<0>, C4<0>;
+L_005A4388 .functor AND 1, L_005A4200, L_005A41C8, L_005A42E0, C4<1>;
+v00591C20_0 .net *"_s1", 0 0, L_005923B0; 1 drivers
+v00591C78_0 .net *"_s11", 0 0, L_00592568; 1 drivers
+v00591CD0_0 .net *"_s3", 0 0, L_00592408; 1 drivers
+v00591D28_0 .net *"_s5", 0 0, L_00592460; 1 drivers
+v00591D80_0 .net *"_s7", 0 0, L_005924B8; 1 drivers
+v00591DD8_0 .net *"_s9", 0 0, L_00592510; 1 drivers
+v00591E30_0 .alias "a", 2 0, v00592040_0;
+v00591E88_0 .alias "b", 2 0, v00592098_0;
+v00591EE0_0 .alias "s", 0 0, v005921A0_0;
+v00591F38_0 .net "s1", 0 0, L_005A4200; 1 drivers
+v00591F90_0 .net "s2", 0 0, L_005A41C8; 1 drivers
+v00591FE8_0 .net "s3", 0 0, L_005A42E0; 1 drivers
+L_005923B0 .part v00592300_0, 0, 1;
+L_00592408 .part v00592358_0, 0, 1;
+L_00592460 .part v00592300_0, 1, 1;
+L_005924B8 .part v00592358_0, 1, 1;
+L_00592510 .part v00592300_0, 2, 1;
+L_00592568 .part v00592358_0, 2, 1;
+S_0026B660 .scope module, "di1" "desigualdade" 2 39, 2 24, S_0026B5D8;
+ .timescale 0 0;
+L_005A44A0 .functor XOR 1, L_005925C0, L_00592618, C4<0>, C4<0>;
+L_005A4548 .functor XOR 1, L_00592670, L_005926C8, C4<0>, C4<0>;
+L_005A45F0 .functor XOR 1, L_00592720, L_00592778, C4<0>, C4<0>;
+L_005A4698 .functor OR 1, L_005A44A0, L_005A4548, L_005A45F0, C4<0>;
+v00591800_0 .net *"_s1", 0 0, L_005925C0; 1 drivers
+v00591858_0 .net *"_s11", 0 0, L_00592778; 1 drivers
+v005918B0_0 .net *"_s3", 0 0, L_00592618; 1 drivers
+v00591908_0 .net *"_s5", 0 0, L_00592670; 1 drivers
+v00591960_0 .net *"_s7", 0 0, L_005926C8; 1 drivers
+v005919B8_0 .net *"_s9", 0 0, L_00592720; 1 drivers
+v00591A10_0 .alias "a", 2 0, v00592040_0;
+v00591A68_0 .alias "b", 2 0, v00592098_0;
+v00591AC0_0 .alias "s", 0 0, v005921F8_0;
+v00591B18_0 .net "s1", 0 0, L_005A44A0; 1 drivers
+v00591B70_0 .net "s2", 0 0, L_005A4548; 1 drivers
+v00591BC8_0 .net "s3", 0 0, L_005A45F0; 1 drivers
+L_005925C0 .part v00592300_0, 0, 1;
+L_00592618 .part v00592358_0, 0, 1;
+L_00592670 .part v00592300_0, 1, 1;
+L_005926C8 .part v00592358_0, 1, 1;
+L_00592720 .part v00592300_0, 2, 1;
+L_00592778 .part v00592358_0, 2, 1;
+    .scope S_0026B4C8;
+T_0 ;
+    %vpi_call 2 54 "$display", "Exemplo0027 - Marcio Enio Gon\347alves Dutra Junior - 441698";
+    %vpi_call 2 55 "$display", "Test";
+    %set/v v00592250_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %set/v v00592358_0, 0, 3;
+    %vpi_call 2 60 "$monitor", "%b == %b = %b", v00592300_0, v00592358_0, v005922A8_0;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %movi 8, 1, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 2, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %movi 8, 5, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 6, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 6, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %set/v v00592358_0, 1, 3;
+    %vpi_call 2 68 "$monitor", "%b =! %b = %b", v00592300_0, v00592358_0, v005922A8_0;
+    %set/v v00592250_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %set/v v00592358_0, 0, 3;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %movi 8, 1, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 2, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %movi 8, 5, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 6, 3;
+    %set/v v00592300_0, 8, 3;
+    %movi 8, 6, 3;
+    %set/v v00592358_0, 8, 3;
+    %delay 1, 0;
+    %set/v v00592300_0, 0, 3;
+    %set/v v00592358_0, 1, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0027.v";

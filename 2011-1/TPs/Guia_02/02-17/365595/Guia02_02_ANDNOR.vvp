@@ -1,0 +1,64 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00CC9288 .scope module, "testANDNOR" "testANDNOR" 2 23;
+ .timescale 0 0;
+v002F1E10_0 .var "a", 0 0;
+v002F1E68_0 .var "b", 0 0;
+v002F1EC0_0 .net "sai0", 0 0, L_00CCF440; 1 drivers
+S_00CC9398 .scope module, "andnor1" "ANDNOR" 2 28, 2 9, S_00CC9288;
+ .timescale 0 0;
+v002F1C58_0 .net "a", 0 0, v002F1E10_0; 1 drivers
+v002F1CB0_0 .net "b", 0 0, v002F1E68_0; 1 drivers
+v002F1D08_0 .alias "s0", 0 0, v002F1EC0_0;
+v002F1D60_0 .net "w1", 0 0, L_00CC34D8; 1 drivers
+v002F1DB8_0 .net "w2", 0 0, L_00CC2BC0; 1 drivers
+S_00CC9530 .scope module, "nor1" "NOR" 2 14, 2 1, S_00CC9398;
+ .timescale 0 0;
+L_00CCF4E8 .functor OR 1, v002F1E10_0, v002F1E10_0, C4<0>, C4<0>;
+L_00CC34D8 .functor NOT 1, L_00CCF4E8, C4<0>, C4<0>, C4<0>;
+v00CCFF38_0 .net *"_s0", 0 0, L_00CCF4E8; 1 drivers
+v00CCFF90_0 .alias "a", 0 0, v002F1C58_0;
+v00CCF3E8_0 .alias "b", 0 0, v002F1C58_0;
+v002F1C00_0 .alias "s0", 0 0, v002F1D60_0;
+S_00CC94A8 .scope module, "nor2" "NOR" 2 15, 2 1, S_00CC9398;
+ .timescale 0 0;
+L_00CCCE30 .functor OR 1, v002F1E68_0, v002F1E68_0, C4<0>, C4<0>;
+L_00CC2BC0 .functor NOT 1, L_00CCCE30, C4<0>, C4<0>, C4<0>;
+v00CC3428_0 .net *"_s0", 0 0, L_00CCCE30; 1 drivers
+v00CC3480_0 .alias "a", 0 0, v002F1CB0_0;
+v00CCFE88_0 .alias "b", 0 0, v002F1CB0_0;
+v00CCFEE0_0 .alias "s0", 0 0, v002F1DB8_0;
+S_00CC9420 .scope module, "nor3" "NOR" 2 16, 2 1, S_00CC9398;
+ .timescale 0 0;
+L_00CCCF08 .functor OR 1, L_00CC34D8, L_00CC2BC0, C4<0>, C4<0>;
+L_00CCF440 .functor NOT 1, L_00CCCF08, C4<0>, C4<0>, C4<0>;
+v00CC2AB8_0 .net *"_s0", 0 0, L_00CCCF08; 1 drivers
+v00CC2B10_0 .alias "a", 0 0, v002F1D60_0;
+v00CC2B68_0 .alias "b", 0 0, v002F1DB8_0;
+v00CC33D0_0 .alias "s0", 0 0, v002F1EC0_0;
+    .scope S_00CC9288;
+T_0 ;
+    %vpi_call 2 30 "$display", "Guia 02 - Ex02 - Tabela verdade AND usando NOR";
+    %vpi_call 2 31 "$display", "Test ORNAND";
+    %vpi_call 2 32 "$display", "\012a  b  = saida\012";
+    %set/v v002F1E10_0, 0, 1;
+    %set/v v002F1E68_0, 0, 1;
+    %vpi_call 2 34 "$monitor", "%b %b = %b", v002F1E10_0, v002F1E68_0, v002F1EC0_0;
+    %delay 1, 0;
+    %set/v v002F1E68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F1E10_0, 1, 1;
+    %set/v v002F1E68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F1E68_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\365595\Nova pasta\Guia02_02_ANDNOR.v";

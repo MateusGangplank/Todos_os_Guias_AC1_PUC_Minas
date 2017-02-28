@@ -1,0 +1,45 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003934F8 .scope module, "testandgate" "testandgate" 2 20;
+ .timescale 0 0;
+v0039A6D0_0 .var "a", 7 0;
+v0039A728_0 .net "s", 0 0, L_0039A780; 1 drivers
+S_00393070 .scope module, "NOR1" "norgate" 2 27, 2 12, S_003934F8;
+ .timescale 0 0;
+L_0039A780 .functor NOR 1, L_0039AA58, C4<0>, C4<0>, C4<0>;
+v0039A558_0 .net *"_s1", 0 0, L_0039AA58; 1 drivers
+v0039A620_0 .net "p", 7 0, v0039A6D0_0; 1 drivers
+v0039A678_0 .alias "s", 0 0, v0039A728_0;
+L_0039AA58 .part v0039A6D0_0, 0, 1;
+S_00392FE8 .scope begin, "start" "start" 2 30, 2 30, S_003934F8;
+ .timescale 0 0;
+    .scope S_003934F8;
+T_0 ;
+    %fork t_1, S_00392FE8;
+    %jmp t_0;
+    .scope S_00392FE8;
+t_1 ;
+    %set/v v0039A6D0_0, 0, 8;
+    %end;
+    .scope S_003934F8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003934F8;
+T_1 ;
+    %vpi_call 2 37 "$display", "Exercicio0010 - Rodrigo Arruda de Assis - 427460";
+    %vpi_call 2 38 "$display", "Test NOR gate";
+    %set/v v0039A6D0_0, 0, 8;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b = %b", v0039A6D0_0, v0039A728_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\2012-2\AC 1\Exercicios AC\ExercicioExtra1.v";

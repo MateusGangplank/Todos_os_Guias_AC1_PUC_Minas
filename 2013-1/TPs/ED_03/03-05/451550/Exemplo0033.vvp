@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BE9090 .scope module, "test_f4" "test_f4" 2 32;
+ .timescale 0 0;
+v00BEB580_0 .net "k", 0 0, L_005ED070; 1 drivers
+v00BEB5D8_0 .var "x", 2 0;
+v00BEB630_0 .net "z", 0 0, L_00BE2E00; 1 drivers
+L_00BEB688 .part v00BEB5D8_0, 0, 1;
+L_00BEB6E0 .part v00BEB5D8_0, 1, 1;
+L_00BEB738 .part v00BEB5D8_0, 2, 1;
+S_00BE9008 .scope module, "modulo" "f4" 2 37, 2 10, S_00BE9090;
+ .timescale 0 0;
+L_005ECF38 .functor AND 1, L_00BEB688, L_00BEB6E0, C4<1>, C4<1>;
+L_005ECF70 .functor AND 1, L_005ED150, L_00BED6F0, C4<1>, C4<1>;
+L_005ECFA8 .functor AND 1, L_00BE2D20, L_00BEB738, C4<1>, C4<1>;
+L_00BED5D8 .functor AND 1, L_005ED1C0, L_00BED6F0, C4<1>, C4<1>;
+L_00BED648 .functor AND 1, L_005ECF38, L_00BEB738, C4<1>, C4<1>;
+L_00BED6F0 .functor NOT 1, L_00BEB738, C4<0>, C4<0>, C4<0>;
+L_00BE2D20 .functor OR 1, L_00BEB688, L_00BEB6E0, C4<0>, C4<0>;
+L_00BE2E00 .functor OR 1, L_005ECF70, L_005ECFA8, C4<0>, C4<0>;
+L_005ED070 .functor OR 1, L_00BED5D8, L_00BED648, C4<0>, C4<0>;
+L_005ED150 .functor NOR 1, L_00BEB688, L_00BEB6E0, C4<0>, C4<0>;
+L_005ED1C0 .functor NAND 1, L_00BEB688, L_00BEB6E0, C4<1>, C4<1>;
+v00BEB0B0_0 .net "a", 0 0, L_00BEB688; 1 drivers
+v00BEB108_0 .net "b", 0 0, L_00BEB6E0; 1 drivers
+v00BEB160_0 .net "c", 0 0, L_00BEB738; 1 drivers
+v00BEB1B8_0 .net "nc", 0 0, L_00BED6F0; 1 drivers
+v00BEB210_0 .alias "s1", 0 0, v00BEB630_0;
+v00BEB268_0 .net "s10", 0 0, L_00BED648; 1 drivers
+v00BEB2C0_0 .alias "s2", 0 0, v00BEB580_0;
+v00BEB318_0 .net "s3", 0 0, L_005ED150; 1 drivers
+v00BEB370_0 .net "s4", 0 0, L_00BE2D20; 1 drivers
+v00BEB3C8_0 .net "s5", 0 0, L_005ED1C0; 1 drivers
+v00BEB420_0 .net "s6", 0 0, L_005ECF38; 1 drivers
+v00BEB478_0 .net "s7", 0 0, L_005ECF70; 1 drivers
+v00BEB4D0_0 .net "s8", 0 0, L_005ECFA8; 1 drivers
+v00BEB528_0 .net "s9", 0 0, L_00BED5D8; 1 drivers
+    .scope S_00BE9090;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo0032 - Eduardo de Figueiredo Junior - 451605";
+    %vpi_call 2 41 "$display", "Test LU's module";
+    %set/v v00BEB5D8_0, 0, 3;
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "entradas : %3b %3b | Selecao: %3b | Saida: %3b , %3b", &PV<v00BEB5D8_0, 0, 1>, &PV<v00BEB5D8_0, 1, 1>, &PV<v00BEB5D8_0, 2, 1>, v00BEB630_0, v00BEB580_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v00BEB5D8_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v00BEB5D8_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Desktop\Puc\3 periodo\arquitetura\ED03\Exemplo0033.v";

@@ -1,0 +1,68 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x9cf3cd0 .scope module, "testeonegadogate" "testeonegadogate" 2 14;
+ .timescale 0 0;
+v0x9cf1e48_0 .var "a", 7 0;
+v0x9cf1ea8_0 .net "s", 0 0, L_0x9cf26c0; 1 drivers
+S_0x9cf3228 .scope module, "OUN" "ounegadogate" 2 18, 2 9, S_0x9cf3cd0;
+ .timescale 0 0;
+L_0x9cf1fd8 .functor OR 1, L_0x9cf1f18, L_0x9cf1f88, C4<0>, C4<0>;
+L_0x9cf1bf8 .functor OR 1, L_0x9cf1fd8, L_0x9cf20a0, C4<0>, C4<0>;
+L_0x9cf2218 .functor OR 1, L_0x9cf1bf8, L_0x9cf21c8, C4<0>, C4<0>;
+L_0x9cf2310 .functor OR 1, L_0x9cf2218, L_0x9cf22c0, C4<0>, C4<0>;
+L_0x9cf2420 .functor OR 1, L_0x9cf2310, L_0x9cf23d0, C4<0>, C4<0>;
+L_0x9cf20f0 .functor OR 1, L_0x9cf2420, L_0x9cf24e8, C4<0>, C4<0>;
+L_0x9cf26c0 .functor OR 1, L_0x9cf20f0, L_0x9cf2670, C4<0>, C4<0>;
+v0x9cf3dd0_0 .net *"_s1", 0 0, L_0x9cf1f18; 1 drivers
+v0x9cf1768_0 .net *"_s11", 0 0, L_0x9cf21c8; 1 drivers
+v0x9cf17c8_0 .net *"_s12", 0 0, L_0x9cf2218; 1 drivers
+v0x9cf1828_0 .net *"_s15", 0 0, L_0x9cf22c0; 1 drivers
+v0x9cf1890_0 .net *"_s16", 0 0, L_0x9cf2310; 1 drivers
+v0x9cf18f0_0 .net *"_s19", 0 0, L_0x9cf23d0; 1 drivers
+v0x9cf1970_0 .net *"_s20", 0 0, L_0x9cf2420; 1 drivers
+v0x9cf19d0_0 .net *"_s23", 0 0, L_0x9cf24e8; 1 drivers
+v0x9cf1a58_0 .net *"_s24", 0 0, L_0x9cf20f0; 1 drivers
+v0x9cf1ab8_0 .net *"_s27", 0 0, L_0x9cf2670; 1 drivers
+v0x9cf1b48_0 .net *"_s3", 0 0, L_0x9cf1f88; 1 drivers
+v0x9cf1ba8_0 .net *"_s4", 0 0, L_0x9cf1fd8; 1 drivers
+v0x9cf1c40_0 .net *"_s7", 0 0, L_0x9cf20a0; 1 drivers
+v0x9cf1ca0_0 .net *"_s8", 0 0, L_0x9cf1bf8; 1 drivers
+v0x9cf1d40_0 .net "a", 7 0, v0x9cf1e48_0; 1 drivers
+v0x9cf1da0_0 .alias "s", 0 0, v0x9cf1ea8_0;
+L_0x9cf1f18 .part v0x9cf1e48_0, 0, 1;
+L_0x9cf1f88 .part v0x9cf1e48_0, 1, 1;
+L_0x9cf20a0 .part v0x9cf1e48_0, 2, 1;
+L_0x9cf21c8 .part v0x9cf1e48_0, 3, 1;
+L_0x9cf22c0 .part v0x9cf1e48_0, 4, 1;
+L_0x9cf23d0 .part v0x9cf1e48_0, 5, 1;
+L_0x9cf24e8 .part v0x9cf1e48_0, 6, 1;
+L_0x9cf2670 .part v0x9cf1e48_0, 7, 1;
+S_0x9cf3d50 .scope begin, "start" "start" 2 20, 2 20, S_0x9cf3cd0;
+ .timescale 0 0;
+    .scope S_0x9cf3cd0;
+T_0 ;
+    %fork t_1, S_0x9cf3d50;
+    %jmp t_0;
+    .scope S_0x9cf3d50;
+t_1 ;
+    %set/v v0x9cf1e48_0, 0, 8;
+    %end;
+    .scope S_0x9cf3cd0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x9cf3cd0;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 28 "$monitor", v0x9cf1ea8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/guilherme/Área de Trabalho/ac/extra2.v";

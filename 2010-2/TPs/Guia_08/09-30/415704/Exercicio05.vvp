@@ -1,0 +1,143 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067B088 .scope module, "Teste" "Teste" 2 19;
+ .timescale 0 0;
+v006AB6B8_0 .var "a", 0 0;
+v006AB710_0 .var "b", 0 0;
+v006AB768_0 .var "c", 0 0;
+v006AB7C0_0 .var "d", 0 0;
+v006AB818_0 .net "s", 0 0, L_00677E50; 1 drivers
+S_0067B208 .scope module, "test" "simplificada" 2 22, 2 5, S_0067B088;
+ .timescale 0 0;
+L_006770E0 .functor NAND 1, v006AB6B8_0, v006AB6B8_0, C4<1>, C4<1>;
+L_006AB870 .functor NAND 1, v006AB710_0, v006AB710_0, C4<1>, C4<1>;
+L_006AB8E0 .functor NAND 1, v006AB7C0_0, v006AB7C0_0, C4<1>, C4<1>;
+L_006AB950 .functor NAND 1, L_006770E0, v006AB768_0, C4<1>, C4<1>;
+L_006AB9F8 .functor NAND 1, L_006AB870, v006AB768_0, C4<1>, C4<1>;
+L_006ABA68 .functor NAND 1, v006AB6B8_0, v006AB710_0, L_006AB8E0, C4<1>;
+L_00677E50 .functor NAND 1, L_006AB950, L_006AB9F8, L_006ABA68, C4<1>;
+v0067B288_0 .net "a", 0 0, v006AB6B8_0; 1 drivers
+v006AB230_0 .net "b", 0 0, v006AB710_0; 1 drivers
+v006AB2A0_0 .net "c", 0 0, v006AB768_0; 1 drivers
+v006AB328_0 .net "d", 0 0, v006AB7C0_0; 1 drivers
+v006AB398_0 .net "q0", 0 0, L_006770E0; 1 drivers
+v006AB3F0_0 .net "q1", 0 0, L_006AB870; 1 drivers
+v006AB460_0 .net "q2", 0 0, L_006AB8E0; 1 drivers
+v006AB4F8_0 .net "q3", 0 0, L_006AB950; 1 drivers
+v006AB568_0 .net "q4", 0 0, L_006AB9F8; 1 drivers
+v006AB5D8_0 .net "q5", 0 0, L_006ABA68; 1 drivers
+v006AB648_0 .alias "s", 0 0, v006AB818_0;
+S_0067B188 .scope begin, "start" "start" 2 23, 2 23, S_0067B088;
+ .timescale 0 0;
+S_0067B108 .scope begin, "main" "main" 2 27, 2 27, S_0067B088;
+ .timescale 0 0;
+    .scope S_0067B088;
+T_0 ;
+    %fork t_1, S_0067B188;
+    %jmp t_0;
+t_1 ;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0067B088;
+T_1 ;
+    %fork t_3, S_0067B108;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 28 "$display", "Nome: Jonathan Felipe Xavier \011Matricula:415704";
+    %vpi_call 2 29 "$display", "Circuito simplificado com NAND";
+    %vpi_call 2 30 "$display", "\012 a | b | c | d | = | s |";
+    %vpi_call 2 31 "$monitor", " %b | %b | %b | %b | = | %2b |", v006AB6B8_0, v006AB710_0, v006AB768_0, v006AB7C0_0, v006AB818_0;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 0, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 0, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 0, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AB6B8_0, 1, 1;
+    %set/v v006AB710_0, 1, 1;
+    %set/v v006AB768_0, 1, 1;
+    %set/v v006AB7C0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio05.v";

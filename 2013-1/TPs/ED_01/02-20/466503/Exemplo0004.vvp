@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00037148 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v00639B10_0 .var "a", 0 0;
+v00639B68_0 .var "b", 0 0;
+v00639BC0_0 .net "s", 0 0, L_000366C8; 1 drivers
+S_00037258 .scope module, "OR1" "orgate" 2 23, 2 10, S_00037148;
+ .timescale 0 0;
+L_000366C8 .functor OR 1, v00639B10_0, v00639B68_0, C4<0>, C4<0>;
+v00610F80_0 .net "p", 0 0, v00639B10_0; 1 drivers
+v00639A18_0 .net "q", 0 0, v00639B68_0; 1 drivers
+v00639A88_0 .alias "s", 0 0, v00639BC0_0;
+S_000371D0 .scope begin, "start" "start" 2 25, 2 25, S_00037148;
+ .timescale 0 0;
+    .scope S_00037148;
+T_0 ;
+    %fork t_1, S_000371D0;
+    %jmp t_0;
+    .scope S_000371D0;
+t_1 ;
+    %set/v v00639B10_0, 0, 1;
+    %set/v v00639B68_0, 0, 1;
+    %end;
+    .scope S_00037148;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00037148;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0004 - Douglas Henrique Silva Correa - 466503";
+    %vpi_call 2 33 "$display", "Test OR gate";
+    %vpi_call 2 34 "$display", "\012a & b = s\012";
+    %set/v v00639B10_0, 0, 1;
+    %set/v v00639B68_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v00639B10_0, v00639B68_0, v00639BC0_0;
+    %set/v v00639B10_0, 0, 1;
+    %set/v v00639B68_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00639B10_0, v00639B68_0, v00639BC0_0;
+    %set/v v00639B10_0, 1, 1;
+    %set/v v00639B68_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00639B10_0, v00639B68_0, v00639BC0_0;
+    %set/v v00639B10_0, 1, 1;
+    %set/v v00639B68_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v00639B10_0, v00639B68_0, v00639BC0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\†Douglas†\Desktop\Nova pasta\Exemplo0004.v";

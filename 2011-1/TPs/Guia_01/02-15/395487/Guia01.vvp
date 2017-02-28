@@ -1,0 +1,75 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00753D78 .scope module, "testnandgate" "testnandgate" 2 23;
+ .timescale 0 0;
+v0075CD60_0 .var "a", 0 0;
+v0075CDB8_0 .var "b", 0 0;
+v0075CE10_0 .var "c", 0 0;
+v0075CE68_0 .net "s", 0 0, L_0075A268; 1 drivers
+S_00753E00 .scope module, "NAND1" "nandgate" 2 27, 2 11, S_00753D78;
+ .timescale 0 0;
+L_0075CEC0 .functor AND 1, v0075CD60_0, v0075CDB8_0, C4<1>, C4<1>;
+L_0075A1C0 .functor AND 1, L_0075CEC0, v0075CE10_0, C4<1>, C4<1>;
+L_0075A268 .functor NOT 1, L_0075A1C0, C4<0>, C4<0>, C4<0>;
+v00753E88_0 .net *"_s0", 0 0, L_0075CEC0; 1 drivers
+v00752BB0_0 .net *"_s2", 0 0, L_0075A1C0; 1 drivers
+v00752C08_0 .net "p", 0 0, v0075CD60_0; 1 drivers
+v00752C60_0 .net "q", 0 0, v0075CDB8_0; 1 drivers
+v00752CB8_0 .net "r", 0 0, v0075CE10_0; 1 drivers
+v0075CD08_0 .alias "s", 0 0, v0075CE68_0;
+    .scope S_00753D78;
+T_0 ;
+    %vpi_call 2 31 "$display", "Exemplo 01_01 - xxx yyy zzz - 999999";
+    %vpi_call 2 32 "$display", "Test NAND gate";
+    %vpi_call 2 33 "$display", "\012a & b  & c = s\012";
+    %set/v v0075CD60_0, 0, 1;
+    %set/v v0075CDB8_0, 0, 1;
+    %set/v v0075CE10_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 0, 1;
+    %set/v v0075CDB8_0, 0, 1;
+    %set/v v0075CE10_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 0, 1;
+    %set/v v0075CDB8_0, 1, 1;
+    %set/v v0075CE10_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 0, 1;
+    %set/v v0075CDB8_0, 1, 1;
+    %set/v v0075CE10_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 1, 1;
+    %set/v v0075CDB8_0, 0, 1;
+    %set/v v0075CE10_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 1, 1;
+    %set/v v0075CDB8_0, 0, 1;
+    %set/v v0075CE10_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 1, 1;
+    %set/v v0075CDB8_0, 1, 1;
+    %set/v v0075CE10_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %set/v v0075CD60_0, 1, 1;
+    %set/v v0075CDB8_0, 1, 1;
+    %set/v v0075CE10_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b & %b & %b = %b", v0075CD60_0, v0075CDB8_0, v0075CE10_0, v0075CE68_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Alvaro\Desktop\Guia 01\Guia01.v";

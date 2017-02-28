@@ -1,0 +1,51 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00036A40 .scope module, "teste" "teste" 2 9;
+ .timescale 0 0;
+v00639330_0 .var "a", 0 0;
+v00639388_0 .var "b", 0 0;
+v006393E0_0 .net "s", 0 0, L_000367C8; 1 drivers
+S_00036B50 .scope module, "teste" "Comparador" 2 14, 2 5, S_00036A40;
+ .timescale 0 0;
+L_000367C8 .functor XOR 1, v00639330_0, v00639388_0, C4<0>, C4<0>;
+v00610D88_0 .net "a", 0 0, v00639330_0; 1 drivers
+v00639238_0 .net "b", 0 0, v00639388_0; 1 drivers
+v006392A8_0 .alias "s", 0 0, v006393E0_0;
+S_00036AC8 .scope begin, "main" "main" 2 16, 2 16, S_00036A40;
+ .timescale 0 0;
+    .scope S_00036A40;
+T_0 ;
+    %fork t_1, S_00036AC8;
+    %jmp t_0;
+    .scope S_00036AC8;
+t_1 ;
+    %vpi_call 2 18 "$display", "Exemplo0036 - Ana Carolina - 449517";
+    %vpi_call 2 19 "$display", "\012Comaparador test versao 2";
+    %set/v v00639330_0, 0, 1;
+    %set/v v00639388_0, 0, 1;
+    %vpi_call 2 22 "$display", " 0 - bits são iguais 1 - bits diferentes";
+    %delay 1, 0;
+    %vpi_call 2 24 "$monitor", " entradas  %b %b saida = %b", v00639330_0, v00639388_0, v006393E0_0;
+    %delay 1, 0;
+    %set/v v00639330_0, 0, 1;
+    %set/v v00639388_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00639330_0, 1, 1;
+    %set/v v00639388_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00639330_0, 1, 1;
+    %set/v v00639388_0, 1, 1;
+    %end;
+    .scope S_00036A40;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Arquitetura I - 2013\Eds Arquitetura I\ED03\Exemplo0036versao2.v";

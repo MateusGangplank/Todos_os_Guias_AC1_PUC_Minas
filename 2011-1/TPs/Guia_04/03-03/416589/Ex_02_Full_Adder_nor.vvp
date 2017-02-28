@@ -1,0 +1,165 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E72E8 .scope module, "testfulladder_nor" "testfulladder_nor" 2 91;
+ .timescale 0 0;
+v006034D8_0 .var "a", 0 0;
+v00603530_0 .var "b", 0 0;
+v006035F0_0 .var "c", 0 0;
+v006036B0_0 .net "s0", 0 0, L_00604130; 1 drivers
+v00603708_0 .net "s1", 0 0, L_00603EE8; 1 drivers
+S_005E0680 .scope module, "HA1" "fulladder_nor" 2 96, 2 11, S_003E72E8;
+ .timescale 0 0;
+v006031B8_0 .alias "c0", 0 0, v006036B0_0;
+v00603210_0 .alias "c1", 0 0, v00603708_0;
+v006032A0_0 .net "carry1", 0 0, L_00603B70; 1 drivers
+v006032F8_0 .net "carry2", 0 0, L_00604058; 1 drivers
+v00603350_0 .net "cout", 0 0, L_00603900; 1 drivers
+v006033A8_0 .net "r", 0 0, v006034D8_0; 1 drivers
+v00603400_0 .net "s", 0 0, v00603530_0; 1 drivers
+v00603480_0 .net "t", 0 0, v006035F0_0; 1 drivers
+S_00602920 .scope module, "HA1" "halfadder_nor" 2 16, 2 29, S_005E0680;
+ .timescale 0 0;
+v00602FD0_0 .alias "a", 0 0, v006033A8_0;
+v00603060_0 .alias "b", 0 0, v00603400_0;
+v006030F0_0 .alias "s0", 0 0, v00603350_0;
+v00603160_0 .alias "s1", 0 0, v006032A0_0;
+S_00602C18 .scope module, "XOR1" "xor_nor" 2 33, 2 42, S_00602920;
+ .timescale 0 0;
+L_006030B8 .functor NOR 1, v00603530_0, v00603530_0, C4<0>, C4<0>;
+L_00603028 .functor NOR 1, v006034D8_0, v006034D8_0, C4<0>, C4<0>;
+L_00603760 .functor NOR 1, v006034D8_0, L_006030B8, C4<0>, C4<0>;
+L_006037D0 .functor NOR 1, v00603530_0, L_00603028, C4<0>, C4<0>;
+L_00603858 .functor NOR 1, L_00603760, L_006037D0, C4<0>, C4<0>;
+L_00603900 .functor NOR 1, L_00603858, L_00603858, C4<0>, C4<0>;
+v00602CA0_0 .alias "a", 0 0, v006033A8_0;
+v00602CF8_0 .alias "b", 0 0, v00603400_0;
+v00602D50_0 .alias "s", 0 0, v00603350_0;
+v00602DA8_0 .net "temp1", 0 0, L_006030B8; 1 drivers
+v00602E00_0 .net "temp2", 0 0, L_00603028; 1 drivers
+v00602E58_0 .net "temp3", 0 0, L_00603760; 1 drivers
+v00602EC8_0 .net "temp4", 0 0, L_006037D0; 1 drivers
+v00602F60_0 .net "temp5", 0 0, L_00603858; 1 drivers
+S_006029A8 .scope module, "AND1" "and_nor" 2 34, 2 61, S_00602920;
+ .timescale 0 0;
+L_00603970 .functor NOR 1, v006034D8_0, v006034D8_0, C4<0>, C4<0>;
+L_00603A70 .functor NOR 1, v00603530_0, v00603530_0, C4<0>, C4<0>;
+L_00603B70 .functor NOR 1, L_00603970, L_00603A70, C4<0>, C4<0>;
+v00602A30_0 .alias "a", 0 0, v006033A8_0;
+v00602A88_0 .alias "b", 0 0, v00603400_0;
+v00602AF8_0 .alias "s", 0 0, v006032A0_0;
+v00602B68_0 .net "temp1", 0 0, L_00603970; 1 drivers
+v00602BC0_0 .net "temp2", 0 0, L_00603A70; 1 drivers
+S_00602090 .scope module, "HA2" "halfadder_nor" 2 17, 2 29, S_005E0680;
+ .timescale 0 0;
+v00602770_0 .alias "a", 0 0, v00603350_0;
+v006027C8_0 .alias "b", 0 0, v00603480_0;
+v00602820_0 .alias "s0", 0 0, v00603708_0;
+v00602890_0 .alias "s1", 0 0, v006032F8_0;
+S_006023A0 .scope module, "XOR1" "xor_nor" 2 33, 2 42, S_00602090;
+ .timescale 0 0;
+L_00603BF8 .functor NOR 1, v006035F0_0, v006035F0_0, C4<0>, C4<0>;
+L_00603C48 .functor NOR 1, L_00603900, L_00603900, C4<0>, C4<0>;
+L_00603D48 .functor NOR 1, L_00603900, L_00603BF8, C4<0>, C4<0>;
+L_00603DB8 .functor NOR 1, v006035F0_0, L_00603C48, C4<0>, C4<0>;
+L_00603E40 .functor NOR 1, L_00603D48, L_00603DB8, C4<0>, C4<0>;
+L_00603EE8 .functor NOR 1, L_00603E40, L_00603E40, C4<0>, C4<0>;
+v00602428_0 .alias "a", 0 0, v00603350_0;
+v00602480_0 .alias "b", 0 0, v00603480_0;
+v006024D8_0 .alias "s", 0 0, v00603708_0;
+v00602530_0 .net "temp1", 0 0, L_00603BF8; 1 drivers
+v006025A0_0 .net "temp2", 0 0, L_00603C48; 1 drivers
+v006025F8_0 .net "temp3", 0 0, L_00603D48; 1 drivers
+v00602668_0 .net "temp4", 0 0, L_00603DB8; 1 drivers
+v00602700_0 .net "temp5", 0 0, L_00603E40; 1 drivers
+S_00602118 .scope module, "AND1" "and_nor" 2 34, 2 61, S_00602090;
+ .timescale 0 0;
+L_00603F20 .functor NOR 1, L_00603900, L_00603900, C4<0>, C4<0>;
+L_00603F58 .functor NOR 1, v006035F0_0, v006035F0_0, C4<0>, C4<0>;
+L_00604058 .functor NOR 1, L_00603F20, L_00603F58, C4<0>, C4<0>;
+v006021A0_0 .alias "a", 0 0, v00603350_0;
+v00602210_0 .alias "b", 0 0, v00603480_0;
+v00602280_0 .alias "s", 0 0, v006032F8_0;
+v006022F0_0 .net "temp1", 0 0, L_00603F20; 1 drivers
+v00602348_0 .net "temp2", 0 0, L_00603F58; 1 drivers
+S_003E5C60 .scope module, "OR1" "or_nor" 2 18, 2 76, S_005E0680;
+ .timescale 0 0;
+L_006040E0 .functor NOR 1, L_00603B70, L_00604058, C4<0>, C4<0>;
+L_00604130 .functor NOR 1, L_006040E0, L_006040E0, C4<0>, C4<0>;
+v003E9AB0_0 .alias "a", 0 0, v006032A0_0;
+v00601F20_0 .alias "b", 0 0, v006032F8_0;
+v00601F90_0 .alias "s", 0 0, v006036B0_0;
+v00602020_0 .net "temp1", 0 0, L_006040E0; 1 drivers
+S_005E05F8 .scope begin, "start" "start" 2 98, 2 98, S_003E72E8;
+ .timescale 0 0;
+S_003E80F8 .scope begin, "main" "main" 2 104, 2 104, S_003E72E8;
+ .timescale 0 0;
+    .scope S_003E72E8;
+T_0 ;
+    %fork t_1, S_005E05F8;
+    %jmp t_0;
+    .scope S_005E05F8;
+t_1 ;
+    %set/v v006034D8_0, 0, 1;
+    %set/v v00603530_0, 0, 1;
+    %set/v v006035F0_0, 0, 1;
+    %end;
+    .scope S_003E72E8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E72E8;
+T_1 ;
+    %fork t_3, S_003E80F8;
+    %jmp t_2;
+    .scope S_003E80F8;
+t_3 ;
+    %vpi_call 2 105 "$display", "Guia 04_02 - Alyson Deives - 416589";
+    %vpi_call 2 106 "$display", "FULL ADDER com portas NOR\012";
+    %vpi_call 2 107 "$display", "\012A + B = S\012";
+    %vpi_call 2 108 "$monitor", "%b + %b + %b = %b%b", v006034D8_0, v00603530_0, v006035F0_0, v006036B0_0, v00603708_0;
+    %delay 1, 0;
+    %set/v v006034D8_0, 0, 1;
+    %set/v v00603530_0, 0, 1;
+    %set/v v006035F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 0, 1;
+    %set/v v00603530_0, 0, 1;
+    %set/v v006035F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 0, 1;
+    %set/v v00603530_0, 1, 1;
+    %set/v v006035F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 0, 1;
+    %set/v v00603530_0, 1, 1;
+    %set/v v006035F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 1, 1;
+    %set/v v00603530_0, 0, 1;
+    %set/v v006035F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 1, 1;
+    %set/v v00603530_0, 0, 1;
+    %set/v v006035F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 1, 1;
+    %set/v v00603530_0, 1, 1;
+    %set/v v006035F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006034D8_0, 1, 1;
+    %set/v v00603530_0, 1, 1;
+    %set/v v006035F0_0, 1, 1;
+    %end;
+    .scope S_003E72E8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC-MG\2° Periodo\Arquitetura I\Workspace\Guia_04\Ex_02_Full_Adder_nor.v";

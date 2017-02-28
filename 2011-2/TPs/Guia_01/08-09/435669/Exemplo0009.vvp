@@ -1,0 +1,90 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E3408 .scope module, "testandgate" "testandgate" 2 19;
+ .timescale 0 0;
+v005DF8A0_0 .var "a", 0 0;
+v005DF8F8_0 .var "b", 0 0;
+v005DF950_0 .var "c", 0 0;
+v005DF9A8_0 .net "s", 0 0, L_005DFC98; 1 drivers
+S_005E3518 .scope module, "AND1" "andgate" 2 24, 2 11, S_005E3408;
+ .timescale 0 0;
+L_003E6C88 .functor NOT 1, v005DF8A0_0, C4<0>, C4<0>, C4<0>;
+L_005DFA58 .functor NOT 1, v005DF8F8_0, C4<0>, C4<0>, C4<0>;
+L_005DFAD8 .functor OR 1, L_003E6C88, L_005DFA58, C4<0>, C4<0>;
+L_005DFB80 .functor NOT 1, v005DF950_0, C4<0>, C4<0>, C4<0>;
+L_005DFBF0 .functor OR 1, L_005DFAD8, L_005DFB80, C4<0>, C4<0>;
+L_005DFC98 .functor NOT 1, L_005DFBF0, C4<0>, C4<0>, C4<0>;
+v005E0B50_0 .net *"_s0", 0 0, L_003E6C88; 1 drivers
+v005DF4C8_0 .net *"_s2", 0 0, L_005DFA58; 1 drivers
+v005DF538_0 .net *"_s4", 0 0, L_005DFAD8; 1 drivers
+v005DF5C0_0 .net *"_s6", 0 0, L_005DFB80; 1 drivers
+v005DF630_0 .net *"_s8", 0 0, L_005DFBF0; 1 drivers
+v005DF688_0 .net "p", 0 0, v005DF8A0_0; 1 drivers
+v005DF6F8_0 .net "q", 0 0, v005DF8F8_0; 1 drivers
+v005DF790_0 .net "r", 0 0, v005DF950_0; 1 drivers
+v005DF800_0 .alias "s", 0 0, v005DF9A8_0;
+S_005E3490 .scope begin, "start" "start" 2 26, 2 26, S_005E3408;
+ .timescale 0 0;
+    .scope S_005E3408;
+T_0 ;
+    %fork t_1, S_005E3490;
+    %jmp t_0;
+    .scope S_005E3490;
+t_1 ;
+    %set/v v005DF8A0_0, 0, 1;
+    %set/v v005DF8F8_0, 0, 1;
+    %set/v v005DF950_0, 0, 1;
+    %end;
+    .scope S_005E3408;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005E3408;
+T_1 ;
+    %vpi_call 2 33 "$display", "Exemplo0009 - Mateus Augusto Moraes Ferreira - 435669";
+    %vpi_call 2 34 "$display", "Test AND gate - 3 entradas";
+    %vpi_call 2 35 "$display", "\012 (a & b & c) = s\012";
+    %vpi_call 2 36 "$monitor", "%b & %b & %b = %b", v005DF8A0_0, v005DF8F8_0, v005DF950_0, v005DF9A8_0;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 0, 1;
+    %set/v v005DF8F8_0, 0, 1;
+    %set/v v005DF950_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 0, 1;
+    %set/v v005DF8F8_0, 0, 1;
+    %set/v v005DF950_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 0, 1;
+    %set/v v005DF8F8_0, 1, 1;
+    %set/v v005DF950_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 0, 1;
+    %set/v v005DF8F8_0, 1, 1;
+    %set/v v005DF950_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 1, 1;
+    %set/v v005DF8F8_0, 0, 1;
+    %set/v v005DF950_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 1, 1;
+    %set/v v005DF8F8_0, 0, 1;
+    %set/v v005DF950_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 1, 1;
+    %set/v v005DF8F8_0, 1, 1;
+    %set/v v005DF950_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF8A0_0, 1, 1;
+    %set/v v005DF8F8_0, 1, 1;
+    %set/v v005DF950_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2011-2\Arquitetura\435669\Exemplo0009.v";

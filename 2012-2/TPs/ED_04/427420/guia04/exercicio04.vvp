@@ -1,0 +1,127 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0030A470 .scope module, "fullAdder" "fullAdder" 2 10;
+ .timescale 0 0;
+L_00591820 .functor XOR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_00591858 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0030FD60 .functor XOR 1, L_00591820, C4<z>, C4<0>, C4<0>;
+L_0030FDD0 .functor AND 1, L_00591820, C4<z>, C4<1>, C4<1>;
+L_0030FE40 .functor OR 1, L_0030FDD0, L_00591858, C4<0>, C4<0>;
+v005A1BA0_0 .net "a", 0 0, C4<z>; 0 drivers
+v005A1BF8_0 .net "b", 0 0, C4<z>; 0 drivers
+v005A1C50_0 .net "ci", 0 0, C4<z>; 0 drivers
+v005A1CA8_0 .net "s0", 0 0, L_0030FE40; 1 drivers
+v005A1D00_0 .net "s1", 0 0, L_0030FD60; 1 drivers
+v005A1D58_0 .net "x", 0 0, L_00591820; 1 drivers
+v005A1DB0_0 .net "y", 0 0, L_00591858; 1 drivers
+v005A1E08_0 .net "z", 0 0, L_0030FDD0; 1 drivers
+S_0030A4F8 .scope module, "fullSub" "fullSub" 2 29;
+ .timescale 0 0;
+L_005A0090 .functor XOR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_005A00C8 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_005A0138 .functor AND 1, L_005A00C8, C4<z>, C4<1>, C4<1>;
+L_005A01E0 .functor XOR 1, L_005A0090, C4<z>, C4<0>, C4<0>;
+L_005A0250 .functor NOT 1, L_005A0090, C4<0>, C4<0>, C4<0>;
+L_005A0288 .functor AND 1, L_005A0250, C4<z>, C4<1>, C4<1>;
+L_005A0330 .functor OR 1, L_005A0138, L_005A0288, C4<0>, C4<0>;
+v005A1E60_0 .net "a", 0 0, C4<z>; 0 drivers
+v005A1EB8_0 .net "b", 0 0, C4<z>; 0 drivers
+v005A1F10_0 .net "ci", 0 0, C4<z>; 0 drivers
+v005A1F68_0 .net "k1", 0 0, L_005A00C8; 1 drivers
+v005A1FC0_0 .net "k2", 0 0, L_005A0250; 1 drivers
+v005A2018_0 .net "s0", 0 0, L_005A0330; 1 drivers
+v005A2070_0 .net "s1", 0 0, L_005A01E0; 1 drivers
+v005A20C8_0 .net "x", 0 0, L_005A0090; 1 drivers
+v005A2120_0 .net "y", 0 0, L_005A0138; 1 drivers
+v005A2178_0 .net "z", 0 0, L_005A0288; 1 drivers
+S_0030A580 .scope module, "halfAdder" "halfAdder" 2 19;
+ .timescale 0 0;
+L_005A03D8 .functor XOR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_005A0410 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v005A21D0_0 .net "a", 0 0, C4<z>; 0 drivers
+v005A2228_0 .net "b", 0 0, C4<z>; 0 drivers
+v005A2280_0 .net "s0", 0 0, L_005A0410; 1 drivers
+v005A22D8_0 .net "s1", 0 0, L_005A03D8; 1 drivers
+S_0030A608 .scope module, "halfSub" "halfSub" 2 24;
+ .timescale 0 0;
+L_005A04B8 .functor XOR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_005A04F0 .functor AND 1, L_005A0560, C4<z>, C4<1>, C4<1>;
+L_005A0560 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+v005A2330_0 .net *"_s0", 0 0, L_005A0560; 1 drivers
+v005A2388_0 .net "a", 0 0, C4<z>; 0 drivers
+v005CA000_0 .net "b", 0 0, C4<z>; 0 drivers
+v005CA058_0 .net "s0", 0 0, L_005A04F0; 1 drivers
+v005CA0B0_0 .net "s1", 0 0, L_005A04B8; 1 drivers
+S_0030A690 .scope module, "test_comparador" "test_comparador" 3 17;
+ .timescale 0 0;
+RS_005A536C .resolv tri, L_005CA630, L_005CA738, L_005CA840, C4<zzz>;
+v005CA528_0 .net8 "s", 2 0, RS_005A536C; 3 drivers
+v005CA580_0 .var "x", 2 0;
+v005CA5D8_0 .var "y", 2 0;
+S_0030A718 .scope module, "COMP1" "compareDif3" 3 23, 3 11, S_0030A690;
+ .timescale 0 0;
+L_005A0640 .functor XOR 1, L_005CA688, L_005CA6E0, C4<0>, C4<0>;
+L_005A0790 .functor XOR 1, L_005CA790, L_005CA7E8, C4<0>, C4<0>;
+L_005A0608 .functor XOR 1, L_005CA898, L_005CA8F0, C4<0>, C4<0>;
+v005CA108_0 .net *"_s0", 0 0, L_005A0640; 1 drivers
+v005CA160_0 .net *"_s11", 0 0, L_005CA7E8; 1 drivers
+v005CA1B8_0 .net *"_s12", 0 0, L_005A0608; 1 drivers
+v005CA210_0 .net *"_s15", 0 0, L_005CA898; 1 drivers
+v005CA268_0 .net *"_s17", 0 0, L_005CA8F0; 1 drivers
+v005CA2C0_0 .net *"_s3", 0 0, L_005CA688; 1 drivers
+v005CA318_0 .net *"_s5", 0 0, L_005CA6E0; 1 drivers
+v005CA370_0 .net *"_s6", 0 0, L_005A0790; 1 drivers
+v005CA3C8_0 .net *"_s9", 0 0, L_005CA790; 1 drivers
+v005CA420_0 .net "a", 2 0, v005CA580_0; 1 drivers
+v005CA478_0 .net "b", 2 0, v005CA5D8_0; 1 drivers
+v005CA4D0_0 .alias "s", 2 0, v005CA528_0;
+L_005CA630 .part/pv L_005A0640, 0, 1, 3;
+L_005CA688 .part v005CA580_0, 0, 1;
+L_005CA6E0 .part v005CA5D8_0, 0, 1;
+L_005CA738 .part/pv L_005A0790, 1, 1, 3;
+L_005CA790 .part v005CA580_0, 1, 1;
+L_005CA7E8 .part v005CA5D8_0, 1, 1;
+L_005CA840 .part/pv L_005A0608, 2, 1, 3;
+L_005CA898 .part v005CA580_0, 2, 1;
+L_005CA8F0 .part v005CA5D8_0, 2, 1;
+    .scope S_0030A690;
+T_0 ;
+    %vpi_call 3 26 "$display", "Exercicio01 - Jenifer Henrique - 427420";
+    %vpi_call 3 27 "$display", "Test ALU\222s comparador de diferen\347a 3 bits";
+    %set/v v005CA580_0, 0, 3;
+    %set/v v005CA5D8_0, 0, 3;
+    %vpi_call 3 30 "$display", "A   | B   |  Resultado";
+    %vpi_call 3 32 "$monitor", "%3b %3b = %3b", v005CA580_0, v005CA5D8_0, v005CA528_0;
+    %delay 1, 0;
+    %set/v v005CA580_0, 0, 3;
+    %set/v v005CA5D8_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v005CA580_0, 8, 3;
+    %movi 8, 2, 3;
+    %set/v v005CA5D8_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005CA580_0, 1, 3;
+    %movi 8, 3, 3;
+    %set/v v005CA5D8_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 6, 3;
+    %set/v v005CA580_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v005CA5D8_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005CA580_0, 1, 3;
+    %movi 8, 2, 3;
+    %set/v v005CA5D8_0, 8, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./util.v";
+    "exercicio04.v";

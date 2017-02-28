@@ -1,0 +1,60 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007C2918 .scope module, "testxorgate" "testxorgate" 2 24;
+ .timescale 0 0;
+v007CF258_0 .var "a", 0 0;
+v007CF2B0_0 .var "b", 0 0;
+v007CF308_0 .net "s", 0 0, L_007CEC68; 1 drivers
+S_007C3668 .scope module, "XOR1" "xorgate" 2 28, 2 11, S_007C2918;
+ .timescale 0 0;
+L_007CFCC0 .functor NOT 1, v007CF258_0, C4<0>, C4<0>, C4<0>;
+L_007CFFA0 .functor AND 1, L_007CFCC0, v007CF2B0_0, C4<1>, C4<1>;
+L_007CF398 .functor NOT 1, v007CF2B0_0, C4<0>, C4<0>, C4<0>;
+L_007CF3D0 .functor AND 1, v007CF258_0, L_007CF398, C4<1>, C4<1>;
+L_007CEC68 .functor OR 1, L_007CFFA0, L_007CF3D0, C4<0>, C4<0>;
+v007C36F0_0 .net *"_s0", 0 0, L_007CFCC0; 1 drivers
+v007C3748_0 .net *"_s2", 0 0, L_007CFFA0; 1 drivers
+v007CFB60_0 .net *"_s4", 0 0, L_007CF398; 1 drivers
+v007CFBB8_0 .net *"_s6", 0 0, L_007CF3D0; 1 drivers
+v007CFC10_0 .net "a", 0 0, v007CF258_0; 1 drivers
+v007CFC68_0 .net "b", 0 0, v007CF2B0_0; 1 drivers
+v007CF200_0 .alias "s", 0 0, v007CF308_0;
+S_007C29A0 .scope begin, "main" "main" 2 31, 2 31, S_007C2918;
+ .timescale 0 0;
+    .scope S_007C2918;
+T_0 ;
+    %fork t_1, S_007C29A0;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 32 "$display", "Guia 01_05(Extra) - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 33 "$display", "Test XOR gate";
+    %vpi_call 2 34 "$display", "\012(~a & b | a & ~b) = s\012";
+    %set/v v007CF258_0, 0, 1;
+    %set/v v007CF2B0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "(~%b & %b | %b & ~%b) = %b", v007CF258_0, v007CF2B0_0, v007CF258_0, v007CF2B0_0, v007CF308_0;
+    %set/v v007CF258_0, 0, 1;
+    %set/v v007CF2B0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "(~%b & %b | %b & ~%b) = %b", v007CF258_0, v007CF2B0_0, v007CF258_0, v007CF2B0_0, v007CF308_0;
+    %set/v v007CF258_0, 1, 1;
+    %set/v v007CF2B0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "(~%b & %b | %b & ~%b) = %b", v007CF258_0, v007CF2B0_0, v007CF258_0, v007CF2B0_0, v007CF308_0;
+    %set/v v007CF258_0, 1, 1;
+    %set/v v007CF2B0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "(~%b & %b | %b & ~%b) = %b", v007CF258_0, v007CF2B0_0, v007CF258_0, v007CF2B0_0, v007CF308_0;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Ciência da Computação\AC I - 2\Guias\Guia01\guia01_05.v";

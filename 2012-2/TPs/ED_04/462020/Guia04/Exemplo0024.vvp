@@ -1,0 +1,90 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BF9058 .scope module, "test_compD3b" "test_compD3b" 2 17;
+ .timescale 0 0;
+v005D16F0_0 .net "dif", 0 0, L_005D29E8; 1 drivers
+v005D1748_0 .var "x", 2 0;
+v005D17A0_0 .var "y", 2 0;
+S_00BF90E0 .scope module, "CD31" "compD3b" 2 22, 2 9, S_00BF9058;
+ .timescale 0 0;
+L_00BF2FC0 .functor XOR 1, L_005D17F8, L_005D1850, C4<0>, C4<0>;
+L_005D2A20 .functor XOR 1, L_005D18A8, L_005D1900, C4<0>, C4<0>;
+L_005D2AC8 .functor XOR 1, L_005D1958, L_005D19B0, C4<0>, C4<0>;
+L_005D29E8 .functor OR 1, L_00BF2FC0, L_005D2A20, L_005D2AC8, C4<0>;
+v00BFCBA0_0 .net *"_s1", 0 0, L_005D17F8; 1 drivers
+v00BFCBF8_0 .net *"_s11", 0 0, L_005D19B0; 1 drivers
+v00BFCCF0_0 .net *"_s3", 0 0, L_005D1850; 1 drivers
+v00BFCD48_0 .net *"_s5", 0 0, L_005D18A8; 1 drivers
+v00BFCDA0_0 .net *"_s7", 0 0, L_005D1900; 1 drivers
+v00BF2EB8_0 .net *"_s9", 0 0, L_005D1958; 1 drivers
+v00BF2F10_0 .net "a", 2 0, v005D1748_0; 1 drivers
+v00BF2F68_0 .net "b", 2 0, v005D17A0_0; 1 drivers
+v00BFFDD0_0 .alias "s", 0 0, v005D16F0_0;
+v005D15E8_0 .net "s1", 0 0, L_00BF2FC0; 1 drivers
+v005D1640_0 .net "s2", 0 0, L_005D2A20; 1 drivers
+v005D1698_0 .net "s3", 0 0, L_005D2AC8; 1 drivers
+L_005D17F8 .part v005D1748_0, 0, 1;
+L_005D1850 .part v005D17A0_0, 0, 1;
+L_005D18A8 .part v005D1748_0, 1, 1;
+L_005D1900 .part v005D17A0_0, 1, 1;
+L_005D1958 .part v005D1748_0, 2, 1;
+L_005D19B0 .part v005D17A0_0, 2, 1;
+    .scope S_00BF9058;
+T_0 ;
+    %vpi_call 2 25 "$display", "Exemplo0024 - Willian Antonio dos Santos - 462020";
+    %vpi_call 2 26 "$display", "Teste de ALU, comparador de diferenca\012\012Saida vai a 1 se for diferente, 0 se for igual.\012";
+    %set/v v005D1748_0, 0, 3;
+    %set/v v005D17A0_0, 0, 3;
+    %vpi_call 2 28 "$monitor", "Valor1: %3b != Valor2: %3b ? Diferente : %b ", v005D1748_0, v005D17A0_0, v005D16F0_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v005D17A0_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v005D17A0_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "------------------------------------------";
+    %movi 8, 7, 4;
+T_0.2 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.3, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v005D1748_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v005D1748_0, 12, 3;
+    %load/v 12, v005D17A0_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v005D17A0_0, 12, 3;
+    %movi 12, 7, 4;
+T_0.4 %cmp/s 0, 12, 4;
+    %jmp/0xz T_0.5, 5;
+    %add 12, 1, 4;
+    %delay 1, 0;
+    %load/v 16, v005D17A0_0, 3;
+    %mov 19, 0, 29;
+    %addi 16, 1, 32;
+    %set/v v005D17A0_0, 16, 3;
+    %jmp T_0.4;
+T_0.5 ;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "------------------------------------------";
+    %jmp T_0.2;
+T_0.3 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0024.v";

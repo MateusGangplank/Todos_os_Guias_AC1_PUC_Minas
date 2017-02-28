@@ -1,0 +1,78 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0083ADD0 .scope module, "test_somadorAlgebrico" "test_somadorAlgebrico" 2 44;
+ .timescale 0 0;
+v007016F0_0 .net "s0", 0 0, L_007022E8; 1 drivers
+v00701748_0 .net "s1", 0 0, L_007024A8; 1 drivers
+v007017A0_0 .var "x", 0 2;
+S_0083AF68 .scope module, "fa1" "somadorAlgebrico" 2 49, 2 27, S_0083ADD0;
+ .timescale 0 0;
+L_00839930 .functor XOR 1, L_007017F8, L_00701850, C4<0>, C4<0>;
+L_007024A8 .functor XOR 1, L_007023C8, L_00701958, C4<0>, C4<0>;
+v00701430_0 .net *"_s1", 0 0, L_007017F8; 1 drivers
+v00701488_0 .net *"_s3", 0 0, L_00701850; 1 drivers
+v007014E0_0 .net *"_s9", 0 0, L_00701958; 1 drivers
+v00701538_0 .alias "s0", 0 0, v007016F0_0;
+v00701590_0 .alias "s1", 0 0, v00701748_0;
+v007015E8_0 .net "temp1", 0 0, L_00839930; 1 drivers
+v00701640_0 .net "temp2", 0 0, L_007023C8; 1 drivers
+v00701698_0 .net "x", 0 2, v007017A0_0; 1 drivers
+L_007017F8 .part v007017A0_0, 0, 1;
+L_00701850 .part v007017A0_0, 1, 1;
+L_007018A8 .part v007017A0_0, 2, 1;
+L_00701900 .part v007017A0_0, 0, 1;
+L_00701958 .part v007017A0_0, 0, 1;
+S_0083AFF0 .scope module, "fa1" "fullAdder" 2 35, 2 9, S_0083AF68;
+ .timescale 0 0;
+L_00839A48 .functor XOR 1, L_00839930, L_007018A8, C4<0>, C4<0>;
+L_00702278 .functor AND 1, L_00839930, L_007018A8, C4<1>, C4<1>;
+L_007022E8 .functor XOR 1, L_00701900, L_00839A48, C4<0>, C4<0>;
+L_00702358 .functor AND 1, L_00701900, L_00839A48, C4<1>, C4<1>;
+L_007023C8 .functor OR 1, L_00702278, L_00702358, C4<0>, C4<0>;
+v008330B0_0 .alias "a", 0 0, v007015E8_0;
+v00833108_0 .net "b", 0 0, L_007018A8; 1 drivers
+v00833160_0 .net "carryIn", 0 0, L_00701900; 1 drivers
+v00701278_0 .alias "s0", 0 0, v007016F0_0;
+v007012D0_0 .alias "s1", 0 0, v00701640_0;
+v00701328_0 .net "temp1", 0 0, L_00839A48; 1 drivers
+v00701380_0 .net "temp2", 0 0, L_00702278; 1 drivers
+v007013D8_0 .net "temp3", 0 0, L_00702358; 1 drivers
+    .scope S_0083ADD0;
+T_0 ;
+    %vpi_call 2 53 "$display", "Exemplo0031 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 54 "$display", "Test ALU\222s somadorAlgebrico";
+    %set/v v007017A0_0, 0, 3;
+    %vpi_call 2 58 "$display", "xyc     s1  s0 ";
+    %delay 1, 0;
+    %vpi_call 2 59 "$monitor", "%3b     %b    %b", v007017A0_0, v00701748_0, v007016F0_0;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v007017A0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v007017A0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v007017A0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 4, 3;
+    %set/v v007017A0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v007017A0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 6, 3;
+    %set/v v007017A0_0, 8, 3;
+    %delay 1, 0;
+    %set/v v007017A0_0, 1, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc_2_periodo\Arquitetura_1\Exercicios_Resolvidos\Guia05\Exemplo0031.v";

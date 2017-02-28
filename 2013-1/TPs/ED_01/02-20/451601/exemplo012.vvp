@@ -1,0 +1,72 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006694C8 .scope module, "testeandgate" "testeandgate" 2 12;
+ .timescale 0 0;
+v00663160_0 .var "a", 0 0;
+v0066A3C8_0 .var "b", 0 0;
+v0066A420_0 .var "c", 0 0;
+v0066A478_0 .net "s", 0 0, L_0066CB88; 1 drivers
+S_00664208 .scope module, "and1" "andgate2" 2 16, 2 7, S_006694C8;
+ .timescale 0 0;
+L_0066CB88 .functor AND 1, L_0066A4D0, v0066A420_0, C4<1>, C4<1>;
+v00662C40_0 .net "p", 0 0, v00663160_0; 1 drivers
+v00662C98_0 .net "q", 0 0, v0066A3C8_0; 1 drivers
+v00662CF0_0 .net "r", 0 0, v0066A420_0; 1 drivers
+v006630B0_0 .net "s", 0 0, L_0066A4D0; 1 drivers
+v00663108_0 .alias "s2", 0 0, v0066A478_0;
+S_0059E060 .scope module, "blabla" "andgate1" 2 8, 2 3, S_00664208;
+ .timescale 0 0;
+L_0066A4D0 .functor AND 1, v00663160_0, v0066A3C8_0, C4<1>, C4<1>;
+v00664290_0 .alias "p", 0 0, v00662C40_0;
+v006642E8_0 .alias "q", 0 0, v00662C98_0;
+v00662BE8_0 .alias "s", 0 0, v006630B0_0;
+    .scope S_006694C8;
+T_0 ;
+    %set/v v00663160_0, 0, 1;
+    %set/v v0066A3C8_0, 0, 1;
+    %set/v v0066A420_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_006694C8;
+T_1 ;
+    %vpi_call 2 24 "$display", "blabla";
+    %vpi_call 2 25 "$monitor", "%b | %b | %b = %b", v00663160_0, v0066A3C8_0, v0066A420_0, v0066A478_0;
+    %delay 1, 0;
+    %set/v v00663160_0, 0, 1;
+    %set/v v0066A3C8_0, 0, 1;
+    %set/v v0066A420_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00663160_0, 0, 1;
+    %set/v v0066A3C8_0, 1, 1;
+    %set/v v0066A420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00663160_0, 0, 1;
+    %set/v v0066A3C8_0, 1, 1;
+    %set/v v0066A420_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00663160_0, 1, 1;
+    %set/v v0066A3C8_0, 0, 1;
+    %set/v v0066A420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00663160_0, 1, 1;
+    %set/v v0066A3C8_0, 0, 1;
+    %set/v v0066A420_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00663160_0, 1, 1;
+    %set/v v0066A3C8_0, 1, 1;
+    %set/v v0066A420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00663160_0, 1, 1;
+    %set/v v0066A3C8_0, 1, 1;
+    %set/v v0066A420_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Matheus\Documents\exemplo012.v";

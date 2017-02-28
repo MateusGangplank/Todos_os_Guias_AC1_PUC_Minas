@@ -1,0 +1,116 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003BB8B8 .scope module, "principal" "principal" 2 33;
+ .timescale 0 0;
+v005D0BE8_0 .var "a", 3 0;
+v005D0C40_0 .var "b", 3 0;
+v005D0C98_0 .net "final", 0 0, v0059F468_0; 1 drivers
+v005D0CF0_0 .var "key", 0 0;
+v005D0D48_0 .net "s0", 0 0, L_005D2258; 1 drivers
+S_003BB588 .scope module, "op1" "operation" 2 48, 2 7, S_003BB8B8;
+ .timescale 0 0;
+L_003BDB18 .functor XNOR 1, L_005D0DA0, L_005D0DF8, C4<0>, C4<0>;
+L_003B3060 .functor XNOR 1, L_005D0E50, L_005D0EA8, C4<0>, C4<0>;
+L_005D2108 .functor XNOR 1, L_005D0F00, L_005D0F58, C4<0>, C4<0>;
+L_005D21B0 .functor XNOR 1, L_005D0FB0, L_005D1008, C4<0>, C4<0>;
+L_005D2258 .functor AND 1, L_003BDB18, L_003B3060, L_005D2108, L_005D21B0;
+v003BE328_0 .net *"_s12", 0 0, L_005D0F00; 1 drivers
+v003BE380_0 .net *"_s14", 0 0, L_005D0F58; 1 drivers
+v003BE3D8_0 .net *"_s17", 0 0, L_005D0FB0; 1 drivers
+v005D08D0_0 .net *"_s19", 0 0, L_005D1008; 1 drivers
+v005D0928_0 .net *"_s2", 0 0, L_005D0DA0; 1 drivers
+v005D0980_0 .net *"_s4", 0 0, L_005D0DF8; 1 drivers
+v005D09D8_0 .net *"_s7", 0 0, L_005D0E50; 1 drivers
+v005D0A30_0 .net *"_s9", 0 0, L_005D0EA8; 1 drivers
+v005D0A88_0 .net "a", 3 0, v005D0BE8_0; 1 drivers
+v005D0AE0 .array "aux", 0 3;
+v005D0AE0_0 .net v005D0AE0 0, 0 0, L_005D21B0; 1 drivers
+v005D0AE0_1 .net v005D0AE0 1, 0 0, L_005D2108; 1 drivers
+v005D0AE0_2 .net v005D0AE0 2, 0 0, L_003B3060; 1 drivers
+v005D0AE0_3 .net v005D0AE0 3, 0 0, L_003BDB18; 1 drivers
+v005D0B38_0 .net "b", 3 0, v005D0C40_0; 1 drivers
+v005D0B90_0 .alias "s", 0 0, v005D0D48_0;
+L_005D0DA0 .part v005D0BE8_0, 3, 1;
+L_005D0DF8 .part v005D0C40_0, 3, 1;
+L_005D0E50 .part v005D0BE8_0, 2, 1;
+L_005D0EA8 .part v005D0C40_0, 2, 1;
+L_005D0F00 .part v005D0BE8_0, 1, 1;
+L_005D0F58 .part v005D0C40_0, 1, 1;
+L_005D0FB0 .part v005D0BE8_0, 0, 1;
+L_005D1008 .part v005D0C40_0, 0, 1;
+S_003BB720 .scope module, "chave1" "chave" 2 49, 2 18, S_003BB8B8;
+ .timescale 0 0;
+v003BA0F0_0 .alias "a", 0 0, v005D0D48_0;
+v0059F468_0 .var "s2", 0 0;
+v0059F4C0_0 .net "sinal", 0 0, v005D0CF0_0; 1 drivers
+E_003BA4A0 .event edge, v0059F4C0_0, v003BA0F0_0, v0059F468_0;
+S_003BB7A8 .scope begin, "start" "start" 2 41, 2 41, S_003BB8B8;
+ .timescale 0 0;
+S_003BB830 .scope begin, "main" "main" 2 51, 2 51, S_003BB8B8;
+ .timescale 0 0;
+    .scope S_003BB720;
+T_0 ;
+    %wait E_003BA4A0;
+    %load/v 8, v0059F4C0_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v003BA0F0_0, 1;
+    %set/v v0059F468_0, 8, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v003BA0F0_0, 1;
+    %inv 8, 1;
+    %set/v v0059F468_0, 8, 1;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_003BB8B8;
+T_1 ;
+    %fork t_1, S_003BB7A8;
+    %jmp t_0;
+    .scope S_003BB7A8;
+t_1 ;
+    %set/v v005D0BE8_0, 0, 4;
+    %movi 8, 5, 4;
+    %set/v v005D0C40_0, 8, 4;
+    %set/v v005D0CF0_0, 0, 1;
+    %end;
+    .scope S_003BB8B8;
+t_0 %join;
+    %end;
+    .thread T_1;
+    .scope S_003BB8B8;
+T_2 ;
+    %fork t_3, S_003BB830;
+    %jmp t_2;
+    .scope S_003BB830;
+t_3 ;
+    %vpi_call 2 52 "$display", "Exemplo0036 - Mateus Guilherme do Carmo Cruz - 427446";
+    %vpi_call 2 53 "$display", "LU's test - opera\347\365es de igualdade e diferen\347a selecion\341veis";
+    %vpi_call 2 54 "$display", "key = 0 (equals), key = 1(different)";
+    %vpi_call 2 55 "$display", "key : a - b = s";
+    %vpi_call 2 56 "$monitor", "%b : %4b - %4b = %b", v005D0CF0_0, v005D0BE8_0, v005D0C40_0, v005D0C98_0;
+    %delay 1, 0;
+    %set/v v005D0CF0_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 7, 4;
+    %set/v v005D0BE8_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v005D0C40_0, 8, 4;
+    %set/v v005D0CF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005D0CF0_0, 1, 1;
+    %end;
+    .scope S_003BB8B8;
+t_2 %join;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0036.v";

@@ -1,0 +1,73 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00702B50 .scope module, "test_f4" "test_f4" 2 17;
+ .timescale 0 0;
+v00780E38_0 .var "c", 0 0;
+v00780E90_0 .var "x", 0 0;
+v00780EE8_0 .var "y", 0 0;
+v00780F40_0 .net "z", 0 0, L_00783D28; 1 drivers
+S_0074E870 .scope module, "modulo" "f4" 2 23, 2 9, S_00702B50;
+ .timescale 0 0;
+L_0070A2F0 .functor AND 1, v00780E90_0, v00780EE8_0, C4<1>, C4<1>;
+L_0070A398 .functor OR 1, v00780E90_0, v00780EE8_0, C4<0>, C4<0>;
+L_0070A3D0 .functor AND 1, L_0070A2F0, v00780E38_0, C4<1>, C4<1>;
+L_0070A478 .functor AND 1, L_0070A398, L_00783CB8, C4<1>, C4<1>;
+L_00783CB8 .functor NOT 1, v00780E38_0, C4<0>, C4<0>, C4<0>;
+L_00783D28 .functor OR 1, L_0070A3D0, L_0070A478, C4<0>, C4<0>;
+v00703F50_0 .net *"_s0", 0 0, L_00783CB8; 1 drivers
+v00703FA8_0 .net "a", 0 0, v00780E90_0; 1 drivers
+v00704000_0 .net "b", 0 0, v00780EE8_0; 1 drivers
+v00704058_0 .net "chave", 0 0, v00780E38_0; 1 drivers
+v00780C80_0 .alias "s", 0 0, v00780F40_0;
+v00780CD8_0 .net "wire1", 0 0, L_0070A2F0; 1 drivers
+v00780D30_0 .net "wire2", 0 0, L_0070A398; 1 drivers
+v00780D88_0 .net "wire3", 0 0, L_0070A3D0; 1 drivers
+v00780DE0_0 .net "wire4", 0 0, L_0070A478; 1 drivers
+    .scope S_00702B50;
+T_0 ;
+    %vpi_call 2 26 "$display", "Exemplo0032 - Thauan Velasco - 439995";
+    %vpi_call 2 27 "$display", "Test LU's module";
+    %vpi_call 2 28 "$monitor", "Entrada A = %1b Entrada B = %1b Chave = %1b Saida = %1b", v00780E90_0, v00780EE8_0, v00780E38_0, v00780F40_0;
+    %delay 1, 0;
+    %set/v v00780E90_0, 0, 1;
+    %set/v v00780EE8_0, 0, 1;
+    %set/v v00780E38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 1, 1;
+    %set/v v00780EE8_0, 0, 1;
+    %set/v v00780E38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 0, 1;
+    %set/v v00780EE8_0, 1, 1;
+    %set/v v00780E38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 1, 1;
+    %set/v v00780EE8_0, 1, 1;
+    %set/v v00780E38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 0, 1;
+    %set/v v00780EE8_0, 0, 1;
+    %set/v v00780E38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 1, 1;
+    %set/v v00780EE8_0, 0, 1;
+    %set/v v00780E38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 0, 1;
+    %set/v v00780EE8_0, 1, 1;
+    %set/v v00780E38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00780E90_0, 1, 1;
+    %set/v v00780EE8_0, 1, 1;
+    %set/v v00780E38_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\AC1\ED03-439995\Exemplo0032.v";

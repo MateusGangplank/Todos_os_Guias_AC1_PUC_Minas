@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005DE810 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v005DFE50_0 .var "a", 0 0;
+v005DFEA8_0 .var "b", 0 0;
+v005DFF00_0 .net "s", 0 0, L_005DE2B8; 1 drivers
+S_005D2E10 .scope module, "NAND1" "nandgate" 2 22, 2 9, S_005DE810;
+ .timescale 0 0;
+L_005DFF58 .functor NOT 1, v005DFE50_0, C4<0>, C4<0>, C4<0>;
+L_005DE248 .functor NOT 1, v005DFEA8_0, C4<0>, C4<0>, C4<0>;
+L_005DE2B8 .functor OR 1, L_005DFF58, L_005DE248, C4<0>, C4<0>;
+v005D2E98_0 .net *"_s0", 0 0, L_005DFF58; 1 drivers
+v005D32B0_0 .net *"_s2", 0 0, L_005DE248; 1 drivers
+v005D3308_0 .net "p", 0 0, v005DFE50_0; 1 drivers
+v005D3360_0 .net "q", 0 0, v005DFEA8_0; 1 drivers
+v005D33B8_0 .alias "s", 0 0, v005DFF00_0;
+S_005D2D88 .scope begin, "start" "start" 2 24, 2 24, S_005DE810;
+ .timescale 0 0;
+    .scope S_005DE810;
+T_0 ;
+    %fork t_1, S_005D2D88;
+    %jmp t_0;
+    .scope S_005D2D88;
+t_1 ;
+    %set/v v005DFE50_0, 0, 1;
+    %set/v v005DFEA8_0, 0, 1;
+    %end;
+    .scope S_005DE810;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005DE810;
+T_1 ;
+    %vpi_call 2 31 "$display", "Exemplo0009 - Leonardo Machado Decina - 45158";
+    %vpi_call 2 32 "$display", "Test NAND gate";
+    %vpi_call 2 33 "$monitor", "%d\011%b = %b", v005DFE50_0, v005DFEA8_0, v005DFF00_0;
+    %delay 1, 0;
+    %set/v v005DFE50_0, 0, 1;
+    %set/v v005DFEA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DFE50_0, 1, 1;
+    %set/v v005DFEA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DFE50_0, 1, 1;
+    %set/v v005DFEA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DFE50_0, 0, 1;
+    %set/v v005DFEA8_0, 0, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Leonardo\Desktop\Leo\Puc\AC I\Ex0009.v";

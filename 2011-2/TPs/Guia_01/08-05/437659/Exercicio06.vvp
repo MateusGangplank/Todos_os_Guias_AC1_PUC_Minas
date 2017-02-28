@@ -1,0 +1,106 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005BA108 .scope module, "testnorgate" "testnorgate" 2 15;
+ .timescale 0 0;
+v005FEFC8_0 .var "a", 0 0;
+v005FF020_0 .var "b", 0 0;
+v005FF078_0 .var "c", 0 0;
+v005FF0D0_0 .var "d", 0 0;
+v005FF128_0 .var "e", 0 0;
+v005FF180_0 .var "f", 0 0;
+v005FF1D8_0 .var "g", 0 0;
+v005FF230_0 .var "h", 0 0;
+v005FF288_0 .net "s", 0 0, L_00600028; 1 drivers
+S_005BA190 .scope module, "NOR1" "norgate" 2 18, 2 11, S_005BA108;
+ .timescale 0 0;
+L_005B4CD0 .functor OR 1, v005FEFC8_0, v005FF020_0, C4<0>, C4<0>;
+L_005B4D78 .functor OR 1, L_005B4CD0, v005FF078_0, C4<0>, C4<0>;
+L_005FFBE8 .functor OR 1, L_005B4D78, v005FF020_0, C4<0>, C4<0>;
+L_005FFC58 .functor OR 1, L_005FFBE8, v005FF078_0, C4<0>, C4<0>;
+L_005FFCC8 .functor OR 1, L_005FFC58, v005FF0D0_0, C4<0>, C4<0>;
+L_005FFD88 .functor OR 1, L_005FFCC8, v005FF128_0, C4<0>, C4<0>;
+L_005FFE30 .functor OR 1, L_005FFD88, v005FF180_0, C4<0>, C4<0>;
+L_005FFED8 .functor OR 1, L_005FFE30, v005FF1D8_0, C4<0>, C4<0>;
+L_005FFF80 .functor OR 1, L_005FFED8, v005FF230_0, C4<0>, C4<0>;
+L_00600028 .functor NOT 1, L_005FFF80, C4<0>, C4<0>, C4<0>;
+v005B2FE8_0 .net *"_s0", 0 0, L_005B4CD0; 1 drivers
+v005B3040_0 .net *"_s10", 0 0, L_005FFD88; 1 drivers
+v005B3098_0 .net *"_s12", 0 0, L_005FFE30; 1 drivers
+v005BBD80_0 .net *"_s14", 0 0, L_005FFED8; 1 drivers
+v005BBDD8_0 .net *"_s16", 0 0, L_005FFF80; 1 drivers
+v005BBE30_0 .net *"_s2", 0 0, L_005B4D78; 1 drivers
+v005BBE88_0 .net *"_s4", 0 0, L_005FFBE8; 1 drivers
+v005FEC00_0 .net *"_s6", 0 0, L_005FFC58; 1 drivers
+v005FEC58_0 .net *"_s8", 0 0, L_005FFCC8; 1 drivers
+v005FECB0_0 .net "p", 0 0, v005FEFC8_0; 1 drivers
+v005FED08_0 .net "q", 0 0, v005FF020_0; 1 drivers
+v005FED60_0 .net "r", 0 0, v005FF078_0; 1 drivers
+v005FEDB8_0 .alias "s", 0 0, v005FF288_0;
+v005FEE10_0 .net "t", 0 0, v005FF0D0_0; 1 drivers
+v005FEE68_0 .net "u", 0 0, v005FF128_0; 1 drivers
+v005FEEC0_0 .net "v", 0 0, v005FF180_0; 1 drivers
+v005FEF18_0 .net "x", 0 0, v005FF1D8_0; 1 drivers
+v005FEF70_0 .net "z", 0 0, v005FF230_0; 1 drivers
+    .scope S_005BA108;
+T_0 ;
+    %set/v v005FEFC8_0, 0, 1;
+    %set/v v005FF020_0, 0, 1;
+    %set/v v005FF078_0, 0, 1;
+    %set/v v005FF0D0_0, 0, 1;
+    %set/v v005FF128_0, 0, 1;
+    %set/v v005FF180_0, 0, 1;
+    %set/v v005FF1D8_0, 0, 1;
+    %set/v v005FF230_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_005BA108;
+T_1 ;
+    %vpi_call 2 34 "$display", "Exercicio06 - Debora Amaral Chaves - 437659";
+    %vpi_call 2 35 "$display", "Receber um byte e retornar 1, se todos os seus bits forem iguais a 0. Alguns Testes:";
+    %vpi_call 2 36 "$display", "\012~(a | b | c | d | e | f | g | h) = s\012";
+    %set/v v005FEFC8_0, 0, 1;
+    %set/v v005FF020_0, 0, 1;
+    %set/v v005FF078_0, 0, 1;
+    %set/v v005FF0D0_0, 0, 1;
+    %set/v v005FF128_0, 0, 1;
+    %set/v v005FF180_0, 0, 1;
+    %set/v v005FF1D8_0, 0, 1;
+    %set/v v005FF230_0, 0, 1;
+    %vpi_call 2 38 "$monitor", "~(%b | %b | %b | %b | %b | %b | %b) = %b", v005FEFC8_0, v005FF020_0, v005FF078_0, v005FF0D0_0, v005FF128_0, v005FF180_0, v005FF1D8_0, v005FF230_0, v005FF288_0;
+    %delay 1, 0;
+    %set/v v005FF078_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FF020_0, 1, 1;
+    %set/v v005FF078_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FF078_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FEFC8_0, 1, 1;
+    %set/v v005FF020_0, 0, 1;
+    %set/v v005FF078_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FF078_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FF078_0, 0, 1;
+    %set/v v005FF020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FF078_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FEFC8_0, 1, 1;
+    %set/v v005FF020_0, 1, 1;
+    %set/v v005FF0D0_0, 1, 1;
+    %set/v v005FF128_0, 1, 1;
+    %set/v v005FF180_0, 1, 1;
+    %set/v v005FF1D8_0, 1, 1;
+    %set/v v005FF230_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\PenDrive\PUC\2periodo\AC\Guia01\Exercicio06.v";

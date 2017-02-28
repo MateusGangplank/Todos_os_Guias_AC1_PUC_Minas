@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005D0E28 .scope module, "test_fullSubtractor" "test_fullSubtractor" 2 30;
+ .timescale 0 0;
+v005DEC98_0 .var "a", 5 0;
+v005DECF0_0 .var "b", 5 0;
+v005DED48_0 .var "borrowIn", 5 0;
+v005DEDA0_0 .net "borrowOut", 5 0, L_005DF0F0; 1 drivers
+v005DEDF8_0 .net "s0", 5 0, L_005DEFD8; 1 drivers
+S_005E21D8 .scope module, "subtracaoCompleta_1" "fullSubtractor" 2 37, 2 10, S_005D0E28;
+ .timescale 0 0;
+L_003E6D10 .functor NOT 6, v005DEC98_0, C4<000000>, C4<000000>, C4<000000>;
+L_005DEE88 .functor XOR 6, v005DEC98_0, v005DECF0_0, C4<000000>, C4<000000>;
+L_005DEEF8 .functor AND 6, L_003E6D10, v005DECF0_0, C4<111111>, C4<111111>;
+L_005DEF68 .functor NOT 6, L_005DEE88, C4<000000>, C4<000000>, C4<000000>;
+L_005DEFD8 .functor XOR 6, v005DED48_0, L_005DEE88, C4<000000>, C4<000000>;
+L_005DF080 .functor AND 6, L_005DEF68, v005DED48_0, C4<111111>, C4<111111>;
+L_005DF0F0 .functor OR 6, L_005DF080, L_005DEEF8, C4<000000>, C4<000000>;
+v005E0D98_0 .net "a", 5 0, v005DEC98_0; 1 drivers
+v005DE850_0 .net "b", 5 0, v005DECF0_0; 1 drivers
+v005DE8C0_0 .net "borrowIn", 5 0, v005DED48_0; 1 drivers
+v005DE948_0 .alias "borrowOut", 5 0, v005DEDA0_0;
+v005DE9B8_0 .net "na", 5 0, L_003E6D10; 1 drivers
+v005DEA10_0 .net "ns1", 5 0, L_005DEF68; 1 drivers
+v005DEA80_0 .alias "s0", 5 0, v005DEDF8_0;
+v005DEB18_0 .net "s1", 5 0, L_005DEE88; 1 drivers
+v005DEB88_0 .net "s2", 5 0, L_005DEEF8; 1 drivers
+v005DEC28_0 .net "s3", 5 0, L_005DF080; 1 drivers
+    .scope S_005D0E28;
+T_0 ;
+    %set/v v005DEC98_0, 0, 6;
+    %set/v v005DECF0_0, 0, 6;
+    %set/v v005DED48_0, 0, 6;
+    %end;
+    .thread T_0;
+    .scope S_005D0E28;
+T_1 ;
+    %vpi_call 2 47 "$display", "Exemplo0023 - Ederson Cristiano Nunes - 438964";
+    %vpi_call 2 48 "$display", "Subtracao_Completa_1";
+    %vpi_call 2 51 "$monitor", "a=%6b   b=%6b   borrowIn=%6b   s0=%6b   borrowOut=%6b", v005DEC98_0, v005DECF0_0, v005DED48_0, v005DEDF8_0, v005DEDA0_0;
+    %delay 1, 0;
+    %set/v v005DEC98_0, 1, 6;
+    %movi 8, 1, 6;
+    %set/v v005DECF0_0, 8, 6;
+    %set/v v005DED48_0, 0, 6;
+    %delay 1, 0;
+    %set/v v005DEC98_0, 0, 6;
+    %movi 8, 1, 6;
+    %set/v v005DECF0_0, 8, 6;
+    %set/v v005DED48_0, 0, 6;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\438964\guia04\438964\Exemplo0023.v";

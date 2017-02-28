@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006AE5D0 .scope module, "testandgate" "testandgate" 2 17;
+ .timescale 0 0;
+v006A31B8_0 .var "a", 0 0;
+v006A3210_0 .var "b", 0 0;
+v006ADF60_0 .net "s", 0 0, L_006A2D68; 1 drivers
+S_006A2CE0 .scope module, "AND1" "andgate" 2 22, 2 9, S_006AE5D0;
+ .timescale 0 0;
+L_006A2D68 .functor AND 1, v006A31B8_0, v006A3210_0, C4<1>, C4<1>;
+v006AE658_0 .net "p", 0 0, v006A31B8_0; 1 drivers
+v006A3108_0 .net "q", 0 0, v006A3210_0; 1 drivers
+v006A3160_0 .alias "s", 0 0, v006ADF60_0;
+S_006A2C58 .scope begin, "start" "start" 2 24, 2 24, S_006AE5D0;
+ .timescale 0 0;
+    .scope S_006AE5D0;
+T_0 ;
+    %fork t_1, S_006A2C58;
+    %jmp t_0;
+    .scope S_006A2C58;
+t_1 ;
+    %set/v v006A31B8_0, 0, 1;
+    %set/v v006A3210_0, 0, 1;
+    %end;
+    .scope S_006AE5D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006AE5D0;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exemplo0003 - Pedro Henrique Vilar Locatelli - 427453";
+    %vpi_call 2 30 "$display", "Test AND gate";
+    %vpi_call 2 31 "$display", "\012a & b = s\012";
+    %set/v v006A31B8_0, 0, 1;
+    %set/v v006A3210_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b & %b = %b", v006A31B8_0, v006A3210_0, v006ADF60_0;
+    %set/v v006A31B8_0, 0, 1;
+    %set/v v006A3210_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b & %b = %b", v006A31B8_0, v006A3210_0, v006ADF60_0;
+    %set/v v006A31B8_0, 1, 1;
+    %set/v v006A3210_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b & %b = %b", v006A31B8_0, v006A3210_0, v006ADF60_0;
+    %set/v v006A31B8_0, 1, 1;
+    %set/v v006A3210_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b = %b", v006A31B8_0, v006A3210_0, v006ADF60_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Brock\pedLoc\Aulas\puccdc2\terrorVerilog\Guia01\Exemplo0003.v";

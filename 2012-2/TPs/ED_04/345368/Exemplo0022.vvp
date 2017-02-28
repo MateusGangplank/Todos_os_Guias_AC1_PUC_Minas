@@ -1,0 +1,89 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_018C22B8 .scope module, "test_fullSubtractor" "test_fullSubtractor" 2 22;
+ .timescale 0 0;
+v018BF268_0 .var "c", 0 0;
+v018BF2C0_0 .net "s0", 0 0, L_00973328; 1 drivers
+v018BF318_0 .net "s1", 0 0, L_0097DCA8; 1 drivers
+v018BF370_0 .var "x", 0 0;
+v018BF3C8_0 .var "y", 0 0;
+S_018C23C8 .scope module, "modulo" "fullSubtractor" 2 30, 2 10, S_018C22B8;
+ .timescale 0 0;
+L_00973280 .functor NOT 1, v018BF370_0, C4<0>, C4<0>, C4<0>;
+L_009732F0 .functor XOR 1, v018BF3C8_0, v018BF268_0, C4<0>, C4<0>;
+L_018E5E70 .functor AND 1, L_009732F0, L_00973280, C4<1>, C4<1>;
+L_018E5F18 .functor AND 1, v018BF3C8_0, v018BF268_0, C4<1>, C4<1>;
+L_018E5F50 .functor XOR 1, v018BF370_0, v018BF3C8_0, C4<0>, C4<0>;
+L_00973328 .functor OR 1, L_018E5E70, L_018E5F18, C4<0>, C4<0>;
+L_0097DCA8 .functor XOR 1, L_018E5F50, v018BF268_0, C4<0>, C4<0>;
+v0097A930_0 .net "a", 0 0, v018BF370_0; 1 drivers
+v0097A988_0 .net "and1", 0 0, L_018E5E70; 1 drivers
+v00973228_0 .net "and2", 0 0, L_018E5F18; 1 drivers
+v018BF000_0 .net "b", 0 0, v018BF3C8_0; 1 drivers
+v018BF058_0 .net "c", 0 0, v018BF268_0; 1 drivers
+v018BF0B0_0 .net "notA", 0 0, L_00973280; 1 drivers
+v018BF108_0 .alias "s0", 0 0, v018BF2C0_0;
+v018BF160_0 .alias "s1", 0 0, v018BF318_0;
+v018BF1B8_0 .net "xorAB", 0 0, L_018E5F50; 1 drivers
+v018BF210_0 .net "xorBC", 0 0, L_009732F0; 1 drivers
+S_018C2340 .scope begin, "start" "start" 2 32, 2 32, S_018C22B8;
+ .timescale 0 0;
+    .scope S_018C22B8;
+T_0 ;
+    %fork t_1, S_018C2340;
+    %jmp t_0;
+    .scope S_018C2340;
+t_1 ;
+    %set/v v018BF370_0, 0, 1;
+    %set/v v018BF3C8_0, 0, 1;
+    %set/v v018BF268_0, 0, 1;
+    %end;
+    .scope S_018C22B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_018C22B8;
+T_1 ;
+    %vpi_call 2 40 "$display", "Exemplo0022 - Marcio Santana Correa -  345368";
+    %vpi_call 2 41 "$display", "Test ALU's full subtractor";
+    %vpi_call 2 42 "$display", "a - b - c = s0 s1";
+    %vpi_call 2 43 "$monitor", "%b - %b - %b = %b  %b", v018BF370_0, v018BF3C8_0, v018BF268_0, v018BF2C0_0, v018BF318_0;
+    %delay 1, 0;
+    %set/v v018BF370_0, 0, 1;
+    %set/v v018BF3C8_0, 0, 1;
+    %set/v v018BF268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v018BF370_0, 0, 1;
+    %set/v v018BF3C8_0, 1, 1;
+    %set/v v018BF268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v018BF370_0, 0, 1;
+    %set/v v018BF3C8_0, 1, 1;
+    %set/v v018BF268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v018BF370_0, 1, 1;
+    %set/v v018BF3C8_0, 0, 1;
+    %set/v v018BF268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v018BF370_0, 1, 1;
+    %set/v v018BF3C8_0, 0, 1;
+    %set/v v018BF268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v018BF370_0, 1, 1;
+    %set/v v018BF3C8_0, 1, 1;
+    %set/v v018BF268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v018BF370_0, 1, 1;
+    %set/v v018BF3C8_0, 1, 1;
+    %set/v v018BF268_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\PucMinas\ArqComp 1\Guias\382175\Exemplo0022.v";

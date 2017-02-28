@@ -1,0 +1,65 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0099E078 .scope module, "testenandgate" "testenandgate" 2 11;
+ .timescale 0 0;
+v0099FCB8_0 .var "a", 0 0;
+v0099FD10_0 .var "b", 0 0;
+v0099FD68_0 .net "s", 0 0, L_0099FDF8; 1 drivers
+S_00993118 .scope module, "NAND1" "nandgate" 2 16, 2 5, S_0099E078;
+ .timescale 0 0;
+L_0099E648 .functor NOT 1, v0099FCB8_0, C4<0>, C4<0>, C4<0>;
+L_0099CD58 .functor NOT 1, v0099FD10_0, C4<0>, C4<0>, C4<0>;
+L_0099FDF8 .functor OR 1, L_0099E648, L_0099CD58, C4<0>, C4<0>;
+v00992D10_0 .net *"_s0", 0 0, L_0099E648; 1 drivers
+v009931A0_0 .net *"_s2", 0 0, L_0099CD58; 1 drivers
+v009931F8_0 .net "p", 0 0, v0099FCB8_0; 1 drivers
+v0099FC08_0 .net "q", 0 0, v0099FD10_0; 1 drivers
+v0099FC60_0 .alias "s", 0 0, v0099FD68_0;
+S_00992C88 .scope begin, "start" "start" 2 18, 2 18, S_0099E078;
+ .timescale 0 0;
+S_00992C00 .scope begin, "main" "main" 2 25, 2 25, S_0099E078;
+ .timescale 0 0;
+    .scope S_0099E078;
+T_0 ;
+    %fork t_1, S_00992C88;
+    %jmp t_0;
+    .scope S_00992C88;
+t_1 ;
+    %set/v v0099FCB8_0, 0, 1;
+    %set/v v0099FD10_0, 0, 1;
+    %end;
+    .scope S_0099E078;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0099E078;
+T_1 ;
+    %fork t_3, S_00992C00;
+    %jmp t_2;
+    .scope S_00992C00;
+t_3 ;
+    %vpi_call 2 27 "$display", "Exemplo0008 - \315talo Guimar\343es Otoni - 451581";
+    %vpi_call 2 28 "$monitor", "%b %b = %b", v0099FCB8_0, v0099FD10_0, v0099FD68_0;
+    %delay 1, 0;
+    %set/v v0099FCB8_0, 0, 1;
+    %set/v v0099FD10_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0099FCB8_0, 1, 1;
+    %set/v v0099FD10_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0099FCB8_0, 1, 1;
+    %set/v v0099FD10_0, 1, 1;
+    %end;
+    .scope S_0099E078;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Ítalo\Dropbox\PUC\2° Periodo\AC\Exemplo0009.v";

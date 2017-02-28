@@ -1,0 +1,78 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006ECB50 .scope module, "test_f4" "test_f4" 2 30;
+ .timescale 0 0;
+v006EDE30_0 .var "chave", 0 0;
+v006EE358_0 .var "x", 0 0;
+v006EE3B0_0 .var "y", 0 0;
+v0058FE80_0 .net "z", 0 0, L_00590D18; 1 drivers
+v00590038_0 .net "z2", 0 0, L_00591060; 1 drivers
+S_006EC710 .scope module, "modulo" "f4" 2 37, 2 9, S_006ECB50;
+ .timescale 0 0;
+L_006ED818 .functor AND 1, v006EE358_0, v006EE3B0_0, C4<1>, C4<1>;
+L_006ED8C0 .functor OR 1, v006EE358_0, v006EE3B0_0, C4<0>, C4<0>;
+L_006E4750 .functor NAND 1, v006EE358_0, v006EE3B0_0, C4<1>, C4<1>;
+L_006ED850 .functor NOR 1, v006EE358_0, v006EE3B0_0, C4<0>, C4<0>;
+L_006ED888 .functor NOT 1, v006EDE30_0, C4<0>, C4<0>, C4<0>;
+L_006E47C0 .functor AND 1, L_006ED818, L_006ED888, C4<1>, C4<1>;
+L_006E4868 .functor AND 1, L_006ED8C0, L_006ED888, C4<1>, C4<1>;
+L_00590D50 .functor AND 1, L_006E4750, v006EDE30_0, C4<1>, C4<1>;
+L_00590DC0 .functor AND 1, L_006ED850, v006EDE30_0, C4<1>, C4<1>;
+L_00590D18 .functor OR 1, L_006E47C0, L_00590D50, C4<0>, C4<0>;
+L_00591060 .functor OR 1, L_006E4868, L_00590DC0, C4<0>, C4<0>;
+v006EDF38_0 .net "a", 0 0, v006EE358_0; 1 drivers
+v006EE148_0 .net "b", 0 0, v006EE3B0_0; 1 drivers
+v006EDF90_0 .net "chave", 0 0, v006EDE30_0; 1 drivers
+v006EE1F8_0 .net "nchave", 0 0, L_006ED888; 1 drivers
+v006EDC78_0 .alias "s", 0 0, v0058FE80_0;
+v006EDD80_0 .alias "s2", 0 0, v00590038_0;
+v006EDFE8_0 .net "temp1", 0 0, L_006ED818; 1 drivers
+v006EE300_0 .net "temp2", 0 0, L_006ED8C0; 1 drivers
+v006EE0F0_0 .net "temp3", 0 0, L_006E4750; 1 drivers
+v006EDD28_0 .net "temp4", 0 0, L_006ED850; 1 drivers
+v006EDCD0_0 .net "temp5", 0 0, L_006E47C0; 1 drivers
+v006EE250_0 .net "temp6", 0 0, L_006E4868; 1 drivers
+v006EDDD8_0 .net "temp7", 0 0, L_00590D50; 1 drivers
+v006EE2A8_0 .net "temp8", 0 0, L_00590DC0; 1 drivers
+    .scope S_006ECB50;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0033 - Rafael Guimar\343es de Sousa - 451607";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %set/v v006EE358_0, 0, 1;
+    %set/v v006EE3B0_0, 0, 1;
+    %set/v v006EDE30_0, 0, 1;
+    %vpi_call 2 46 "$display", "Legenda: 0 - AND/OR \011 1 - NAND/NOR", v006EDE30_0;
+    %vpi_call 2 47 "$monitor", "Chave: (%b) \011 %b %b \011 AND/NAND:%b \011 OR/NOR:%b", v006EDE30_0, v006EE358_0, v006EE3B0_0, v0058FE80_0, v00590038_0;
+    %delay 1, 0;
+    %set/v v006EE358_0, 0, 1;
+    %set/v v006EE3B0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EE358_0, 1, 1;
+    %set/v v006EE3B0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EE358_0, 1, 1;
+    %set/v v006EE3B0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EDE30_0, 1, 1;
+    %set/v v006EE358_0, 0, 1;
+    %set/v v006EE3B0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EE358_0, 0, 1;
+    %set/v v006EE3B0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EE358_0, 1, 1;
+    %set/v v006EE3B0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EE358_0, 1, 1;
+    %set/v v006EE3B0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Documents\PUC\AC I\ED03\Exemplo0033.v";

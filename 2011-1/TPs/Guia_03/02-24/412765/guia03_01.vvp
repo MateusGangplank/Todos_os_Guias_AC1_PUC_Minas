@@ -1,0 +1,66 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEB30 .scope module, "halfAddertest" "halfAddertest" 2 24;
+ .timescale 0 0;
+v006A2EA0_0 .var "a", 0 0;
+v006A2EF8_0 .var "b", 0 0;
+v006A2F50_0 .net "s1", 0 0, L_006730B0; 1 drivers
+v006A2FA8_0 .net "s2", 0 0, L_006A3118; 1 drivers
+S_003EECB0 .scope module, "HALF" "halfAdder" 2 30, 2 8, S_003EEB30;
+ .timescale 0 0;
+L_006730B0 .functor AND 1, v006A2EA0_0, v006A2EF8_0, C4<1>, C4<1>;
+L_006A3098 .functor NOT 1, L_006730B0, C4<0>, C4<0>, C4<0>;
+L_006A30E0 .functor OR 1, v006A2EA0_0, v006A2EF8_0, C4<0>, C4<0>;
+L_006A3118 .functor AND 1, L_006A3098, L_006A30E0, C4<1>, C4<1>;
+v003EED30_0 .net "p", 0 0, v006A2EA0_0; 1 drivers
+v006A2C70_0 .net "q", 0 0, v006A2EF8_0; 1 drivers
+v006A2CE0_0 .alias "s1", 0 0, v006A2FA8_0;
+v006A2D68_0 .alias "s2", 0 0, v006A2F50_0;
+v006A2DD8_0 .net "s3", 0 0, L_006A30E0; 1 drivers
+v006A2E30_0 .net "s4", 0 0, L_006A3098; 1 drivers
+S_003EEC30 .scope begin, "start" "start" 2 32, 2 32, S_003EEB30;
+ .timescale 0 0;
+S_003EEBB0 .scope begin, "main" "main" 2 39, 2 39, S_003EEB30;
+ .timescale 0 0;
+    .scope S_003EEB30;
+T_0 ;
+    %fork t_1, S_003EEC30;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A2EA0_0, 0, 1;
+    %set/v v006A2EF8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EEB30;
+T_1 ;
+    %fork t_3, S_003EEBB0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 41 "$display", "\012Guia 03 - exercicio 01 - Paulo Henrique - 412765";
+    %vpi_call 2 42 "$display", "\012Teste Half Adder gate";
+    %vpi_call 2 43 "$display", "\012a + b = s";
+    %vpi_call 2 44 "$monitor", "%b + %b = %b%b", v006A2EA0_0, v006A2EF8_0, v006A2F50_0, v006A2FA8_0;
+    %delay 1, 0;
+    %set/v v006A2EA0_0, 0, 1;
+    %set/v v006A2EF8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2EA0_0, 1, 1;
+    %set/v v006A2EF8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2EA0_0, 1, 1;
+    %set/v v006A2EF8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_03\412765\guia03_01.v";

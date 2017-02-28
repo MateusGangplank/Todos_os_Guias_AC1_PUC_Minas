@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B12DE0 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v00B1FEA8_0 .var "a", 0 0;
+v00B1FF00_0 .var "b", 0 0;
+v00B1FF58_0 .net "s", 0 0, L_00B1C950; 1 drivers
+S_00B13270 .scope module, "NAND1" "nandgate" 2 21, 2 11, S_00B12DE0;
+ .timescale 0 0;
+L_00B1FFB0 .functor AND 1, v00B1FEA8_0, v00B1FF00_0, C4<1>, C4<1>;
+L_00B1C950 .functor NOT 1, L_00B1FFB0, C4<0>, C4<0>, C4<0>;
+v00B1E5D8_0 .net *"_s0", 0 0, L_00B1FFB0; 1 drivers
+v00B132F8_0 .net "p", 0 0, v00B1FEA8_0; 1 drivers
+v00B13350_0 .net "q", 0 0, v00B1FF00_0; 1 drivers
+v00B1FE50_0 .alias "s", 0 0, v00B1FF58_0;
+S_00B12E68 .scope begin, "start" "start" 2 22, 2 22, S_00B12DE0;
+ .timescale 0 0;
+    .scope S_00B12DE0;
+T_0 ;
+    %fork t_1, S_00B12E68;
+    %jmp t_0;
+    .scope S_00B12E68;
+t_1 ;
+    %set/v v00B1FEA8_0, 0, 1;
+    %set/v v00B1FF00_0, 0, 1;
+    %end;
+    .scope S_00B12DE0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00B12DE0;
+T_1 ;
+    %vpi_call 2 27 "$display", "Exercicio01-Filipe Santos-451555";
+    %vpi_call 2 28 "$display", "Test NAND gate";
+    %vpi_call 2 29 "$display", "\012~(a&b)=s\012";
+    %set/v v00B1FEA8_0, 0, 1;
+    %set/v v00B1FF00_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "%b & %b =%b", v00B1FEA8_0, v00B1FF00_0, v00B1FF58_0;
+    %set/v v00B1FEA8_0, 0, 1;
+    %set/v v00B1FF00_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b & %b =%b", v00B1FEA8_0, v00B1FF00_0, v00B1FF58_0;
+    %set/v v00B1FEA8_0, 1, 1;
+    %set/v v00B1FF00_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b & %b =%b", v00B1FEA8_0, v00B1FF00_0, v00B1FF58_0;
+    %set/v v00B1FEA8_0, 1, 1;
+    %set/v v00B1FF00_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b & %b =%b", v00B1FEA8_0, v00B1FF00_0, v00B1FF58_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Desktop\Filipe\CC Puc\Segundo Período\AC\Guia01\Exercicio01.V";

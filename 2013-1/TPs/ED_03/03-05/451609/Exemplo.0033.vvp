@@ -1,0 +1,91 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00732418 .scope module, "teste" "teste" 2 27;
+ .timescale 0 0;
+v006E9340_0 .var "a", 0 0;
+v006E9398_0 .var "b", 0 0;
+v006E93F0_0 .var "chave", 0 0;
+v006E9448_0 .net "s", 0 0, L_0072F950; 1 drivers
+S_00732528 .scope module, "test" "LU" 2 33, 2 11, S_00732418;
+ .timescale 0 0;
+L_00734418 .functor AND 1, v006E9340_0, v006E9398_0, C4<1>, C4<1>;
+L_006E2C40 .functor OR 1, v006E9340_0, v006E9398_0, C4<0>, C4<0>;
+L_006E2C78 .functor NAND 1, v006E9340_0, v006E9398_0, C4<1>, C4<1>;
+L_006E2BD0 .functor NOR 1, v006E9340_0, v006E9398_0, C4<0>, C4<0>;
+L_006E2C08 .functor NOT 1, v006E93F0_0, C4<0>, C4<0>, C4<0>;
+L_006EAFF8 .functor AND 1, L_00734418, L_006E2C40, L_006E2C08, C4<1>;
+L_0072F8A8 .functor AND 1, L_006E2C78, L_006E2BD0, v006E93F0_0, C4<1>;
+L_0072F950 .functor OR 1, L_006EAFF8, L_0072F8A8, C4<0>, C4<0>;
+v006E8F78_0 .net "a", 0 0, v006E9340_0; 1 drivers
+v006E8FD0_0 .net "b", 0 0, v006E9398_0; 1 drivers
+v006E9028_0 .net "chave", 0 0, v006E93F0_0; 1 drivers
+v006E9080_0 .net "notchave", 0 0, L_006E2C08; 1 drivers
+v006E90D8_0 .alias "s", 0 0, v006E9448_0;
+v006E9130_0 .net "tmp1", 0 0, L_00734418; 1 drivers
+v006E9188_0 .net "tmp2", 0 0, L_006E2C40; 1 drivers
+v006E91E0_0 .net "tmp3", 0 0, L_006E2C78; 1 drivers
+v006E9238_0 .net "tmp4", 0 0, L_006E2BD0; 1 drivers
+v006E9290_0 .net "tmp5", 0 0, L_006EAFF8; 1 drivers
+v006E92E8_0 .net "tmp6", 0 0, L_0072F8A8; 1 drivers
+S_007324A0 .scope begin, "main" "main" 2 36, 2 36, S_00732418;
+ .timescale 0 0;
+    .scope S_00732418;
+T_0 ;
+    %fork t_1, S_007324A0;
+    %jmp t_0;
+    .scope S_007324A0;
+t_1 ;
+    %vpi_call 2 38 "$display", "Exemplo0033 - Rafael Tadeu - 451609";
+    %vpi_call 2 39 "$display", "Test exercicio02's module";
+    %set/v v006E9340_0, 0, 1;
+    %set/v v006E9398_0, 0, 1;
+    %set/v v006E93F0_0, 0, 1;
+    %vpi_call 2 42 "$display", "\012chave = 0 (operacao and) chave = 1 (operacao or)";
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "a = %b  b = %b chave = %b saida = %b", v006E9340_0, v006E9398_0, v006E93F0_0, v006E9448_0;
+    %delay 1, 0;
+    %set/v v006E9340_0, 0, 1;
+    %set/v v006E9398_0, 0, 1;
+    %set/v v006E93F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 0, 1;
+    %set/v v006E9398_0, 0, 1;
+    %set/v v006E93F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 0, 1;
+    %set/v v006E9398_0, 1, 1;
+    %set/v v006E93F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 0, 1;
+    %set/v v006E9398_0, 1, 1;
+    %set/v v006E93F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 1, 1;
+    %set/v v006E9398_0, 0, 1;
+    %set/v v006E93F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 1, 1;
+    %set/v v006E9398_0, 0, 1;
+    %set/v v006E93F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 1, 1;
+    %set/v v006E9398_0, 1, 1;
+    %set/v v006E93F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006E9340_0, 1, 1;
+    %set/v v006E9398_0, 1, 1;
+    %set/v v006E93F0_0, 1, 1;
+    %end;
+    .scope S_00732418;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Google Drive\Puc\Arquitetura\Guias\Guia 03\Exemplo.0033.v";

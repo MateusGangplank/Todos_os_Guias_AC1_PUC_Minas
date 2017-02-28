@@ -1,0 +1,75 @@
+// -----------------------------------------
+// - Guia 08 - Wender Zacarias Xavier - 427472
+// - Exercicio01.v
+// - Ciência da Computação - 2ºPeríodo
+// ----------------------------------------- 
+
+`include "Clock.v"
+	
+module dff ( s , ns, data, clk);
+	output s, ns;
+	input data , clk;
+	
+	reg s , ns;
+	
+	initial begin 
+	  s = 1'b0;
+	  ns = 1'b1;
+	end
+	always @ (posedge clk)
+		begin
+		s <= data;	ns <= ~s;
+		end
+		
+	endmodule //dff
+	
+// ------------------------------------
+// Registrador de deslocamento para a esquerda;
+// ------------------------------------
+
+	module regleft ( output[4:0]s, output[4:0]ns, input data, input clock);
+	
+	dff RDE1 (s[0],ns[0],s[1],clock);
+	dff RDE2 (s[1],ns[1],s[2],clock);
+	dff RDE3 (s[2],ns[2],s[3],clock);
+	dff RDE4 (s[3],ns[3],s[4],clock);
+	dff RDE5 (s[4],ns[4],data,clock);
+	
+	endmodule // regleft
+
+//--------------------------
+// Teste
+// --------------------------
+
+	module test;
+	
+	reg data;
+	wire [0:4]s;
+	wire [0:4]ns;
+	wire clock;
+	
+	clock c1(clk);
+	
+	regleft ESQUERDA1 ( s,ns,data,clock);
+	
+	initial begin
+		data = 1'b1;
+	  end
+	  
+	initial begin
+	$display ("Exercicio01 - Guia08 - Teste");
+	$display ("Aluno: Wender Zacarias Xavier - 427472");
+	$display ("Entrada		Output");
+	#15 data = 1'b0;
+	#15 data = 1'b0;
+	#15 data = 1'b0;
+	#15 data = 1'b0;
+	#150 $finish;
+	end
+	
+	always @(posedge clk)
+		begin
+			$display (" %b		%b	", data,s);
+		end
+		
+endmodule//test

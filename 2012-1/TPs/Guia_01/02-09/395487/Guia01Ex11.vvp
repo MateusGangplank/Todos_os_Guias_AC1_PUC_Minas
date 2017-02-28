@@ -1,0 +1,76 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008F9028 .scope module, "testebytegate" "testebytegate" 2 25;
+ .timescale 0 0;
+v00330730_0 .var "a", 0 7;
+v00330788_0 .net "s", 0 0, L_003316D8; 1 drivers
+S_008F90B0 .scope module, "BYTE1" "bytegate" 2 29, 2 12, S_008F9028;
+ .timescale 0 0;
+L_008FFD88 .functor OR 1, L_003307E0, L_00330838, C4<0>, C4<0>;
+L_008F4950 .functor OR 1, L_008FFD88, L_00330890, C4<0>, C4<0>;
+L_008FFF08 .functor OR 1, L_008F4950, L_003308E8, C4<0>, C4<0>;
+L_008FFFB0 .functor OR 1, L_008FFF08, L_00330940, C4<0>, C4<0>;
+L_003314E0 .functor OR 1, L_008FFFB0, L_00330998, C4<0>, C4<0>;
+L_00331588 .functor OR 1, L_003314E0, L_003309F0, C4<0>, C4<0>;
+L_00331630 .functor OR 1, L_00331588, L_00330A48, C4<0>, C4<0>;
+L_003316D8 .functor NOT 1, L_00331630, C4<0>, C4<0>, C4<0>;
+v008F4848_0 .net *"_s1", 0 0, L_003307E0; 1 drivers
+v008F48A0_0 .net *"_s11", 0 0, L_003308E8; 1 drivers
+v008F48F8_0 .net *"_s12", 0 0, L_008FFF08; 1 drivers
+v008FCBB8_0 .net *"_s15", 0 0, L_00330940; 1 drivers
+v008FCC10_0 .net *"_s16", 0 0, L_008FFFB0; 1 drivers
+v008FCC68_0 .net *"_s19", 0 0, L_00330998; 1 drivers
+v008F2E90_0 .net *"_s20", 0 0, L_003314E0; 1 drivers
+v008F2EE8_0 .net *"_s23", 0 0, L_003309F0; 1 drivers
+v008F2F40_0 .net *"_s24", 0 0, L_00331588; 1 drivers
+v00330470_0 .net *"_s27", 0 0, L_00330A48; 1 drivers
+v003304C8_0 .net *"_s28", 0 0, L_00331630; 1 drivers
+v00330520_0 .net *"_s3", 0 0, L_00330838; 1 drivers
+v00330578_0 .net *"_s4", 0 0, L_008FFD88; 1 drivers
+v003305D0_0 .net *"_s7", 0 0, L_00330890; 1 drivers
+v00330628_0 .net *"_s8", 0 0, L_008F4950; 1 drivers
+v00330680_0 .net "p", 0 7, v00330730_0; 1 drivers
+v003306D8_0 .alias "q", 0 0, v00330788_0;
+L_003307E0 .part v00330730_0, 7, 1;
+L_00330838 .part v00330730_0, 6, 1;
+L_00330890 .part v00330730_0, 5, 1;
+L_003308E8 .part v00330730_0, 4, 1;
+L_00330940 .part v00330730_0, 3, 1;
+L_00330998 .part v00330730_0, 2, 1;
+L_003309F0 .part v00330730_0, 1, 1;
+L_00330A48 .part v00330730_0, 0, 1;
+    .scope S_008F9028;
+T_0 ;
+    %movi 8, 8, 8;
+    %set/v v00330730_0, 8, 8;
+    %vpi_call 2 35 "$display", "Guia 1 Exercicio 11 - Alvaro";
+    %vpi_call 2 36 "$display", "Test BYTE gate";
+    %vpi_call 2 37 "$display", "Checagem  = OK se retornar 1\012";
+    %vpi_call 2 39 "$monitor", "%b %b", v00330730_0, v00330788_0;
+    %delay 1, 0;
+    %movi 8, 10, 8;
+    %set/v v00330730_0, 8, 8;
+    %delay 1, 0;
+    %set/v v00330730_0, 1, 8;
+    %delay 1, 0;
+    %movi 8, 138, 8;
+    %set/v v00330730_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 74, 8;
+    %set/v v00330730_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 74, 8;
+    %set/v v00330730_0, 8, 8;
+    %delay 1, 0;
+    %set/v v00330730_0, 0, 8;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\Guia 01 - 395487\Guia01Ex11.v";

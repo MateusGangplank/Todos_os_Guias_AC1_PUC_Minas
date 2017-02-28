@@ -1,0 +1,47 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE0D0 .scope module, "testexercicio01" "testexercicio01" 2 11;
+ .timescale 0 0;
+L_00672880 .functor NOT 1, v003EE150_0, C4<0>, C4<0>, C4<0>;
+L_00672848 .functor NOT 1, v006A2140_0, C4<0>, C4<0>, C4<0>;
+L_006A2428 .functor AND 1, L_00672880, v006A2140_0, C4<1>, C4<1>;
+L_006A24F0 .functor AND 1, v003EE150_0, L_00672848, C4<1>, C4<1>;
+L_006A2598 .functor OR 1, L_006A2428, L_006A24F0, C4<0>, C4<0>;
+L_006A2640 .functor AND 1, v003EE150_0, v006A2140_0, C4<1>, C4<1>;
+v003EE150_0 .var "a", 0 0;
+v006A20D0_0 .net "a0", 0 0, L_00672880; 1 drivers
+v006A2140_0 .var "b", 0 0;
+v006A21C8_0 .net "b0", 0 0, L_00672848; 1 drivers
+v006A2238_0 .net "c0", 0 0, L_006A2640; 1 drivers
+v006A2290_0 .net "s", 0 0, L_006A2598; 1 drivers
+v006A2300_0 .net "s0", 0 0, L_006A2428; 1 drivers
+v006A2398_0 .net "s1", 0 0, L_006A24F0; 1 drivers
+    .scope S_003EE0D0;
+T_0 ;
+    %vpi_call 2 25 "$display", "Guia03- 01 - Caio Ragacci Pimentel - 405794";
+    %vpi_call 2 26 "$display", " MEIA SOMA";
+    %vpi_call 2 27 "$display", "A  +  B  =  C  S";
+    %set/v v003EE150_0, 0, 1;
+    %set/v v006A2140_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 31 "$monitor", "%b  +  %b  =  %b  %b", v003EE150_0, v006A2140_0, v006A2238_0, v006A2290_0;
+    %delay 1, 0;
+    %set/v v003EE150_0, 0, 1;
+    %set/v v006A2140_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003EE150_0, 1, 1;
+    %set/v v006A2140_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003EE150_0, 1, 1;
+    %set/v v006A2140_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_03\Guia03-01.v";

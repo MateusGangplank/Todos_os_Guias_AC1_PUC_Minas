@@ -1,0 +1,48 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003D72F8 .scope module, "implementacao01" "implementacao01" 2 13;
+ .timescale 0 0;
+L_003D66D8 .functor NOR 1, v00699020_0, L_003D6E70, C4<0>, C4<0>;
+L_003D6E70 .functor NOR 1, v00698F90_0, L_003D66D8, C4<0>, C4<0>;
+v003D7380_0 .net "q", 0 0, L_003D66D8; 1 drivers
+v00698F20_0 .net "q1", 0 0, L_003D6E70; 1 drivers
+v00698F90_0 .var "reset", 0 0;
+v00699020_0 .var "set", 0 0;
+S_003D7EC8 .scope begin, "main" "main" 2 27, 2 27, S_003D72F8;
+ .timescale 0 0;
+    .scope S_003D72F8;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_003D72F8;
+T_1 ;
+    %fork t_1, S_003D7EC8;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 28 "$display", "Guia 10\011\011Implementação 01";
+    %vpi_call 2 29 "$display", "Implementar um latch SR com portas NOR\012";
+    %vpi_call 2 30 "$display", "Aluno: Tiago Menegaz de Melo Garcia\011\011Matr\377cula:405844\012";
+    %vpi_call 2 31 "$display", "Relatório de Testes";
+    %delay 2, 0;
+    %set/v v00699020_0, 0, 1;
+    %set/v v00698F90_0, 0, 1;
+    %vpi_call 2 33 "$monitor", "Set [%b] Reset [%b] \011Q[%b] Q'[%b]", v00699020_0, v00698F90_0, v003D7380_0, v00698F20_0;
+    %delay 2, 0;
+    %set/v v00699020_0, 1, 1;
+    %delay 2, 0;
+    %set/v v00698F90_0, 1, 1;
+    %delay 2, 0;
+    %set/v v00699020_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\Arquitetura\Guia_10\implementacao01.v";

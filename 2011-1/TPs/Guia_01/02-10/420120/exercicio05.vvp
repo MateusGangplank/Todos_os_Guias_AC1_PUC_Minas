@@ -1,0 +1,88 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00673228 .scope module, "testxor" "testxor" 2 17;
+ .timescale 0 0;
+v006A3D08_0 .var "e1", 0 0;
+v006A3D60_0 .var "e2", 0 0;
+v006A3DB8_0 .net "s", 0 0, L_006A3FD0; 1 drivers
+S_003EF9F8 .scope module, "XOR1" "metodoxor" 2 22, 2 8, S_00673228;
+ .timescale 0 0;
+L_006A3E10 .functor NOT 1, v006A3D08_0, C4<0>, C4<0>, C4<0>;
+L_006A3E80 .functor AND 1, L_006A3E10, v006A3D60_0, C4<1>, C4<1>;
+L_006A3F28 .functor NOT 1, v006A3D60_0, C4<0>, C4<0>, C4<0>;
+L_006A3F60 .functor AND 1, v006A3D08_0, L_006A3F28, C4<1>, C4<1>;
+L_006A3FD0 .functor OR 1, L_006A3E80, L_006A3F60, C4<0>, C4<0>;
+v003EFA78_0 .net *"_s0", 0 0, L_006A3E10; 1 drivers
+v006A3A40_0 .net *"_s2", 0 0, L_006A3E80; 1 drivers
+v006A3AB0_0 .net *"_s4", 0 0, L_006A3F28; 1 drivers
+v006A3B38_0 .net *"_s6", 0 0, L_006A3F60; 1 drivers
+v006A3BA8_0 .net "e1", 0 0, v006A3D08_0; 1 drivers
+v006A3C00_0 .net "e2", 0 0, v006A3D60_0; 1 drivers
+v006A3C70_0 .alias "s", 0 0, v006A3DB8_0;
+S_003EF978 .scope begin, "start" "start" 2 24, 2 24, S_00673228;
+ .timescale 0 0;
+S_003EF8F8 .scope begin, "main" "main" 2 29, 2 29, S_00673228;
+ .timescale 0 0;
+    .scope S_00673228;
+T_0 ;
+    %fork t_1, S_003EF978;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A3D08_0, 0, 1;
+    %set/v v006A3D60_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00673228;
+T_1 ;
+    %fork t_3, S_003EF8F8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 30 "$display", " ( (~e1 & e2 | e1 & ~e2) ) ";
+    %delay 1, 0;
+    %load/v 8, v006A3D08_0, 1;
+    %inv 8, 1;
+    %load/v 9, v006A3D60_0, 1;
+    %inv 9, 1;
+    %vpi_call 2 31 "$display", " %b | %b | %b | %b = %b ", T<8,1,u>, v006A3D60_0, v006A3D08_0, T<9,1,u>, v006A3DB8_0;
+    %delay 1, 0;
+    %set/v v006A3D08_0, 0, 1;
+    %set/v v006A3D60_0, 1, 1;
+    %delay 1, 0;
+    %load/v 8, v006A3D08_0, 1;
+    %inv 8, 1;
+    %load/v 9, v006A3D60_0, 1;
+    %inv 9, 1;
+    %vpi_call 2 34 "$display", " %b | %b | %b | %b = %b ", T<8,1,u>, v006A3D60_0, v006A3D08_0, T<9,1,u>, v006A3DB8_0;
+    %delay 1, 0;
+    %set/v v006A3D08_0, 1, 1;
+    %set/v v006A3D60_0, 0, 1;
+    %delay 1, 0;
+    %load/v 8, v006A3D08_0, 1;
+    %inv 8, 1;
+    %load/v 9, v006A3D60_0, 1;
+    %inv 9, 1;
+    %vpi_call 2 37 "$display", " %b | %b | %b | %b = %b ", T<8,1,u>, v006A3D60_0, v006A3D08_0, T<9,1,u>, v006A3DB8_0;
+    %delay 1, 0;
+    %set/v v006A3D08_0, 1, 1;
+    %set/v v006A3D60_0, 1, 1;
+    %delay 1, 0;
+    %load/v 8, v006A3D08_0, 1;
+    %inv 8, 1;
+    %load/v 9, v006A3D60_0, 1;
+    %inv 9, 1;
+    %vpi_call 2 40 "$display", " %b | %b | %b | %b = %b ", T<8,1,u>, v006A3D60_0, v006A3D08_0, T<9,1,u>, v006A3DB8_0;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\420120\exercicio05.v";

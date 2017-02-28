@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00802CD0 .scope module, "testxorgate" "testxorgate" 2 19;
+ .timescale 0 0;
+v00803AF0_0 .var "a", 0 0;
+v00803B48_0 .var "b", 0 0;
+v0080CA98_0 .net "s", 0 0, L_0080CC78; 1 drivers
+S_0080E600 .scope module, "NOR1" "xorgate" 2 26, 2 11, S_00802CD0;
+ .timescale 0 0;
+L_00802DE0 .functor NOT 1, v00803AF0_0, C4<0>, C4<0>, C4<0>;
+L_0080CB28 .functor AND 1, L_00802DE0, v00803B48_0, C4<1>, C4<1>;
+L_0080CBD0 .functor NOT 1, v00803B48_0, C4<0>, C4<0>, C4<0>;
+L_0080CC08 .functor AND 1, v00803AF0_0, L_0080CBD0, C4<1>, C4<1>;
+L_0080CC78 .functor OR 1, L_0080CB28, L_0080CC08, C4<0>, C4<0>;
+v0080E688_0 .net *"_s0", 0 0, L_00802DE0; 1 drivers
+v0080FE60_0 .net *"_s2", 0 0, L_0080CB28; 1 drivers
+v0080FEB8_0 .net *"_s4", 0 0, L_0080CBD0; 1 drivers
+v0080FF10_0 .net *"_s6", 0 0, L_0080CC08; 1 drivers
+v0080FF68_0 .net "p", 0 0, v00803AF0_0; 1 drivers
+v00803A40_0 .net "q", 0 0, v00803B48_0; 1 drivers
+v00803A98_0 .alias "s", 0 0, v0080CA98_0;
+S_0080E578 .scope begin, "start" "start" 2 29, 2 29, S_00802CD0;
+ .timescale 0 0;
+S_00802D58 .scope begin, "main" "main" 2 35, 2 35, S_00802CD0;
+ .timescale 0 0;
+    .scope S_00802CD0;
+T_0 ;
+    %fork t_1, S_0080E578;
+    %jmp t_0;
+    .scope S_0080E578;
+t_1 ;
+    %set/v v00803AF0_0, 0, 1;
+    %set/v v00803B48_0, 0, 1;
+    %end;
+    .scope S_00802CD0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00802CD0;
+T_1 ;
+    %fork t_3, S_00802D58;
+    %jmp t_2;
+    .scope S_00802D58;
+t_3 ;
+    %vpi_call 2 36 "$display", "Exemplo0011 - Oswaldo Oliveira Paulino - 382175";
+    %vpi_call 2 37 "$display", "Test xor gate";
+    %vpi_call 2 38 "$display", "\012 a ^ b = s\012";
+    %vpi_call 2 39 "$monitor", " %b ^ %b = %b", v00803AF0_0, v00803B48_0, v0080CA98_0;
+    %delay 1, 0;
+    %set/v v00803AF0_0, 0, 1;
+    %set/v v00803B48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00803AF0_0, 0, 1;
+    %set/v v00803B48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00803AF0_0, 1, 1;
+    %set/v v00803B48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00803AF0_0, 1, 1;
+    %set/v v00803B48_0, 1, 1;
+    %end;
+    .scope S_00802CD0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Oswaldo\Documents\Ciência da Computação - LABORATÓRIO\382175\AQR1\Guia 01\Exemplo0011.v";

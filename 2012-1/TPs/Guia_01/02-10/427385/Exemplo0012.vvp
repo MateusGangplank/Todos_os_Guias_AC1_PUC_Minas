@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0095E368 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v0095FD78_0 .var "a", 0 0;
+v0095FDD0_0 .var "b", 0 0;
+v0095FE28_0 .net "s", 0 0, L_0095FF60; 1 drivers
+S_00953B48 .scope module, "XNOR1" "xnorgate" 2 24, 2 12, S_0095E368;
+ .timescale 0 0;
+L_00953C80 .functor AND 1, v0095FD78_0, v0095FDD0_0, C4<1>, C4<1>;
+L_0095E3F0 .functor NOT 1, v0095FD78_0, C4<0>, C4<0>, C4<0>;
+L_0095FE80 .functor NOT 1, v0095FDD0_0, C4<0>, C4<0>, C4<0>;
+L_0095FEB8 .functor AND 1, L_0095E3F0, L_0095FE80, C4<1>, C4<1>;
+L_0095FF60 .functor OR 1, L_00953C80, L_0095FEB8, C4<0>, C4<0>;
+v00953BD0_0 .net *"_s0", 0 0, L_00953C80; 1 drivers
+v00953C28_0 .net *"_s2", 0 0, L_0095E3F0; 1 drivers
+v0095EB90_0 .net *"_s4", 0 0, L_0095FE80; 1 drivers
+v0095EBE8_0 .net *"_s6", 0 0, L_0095FEB8; 1 drivers
+v0095EC40_0 .net "p", 0 0, v0095FD78_0; 1 drivers
+v0095FCC8_0 .net "q", 0 0, v0095FDD0_0; 1 drivers
+v0095FD20_0 .alias "s", 0 0, v0095FE28_0;
+S_00952EA8 .scope begin, "start" "start" 2 26, 2 26, S_0095E368;
+ .timescale 0 0;
+S_00952E20 .scope begin, "main" "main" 2 31, 2 31, S_0095E368;
+ .timescale 0 0;
+    .scope S_0095E368;
+T_0 ;
+    %fork t_1, S_00952EA8;
+    %jmp t_0;
+    .scope S_00952EA8;
+t_1 ;
+    %set/v v0095FD78_0, 0, 1;
+    %set/v v0095FDD0_0, 0, 1;
+    %end;
+    .scope S_0095E368;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0095E368;
+T_1 ;
+    %fork t_3, S_00952E20;
+    %jmp t_2;
+    .scope S_00952E20;
+t_3 ;
+    %vpi_call 2 32 "$display", "Exemplo0012 - Exercicio0007 - Ana Cristina Pereira Teixeira - 427385";
+    %vpi_call 2 33 "$display", "Test xnor gate";
+    %vpi_call 2 34 "$display", "\012 (a & b) | (~a & (~b)) = s\012";
+    %vpi_call 2 35 "$monitor", "\011%b \011%b = %b", v0095FD78_0, v0095FDD0_0, v0095FE28_0;
+    %delay 1, 0;
+    %set/v v0095FD78_0, 0, 1;
+    %set/v v0095FDD0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0095FD78_0, 0, 1;
+    %set/v v0095FDD0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0095FD78_0, 1, 1;
+    %set/v v0095FDD0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0095FD78_0, 1, 1;
+    %set/v v0095FDD0_0, 1, 1;
+    %end;
+    .scope S_0095E368;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\1-2012\arq\0_guias\guia_01\Exemplo0012.v";

@@ -1,0 +1,39 @@
+//Wadson Ferreira
+//460631
+//OBS: Não consegui mostrar apenas em posedge
+//porque estava omitindo movimentações.
+
+module shift(output[4:0] saida, input entrada, input clock, input reset);
+	reg[4:0] saida=5'b00000;
+	wire realimentacao;
+	or O1(realimentacao,saida[0],entrada);
+	always @(posedge clock) begin
+		saida[0]=saida[1];           // usar os flip-flops
+		saida[1]=saida[2];
+		saida[2]=saida[3];
+		saida[3]=saida[4];
+		saida[4]=realimentacao;
+	end
+endmodule
+
+module Exercicio03;
+	wire[4:0] saida;
+	reg entrada,clock;
+	shift S(saida,entrada,clock,0);
+	initial begin
+		clock=0;
+		#5 entrada=1;
+		#5 entrada=0;
+		#10 entrada=0;
+		#10 entrada=0;
+		#10 entrada=0;
+		#10 entrada=0;
+		#10 entrada=0;
+		#10 entrada=0;
+		#10 $finish;
+	end
+	always begin #5 clock=~clock; end
+	always @(clock) begin
+		$display("%d %b %b",$time,entrada,saida);
+	end
+endmodule

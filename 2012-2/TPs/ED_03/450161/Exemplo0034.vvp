@@ -1,0 +1,91 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x83b2310 .scope module, "test_f4" "test_f4" 2 32;
+ .timescale 0 0;
+v0x83cc338_0 .var "ch", 1 0;
+RS_0x83b39cc .resolv tri, L_0x83ccb58, L_0x83ccd10, C4<zz>, C4<zz>;
+v0x83cc388_0 .net8 "chn", 1 0, RS_0x83b39cc; 2 drivers
+v0x83cc3f8_0 .net "resp", 0 0, L_0x83cd560; 1 drivers
+v0x83cc468_0 .net "wnor1", 0 0, L_0x83cd008; 1 drivers
+v0x83cc4d8_0 .net "wor1", 0 0, L_0x83cce58; 1 drivers
+v0x83cc548_0 .net "wxnor", 0 0, L_0x83cd360; 1 drivers
+v0x83cc5d8_0 .net "wxor", 0 0, L_0x83cccd8; 1 drivers
+v0x83cc648_0 .var "x", 0 0;
+v0x83cc698_0 .var "y", 0 0;
+v0x83cc708_0 .net "znor", 0 0, L_0x83cc9a8; 1 drivers
+v0x83cc778_0 .net "zor", 0 0, L_0x83cc8c8; 1 drivers
+v0x83cc7e8_0 .net "zxnor", 0 0, L_0x83cc970; 1 drivers
+v0x83cc858_0 .net "zxor", 0 0, L_0x83cca18; 1 drivers
+S_0x83b2390 .scope module, "modulo" "f4" 2 50, 2 9, S_0x83b2310;
+ .timescale 0 0;
+L_0x83cc8c8 .functor OR 1, v0x83cc648_0, v0x83cc698_0, C4<0>, C4<0>;
+L_0x83cc9a8 .functor NOR 1, v0x83cc648_0, v0x83cc698_0, C4<0>, C4<0>;
+L_0x83cca18 .functor XOR 1, v0x83cc648_0, v0x83cc698_0, C4<0>, C4<0>;
+L_0x83cc970 .functor XNOR 1, v0x83cc648_0, v0x83cc698_0, C4<0>, C4<0>;
+L_0x83ccbe0 .functor NOT 1, L_0x83ccc50, C4<0>, C4<0>, C4<0>;
+L_0x83ccd60 .functor NOT 1, L_0x83ccdd0, C4<0>, C4<0>, C4<0>;
+L_0x83cce58 .functor AND 1, L_0x83ccec8, L_0x83ccfb8, L_0x83cc8c8, C4<1>;
+L_0x83cd008 .functor AND 1, L_0x83cd078, L_0x83cd100, L_0x83cc9a8, C4<1>;
+L_0x83cccd8 .functor AND 1, L_0x83cd250, L_0x83cd2d8, L_0x83cca18, C4<1>;
+L_0x83cd360 .functor AND 1, L_0x83cd418, L_0x83cd4a0, L_0x83cc970, C4<1>;
+L_0x83cd560 .functor OR 1, L_0x83cce58, L_0x83cd008, L_0x83cccd8, L_0x83cd360;
+v0x83b2410_0 .net *"_s10", 0 0, L_0x83ccd60; 1 drivers
+v0x83cb8a8_0 .net *"_s13", 0 0, L_0x83ccdd0; 1 drivers
+v0x83cb908_0 .net *"_s16", 0 0, L_0x83ccec8; 1 drivers
+v0x83cb968_0 .net *"_s18", 0 0, L_0x83ccfb8; 1 drivers
+v0x83cb9d0_0 .net *"_s21", 0 0, L_0x83cd078; 1 drivers
+v0x83cba30_0 .net *"_s23", 0 0, L_0x83cd100; 1 drivers
+v0x83cbab0_0 .net *"_s26", 0 0, L_0x83cd250; 1 drivers
+v0x83cbb10_0 .net *"_s28", 0 0, L_0x83cd2d8; 1 drivers
+v0x83cbb98_0 .net *"_s31", 0 0, L_0x83cd418; 1 drivers
+v0x83cbbf8_0 .net *"_s33", 0 0, L_0x83cd4a0; 1 drivers
+v0x83cbc88_0 .net *"_s5", 0 0, L_0x83ccbe0; 1 drivers
+v0x83cbce8_0 .net *"_s8", 0 0, L_0x83ccc50; 1 drivers
+v0x83cbd80_0 .net "a", 0 0, v0x83cc648_0; 1 drivers
+v0x83cbde0_0 .net "b", 0 0, v0x83cc698_0; 1 drivers
+v0x83cbe80_0 .net "chave", 0 1, v0x83cc338_0; 1 drivers
+v0x83cbee0_0 .alias "chaven", 0 1, v0x83cc388_0;
+v0x83cbf88_0 .alias "resp", 0 0, v0x83cc3f8_0;
+v0x83cbfe8_0 .alias "rnor", 0 0, v0x83cc468_0;
+v0x83cc088_0 .alias "ror1", 0 0, v0x83cc4d8_0;
+v0x83cc0d8_0 .alias "rxnor", 0 0, v0x83cc548_0;
+v0x83cc038_0 .alias "rxor", 0 0, v0x83cc5d8_0;
+v0x83cc180_0 .alias "snor", 0 0, v0x83cc708_0;
+v0x83cc230_0 .alias "sor", 0 0, v0x83cc778_0;
+v0x83cc280_0 .alias "sxnor", 0 0, v0x83cc7e8_0;
+v0x83cc1d0_0 .alias "sxor", 0 0, v0x83cc858_0;
+L_0x83ccb58 .part/pv L_0x83ccbe0, 1, 1, 2;
+L_0x83ccc50 .part v0x83cc338_0, 1, 1;
+L_0x83ccd10 .part/pv L_0x83ccd60, 0, 1, 2;
+L_0x83ccdd0 .part v0x83cc338_0, 0, 1;
+L_0x83ccec8 .part RS_0x83b39cc, 1, 1;
+L_0x83ccfb8 .part RS_0x83b39cc, 0, 1;
+L_0x83cd078 .part RS_0x83b39cc, 1, 1;
+L_0x83cd100 .part v0x83cc338_0, 0, 1;
+L_0x83cd250 .part v0x83cc338_0, 1, 1;
+L_0x83cd2d8 .part RS_0x83b39cc, 0, 1;
+L_0x83cd418 .part v0x83cc338_0, 1, 1;
+L_0x83cd4a0 .part v0x83cc338_0, 0, 1;
+    .scope S_0x83b2310;
+T_0 ;
+    %vpi_call 2 53 "$display", "Exemplo0034 - guilherme alves de oliveira - 450161";
+    %vpi_call 2 54 "$display", "Test LU's module";
+    %set/v v0x83cc648_0, 0, 1;
+    %set/v v0x83cc698_0, 1, 1;
+    %set/v v0x83cc338_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 57 "$display", "a = %b b = %b", v0x83cc648_0, v0x83cc698_0;
+    %vpi_call 2 58 "$display", "chave =  %2b  ", v0x83cc338_0;
+    %vpi_call 2 59 "$display", "resp = %1b ", v0x83cc3f8_0;
+    %vpi_call 2 60 "$display", "\000", " ";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/XP_USB/guia3/Exemplo0034.v";

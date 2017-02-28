@@ -1,0 +1,97 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8edc950 .scope module, "testandgate" "testandgate" 2 19;
+ .timescale 0 0;
+v0x8ef81e0_0 .var "a", 0 0;
+v0x8ef8240_0 .var "b", 0 0;
+v0x8ef82b0_0 .var "c", 0 0;
+v0x8ef8320_0 .net "s", 0 0, L_0x8ef8668; 1 drivers
+S_0x8ecc670 .scope module, "AND1" "andgate" 2 26, 2 9, S_0x8edc950;
+ .timescale 0 0;
+L_0x8ef8390 .functor NOT 1, v0x8ef81e0_0, C4<0>, C4<0>, C4<0>;
+L_0x8ef8420 .functor NOT 1, v0x8ef8240_0, C4<0>, C4<0>, C4<0>;
+L_0x8ef8490 .functor OR 1, L_0x8ef8390, L_0x8ef8420, C4<0>, C4<0>;
+L_0x8ef8538 .functor NOT 1, v0x8ef82b0_0, C4<0>, C4<0>, C4<0>;
+L_0x8ef85c0 .functor OR 1, L_0x8ef8490, L_0x8ef8538, C4<0>, C4<0>;
+L_0x8ef8668 .functor NOT 1, L_0x8ef85c0, C4<0>, C4<0>, C4<0>;
+v0x8edca50_0 .net *"_s0", 0 0, L_0x8ef8390; 1 drivers
+v0x8ef7e90_0 .net *"_s2", 0 0, L_0x8ef8420; 1 drivers
+v0x8ef7ef0_0 .net *"_s4", 0 0, L_0x8ef8490; 1 drivers
+v0x8ef7f50_0 .net *"_s6", 0 0, L_0x8ef8538; 1 drivers
+v0x8ef7fb8_0 .net *"_s8", 0 0, L_0x8ef85c0; 1 drivers
+v0x8ef8018_0 .net "p", 0 0, v0x8ef81e0_0; 1 drivers
+v0x8ef8098_0 .net "q", 0 0, v0x8ef8240_0; 1 drivers
+v0x8ef80f8_0 .net "r", 0 0, v0x8ef82b0_0; 1 drivers
+v0x8ef8180_0 .alias "s", 0 0, v0x8ef8320_0;
+S_0x8edc9d0 .scope begin, "start" "start" 2 29, 2 29, S_0x8edc950;
+ .timescale 0 0;
+    .scope S_0x8edc950;
+T_0 ;
+    %fork t_1, S_0x8edc9d0;
+    %jmp t_0;
+    .scope S_0x8edc9d0;
+t_1 ;
+    %set/v v0x8ef81e0_0, 0, 1;
+    %set/v v0x8ef8240_0, 0, 1;
+    %set/v v0x8ef82b0_0, 0, 1;
+    %end;
+    .scope S_0x8edc950;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8edc950;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exercicio0004 - Paulo Ricardo B. Souza - 405828";
+    %vpi_call 2 36 "$display", "Test AND gate";
+    %vpi_call 2 37 "$display", "\012a & b & c = s\012";
+    %set/v v0x8ef81e0_0, 0, 1;
+    %set/v v0x8ef8240_0, 0, 1;
+    %set/v v0x8ef82b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 0, 1;
+    %set/v v0x8ef8240_0, 0, 1;
+    %set/v v0x8ef82b0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 0, 1;
+    %set/v v0x8ef8240_0, 1, 1;
+    %set/v v0x8ef82b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 0, 1;
+    %set/v v0x8ef8240_0, 1, 1;
+    %set/v v0x8ef82b0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 1, 1;
+    %set/v v0x8ef8240_0, 0, 1;
+    %set/v v0x8ef82b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 1, 1;
+    %set/v v0x8ef8240_0, 0, 1;
+    %set/v v0x8ef82b0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 1, 1;
+    %set/v v0x8ef8240_0, 1, 1;
+    %set/v v0x8ef82b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %set/v v0x8ef81e0_0, 1, 1;
+    %set/v v0x8ef8240_0, 1, 1;
+    %set/v v0x8ef82b0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 53 "$display", "%b & %b & %b= %b", v0x8ef81e0_0, v0x8ef8240_0, v0x8ef82b0_0, v0x8ef8320_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/paulo/Documentos/Faculdade/Arquitetura/2011-2/Exercicio0004.v";

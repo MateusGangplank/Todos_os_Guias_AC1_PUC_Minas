@@ -1,0 +1,48 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003D44A8 .scope module, "testmeiasoma" "testmeiasoma" 2 28;
+ .timescale 0 0;
+v003DEC80_0 .var "g", 0 0;
+v003DECD8_0 .var "h", 0 0;
+v003DED30_0 .net "u", 0 0, L_003DD590; 1 drivers
+v00756930_0 .net "y", 0 0, L_003D4530; 1 drivers
+S_003D2FE8 .scope module, "MEIASOMA1" "meiasoma" 2 34, 2 11, S_003D44A8;
+ .timescale 0 0;
+L_003D3120 .functor OR 1, v003DEC80_0, v003DECD8_0, C4<0>, C4<0>;
+L_003DD558 .functor NAND 1, v003DEC80_0, v003DECD8_0, C4<1>, C4<1>;
+L_003DD590 .functor AND 1, v003DEC80_0, v003DECD8_0, C4<1>, C4<1>;
+L_003D4530 .functor AND 1, L_003D3120, L_003DD558, C4<1>, C4<1>;
+v003D3070_0 .net "a", 0 0, v003DEC80_0; 1 drivers
+v003DF3F0_0 .net "b", 0 0, v003DECD8_0; 1 drivers
+v003D30C8_0 .net "temp2", 0 0, L_003D3120; 1 drivers
+v003DEB78_0 .net "temp3", 0 0, L_003DD558; 1 drivers
+v003DEBD0_0 .alias "u", 0 0, v003DED30_0;
+v003DEC28_0 .alias "y", 0 0, v00756930_0;
+    .scope S_003D44A8;
+T_0 ;
+    %vpi_call 2 40 "$display", "Guia 03-01 - Marley Ribeiro - 414510";
+    %vpi_call 2 41 "$display", "Test Meia Soma gate";
+    %vpi_call 2 42 "$display", "\012 a & b = y u\012";
+    %vpi_call 2 43 "$monitor", " %b & %b = %b %b", v003DEC80_0, v003DECD8_0, v00756930_0, v003DED30_0;
+    %set/v v003DEC80_0, 0, 1;
+    %set/v v003DECD8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003DEC80_0, 0, 1;
+    %set/v v003DECD8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003DEC80_0, 1, 1;
+    %set/v v003DECD8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003DEC80_0, 1, 1;
+    %set/v v003DECD8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "M:\AC I\Guias\Guia 3\guia03-1.v";

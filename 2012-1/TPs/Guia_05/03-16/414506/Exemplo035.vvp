@@ -1,0 +1,110 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00607B10 .scope module, "test_comparador" "test_comparador" 2 30;
+ .timescale 0 0;
+v005E2BC0_0 .var "x", 1 0;
+v005E2C18_0 .var "y", 1 0;
+RS_00609204 .resolv tri, L_006035F8, L_00603650, L_006036A8, C4<zzzz>;
+v005E2C70_0 .net8 "z", 3 0, RS_00609204; 3 drivers
+S_00607B98 .scope module, "compara" "comparador" 2 36, 2 8, S_00607B10;
+ .timescale 0 0;
+L_006048B8 .functor XOR 1, L_006031D8, L_0028FE10, C4<0>, C4<0>;
+L_0028FE10 .functor NOT 1, L_00603230, C4<0>, C4<0>, C4<0>;
+L_0028FEB8 .functor XOR 1, L_00603288, L_005E3C68, C4<0>, C4<0>;
+L_005E3C68 .functor NOT 1, L_006032E0, C4<0>, C4<0>, C4<0>;
+L_005E3D10 .functor AND 1, L_006048B8, L_0028FEB8, C4<1>, C4<1>;
+L_0062C070 .functor AND 1, L_00603338, L_0062C0E0, C4<1>, C4<1>;
+L_0062C0E0 .functor NOT 1, L_00603390, C4<0>, C4<0>, C4<0>;
+L_0062C188 .functor AND 1, L_006048B8, L_006033E8, L_0062C1F8, C4<1>;
+L_0062C1F8 .functor NOT 1, L_00603440, C4<0>, C4<0>, C4<0>;
+L_0062C2A0 .functor AND 1, L_0062C2D8, L_006034F0, C4<1>, C4<1>;
+L_0062C2D8 .functor NOT 1, L_00603498, C4<0>, C4<0>, C4<0>;
+L_0062C3F0 .functor AND 1, L_006048B8, L_0062C428, L_006035A0, C4<1>;
+L_0062C428 .functor NOT 1, L_00603548, C4<0>, C4<0>, C4<0>;
+L_0062C380 .functor OR 1, L_0062C070, L_0062C188, C4<0>, C4<0>;
+L_0062C578 .functor OR 1, L_0062C2A0, L_0062C3F0, C4<0>, C4<0>;
+L_0062C4D0 .functor BUFZ 1, L_005E3D10, C4<0>, C4<0>, C4<0>;
+L_0062C6C8 .functor BUFZ 1, L_0062C380, C4<0>, C4<0>, C4<0>;
+L_0062C620 .functor BUFZ 1, L_0062C578, C4<0>, C4<0>, C4<0>;
+v005E2068_0 .net *"_s1", 0 0, L_006031D8; 1 drivers
+v005E20C0_0 .net *"_s10", 0 0, L_005E3C68; 1 drivers
+v005E2118_0 .net *"_s13", 0 0, L_00603338; 1 drivers
+v005E2170_0 .net *"_s15", 0 0, L_00603390; 1 drivers
+v005E21C8_0 .net *"_s16", 0 0, L_0062C0E0; 1 drivers
+v005E2220_0 .net *"_s19", 0 0, L_006033E8; 1 drivers
+v005E2278_0 .net *"_s21", 0 0, L_00603440; 1 drivers
+v005E22D0_0 .net *"_s22", 0 0, L_0062C1F8; 1 drivers
+v005E2328_0 .net *"_s25", 0 0, L_00603498; 1 drivers
+v005E2380_0 .net *"_s26", 0 0, L_0062C2D8; 1 drivers
+v005E23D8_0 .net *"_s29", 0 0, L_006034F0; 1 drivers
+v005E2430_0 .net *"_s3", 0 0, L_00603230; 1 drivers
+v005E2488_0 .net *"_s31", 0 0, L_00603548; 1 drivers
+v005E24E0_0 .net *"_s32", 0 0, L_0062C428; 1 drivers
+v005E2538_0 .net *"_s35", 0 0, L_006035A0; 1 drivers
+v005E2590_0 .net *"_s39", 0 0, L_0062C4D0; 1 drivers
+v005E25E8_0 .net *"_s4", 0 0, L_0028FE10; 1 drivers
+v005E2640_0 .net *"_s43", 0 0, L_0062C6C8; 1 drivers
+v005E2698_0 .net *"_s47", 0 0, L_0062C620; 1 drivers
+v005E26F0_0 .net *"_s7", 0 0, L_00603288; 1 drivers
+v005E2748_0 .net *"_s9", 0 0, L_006032E0; 1 drivers
+v005E27A0_0 .net "a", 1 0, v005E2BC0_0; 1 drivers
+v005E27F8_0 .net "b", 1 0, v005E2C18_0; 1 drivers
+v005E2850_0 .alias "saida", 3 0, v005E2C70_0;
+v005E28A8_0 .net "saida1", 0 0, L_006048B8; 1 drivers
+v005E2900_0 .net "saida2", 0 0, L_0028FEB8; 1 drivers
+v005E2958_0 .net "saida3", 0 0, L_005E3D10; 1 drivers
+v005E29B0_0 .net "saida4", 0 0, L_0062C070; 1 drivers
+v005E2A08_0 .net "saida5", 0 0, L_0062C188; 1 drivers
+v005E2A60_0 .net "saida6", 0 0, L_0062C2A0; 1 drivers
+v005E2AB8_0 .net "saida7", 0 0, L_0062C3F0; 1 drivers
+v005E2B10_0 .net "saida8", 0 0, L_0062C380; 1 drivers
+v005E2B68_0 .net "saida9", 0 0, L_0062C578; 1 drivers
+L_006031D8 .part v005E2BC0_0, 0, 1;
+L_00603230 .part v005E2C18_0, 0, 1;
+L_00603288 .part v005E2BC0_0, 1, 1;
+L_006032E0 .part v005E2C18_0, 1, 1;
+L_00603338 .part v005E2BC0_0, 0, 1;
+L_00603390 .part v005E2C18_0, 0, 1;
+L_006033E8 .part v005E2BC0_0, 1, 1;
+L_00603440 .part v005E2C18_0, 1, 1;
+L_00603498 .part v005E2BC0_0, 0, 1;
+L_006034F0 .part v005E2C18_0, 0, 1;
+L_00603548 .part v005E2BC0_0, 1, 1;
+L_006035A0 .part v005E2C18_0, 1, 1;
+L_006035F8 .part/pv L_0062C4D0, 0, 1, 4;
+L_00603650 .part/pv L_0062C6C8, 1, 1, 4;
+L_006036A8 .part/pv L_0062C620, 2, 1, 4;
+    .scope S_00607B10;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo0035 - Fernando Silva - 414506";
+    %vpi_call 2 41 "$display", "Test Comparador";
+    %vpi_call 2 42 "$display", "x  comparador  y  = resultado";
+    %movi 8, 1, 2;
+    %set/v v005E2BC0_0, 8, 2;
+    %movi 8, 1, 2;
+    %set/v v005E2C18_0, 8, 2;
+    %vpi_call 2 44 "$monitor", "%2b  %2b = %1b  ", v005E2BC0_0, v005E2C18_0, v005E2C70_0;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005E2BC0_0, 8, 2;
+    %movi 8, 1, 2;
+    %set/v v005E2C18_0, 8, 2;
+    %delay 1, 0;
+    %set/v v005E2BC0_0, 0, 2;
+    %movi 8, 1, 2;
+    %set/v v005E2C18_0, 8, 2;
+    %delay 1, 0;
+    %set/v v005E2BC0_0, 1, 2;
+    %movi 8, 1, 2;
+    %set/v v005E2C18_0, 8, 2;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsilv\Desktop\Guia05\Exemplo035.v";

@@ -1,0 +1,65 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A32B50 .scope module, "testandgate" "testandgate" 2 23;
+ .timescale 0 0;
+v00A335C0_0 .var "a", 0 0;
+v00A33618_0 .var "b", 0 0;
+v00A3FB40_0 .var "c", 0 0;
+v00A3FB98_0 .net "s", 0 0, L_00A3FC28; 1 drivers
+S_00A32BD8 .scope module, "AND1" "andgate" 2 27, 2 11, S_00A32B50;
+ .timescale 0 0;
+L_00A32C60 .functor AND 1, v00A335C0_0, v00A33618_0, C4<1>, C4<1>;
+L_00A3FC28 .functor AND 1, L_00A32C60, v00A3FB40_0, C4<1>, C4<1>;
+v00A392C8_0 .net *"_s0", 0 0, L_00A32C60; 1 drivers
+v00A39320_0 .net "p", 0 0, v00A335C0_0; 1 drivers
+v00A39378_0 .net "q", 0 0, v00A33618_0; 1 drivers
+v00A33510_0 .net "r", 0 0, v00A3FB40_0; 1 drivers
+v00A33568_0 .alias "s", 0 0, v00A3FB98_0;
+    .scope S_00A32B50;
+T_0 ;
+    %set/v v00A335C0_0, 0, 1;
+    %set/v v00A33618_0, 0, 1;
+    %set/v v00A3FB40_0, 0, 1;
+    %vpi_call 2 31 "$display", "Guia01_08 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 32 "$display", "Test AND gate";
+    %vpi_call 2 33 "$display", "\012(a & b & c) = s\012";
+    %vpi_call 2 34 "$monitor", "(%b & %b & %b)= %b", v00A335C0_0, v00A33618_0, v00A3FB40_0, v00A3FB98_0;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 0, 1;
+    %set/v v00A33618_0, 0, 1;
+    %set/v v00A3FB40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 0, 1;
+    %set/v v00A33618_0, 1, 1;
+    %set/v v00A3FB40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 0, 1;
+    %set/v v00A33618_0, 1, 1;
+    %set/v v00A3FB40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 1, 1;
+    %set/v v00A33618_0, 0, 1;
+    %set/v v00A3FB40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 1, 1;
+    %set/v v00A33618_0, 0, 1;
+    %set/v v00A3FB40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 1, 1;
+    %set/v v00A33618_0, 1, 1;
+    %set/v v00A3FB40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A335C0_0, 1, 1;
+    %set/v v00A33618_0, 1, 1;
+    %set/v v00A3FB40_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 01\Guia01_08.v";

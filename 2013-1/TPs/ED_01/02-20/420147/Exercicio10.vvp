@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x222dd20 .scope module, "testorgate" "testorgate" 2 22;
+ .timescale 0 0;
+v0x2261420_0 .var "a", 0 0;
+v0x22614c0_0 .var "b", 0 0;
+v0x2261570_0 .var "c", 0 0;
+v0x2261620_0 .net "s", 0 0, L_0x22618e0; 1 drivers
+S_0x224f210 .scope module, "OR1" "orgate" 2 29, 2 10, S_0x222dd20;
+ .timescale 0 0;
+L_0x2261700 .functor OR 1, v0x2261420_0, v0x22614c0_0, C4<0>, C4<0>;
+L_0x2261830 .functor OR 1, v0x22614c0_0, v0x2261570_0, C4<0>, C4<0>;
+L_0x22618e0 .functor OR 1, L_0x2261700, L_0x2261830, C4<0>, C4<0>;
+v0x222de10_0 .net "p", 0 0, v0x2261420_0; 1 drivers
+v0x22610b0_0 .net "q", 0 0, v0x22614c0_0; 1 drivers
+v0x2261150_0 .net "r", 0 0, v0x2261570_0; 1 drivers
+v0x22611f0_0 .alias "s", 0 0, v0x2261620_0;
+v0x22612a0_0 .net "temp1", 0 0, L_0x2261700; 1 drivers
+v0x2261340_0 .net "temp2", 0 0, L_0x2261830; 1 drivers
+S_0x224e030 .scope begin, "start" "start" 2 31, 2 31, S_0x222dd20;
+ .timescale 0 0;
+S_0x224df40 .scope begin, "main" "main" 2 37, 2 37, S_0x222dd20;
+ .timescale 0 0;
+    .scope S_0x222dd20;
+T_0 ;
+    %fork t_1, S_0x224e030;
+    %jmp t_0;
+    .scope S_0x224e030;
+t_1 ;
+    %set/v v0x2261420_0, 0, 1;
+    %set/v v0x22614c0_0, 0, 1;
+    %set/v v0x2261570_0, 0, 1;
+    %end;
+    .scope S_0x222dd20;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x222dd20;
+T_1 ;
+    %fork t_3, S_0x224df40;
+    %jmp t_2;
+    .scope S_0x224df40;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exercicio 10 - Victor Raphael Machado de Amorim - 420147";
+    %vpi_call 2 40 "$display", "Test OR gate:";
+    %vpi_call 2 41 "$display", "\012a + b + c = s\012";
+    %vpi_call 2 42 "$monitor", "%b OR %b OR %b = %b", v0x2261420_0, v0x22614c0_0, v0x2261570_0, v0x2261620_0;
+    %delay 1, 0;
+    %set/v v0x2261420_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x22614c0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2261570_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2261420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x22614c0_0, 0, 1;
+    %end;
+    .scope S_0x222dd20;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/victor/Dropbox/Primeiro Semestre 2013/AC/Exercicios/Exercicio10.v";

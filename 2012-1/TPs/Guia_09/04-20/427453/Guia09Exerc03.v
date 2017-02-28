@@ -1,0 +1,77 @@
+// ------------------------- 
+// Guia09Exerc03
+// Nome: Pedro Henrique Vilar Locatelli 
+// Matricula: 427453 
+// ------------------------- 
+
+module jkff ( output q, output qnot, 
+input j, input k, input clk, input preset ); 
+reg q, qnot; 
+always @( posedge clk ) 
+begin 
+	if ( ~preset ) 
+		begin 
+		q <= 1; qnot <= ~q; 
+		end 	
+	else 
+		if ( j & ~k ) 
+			begin 
+			q <= 1; qnot <= 0; 
+			end 
+		else 
+			if ( ~j & k ) 
+				begin 
+				q <= 0; qnot <= 1; 
+				end 
+			else 
+				if ( j & k ) 
+					begin 
+					q <= ~q; qnot <= ~qnot; 
+				end 
+end 
+endmodule // jkff 
+
+module test; 
+ reg pulse, toggle; 
+ wire  q[4:0], qn[4:0], a1,a2,a3,a4,a5,a6,a7,a8,a9; 
+ 
+ not not1 (a1, toggle);
+
+ jkff jkff5 (  q[4],  qn[4], toggle, toggle, pulse, a9 );  
+ jkff jkff4 (  q[3],  qn[3], toggle, toggle, q[4], a9 ); 
+ jkff jkff3 (  q[2],  qn[2], toggle, toggle, q[3], a9 ); 
+ jkff jkff2 (  q[1],  qn[1], toggle, toggle, q[2], a9 ); 
+ jkff jkff1 (  q[0],  qn[0], toggle, toggle, q[1], a9 );
+ 
+ not not2 (a2, qn[0]);
+ and and1 (a3, a2, q[1]);
+ not not3 (a4, qn[2]);
+ and and2 (a5, a4, qn[3]);
+ not not4 (a6, qn[4]);
+ and and3 (a7, a3, a5);
+ and and4 (a8, a7, a6);
+ or or1 (a9, a1, a8);
+ 
+ 
+ initial 
+  begin  
+$display("Guia09Exerc03 - Pedro Henrique Vilar Locatelli - 427453"); 
+// initial values 
+pulse  = 0;
+toggle = 0;
+ end
+ 
+  initial begin 
+   $monitor ( "%4d\t%1b\t%1b\t%1b%1b%1b%1b%1b", $time, pulse, toggle, qn[0],qn[1],qn[2],qn[3],qn[4]); 
+	#1 toggle = 1;
+	#1 pulse = 1;
+	#1 pulse = 0;
+	#1 pulse = 1;
+	#1 pulse = 0;
+	#1 pulse = 1;
+	#1 pulse = 0;
+	#1 pulse = 1;
+	#1 pulse = 0;
+
+  end  
+endmodule

@@ -1,0 +1,88 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007B9FA0 .scope module, "testnandgate" "testnandgate" 2 43;
+ .timescale 0 0;
+v0082F4E8_0 .var "a", 0 0;
+v0082F540_0 .var "b", 0 0;
+v0082F598_0 .net "s", 0 0, L_00830288; 1 drivers
+S_007BA1C0 .scope module, "NAND1" "nandgate" 2 47, 2 26, S_007B9FA0;
+ .timescale 0 0;
+v0082F2D8_0 .net "p", 0 0, v0082F4E8_0; 1 drivers
+v0082F330_0 .net "q", 0 0, v0082F540_0; 1 drivers
+v0082F388_0 .alias "s0", 0 0, v0082F598_0;
+v0082F3E0_0 .net "s1", 0 0, L_007BDFF8; 1 drivers
+v0082F438_0 .net "s2", 0 0, L_007B3660; 1 drivers
+v0082F490_0 .net "s3", 0 0, L_008301E0; 1 drivers
+S_007BA3E0 .scope module, "NORGATE1" "norgate" 2 31, 2 12, S_007BA1C0;
+ .timescale 0 0;
+L_007BBE50 .functor OR 1, v0082F4E8_0, v0082F4E8_0, C4<0>, C4<0>;
+L_007BDFF8 .functor NOT 1, L_007BBE50, C4<0>, C4<0>, C4<0>;
+v0082F178_0 .net *"_s0", 0 0, L_007BBE50; 1 drivers
+v0082F1D0_0 .alias "p", 0 0, v0082F2D8_0;
+v0082F228_0 .alias "q", 0 0, v0082F2D8_0;
+v0082F280_0 .alias "s0", 0 0, v0082F3E0_0;
+S_007BA358 .scope module, "NORGATE2" "norgate" 2 32, 2 12, S_007BA1C0;
+ .timescale 0 0;
+L_007BBF28 .functor OR 1, v0082F540_0, v0082F540_0, C4<0>, C4<0>;
+L_007B3660 .functor NOT 1, L_007BBF28, C4<0>, C4<0>, C4<0>;
+v007B3608_0 .net *"_s0", 0 0, L_007BBF28; 1 drivers
+v0082F070_0 .alias "p", 0 0, v0082F330_0;
+v0082F0C8_0 .alias "q", 0 0, v0082F330_0;
+v0082F120_0 .alias "s0", 0 0, v0082F438_0;
+S_007BA2D0 .scope module, "NORGATE3" "norgate" 2 33, 2 12, S_007BA1C0;
+ .timescale 0 0;
+L_008300C0 .functor OR 1, L_007BDFF8, L_007B3660, C4<0>, C4<0>;
+L_008301E0 .functor NOT 1, L_008300C0, C4<0>, C4<0>, C4<0>;
+v007B30B0_0 .net *"_s0", 0 0, L_008300C0; 1 drivers
+v007B3108_0 .alias "p", 0 0, v0082F3E0_0;
+v007B3558_0 .alias "q", 0 0, v0082F438_0;
+v007B35B0_0 .alias "s0", 0 0, v0082F490_0;
+S_007BA248 .scope module, "NORGATE4" "norgate" 2 34, 2 12, S_007BA1C0;
+ .timescale 0 0;
+L_00830250 .functor OR 1, L_008301E0, L_008301E0, C4<0>, C4<0>;
+L_00830288 .functor NOT 1, L_00830250, C4<0>, C4<0>, C4<0>;
+v007BDEF0_0 .net *"_s0", 0 0, L_00830250; 1 drivers
+v007BDF48_0 .alias "p", 0 0, v0082F490_0;
+v007BDFA0_0 .alias "q", 0 0, v0082F490_0;
+v007B3058_0 .alias "s0", 0 0, v0082F598_0;
+S_007BA0B0 .scope begin, "start" "start" 2 49, 2 49, S_007B9FA0;
+ .timescale 0 0;
+    .scope S_007B9FA0;
+T_0 ;
+    %fork t_1, S_007BA0B0;
+    %jmp t_0;
+    .scope S_007BA0B0;
+t_1 ;
+    %set/v v0082F4E8_0, 0, 1;
+    %set/v v0082F540_0, 0, 1;
+    %end;
+    .scope S_007B9FA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007B9FA0;
+T_1 ;
+    %vpi_call 2 56 "$display", "Guia 02_05 - Thaise Souto Martins - 395504";
+    %vpi_call 2 57 "$display", "Test NAND gate";
+    %vpi_call 2 58 "$display", "\012a & b = s\012";
+    %vpi_call 2 59 "$monitor", "%b & %b = %b", v0082F4E8_0, v0082F540_0, v0082F598_0;
+    %delay 1, 0;
+    %set/v v0082F4E8_0, 0, 1;
+    %set/v v0082F540_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0082F4E8_0, 1, 1;
+    %set/v v0082F540_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0082F4E8_0, 1, 1;
+    %set/v v0082F540_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\ACI\Guias\Guia_02\guia02_05.v";

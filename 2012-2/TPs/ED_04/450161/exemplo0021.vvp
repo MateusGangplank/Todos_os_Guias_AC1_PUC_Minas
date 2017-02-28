@@ -1,0 +1,113 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x9d7fe18 .scope module, "test_fullAdder" "test_fullAdder" 2 25;
+ .timescale 0 0;
+v0x9dbd428_0 .var "carry", 0 0;
+RS_0x9da43e4 .resolv tri, L_0x9dbda30, L_0x9dbde48, L_0x9dbe268, C4<zzz>;
+v0x9dbd488_0 .net8 "carry1", 2 0, RS_0x9da43e4; 3 drivers
+RS_0x9da43fc .resolv tri, L_0x9dbd9a8, L_0x9dbdd88, L_0x9dbe1e0, C4<zzz>;
+v0x9dbd4d8_0 .net8 "soma", 2 0, RS_0x9da43fc; 3 drivers
+v0x9dbd538 .array "x", 0 2, 0 0;
+v0x9dbd5e8 .array "y", 0 2, 0 0;
+L_0x9dbd9a8 .part/pv L_0x9dbd760, 0, 1, 3;
+L_0x9dbda30 .part/pv L_0x9dbd728, 0, 1, 3;
+L_0x9dbdd88 .part/pv L_0x9dbdb60, 1, 1, 3;
+L_0x9dbde48 .part/pv L_0x9dbdb28, 1, 1, 3;
+L_0x9dbdf20 .part RS_0x9da43e4, 0, 1;
+L_0x9dbe1e0 .part/pv L_0x9dbe018, 2, 1, 3;
+L_0x9dbe268 .part/pv L_0x9dbdfe0, 2, 1, 3;
+L_0x9dbe320 .part RS_0x9da43e4, 1, 1;
+S_0x9dbcfb8 .scope module, "soma1" "fullAdder" 2 33, 2 9, S_0x9d7fe18;
+ .timescale 0 0;
+v0x9dbd538_0 .array/port v0x9dbd538, 0;
+v0x9dbd5e8_0 .array/port v0x9dbd5e8, 0;
+L_0x9dbd698 .functor XOR 1, v0x9dbd538_0, v0x9dbd5e8_0, C4<0>, C4<0>;
+L_0x9dbd760 .functor XOR 1, v0x9dbd538_0, v0x9dbd5e8_0, C4<0>, C4<0>;
+L_0x9dbd798 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0x9dbd810 .functor AND 1, v0x9dbd538_0, v0x9dbd5e8_0, C4<1>, C4<1>;
+L_0x9dbd728 .functor OR 1, L_0x9dbd798, L_0x9dbd810, C4<0>, C4<0>;
+v0x9dbd038_0 .net "a", 0 0, v0x9dbd538_0; 1 drivers
+v0x9dbd0a8_0 .net "and1", 0 0, L_0x9dbd798; 1 drivers
+v0x9dbd108_0 .net "and2", 0 0, L_0x9dbd810; 1 drivers
+v0x9dbd168_0 .net "axor", 0 0, C4<z>; 0 drivers
+v0x9dbd1b8_0 .net "axorb", 0 0, L_0x9dbd698; 1 drivers
+v0x9dbd218_0 .net "b", 0 0, v0x9dbd5e8_0; 1 drivers
+v0x9dbd278_0 .net "carryIn", 0 0, v0x9dbd428_0; 1 drivers
+v0x9dbd2d8_0 .net "carryOut", 0 0, L_0x9dbd728; 1 drivers
+v0x9dbd338_0 .net "caryIn", 0 0, C4<z>; 0 drivers
+v0x9dbd398_0 .net "s", 0 0, L_0x9dbd760; 1 drivers
+S_0x9dbcb48 .scope module, "soma2" "fullAdder" 2 34, 2 9, S_0x9d7fe18;
+ .timescale 0 0;
+v0x9dbd538_1 .array/port v0x9dbd538, 1;
+v0x9dbd5e8_1 .array/port v0x9dbd5e8, 1;
+L_0x9dbdab8 .functor XOR 1, v0x9dbd538_1, v0x9dbd5e8_1, C4<0>, C4<0>;
+L_0x9dbdb60 .functor XOR 1, v0x9dbd538_1, v0x9dbd5e8_1, C4<0>, C4<0>;
+L_0x9dbdb98 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0x9dbdbf0 .functor AND 1, v0x9dbd538_1, v0x9dbd5e8_1, C4<1>, C4<1>;
+L_0x9dbdb28 .functor OR 1, L_0x9dbdb98, L_0x9dbdbf0, C4<0>, C4<0>;
+v0x9dbcbc8_0 .net "a", 0 0, v0x9dbd538_1; 1 drivers
+v0x9dbcc38_0 .net "and1", 0 0, L_0x9dbdb98; 1 drivers
+v0x9dbcc98_0 .net "and2", 0 0, L_0x9dbdbf0; 1 drivers
+v0x9dbccf8_0 .net "axor", 0 0, C4<z>; 0 drivers
+v0x9dbcd48_0 .net "axorb", 0 0, L_0x9dbdab8; 1 drivers
+v0x9dbcda8_0 .net "b", 0 0, v0x9dbd5e8_1; 1 drivers
+v0x9dbce08_0 .net "carryIn", 0 0, L_0x9dbdf20; 1 drivers
+v0x9dbce68_0 .net "carryOut", 0 0, L_0x9dbdb28; 1 drivers
+v0x9dbcec8_0 .net "caryIn", 0 0, C4<z>; 0 drivers
+v0x9dbcf28_0 .net "s", 0 0, L_0x9dbdb60; 1 drivers
+S_0x9d7f230 .scope module, "soma3" "fullAdder" 2 35, 2 9, S_0x9d7fe18;
+ .timescale 0 0;
+v0x9dbd538_2 .array/port v0x9dbd538, 2;
+v0x9dbd5e8_2 .array/port v0x9dbd5e8, 2;
+L_0x9dbdf70 .functor XOR 1, v0x9dbd538_2, v0x9dbd5e8_2, C4<0>, C4<0>;
+L_0x9dbe018 .functor XOR 1, v0x9dbd538_2, v0x9dbd5e8_2, C4<0>, C4<0>;
+L_0x9dbe050 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0x9dbe088 .functor AND 1, v0x9dbd538_2, v0x9dbd5e8_2, C4<1>, C4<1>;
+L_0x9dbdfe0 .functor OR 1, L_0x9dbe050, L_0x9dbe088, C4<0>, C4<0>;
+v0x9d7fc68_0 .net "a", 0 0, v0x9dbd538_2; 1 drivers
+v0x9dbc768_0 .net "and1", 0 0, L_0x9dbe050; 1 drivers
+v0x9dbc7c8_0 .net "and2", 0 0, L_0x9dbe088; 1 drivers
+v0x9dbc828_0 .net "axor", 0 0, C4<z>; 0 drivers
+v0x9dbc890_0 .net "axorb", 0 0, L_0x9dbdf70; 1 drivers
+v0x9dbc8f0_0 .net "b", 0 0, v0x9dbd5e8_2; 1 drivers
+v0x9dbc970_0 .net "carryIn", 0 0, L_0x9dbe320; 1 drivers
+v0x9dbc9d0_0 .net "carryOut", 0 0, L_0x9dbdfe0; 1 drivers
+v0x9dbca58_0 .net "caryIn", 0 0, C4<z>; 0 drivers
+v0x9dbcab8_0 .net "s", 0 0, L_0x9dbe018; 1 drivers
+    .scope S_0x9d7fe18;
+T_0 ;
+    %vpi_call 2 38 "$display", "Exemplo0021 - Guilherme alves de oliveira - 450161";
+    %vpi_call 2 39 "$display", "Test ALU\222s full adder";
+   %ix/load 1, 0, 0;
+   %ix/load 3, 0, 0;
+   %set/av v0x9dbd538, 1, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 1, 0;
+   %set/av v0x9dbd538, 0, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 2, 0;
+   %set/av v0x9dbd538, 0, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 0, 0;
+   %set/av v0x9dbd5e8, 1, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 1, 0;
+   %set/av v0x9dbd5e8, 0, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 2, 0;
+   %set/av v0x9dbd5e8, 1, 1;
+    %set/v v0x9dbd428_0, 0, 1;
+    %vpi_call 2 42 "$monitor", " ", &A<v0x9dbd538, 0>, &A<v0x9dbd538, 1>, &A<v0x9dbd538, 2>, "\012", "+", &A<v0x9dbd5e8, 0>, &A<v0x9dbd5e8, 1>, &A<v0x9dbd5e8, 2>;
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "=", &PV<v0x9dbd4d8_0, 0, 1>, &PV<v0x9dbd4d8_0, 1, 1>, &PV<v0x9dbd4d8_0, 2, 1>;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/XP_USB/guia4/exemplo0021.v";

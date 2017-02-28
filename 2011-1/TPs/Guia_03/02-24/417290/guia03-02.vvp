@@ -1,0 +1,84 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00743750 .scope module, "MeiaSoma" "MeiaSoma" 2 11;
+ .timescale 0 0;
+L_006FD040 .functor NAND 1, C4<z>, C4<1>, C4<1>, C4<1>;
+L_006FD078 .functor NAND 1, L_006FD040, C4<z>, C4<1>, C4<1>;
+L_006FD0E8 .functor NAND 1, L_006FD078, C4<1>, C4<1>, C4<1>;
+L_006FD158 .functor NAND 1, L_006FD0E8, C4<1>, C4<1>, C4<1>;
+L_006F2BD0 .functor NAND 1, C4<z>, C4<1>, C4<1>, C4<1>;
+L_006F2C40 .functor NAND 1, C4<z>, L_006F2BD0, C4<1>, C4<1>;
+L_00740800 .functor NAND 1, L_006F2C40, C4<1>, C4<1>, C4<1>;
+L_00740870 .functor NAND 1, L_00740800, C4<1>, C4<1>, C4<1>;
+L_007408E0 .functor NAND 1, L_00740870, L_006FD158, C4<1>, C4<1>;
+L_00740988 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_007409C0 .functor NAND 1, L_00740988, C4<1>, C4<1>, C4<1>;
+v006FEB10_0 .net "Vout", 0 0, L_007409C0; 1 drivers
+v006FEB68_0 .net "p", 0 0, C4<z>; 0 drivers
+v006FEBC0_0 .net "q", 0 0, C4<z>; 0 drivers
+v006FEC18_0 .net "s", 0 0, L_007408E0; 1 drivers
+v006FEC70 .array "temp", 8 0;
+v006FEC70_0 .net v006FEC70 0, 0 0, L_006FD040; 1 drivers
+v006FEC70_1 .net v006FEC70 1, 0 0, L_006FD078; 1 drivers
+v006FEC70_2 .net v006FEC70 2, 0 0, L_006FD0E8; 1 drivers
+v006FEC70_3 .net v006FEC70 3, 0 0, L_006FD158; 1 drivers
+v006FEC70_4 .net v006FEC70 4, 0 0, L_006F2BD0; 1 drivers
+v006FEC70_5 .net v006FEC70 5, 0 0, L_006F2C40; 1 drivers
+v006FEC70_6 .net v006FEC70 6, 0 0, L_00740800; 1 drivers
+v006FEC70_7 .net v006FEC70 7, 0 0, L_00740870; 1 drivers
+v006FEC70_8 .net v006FEC70 8, 0 0, L_00740988; 1 drivers
+S_007436C8 .scope module, "TestMeiaSoma" "TestMeiaSoma" 2 35;
+ .timescale 0 0;
+L_00740A68 .functor NAND 1, v006FED20_0, C4<1>, C4<1>, C4<1>;
+L_00740AA0 .functor NAND 1, L_00740A68, v006FED78_0, C4<1>, C4<1>;
+L_00740B10 .functor NAND 1, L_00740AA0, C4<1>, C4<1>, C4<1>;
+L_00740B80 .functor NAND 1, L_00740B10, C4<1>, C4<1>, C4<1>;
+L_00740BF0 .functor NAND 1, v006FED78_0, C4<1>, C4<1>, C4<1>;
+L_00740C60 .functor NAND 1, v006FED20_0, L_00740BF0, C4<1>, C4<1>;
+L_00740D08 .functor NAND 1, L_00740C60, C4<1>, C4<1>, C4<1>;
+L_00740D78 .functor NAND 1, L_00740D08, C4<1>, C4<1>, C4<1>;
+L_00740DE8 .functor NAND 1, L_00740D78, L_00740B80, C4<1>, C4<1>;
+L_00740E90 .functor NAND 1, v006FED20_0, v006FED78_0, C4<1>, C4<1>;
+L_00740EC8 .functor NAND 1, L_00740E90, C4<1>, C4<1>, C4<1>;
+v006FECC8_0 .net "Vout", 0 0, L_00740EC8; 1 drivers
+v006FED20_0 .var "a", 0 0;
+v006FED78_0 .var "b", 0 0;
+v006FEDD0_0 .net "s", 0 0, L_00740DE8; 1 drivers
+v006FEE28 .array "t", 8 0;
+v006FEE28_0 .net v006FEE28 0, 0 0, L_00740A68; 1 drivers
+v006FEE28_1 .net v006FEE28 1, 0 0, L_00740AA0; 1 drivers
+v006FEE28_2 .net v006FEE28 2, 0 0, L_00740B10; 1 drivers
+v006FEE28_3 .net v006FEE28 3, 0 0, L_00740B80; 1 drivers
+v006FEE28_4 .net v006FEE28 4, 0 0, L_00740BF0; 1 drivers
+v006FEE28_5 .net v006FEE28 5, 0 0, L_00740C60; 1 drivers
+v006FEE28_6 .net v006FEE28 6, 0 0, L_00740D08; 1 drivers
+v006FEE28_7 .net v006FEE28 7, 0 0, L_00740D78; 1 drivers
+v006FEE28_8 .net v006FEE28 8, 0 0, L_00740E90; 1 drivers
+    .scope S_007436C8;
+T_0 ;
+    %vpi_call 2 57 "$display", "\012guia03_02 - Ludmily Caldeira da Silva - 417290\012";
+    %vpi_call 2 58 "$display", "Test Meia soma\012";
+    %vpi_call 2 59 "$display", "\012a  b  Vout  s\012";
+    %vpi_call 2 60 "$monitor", "%b  %b   %b    %b", v006FED20_0, v006FED78_0, v006FECC8_0, v006FEDD0_0;
+    %set/v v006FED20_0, 0, 1;
+    %set/v v006FED78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006FED20_0, 0, 1;
+    %set/v v006FED78_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006FED20_0, 1, 1;
+    %set/v v006FED78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006FED20_0, 1, 1;
+    %set/v v006FED78_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\417290\ARQ1\guia03\guia03-02.v";

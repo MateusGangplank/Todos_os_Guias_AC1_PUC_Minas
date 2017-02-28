@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0031A120 .scope module, "inicio2" "inicio2" 2 9;
+ .timescale 0 0;
+L_00314300 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_00313F90 .functor OR 1, L_00314300, C4<z>, C4<0>, C4<0>;
+v0031D2C0_0 .net "a", 0 0, C4<z>; 0 drivers
+v0031D318_0 .net "aux", 0 0, L_00314300; 1 drivers
+v0031D370_0 .net "b", 0 0, C4<z>; 0 drivers
+v00312B98_0 .net "c", 0 0, C4<z>; 0 drivers
+v00312BF0_0 .net "x", 0 0, L_00313F90; 1 drivers
+S_0031A010 .scope module, "variaveis" "variaveis" 2 23;
+ .timescale 0 0;
+v003142A8_0 .net "p", 0 0, L_0031D3C8; 1 drivers
+v0031CBD0_0 .net "q", 0 0, L_005C7198; 1 drivers
+v005C6160_0 .var "r", 0 0;
+v005C61B8_0 .var "s", 0 0;
+v005C6210_0 .var "t", 0 0;
+S_0031A2B8 .scope module, "primeiro" "inicio" 2 27, 2 15, S_0031A010;
+ .timescale 0 0;
+L_0031D3C8 .functor OR 1, v005C6160_0, v005C61B8_0, C4<0>, C4<0>;
+v00313F38_0 .net "a", 0 0, v005C6160_0; 1 drivers
+v003141F8_0 .net "b", 0 0, v005C61B8_0; 1 drivers
+v00314250_0 .alias "x", 0 0, v003142A8_0;
+S_0031A230 .scope module, "segundo" "final" 2 32, 2 19, S_0031A010;
+ .timescale 0 0;
+L_005C7198 .functor OR 1, L_0031D3C8, v005C6210_0, C4<0>, C4<0>;
+v00312C48_0 .alias "j", 0 0, v003142A8_0;
+v00313E88_0 .net "k", 0 0, v005C6210_0; 1 drivers
+v00313EE0_0 .alias "w", 0 0, v0031CBD0_0;
+S_0031A1A8 .scope begin, "start" "start" 2 28, 2 28, S_0031A010;
+ .timescale 0 0;
+S_00319F88 .scope begin, "starttwo" "starttwo" 2 33, 2 33, S_0031A010;
+ .timescale 0 0;
+    .scope S_0031A010;
+T_0 ;
+    %fork t_1, S_0031A1A8;
+    %jmp t_0;
+    .scope S_0031A1A8;
+t_1 ;
+    %set/v v005C6160_0, 0, 1;
+    %set/v v005C61B8_0, 0, 1;
+    %end;
+    .scope S_0031A010;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0031A010;
+T_1 ;
+    %fork t_3, S_00319F88;
+    %jmp t_2;
+    .scope S_00319F88;
+t_3 ;
+    %set/v v005C6210_0, 0, 1;
+    %end;
+    .scope S_0031A010;
+t_2 %join;
+    %end;
+    .thread T_1;
+    .scope S_0031A010;
+T_2 ;
+    %vpi_call 2 39 "$display", "MILLER - 449048";
+    %vpi_call 2 40 "$display", "OR com 3 entradas, utilizando 2 portas de 2 entradas.";
+    %vpi_call 2 41 "$display", " ";
+    %vpi_call 2 42 "$monitor", "( %b & %b & %b = %b )", v005C6160_0, v005C61B8_0, v005C6210_0, v0031CBD0_0;
+    %delay 1, 0;
+    %delay 1, 0;
+    %set/v v005C6160_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6160_0, 1, 1;
+    %set/v v005C61B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6160_0, 0, 1;
+    %set/v v005C61B8_0, 0, 1;
+    %set/v v005C6210_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C61B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6210_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C6160_0, 1, 1;
+    %set/v v005C6210_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6160_0, 1, 1;
+    %set/v v005C61B8_0, 1, 1;
+    %set/v v005C6210_0, 1, 1;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio 10.v";

@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008FA240 .scope module, "testandgate" "testandgate" 2 14;
+ .timescale 0 0;
+v008F3670_0 .var "a", 0 0;
+v008F36C8_0 .var "b", 0 0;
+v008FA4D0_0 .var "c", 0 0;
+v008FA528_0 .net "s", 0 0, L_008FA628; 1 drivers
+S_008F2FE8 .scope module, "AND1" "andgate" 2 17, 2 10, S_008FA240;
+ .timescale 0 0;
+L_008FA580 .functor AND 1, v008F3670_0, v008F36C8_0, C4<1>, C4<1>;
+L_008FA628 .functor AND 1, L_008FA580, v008FA4D0_0, C4<1>, C4<1>;
+v008FA2C8_0 .net *"_s0", 0 0, L_008FA580; 1 drivers
+v008F3070_0 .net "p", 0 0, v008F3670_0; 1 drivers
+v008F30C8_0 .net "q", 0 0, v008F36C8_0; 1 drivers
+v008F35C0_0 .net "r", 0 0, v008FA4D0_0; 1 drivers
+v008F3618_0 .alias "s", 0 0, v008FA528_0;
+    .scope S_008FA240;
+T_0 ;
+    %set/v v008F3670_0, 0, 1;
+    %set/v v008F36C8_0, 0, 1;
+    %set/v v008FA4D0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_008FA240;
+T_1 ;
+    %vpi_call 2 27 "$display", "Exercicio04 - Debora Amaral Chaves - 437659";
+    %vpi_call 2 28 "$display", "Test AND gate";
+    %vpi_call 2 29 "$display", "\012a & b & c = s\012";
+    %set/v v008F3670_0, 0, 1;
+    %set/v v008F36C8_0, 0, 1;
+    %set/v v008FA4D0_0, 0, 1;
+    %vpi_call 2 31 "$monitor", "%b & %b & %b = %b", v008F3670_0, v008F36C8_0, v008FA4D0_0, v008FA528_0;
+    %delay 1, 0;
+    %set/v v008FA4D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008F36C8_0, 1, 1;
+    %set/v v008FA4D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008FA4D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008F3670_0, 1, 1;
+    %set/v v008F36C8_0, 0, 1;
+    %set/v v008FA4D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008FA4D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008FA4D0_0, 0, 1;
+    %set/v v008F36C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008FA4D0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\PenDrive\PUC\2periodo\AC\Guia01\Exercicio04.v";

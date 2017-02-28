@@ -1,0 +1,54 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003454C8 .scope module, "testcircuito" "testcircuito" 2 18;
+ .timescale 0 0;
+v003791B8_0 .var "a", 0 0;
+v00379210_0 .var "b", 0 0;
+v00379268_0 .net "s0", 0 0, L_002FFC80; 1 drivers
+v003792C0_0 .net "s1", 0 0, L_0037A1B8; 1 drivers
+S_00344D10 .scope module, "CIRCUITO1" "circuito" 2 22, 2 5, S_003454C8;
+ .timescale 0 0;
+L_00345548 .functor AND 1, v003791B8_0, v00379210_0, C4<1>, C4<1>;
+L_002FFBD8 .functor OR 1, v003791B8_0, v00379210_0, C4<0>, C4<0>;
+L_002FFC10 .functor NOT 1, L_00345548, C4<0>, C4<0>, C4<0>;
+L_002FFC80 .functor AND 1, L_002FFBD8, L_002FFC10, C4<1>, C4<1>;
+L_0037A1B8 .functor AND 1, v003791B8_0, v00379210_0, C4<1>, C4<1>;
+v00344D90_0 .net "a", 0 0, v003791B8_0; 1 drivers
+v00344DE8_0 .net "b", 0 0, v00379210_0; 1 drivers
+v00343000_0 .alias "s0", 0 0, v00379268_0;
+v00343058_0 .alias "s1", 0 0, v003792C0_0;
+v003430B0_0 .net "s2", 0 0, L_002FFBD8; 1 drivers
+v00343108_0 .net "s3", 0 0, L_002FFC10; 1 drivers
+v002FFB10_0 .net "s4", 0 0, L_00345548; 1 drivers
+    .scope S_003454C8;
+T_0 ;
+    %vpi_call 2 25 "$display", "Exemplo 01 - Bruno Rafael Nicolletti - 380752";
+    %vpi_call 2 26 "$display", "Test Circuito Meia-Soma Tradicional";
+    %vpi_call 2 27 "$display", "\012a + b = s1 s0";
+    %set/v v003791B8_0, 0, 1;
+    %set/v v00379210_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 29 "$display", "%b + %b =  %b  %b", v003791B8_0, v00379210_0, v003792C0_0, v00379268_0;
+    %set/v v003791B8_0, 0, 1;
+    %set/v v00379210_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "%b + %b =  %b  %b", v003791B8_0, v00379210_0, v003792C0_0, v00379268_0;
+    %set/v v003791B8_0, 1, 1;
+    %set/v v00379210_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b + %b =  %b  %b", v003791B8_0, v00379210_0, v003792C0_0, v00379268_0;
+    %set/v v003791B8_0, 1, 1;
+    %set/v v00379210_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b + %b =  %b  %b", v003791B8_0, v00379210_0, v003792C0_0, v00379268_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Bruno\Ciencia_da_Computacao\2010-2\AC_1\Guias\Guia 3\Exemplo 01.v";

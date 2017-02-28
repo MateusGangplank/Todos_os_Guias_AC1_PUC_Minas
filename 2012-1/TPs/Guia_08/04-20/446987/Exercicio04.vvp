@@ -1,0 +1,205 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EA170 .scope module, "test_EX1" "test_EX1" 2 31;
+ .timescale 0 0;
+L_005FE778 .functor OR 1, v005FE278_0, v005FE3A8_0, C4<0>, C4<0>;
+v005FE2E8_0 .var "clk", 0 0;
+v005FE3A8_0 .var "d", 0 0;
+v005FE418_0 .net "pulse", 0 0, L_005FE778; 1 drivers
+v005FE488_0 .net "q", 0 0, v005FE220_0; 1 drivers
+v005FE4E0_0 .net "q1", 0 0, v005FDF38_0; 1 drivers
+v005FE538_0 .net "q1not", 0 0, v005FDF90_0; 1 drivers
+v005FE590_0 .net "q2", 0 0, v005FDC58_0; 1 drivers
+v005FE5E8_0 .net "q2not", 0 0, v005FDCB0_0; 1 drivers
+v005FE640_0 .net "q3", 0 0, v005FDA18_0; 1 drivers
+v005FE6C8_0 .net "q3not", 0 0, v005FDA70_0; 1 drivers
+v005FE720_0 .net "qnot", 0 0, v005FE278_0; 1 drivers
+S_005FE008 .scope module, "DFF1" "dff" 2 36, 2 6, S_003EA170;
+ .timescale 0 0;
+v005FE090_0 .net "clk", 0 0, v005FE2E8_0; 1 drivers
+v005FE0E8_0 .net "clr", 0 0, C4<0>; 1 drivers
+v005FE158_0 .alias "d", 0 0, v005FE4E0_0;
+v005FE1C8_0 .net "preset", 0 0, C4<0>; 1 drivers
+v005FE220_0 .var "q", 0 0;
+v005FE278_0 .var "qnot", 0 0;
+S_005FDD20 .scope module, "DFF2" "dff" 2 37, 2 6, S_003EA170;
+ .timescale 0 0;
+v005FDDA8_0 .alias "clk", 0 0, v005FE090_0;
+v005FDE00_0 .net "clr", 0 0, C4<0>; 1 drivers
+v005FDE70_0 .alias "d", 0 0, v005FE590_0;
+v005FDEE0_0 .net "preset", 0 0, C4<0>; 1 drivers
+v005FDF38_0 .var "q", 0 0;
+v005FDF90_0 .var "qnot", 0 0;
+S_003E8670 .scope module, "DFF3" "dff" 2 38, 2 6, S_003EA170;
+ .timescale 0 0;
+v005FDAE0_0 .alias "clk", 0 0, v005FE090_0;
+v005FDB38_0 .net "clr", 0 0, C4<0>; 1 drivers
+v005FDB90_0 .alias "d", 0 0, v005FE640_0;
+v005FDC00_0 .net "preset", 0 0, C4<0>; 1 drivers
+v005FDC58_0 .var "q", 0 0;
+v005FDCB0_0 .var "qnot", 0 0;
+S_003E99D0 .scope module, "DFF4" "dff" 2 39, 2 6, S_003EA170;
+ .timescale 0 0;
+v005D08B8_0 .alias "clk", 0 0, v005FE090_0;
+v005FD8C8_0 .net "clr", 0 0, C4<0>; 1 drivers
+v005FD938_0 .alias "d", 0 0, v005FE418_0;
+v005FD9A8_0 .net "preset", 0 0, C4<0>; 1 drivers
+v005FDA18_0 .var "q", 0 0;
+v005FDA70_0 .var "qnot", 0 0;
+E_003EC338 .event posedge, v005D08B8_0;
+    .scope S_005FE008;
+T_0 ;
+    %wait E_003EC338;
+    %load/v 8, v005FE0E8_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FE220_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FE278_0, 0, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v005FE1C8_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FE220_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FE278_0, 0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v005FE158_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FE220_0, 0, 8;
+    %load/v 8, v005FE158_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FE278_0, 0, 8;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_005FDD20;
+T_1 ;
+    %wait E_003EC338;
+    %load/v 8, v005FDE00_0, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDF38_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDF90_0, 0, 1;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v005FDEE0_0, 1;
+    %jmp/0xz  T_1.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDF38_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDF90_0, 0, 0;
+    %jmp T_1.3;
+T_1.2 ;
+    %load/v 8, v005FDE70_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDF38_0, 0, 8;
+    %load/v 8, v005FDE70_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDF90_0, 0, 8;
+T_1.3 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_003E8670;
+T_2 ;
+    %wait E_003EC338;
+    %load/v 8, v005FDB38_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDC58_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDCB0_0, 0, 1;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/v 8, v005FDC00_0, 1;
+    %jmp/0xz  T_2.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDC58_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDCB0_0, 0, 0;
+    %jmp T_2.3;
+T_2.2 ;
+    %load/v 8, v005FDB90_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDC58_0, 0, 8;
+    %load/v 8, v005FDB90_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDCB0_0, 0, 8;
+T_2.3 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_003E99D0;
+T_3 ;
+    %wait E_003EC338;
+    %load/v 8, v005FD8C8_0, 1;
+    %jmp/0xz  T_3.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDA18_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDA70_0, 0, 1;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/v 8, v005FD9A8_0, 1;
+    %jmp/0xz  T_3.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDA18_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDA70_0, 0, 0;
+    %jmp T_3.3;
+T_3.2 ;
+    %load/v 8, v005FD938_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDA18_0, 0, 8;
+    %load/v 8, v005FD938_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005FDA70_0, 0, 8;
+T_3.3 ;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_003EA170;
+T_4 ;
+    %vpi_call 2 44 "$display", " Time d q q1 q2 q3";
+    %set/v v005FE2E8_0, 1, 1;
+    %set/v v005FE3A8_0, 1, 1;
+    %delay 10, 0;
+    %set/v v005FE3A8_0, 0, 1;
+    %delay 10, 0;
+    %set/v v005FE3A8_0, 0, 1;
+    %delay 60, 0;
+    %vpi_call 2 50 "$finish";
+    %end;
+    .thread T_4;
+    .scope S_003EA170;
+T_5 ;
+    %delay 5, 0;
+    %load/v 8, v005FE2E8_0, 1;
+    %inv 8, 1;
+    %set/v v005FE2E8_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_003EA170;
+T_6 ;
+    %wait E_003EC338;
+    %vpi_call 2 58 "$display", "%4d  %b %b %b  %b  %b", $time, v005FE3A8_0, v005FE488_0, v005FE4E0_0, v005FE590_0, v005FE640_0;
+    %jmp T_6;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ARQ - Guias\Guia 08\Exercicio04.v";

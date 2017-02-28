@@ -1,0 +1,135 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007AA290 .scope module, "rrr" "rrr" 2 7;
+ .timescale 0 0;
+RS_00691DFC/0/0 .resolv tri, L_006C32A0, L_006C3350, L_006C3458, L_006C3560;
+RS_00691DFC/0/4 .resolv tri, L_006C3668, C4<zzzzz>, C4<zzzzz>, C4<zzzzz>;
+RS_00691DFC .resolv tri, RS_00691DFC/0/0, RS_00691DFC/0/4, C4<zzzzz>, C4<zzzzz>;
+L_007AD940 .functor BUFZ 5, RS_00691DFC, C4<00000>, C4<00000>, C4<00000>;
+L_007AC758 .functor OR 1, C4<z>, L_006C3248, C4<0>, C4<0>;
+v006C2FE0_0 .net *"_s3", 0 0, L_006C3248; 1 drivers
+v006C3038_0 .net "clk", 0 0, C4<z>; 0 drivers
+v006C3090_0 .net "data", 0 0, C4<z>; 0 drivers
+v006C30E8_0 .net8 "fios", 4 0, RS_00691DFC; 5 drivers
+RS_00691E14/0/0 .resolv tri, L_006C32F8, L_006C33A8, L_006C34B0, L_006C35B8;
+RS_00691E14/0/4 .resolv tri, L_006C36C0, C4<zzzzz>, C4<zzzzz>, C4<zzzzz>;
+RS_00691E14 .resolv tri, RS_00691E14/0/0, RS_00691E14/0/4, C4<zzzzz>, C4<zzzzz>;
+v006C3140_0 .net8 "lost", 4 0, RS_00691E14; 5 drivers
+v006C3198_0 .net "orum", 0 0, L_007AC758; 1 drivers
+v006C31F0_0 .net "s", 4 0, L_007AD940; 1 drivers
+L_006C3248 .part RS_00691DFC, 4, 1;
+L_006C32A0 .part/pv v006C2F30_0, 0, 1, 5;
+L_006C32F8 .part/pv v006C2F88_0, 4, 1, 5;
+L_006C3350 .part/pv v006C2DD0_0, 1, 1, 5;
+L_006C33A8 .part/pv v006C2E28_0, 3, 1, 5;
+L_006C3400 .part RS_00691DFC, 0, 1;
+L_006C3458 .part/pv v006C2C58_0, 2, 1, 5;
+L_006C34B0 .part/pv v006C2CB0_0, 2, 1, 5;
+L_006C3508 .part RS_00691DFC, 1, 1;
+L_006C3560 .part/pv v007A3DE0_0, 3, 1, 5;
+L_006C35B8 .part/pv v007A31D8_0, 1, 1, 5;
+L_006C3610 .part RS_00691DFC, 2, 1;
+L_006C3668 .part/pv v007AC700_0, 4, 1, 5;
+L_006C36C0 .part/pv v007AD8E8_0, 0, 1, 5;
+L_006C3718 .part RS_00691DFC, 3, 1;
+S_007AA758 .scope module, "ffd1" "dff" 2 14, 3 1, S_007AA290;
+ .timescale 0 0;
+v006C2E80_0 .alias "clk", 0 0, v006C3038_0;
+v006C2ED8_0 .alias "d", 0 0, v006C3198_0;
+v006C2F30_0 .var "q", 0 0;
+v006C2F88_0 .var "qnot", 0 0;
+S_007AA7E0 .scope module, "ffd2" "dff" 2 15, 3 1, S_007AA290;
+ .timescale 0 0;
+v006C2D08_0 .alias "clk", 0 0, v006C3038_0;
+v006C2D60_0 .net "d", 0 0, L_006C3400; 1 drivers
+v006C2DD0_0 .var "q", 0 0;
+v006C2E28_0 .var "qnot", 0 0;
+S_007AA868 .scope module, "ffd3" "dff" 2 16, 3 1, S_007AA290;
+ .timescale 0 0;
+v007A3230_0 .alias "clk", 0 0, v006C3038_0;
+v007A3288_0 .net "d", 0 0, L_006C3508; 1 drivers
+v006C2C58_0 .var "q", 0 0;
+v006C2CB0_0 .var "qnot", 0 0;
+S_007AA8F0 .scope module, "ffd4" "dff" 2 17, 3 1, S_007AA290;
+ .timescale 0 0;
+v007A3D30_0 .alias "clk", 0 0, v006C3038_0;
+v007A3D88_0 .net "d", 0 0, L_006C3610; 1 drivers
+v007A3DE0_0 .var "q", 0 0;
+v007A31D8_0 .var "qnot", 0 0;
+S_007AA208 .scope module, "ffd5" "dff" 2 18, 3 1, S_007AA290;
+ .timescale 0 0;
+v007AFA20_0 .alias "clk", 0 0, v006C3038_0;
+v007ABC28_0 .net "d", 0 0, L_006C3718; 1 drivers
+v007AC700_0 .var "q", 0 0;
+v007AD8E8_0 .var "qnot", 0 0;
+E_007AF050 .event posedge, v007AFA20_0;
+    .scope S_007AA758;
+T_0 ;
+    %wait E_007AF050;
+    %load/v 8, v006C2ED8_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006C2F30_0, 0, 8;
+    %load/v 8, v006C2F30_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006C2F88_0, 0, 8;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_007AA7E0;
+T_1 ;
+    %wait E_007AF050;
+    %load/v 8, v006C2D60_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006C2DD0_0, 0, 8;
+    %load/v 8, v006C2DD0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006C2E28_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_007AA868;
+T_2 ;
+    %wait E_007AF050;
+    %load/v 8, v007A3288_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006C2C58_0, 0, 8;
+    %load/v 8, v006C2C58_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006C2CB0_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_007AA8F0;
+T_3 ;
+    %wait E_007AF050;
+    %load/v 8, v007A3D88_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007A3DE0_0, 0, 8;
+    %load/v 8, v007A3DE0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007A31D8_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_007AA208;
+T_4 ;
+    %wait E_007AF050;
+    %load/v 8, v007ABC28_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007AC700_0, 0, 8;
+    %load/v 8, v007AC700_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007AD8E8_0, 0, 8;
+    %jmp T_4;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C:\Users\José F. R. Fonseca\Dropbox\MySoftwares\@ACI-Guias\Guias A Fazer\Guia08\rrr.v";
+    "./dff.v";

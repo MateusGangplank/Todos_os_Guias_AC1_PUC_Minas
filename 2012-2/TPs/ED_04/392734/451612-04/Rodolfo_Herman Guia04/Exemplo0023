@@ -1,0 +1,96 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00339310 .scope module, "circuito" "circuito" 2 11;
+ .timescale 0 0;
+L_0033C580 .functor XOR 1, L_00754338, L_00754390, C4<0>, C4<0>;
+L_0033B740 .functor XOR 1, L_00754440, L_00754498, C4<0>, C4<0>;
+L_00754DF0 .functor XOR 1, L_00754548, L_007545A0, C4<0>, C4<0>;
+L_00754ED0 .functor OR 1, L_00754650, L_007546A8, C4<0>, C4<0>;
+L_00754FE8 .functor OR 1, L_00754758, L_007547B0, C4<0>, C4<0>;
+L_00755090 .functor NOT 1, L_00754860, C4<0>, C4<0>, C4<0>;
+v0033E730_0 .net *"_s0", 0 0, L_0033C580; 1 drivers
+v0033C528_0 .net *"_s11", 0 0, L_00754498; 1 drivers
+v0033FD28_0 .net *"_s12", 0 0, L_00754DF0; 1 drivers
+v0033FD80_0 .net *"_s15", 0 0, L_00754548; 1 drivers
+v00332CE8_0 .net *"_s17", 0 0, L_007545A0; 1 drivers
+v00753DB8_0 .net *"_s18", 0 0, L_00754ED0; 1 drivers
+v00753E10_0 .net *"_s21", 0 0, L_00754650; 1 drivers
+v00753E68_0 .net *"_s23", 0 0, L_007546A8; 1 drivers
+v00753EC0_0 .net *"_s24", 0 0, L_00754FE8; 1 drivers
+v00753F18_0 .net *"_s27", 0 0, L_00754758; 1 drivers
+v00753F70_0 .net *"_s29", 0 0, L_007547B0; 1 drivers
+v00753FC8_0 .net *"_s3", 0 0, L_00754338; 1 drivers
+v00754020_0 .net *"_s30", 0 0, L_00755090; 1 drivers
+v00754078_0 .net *"_s33", 0 0, L_00754860; 1 drivers
+v007540D0_0 .net *"_s5", 0 0, L_00754390; 1 drivers
+v00754128_0 .net *"_s6", 0 0, L_0033B740; 1 drivers
+v00754180_0 .net *"_s9", 0 0, L_00754440; 1 drivers
+RS_0072372C/0/0 .resolv tri, L_007542E0, L_007543E8, L_007544F0, L_007545F8;
+RS_0072372C/0/4 .resolv tri, L_00754700, L_00754808, C4<zzzzzz>, C4<zzzzzz>;
+RS_0072372C .resolv tri, RS_0072372C/0/0, RS_0072372C/0/4, C4<zzzzzz>, C4<zzzzzz>;
+v007541D8_0 .net8 "s", 5 0, RS_0072372C; 6 drivers
+v00754230_0 .var "x", 2 0;
+v00754288_0 .var "y", 2 0;
+L_007542E0 .part/pv L_0033C580, 0, 1, 6;
+L_00754338 .part v00754230_0, 0, 1;
+L_00754390 .part v00754288_0, 0, 1;
+L_007543E8 .part/pv L_0033B740, 1, 1, 6;
+L_00754440 .part v00754230_0, 1, 1;
+L_00754498 .part v00754288_0, 1, 1;
+L_007544F0 .part/pv L_00754DF0, 2, 1, 6;
+L_00754548 .part v00754230_0, 2, 1;
+L_007545A0 .part v00754288_0, 2, 1;
+L_007545F8 .part/pv L_00754ED0, 3, 1, 6;
+L_00754650 .part RS_0072372C, 0, 1;
+L_007546A8 .part RS_0072372C, 1, 1;
+L_00754700 .part/pv L_00754FE8, 4, 1, 6;
+L_00754758 .part RS_0072372C, 2, 1;
+L_007547B0 .part RS_0072372C, 3, 1;
+L_00754808 .part/pv L_00755090, 5, 1, 6;
+L_00754860 .part RS_0072372C, 4, 1;
+    .scope S_00339310;
+T_0 ;
+    %set/v v00754230_0, 0, 3;
+    %set/v v00754288_0, 0, 3;
+    %end;
+    .thread T_0;
+    .scope S_00339310;
+T_1 ;
+    %vpi_call 2 36 "$display", "Exemplo 0023";
+    %vpi_call 2 37 "$display", "Autor: Rodolfo Herman - 451612";
+    %vpi_call 2 38 "$display", "\012Teste LU comparador Igualdade\012";
+    %vpi_call 2 39 "$display", "Saida = 1 - iguais  |  Saida = 0 - diferentes";
+    %vpi_call 2 41 "$monitor", "a = %b\011 b = %b\011 saida = %b", v00754230_0, v00754288_0, &PV<v007541D8_0, 5, 1>;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v00754230_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v00754288_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v00754230_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v00754288_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v00754230_0, 8, 3;
+    %movi 8, 5, 3;
+    %set/v v00754288_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v00754230_0, 8, 3;
+    %set/v v00754288_0, 1, 3;
+    %delay 1, 0;
+    %set/v v00754230_0, 1, 3;
+    %set/v v00754288_0, 1, 3;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0023.v";

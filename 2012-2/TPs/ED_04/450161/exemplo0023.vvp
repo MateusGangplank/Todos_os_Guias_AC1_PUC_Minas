@@ -1,0 +1,65 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8ff51a0 .scope module, "test_igual" "test_igual" 2 27;
+ .timescale 0 0;
+v0x8ff3660_0 .net "s", 0 0, L_0x8ff3a08; 1 drivers
+v0x8ff36c0_0 .var "x", 2 0;
+v0x8ff3730_0 .var "y", 2 0;
+S_0x8fd31a0 .scope module, "ig" "igual" 2 34, 2 9, S_0x8ff51a0;
+ .timescale 0 0;
+L_0x8ff3518 .functor NOT 1, L_0x8ff37e0, C4<0>, C4<0>, C4<0>;
+L_0x8ff38a0 .functor XNOR 1, L_0x8ff38f8, L_0x8ff3980, C4<0>, C4<0>;
+L_0x8ff3a40 .functor XNOR 1, L_0x8ff3a78, L_0x8ff3b68, C4<0>, C4<0>;
+L_0x8ff3bb8 .functor XNOR 1, L_0x8ff3c28, L_0x8ff3cb0, C4<0>, C4<0>;
+L_0x8ff3a08 .functor AND 1, L_0x8ff38a0, L_0x8ff3a40, L_0x8ff3bb8, C4<1>;
+v0x8fd3220_0 .net *"_s10", 0 0, L_0x8ff3a78; 1 drivers
+v0x8ff3088_0 .net *"_s12", 0 0, L_0x8ff3b68; 1 drivers
+v0x8ff30e8_0 .net *"_s15", 0 0, L_0x8ff3c28; 1 drivers
+v0x8ff3148_0 .net *"_s17", 0 0, L_0x8ff3cb0; 1 drivers
+v0x8ff31b0_0 .net *"_s2", 0 0, L_0x8ff37e0; 1 drivers
+v0x8ff3210_0 .net *"_s5", 0 0, L_0x8ff38f8; 1 drivers
+v0x8ff3290_0 .net *"_s7", 0 0, L_0x8ff3980; 1 drivers
+v0x8ff32f0_0 .net "a", 2 0, v0x8ff36c0_0; 1 drivers
+v0x8ff3378_0 .net "b", 2 0, v0x8ff3730_0; 1 drivers
+v0x8ff33d8_0 .net "nota", 0 0, L_0x8ff3518; 1 drivers
+v0x8ff3468_0 .alias "s", 0 0, v0x8ff3660_0;
+v0x8ff34c8_0 .net "xnor1", 0 0, L_0x8ff38a0; 1 drivers
+v0x8ff3560_0 .net "xnor2", 0 0, L_0x8ff3a40; 1 drivers
+v0x8ff35c0_0 .net "xnor3", 0 0, L_0x8ff3bb8; 1 drivers
+L_0x8ff37e0 .part v0x8ff36c0_0, 0, 1;
+L_0x8ff38f8 .part v0x8ff36c0_0, 0, 1;
+L_0x8ff3980 .part v0x8ff3730_0, 0, 1;
+L_0x8ff3a78 .part v0x8ff36c0_0, 1, 1;
+L_0x8ff3b68 .part v0x8ff3730_0, 1, 1;
+L_0x8ff3c28 .part v0x8ff36c0_0, 2, 1;
+L_0x8ff3cb0 .part v0x8ff3730_0, 2, 1;
+    .scope S_0x8ff51a0;
+T_0 ;
+    %vpi_call 2 38 "$display", "Exemplo0021 - xxx yyy zzz - 999999";
+    %vpi_call 2 39 "$display", "Test ALU\222s full adder";
+    %ix/load 0, 0, 0;
+    %set/x0 v0x8ff36c0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x8ff36c0_0, 0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x8ff36c0_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x8ff3730_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x8ff3730_0, 0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x8ff3730_0, 0, 1;
+    %vpi_call 2 42 "$monitor", " ", &PV<v0x8ff36c0_0, 0, 1>, &PV<v0x8ff36c0_0, 1, 1>, &PV<v0x8ff36c0_0, 2, 1>, "\012", "=", &PV<v0x8ff3730_0, 0, 1>, &PV<v0x8ff3730_0, 1, 1>, &PV<v0x8ff3730_0, 2, 1>;
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "=", v0x8ff3660_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/XP_USB/guia4/exemplo0023.v";

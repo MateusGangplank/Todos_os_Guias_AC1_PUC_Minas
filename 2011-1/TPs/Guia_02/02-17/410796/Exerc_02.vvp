@@ -1,0 +1,71 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00673810 .scope module, "testAND_NOR" "testAND_NOR" 2 39;
+ .timescale 0 0;
+v006A47E0_0 .var "a", 0 0;
+v006A4838_0 .var "b", 0 0;
+v006A4890_0 .net "s", 0 0, L_006A47A8; 1 drivers
+S_00673B60 .scope module, "AND1" "andgate" 2 44, 2 24, S_00673810;
+ .timescale 0 0;
+v006A45F0_0 .net "p", 0 0, v006A47E0_0; 1 drivers
+v006A4648_0 .net "q", 0 0, v006A4838_0; 1 drivers
+v006A46A0_0 .alias "s", 0 0, v006A4890_0;
+v006A46F8_0 .net "temp1", 0 0, L_003EE810; 1 drivers
+v006A4750_0 .net "temp2", 0 0, L_003EE8D0; 1 drivers
+S_006A43F8 .scope module, "nor1" "norgate" 2 29, 2 12, S_00673B60;
+ .timescale 0 0;
+L_006A4920 .functor OR 1, v006A47E0_0, v006A47E0_0, C4<0>, C4<0>;
+L_003EE810 .functor NOT 1, L_006A4920, C4<0>, C4<0>, C4<0>;
+v006A4478_0 .net *"_s0", 0 0, L_006A4920; 1 drivers
+v006A44D0_0 .alias "p", 0 0, v006A45F0_0;
+v006A4528_0 .alias "q", 0 0, v006A45F0_0;
+v006A4598_0 .alias "s", 0 0, v006A46F8_0;
+S_006A41D0 .scope module, "nor2" "norgate" 2 30, 2 12, S_00673B60;
+ .timescale 0 0;
+L_006A49F8 .functor OR 1, v006A4838_0, v006A4838_0, C4<0>, C4<0>;
+L_003EE8D0 .functor NOT 1, L_006A49F8, C4<0>, C4<0>, C4<0>;
+v006A4250_0 .net *"_s0", 0 0, L_006A49F8; 1 drivers
+v006A42C0_0 .alias "p", 0 0, v006A4648_0;
+v006A4330_0 .alias "q", 0 0, v006A4648_0;
+v006A43A0_0 .alias "s", 0 0, v006A4750_0;
+S_00673EB0 .scope module, "nor3" "norgate" 2 31, 2 12, S_00673B60;
+ .timescale 0 0;
+L_006A4AD0 .functor OR 1, L_003EE810, L_003EE8D0, C4<0>, C4<0>;
+L_006A47A8 .functor NOT 1, L_006A4AD0, C4<0>, C4<0>, C4<0>;
+v006741F8_0 .net *"_s0", 0 0, L_006A4AD0; 1 drivers
+v006A4068_0 .alias "p", 0 0, v006A46F8_0;
+v006A40D8_0 .alias "q", 0 0, v006A4750_0;
+v006A4160_0 .alias "s", 0 0, v006A4890_0;
+    .scope S_00673810;
+T_0 ;
+    %set/v v006A47E0_0, 0, 1;
+    %set/v v006A4838_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00673810;
+T_1 ;
+    %vpi_call 2 52 "$display", "Guia 02 - Exercicio 2";
+    %vpi_call 2 53 "$display", "\012Marco Antonio M. Belo - 410796";
+    %vpi_call 2 54 "$display", "\012Test AND_NOR gate";
+    %vpi_call 2 55 "$display", "\012a | b = s\012";
+    %vpi_call 2 56 "$monitor", "%b | %b = %b", v006A47E0_0, v006A4838_0, v006A4890_0;
+    %delay 1, 0;
+    %set/v v006A47E0_0, 0, 1;
+    %set/v v006A4838_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A47E0_0, 1, 1;
+    %set/v v006A4838_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A47E0_0, 1, 1;
+    %set/v v006A4838_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_02\410796\Exerc_02.v";

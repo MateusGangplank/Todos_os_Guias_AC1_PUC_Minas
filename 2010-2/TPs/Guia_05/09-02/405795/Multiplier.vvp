@@ -1,0 +1,151 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00671DE0 .scope module, "testmultiplier" "testmultiplier" 2 44;
+ .timescale 0 0;
+v006A4A90_0 .var "a", 0 0;
+v006A4AE8_0 .var "a1", 0 0;
+v006A4B40_0 .var "b", 0 0;
+v006A4B98_0 .var "b1", 0 0;
+v006A4BF0_0 .net "s0", 0 0, L_006A4DF8; 1 drivers
+v006A4C48_0 .net "s1", 0 0, L_00661368; 1 drivers
+v006A4CD8_0 .net "s2", 0 0, L_006A4DC0; 1 drivers
+v006A4D68_0 .net "s3", 0 0, L_006A51E0; 1 drivers
+S_003D6498 .scope module, "MULTIPLIER1" "multiplier" 2 49, 2 26, S_00671DE0;
+ .timescale 0 0;
+L_006A4DF8 .functor AND 1, v006A4A90_0, v006A4AE8_0, C4<1>, C4<1>;
+L_006A4ED8 .functor AND 1, v006A4A90_0, v006A4B98_0, C4<1>, C4<1>;
+L_006A4F80 .functor AND 1, v006A4AE8_0, v006A4B40_0, C4<1>, C4<1>;
+L_006A5028 .functor AND 1, v006A4B40_0, v006A4B98_0, C4<1>, C4<1>;
+v006A45C8_0 .net "a", 0 0, v006A4A90_0; 1 drivers
+v006A4638_0 .net "a1", 0 0, v006A4AE8_0; 1 drivers
+v006A46A8_0 .net "b", 0 0, v006A4B40_0; 1 drivers
+v006A4730_0 .net "b1", 0 0, v006A4B98_0; 1 drivers
+v006A47A0_0 .alias "s0", 0 0, v006A4BF0_0;
+v006A47F8_0 .alias "s1", 0 0, v006A4C48_0;
+v006A4850_0 .net "s12", 0 0, L_006A4ED8; 1 drivers
+v006A48A8_0 .net "s13", 0 0, L_006A4F80; 1 drivers
+v006A4900_0 .net "s14", 0 0, L_006A5028; 1 drivers
+v006A4988_0 .alias "s2", 0 0, v006A4CD8_0;
+v006A49E0_0 .alias "s3", 0 0, v006A4D68_0;
+v006A4A38_0 .net "s4", 0 0, L_006A50D0; 1 drivers
+S_006A42D0 .scope module, "HALFADDER1" "halfadder" 2 34, 2 11, S_003D6498;
+ .timescale 0 0;
+L_006A5098 .functor OR 1, L_006A4ED8, L_006A4F80, C4<0>, C4<0>;
+L_006A50D0 .functor AND 1, L_006A4ED8, L_006A4F80, C4<1>, C4<1>;
+L_006A4FB8 .functor NOT 1, L_006A50D0, C4<0>, C4<0>, C4<0>;
+L_00661368 .functor AND 1, L_006A5098, L_006A4FB8, C4<1>, C4<1>;
+v006A4358_0 .alias "a", 0 0, v006A4850_0;
+v006A43C8_0 .alias "b", 0 0, v006A48A8_0;
+v006A4438_0 .alias "s", 0 0, v006A4C48_0;
+v006A44C0_0 .alias "s0", 0 0, v006A4A38_0;
+v006A4518_0 .net "s1", 0 0, L_006A5098; 1 drivers
+v006A4570_0 .net "s2", 0 0, L_006A4FB8; 1 drivers
+S_003D63F0 .scope module, "HALFADDER2" "halfadder" 2 35, 2 11, S_003D6498;
+ .timescale 0 0;
+L_006A51A8 .functor OR 1, L_006A5028, L_006A50D0, C4<0>, C4<0>;
+L_006A51E0 .functor AND 1, L_006A5028, L_006A50D0, C4<1>, C4<1>;
+L_006A5060 .functor NOT 1, L_006A51E0, C4<0>, C4<0>, C4<0>;
+L_006A4DC0 .functor AND 1, L_006A51A8, L_006A5060, C4<1>, C4<1>;
+v00682540_0 .alias "a", 0 0, v006A4900_0;
+v006A40A0_0 .alias "b", 0 0, v006A4A38_0;
+v006A4110_0 .alias "s", 0 0, v006A4CD8_0;
+v006A4198_0 .alias "s0", 0 0, v006A4D68_0;
+v006A4208_0 .net "s1", 0 0, L_006A51A8; 1 drivers
+v006A4260_0 .net "s2", 0 0, L_006A5060; 1 drivers
+    .scope S_00671DE0;
+T_0 ;
+    %vpi_call 2 54 "$display", "MULTIPLIER - Daniel Sathler Silva - 405795";
+    %vpi_call 2 55 "$display", "Test MULTIPLIER";
+    %vpi_call 2 56 "$display", "\012 a   *   b  = s \012";
+    %vpi_call 2 57 "$monitor", " %b %b * %b %b = %b %b %b %b", v006A4A90_0, v006A4B40_0, v006A4AE8_0, v006A4B98_0, v006A4BF0_0, v006A4C48_0, v006A4CD8_0, v006A4D68_0;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %set/v v006A4B98_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\Guias\Guia05\Multiplier.v";

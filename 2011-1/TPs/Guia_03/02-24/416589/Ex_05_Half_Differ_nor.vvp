@@ -1,0 +1,92 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EED60 .scope module, "testhalfdiffer_nor" "testhalfdiffer_nor" 2 72;
+ .timescale 0 0;
+v006A6108_0 .var "a", 0 0;
+v006A6160_0 .var "b", 0 0;
+v006A61B8_0 .net "s0", 0 0, L_006A6530; 1 drivers
+v006A6248_0 .net "s1", 0 0, L_006A67C8; 1 drivers
+S_00675928 .scope module, "HD1" "halfdiffer_nor" 2 77, 2 11, S_003EED60;
+ .timescale 0 0;
+v006A5F38_0 .net "a", 0 0, v006A6108_0; 1 drivers
+v006A5F90_0 .net "b", 0 0, v006A6160_0; 1 drivers
+v006A5FE8_0 .alias "s0", 0 0, v006A61B8_0;
+v006A6058_0 .alias "s1", 0 0, v006A6248_0;
+v006A60B0_0 .net "temp1", 0 0, L_006A65A0; 1 drivers
+S_006A5B88 .scope module, "XOR1" "xor_nor" 2 15, 2 25, S_00675928;
+ .timescale 0 0;
+L_006A62D8 .functor NOR 1, v006A6160_0, v006A6160_0, C4<0>, C4<0>;
+L_00674070 .functor NOR 1, v006A6108_0, v006A6108_0, C4<0>, C4<0>;
+L_003EFF40 .functor NOR 1, v006A6108_0, L_006A62D8, C4<0>, C4<0>;
+L_006A6418 .functor NOR 1, v006A6160_0, L_00674070, C4<0>, C4<0>;
+L_006A6488 .functor NOR 1, L_003EFF40, L_006A6418, C4<0>, C4<0>;
+L_006A6530 .functor NOR 1, L_006A6488, L_006A6488, C4<0>, C4<0>;
+v006A5C08_0 .alias "a", 0 0, v006A5F38_0;
+v006A5C60_0 .alias "b", 0 0, v006A5F90_0;
+v006A5CB8_0 .alias "s", 0 0, v006A61B8_0;
+v006A5D10_0 .net "temp1", 0 0, L_006A62D8; 1 drivers
+v006A5D68_0 .net "temp2", 0 0, L_00674070; 1 drivers
+v006A5DC0_0 .net "temp3", 0 0, L_003EFF40; 1 drivers
+v006A5E30_0 .net "temp4", 0 0, L_006A6418; 1 drivers
+v006A5EC8_0 .net "temp5", 0 0, L_006A6488; 1 drivers
+S_006A5A40 .scope module, "NOT1" "not_nor" 2 16, 2 59, S_00675928;
+ .timescale 0 0;
+L_006A65A0 .functor NOR 1, v006A6108_0, v006A6108_0, C4<0>, C4<0>;
+v006A5AC0_0 .alias "a", 0 0, v006A5F38_0;
+v006A5B30_0 .alias "s", 0 0, v006A60B0_0;
+S_006759A8 .scope module, "AND1" "and_nor" 2 17, 2 44, S_00675928;
+ .timescale 0 0;
+L_006A66A0 .functor NOR 1, L_006A65A0, L_006A65A0, C4<0>, C4<0>;
+L_00674038 .functor NOR 1, v006A6160_0, v006A6160_0, C4<0>, C4<0>;
+L_006A67C8 .functor NOR 1, L_006A66A0, L_00674038, C4<0>, C4<0>;
+v003ED5D8_0 .alias "a", 0 0, v006A60B0_0;
+v006A5880_0 .alias "b", 0 0, v006A5F90_0;
+v006A58F0_0 .alias "s", 0 0, v006A6248_0;
+v006A5978_0 .net "temp1", 0 0, L_006A66A0; 1 drivers
+v006A59E8_0 .net "temp2", 0 0, L_00674038; 1 drivers
+S_006758A8 .scope begin, "start" "start" 2 79, 2 79, S_003EED60;
+ .timescale 0 0;
+S_003ED558 .scope begin, "main" "main" 2 84, 2 84, S_003EED60;
+ .timescale 0 0;
+    .scope S_003EED60;
+T_0 ;
+    %fork t_1, S_006758A8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A6108_0, 0, 1;
+    %set/v v006A6160_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EED60;
+T_1 ;
+    %fork t_3, S_003ED558;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 85 "$display", "Guia 03_05 - Alyson Deives - 416589";
+    %vpi_call 2 86 "$display", "HALF DIFFER com portas NOR\012";
+    %vpi_call 2 87 "$display", "\012A - B = S\012";
+    %vpi_call 2 88 "$monitor", "%b - %b = %b%b", v006A6108_0, v006A6160_0, v006A6248_0, v006A61B8_0;
+    %delay 1, 0;
+    %set/v v006A6108_0, 0, 1;
+    %set/v v006A6160_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A6108_0, 1, 1;
+    %set/v v006A6160_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A6108_0, 1, 1;
+    %set/v v006A6160_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC-MG\2° Periodo\Arquitetura I\Workspace\Guia_03\Ex_05_Half_Differ_nor.v";

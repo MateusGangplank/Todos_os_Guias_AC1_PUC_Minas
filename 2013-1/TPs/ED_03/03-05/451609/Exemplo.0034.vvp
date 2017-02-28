@@ -1,0 +1,137 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005F8EC0 .scope module, "teste" "teste" 2 33;
+ .timescale 0 0;
+v005FB990_0 .var "a", 0 0;
+v005FB9E8_0 .var "b", 0 0;
+v005FBA40_0 .var "chave", 1 0;
+v005FBA98_0 .net "s", 0 0, L_00740960; 1 drivers
+S_005F9740 .scope module, "test" "LU" 2 39, 2 11, S_005F8EC0;
+ .timescale 0 0;
+L_00732710 .functor OR 1, v005FB990_0, v005FB9E8_0, C4<0>, C4<0>;
+L_005FE6B0 .functor NOR 1, v005FB990_0, v005FB9E8_0, C4<0>, C4<0>;
+L_005FE6E8 .functor XOR 1, v005FB990_0, v005FB9E8_0, C4<0>, C4<0>;
+L_007333A0 .functor XNOR 1, v005FB990_0, v005FB9E8_0, C4<0>, C4<0>;
+L_007333D8 .functor NOT 1, L_005FBAF0, C4<0>, C4<0>, C4<0>;
+L_005FE790 .functor NOT 1, L_005FBB48, C4<0>, C4<0>, C4<0>;
+L_007404C8 .functor NOT 1, L_005FBBA0, C4<0>, C4<0>, C4<0>;
+L_00740538 .functor NOT 1, L_005FBBF8, C4<0>, C4<0>, C4<0>;
+L_007405A8 .functor AND 1, L_00732710, L_005FE790, L_007333D8, C4<1>;
+L_00740688 .functor AND 1, L_005FE6B0, L_005FBC50, L_007404C8, C4<1>;
+L_00740768 .functor AND 1, L_005FE6E8, L_005FBCA8, L_00740538, C4<1>;
+L_00740880 .functor AND 1, L_007333A0, L_005FBD00, L_005FBD58, C4<1>;
+L_00740960 .functor OR 1, L_007405A8, L_00740688, L_00740768, L_00740880;
+v005FB150_0 .net *"_s1", 0 0, L_005FBAF0; 1 drivers
+v005FB1A8_0 .net *"_s11", 0 0, L_005FBCA8; 1 drivers
+v005FB200_0 .net *"_s13", 0 0, L_005FBD00; 1 drivers
+v005FB258_0 .net *"_s15", 0 0, L_005FBD58; 1 drivers
+v005FB2B0_0 .net *"_s3", 0 0, L_005FBB48; 1 drivers
+v005FB308_0 .net *"_s5", 0 0, L_005FBBA0; 1 drivers
+v005FB360_0 .net *"_s7", 0 0, L_005FBBF8; 1 drivers
+v005FB3B8_0 .net *"_s9", 0 0, L_005FBC50; 1 drivers
+v005FB410_0 .net "a", 0 0, v005FB990_0; 1 drivers
+v005FB468_0 .net "b", 0 0, v005FB9E8_0; 1 drivers
+v005FB4C0_0 .net "chave", 1 0, v005FBA40_0; 1 drivers
+v005FB518_0 .alias "s", 0 0, v005FBA98_0;
+v005FB570_0 .net "tmp1", 0 0, L_00732710; 1 drivers
+v005FB5C8_0 .net "tmp10", 0 0, L_005FE790; 1 drivers
+v005FB620_0 .net "tmp11", 0 0, L_007333D8; 1 drivers
+v005FB678_0 .net "tmp12", 0 0, L_007405A8; 1 drivers
+v005FB6D0_0 .net "tmp13", 0 0, L_00740688; 1 drivers
+v005FB728_0 .net "tmp14", 0 0, L_00740768; 1 drivers
+v005FB780_0 .net "tmp15", 0 0, L_00740880; 1 drivers
+v005FB7D8_0 .net "tmp2", 0 0, L_005FE6B0; 1 drivers
+v005FB830_0 .net "tmp3", 0 0, L_005FE6E8; 1 drivers
+v005FB888_0 .net "tmp4", 0 0, L_007333A0; 1 drivers
+v005FB8E0_0 .net "tmp8", 0 0, L_00740538; 1 drivers
+v005FB938_0 .net "tmp9", 0 0, L_007404C8; 1 drivers
+L_005FBAF0 .part v005FBA40_0, 1, 1;
+L_005FBB48 .part v005FBA40_0, 0, 1;
+L_005FBBA0 .part v005FBA40_0, 1, 1;
+L_005FBBF8 .part v005FBA40_0, 0, 1;
+L_005FBC50 .part v005FBA40_0, 0, 1;
+L_005FBCA8 .part v005FBA40_0, 1, 1;
+L_005FBD00 .part v005FBA40_0, 0, 1;
+L_005FBD58 .part v005FBA40_0, 1, 1;
+S_005F96B8 .scope begin, "main" "main" 2 42, 2 42, S_005F8EC0;
+ .timescale 0 0;
+    .scope S_005F8EC0;
+T_0 ;
+    %fork t_1, S_005F96B8;
+    %jmp t_0;
+    .scope S_005F96B8;
+t_1 ;
+    %vpi_call 2 44 "$display", "Exemplo0034 - Rafael Tadeu - 451609";
+    %vpi_call 2 45 "$display", "Test exercicio02's module";
+    %set/v v005FB990_0, 0, 1;
+    %set/v v005FB9E8_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %vpi_call 2 48 "$display", "\012chave 00 - XNOR , chave 01 - XOR , chave 10 - NOR , chave 11 - OR";
+    %delay 1, 0;
+    %vpi_call 2 50 "$monitor", "a = %b  b = %b chave = %b saida = %b", v005FB990_0, v005FB9E8_0, v005FBA40_0, v005FBA98_0;
+    %delay 1, 0;
+    %set/v v005FB990_0, 0, 1;
+    %set/v v005FB9E8_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FB990_0, 1, 1;
+    %set/v v005FB9E8_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FB990_0, 1, 1;
+    %set/v v005FB9E8_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FB990_0, 0, 1;
+    %set/v v005FB9E8_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FB990_0, 0, 1;
+    %set/v v005FB9E8_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FB990_0, 1, 1;
+    %set/v v005FB9E8_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FB990_0, 1, 1;
+    %set/v v005FB9E8_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v005FBA40_0, 1, 1;
+    %end;
+    .scope S_005F8EC0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Google Drive\Puc\Arquitetura\Guias\Guia 03\Exemplo.0034.v";

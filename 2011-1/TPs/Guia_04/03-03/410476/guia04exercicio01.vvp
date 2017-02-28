@@ -1,0 +1,80 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00671EB0 .scope module, "TESTEMEIASOMA" "TESTEMEIASOMA" 2 45;
+ .timescale 0 0;
+v006A5538_0 .var "a", 0 0;
+v006A5590_0 .var "b", 0 0;
+v006A55E8_0 .net "carry", 0 0, L_006A58B0; 1 drivers
+v006A5640_0 .net "soma", 0 0, L_006A5500; 1 drivers
+S_00674D10 .scope module, "MEIASOMA1" "MEIASOMA" 2 50, 2 33, S_00671EB0;
+ .timescale 0 0;
+v006A5280_0 .net "a", 0 0, v006A5538_0; 1 drivers
+v006A52D8_0 .net "b", 0 0, v006A5590_0; 1 drivers
+v006A5330_0 .alias "carry", 0 0, v006A55E8_0;
+v006A53C0_0 .alias "soma", 0 0, v006A5640_0;
+v006A5418_0 .net "temp1", 0 0, L_003EF858; 1 drivers
+v006A54A8_0 .net "temp6", 0 0, L_006A5950; 1 drivers
+S_006A5008 .scope module, "OR1" "ORNANDS" 2 37, 2 1, S_00674D10;
+ .timescale 0 0;
+L_006A56D0 .functor NAND 1, v006A5538_0, v006A5538_0, C4<1>, C4<1>;
+L_003EF890 .functor NAND 1, v006A5590_0, v006A5590_0, C4<1>, C4<1>;
+L_003EF858 .functor NAND 1, L_006A56D0, L_003EF890, C4<1>, C4<1>;
+v006A5088_0 .alias "a", 0 0, v006A5280_0;
+v006A50E0_0 .alias "b", 0 0, v006A52D8_0;
+v006A5138_0 .alias "temp1", 0 0, v006A5418_0;
+v006A51B0_0 .net "temp2", 0 0, L_006A56D0; 1 drivers
+v006A5208_0 .net "temp3", 0 0, L_003EF890; 1 drivers
+S_006A4DF8 .scope module, "AND1" "ANDNANDS" 2 38, 2 12, S_00674D10;
+ .timescale 0 0;
+L_006A5860 .functor NAND 1, v006A5538_0, v006A5590_0, C4<1>, C4<1>;
+L_006A58B0 .functor NAND 1, L_006A5860, L_006A5860, C4<1>, C4<1>;
+v006A4E78_0 .alias "a", 0 0, v006A5280_0;
+v006A4ED0_0 .alias "b", 0 0, v006A52D8_0;
+v006A4F40_0 .alias "carry", 0 0, v006A55E8_0;
+v006A4FB0_0 .net "temp5", 0 0, L_006A5860; 1 drivers
+S_006A4CB0 .scope module, "NOT1" "NOTNANDS" 2 39, 2 24, S_00674D10;
+ .timescale 0 0;
+L_006A5950 .functor NAND 1, L_006A58B0, L_006A58B0, C4<1>, C4<1>;
+v006A4D30_0 .alias "carry", 0 0, v006A55E8_0;
+v006A4DA0_0 .alias "temp6", 0 0, v006A54A8_0;
+S_00674D90 .scope module, "NAND2" "ANDNANDS" 2 40, 2 12, S_00674D10;
+ .timescale 0 0;
+L_006A59B0 .functor NAND 1, L_003EF858, L_006A5950, C4<1>, C4<1>;
+L_006A5500 .functor NAND 1, L_006A59B0, L_006A59B0, C4<1>, C4<1>;
+v00671F30_0 .alias "a", 0 0, v006A5418_0;
+v006A4B48_0 .alias "b", 0 0, v006A54A8_0;
+v006A4BB8_0 .alias "carry", 0 0, v006A5640_0;
+v006A4C40_0 .net "temp5", 0 0, L_006A59B0; 1 drivers
+    .scope S_00671EB0;
+T_0 ;
+    %set/v v006A5538_0, 0, 1;
+    %set/v v006A5590_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00671EB0;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 58 "$display", " Larissa Fernandes Leijoto - 410476 ";
+    %delay 1, 0;
+    %vpi_call 2 59 "$display", " a | b | soma  | carry ";
+    %vpi_call 2 60 "$monitor", " %b | %b |   %b   |  %b", v006A5538_0, v006A5590_0, v006A5640_0, v006A55E8_0;
+    %delay 1, 0;
+    %set/v v006A5538_0, 0, 1;
+    %set/v v006A5590_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A5538_0, 1, 1;
+    %set/v v006A5590_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5538_0, 1, 1;
+    %set/v v006A5590_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2º periodo\Arquitetura de computadores\guia_04\guia04exercicio01.v";

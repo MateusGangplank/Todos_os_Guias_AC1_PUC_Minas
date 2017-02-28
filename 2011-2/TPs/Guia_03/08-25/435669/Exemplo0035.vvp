@@ -1,0 +1,58 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E2040 .scope module, "teste" "teste" 2 26;
+ .timescale 0 0;
+v005DEBA8_0 .net "s0", 3 0, L_003E6948; 1 drivers
+v005DEC00_0 .net "s1", 3 0, L_005DF058; 1 drivers
+v005DEC58_0 .net "s2", 3 0, L_005DF100; 1 drivers
+v005DECB0_0 .net "s3", 3 0, L_005DF170; 1 drivers
+v005DED08_0 .net "s4", 3 0, L_005DF0C8; 1 drivers
+v005DEDA0_0 .net "s5", 3 0, L_005DF248; 1 drivers
+v005DEE18_0 .net "s6", 3 0, L_005DF2B8; 1 drivers
+v005DEE70_0 .net "s7", 3 0, L_005DED60; 1 drivers
+v005DEEC8_0 .var "x", 3 0;
+v005DEF70_0 .var "y", 3 0;
+S_005E20C8 .scope module, "modulo1" "ex035" 2 31, 2 7, S_005E2040;
+ .timescale 0 0;
+L_003E6948 .functor NOT 4, v005DEEC8_0, C4<0000>, C4<0000>, C4<0000>;
+L_005DF058 .functor NOT 4, v005DEF70_0, C4<0000>, C4<0000>, C4<0000>;
+L_005DF100 .functor AND 4, v005DEEC8_0, v005DEF70_0, C4<1111>, C4<1111>;
+L_005DF170 .functor NAND 4, v005DEEC8_0, v005DEF70_0, C4<1111>, C4<1111>;
+L_005DF0C8 .functor OR 4, v005DEEC8_0, v005DEF70_0, C4<0000>, C4<0000>;
+L_005DF248 .functor NOR 4, v005DEEC8_0, v005DEF70_0, C4<0000>, C4<0000>;
+L_005DF2B8 .functor XOR 4, v005DEEC8_0, v005DEF70_0, C4<0000>, C4<0000>;
+L_005DED60 .functor XNOR 4, v005DEEC8_0, v005DEF70_0, C4<0000>, C4<0000>;
+v005E0F28_0 .alias "s0", 3 0, v005DEBA8_0;
+v005DE7A8_0 .alias "s1", 3 0, v005DEC00_0;
+v005DE818_0 .alias "s2", 3 0, v005DEC58_0;
+v005DE888_0 .alias "s3", 3 0, v005DECB0_0;
+v005DE8F8_0 .alias "s4", 3 0, v005DED08_0;
+v005DE968_0 .alias "s5", 3 0, v005DEDA0_0;
+v005DE9D8_0 .alias "s6", 3 0, v005DEE18_0;
+v005DEA58_0 .alias "s7", 3 0, v005DEE70_0;
+v005DEAC8_0 .net "x", 3 0, v005DEEC8_0; 1 drivers
+v005DEB38_0 .net "y", 3 0, v005DEF70_0; 1 drivers
+    .scope S_005E2040;
+T_0 ;
+    %movi 8, 3, 4;
+    %set/v v005DEEC8_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005DEF70_0, 8, 4;
+    %end;
+    .thread T_0;
+    .scope S_005E2040;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exemplo0034 - Mateus Augusto Moraes Ferreira - 435669";
+    %vpi_call 2 40 "$display", "Test LU's module";
+    %vpi_call 2 41 "$monitor", "x=%4b y=%4b s0=%4b s1=%4b s2=%4b s3=%4b s4=%4b s5=%4b s6=%4b s7=%4b  ", v005DEEC8_0, v005DEF70_0, v005DEBA8_0, v005DEC00_0, v005DEC58_0, v005DECB0_0, v005DED08_0, v005DEDA0_0, v005DEE18_0, v005DEE70_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\2011-2\Arquitetura\Guia03_435669\Exemplo0035.v";

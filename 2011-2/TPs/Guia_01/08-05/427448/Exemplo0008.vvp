@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0090DF28 .scope module, "testxnorgate" "testxnorgate" 2 17;
+ .timescale 0 0;
+v0090E148_0 .var "a", 0 0;
+v0090E1A0_0 .var "b", 0 0;
+v0090E1F8_0 .net "s", 0 0, L_0090FD18; 1 drivers
+S_00903380 .scope module, "XNOR1" "xnorgate" 2 24, 2 10, S_0090DF28;
+ .timescale 0 0;
+L_0090E250 .functor XOR 1, v0090E148_0, v0090E1A0_0, C4<0>, C4<0>;
+L_0090FD18 .functor NOT 1, L_0090E250, C4<0>, C4<0>, C4<0>;
+v00903408_0 .net *"_s0", 0 0, L_0090E250; 1 drivers
+v00903460_0 .net "p", 0 0, v0090E148_0; 1 drivers
+v0090E098_0 .net "q", 0 0, v0090E1A0_0; 1 drivers
+v0090E0F0_0 .alias "s", 0 0, v0090E1F8_0;
+S_00902F20 .scope begin, "start" "start" 2 27, 2 27, S_0090DF28;
+ .timescale 0 0;
+S_00902E98 .scope begin, "main" "main" 2 32, 2 32, S_0090DF28;
+ .timescale 0 0;
+    .scope S_0090DF28;
+T_0 ;
+    %fork t_1, S_00902F20;
+    %jmp t_0;
+    .scope S_00902F20;
+t_1 ;
+    %set/v v0090E148_0, 0, 1;
+    %set/v v0090E1A0_0, 0, 1;
+    %end;
+    .scope S_0090DF28;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0090DF28;
+T_1 ;
+    %fork t_3, S_00902E98;
+    %jmp t_2;
+    .scope S_00902E98;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exemplo 0008 - Michelle da Costa Silva - 427448";
+    %vpi_call 2 34 "$display", "\012Tabela-verdade XNOR gate";
+    %vpi_call 2 35 "$display", "\012a b s\012";
+    %vpi_call 2 36 "$monitor", "%b %b %b", v0090E148_0, v0090E1A0_0, v0090E1F8_0;
+    %set/v v0090E148_0, 0, 1;
+    %set/v v0090E1A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090E148_0, 0, 1;
+    %set/v v0090E1A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0090E148_0, 1, 1;
+    %set/v v0090E1A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090E148_0, 1, 1;
+    %set/v v0090E1A0_0, 1, 1;
+    %end;
+    .scope S_0090DF28;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Segundo Periodo\ACI\427448\guia01\Exemplo0008.v";

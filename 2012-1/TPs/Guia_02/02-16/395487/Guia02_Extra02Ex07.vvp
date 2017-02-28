@@ -1,0 +1,58 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A6DD08 .scope module, "testcalculoComplemento2" "testcalculoComplemento2" 2 25;
+ .timescale 0 0;
+v00A62C00_0 .var "entrada1", 0 7;
+v00A6FDA0_0 .net "saida1", 0 7, L_00A6FE28; 1 drivers
+S_00A639B8 .scope module, "COMPLEMENTO2" "calculoComplemento2" 2 30, 2 10, S_00A6DD08;
+ .timescale 0 0;
+L_00A6FBE0 .functor NOT 8, v00A62C00_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v00A63A40_0 .net *"_s2", 7 0, C4<00000001>; 1 drivers
+v00A63A98_0 .net "entrada", 0 7, v00A62C00_0; 1 drivers
+v00A62B50_0 .alias "saida", 0 7, v00A6FDA0_0;
+v00A62BA8_0 .net "temp", 0 7, L_00A6FBE0; 1 drivers
+L_00A6FE28 .arith/sum 8, L_00A6FBE0, C4<00000001>;
+    .scope S_00A6DD08;
+T_0 ;
+    %movi 8, 1, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %vpi_call 2 36 "$display", "Guia 02 - Extra 01 - Exercicio 07 - Alvaro Henrique de Araujo Rungue - 395487";
+    %vpi_call 2 38 "$display", "\012Teste do Modulo que Calcula complemento de 2:";
+    %vpi_call 2 40 "$display", "\012\012\012Byte\011\011Complemento de 2\012";
+    %vpi_call 2 42 "$monitor", "%b        %b", v00A62C00_0, v00A6FDA0_0;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 32, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 128, 8;
+    %set/v v00A62C00_0, 8, 8;
+    %delay 1, 0;
+    %set/v v00A62C00_0, 1, 8;
+    %delay 1, 0;
+    %set/v v00A62C00_0, 0, 8;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\HENRIQUE\Desktop\Guia 02 - 395487\Guia02_Extra02Ex07.v";

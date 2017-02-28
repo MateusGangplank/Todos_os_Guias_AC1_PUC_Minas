@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E9430 .scope module, "test_f4" "test_f4" 2 36;
+ .timescale 0 0;
+v005FBB48_0 .var "chave", 3 0;
+v005FBBA0_0 .net "s1", 3 0, L_003E6D00; 1 drivers
+v005FBBF8_0 .net "s2", 3 0, L_005FBEF8; 1 drivers
+v005FBC50_0 .net "s3", 3 0, L_005FC330; 1 drivers
+v005FBCA8_0 .net "s4", 3 0, L_005FC3A0; 1 drivers
+v005FBD40_0 .net "s5", 3 0, L_005FC4A0; 1 drivers
+v005FBDB8_0 .var "x", 3 0;
+v005FBE10_0 .var "y", 3 0;
+S_003E94B8 .scope module, "modulo" "f4" 2 42, 2 10, S_003E9430;
+ .timescale 0 0;
+L_003E6D00 .functor AND 4, v005FBDB8_0, v005FBE10_0, C4<1111>, C4<1111>;
+L_005FBEF8 .functor OR 4, v005FBDB8_0, v005FBE10_0, C4<0000>, C4<0000>;
+L_005FBF68 .functor NOT 1, L_005FC0B0, C4<0>, C4<0>, C4<0>;
+L_005FBFA0 .functor NOT 1, L_005FC150, C4<0>, C4<0>, C4<0>;
+L_005FC010 .functor NOT 1, L_005FC1E0, C4<0>, C4<0>, C4<0>;
+L_005FC048 .functor NOT 1, L_005FC2D8, C4<0>, C4<0>, C4<0>;
+L_005FC330 .functor AND 4, L_003E6D00, v005FBB48_0, C4<1111>, C4<1111>;
+L_005FC3A0 .functor AND 4, L_005FBEF8, L_005FC410, C4<1111>, C4<1111>;
+L_005FC4A0 .functor OR 4, L_005FC330, L_005FC3A0, C4<0000>, C4<0000>;
+v003E7E40_0 .net *"_s1", 0 0, L_005FC0B0; 1 drivers
+v005FB568_0 .net *"_s3", 0 0, L_005FC150; 1 drivers
+v005FB5D8_0 .net *"_s5", 0 0, L_005FC1E0; 1 drivers
+v005FB660_0 .net *"_s7", 0 0, L_005FC2D8; 1 drivers
+v005FB6D0_0 .net *"_s9", 3 0, L_005FC410; 1 drivers
+v005FB728_0 .net "chave", 3 0, v005FBB48_0; 1 drivers
+RS_005D109C .resolv tri, L_005FBF68, L_005FBFA0, L_005FC010, L_005FC048;
+v005FB798_0 .net8 "nchave", 0 0, RS_005D109C; 4 drivers
+v005FB808_0 .alias "s1", 3 0, v005FBBA0_0;
+v005FB878_0 .alias "s2", 3 0, v005FBBF8_0;
+v005FB918_0 .alias "s3", 3 0, v005FBC50_0;
+v005FB988_0 .alias "s4", 3 0, v005FBCA8_0;
+v005FB9F8_0 .alias "s5", 3 0, v005FBD40_0;
+v005FBA68_0 .net "x", 3 0, v005FBDB8_0; 1 drivers
+v005FBAD8_0 .net "y", 3 0, v005FBE10_0; 1 drivers
+L_005FC0B0 .part v005FBB48_0, 0, 1;
+L_005FC150 .part v005FBB48_0, 1, 1;
+L_005FC1E0 .part v005FBB48_0, 2, 1;
+L_005FC2D8 .part v005FBB48_0, 3, 1;
+L_005FC410 .repeat 4, 4, RS_005D109C;
+    .scope S_003E9430;
+T_0 ;
+    %vpi_call 2 48 "$display", "Exemplo0032 - Ederson Cristiano Nunes - 438964";
+    %vpi_call 2 49 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005FBDB8_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005FBE10_0, 8, 4;
+    %set/v v005FBB48_0, 0, 4;
+    %vpi_call 2 54 "$monitor", "x=%4b y=%4b chave=%4b  s5=%4b", v005FBDB8_0, v005FBE10_0, v005FBB48_0, v005FBD40_0;
+    %delay 1, 0;
+    %set/v v005FBB48_0, 1, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\438964\Exemplo0032.v";

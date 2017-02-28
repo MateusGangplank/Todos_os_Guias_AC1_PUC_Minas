@@ -1,0 +1,138 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0003BE08 .scope module, "testeExercicio05" "testeExercicio05" 2 43;
+ .timescale 0 0;
+v00602370_0 .var "a", 0 0;
+v006023C8_0 .var "b", 0 0;
+v00602488_0 .net "d", 0 0, L_00602A58; 1 drivers
+v006024E0_0 .var "vin", 0 0;
+v006025A0_0 .net "vout", 0 0, L_00602C30; 1 drivers
+S_000352B0 .scope module, "FULLSUBTRACTOR" "Exercicio05" 2 47, 2 1, S_0003BE08;
+ .timescale 0 0;
+L_00602C30 .functor OR 1, L_006016B0, L_00036AC8, C4<0>, C4<0>;
+v00602008_0 .net "a", 0 0, v00602370_0; 1 drivers
+v00602060_0 .net "b", 0 0, v006023C8_0; 1 drivers
+v006020B8_0 .alias "d", 0 0, v00602488_0;
+v00602148_0 .net "t1", 0 0, L_00602630; 1 drivers
+v006021A0_0 .net "t2", 0 0, L_00036AC8; 1 drivers
+v00602230_0 .net "t3", 0 0, L_006016B0; 1 drivers
+v006022C0_0 .net "vin", 0 0, v006024E0_0; 1 drivers
+v00602318_0 .alias "vout", 0 0, v006025A0_0;
+S_00601740 .scope module, "MS1" "meiaDiferenca" 2 5, 2 10, S_000352B0;
+ .timescale 0 0;
+v00601DC8_0 .alias "a", 0 0, v00602008_0;
+v00601E58_0 .alias "b", 0 0, v00602060_0;
+v00601EE8_0 .alias "d", 0 0, v00602148_0;
+v00601F58_0 .net "t1", 0 0, L_006026D8; 1 drivers
+v00601FB0_0 .alias "vout", 0 0, v006021A0_0;
+S_00601B30 .scope module, "XOR1" "XorNand" 2 14, 2 27, S_00601740;
+ .timescale 0 0;
+L_00039210 .functor NAND 1, v00602370_0, v006023C8_0, C4<1>, C4<1>;
+L_00601EB0 .functor NAND 1, L_00039210, v00602370_0, C4<1>, C4<1>;
+L_006025F8 .functor NAND 1, L_00039210, v006023C8_0, C4<1>, C4<1>;
+L_00602630 .functor NAND 1, L_00601EB0, L_006025F8, C4<1>, C4<1>;
+v00601BB8_0 .alias "a", 0 0, v00602008_0;
+v00601C10_0 .alias "b", 0 0, v00602060_0;
+v00601C68_0 .alias "s", 0 0, v00602148_0;
+v00601CC0_0 .net "t1", 0 0, L_00039210; 1 drivers
+v00601D18_0 .net "t2", 0 0, L_00601EB0; 1 drivers
+v00601D70_0 .net "t3", 0 0, L_006025F8; 1 drivers
+S_006019E0 .scope module, "NOT1" "NotNand" 2 15, 2 37, S_00601740;
+ .timescale 0 0;
+L_006026D8 .functor NAND 1, v00602370_0, v00602370_0, C4<1>, C4<1>;
+v00601A68_0 .alias "a", 0 0, v00602008_0;
+v00601AD8_0 .alias "s", 0 0, v00601F58_0;
+S_006017C8 .scope module, "AND1" "AndNand" 2 16, 2 19, S_00601740;
+ .timescale 0 0;
+L_006027F0 .functor NAND 1, L_006026D8, v006023C8_0, C4<1>, C4<1>;
+L_00036AC8 .functor NAND 1, L_006027F0, L_006027F0, C4<1>, C4<1>;
+v00601850_0 .alias "a", 0 0, v00601F58_0;
+v006018A8_0 .alias "b", 0 0, v00602060_0;
+v00601900_0 .alias "s", 0 0, v006021A0_0;
+v00601970_0 .net "t1", 0 0, L_006027F0; 1 drivers
+S_00035338 .scope module, "MS2" "meiaDiferenca" 2 6, 2 10, S_000352B0;
+ .timescale 0 0;
+v00601538_0 .alias "a", 0 0, v00602148_0;
+v00601590_0 .alias "b", 0 0, v006022C0_0;
+v006015E8_0 .alias "d", 0 0, v00602488_0;
+v00601658_0 .net "t1", 0 0, L_00602AE0; 1 drivers
+v006016E8_0 .alias "vout", 0 0, v00602230_0;
+S_00601288 .scope module, "XOR1" "XorNand" 2 14, 2 27, S_00035338;
+ .timescale 0 0;
+L_00602888 .functor NAND 1, L_00602630, v006024E0_0, C4<1>, C4<1>;
+L_006028E8 .functor NAND 1, L_00602888, L_00602630, C4<1>, C4<1>;
+L_00602A20 .functor NAND 1, L_00602888, v006024E0_0, C4<1>, C4<1>;
+L_00602A58 .functor NAND 1, L_006028E8, L_00602A20, C4<1>, C4<1>;
+v00601310_0 .alias "a", 0 0, v00602148_0;
+v00601368_0 .alias "b", 0 0, v006022C0_0;
+v006013C0_0 .alias "s", 0 0, v00602488_0;
+v00601418_0 .net "t1", 0 0, L_00602888; 1 drivers
+v00601470_0 .net "t2", 0 0, L_006028E8; 1 drivers
+v006014C8_0 .net "t3", 0 0, L_00602A20; 1 drivers
+S_00601138 .scope module, "NOT1" "NotNand" 2 15, 2 37, S_00035338;
+ .timescale 0 0;
+L_00602AE0 .functor NAND 1, L_00602630, L_00602630, C4<1>, C4<1>;
+v006011C0_0 .alias "a", 0 0, v00602148_0;
+v00601230_0 .alias "s", 0 0, v00601658_0;
+S_0003C1B0 .scope module, "AND1" "AndNand" 2 16, 2 19, S_00035338;
+ .timescale 0 0;
+L_00602B30 .functor NAND 1, L_00602AE0, v006024E0_0, C4<1>, C4<1>;
+L_006016B0 .functor NAND 1, L_00602B30, L_00602B30, C4<1>, C4<1>;
+v000384F8_0 .alias "a", 0 0, v00601658_0;
+v00600FD0_0 .alias "b", 0 0, v006022C0_0;
+v00601040_0 .alias "s", 0 0, v00602230_0;
+v006010C8_0 .net "t1", 0 0, L_00602B30; 1 drivers
+    .scope S_0003BE08;
+T_0 ;
+    %set/v v006024E0_0, 0, 1;
+    %set/v v00602370_0, 0, 1;
+    %set/v v006023C8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0003BE08;
+T_1 ;
+    %vpi_call 2 57 "$display", "Exercicio 05 - Douglas Borges - 417889";
+    %vpi_call 2 58 "$display", "Circuito Subtrator Completo com portas NAND\012";
+    %delay 1, 0;
+    %vpi_call 2 60 "$display", "  a - b - Vin = Vout Dif";
+    %delay 1, 0;
+    %vpi_call 2 61 "$monitor", "  %b   %b    %b  =  %d    %d", v00602370_0, v006023C8_0, v006024E0_0, v006025A0_0, v00602488_0;
+    %delay 1, 0;
+    %set/v v006024E0_0, 0, 1;
+    %set/v v00602370_0, 0, 1;
+    %set/v v006023C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006024E0_0, 0, 1;
+    %set/v v00602370_0, 1, 1;
+    %set/v v006023C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006024E0_0, 0, 1;
+    %set/v v00602370_0, 1, 1;
+    %set/v v006023C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006024E0_0, 1, 1;
+    %set/v v00602370_0, 0, 1;
+    %set/v v006023C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006024E0_0, 1, 1;
+    %set/v v00602370_0, 0, 1;
+    %set/v v006023C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006024E0_0, 1, 1;
+    %set/v v00602370_0, 1, 1;
+    %set/v v006023C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006024E0_0, 1, 1;
+    %set/v v00602370_0, 1, 1;
+    %set/v v006023C8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Douglas Borges\Meus documentos\Documentos\PUC\Arquitetura de Computadores\Verilog\Eclipse\Guia04\Exercicio05.v";

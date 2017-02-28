@@ -1,0 +1,52 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00845078 .scope module, "teste_meia_soma" "teste_meia_soma" 2 27;
+ .timescale 0 0;
+v00760118_0 .var "a", 0 0;
+v00760170_0 .var "b", 0 0;
+v007601C8_0 .net "s0", 0 0, L_0084F980; 1 drivers
+v00760220_0 .net "s1", 0 0, L_0084F868; 1 drivers
+S_008431F0 .scope module, "m1" "meia_soma" 2 33, 2 5, S_00845078;
+ .timescale 0 0;
+L_00843328 .functor NAND 1, v00760118_0, v00760170_0, C4<1>, C4<1>;
+L_0084F8D8 .functor NAND 1, v00760118_0, L_00843328, C4<1>, C4<1>;
+L_0084F948 .functor NAND 1, L_00843328, v00760170_0, C4<1>, C4<1>;
+L_0084F980 .functor NAND 1, L_0084F8D8, L_0084F948, C4<1>, C4<1>;
+L_00849BE8 .functor NAND 1, v00760118_0, v00760170_0, C4<1>, C4<1>;
+L_0084F868 .functor NAND 1, L_00849BE8, C4<1>, C4<1>, C4<1>;
+v00845100_0 .alias "s0", 0 0, v007601C8_0;
+v0084FF70_0 .alias "s1", 0 0, v00760220_0;
+v00843278_0 .net "t1", 0 0, L_00843328; 1 drivers
+v008432D0_0 .net "t2", 0 0, L_0084F8D8; 1 drivers
+v0084F810_0 .net "t3", 0 0, L_0084F948; 1 drivers
+v00760010_0 .net "t4", 0 0, L_00849BE8; 1 drivers
+v00760068_0 .net "x", 0 0, v00760118_0; 1 drivers
+v007600C0_0 .net "y", 0 0, v00760170_0; 1 drivers
+    .scope S_00845078;
+T_0 ;
+    %vpi_call 2 39 "$display", "\012 Guia 04-1";
+    %vpi_call 2 40 "$display", "\012 Meia soma com portas nand";
+    %vpi_call 2 41 "$display", "\012 Vout A + B =         ";
+    %vpi_call 2 42 "$monitor", "  %b ||%b + %b = %b", v00760220_0, v00760118_0, v00760170_0, v007601C8_0;
+    %set/v v00760118_0, 0, 1;
+    %set/v v00760170_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00760118_0, 0, 1;
+    %set/v v00760170_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00760118_0, 1, 1;
+    %set/v v00760170_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00760118_0, 1, 1;
+    %set/v v00760170_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\CIMG\Arcevo Técnico\Arquitetura\guia4\guia4_1.v";

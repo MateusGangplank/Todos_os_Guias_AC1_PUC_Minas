@@ -1,0 +1,39 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005D0C90 .scope module, "test_f4" "test_f4" 2 21;
+ .timescale 0 0;
+L_003E6938 .functor AND 4, v005F8C68_0, v005F8CC0_0, C4<1111>, C4<1111>;
+L_005F8E70 .functor OR 4, v005F8C68_0, v005F8CC0_0, C4<0000>, C4<0000>;
+v005F8C68_0 .var "x", 3 0;
+v005F8CC0_0 .var "y", 3 0;
+v005F8D18_0 .net "z0", 3 0, L_003E6938; 1 drivers
+v005F8D70_0 .net "z1", 3 0, L_005F8E70; 1 drivers
+S_003E5EA0 .scope module, "modulo" "f4" 2 31, 2 10, S_005D0C90;
+ .timescale 0 0;
+v003E4C50_0 .net "a", 3 0, v005F8C68_0; 1 drivers
+v005F8B00_0 .net "b", 3 0, v005F8CC0_0; 1 drivers
+v005F8B70_0 .alias "s1", 3 0, v005F8D18_0;
+v005F8BF8_0 .alias "s2", 3 0, v005F8D70_0;
+    .scope S_005D0C90;
+T_0 ;
+    %vpi_call 2 36 "$display", "Exemplo0031 - Ederson Cristiano Nunes - 438964";
+    %vpi_call 2 37 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005F8C68_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005F8CC0_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%3b %3b %3b", v005F8C68_0, v005F8CC0_0, v005F8D18_0;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%3b %3b %3b", v005F8C68_0, v005F8CC0_0, v005F8D70_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\438964\Exemplo0031.vhdl";

@@ -1,0 +1,81 @@
+// Exemplo0016 - BASE
+// Nome: Lucas Porto Lopes
+// Matricula 451408
+
+//test number system
+
+module test_base_06;
+reg [2:0] a;
+reg [4:0] b;
+reg [2:0] c;
+reg [3:0] d;
+reg [4:0] e;
+
+initial begin
+	$display("Exemplo0016 - Lucas Porto Lopes - 451408");
+	$display("Test number system");
+	
+	a = 5;
+	b = 10;
+	c = 15;
+	d = 20;
+	
+	$display("\nPositive value");
+	$display("a = %d = %3b", a, a);
+	$display("b = %d = %4b", a, a);
+	$display("c = %d = %5b", a, a);
+	
+	$display("b = %d = %4b", b, b);
+	$display("c = %d = %5b", c, c);
+	$display("d = %d = %3b", d, d);
+	$display("d = %d = %3o", d, d);
+	$display("d = %d = %3h", d, d);
+	
+	a = -5;
+	b = -5;
+	c = -5;
+	
+	$display("\nNegative Value");
+	$display("a = -5[3] = %d = %3b", a, a);
+	$display("b = -5[4] = %d = %4b", b, b);
+	$display("c = -5[5] = %d = %5b", c, c);
+	
+	a = ~5+1;
+	b = ~5+1;
+	c = ~5+1;
+	
+	$display("\nNegative Mixed expression");
+	$display("a = %d = %3b", a, a);
+	$display("b = %d = %4b", b, b);
+	$display("c = %d = %5b", c, c);
+
+	a = 5+3;
+	b = 5+3;
+	c = 10-5+25+3+1;
+	
+	$display("\nOverflow");
+	$display("a = %d = %3b", a, a);
+	$display("b = %d = %4b", b, b);
+	$display("c = %d = %5b", c, c);
+	
+	$display("\nComplements");
+	$display("0= %d = %3b = %3b", ~1, (1-1), ~1);
+	$display("1= %d = %3b = %3b", ~0, (2-1), ~0);
+	$display("2= %d = %3b = %3b", (1+1), (3-1), ~0+~0);
+	
+	a = (3+4);
+	b = 3*8;
+	c = 33/5;
+	d = 25-11;
+	e = 2*8+7-1;
+	
+	$display("\nExercicio01");
+	$display("a = %5b",a);
+	$display("b = %5b",b);
+	$display("c = %5b",c);
+	$display("d = %5b",d);
+	$display("e = %5b",e);
+	
+end
+
+endmodule // test_base

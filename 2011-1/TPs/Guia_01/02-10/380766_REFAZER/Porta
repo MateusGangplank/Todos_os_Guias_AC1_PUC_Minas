@@ -1,0 +1,78 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_02026EB0 .scope module, "testeportanor" "testeportanor" 2 21;
+ .timescale 0 0;
+v02026FE0_0 .var "a", 0 0;
+v02027038_0 .var "b", 0 0;
+v02027090_0 .var "c", 0 0;
+v020270E8_0 .net "s", 0 0, L_02027970; 1 drivers
+S_003AFA00 .scope module, "NOR1" "portanor" 2 27, 2 8, S_02026EB0;
+ .timescale 0 0;
+L_02027458 .functor AND 1, v02026FE0_0, v02027038_0, C4<1>, C4<1>;
+L_020271B0 .functor AND 1, L_02027458, v02027090_0, C4<1>, C4<1>;
+L_02027970 .functor NOT 1, L_020271B0, C4<0>, C4<0>, C4<0>;
+v003AFA80_0 .net *"_s0", 0 0, L_02027458; 1 drivers
+v003AEF88_0 .net *"_s2", 0 0, L_020271B0; 1 drivers
+v003AEFE0_0 .net "a", 0 0, v02026FE0_0; 1 drivers
+v003AF038_0 .net "b", 0 0, v02027038_0; 1 drivers
+v003AF090_0 .net "c", 0 0, v02027090_0; 1 drivers
+v02026F88_0 .alias "s", 0 0, v020270E8_0;
+    .scope S_02026EB0;
+T_0 ;
+    %vpi_call 2 32 "$display", "Guia 1 - Guilherme Lucindo - 380766";
+    %vpi_call 2 34 "$displey", "Teste da porta NAND";
+    %vpi_call 2 35 "$displey", "\012 s = ~(a & b & c) \012";
+    %set/v v02026FE0_0, 0, 1;
+    %set/v v02027038_0, 0, 1;
+    %set/v v02027090_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 0, 1;
+    %set/v v02027038_0, 0, 1;
+    %set/v v02027090_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 0, 1;
+    %set/v v02027038_0, 1, 1;
+    %set/v v02027090_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 0, 1;
+    %set/v v02027038_0, 0, 1;
+    %set/v v02027090_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 1, 1;
+    %set/v v02027038_0, 0, 1;
+    %set/v v02027090_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 1, 1;
+    %set/v v02027038_0, 0, 1;
+    %set/v v02027090_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 1, 1;
+    %set/v v02027038_0, 1, 1;
+    %set/v v02027090_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 1, 1;
+    %set/v v02027038_0, 1, 1;
+    %set/v v02027090_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$displey", "%b = ~(%b & %b & %b)", v020270E8_0, v02026FE0_0, v02027038_0, v02027090_0;
+    %set/v v02026FE0_0, 0, 1;
+    %set/v v02027038_0, 1, 1;
+    %set/v v02027090_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Porta nand.v";

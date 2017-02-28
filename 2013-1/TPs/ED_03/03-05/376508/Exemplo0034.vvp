@@ -1,0 +1,133 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0032A130 .scope module, "guia0034" "guia0034" 2 10;
+ .timescale 0 0;
+L_005C97A0 .functor OR 1, v003291A0_0, v003291F8_0, C4<0>, C4<0>;
+L_005C9768 .functor NOR 1, v003291A0_0, v003291F8_0, C4<0>, C4<0>;
+L_005C9848 .functor XOR 1, v003291A0_0, v003291F8_0, C4<0>, C4<0>;
+L_005C9880 .functor XNOR 1, v003291A0_0, v003291F8_0, C4<0>, C4<0>;
+L_005C9810 .functor NOT 1, L_00329618, C4<0>, C4<0>, C4<0>;
+L_005C98B8 .functor NOT 1, L_00329670, C4<0>, C4<0>, C4<0>;
+L_005C9960 .functor AND 1, L_005C97A0, L_005C9810, L_005C98B8, C4<1>;
+L_005C9A40 .functor AND 1, L_005C9768, L_005C9810, L_003296C8, C4<1>;
+L_005C9AE8 .functor AND 1, L_005C9848, L_00329720, L_005C98B8, C4<1>;
+L_005C9928 .functor AND 1, L_005C9880, L_00329778, L_003297D0, C4<1>;
+v00328F90_0 .net *"_s1", 0 0, L_00329618; 1 drivers
+v00328FE8_0 .net *"_s11", 0 0, L_003297D0; 1 drivers
+v00329040_0 .net *"_s3", 0 0, L_00329670; 1 drivers
+v00329098_0 .net *"_s5", 0 0, L_003296C8; 1 drivers
+v003290F0_0 .net *"_s7", 0 0, L_00329720; 1 drivers
+v00329148_0 .net *"_s9", 0 0, L_00329778; 1 drivers
+v003291A0_0 .var "a", 0 0;
+v003291F8_0 .var "b", 0 0;
+v00329250_0 .var "c", 1 0;
+v003292A8_0 .net "sand0", 0 0, L_005C9928; 1 drivers
+v00329300_0 .net "sand1", 0 0, L_005C9AE8; 1 drivers
+v00329358_0 .net "sand2", 0 0, L_005C9A40; 1 drivers
+v003293B0_0 .net "sand3", 0 0, L_005C9960; 1 drivers
+v00329408_0 .net "snor", 0 0, L_005C9768; 1 drivers
+v00329460_0 .net "snot0", 0 0, L_005C98B8; 1 drivers
+v003294B8_0 .net "snot1", 0 0, L_005C9810; 1 drivers
+v00329510_0 .net "sor", 0 0, L_005C97A0; 1 drivers
+v00329568_0 .net "sxnor", 0 0, L_005C9880; 1 drivers
+v003295C0_0 .net "sxor", 0 0, L_005C9848; 1 drivers
+L_00329618 .part v00329250_0, 1, 1;
+L_00329670 .part v00329250_0, 0, 1;
+L_003296C8 .part v00329250_0, 0, 1;
+L_00329720 .part v00329250_0, 1, 1;
+L_00329778 .part v00329250_0, 1, 1;
+L_003297D0 .part v00329250_0, 0, 1;
+    .scope S_0032A130;
+T_0 ;
+    %vpi_call 2 33 "$display", "Exemplo0034 - Felipe Barros  - 376508";
+    %vpi_call 2 34 "$display", "Test LU's module or/nor/xor/xnor";
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 0, 1;
+    %set/v v00329250_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "c  a  b   OR  NOR  XOR  XNOR";
+    %delay 1, 0;
+    %vpi_call 2 37 "$monitor", "%2b %b  %b    %b   %b   %b    %b", v00329250_0, v003291A0_0, v003291F8_0, v003293B0_0, v00329358_0, v00329300_0, v003292A8_0;
+    %delay 1, 0;
+    %set/v v00329250_0, 0, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 0, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 0, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 0, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v00329250_0, 8, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 1, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 1, 2;
+    %set/v v003291A0_0, 0, 1;
+    %set/v v003291F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 1, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00329250_0, 1, 2;
+    %set/v v003291A0_0, 1, 1;
+    %set/v v003291F8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\ARQ1\guia03\Exemplo0034.v";

@@ -1,0 +1,65 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00372FE8 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v0037F070_0 .var "a", 0 0;
+v0037F0C8_0 .var "b", 0 0;
+v0037F120_0 .net "s", 0 0, L_0037F1E8; 1 drivers
+S_00373570 .scope module, "XNOR1" "xnorgate" 2 24, 2 11, S_00372FE8;
+ .timescale 0 0;
+L_0037D980 .functor XOR 1, v0037F070_0, v0037F0C8_0, C4<0>, C4<0>;
+L_0037F1E8 .functor NOT 1, L_0037D980, C4<0>, C4<0>, C4<0>;
+v003730F8_0 .net *"_s0", 0 0, L_0037D980; 1 drivers
+v003735F8_0 .net "p", 0 0, v0037F070_0; 1 drivers
+v0037EFC0_0 .net "q", 0 0, v0037F0C8_0; 1 drivers
+v0037F018_0 .alias "s", 0 0, v0037F120_0;
+S_003734E8 .scope begin, "start" "start" 2 27, 2 27, S_00372FE8;
+ .timescale 0 0;
+S_00373070 .scope begin, "principal" "principal" 2 33, 2 33, S_00372FE8;
+ .timescale 0 0;
+    .scope S_00372FE8;
+T_0 ;
+    %fork t_1, S_003734E8;
+    %jmp t_0;
+    .scope S_003734E8;
+t_1 ;
+    %set/v v0037F070_0, 0, 1;
+    %set/v v0037F0C8_0, 0, 1;
+    %end;
+    .scope S_00372FE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00372FE8;
+T_1 ;
+    %fork t_3, S_00373070;
+    %jmp t_2;
+    .scope S_00373070;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exercicio03  - Debora Amaral Chaves - 437659";
+    %vpi_call 2 35 "$display", "Test XNOR gate";
+    %vpi_call 2 36 "$display", "\012 ~(a^b) = s\012";
+    %set/v v0037F070_0, 0, 1;
+    %set/v v0037F0C8_0, 0, 1;
+    %vpi_call 2 39 "$monitor", "~(%b^%b) = %b", v0037F070_0, v0037F0C8_0, v0037F120_0;
+    %delay 1, 0;
+    %set/v v0037F0C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037F070_0, 1, 1;
+    %set/v v0037F0C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037F0C8_0, 1, 1;
+    %end;
+    .scope S_00372FE8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\PenDrive\PUC\2periodo\AC\Guia01\Exercicio03.v";

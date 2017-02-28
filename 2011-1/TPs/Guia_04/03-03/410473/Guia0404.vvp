@@ -1,0 +1,65 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E81F0 .scope module, "testex04" "testex04" 2 32;
+ .timescale 0 0;
+v0069B688_0 .var "a", 0 0;
+v0069B6E0_0 .var "b", 0 0;
+v0069B738_0 .net "cOut", 0 0, L_0069BD58; 1 drivers
+v0069B790_0 .net "s", 0 0, L_0069BC08; 1 drivers
+S_003E8278 .scope module, "um" "halfSubtractor" 2 35, 2 13, S_003E81F0;
+ .timescale 0 0;
+L_00661320 .functor NAND 1, v0069B688_0, v0069B688_0, C4<1>, C4<1>;
+L_0069B808 .functor NAND 1, v0069B6E0_0, v0069B6E0_0, C4<1>, C4<1>;
+L_0069B878 .functor NAND 1, v0069B688_0, L_0069B808, C4<1>, C4<1>;
+L_0069B918 .functor NAND 1, L_00661320, v0069B6E0_0, C4<1>, C4<1>;
+L_0069B840 .functor NAND 1, L_0069B878, L_0069B878, C4<1>, C4<1>;
+L_0069BA28 .functor NAND 1, L_0069B918, L_0069B918, C4<1>, C4<1>;
+L_0069BAB8 .functor NAND 1, L_0069B840, L_0069BA28, C4<1>, C4<1>;
+L_0069BB60 .functor NAND 1, L_0069B840, L_0069BAB8, C4<1>, C4<1>;
+L_0069BBD0 .functor NAND 1, L_0069BA28, L_0069BAB8, C4<1>, C4<1>;
+L_0069BC08 .functor NAND 1, L_0069BBD0, L_0069BB60, C4<1>, C4<1>;
+L_0069BCE8 .functor NAND 1, L_00661320, v0069B6E0_0, C4<1>, C4<1>;
+L_0069BD58 .functor NAND 1, L_0069BCE8, L_0069BCE8, C4<1>, C4<1>;
+v003E8300_0 .net "a", 0 0, v0069B688_0; 1 drivers
+v0069B080_0 .net "b", 0 0, v0069B6E0_0; 1 drivers
+v0069B0F0_0 .alias "cOut", 0 0, v0069B738_0;
+v0069B178_0 .net "nOut", 0 0, L_0069BCE8; 1 drivers
+v0069B1E8_0 .net "nand4", 0 0, L_0069B840; 1 drivers
+v0069B240_0 .net "nand5", 0 0, L_0069BA28; 1 drivers
+v0069B2B0_0 .net "notA", 0 0, L_00661320; 1 drivers
+v0069B348_0 .net "notB", 0 0, L_0069B808; 1 drivers
+v0069B3B8_0 .alias "s", 0 0, v0069B790_0;
+v0069B458_0 .net "s0", 0 0, L_0069BBD0; 1 drivers
+v0069B4C8_0 .net "s1", 0 0, L_0069BB60; 1 drivers
+v0069B538_0 .net "s2", 0 0, L_0069BAB8; 1 drivers
+v0069B5A8_0 .net "saANDnotB", 0 0, L_0069B878; 1 drivers
+v0069B618_0 .net "snotAANDb", 0 0, L_0069B918; 1 drivers
+    .scope S_003E81F0;
+T_0 ;
+    %vpi_call 2 39 "$display", "Exercicio 04 - Pedro Tronbin - 410473";
+    %vpi_call 2 40 "$display", "Teste Operador Meia Diferenca usando portas NAND.";
+    %vpi_call 2 41 "$display", "A  -  B  =  C0  S";
+    %set/v v0069B688_0, 0, 1;
+    %set/v v0069B6E0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$monitor", "%b  -  %b  =  %b  %b", v0069B688_0, v0069B6E0_0, v0069B738_0, v0069B790_0;
+    %delay 1, 0;
+    %set/v v0069B688_0, 0, 1;
+    %set/v v0069B6E0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069B688_0, 1, 1;
+    %set/v v0069B6E0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069B688_0, 1, 1;
+    %set/v v0069B6E0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\410473\Guia0404.V";

@@ -1,0 +1,118 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BDA160 .scope module, "test_f4" "test_f4" 2 33;
+ .timescale 0 0;
+v00BDC500_0 .var "chave1", 0 0;
+v00BDC558_0 .var "chave2", 0 0;
+v00BDC5B0_0 .net "s", 0 0, L_005AD368; 1 drivers
+v00BDC608_0 .var "x", 0 0;
+v00BDC660_0 .var "y", 0 0;
+S_00BDA1E8 .scope module, "modulo" "f4" 2 44, 2 11, S_00BDA160;
+ .timescale 0 0;
+L_00BDE528 .functor AND 1, v00BDC608_0, v00BDC660_0, C4<1>, C4<1>;
+L_00BDE5D0 .functor OR 1, v00BDC608_0, v00BDC660_0, C4<0>, C4<0>;
+L_00BD31C8 .functor NAND 1, v00BDC608_0, v00BDC660_0, C4<1>, C4<1>;
+L_00BDE560 .functor NOR 1, v00BDC608_0, v00BDC660_0, C4<0>, C4<0>;
+L_00BDE598 .functor AND 1, L_00BDE528, v00BDC500_0, C4<1>, C4<1>;
+L_005ACFE8 .functor AND 1, L_00BDE5D0, v00BDC500_0, C4<1>, C4<1>;
+L_005AD058 .functor AND 1, L_00BD31C8, v00BDC500_0, C4<1>, C4<1>;
+L_005ACFB0 .functor AND 1, L_00BDE560, v00BDC500_0, C4<1>, C4<1>;
+L_005AD100 .functor OR 1, L_00BDE598, L_005ACFE8, C4<0>, C4<0>;
+L_005AD1A8 .functor OR 1, L_005AD058, L_005ACFB0, C4<0>, C4<0>;
+L_005AD250 .functor AND 1, L_005AD100, v00BDC558_0, C4<1>, C4<1>;
+L_005AD2F8 .functor AND 1, L_005AD1A8, v00BDC558_0, C4<1>, C4<1>;
+L_005AD368 .functor OR 1, L_005AD2F8, L_005AD250, C4<0>, C4<0>;
+v00BDBF28_0 .net "a", 0 0, v00BDC608_0; 1 drivers
+v00BDBF80_0 .net "b", 0 0, v00BDC660_0; 1 drivers
+v00BDBFD8_0 .net "chave1", 0 0, v00BDC500_0; 1 drivers
+v00BDC030_0 .net "chave2", 0 0, v00BDC558_0; 1 drivers
+v00BDC088_0 .alias "s", 0 0, v00BDC5B0_0;
+v00BDC0E0_0 .net "s1", 0 0, L_00BDE528; 1 drivers
+v00BDC138_0 .net "s10", 0 0, L_005AD1A8; 1 drivers
+v00BDC190_0 .net "s11", 0 0, L_005AD250; 1 drivers
+v00BDC1E8_0 .net "s12", 0 0, L_005AD2F8; 1 drivers
+v00BDC240_0 .net "s2", 0 0, L_00BDE5D0; 1 drivers
+v00BDC298_0 .net "s3", 0 0, L_00BD31C8; 1 drivers
+v00BDC2F0_0 .net "s4", 0 0, L_00BDE560; 1 drivers
+v00BDC348_0 .net "s5", 0 0, L_00BDE598; 1 drivers
+v00BDC3A0_0 .net "s6", 0 0, L_005ACFE8; 1 drivers
+v00BDC3F8_0 .net "s7", 0 0, L_005AD058; 1 drivers
+v00BDC450_0 .net "s8", 0 0, L_005ACFB0; 1 drivers
+v00BDC4A8_0 .net "s9", 0 0, L_005AD100; 1 drivers
+    .scope S_00BDA160;
+T_0 ;
+    %vpi_call 2 51 "$display", "Exemplo0033 - F\341bio Fiuza Pereira - 406087";
+    %vpi_call 2 52 "$display", "Test LU";
+    %set/v v00BDC608_0, 0, 1;
+    %set/v v00BDC660_0, 0, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 1, 1;
+    %vpi_call 2 56 "$monitor", "x = %1b -- y = %1b chave1 = %1b  chave2 = %1b Resultado = %1b", v00BDC608_0, v00BDC660_0, v00BDC500_0, v00BDC558_0, v00BDC5B0_0;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 0, 1;
+    %set/v v00BDC660_0, 1, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 1, 1;
+    %set/v v00BDC660_0, 0, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 1, 1;
+    %set/v v00BDC660_0, 1, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 0, 1;
+    %set/v v00BDC660_0, 0, 1;
+    %set/v v00BDC500_0, 0, 1;
+    %set/v v00BDC558_0, 1, 1;
+    %vpi_call 2 63 "$display", "\012";
+    %delay 1, 0;
+    %set/v v00BDC608_0, 0, 1;
+    %set/v v00BDC660_0, 1, 1;
+    %set/v v00BDC500_0, 0, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 1, 1;
+    %set/v v00BDC660_0, 0, 1;
+    %set/v v00BDC500_0, 0, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 1, 1;
+    %set/v v00BDC660_0, 1, 1;
+    %set/v v00BDC500_0, 0, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 0, 1;
+    %set/v v00BDC660_0, 0, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %vpi_call 2 69 "$display", "\012";
+    %delay 1, 0;
+    %set/v v00BDC608_0, 0, 1;
+    %set/v v00BDC660_0, 1, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 1, 1;
+    %set/v v00BDC660_0, 0, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BDC608_0, 1, 1;
+    %set/v v00BDC660_0, 1, 1;
+    %set/v v00BDC500_0, 1, 1;
+    %set/v v00BDC558_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fiuza\Desktop\A.C\Nova Pasta\Exemplo0033.v";

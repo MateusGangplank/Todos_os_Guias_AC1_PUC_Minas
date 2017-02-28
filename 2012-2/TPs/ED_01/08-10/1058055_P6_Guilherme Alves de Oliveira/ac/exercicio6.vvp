@@ -1,0 +1,68 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x88d08d0 .scope module, "testxorgate" "testxorgate" 2 16;
+ .timescale 0 0;
+v0x88ced20_0 .var "a", 0 0;
+v0x88ceda0_0 .var "b", 0 0;
+v0x88cee10_0 .net "s", 0 0, L_0x88cf060; 1 drivers
+S_0x88aeb98 .scope module, "XOR1" "xorgate" 2 23, 2 9, S_0x88d08d0;
+ .timescale 0 0;
+L_0x88cee80 .functor NOT 1, v0x88ced20_0, C4<0>, C4<0>, C4<0>;
+L_0x88cef10 .functor AND 1, L_0x88cee80, v0x88ceda0_0, C4<1>, C4<1>;
+L_0x88cefb8 .functor NOT 1, v0x88ceda0_0, C4<0>, C4<0>, C4<0>;
+L_0x88ceff0 .functor AND 1, v0x88ced20_0, L_0x88cefb8, C4<1>, C4<1>;
+L_0x88cf060 .functor OR 1, L_0x88cef10, L_0x88ceff0, C4<0>, C4<0>;
+v0x88d09d0_0 .net *"_s0", 0 0, L_0x88cee80; 1 drivers
+v0x88ceab8_0 .net *"_s2", 0 0, L_0x88cef10; 1 drivers
+v0x88ceb18_0 .net *"_s4", 0 0, L_0x88cefb8; 1 drivers
+v0x88ceb78_0 .net *"_s6", 0 0, L_0x88ceff0; 1 drivers
+v0x88cebe0_0 .net "a", 0 0, v0x88ced20_0; 1 drivers
+v0x88cec40_0 .net "b", 0 0, v0x88ceda0_0; 1 drivers
+v0x88cecc0_0 .alias "s", 0 0, v0x88cee10_0;
+S_0x88d0950 .scope begin, "start" "start" 2 25, 2 25, S_0x88d08d0;
+ .timescale 0 0;
+    .scope S_0x88d08d0;
+T_0 ;
+    %fork t_1, S_0x88d0950;
+    %jmp t_0;
+    .scope S_0x88d0950;
+t_1 ;
+    %set/v v0x88ced20_0, 0, 1;
+    %set/v v0x88ceda0_0, 0, 1;
+    %end;
+    .scope S_0x88d08d0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x88d08d0;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exrcicio0006 - Guilherme Alves - 450161";
+    %vpi_call 2 31 "$display", "Test NAND gate";
+    %vpi_call 2 32 "$display", "a  b   s";
+    %set/v v0x88ced20_0, 0, 1;
+    %set/v v0x88ceda0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", v0x88ced20_0, "  ", v0x88ceda0_0, "   ", v0x88cee10_0;
+    %set/v v0x88ced20_0, 0, 1;
+    %set/v v0x88ceda0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", v0x88ced20_0, "  ", v0x88ceda0_0, "   ", v0x88cee10_0;
+    %set/v v0x88ced20_0, 1, 1;
+    %set/v v0x88ceda0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", v0x88ced20_0, "  ", v0x88ceda0_0, "   ", v0x88cee10_0;
+    %set/v v0x88ced20_0, 1, 1;
+    %set/v v0x88ceda0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", v0x88ced20_0, "  ", v0x88ceda0_0, "   ", v0x88cee10_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/guilherme/Área de Trabalho/ac/exercicio6.v";

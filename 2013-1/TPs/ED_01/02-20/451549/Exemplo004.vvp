@@ -1,0 +1,110 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003DDC90 .scope module, "testandgate" "testandgate" 2 87;
+ .timescale 0 0;
+v00591EF8_0 .var "a", 0 0;
+v00591F50_0 .var "b", 0 0;
+v003D3C18_0 .net "s", 0 0, L_003D2EA8; 1 drivers
+S_003DDAF8 .scope module, "morango" "andgate" 2 92, 2 80, S_003DDC90;
+ .timescale 0 0;
+L_003D2EA8 .functor AND 1, v00591F50_0, v00591EF8_0, C4<1>, C4<1>;
+v003DEF38_0 .net "p", 0 0, v00591F50_0; 1 drivers
+v003DEF90_0 .net "q", 0 0, v00591EF8_0; 1 drivers
+v00591EA0_0 .alias "s", 0 0, v003D3C18_0;
+S_003DD6B8 .scope module, "testbuffer" "testbuffer" 2 17;
+ .timescale 0 0;
+v003D2DA0_0 .var "a", 0 0;
+v003D2DF8_0 .net "s", 0 0, L_003D46B8; 1 drivers
+S_003DD168 .scope module, "banana" "buffer" 2 23, 2 10, S_003DD6B8;
+ .timescale 0 0;
+L_003D46B8 .functor BUFZ 1, v003D2DA0_0, C4<0>, C4<0>, C4<0>;
+v003D3C70_0 .net "p", 0 0, v003D2DA0_0; 1 drivers
+v003D3CC8_0 .alias "s", 0 0, v003D2DF8_0;
+S_003DCEC0 .scope module, "testnotgate" "testnotgate" 2 53;
+ .timescale 0 0;
+v003D4628_0 .var "a", 0 0;
+v005BE4A8_0 .net "s", 0 0, L_003DAAF8; 1 drivers
+S_003DD630 .scope module, "uva" "notgate" 2 58, 2 46, S_003DCEC0;
+ .timescale 0 0;
+L_003DAAF8 .functor NOT 1, v003D4628_0, C4<0>, C4<0>, C4<0>;
+v003D2E50_0 .net "p", 0 0, v003D4628_0; 1 drivers
+v003D45D0_0 .alias "s", 0 0, v005BE4A8_0;
+S_003DD0E0 .scope module, "testorgate" "testorgate" 2 122;
+ .timescale 0 0;
+v005BE768_0 .var "a", 0 0;
+v005BE138_0 .var "b", 0 0;
+v005BE348_0 .net "s", 0 0, L_003DA9A8; 1 drivers
+S_003DD278 .scope module, "abacaxi" "orgate" 2 127, 2 116, S_003DD0E0;
+ .timescale 0 0;
+L_003DA9A8 .functor OR 1, v005BE768_0, v005BE138_0, C4<0>, C4<0>;
+v005BE030_0 .net "p", 0 0, v005BE768_0; 1 drivers
+v005BE710_0 .net "q", 0 0, v005BE138_0; 1 drivers
+v005BE240_0 .alias "s", 0 0, v005BE348_0;
+S_003DCF48 .scope begin, "start" "start" 2 129, 2 129, S_003DD0E0;
+ .timescale 0 0;
+    .scope S_003DDC90;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_003DDC90;
+T_1 ;
+    %end;
+    .thread T_1;
+    .scope S_003DD6B8;
+T_2 ;
+    %end;
+    .thread T_2;
+    .scope S_003DD6B8;
+T_3 ;
+    %end;
+    .thread T_3;
+    .scope S_003DCEC0;
+T_4 ;
+    %end;
+    .thread T_4;
+    .scope S_003DCEC0;
+T_5 ;
+    %end;
+    .thread T_5;
+    .scope S_003DD0E0;
+T_6 ;
+    %fork t_1, S_003DCF48;
+    %jmp t_0;
+    .scope S_003DCF48;
+t_1 ;
+    %set/v v005BE768_0, 0, 1;
+    %set/v v005BE138_0, 0, 1;
+    %end;
+    .scope S_003DD0E0;
+t_0 %join;
+    %end;
+    .thread T_6;
+    .scope S_003DD0E0;
+T_7 ;
+    %vpi_call 2 135 "$display", "Exemplo0004 - Debora Deslandes de Almeida Batista";
+    %vpi_call 2 136 "$display", "Matricula : 451549";
+    %vpi_call 2 137 "$display", "Test OR gate";
+    %vpi_call 2 138 "$display", "\012a & b = s\012";
+    %set/v v005BE768_0, 0, 1;
+    %set/v v005BE138_0, 0, 1;
+    %vpi_call 2 140 "$monitor", "%b & %b = %b", v005BE768_0, v005BE138_0, v005BE348_0;
+    %delay 1, 0;
+    %set/v v005BE768_0, 0, 1;
+    %set/v v005BE138_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BE768_0, 1, 1;
+    %set/v v005BE138_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005BE768_0, 1, 1;
+    %set/v v005BE138_0, 1, 1;
+    %end;
+    .thread T_7;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Exemplo004.v";

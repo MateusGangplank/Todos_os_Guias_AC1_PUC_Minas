@@ -1,0 +1,74 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE850 .scope module, "testnandgate" "testnandgate" 2 22;
+ .timescale 0 0;
+v006A61B0_0 .var "e1", 0 0;
+v006A6208_0 .var "e2", 0 0;
+v006A6260_0 .var "e3", 0 0;
+v006A62B8_0 .net "s1", 0 0, L_006A6460; 1 drivers
+S_00675ED0 .scope module, "nand1" "nandgate" 2 26, 2 11, S_003EE850;
+ .timescale 0 0;
+L_006A6310 .functor AND 1, v006A61B0_0, v006A6208_0, C4<1>, C4<1>;
+L_006A63B8 .functor AND 1, L_006A6310, v006A6260_0, C4<1>, C4<1>;
+L_006A6460 .functor NOT 1, L_006A63B8, C4<0>, C4<0>, C4<0>;
+v00675F50_0 .net *"_s0", 0 0, L_006A6310; 1 drivers
+v006A5F80_0 .net *"_s2", 0 0, L_006A63B8; 1 drivers
+v006A5FF0_0 .net "e1", 0 0, v006A61B0_0; 1 drivers
+v006A6078_0 .net "e2", 0 0, v006A6208_0; 1 drivers
+v006A60E8_0 .net "e3", 0 0, v006A6260_0; 1 drivers
+v006A6140_0 .alias "s1", 0 0, v006A62B8_0;
+    .scope S_003EE850;
+T_0 ;
+    %vpi_call 2 30 "$display", "Guia 01 - Exemplo 01";
+    %vpi_call 2 31 "$display", "NAND Gate";
+    %set/v v006A61B0_0, 0, 1;
+    %set/v v006A6208_0, 0, 1;
+    %set/v v006A6260_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 0, 1;
+    %set/v v006A6208_0, 0, 1;
+    %set/v v006A6260_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 0, 1;
+    %set/v v006A6208_0, 1, 1;
+    %set/v v006A6260_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 0, 1;
+    %set/v v006A6208_0, 1, 1;
+    %set/v v006A6260_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 1, 1;
+    %set/v v006A6208_0, 0, 1;
+    %set/v v006A6260_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 1, 1;
+    %set/v v006A6208_0, 0, 1;
+    %set/v v006A6260_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 1, 1;
+    %set/v v006A6208_0, 1, 1;
+    %set/v v006A6260_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %set/v v006A61B0_0, 1, 1;
+    %set/v v006A6208_0, 1, 1;
+    %set/v v006A6260_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "~(%b & %b & %b) = %b", v006A61B0_0, v006A6208_0, v006A6260_0, v006A62B8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Rafael\PUC-Minas\2º Periodo\ARQ I\Trabalhos\Exemplo001.v";

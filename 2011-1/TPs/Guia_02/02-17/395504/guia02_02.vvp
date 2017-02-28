@@ -1,0 +1,79 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E9D80 .scope module, "testandgate" "testandgate" 2 42;
+ .timescale 0 0;
+v005CF280_0 .var "a", 0 0;
+v005CF2D8_0 .var "b", 0 0;
+v005CF330_0 .net "s", 0 0, L_003EBB68; 1 drivers
+S_003E9F18 .scope module, "AND1" "andgate" 2 46, 2 26, S_003E9D80;
+ .timescale 0 0;
+v005CF0C8_0 .net "p", 0 0, v005CF280_0; 1 drivers
+v005CF120_0 .net "q", 0 0, v005CF2D8_0; 1 drivers
+v005CF178_0 .alias "s0", 0 0, v005CF330_0;
+v005CF1D0_0 .net "s1", 0 0, L_003E3160; 1 drivers
+v005CF228_0 .net "s2", 0 0, L_003EBB30; 1 drivers
+S_003EA0B0 .scope module, "NORGATE1" "norgate" 2 31, 2 12, S_003E9F18;
+ .timescale 0 0;
+L_003EBC10 .functor OR 1, v005CF280_0, v005CF280_0, C4<0>, C4<0>;
+L_003E3160 .functor NOT 1, L_003EBC10, C4<0>, C4<0>, C4<0>;
+v003E35B0_0 .net *"_s0", 0 0, L_003EBC10; 1 drivers
+v003E3608_0 .alias "p", 0 0, v005CF0C8_0;
+v003E3660_0 .alias "q", 0 0, v005CF0C8_0;
+v005CF070_0 .alias "s0", 0 0, v005CF1D0_0;
+S_003EA028 .scope module, "NORGATE2" "norgate" 2 32, 2 12, S_003E9F18;
+ .timescale 0 0;
+L_003ED7C8 .functor OR 1, v005CF2D8_0, v005CF2D8_0, C4<0>, C4<0>;
+L_003EBB30 .functor NOT 1, L_003ED7C8, C4<0>, C4<0>, C4<0>;
+v003E4800_0 .net *"_s0", 0 0, L_003ED7C8; 1 drivers
+v003E4858_0 .alias "p", 0 0, v005CF120_0;
+v003E48B0_0 .alias "q", 0 0, v005CF120_0;
+v003E3558_0 .alias "s0", 0 0, v005CF228_0;
+S_003E9FA0 .scope module, "NORGATE3" "norgate" 2 33, 2 12, S_003E9F18;
+ .timescale 0 0;
+L_003ED8A0 .functor OR 1, L_003E3160, L_003EBB30, C4<0>, C4<0>;
+L_003EBB68 .functor NOT 1, L_003ED8A0, C4<0>, C4<0>, C4<0>;
+v003E3058_0 .net *"_s0", 0 0, L_003ED8A0; 1 drivers
+v003E30B0_0 .alias "p", 0 0, v005CF1D0_0;
+v003E3108_0 .alias "q", 0 0, v005CF228_0;
+v003E47A8_0 .alias "s0", 0 0, v005CF330_0;
+S_003E9E90 .scope begin, "start" "start" 2 48, 2 48, S_003E9D80;
+ .timescale 0 0;
+    .scope S_003E9D80;
+T_0 ;
+    %fork t_1, S_003E9E90;
+    %jmp t_0;
+    .scope S_003E9E90;
+t_1 ;
+    %set/v v005CF280_0, 0, 1;
+    %set/v v005CF2D8_0, 0, 1;
+    %end;
+    .scope S_003E9D80;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E9D80;
+T_1 ;
+    %vpi_call 2 55 "$display", "Guia 02_02 - Thaise Souto Martins - 395504";
+    %vpi_call 2 56 "$display", "Test AND gate";
+    %vpi_call 2 57 "$display", "\012a & b = s\012";
+    %vpi_call 2 58 "$monitor", "%b & %b = %b", v005CF280_0, v005CF2D8_0, v005CF330_0;
+    %delay 1, 0;
+    %set/v v005CF280_0, 0, 1;
+    %set/v v005CF2D8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CF280_0, 1, 1;
+    %set/v v005CF2D8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CF280_0, 1, 1;
+    %set/v v005CF2D8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\ACI\Guias\Guia_02\guia02_02.v";

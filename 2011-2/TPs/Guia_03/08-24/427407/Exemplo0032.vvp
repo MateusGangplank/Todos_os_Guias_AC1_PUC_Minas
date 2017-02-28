@@ -1,0 +1,111 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002DA4F8 .scope module, "test_f6" "test_f6" 2 28;
+ .timescale 0 0;
+v0034B0B0_0 .var "chave", 3 0;
+v0034B108_0 .net "g", 3 0, L_00310838; 1 drivers
+v0034B160_0 .net "h", 3 0, L_00310AD8; 1 drivers
+v0034B1B8_0 .net "j", 3 0, L_003109F8; 1 drivers
+v0034B210_0 .var "w", 3 0;
+v0034B268_0 .var "x", 3 0;
+S_002DA690 .scope module, "fox" "cx1" 2 36, 2 9, S_002DA4F8;
+ .timescale 0 0;
+L_003108E0 .functor NOT 4, v0034B0B0_0, C4<0000>, C4<0000>, C4<0000>;
+L_00310950 .functor AND 4, L_00310838, L_003108E0, C4<1111>, C4<1111>;
+L_003109C0 .functor AND 4, L_00310AD8, v0034B0B0_0, C4<1111>, C4<1111>;
+L_003109F8 .functor OR 4, L_00310950, L_003109C0, C4<0000>, C4<0000>;
+v002D46C8_0 .net *"_s0", 3 0, L_003108E0; 1 drivers
+v002D4720_0 .net *"_s2", 3 0, L_00310950; 1 drivers
+v002D4778_0 .net *"_s4", 3 0, L_003109C0; 1 drivers
+v002D2FD8_0 .alias "a", 3 0, v0034B160_0;
+v002D3030_0 .alias "b", 3 0, v0034B108_0;
+v0034B000_0 .net "c", 3 0, v0034B0B0_0; 1 drivers
+v0034B058_0 .alias "s2", 3 0, v0034B1B8_0;
+S_002DA608 .scope module, "domada" "f4" 2 37, 2 16, S_002DA4F8;
+ .timescale 0 0;
+L_00310AD8 .functor OR 4, v0034B268_0, v0034B210_0, C4<0000>, C4<0000>;
+v002D49A8_0 .net "a", 3 0, v0034B268_0; 1 drivers
+v002D4A00_0 .net "b", 3 0, v0034B210_0; 1 drivers
+v002D4A58_0 .alias "s0", 3 0, v0034B160_0;
+S_002DA580 .scope module, "bilara" "f5" 2 38, 2 22, S_002DA4F8;
+ .timescale 0 0;
+L_00310838 .functor AND 4, v0034B268_0, v0034B210_0, C4<1111>, C4<1111>;
+v002D4C88_0 .alias "a", 3 0, v002D49A8_0;
+v002D4CE0_0 .alias "b", 3 0, v002D4A00_0;
+v002D4D38_0 .alias "s1", 3 0, v0034B108_0;
+    .scope S_002DA4F8;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0032 - Guilherme Terra - 427407";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v0034B210_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0034B268_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 45 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %set/v v0034B210_0, 0, 4;
+    %set/v v0034B268_0, 0, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 50 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %movi 8, 2, 4;
+    %set/v v0034B210_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v0034B268_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 55 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v0034B210_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0034B268_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 60 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %movi 8, 5, 4;
+    %set/v v0034B210_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v0034B268_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 65 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %movi 8, 10, 4;
+    %set/v v0034B210_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0034B268_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 70 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %movi 8, 9, 4;
+    %set/v v0034B210_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0034B268_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B0B0_0, 1, 4;
+    %vpi_call 2 75 "$monitor", "%b (& ou |) %b com chave %b = %b", v0034B210_0, v0034B268_0, v0034B0B0_0, v0034B1B8_0;
+    %delay 2, 0;
+    %set/v v0034B0B0_0, 0, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-2\TPs\Guia_03\427407\Exemplo0032.v";

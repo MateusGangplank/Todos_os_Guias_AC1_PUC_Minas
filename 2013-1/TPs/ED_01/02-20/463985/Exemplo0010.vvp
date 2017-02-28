@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00032E30 .scope module, "testnorgate" "testnorgate" 2 19;
+ .timescale 0 0;
+v0003E938_0 .var "a", 0 0;
+v0003F198_0 .var "b", 0 0;
+v0003F1F0_0 .net "s", 0 0, L_0003F248; 1 drivers
+S_00033318 .scope module, "NOR1" "norgate" 2 25, 2 10, S_00032E30;
+ .timescale 0 0;
+L_0003FFB0 .functor NOT 1, v0003E938_0, C4<0>, C4<0>, C4<0>;
+L_00032F40 .functor NOT 1, v0003F198_0, C4<0>, C4<0>, C4<0>;
+L_0003F248 .functor AND 1, L_0003FFB0, L_00032F40, C4<1>, C4<1>;
+v000333A0_0 .net *"_s0", 0 0, L_0003FFB0; 1 drivers
+v000333F8_0 .net *"_s2", 0 0, L_00032F40; 1 drivers
+v0003E830_0 .net "a", 0 0, v0003E938_0; 1 drivers
+v0003E888_0 .net "b", 0 0, v0003F198_0; 1 drivers
+v0003E8E0_0 .alias "s", 0 0, v0003F1F0_0;
+S_00032EB8 .scope begin, "start" "start" 2 27, 2 27, S_00032E30;
+ .timescale 0 0;
+    .scope S_00032E30;
+T_0 ;
+    %fork t_1, S_00032EB8;
+    %jmp t_0;
+    .scope S_00032EB8;
+t_1 ;
+    %set/v v0003E938_0, 0, 1;
+    %set/v v0003F198_0, 0, 1;
+    %end;
+    .scope S_00032E30;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00032E30;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exemplo0010 - Miguel Sousa - 463985";
+    %vpi_call 2 36 "$display", "Test NOR gate";
+    %vpi_call 2 37 "$display", "\012~a & ~b = s\012";
+    %set/v v0003E938_0, 0, 1;
+    %set/v v0003F198_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~%b & ~%b = %b", v0003E938_0, v0003F198_0, v0003F1F0_0;
+    %set/v v0003E938_0, 0, 1;
+    %set/v v0003F198_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~%b & ~%b = %b", v0003E938_0, v0003F198_0, v0003F1F0_0;
+    %set/v v0003E938_0, 1, 1;
+    %set/v v0003F198_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~%b & ~%b = %b", v0003E938_0, v0003F198_0, v0003F1F0_0;
+    %set/v v0003E938_0, 1, 1;
+    %set/v v0003F198_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~%b & ~%b = %b", v0003E938_0, v0003F198_0, v0003F1F0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Miguel Sousa\Desktop\Nova pasta\Exemplo0010.v";

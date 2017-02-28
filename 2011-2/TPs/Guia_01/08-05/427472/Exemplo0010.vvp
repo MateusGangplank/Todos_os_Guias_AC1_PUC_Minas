@@ -1,0 +1,115 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E2A38 .scope module, "orgate" "orgate" 2 20;
+ .timescale 0 0;
+L_005FEE30 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_005FEE68 .functor OR 1, L_005FEE30, C4<z>, C4<0>, C4<0>;
+v005E3080_0 .net *"_s0", 0 0, L_005FEE30; 1 drivers
+v005FE118_0 .net "p", 0 0, C4<z>; 0 drivers
+v005FE188_0 .net "q", 0 0, C4<z>; 0 drivers
+v005FE210_0 .net "r", 0 0, C4<z>; 0 drivers
+v005FE280_0 .net "s", 0 0, L_005FEE68; 1 drivers
+S_005E2BF8 .scope module, "testorgate" "testorgate" 2 37;
+ .timescale 0 0;
+v005FEAA0_0 .var "a", 0 0;
+v005FEAF8_0 .var "b", 0 0;
+v005FEB50_0 .var "c", 0 0;
+v005FEBA8_0 .net "s", 0 0, L_005FED68; 1 drivers
+v005FEC00_0 .net "s1", 0 0, L_005FEED8; 1 drivers
+v005FEC58_0 .net "s2", 0 0, L_005FEF68; 1 drivers
+v005FECE8_0 .net "s3", 0 0, L_005FEFF8; 1 drivers
+v005FEDA0_0 .net "s4", 0 0, L_005FECB0; 1 drivers
+S_005FE968 .scope module, "NOTA" "notgate" 2 44, 2 11, S_005E2BF8;
+ .timescale 0 0;
+L_005FEED8 .functor NOT 1, v005FEAA0_0, C4<0>, C4<0>, C4<0>;
+v005FE9F0_0 .net "p", 0 0, v005FEAA0_0; 1 drivers
+v005FEA48_0 .alias "s", 0 0, v005FEC00_0;
+S_005FE830 .scope module, "NOTB" "notgate" 2 45, 2 11, S_005E2BF8;
+ .timescale 0 0;
+L_005FEF68 .functor NOT 1, v005FEAF8_0, C4<0>, C4<0>, C4<0>;
+v005FE8B8_0 .net "p", 0 0, v005FEAF8_0; 1 drivers
+v005FE910_0 .alias "s", 0 0, v005FEC58_0;
+S_005FE6F8 .scope module, "NOTC" "notgate" 2 46, 2 11, S_005E2BF8;
+ .timescale 0 0;
+L_005FEFF8 .functor NOT 1, v005FEB50_0, C4<0>, C4<0>, C4<0>;
+v005FE780_0 .net "p", 0 0, v005FEB50_0; 1 drivers
+v005FE7D8_0 .alias "s", 0 0, v005FECE8_0;
+S_005FE440 .scope module, "AND" "andgate" 2 47, 2 29, S_005E2BF8;
+ .timescale 0 0;
+L_005FF088 .functor AND 1, L_005FEED8, L_005FEF68, C4<1>, C4<1>;
+L_005FECB0 .functor AND 1, L_005FF088, L_005FEFF8, C4<1>, C4<1>;
+v005FE4C8_0 .net *"_s0", 0 0, L_005FF088; 1 drivers
+v005FE538_0 .alias "p", 0 0, v005FEC00_0;
+v005FE5A8_0 .alias "q", 0 0, v005FEC58_0;
+v005FE630_0 .alias "r", 0 0, v005FECE8_0;
+v005FE6A0_0 .alias "s", 0 0, v005FEDA0_0;
+S_005FE2D8 .scope module, "NOT" "notgate" 2 48, 2 11, S_005E2BF8;
+ .timescale 0 0;
+L_005FED68 .functor NOT 1, L_005FECB0, C4<0>, C4<0>, C4<0>;
+v005FE360_0 .alias "p", 0 0, v005FEDA0_0;
+v005FE3D0_0 .alias "s", 0 0, v005FEBA8_0;
+S_005E2178 .scope begin, "start" "start" 2 51, 2 51, S_005E2BF8;
+ .timescale 0 0;
+    .scope S_005E2BF8;
+T_0 ;
+    %fork t_1, S_005E2178;
+    %jmp t_0;
+    .scope S_005E2178;
+t_1 ;
+    %set/v v005FEAA0_0, 0, 1;
+    %set/v v005FEAF8_0, 0, 1;
+    %set/v v005FEB50_0, 0, 1;
+    %end;
+    .scope S_005E2BF8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005E2BF8;
+T_1 ;
+    %vpi_call 2 56 "$display", "Exemplo0009 - Wender Zacarias Xavier - 427472";
+    %vpi_call 2 57 "$display", "Test OR gate";
+    %vpi_call 2 58 "$display", "\012a | b | c = s\012";
+    %vpi_call 2 59 "$monitor", "%b | %b | %b = %b", v005FEAA0_0, v005FEAF8_0, v005FEB50_0, v005FEBA8_0;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 0, 1;
+    %set/v v005FEAF8_0, 0, 1;
+    %set/v v005FEB50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 0, 1;
+    %set/v v005FEAF8_0, 0, 1;
+    %set/v v005FEB50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 0, 1;
+    %set/v v005FEAF8_0, 1, 1;
+    %set/v v005FEB50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 0, 1;
+    %set/v v005FEAF8_0, 1, 1;
+    %set/v v005FEB50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 1, 1;
+    %set/v v005FEAF8_0, 0, 1;
+    %set/v v005FEB50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 1, 1;
+    %set/v v005FEAF8_0, 0, 1;
+    %set/v v005FEB50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 1, 1;
+    %set/v v005FEAF8_0, 1, 1;
+    %set/v v005FEB50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FEAA0_0, 1, 1;
+    %set/v v005FEAF8_0, 1, 1;
+    %set/v v005FEB50_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Exemplo0010.v";

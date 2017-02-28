@@ -1,0 +1,92 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00032D18 .scope module, "testxorgate" "testxorgate" 2 18;
+ .timescale 0 0;
+v0003CE30_0 .var "a", 0 3;
+v0003CE88_0 .var "b", 0 3;
+v0003CEE0_0 .net "s", 0 3, L_0003FD48; 1 drivers
+S_000343E8 .scope module, "XOR1" "xorgate" 2 23, 2 10, S_00032D18;
+ .timescale 0 0;
+L_00034470 .functor NOT 4, v0003CE30_0, C4<0000>, C4<0000>, C4<0000>;
+L_0003FBF8 .functor AND 4, L_00034470, v0003CE88_0, C4<1111>, C4<1111>;
+L_0003FCA0 .functor NOT 4, v0003CE88_0, C4<0000>, C4<0000>, C4<0000>;
+L_0003FCD8 .functor AND 4, v0003CE30_0, L_0003FCA0, C4<1111>, C4<1111>;
+L_0003FD48 .functor OR 4, L_0003FBF8, L_0003FCD8, C4<0000>, C4<0000>;
+v0003F2A8_0 .net *"_s0", 3 0, L_00034470; 1 drivers
+v0003F300_0 .net *"_s2", 3 0, L_0003FBF8; 1 drivers
+v0003F358_0 .net *"_s4", 3 0, L_0003FCA0; 1 drivers
+v0003F3B0_0 .net *"_s6", 3 0, L_0003FCD8; 1 drivers
+v0003F408_0 .net "p", 0 3, v0003CE30_0; 1 drivers
+v0003CD80_0 .net "q", 0 3, v0003CE88_0; 1 drivers
+v0003CDD8_0 .alias "s", 0 3, v0003CEE0_0;
+S_00034360 .scope begin, "start" "start" 2 24, 2 24, S_00032D18;
+ .timescale 0 0;
+S_00032DA0 .scope begin, "main" "main" 2 29, 2 29, S_00032D18;
+ .timescale 0 0;
+    .scope S_00032D18;
+T_0 ;
+    %fork t_1, S_00034360;
+    %jmp t_0;
+    .scope S_00034360;
+t_1 ;
+    %movi 8, 3, 4;
+    %set/v v0003CE30_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0003CE88_0, 8, 4;
+    %end;
+    .scope S_00032D18;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00032D18;
+T_1 ;
+    %fork t_3, S_00032DA0;
+    %jmp t_2;
+    .scope S_00032DA0;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exemplo0011 - Guilherme Augusto Bueno Borba - 451564";
+    %vpi_call 2 31 "$display", "Test xor gate";
+    %vpi_call 2 32 "$display", "\012  a'b+a b'    =     s\012";
+    %vpi_call 2 33 "$monitor", "%b ^ %b = %b", v0003CE30_0, v0003CE88_0, v0003CEE0_0;
+    %delay 1, 0;
+    %set/v v0003CE30_0, 0, 4;
+    %set/v v0003CE88_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v0003CE30_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v0003CE88_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v0003CE30_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0003CE88_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v0003CE30_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v0003CE88_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v0003CE30_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0003CE88_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 9, 4;
+    %set/v v0003CE30_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0003CE88_0, 8, 4;
+    %end;
+    .scope S_00032D18;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Desktop\Puc\3 periodo\AC\Exemplo0011.v";

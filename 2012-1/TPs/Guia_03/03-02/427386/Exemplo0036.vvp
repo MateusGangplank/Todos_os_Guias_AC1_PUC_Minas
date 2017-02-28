@@ -1,0 +1,87 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00669340 .scope module, "test_f4" "test_f4" 2 39;
+ .timescale 0 0;
+v005C6088_0 .var "c", 1 0;
+v005C60E0_0 .net "s", 1 0, L_005C6DC8; 1 drivers
+v005C6138_0 .net "s1", 1 0, L_00664A18; 1 drivers
+v005C6190_0 .net "s2", 1 0, L_0066CC48; 1 drivers
+v005C61E8_0 .net "s3", 1 0, L_006649A8; 1 drivers
+v005C6240_0 .net "s4", 1 0, L_00664970; 1 drivers
+v005C6298_0 .net "s5", 1 0, L_0066DA58; 1 drivers
+v005C62F0_0 .var "x", 1 0;
+v005C6348_0 .var "y", 1 0;
+S_00669670 .scope module, "XOR1" "xorgate" 2 51, 2 32, S_00669340;
+ .timescale 0 0;
+L_006649A8 .functor XOR 2, v005C62F0_0, v005C6348_0, C4<00>, C4<00>;
+v005C5F80_0 .net "a", 1 0, v005C62F0_0; 1 drivers
+v005C5FD8_0 .net "b", 1 0, v005C6348_0; 1 drivers
+v005C6030_0 .alias "s", 1 0, v005C61E8_0;
+S_006695E8 .scope module, "XNOR1" "xnorgate" 2 52, 2 9, S_00669340;
+ .timescale 0 0;
+L_006649E0 .functor XOR 2, v005C62F0_0, v005C6348_0, C4<00>, C4<00>;
+L_00664970 .functor NOT 2, L_006649E0, C4<00>, C4<00>, C4<00>;
+v005C5E20_0 .net *"_s0", 1 0, L_006649E0; 1 drivers
+v005C5E78_0 .alias "a", 1 0, v005C5F80_0;
+v005C5ED0_0 .alias "b", 1 0, v005C5FD8_0;
+v005C5F28_0 .alias "s", 1 0, v005C6240_0;
+S_00669560 .scope module, "AND1" "andgate" 2 53, 2 20, S_00669340;
+ .timescale 0 0;
+L_00664A18 .functor AND 2, L_006649A8, v005C6088_0, C4<11>, C4<11>;
+v0066D9A8_0 .alias "a", 1 0, v005C61E8_0;
+v0066DA00_0 .net "b", 1 0, v005C6088_0; 1 drivers
+v005C5DC8_0 .alias "s", 1 0, v005C6138_0;
+S_006694D8 .scope module, "NOT1" "notgate" 2 54, 2 14, S_00669340;
+ .timescale 0 0;
+L_0066DA58 .functor NOT 2, v005C6088_0, C4<00>, C4<00>, C4<00>;
+v00662E28_0 .alias "a", 1 0, v0066DA00_0;
+v00662E80_0 .alias "s", 1 0, v005C6298_0;
+S_00669450 .scope module, "AND2" "andgate" 2 55, 2 20, S_00669340;
+ .timescale 0 0;
+L_0066CC48 .functor AND 2, L_00664970, L_0066DA58, C4<11>, C4<11>;
+v00664C40_0 .alias "a", 1 0, v005C6240_0;
+v00664C98_0 .alias "b", 1 0, v005C6298_0;
+v00662DD0_0 .alias "s", 1 0, v005C6190_0;
+S_006693C8 .scope module, "OR1" "orgate" 2 56, 2 26, S_00669340;
+ .timescale 0 0;
+L_005C6DC8 .functor OR 2, L_00664A18, L_0066CC48, C4<00>, C4<00>;
+v0066CB98_0 .alias "a", 1 0, v005C6138_0;
+v0066CBF0_0 .alias "b", 1 0, v005C6190_0;
+v00664BE8_0 .alias "s", 1 0, v005C60E0_0;
+    .scope S_00669340;
+T_0 ;
+    %vpi_call 2 61 "$display", "Exemplo0036 - Andre Henriques Fernandes - 427386";
+    %vpi_call 2 62 "$display", "Test LU's module";
+    %set/v v005C62F0_0, 0, 2;
+    %set/v v005C6348_0, 0, 2;
+    %set/v v005C6088_0, 0, 2;
+    %vpi_call 2 67 "$monitor", "%4b %4b %4b = %4b", v005C6088_0, v005C62F0_0, v005C6348_0, v005C60E0_0;
+    %delay 1, 0;
+    %set/v v005C62F0_0, 0, 2;
+    %set/v v005C6348_0, 0, 2;
+    %movi 8, 1, 2;
+    %set/v v005C6088_0, 8, 2;
+    %delay 1, 0;
+    %set/v v005C62F0_0, 0, 2;
+    %set/v v005C6348_0, 1, 2;
+    %set/v v005C6088_0, 1, 2;
+    %delay 1, 0;
+    %set/v v005C62F0_0, 1, 2;
+    %set/v v005C6348_0, 0, 2;
+    %movi 8, 2, 2;
+    %set/v v005C6088_0, 8, 2;
+    %delay 1, 0;
+    %set/v v005C62F0_0, 1, 2;
+    %set/v v005C6348_0, 1, 2;
+    %set/v v005C6088_0, 0, 2;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0036.v";

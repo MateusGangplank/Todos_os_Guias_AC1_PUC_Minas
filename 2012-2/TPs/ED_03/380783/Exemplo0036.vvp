@@ -1,0 +1,45 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007E9568 .scope module, "test_f4" "test_f4" 2 32;
+ .timescale 0 0;
+v0071ED20_0 .var "c", 0 0;
+v0071ED78_0 .var "v", 0 0;
+v0071EDD0_0 .var "w", 0 0;
+v0071EE28_0 .var "x1", 0 0;
+v0071EE80_0 .var "y1", 0 0;
+v0071EED8_0 .net "z1", 0 0, L_007ECE58; 1 drivers
+v0071EF30_0 .net "z2", 0 0, L_007E4B38; 1 drivers
+v0071EF88_0 .net "z5", 0 0, L_007E4C18; 1 drivers
+v0071EFE0_0 .net "zF1", 0 0, L_007E2D10; 1 drivers
+S_007E95F0 .scope module, "modulo" "f4" 2 49, 2 10, S_007E9568;
+ .timescale 0 0;
+L_007ECE58 .functor XOR 1, v0071ED78_0, v0071EE28_0, C4<0>, C4<0>;
+L_007E4B38 .functor XOR 1, v0071EDD0_0, v0071EE80_0, C4<0>, C4<0>;
+L_007E4C18 .functor NOR 1, L_007ECE58, L_007E4B38, C4<z>, C4<z>;
+L_007E2D10 .functor XOR 1, v0071ED20_0, L_007E4C18, C4<0>, C4<0>;
+v007EEE98_0 .net "a", 0 0, v0071ED78_0; 1 drivers
+v007EEBF0_0 .net "a1", 0 0, v0071EE28_0; 1 drivers
+v007EF0B8_0 .net "b", 0 0, v0071EDD0_0; 1 drivers
+v007EF110_0 .net "b1", 0 0, v0071EE80_0; 1 drivers
+v007EF168_0 .net "chave", 0 0, v0071ED20_0; 1 drivers
+v007EED00_0 .alias "s1", 0 0, v0071EED8_0;
+v007EED58_0 .alias "s2", 0 0, v0071EF30_0;
+v007EEDB0_0 .net "s3", 0 0, C4<z>; 0 drivers
+v007ECE00_0 .net "s4", 0 0, C4<z>; 0 drivers
+v0071EC70_0 .alias "s5", 0 0, v0071EF88_0;
+v0071ECC8_0 .alias "sF1", 0 0, v0071EFE0_0;
+    .scope S_007E9568;
+T_0 ;
+    %vpi_call 2 52 "$display", "Exemplo0036 - Lucas Siqueira Chagas - 380783";
+    %vpi_call 2 53 "$display", "Test LU's module";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0036.v";

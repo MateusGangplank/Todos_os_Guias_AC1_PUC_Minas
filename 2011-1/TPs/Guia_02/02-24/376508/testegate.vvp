@@ -1,0 +1,81 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C09078 .scope module, "norgate" "norgate" 2 44;
+ .timescale 0 0;
+L_00C0CFB8 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_00C0D900 .functor OR 1, L_00C0CFB8, C4<z>, C4<0>, C4<0>;
+L_00C0F728 .functor NOT 1, L_00C0D900, C4<0>, C4<0>, C4<0>;
+v00C0DA70_0 .net *"_s0", 0 0, L_00C0CFB8; 1 drivers
+v00C0DAC8_0 .net *"_s2", 0 0, L_00C0D900; 1 drivers
+v00C0DB20_0 .net "p1", 0 0, C4<z>; 0 drivers
+v00C0CEB0_0 .net "q1", 0 0, C4<z>; 0 drivers
+v00C0CF08_0 .net "r1", 0 0, C4<z>; 0 drivers
+v00C0CF60_0 .net "s1", 0 0, L_00C0F728; 1 drivers
+S_00C09188 .scope module, "testegate" "testegate" 2 16;
+ .timescale 0 0;
+v00C02DC8_0 .var "a", 0 0;
+v00C02E20_0 .var "b", 0 0;
+v00A91C00_0 .net "s", 0 0, L_00C02EB0; 1 drivers
+S_00C093A8 .scope module, "AND1" "egate" 2 20, 2 8, S_00C09188;
+ .timescale 0 0;
+L_00C02EB0 .functor AND 1, v00C02DC8_0, v00C02E20_0, C4<1>, C4<1>;
+v00C0D7F8_0 .net "p", 0 0, v00C02DC8_0; 1 drivers
+v00C0D850_0 .net "q", 0 0, v00C02E20_0; 1 drivers
+v00C0D8A8_0 .alias "s", 0 0, v00A91C00_0;
+S_00C09320 .scope begin, "start" "start" 2 21, 2 21, S_00C09188;
+ .timescale 0 0;
+S_00C09298 .scope begin, "main" "main" 2 25, 2 25, S_00C09188;
+ .timescale 0 0;
+S_00C09210 .scope module, "testnorgate" "testnorgate" 2 50;
+ .timescale 0 0;
+L_00C03298 .functor NOR 1, v00A91C58_0, v00A91CB0_0, v00A91D08_0, C4<0>;
+v00A91C58_0 .var "a", 0 0;
+v00A91CB0_0 .var "b", 0 0;
+v00A91D08_0 .var "c", 0 0;
+v00A91D60_0 .net "s", 0 0, L_00C03298; 1 drivers
+    .scope S_00C09188;
+T_0 ;
+    %fork t_1, S_00C09320;
+    %jmp t_0;
+    .scope S_00C09320;
+t_1 ;
+    %set/v v00C02DC8_0, 0, 1;
+    %set/v v00C02E20_0, 0, 1;
+    %end;
+    .scope S_00C09188;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00C09188;
+T_1 ;
+    %fork t_3, S_00C09298;
+    %jmp t_2;
+    .scope S_00C09298;
+t_3 ;
+    %vpi_call 2 26 "$display", "Guia02 exercicio 02";
+    %vpi_call 2 27 "$display", "tabela-verdade para porta AND\012";
+    %vpi_call 2 28 "$display", "a & b = s";
+    %vpi_call 2 29 "$monitor", "%b & %b = %b", v00C02DC8_0, v00C02E20_0, v00A91C00_0;
+    %delay 1, 0;
+    %set/v v00C02DC8_0, 0, 1;
+    %set/v v00C02E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00C02DC8_0, 1, 1;
+    %set/v v00C02E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00C02DC8_0, 1, 1;
+    %set/v v00C02E20_0, 1, 1;
+    %end;
+    .scope S_00C09188;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Felipe\Programador\testegate.v";

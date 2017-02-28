@@ -1,0 +1,62 @@
+// -----------------------
+// Guia 08 - Exercicio 05
+// Bruno César Lopes Silva
+// Matrícula: 415985
+// -----------------------
+
+// -- modulo Exercicio 05
+
+module exe05 (s, a, b, c, d);
+
+input a, b, c, d;
+output s; 
+wire w1, w2, w3, w4, w5, w6, w7, w8;
+
+nor N1(w1, a, a);
+nor N2(w2, d, d);
+nor N3(w3, w1, w2);
+nor N4(w4, a, d);
+nor N5(w5, b, c);
+nor N6(w6, w5, w5);
+nor N7(w7, w6, d);
+nor N8(w8, w7, w4, w3);
+nor N9(s, w8, w8);
+
+endmodule // exe05
+
+// -- teste Exercicio 05
+
+module teste05;
+
+reg a, b, c, d;
+output s;
+
+exe05 E(s, a, b, c, d);
+
+// parte principal
+  initial begin
+      $display("Guia 08 - Exercicio 05");
+		$display("Bruno Cesar Lopes Silva - 415985");
+      $display("Exercicio 05");
+      $display("\n a - b - c - d = s\n");
+  		a=0; b=0; c=0; d=0;
+		$monitor(" %b - %b - %b - %b = %b", a, b, c, d, s);
+		#1 a=0; b=0; c=0; d=1;
+		#1 a=0; b=0; c=1; d=0;
+		#1 a=0; b=0; c=1; d=1;
+		#1 a=0; b=1; c=0; d=0;
+		#1 a=0; b=1; c=0; d=1;
+		#1 a=0; b=1; c=1; d=0;
+		#1 a=0; b=1; c=1; d=1;
+		#1 a=1; b=0; c=0; d=0;
+		#1 a=1; b=0; c=0; d=1;
+		#1 a=1; b=0; c=1; d=0;
+		#1 a=1; b=0; c=1; d=1;
+		#1 a=1; b=1; c=0; d=0;
+		#1 a=1; b=1; c=0; d=1;
+		#1 a=1; b=1; c=1; d=0;
+		#1 a=1; b=1; c=1; d=1;
+		
+		end
+	
+	endmodule // teste05

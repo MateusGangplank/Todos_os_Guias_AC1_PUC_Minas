@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0074EAB0 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v007430F8_0 .var "a", 0 0;
+v00743150_0 .var "b", 0 0;
+v0074ED50_0 .net "s", 0 0, L_0074EE50; 1 drivers
+S_00742BA8 .scope module, "NAND1" "nandgate" 2 22, 2 9, S_0074EAB0;
+ .timescale 0 0;
+L_0074EB38 .functor NOT 1, v007430F8_0, C4<0>, C4<0>, C4<0>;
+L_0074EDE0 .functor NOT 1, v00743150_0, C4<0>, C4<0>, C4<0>;
+L_0074EE50 .functor OR 1, L_0074EB38, L_0074EDE0, C4<0>, C4<0>;
+v00742C30_0 .net *"_s0", 0 0, L_0074EB38; 1 drivers
+v0074CD60_0 .net *"_s2", 0 0, L_0074EDE0; 1 drivers
+v0074CDB8_0 .net "p", 0 0, v007430F8_0; 1 drivers
+v00743048_0 .net "q", 0 0, v00743150_0; 1 drivers
+v007430A0_0 .alias "s", 0 0, v0074ED50_0;
+S_00742B20 .scope begin, "start" "start" 2 24, 2 24, S_0074EAB0;
+ .timescale 0 0;
+    .scope S_0074EAB0;
+T_0 ;
+    %fork t_1, S_00742B20;
+    %jmp t_0;
+    .scope S_00742B20;
+t_1 ;
+    %set/v v007430F8_0, 0, 1;
+    %set/v v00743150_0, 0, 1;
+    %end;
+    .scope S_0074EAB0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0074EAB0;
+T_1 ;
+    %vpi_call 2 31 "$display", "Exercico 004 - Ailton Gomes - 440092";
+    %vpi_call 2 32 "$display", "Test NAND gate";
+    %vpi_call 2 33 "$display", "\012((~p) | (~q)) = s\012";
+    %set/v v007430F8_0, 0, 1;
+    %set/v v00743150_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "((~%b) | (~%b)) = %b", v007430F8_0, v00743150_0, v0074ED50_0;
+    %set/v v007430F8_0, 0, 1;
+    %set/v v00743150_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "((~%b) | (~%b)) = %b", v007430F8_0, v00743150_0, v0074ED50_0;
+    %set/v v007430F8_0, 1, 1;
+    %set/v v00743150_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "((~%b) | (~%b)) = %b", v007430F8_0, v00743150_0, v0074ED50_0;
+    %set/v v007430F8_0, 1, 1;
+    %set/v v00743150_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "((~%b) | (~%b)) = %b", v007430F8_0, v00743150_0, v0074ED50_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Ailton\Desktop\AC-EDs\AC_L01\004.v";

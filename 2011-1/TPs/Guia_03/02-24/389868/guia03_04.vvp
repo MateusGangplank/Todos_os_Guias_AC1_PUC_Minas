@@ -1,0 +1,68 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEB70 .scope module, "testmeiasoma" "testmeiasoma" 2 25;
+ .timescale 0 0;
+v006A2F50_0 .var "a", 0 0;
+v006A2FA8_0 .var "b", 0 0;
+v006A3008_0 .net "s0", 0 0, L_006A3180; 1 drivers
+v006A3060_0 .net "s1", 0 0, L_006A31B8; 1 drivers
+S_003EECF0 .scope module, "MEIASOMA1" "meiasoma" 2 29, 2 8, S_003EEB70;
+ .timescale 0 0;
+L_006A30B8 .functor NOR 1, v006A2F50_0, v006A2F50_0, C4<0>, C4<0>;
+L_006A3148 .functor NOR 1, v006A2FA8_0, v006A2FA8_0, C4<0>, C4<0>;
+L_006A31B8 .functor NOR 1, L_006A30B8, L_006A3148, C4<0>, C4<0>;
+L_006A3298 .functor NOR 1, v006A2F50_0, v006A2FA8_0, C4<0>, C4<0>;
+L_006A3180 .functor NOR 1, L_006A31B8, L_006A3298, C4<0>, C4<0>;
+v003EED70_0 .net "a", 0 0, v006A2F50_0; 1 drivers
+v006A2C88_0 .net "b", 0 0, v006A2FA8_0; 1 drivers
+v006A2CF8_0 .alias "s0", 0 0, v006A3008_0;
+v006A2D80_0 .alias "s1", 0 0, v006A3060_0;
+v006A2DF0_0 .net "s2", 0 0, L_006A30B8; 1 drivers
+v006A2E48_0 .net "s3", 0 0, L_006A3148; 1 drivers
+v006A2EB8_0 .net "s4", 0 0, L_006A3298; 1 drivers
+S_003EEC70 .scope begin, "start" "start" 2 31, 2 31, S_003EEB70;
+ .timescale 0 0;
+S_003EEBF0 .scope begin, "main" "main" 2 36, 2 36, S_003EEB70;
+ .timescale 0 0;
+    .scope S_003EEB70;
+T_0 ;
+    %fork t_1, S_003EEC70;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A2F50_0, 0, 1;
+    %set/v v006A2FA8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EEB70;
+T_1 ;
+    %fork t_3, S_003EEBF0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 37 "$display", "Felipe Pacifico -- 389868";
+    %vpi_call 2 38 "$display", "Test Meia Soma NOR gate";
+    %vpi_call 2 39 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 40 "$monitor", " %b & %b = %b %b", v006A2F50_0, v006A2FA8_0, v006A3008_0, v006A3060_0;
+    %delay 1, 0;
+    %set/v v006A2F50_0, 0, 1;
+    %set/v v006A2FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2F50_0, 1, 1;
+    %set/v v006A2FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2F50_0, 1, 1;
+    %set/v v006A2FA8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\guia03\guia03_04.v";

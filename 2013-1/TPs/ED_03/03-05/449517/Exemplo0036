@@ -1,0 +1,59 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00037438 .scope module, "teste" "teste" 2 20;
+ .timescale 0 0;
+v00639EA8_0 .var "a", 0 0;
+v00639F00_0 .var "b", 0 0;
+v00639F58_0 .net "s", 0 0, L_0063A110; 1 drivers
+S_00037548 .scope module, "teste" "Comparador" 2 25, 2 5, S_00037438;
+ .timescale 0 0;
+L_00036778 .functor NOT 1, v00639EA8_0, C4<0>, C4<0>, C4<0>;
+L_00639FB0 .functor NOT 1, v00639F00_0, C4<0>, C4<0>, C4<0>;
+L_0063A030 .functor AND 1, L_00036778, v00639F00_0, C4<1>, C4<1>;
+L_0063A0A0 .functor AND 1, v00639EA8_0, L_00639FB0, C4<1>, C4<1>;
+L_0063A110 .functor OR 1, L_0063A030, L_0063A0A0, C4<0>, C4<0>;
+v00034EB0_0 .net "a", 0 0, v00639EA8_0; 1 drivers
+v00639BE0_0 .net "b", 0 0, v00639F00_0; 1 drivers
+v00639C50_0 .alias "s", 0 0, v00639F58_0;
+v00639CD8_0 .net "s0", 0 0, L_00036778; 1 drivers
+v00639D48_0 .net "s1", 0 0, L_00639FB0; 1 drivers
+v00639DA0_0 .net "tmp0", 0 0, L_0063A030; 1 drivers
+v00639E10_0 .net "tmp1", 0 0, L_0063A0A0; 1 drivers
+S_000374C0 .scope begin, "main" "main" 2 27, 2 27, S_00037438;
+ .timescale 0 0;
+    .scope S_00037438;
+T_0 ;
+    %fork t_1, S_000374C0;
+    %jmp t_0;
+    .scope S_000374C0;
+t_1 ;
+    %vpi_call 2 29 "$display", "Exemplo0036 - Ana Carolina - 449517";
+    %vpi_call 2 30 "$display", "\012Comaparador test";
+    %set/v v00639EA8_0, 0, 1;
+    %set/v v00639F00_0, 0, 1;
+    %vpi_call 2 33 "$display", " 0 - bits são iguais 1 - bits diferentes";
+    %delay 1, 0;
+    %vpi_call 2 35 "$monitor", " entradas  %b %b saida = %b", v00639EA8_0, v00639F00_0, v00639F58_0;
+    %delay 1, 0;
+    %set/v v00639EA8_0, 0, 1;
+    %set/v v00639F00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00639EA8_0, 1, 1;
+    %set/v v00639F00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00639EA8_0, 1, 1;
+    %set/v v00639F00_0, 1, 1;
+    %end;
+    .scope S_00037438;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0036.v";

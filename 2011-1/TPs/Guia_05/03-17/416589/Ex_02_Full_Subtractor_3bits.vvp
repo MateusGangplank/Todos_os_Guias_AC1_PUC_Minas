@@ -1,0 +1,321 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF2B0 .scope module, "test" "test" 2 120;
+ .timescale 0 0;
+v0060E540_0 .var "a", 2 0;
+v0060E598_0 .var "b", 2 0;
+RS_005E45DC .resolv tri, L_0060EBA8, L_0060F9C0, L_006106A8, L_00610790;
+v0060E5F0_0 .net8 "c", 3 0, RS_005E45DC; 4 drivers
+v0060E648_0 .var/i "i", 31 0;
+v0060E6A0_0 .var/i "j", 31 0;
+S_005D2B90 .scope module, "TBFS1" "three_bits_fullsubtractor_nor" 2 127, 2 11, S_003EF2B0;
+ .timescale 0 0;
+v0060E358_0 .net "a", 2 0, v0060E540_0; 1 drivers
+v0060E3B0_0 .net "b", 2 0, v0060E598_0; 1 drivers
+v0060E408_0 .alias "c", 3 0, v0060E5F0_0;
+v0060E490_0 .net "carry1", 0 0, L_0060E950; 1 drivers
+v0060E4E8_0 .net "carry2", 0 0, L_0060F950; 1 drivers
+L_0060EBA8 .part/pv L_0060EAB0, 0, 1, 4;
+L_0060EC38 .part v0060E540_0, 0, 1;
+L_0060ED90 .part v0060E598_0, 0, 1;
+L_0060F9C0 .part/pv L_0060F780, 1, 1, 4;
+L_0060FA80 .part v0060E540_0, 1, 1;
+L_0060FAD8 .part v0060E598_0, 1, 1;
+L_006106A8 .part/pv L_00610600, 3, 1, 4;
+L_00610790 .part/pv L_00610430, 2, 1, 4;
+L_00610850 .part v0060E540_0, 2, 1;
+L_00610940 .part v0060E598_0, 2, 1;
+S_0060D898 .scope module, "HS1" "halfsubtractor_nor" 2 17, 2 45, S_005D2B90;
+ .timescale 0 0;
+v0060E118_0 .net "a", 0 0, L_0060EC38; 1 drivers
+v0060E170_0 .net "b", 0 0, L_0060ED90; 1 drivers
+v0060E200_0 .alias "s0", 0 0, v0060E490_0;
+v0060E270_0 .net "s1", 0 0, L_0060EAB0; 1 drivers
+v0060E2C8_0 .net "temp1", 0 0, L_0060E9C0; 1 drivers
+S_0060DD10 .scope module, "XOR1" "xor_nor" 2 49, 2 59, S_0060D898;
+ .timescale 0 0;
+L_0060E6F8 .functor NOR 1, L_0060ED90, L_0060ED90, C4<0>, C4<0>;
+L_0060E1C8 .functor NOR 1, L_0060EC38, L_0060EC38, C4<0>, C4<0>;
+L_0060C900 .functor NOR 1, L_0060EC38, L_0060E6F8, C4<0>, C4<0>;
+L_0060E838 .functor NOR 1, L_0060ED90, L_0060E1C8, C4<0>, C4<0>;
+L_0060E8A8 .functor NOR 1, L_0060C900, L_0060E838, C4<0>, C4<0>;
+L_0060E950 .functor NOR 1, L_0060E8A8, L_0060E8A8, C4<0>, C4<0>;
+v0060DD98_0 .alias "a", 0 0, v0060E118_0;
+v0060DDF0_0 .alias "b", 0 0, v0060E170_0;
+v0060DE48_0 .alias "s", 0 0, v0060E490_0;
+v0060DF08_0 .net "temp1", 0 0, L_0060E6F8; 1 drivers
+v0060DF60_0 .net "temp2", 0 0, L_0060E1C8; 1 drivers
+v0060DFB8_0 .net "temp3", 0 0, L_0060C900; 1 drivers
+v0060E010_0 .net "temp4", 0 0, L_0060E838; 1 drivers
+v0060E0A8_0 .net "temp5", 0 0, L_0060E8A8; 1 drivers
+S_0060DBC0 .scope module, "NOT1" "not_nor" 2 50, 2 107, S_0060D898;
+ .timescale 0 0;
+L_0060E9C0 .functor NOR 1, L_0060EC38, L_0060EC38, C4<0>, C4<0>;
+v0060DC48_0 .alias "a", 0 0, v0060E118_0;
+v0060DCB8_0 .alias "s", 0 0, v0060E2C8_0;
+S_0060D920 .scope module, "AND1" "and_nor" 2 51, 2 78, S_0060D898;
+ .timescale 0 0;
+L_0060E9F8 .functor NOR 1, L_0060E9C0, L_0060E9C0, C4<0>, C4<0>;
+L_0060E320 .functor NOR 1, L_0060ED90, L_0060ED90, C4<0>, C4<0>;
+L_0060EAB0 .functor NOR 1, L_0060E9F8, L_0060E320, C4<0>, C4<0>;
+v0060D9A8_0 .alias "a", 0 0, v0060E2C8_0;
+v0060DA00_0 .alias "b", 0 0, v0060E170_0;
+v0060DA70_0 .alias "s", 0 0, v0060E270_0;
+v0060DAF8_0 .net "temp1", 0 0, L_0060E9F8; 1 drivers
+v0060DB68_0 .net "temp2", 0 0, L_0060E320; 1 drivers
+S_0060BD30 .scope module, "FS1" "fullsubtractor_nor" 2 18, 2 28, S_005D2B90;
+ .timescale 0 0;
+v0060D578_0 .net "c0", 0 0, L_0060F780; 1 drivers
+v0060D608_0 .alias "c1", 0 0, v0060E4E8_0;
+v0060D660_0 .net "carry1", 0 0, L_0060F340; 1 drivers
+v0060D6B8_0 .net "carry2", 0 0, L_0060F878; 1 drivers
+v0060D710_0 .net "cout", 0 0, L_0060F0B8; 1 drivers
+v0060D768_0 .net "r", 0 0, L_0060FA80; 1 drivers
+v0060D7C0_0 .net "s", 0 0, L_0060FAD8; 1 drivers
+v0060D840_0 .alias "t", 0 0, v0060E490_0;
+S_0060CAC8 .scope module, "HS1" "halfsubtractor_nor" 2 32, 2 45, S_0060BD30;
+ .timescale 0 0;
+v0060D298_0 .alias "a", 0 0, v0060D768_0;
+v0060D328_0 .alias "b", 0 0, v0060D7C0_0;
+v0060D3B8_0 .alias "s0", 0 0, v0060D710_0;
+v0060D490_0 .alias "s1", 0 0, v0060D660_0;
+v0060D4E8_0 .net "temp1", 0 0, L_0060F128; 1 drivers
+S_0060CEF8 .scope module, "XOR1" "xor_nor" 2 49, 2 59, S_0060CAC8;
+ .timescale 0 0;
+L_0060EF00 .functor NOR 1, L_0060FAD8, L_0060FAD8, C4<0>, C4<0>;
+L_0060D380 .functor NOR 1, L_0060FA80, L_0060FA80, C4<0>, C4<0>;
+L_0060D2F0 .functor NOR 1, L_0060FA80, L_0060EF00, C4<0>, C4<0>;
+L_0060EF88 .functor NOR 1, L_0060FAD8, L_0060D380, C4<0>, C4<0>;
+L_0060F010 .functor NOR 1, L_0060D2F0, L_0060EF88, C4<0>, C4<0>;
+L_0060F0B8 .functor NOR 1, L_0060F010, L_0060F010, C4<0>, C4<0>;
+v0060CF80_0 .alias "a", 0 0, v0060D768_0;
+v0060CFD8_0 .alias "b", 0 0, v0060D7C0_0;
+v0060D030_0 .alias "s", 0 0, v0060D710_0;
+v0060D088_0 .net "temp1", 0 0, L_0060EF00; 1 drivers
+v0060D0E0_0 .net "temp2", 0 0, L_0060D380; 1 drivers
+v0060D138_0 .net "temp3", 0 0, L_0060D2F0; 1 drivers
+v0060D190_0 .net "temp4", 0 0, L_0060EF88; 1 drivers
+v0060D228_0 .net "temp5", 0 0, L_0060F010; 1 drivers
+S_0060CDA8 .scope module, "NOT1" "not_nor" 2 50, 2 107, S_0060CAC8;
+ .timescale 0 0;
+L_0060F128 .functor NOR 1, L_0060FA80, L_0060FA80, C4<0>, C4<0>;
+v0060CE30_0 .alias "a", 0 0, v0060D768_0;
+v0060CEA0_0 .alias "s", 0 0, v0060D4E8_0;
+S_0060CB50 .scope module, "AND1" "and_nor" 2 51, 2 78, S_0060CAC8;
+ .timescale 0 0;
+L_0060F228 .functor NOR 1, L_0060F128, L_0060F128, C4<0>, C4<0>;
+L_0060D540 .functor NOR 1, L_0060FAD8, L_0060FAD8, C4<0>, C4<0>;
+L_0060F340 .functor NOR 1, L_0060F228, L_0060D540, C4<0>, C4<0>;
+v0060CBD8_0 .alias "a", 0 0, v0060D4E8_0;
+v0060CC30_0 .alias "b", 0 0, v0060D7C0_0;
+v0060CC88_0 .alias "s", 0 0, v0060D660_0;
+v0060CCF8_0 .net "temp1", 0 0, L_0060F228; 1 drivers
+v0060CD50_0 .net "temp2", 0 0, L_0060D540; 1 drivers
+S_0060C038 .scope module, "HS2" "halfsubtractor_nor" 2 33, 2 45, S_0060BD30;
+ .timescale 0 0;
+v0060C850_0 .alias "a", 0 0, v0060D710_0;
+v0060C8A8_0 .alias "b", 0 0, v0060E490_0;
+v0060C938_0 .alias "s0", 0 0, v0060D578_0;
+v0060C9A8_0 .alias "s1", 0 0, v0060D6B8_0;
+v0060CA38_0 .net "temp1", 0 0, L_0060F7F0; 1 drivers
+S_0060C498 .scope module, "XOR1" "xor_nor" 2 49, 2 59, S_0060C038;
+ .timescale 0 0;
+L_0060F3C8 .functor NOR 1, L_0060E950, L_0060E950, C4<0>, C4<0>;
+L_0060F4E0 .functor NOR 1, L_0060F0B8, L_0060F0B8, C4<0>, C4<0>;
+L_0060F5E0 .functor NOR 1, L_0060F0B8, L_0060F3C8, C4<0>, C4<0>;
+L_0060F650 .functor NOR 1, L_0060E950, L_0060F4E0, C4<0>, C4<0>;
+L_0060F6D8 .functor NOR 1, L_0060F5E0, L_0060F650, C4<0>, C4<0>;
+L_0060F780 .functor NOR 1, L_0060F6D8, L_0060F6D8, C4<0>, C4<0>;
+v0060C520_0 .alias "a", 0 0, v0060D710_0;
+v0060C578_0 .alias "b", 0 0, v0060E490_0;
+v0060C5D0_0 .alias "s", 0 0, v0060D578_0;
+v0060C628_0 .net "temp1", 0 0, L_0060F3C8; 1 drivers
+v0060C680_0 .net "temp2", 0 0, L_0060F4E0; 1 drivers
+v0060C6D8_0 .net "temp3", 0 0, L_0060F5E0; 1 drivers
+v0060C748_0 .net "temp4", 0 0, L_0060F650; 1 drivers
+v0060C7E0_0 .net "temp5", 0 0, L_0060F6D8; 1 drivers
+S_0060C348 .scope module, "NOT1" "not_nor" 2 50, 2 107, S_0060C038;
+ .timescale 0 0;
+L_0060F7F0 .functor NOR 1, L_0060F0B8, L_0060F0B8, C4<0>, C4<0>;
+v0060C3D0_0 .alias "a", 0 0, v0060D710_0;
+v0060C440_0 .alias "s", 0 0, v0060CA38_0;
+S_0060C0C0 .scope module, "AND1" "and_nor" 2 51, 2 78, S_0060C038;
+ .timescale 0 0;
+L_0060F828 .functor NOR 1, L_0060F7F0, L_0060F7F0, C4<0>, C4<0>;
+L_0060CA90 .functor NOR 1, L_0060E950, L_0060E950, C4<0>, C4<0>;
+L_0060F878 .functor NOR 1, L_0060F828, L_0060CA90, C4<0>, C4<0>;
+v0060C148_0 .alias "a", 0 0, v0060CA38_0;
+v0060C1B8_0 .alias "b", 0 0, v0060E490_0;
+v0060C228_0 .alias "s", 0 0, v0060D6B8_0;
+v0060C298_0 .net "temp1", 0 0, L_0060F828; 1 drivers
+v0060C2F0_0 .net "temp2", 0 0, L_0060CA90; 1 drivers
+S_0060BDB8 .scope module, "OR1" "or_nor" 2 34, 2 93, S_0060BD30;
+ .timescale 0 0;
+L_0060F900 .functor NOR 1, L_0060F340, L_0060F878, C4<0>, C4<0>;
+L_0060F950 .functor NOR 1, L_0060F900, L_0060F900, C4<0>, C4<0>;
+v0060BE40_0 .alias "a", 0 0, v0060D660_0;
+v0060BE98_0 .alias "b", 0 0, v0060D6B8_0;
+v0060BEF0_0 .alias "s", 0 0, v0060E4E8_0;
+v0060BFC8_0 .net "temp1", 0 0, L_0060F900; 1 drivers
+S_005D29B0 .scope module, "FS2" "fullsubtractor_nor" 2 19, 2 28, S_005D2B90;
+ .timescale 0 0;
+v0060BA10_0 .net "c0", 0 0, L_00610430; 1 drivers
+v0060BAA0_0 .net "c1", 0 0, L_00610600; 1 drivers
+v0060BAF8_0 .net "carry1", 0 0, L_0060FFF0; 1 drivers
+v0060BB50_0 .net "carry2", 0 0, L_00610528; 1 drivers
+v0060BBA8_0 .net "cout", 0 0, L_0060FD68; 1 drivers
+v0060BC00_0 .net "r", 0 0, L_00610850; 1 drivers
+v0060BC58_0 .net "s", 0 0, L_00610940; 1 drivers
+v0060BCD8_0 .alias "t", 0 0, v0060E4E8_0;
+S_0060AF60 .scope module, "HS1" "halfsubtractor_nor" 2 32, 2 45, S_005D29B0;
+ .timescale 0 0;
+v0060B730_0 .alias "a", 0 0, v0060BC00_0;
+v0060B7C0_0 .alias "b", 0 0, v0060BC58_0;
+v0060B850_0 .alias "s0", 0 0, v0060BBA8_0;
+v0060B928_0 .alias "s1", 0 0, v0060BAF8_0;
+v0060B980_0 .net "temp1", 0 0, L_0060FDD8; 1 drivers
+S_0060B390 .scope module, "XOR1" "xor_nor" 2 49, 2 59, S_0060AF60;
+ .timescale 0 0;
+L_0060D5D0 .functor NOR 1, L_00610940, L_00610940, C4<0>, C4<0>;
+L_0060B818 .functor NOR 1, L_00610850, L_00610850, C4<0>, C4<0>;
+L_0060B788 .functor NOR 1, L_00610850, L_0060D5D0, C4<0>, C4<0>;
+L_0060FC38 .functor NOR 1, L_00610940, L_0060B818, C4<0>, C4<0>;
+L_0060FCC0 .functor NOR 1, L_0060B788, L_0060FC38, C4<0>, C4<0>;
+L_0060FD68 .functor NOR 1, L_0060FCC0, L_0060FCC0, C4<0>, C4<0>;
+v0060B418_0 .alias "a", 0 0, v0060BC00_0;
+v0060B470_0 .alias "b", 0 0, v0060BC58_0;
+v0060B4C8_0 .alias "s", 0 0, v0060BBA8_0;
+v0060B520_0 .net "temp1", 0 0, L_0060D5D0; 1 drivers
+v0060B578_0 .net "temp2", 0 0, L_0060B818; 1 drivers
+v0060B5D0_0 .net "temp3", 0 0, L_0060B788; 1 drivers
+v0060B628_0 .net "temp4", 0 0, L_0060FC38; 1 drivers
+v0060B6C0_0 .net "temp5", 0 0, L_0060FCC0; 1 drivers
+S_0060B240 .scope module, "NOT1" "not_nor" 2 50, 2 107, S_0060AF60;
+ .timescale 0 0;
+L_0060FDD8 .functor NOR 1, L_00610850, L_00610850, C4<0>, C4<0>;
+v0060B2C8_0 .alias "a", 0 0, v0060BC00_0;
+v0060B338_0 .alias "s", 0 0, v0060B980_0;
+S_0060AFE8 .scope module, "AND1" "and_nor" 2 51, 2 78, S_0060AF60;
+ .timescale 0 0;
+L_0060FED8 .functor NOR 1, L_0060FDD8, L_0060FDD8, C4<0>, C4<0>;
+L_0060B9D8 .functor NOR 1, L_00610940, L_00610940, C4<0>, C4<0>;
+L_0060FFF0 .functor NOR 1, L_0060FED8, L_0060B9D8, C4<0>, C4<0>;
+v0060B070_0 .alias "a", 0 0, v0060B980_0;
+v0060B0C8_0 .alias "b", 0 0, v0060BC58_0;
+v0060B120_0 .alias "s", 0 0, v0060BAF8_0;
+v0060B190_0 .net "temp1", 0 0, L_0060FED8; 1 drivers
+v0060B1E8_0 .net "temp2", 0 0, L_0060B9D8; 1 drivers
+S_0060A508 .scope module, "HS2" "halfsubtractor_nor" 2 33, 2 45, S_005D29B0;
+ .timescale 0 0;
+v0060AD20_0 .alias "a", 0 0, v0060BBA8_0;
+v0060AD78_0 .alias "b", 0 0, v0060E4E8_0;
+v0060ADD0_0 .alias "s0", 0 0, v0060BA10_0;
+v0060AE40_0 .alias "s1", 0 0, v0060BB50_0;
+v0060AED0_0 .net "temp1", 0 0, L_006104A0; 1 drivers
+S_0060A968 .scope module, "XOR1" "xor_nor" 2 49, 2 59, S_0060A508;
+ .timescale 0 0;
+L_00610078 .functor NOR 1, L_0060F950, L_0060F950, C4<0>, C4<0>;
+L_00610190 .functor NOR 1, L_0060FD68, L_0060FD68, C4<0>, C4<0>;
+L_00610290 .functor NOR 1, L_0060FD68, L_00610078, C4<0>, C4<0>;
+L_00610300 .functor NOR 1, L_0060F950, L_00610190, C4<0>, C4<0>;
+L_00610388 .functor NOR 1, L_00610290, L_00610300, C4<0>, C4<0>;
+L_00610430 .functor NOR 1, L_00610388, L_00610388, C4<0>, C4<0>;
+v0060A9F0_0 .alias "a", 0 0, v0060BBA8_0;
+v0060AA48_0 .alias "b", 0 0, v0060E4E8_0;
+v0060AAA0_0 .alias "s", 0 0, v0060BA10_0;
+v0060AAF8_0 .net "temp1", 0 0, L_00610078; 1 drivers
+v0060AB50_0 .net "temp2", 0 0, L_00610190; 1 drivers
+v0060ABA8_0 .net "temp3", 0 0, L_00610290; 1 drivers
+v0060AC18_0 .net "temp4", 0 0, L_00610300; 1 drivers
+v0060ACB0_0 .net "temp5", 0 0, L_00610388; 1 drivers
+S_0060A818 .scope module, "NOT1" "not_nor" 2 50, 2 107, S_0060A508;
+ .timescale 0 0;
+L_006104A0 .functor NOR 1, L_0060FD68, L_0060FD68, C4<0>, C4<0>;
+v0060A8A0_0 .alias "a", 0 0, v0060BBA8_0;
+v0060A910_0 .alias "s", 0 0, v0060AED0_0;
+S_0060A590 .scope module, "AND1" "and_nor" 2 51, 2 78, S_0060A508;
+ .timescale 0 0;
+L_006104D8 .functor NOR 1, L_006104A0, L_006104A0, C4<0>, C4<0>;
+L_0060AF28 .functor NOR 1, L_0060F950, L_0060F950, C4<0>, C4<0>;
+L_00610528 .functor NOR 1, L_006104D8, L_0060AF28, C4<0>, C4<0>;
+v0060A618_0 .alias "a", 0 0, v0060AED0_0;
+v0060A688_0 .alias "b", 0 0, v0060E4E8_0;
+v0060A6F8_0 .alias "s", 0 0, v0060BB50_0;
+v0060A768_0 .net "temp1", 0 0, L_006104D8; 1 drivers
+v0060A7C0_0 .net "temp2", 0 0, L_0060AF28; 1 drivers
+S_005D1948 .scope module, "OR1" "or_nor" 2 34, 2 93, S_005D29B0;
+ .timescale 0 0;
+L_006105B0 .functor NOR 1, L_0060FFF0, L_00610528, C4<0>, C4<0>;
+L_00610600 .functor NOR 1, L_006105B0, L_006105B0, C4<0>, C4<0>;
+v005D45F0_0 .alias "a", 0 0, v0060BAF8_0;
+v0060A3A0_0 .alias "b", 0 0, v0060BB50_0;
+v0060A410_0 .alias "s", 0 0, v0060BAA0_0;
+v0060A498_0 .net "temp1", 0 0, L_006105B0; 1 drivers
+S_005D6E88 .scope begin, "start" "start" 2 129, 2 129, S_003EF2B0;
+ .timescale 0 0;
+S_005D6588 .scope begin, "main" "main" 2 135, 2 135, S_003EF2B0;
+ .timescale 0 0;
+    .scope S_003EF2B0;
+T_0 ;
+    %fork t_1, S_005D6E88;
+    %jmp t_0;
+    .scope S_005D6E88;
+t_1 ;
+    %set/v v0060E540_0, 0, 3;
+    %set/v v0060E598_0, 0, 3;
+    %end;
+    .scope S_003EF2B0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EF2B0;
+T_1 ;
+    %fork t_3, S_005D6588;
+    %jmp t_2;
+    .scope S_005D6588;
+t_3 ;
+    %vpi_call 2 136 "$display", "Guia 05_02 - Alyson Deives - 416589";
+    %vpi_call 2 137 "$display", "Full Subtractor de 3 bits\012";
+    %vpi_call 2 138 "$display", "\012// --   A   -   B  =   S  \012";
+    %vpi_call 2 139 "$monitor", "// --  %b%b%b - %b%b%b = %b%b%b%b", &PV<v0060E540_0, 2, 1>, &PV<v0060E540_0, 1, 1>, &PV<v0060E540_0, 0, 1>, &PV<v0060E598_0, 2, 1>, &PV<v0060E598_0, 1, 1>, &PV<v0060E598_0, 0, 1>, &PV<v0060E5F0_0, 3, 1>, &PV<v0060E5F0_0, 2, 1>, &PV<v0060E5F0_0, 1, 1>, &PV<v0060E5F0_0, 0, 1>;
+    %set/v v0060E648_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v0060E648_0, 32;
+   %cmpi/s 8, 7, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.1, 5;
+    %set/v v0060E6A0_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v0060E6A0_0, 32;
+   %cmpi/s 8, 7, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.3, 5;
+    %delay 1, 0;
+    %load/v 8, v0060E648_0, 32;
+    %set/v v0060E540_0, 8, 3;
+    %load/v 8, v0060E6A0_0, 32;
+    %set/v v0060E598_0, 8, 3;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0060E6A0_0, 32;
+    %set/v v0060E6A0_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0060E648_0, 32;
+    %set/v v0060E648_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_003EF2B0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC-MG\2° Periodo\Arquitetura I\Workspace\Guia_05\Ex_02_Full_Subtractor_3bits.v";

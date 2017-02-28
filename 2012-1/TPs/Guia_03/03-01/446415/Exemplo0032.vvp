@@ -1,0 +1,79 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00879C60 .scope module, "testPrin" "testPrin" 2 28;
+ .timescale 0 0;
+v005D32F0_0 .net "s", 0 0, L_005D40B8; 1 drivers
+v005D3348_0 .var "v", 0 0;
+v005D33A0_0 .var "x", 0 0;
+v005D33F8_0 .var "y", 0 0;
+S_00879CE8 .scope module, "modulo1" "Prin" 2 32, 2 19, S_00879C60;
+ .timescale 0 0;
+L_005B12A0 .functor AND 1, v005D33A0_0, v005D33F8_0, C4<1>, C4<1>;
+L_0087E160 .functor OR 1, v005D33A0_0, v005D33F8_0, C4<0>, C4<0>;
+v005D30E0_0 .net "CH", 0 0, v005D3348_0; 1 drivers
+v005D3138_0 .net "a", 0 0, v005D33A0_0; 1 drivers
+v005D3190_0 .net "b", 0 0, v005D33F8_0; 1 drivers
+v005D31E8_0 .net "e1", 0 0, L_005B12A0; 1 drivers
+v005D3240_0 .net "e2", 0 0, L_0087E160; 1 drivers
+v005D3298_0 .alias "s", 0 0, v005D32F0_0;
+S_00879D70 .scope module, "selec" "MUX" 2 25, 2 9, S_00879CE8;
+ .timescale 0 0;
+L_005D3FD8 .functor AND 1, L_005B12A0, v005D3348_0, C4<1>, C4<1>;
+L_005D4010 .functor NOT 1, v005D3348_0, C4<0>, C4<0>, C4<0>;
+L_005D4048 .functor AND 1, L_0087E160, L_005D4010, C4<1>, C4<1>;
+L_005D40B8 .functor OR 1, L_005D3FD8, L_005D4048, C4<0>, C4<0>;
+v005B03F0_0 .alias "c1", 0 0, v005D30E0_0;
+v005B0610_0 .alias "e1", 0 0, v005D31E8_0;
+v005D2F10_0 .alias "e2", 0 0, v005D3240_0;
+v005D2F68_0 .net "notc1", 0 0, L_005D4010; 1 drivers
+v005D2FD8_0 .alias "s1", 0 0, v005D32F0_0;
+v005D3030_0 .net "temp1", 0 0, L_005D3FD8; 1 drivers
+v005D3088_0 .net "temp2", 0 0, L_005D4048; 1 drivers
+    .scope S_00879C60;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exemplo0032 - Filipe Viana de Miranda - 446415";
+    %vpi_call 2 36 "$display", "Test LU's module";
+    %set/v v005D33A0_0, 0, 1;
+    %set/v v005D33F8_0, 0, 1;
+    %set/v v005D3348_0, 0, 1;
+    %vpi_call 2 39 "$display", "\012a b CH s";
+    %delay 1, 0;
+    %vpi_call 2 40 "$monitor", "%b %b %b %b", v005D33A0_0, v005D33F8_0, v005D3348_0, v005D32F0_0;
+    %delay 1, 0;
+    %set/v v005D33A0_0, 0, 1;
+    %set/v v005D33F8_0, 1, 1;
+    %set/v v005D3348_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005D33A0_0, 1, 1;
+    %set/v v005D33F8_0, 0, 1;
+    %set/v v005D3348_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005D33A0_0, 1, 1;
+    %set/v v005D33F8_0, 1, 1;
+    %set/v v005D3348_0, 0, 1;
+    %set/v v005D33A0_0, 0, 1;
+    %set/v v005D33F8_0, 0, 1;
+    %set/v v005D3348_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005D33A0_0, 0, 1;
+    %set/v v005D33F8_0, 1, 1;
+    %set/v v005D3348_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005D33A0_0, 1, 1;
+    %set/v v005D33F8_0, 0, 1;
+    %set/v v005D3348_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005D33A0_0, 1, 1;
+    %set/v v005D33F8_0, 1, 1;
+    %set/v v005D3348_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Downloads\Faculdade\2° Periodo\Arquitetura de Computadores I\Programas e Ferramentas\Icarus_Verilog_v0_95\bin\Exemplo0032.v";

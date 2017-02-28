@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EB100 .scope module, "test" "test" 2 42;
+ .timescale 0 0;
+L_005D70A8 .functor NOT 1, v003ED620_0, C4<0>, C4<0>, C4<0>;
+L_005D70E0 .functor AND 1, L_005D70A8, L_003E9950, C4<1>, C4<1>;
+L_005D7150 .functor AND 1, v003ED620_0, L_005D6FC8, C4<1>, C4<1>;
+L_005D71C0 .functor OR 1, L_005D70E0, L_005D7150, C4<0>, C4<0>;
+v003ED518_0 .net "c1", 0 0, L_005D70E0; 1 drivers
+v003ED570_0 .net "c2", 0 0, L_005D7150; 1 drivers
+v003ED5C8_0 .var "carry", 0 0;
+v003ED620_0 .var "chave", 0 0;
+v003ED678_0 .net "chave2", 0 0, L_005D70A8; 1 drivers
+v003ED6D0_0 .net "resp", 0 0, L_003E9950; 1 drivers
+v003ED728_0 .net "resp1", 0 0, L_005D6FC8; 1 drivers
+v003ED780_0 .net "saida", 0 0, L_005D71C0; 1 drivers
+v003ED7D8_0 .var "x", 0 0;
+v003ED830_0 .var "y", 0 0;
+S_003EB210 .scope module, "fa1" "comparadorDiferenca" 2 51, 2 9, S_003EB100;
+ .timescale 0 0;
+L_003E3420 .functor XNOR 1, v003ED7D8_0, v003ED830_0, C4<0>, C4<0>;
+L_003E3458 .functor XNOR 1, v003ED7D8_0, v003ED5C8_0, C4<0>, C4<0>;
+L_005B1700 .functor XNOR 1, v003ED830_0, v003ED5C8_0, C4<0>, C4<0>;
+L_005B1698 .functor AND 1, L_003E3458, L_003E3420, C4<1>, C4<1>;
+L_003E34C8 .functor AND 1, L_005B1698, L_005B1700, C4<1>, C4<1>;
+L_003E9950 .functor NOT 1, L_003E34C8, C4<0>, C4<0>, C4<0>;
+v003ED200_0 .net "a", 0 0, v003ED7D8_0; 1 drivers
+v003ED258_0 .net "b", 0 0, v003ED830_0; 1 drivers
+v003ED2B0_0 .net "carry", 0 0, v003ED5C8_0; 1 drivers
+v003ED308_0 .alias "s", 0 0, v003ED6D0_0;
+v003ED360_0 .net "temp1", 0 0, L_003E3420; 1 drivers
+v003ED3B8_0 .net "temp2", 0 0, L_003E3458; 1 drivers
+v003ED410_0 .net "temp3", 0 0, L_005B1700; 1 drivers
+v003ED468_0 .net "temp4", 0 0, L_005B1698; 1 drivers
+v003ED4C0_0 .net "temp5", 0 0, L_003E34C8; 1 drivers
+S_003EB188 .scope module, "fa2" "comparadorIgualdade" 2 52, 2 27, S_003EB100;
+ .timescale 0 0;
+L_005D6E78 .functor XNOR 1, v003ED7D8_0, v003ED830_0, C4<0>, C4<0>;
+L_005D6EB0 .functor XNOR 1, v003ED7D8_0, v003ED5C8_0, C4<0>, C4<0>;
+L_005D6EE8 .functor XNOR 1, v003ED830_0, v003ED5C8_0, C4<0>, C4<0>;
+L_005D6F20 .functor AND 1, L_005D6EB0, L_005D6E78, C4<1>, C4<1>;
+L_005D6FC8 .functor AND 1, L_005D6F20, L_005D6EE8, C4<1>, C4<1>;
+v003ECF40_0 .alias "a", 0 0, v003ED200_0;
+v003ECF98_0 .alias "b", 0 0, v003ED258_0;
+v003ECFF0_0 .alias "carry", 0 0, v003ED2B0_0;
+v003ED048_0 .alias "s", 0 0, v003ED728_0;
+v003ED0A0_0 .net "temp1", 0 0, L_005D6E78; 1 drivers
+v003ED0F8_0 .net "temp2", 0 0, L_005D6EB0; 1 drivers
+v003ED150_0 .net "temp3", 0 0, L_005D6EE8; 1 drivers
+v003ED1A8_0 .net "temp4", 0 0, L_005D6F20; 1 drivers
+    .scope S_003EB100;
+T_0 ;
+    %vpi_call 2 61 "$display", "Exemplo0027 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 62 "$display", "Test ALU\222s COMPARADOR COM CHAVE";
+    %set/v v003ED7D8_0, 0, 1;
+    %set/v v003ED830_0, 1, 1;
+    %set/v v003ED5C8_0, 0, 1;
+    %set/v v003ED620_0, 0, 1;
+    %vpi_call 2 66 "$display", "chave   a  b  carry  s  ";
+    %delay 1, 0;
+    %vpi_call 2 67 "$monitor", "%b       %b  %b     %b   %b", v003ED620_0, v003ED7D8_0, v003ED830_0, v003ED5C8_0, v003ED780_0;
+    %delay 1, 0;
+    %set/v v003ED7D8_0, 0, 1;
+    %set/v v003ED830_0, 1, 1;
+    %set/v v003ED5C8_0, 0, 1;
+    %set/v v003ED620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003ED7D8_0, 1, 1;
+    %set/v v003ED830_0, 1, 1;
+    %set/v v003ED5C8_0, 0, 1;
+    %set/v v003ED620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003ED7D8_0, 1, 1;
+    %set/v v003ED830_0, 1, 1;
+    %set/v v003ED5C8_0, 0, 1;
+    %set/v v003ED620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003ED7D8_0, 0, 1;
+    %set/v v003ED830_0, 0, 1;
+    %set/v v003ED5C8_0, 0, 1;
+    %set/v v003ED620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003ED7D8_0, 0, 1;
+    %set/v v003ED830_0, 0, 1;
+    %set/v v003ED5C8_0, 0, 1;
+    %set/v v003ED620_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc_2_periodo\Arquitetura_1\Exercicios_Resolvidos\Guia04\Exemplo0027.v";

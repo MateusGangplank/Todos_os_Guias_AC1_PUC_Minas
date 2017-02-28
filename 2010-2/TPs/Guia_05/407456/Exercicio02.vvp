@@ -1,0 +1,137 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003ED390 .scope module, "teste" "teste" 2 33;
+ .timescale 0 0;
+v006A2FB8_0 .var "a0", 0 0;
+v006A3010_0 .var "a1", 0 0;
+v006A3068_0 .var "a2", 0 0;
+v006A30C0_0 .var "b0", 0 0;
+v006A3118_0 .var "b1", 0 0;
+v006A3170_0 .var "b2", 0 0;
+v006A31C8_0 .net "c0", 0 0, L_006A34E8; 1 drivers
+v006A3220_0 .net "c1", 0 0, L_006A3808; 1 drivers
+v006A3278_0 .net "c2", 0 0, L_006A3B38; 1 drivers
+v006A3300_0 .net "s0", 0 0, L_006A3408; 1 drivers
+v006A3358_0 .net "s1", 0 0, L_006A3680; 1 drivers
+v006A33B0_0 .net "s2", 0 0, L_006A39B0; 1 drivers
+S_006A2D18 .scope module, "HS1" "halfSubtractor" 2 38, 2 23, S_003ED390;
+ .timescale 0 0;
+L_006A3408 .functor XOR 1, v006A2FB8_0, v006A30C0_0, C4<0>, C4<0>;
+L_006A34E8 .functor AND 1, L_006A3520, v006A30C0_0, C4<1>, C4<1>;
+L_006A3520 .functor NOT 1, v006A2FB8_0, C4<0>, C4<0>, C4<0>;
+v006A2DA0_0 .net *"_s2", 0 0, L_006A3520; 1 drivers
+v006A2E10_0 .net "a", 0 0, v006A2FB8_0; 1 drivers
+v006A2E80_0 .net "b", 0 0, v006A30C0_0; 1 drivers
+v006A2F08_0 .alias "c0", 0 0, v006A31C8_0;
+v006A2F60_0 .alias "s0", 0 0, v006A3300_0;
+S_006A2830 .scope module, "FS1" "fullSubtractor" 2 39, 2 10, S_003ED390;
+ .timescale 0 0;
+L_006A3590 .functor XOR 1, v006A3010_0, L_006A34E8, C4<0>, C4<0>;
+L_003E7F18 .functor AND 1, L_006A3600, L_006A34E8, C4<1>, C4<1>;
+L_006A3600 .functor NOT 1, v006A3010_0, C4<0>, C4<0>, C4<0>;
+L_006A3680 .functor XOR 1, L_006A3590, v006A3118_0, C4<0>, C4<0>;
+L_006A3760 .functor AND 1, L_006A3798, v006A3118_0, C4<1>, C4<1>;
+L_006A3798 .functor NOT 1, L_006A3590, C4<0>, C4<0>, C4<0>;
+L_006A3808 .functor OR 1, L_006A3760, L_003E7F18, C4<0>, C4<0>;
+v006A28B8_0 .net *"_s2", 0 0, L_006A3600; 1 drivers
+v006A2928_0 .net *"_s6", 0 0, L_006A3798; 1 drivers
+v006A2998_0 .net "a", 0 0, v006A3010_0; 1 drivers
+v006A2A20_0 .net "b", 0 0, v006A3118_0; 1 drivers
+v006A2A90_0 .alias "c", 0 0, v006A31C8_0;
+v006A2AE8_0 .alias "c0", 0 0, v006A3220_0;
+v006A2B40_0 .net "c1", 0 0, L_003E7F18; 1 drivers
+v006A2B98_0 .net "c2", 0 0, L_006A3760; 1 drivers
+v006A2C08_0 .alias "s0", 0 0, v006A3358_0;
+v006A2CA8_0 .net "s1", 0 0, L_006A3590; 1 drivers
+S_003ED418 .scope module, "FS2" "fullSubtractor" 2 40, 2 10, S_003ED390;
+ .timescale 0 0;
+L_006A38B0 .functor XOR 1, v006A3068_0, L_006A3808, C4<0>, C4<0>;
+L_00661378 .functor AND 1, L_006A3930, L_006A3808, C4<1>, C4<1>;
+L_006A3930 .functor NOT 1, v006A3068_0, C4<0>, C4<0>, C4<0>;
+L_006A39B0 .functor XOR 1, L_006A38B0, v006A3170_0, C4<0>, C4<0>;
+L_006A3A90 .functor AND 1, L_006A3AC8, v006A3170_0, C4<1>, C4<1>;
+L_006A3AC8 .functor NOT 1, L_006A38B0, C4<0>, C4<0>, C4<0>;
+L_006A3B38 .functor OR 1, L_006A3A90, L_00661378, C4<0>, C4<0>;
+v003ED4A0_0 .net *"_s2", 0 0, L_006A3930; 1 drivers
+v006A23E8_0 .net *"_s6", 0 0, L_006A3AC8; 1 drivers
+v006A2458_0 .net "a", 0 0, v006A3068_0; 1 drivers
+v006A24E0_0 .net "b", 0 0, v006A3170_0; 1 drivers
+v006A2550_0 .alias "c", 0 0, v006A3220_0;
+v006A25A8_0 .alias "c0", 0 0, v006A3278_0;
+v006A2618_0 .net "c1", 0 0, L_00661378; 1 drivers
+v006A26B0_0 .net "c2", 0 0, L_006A3A90; 1 drivers
+v006A2720_0 .alias "s0", 0 0, v006A33B0_0;
+v006A27C0_0 .net "s1", 0 0, L_006A38B0; 1 drivers
+    .scope S_003ED390;
+T_0 ;
+    %vpi_call 2 44 "$display", "Full-Subtractor Gate Test";
+    %vpi_call 2 45 "$display", "Exercicio 02";
+    %vpi_call 2 46 "$display", "\012 Nome: Washington Luis \012 Matricula: 407456 \012";
+    %vpi_call 2 47 "$display", "(abc - cde) = resultado, vemUm\012";
+    %set/v v006A3068_0, 0, 1;
+    %set/v v006A3010_0, 0, 1;
+    %set/v v006A2FB8_0, 0, 1;
+    %set/v v006A3170_0, 0, 1;
+    %set/v v006A3118_0, 0, 1;
+    %set/v v006A30C0_0, 0, 1;
+    %vpi_call 2 50 "$monitor", "(%b%b%b - %b%b%b) = %b%b%b, %b", v006A3068_0, v006A3010_0, v006A2FB8_0, v006A3170_0, v006A3118_0, v006A30C0_0, v006A33B0_0, v006A3358_0, v006A3300_0, v006A3278_0;
+    %delay 1, 0;
+    %set/v v006A3068_0, 0, 1;
+    %set/v v006A3010_0, 0, 1;
+    %set/v v006A2FB8_0, 1, 1;
+    %set/v v006A3170_0, 1, 1;
+    %set/v v006A3118_0, 0, 1;
+    %set/v v006A30C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3068_0, 0, 1;
+    %set/v v006A3010_0, 1, 1;
+    %set/v v006A2FB8_0, 0, 1;
+    %set/v v006A3170_0, 0, 1;
+    %set/v v006A3118_0, 1, 1;
+    %set/v v006A30C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3068_0, 0, 1;
+    %set/v v006A3010_0, 1, 1;
+    %set/v v006A2FB8_0, 1, 1;
+    %set/v v006A3170_0, 1, 1;
+    %set/v v006A3118_0, 1, 1;
+    %set/v v006A30C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3068_0, 1, 1;
+    %set/v v006A3010_0, 0, 1;
+    %set/v v006A2FB8_0, 0, 1;
+    %set/v v006A3170_0, 0, 1;
+    %set/v v006A3118_0, 0, 1;
+    %set/v v006A30C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3068_0, 1, 1;
+    %set/v v006A3010_0, 0, 1;
+    %set/v v006A2FB8_0, 1, 1;
+    %set/v v006A3170_0, 0, 1;
+    %set/v v006A3118_0, 1, 1;
+    %set/v v006A30C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3068_0, 1, 1;
+    %set/v v006A3010_0, 1, 1;
+    %set/v v006A2FB8_0, 0, 1;
+    %set/v v006A3170_0, 0, 1;
+    %set/v v006A3118_0, 0, 1;
+    %set/v v006A30C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3068_0, 1, 1;
+    %set/v v006A3010_0, 1, 1;
+    %set/v v006A2FB8_0, 1, 1;
+    %set/v v006A3170_0, 0, 1;
+    %set/v v006A3118_0, 0, 1;
+    %set/v v006A30C0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Architecture\Guia05\Exercicio02.v";

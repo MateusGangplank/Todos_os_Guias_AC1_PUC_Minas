@@ -1,0 +1,207 @@
+/* 5-bit ALU
+ * Operacoes:
+ * 0 => A + B
+ * 1 => A - B
+ * 2 => ~A (ou C1(A))
+ * 3 => A & B
+ * 4 => A | B
+ * 5 => C2(A)
+ * 6 => A + 1
+ * 7 => A - 1
+ *
+ * Alem das saidas de comparacao logica, aritmetica, zero, carry e overflow
+*/
+
+
+module mux_8to1(input A, input B, input C, input D,
+                input E, input F, input G, input H, input [2:0] SELECTOR,
+                output reg S);
+    always @ (*) begin
+        case (SELECTOR)
+            0: S = A;
+            1: S = B;
+            2: S = C;
+            3: S = D;
+            4: S = E;
+            5: S = F;
+            6: S = G;
+            7: S = H;
+            default: S = 5'bz;
+        endcase
+    end
+endmodule
+
+module mux_8to1_5bit(input [4:0] A, input [4:0] B, input [4:0] C, input [4:0] D, 
+                    input [4:0] E, input [4:0] F, input [4:0] G, input [4:0] H,
+                    input [2:0] SELECTOR,
+                    output reg [4:0] S);
+    always @ (*) begin
+        case (SELECTOR)
+            0: S = A;
+            1: S = B;
+            2: S = C;
+            3: S = D;
+            4: S = E;
+            5: S = F;
+            6: S = G;
+            7: S = H;
+            default: S = 5'bz;
+        endcase
+    end
+endmodule
+
+
+module half_adder(input A, input B,
+                output S, output C_OUT);
+    assign S = A ^ B;
+    assign C_OUT = A & B;
+endmodule
+
+module full_adder(input A, input B, input C_IN,
+                output S, output C_OUT);
+    assign S = A ^ (B ^ C_IN);
+    assign C_OUT = (A & (B ^ C_IN)) | (B & C_IN);
+endmodule
+
+module half_subtractor(input A, input B,
+                    output S, output C_OUT);
+    assign S = A ^ B;
+    assign C_OUT = ~A & B;
+endmodule
+
+module full_subtractor(input A, input B, input B_IN,
+                    output S, output B_OUT);
+    assign S = A ^ (B ^ B_IN);
+    assign B_OUT = (~A & (B ^ B_IN)) | (B & B_IN);
+endmodule
+
+module adder_5bit(input [4:0] A, input [4:0] B,
+                output [4:0] S, output C_OUT);
+    wire CARRIES[3:0];
+    
+    half_adder ADDER0(A[0], B[0], S[0], CARRIES[0]);
+    full_adder ADDER1(A[1], B[1], CARRIES[0], S[1], CARRIES[1]);
+    full_adder ADDER2(A[2], B[2], CARRIES[1], S[2], CARRIES[2]);
+    full_adder ADDER3(A[3], B[3], CARRIES[2], S[3], CARRIES[3]);
+    full_adder ADDER4(A[4], B[4], CARRIES[3], S[4], C_OUT);
+endmodule
+
+module subtractor_5bit(input [4:0] A, input [4:0] B,
+                    output [4:0] S, output B_OUT);
+    wire BORROWS[3:0];
+    
+    half_subtractor SUB0(A[0], B[0], S[0], BORROWS[0]);
+    full_subtractor SUB1(A[1], B[1], BORROWS[0], S[1], BORROWS[1]);
+    full_subtractor SUB2(A[2], B[2], BORROWS[1], S[2], BORROWS[2]);
+    full_subtractor SUB3(A[3], B[3], BORROWS[2], S[3], BORROWS[3]);
+    full_subtractor SUB4(A[4], B[4], BORROWS[3], S[4], B_OUT);
+endmodule
+
+module logic_comparator_5bit(input [4:0] A, input [4:0] B,
+                            output S);
+    wire WIRES[4:0];
+    
+    assign WIRES[0] = A[0] ~^ B[0];
+    assign WIRES[1] = A[1] ~^ B[1];
+    assign WIRES[2] = A[2] ~^ B[2];
+    assign WIRES[3] = A[3] ~^ B[3];
+    assign WIRES[4] = A[4] ~^ B[4];
+    assign S = WIRES[0] & WIRES[1] & WIRES[2] & WIRES[3] & WIRES[4];
+endmodule
+
+module arithmetic_comparator_5bit(input [4:0] A,
+                                output GREATER, output SMALLER, output EQUALS);
+    assign EQUALS = A[0] ~| A[1] ~| A[2] ~| A[3] ~| A[4];
+    assign GREATER = ~A[4] & ~EQUALS;
+    assign SMALLER = A[4] & ~EQUALS;
+endmodule
+
+module twos_complement_5bit(input [4:0] A,
+                            output [4:0] S);
+    wire [4:0] BITWISE_NOT = ~A;
+    adder_5bit ADDER0(BITWISE_NOT, 5'b00001, S, /**/);
+endmodule
+
+module increment1_5bit(input [4:0] A,
+                    output [4:0] S, output C_OUT);
+    adder_5bit ADDER(A, 5'b00001, S, C_OUT);
+endmodule
+
+module decrement1_5bit(input [4:0] A,
+                    output [4:0] S, output B_OUT);
+    subtractor_5bit SUB(A, 5'b00001, S, B_OUT);
+endmodule
+
+module alu_5bit(input [4:0] A, input [4:0] B, input [2:0] OP_CODE,
+                output [4:0] S, 
+                output LOGIC_COMP,
+                output GREATER, output SMALLER, output EQUALS,
+                output ZERO, output CARRY, output OVERFLOW);
+    // Adder wires
+    wire [4:0] ADDER_S;
+    wire ADDER_CARRY;
+    wire [4:0] SUB_S;
+    wire SUB_BORROW;
+    
+    wire [4:0] BITWISE_NOT_S;
+    wire [4:0] BITWISE_AND_S;
+    wire [4:0] BITWISE_OR_S;
+    
+    wire [4:0] TWOS_COMPLEMENT_S;
+    wire [4:0] INCREMENT_S;
+    wire INCREMENT_CARRY;
+    wire [4:0] DECREMENT_S;
+    wire DECREMENT_CARRY;
+    
+    wire SUM_OVERFLOW;
+    wire SUB_OVERFLOW;
+    wire OVERFLOW_MUX_S;
+    wire S_OVERFLOW;
+    
+    adder_5bit ADDER(A, B, ADDER_S, ADDER_CARRY); // +
+    subtractor_5bit SUBTRACTOR(A, B, SUB_S, SUB_BORROW); // -
+    assign BITWISE_NOT_S = ~A; // NOT
+    assign BITWISE_AND_S = A & B; // AND
+    assign BITWISE_OR_S = A | B; // OR
+    twos_complement_5bit TWOS_COMPLEMENT(A, TWOS_COMPLEMENT_S); // 2's
+    increment1_5bit INCREMENT1(A, INCREMENT_S, INCREMENT_CARRY); // +1
+    decrement1_5bit DECREMENT1(A, DECREMENT_S, DECREMENT_CARRY); // -1
+    
+    mux_8to1_5bit OP_MUX(ADDER_S, SUB_S, BITWISE_NOT_S, BITWISE_AND_S, 
+                        BITWISE_OR_S, TWOS_COMPLEMENT_S, INCREMENT_S, DECREMENT_S, OP_CODE, S); // S
+    
+    logic_comparator_5bit LOGIC_COMPARATOR(A, B, LOGIC_COMP); // LC
+    arithmetic_comparator_5bit ARITHMETIC_COMPARATOR(SUB_S, GREATER, SMALLER, EQUALS); // AC
+    
+    assign ZERO = S[0] ~| S[1] ~| S[2] ~| S[3] ~| S[4]; // ZERO
+    
+    mux_8to1 CARRY_MUX(ADDER_CARRY, SUB_BORROW, 0, 0,
+                    0, 0, INCREMENT_CARRY, DECREMENT_CARRY, OP_CODE, CARRY); // CARRY
+    
+    assign SUM_OVERFLOW = (A[4] ~^ B[4]) & (A[4] ^ S[4]);
+    assign SUB_OVERFLOW = (A[4] ^ B[4]) & (A[4] ^ S[4]);
+    mux_8to1 OVERFLOW_MUX(SUM_OVERFLOW, SUB_OVERFLOW, 0, 0,
+                        0, 0, 0, 0, OP_CODE, OVERFLOW_MUX_S);
+    assign S_OVERFLOW = S[0] ~| S[1] ~| S[2] ~| S[3] ~| (~S[4]);
+    assign OVERFLOW = OVERFLOW_MUX_S | S_OVERFLOW; // OVERFLOW
+endmodule
+
+module test();
+    reg [4:0] A, B;
+    reg [2:0] OP_CODE;
+    wire [4:0] S;
+    wire LC, GREATER, SMALLER, EQUALS, ZERO, CARRY, OVERFLOW;
+    
+    alu_5bit ALU(A, B, OP_CODE, S, LC, GREATER, SMALLER, EQUALS, ZERO, CARRY, OVERFLOW);
+    
+    integer COUNTER = 0;
+        
+    initial begin
+        A = 5; B = 7;
+            
+        for (COUNTER = 0; COUNTER < 8; COUNTER = COUNTER + 1) begin
+            OP_CODE = COUNTER;
+            #1 $display("OP=%d -> A=%b, B=%b, S=%b", OP_CODE, A, B, S);
+        end
+    end
+endmodule

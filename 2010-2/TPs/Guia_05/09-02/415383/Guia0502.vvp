@@ -1,0 +1,153 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00639BB0 .scope module, "testex2" "testex2" 2 28;
+ .timescale 0 0;
+v006AA1E8_0 .var "a", 1 0;
+v006AA240_0 .var "b", 1 0;
+v006AA298_0 .net "c0", 0 0, L_00683220; 1 drivers
+v006AA2F0_0 .net "c1", 0 0, L_006835A0; 1 drivers
+v006AA348_0 .net "s0", 0 0, L_00683258; 1 drivers
+v006AA3A0_0 .net "s1", 0 0, L_00683568; 1 drivers
+L_006AA3F8 .part v006AA1E8_0, 0, 1;
+L_006AA450 .part v006AA240_0, 0, 1;
+L_006AA4A8 .part v006AA1E8_0, 1, 1;
+L_006AA500 .part v006AA240_0, 1, 1;
+S_00639B28 .scope module, "HA" "meiadiferenca" 2 32, 2 11, S_00639BB0;
+ .timescale 0 0;
+L_006831E8 .functor NOT 1, L_006AA3F8, C4<0>, C4<0>, C4<0>;
+L_00683220 .functor AND 1, L_006831E8, L_006AA450, C4<1>, C4<1>;
+L_00683258 .functor XOR 1, L_006AA3F8, L_006AA450, C4<0>, C4<0>;
+v006AA030_0 .net *"_s0", 0 0, L_006831E8; 1 drivers
+v006AA088_0 .net "a", 0 0, L_006AA3F8; 1 drivers
+v006AA0E0_0 .net "b", 0 0, L_006AA450; 1 drivers
+v006AA138_0 .alias "carry", 0 0, v006AA298_0;
+v006AA190_0 .alias "s", 0 0, v006AA348_0;
+S_00639880 .scope module, "FA" "diferencacompleta" 2 33, 2 19, S_00639BB0;
+ .timescale 0 0;
+L_006835A0 .functor OR 1, L_006833A8, L_00683178, C4<0>, C4<0>;
+v006A9D70_0 .net "a", 0 0, L_006AA4A8; 1 drivers
+v006A9DC8_0 .net "b", 0 0, L_006AA500; 1 drivers
+v006A9E20_0 .net "c1", 0 0, L_006833A8; 1 drivers
+v006A9E78_0 .net "c2", 0 0, L_00683178; 1 drivers
+v006A9ED0_0 .alias "carry", 0 0, v006AA2F0_0;
+v006A9F28_0 .alias "cin", 0 0, v006AA298_0;
+v006A9F80_0 .net "s", 0 0, L_00683488; 1 drivers
+v006A9FD8_0 .alias "s0", 0 0, v006AA3A0_0;
+S_00639770 .scope module, "HS" "meiadiferenca" 2 23, 2 11, S_00639880;
+ .timescale 0 0;
+L_00683338 .functor NOT 1, L_006AA4A8, C4<0>, C4<0>, C4<0>;
+L_006833A8 .functor AND 1, L_00683338, L_006AA500, C4<1>, C4<1>;
+L_00683488 .functor XOR 1, L_006AA4A8, L_006AA500, C4<0>, C4<0>;
+v00632AF8_0 .net *"_s0", 0 0, L_00683338; 1 drivers
+v006A9C10_0 .alias "a", 0 0, v006A9D70_0;
+v006A9C68_0 .alias "b", 0 0, v006A9DC8_0;
+v006A9CC0_0 .alias "carry", 0 0, v006A9E20_0;
+v006A9D18_0 .alias "s", 0 0, v006A9F80_0;
+S_006397F8 .scope module, "HS2" "meiadiferenca" 2 24, 2 11, S_00639880;
+ .timescale 0 0;
+L_006834C0 .functor NOT 1, L_00683488, C4<0>, C4<0>, C4<0>;
+L_00683178 .functor AND 1, L_006834C0, L_00683220, C4<1>, C4<1>;
+L_00683568 .functor XOR 1, L_00683488, L_00683220, C4<0>, C4<0>;
+v006842B0_0 .net *"_s0", 0 0, L_006834C0; 1 drivers
+v00684118_0 .alias "a", 0 0, v006A9F80_0;
+v0063D170_0 .alias "b", 0 0, v006AA298_0;
+v0063D1C8_0 .alias "carry", 0 0, v006A9E78_0;
+v0063D220_0 .alias "s", 0 0, v006AA3A0_0;
+    .scope S_00639BB0;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exercicio 02 - Lucas Teixeira Santos - 415383";
+    %vpi_call 2 36 "$display", "Diferenca Completa 2 Bits.";
+    %vpi_call 2 37 "$display", "AA  -  BB  =  CCC";
+    %set/v v006AA1E8_0, 0, 2;
+    %set/v v006AA240_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 40 "$monitor", "%b  -  %b  =  %b%b%b", v006AA1E8_0, v006AA240_0, v006AA2F0_0, v006AA3A0_0, v006AA348_0;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA1E8_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA1E8_0, 8, 2;
+    %set/v v006AA240_0, 0, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA1E8_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA1E8_0, 8, 2;
+    %set/v v006AA240_0, 0, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA1E8_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA1E8_0, 8, 2;
+    %set/v v006AA240_0, 0, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v006AA240_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v006AA240_0, 8, 2;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia0502.V";

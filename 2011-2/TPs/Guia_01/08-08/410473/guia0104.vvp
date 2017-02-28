@@ -1,0 +1,99 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00681EC0 .scope module, "testandgate" "testandgate" 2 43;
+ .timescale 0 0;
+v0069D248_0 .var "a", 0 0;
+v0069D2A0_0 .var "b", 0 0;
+v0069D2F8_0 .var "c", 0 0;
+v0069D370_0 .net "q1", 0 0, L_0069D520; 1 drivers
+v0069D3C8_0 .net "q2", 0 0, L_0069D590; 1 drivers
+v0069D420_0 .net "s", 0 0, L_0069D600; 1 drivers
+S_0069D060 .scope module, "NAND1" "nandgate" 2 48, 2 13, S_00681EC0;
+ .timescale 0 0;
+L_0069D478 .functor AND 1, v0069D2A0_0, v0069D2F8_0, C4<1>, C4<1>;
+L_0069D520 .functor NOT 1, L_0069D478, C4<0>, C4<0>, C4<0>;
+v0069D0E8_0 .net *"_s0", 0 0, L_0069D478; 1 drivers
+v0069D140_0 .net "p", 0 0, v0069D2A0_0; 1 drivers
+v0069D198_0 .net "q", 0 0, v0069D2F8_0; 1 drivers
+v0069D1F0_0 .alias "s", 0 0, v0069D370_0;
+S_00680EC0 .scope module, "NOT1" "notgate" 2 49, 2 23, S_00681EC0;
+ .timescale 0 0;
+L_0069D590 .functor NOT 1, v0069D248_0, C4<0>, C4<0>, C4<0>;
+v00680F48_0 .net "p", 0 0, v0069D248_0; 1 drivers
+v0069D008_0 .alias "s", 0 0, v0069D3C8_0;
+S_003E6F38 .scope module, "OR1" "orgate" 2 50, 2 33, S_00681EC0;
+ .timescale 0 0;
+L_0069D600 .functor OR 1, L_0069D590, L_0069D520, C4<0>, C4<0>;
+v003E6FC0_0 .alias "p", 0 0, v0069D3C8_0;
+v00680DC8_0 .alias "q", 0 0, v0069D370_0;
+v00680E38_0 .alias "s", 0 0, v0069D420_0;
+S_003E6EB0 .scope begin, "start" "start" 2 52, 2 52, S_00681EC0;
+ .timescale 0 0;
+S_006820C8 .scope begin, "main" "main" 2 58, 2 58, S_00681EC0;
+ .timescale 0 0;
+    .scope S_00681EC0;
+T_0 ;
+    %fork t_1, S_003E6EB0;
+    %jmp t_0;
+t_1 ;
+    %set/v v0069D248_0, 0, 1;
+    %set/v v0069D2A0_0, 0, 1;
+    %set/v v0069D2F8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00681EC0;
+T_1 ;
+    %fork t_3, S_006820C8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 60 "$display", "Guia01 - Exercicio 04 - Pedro Tronbin - 410473";
+    %vpi_call 2 61 "$display", "TEST AND GATE: ";
+    %vpi_call 2 62 "$display", "\012( ~ a | ~ ( b & c ) = s ";
+    %vpi_call 2 63 "$monitor", "( ~ %b | ~ ( %b & %b ) = %b ", v0069D248_0, v0069D2A0_0, v0069D2F8_0, v0069D420_0;
+    %delay 1, 0;
+    %set/v v0069D248_0, 0, 1;
+    %set/v v0069D2A0_0, 0, 1;
+    %set/v v0069D2F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 0, 1;
+    %set/v v0069D2A0_0, 0, 1;
+    %set/v v0069D2F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 0, 1;
+    %set/v v0069D2A0_0, 1, 1;
+    %set/v v0069D2F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 0, 1;
+    %set/v v0069D2A0_0, 1, 1;
+    %set/v v0069D2F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 1, 1;
+    %set/v v0069D2A0_0, 0, 1;
+    %set/v v0069D2F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 1, 1;
+    %set/v v0069D2A0_0, 0, 1;
+    %set/v v0069D2F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 1, 1;
+    %set/v v0069D2A0_0, 1, 1;
+    %set/v v0069D2F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D248_0, 1, 1;
+    %set/v v0069D2A0_0, 1, 1;
+    %set/v v0069D2F8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\pT\AC\guia01\guia0104.v";

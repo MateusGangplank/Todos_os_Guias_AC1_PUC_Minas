@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006AFEB0 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v006A35E0_0 .var "a", 0 0;
+v006AEBE8_0 .var "b", 0 0;
+v006AEC40_0 .net "s", 0 0, L_006AED08; 1 drivers
+S_006A3070 .scope module, "XNOR1" "xnorgate" 2 24, 2 12, S_006AFEB0;
+ .timescale 0 0;
+L_006AD930 .functor XOR 1, v006A35E0_0, v006AEBE8_0, C4<0>, C4<0>;
+L_006AED08 .functor NOT 1, L_006AD930, C4<0>, C4<0>, C4<0>;
+v006A30F8_0 .net *"_s0", 0 0, L_006AD930; 1 drivers
+v006A34D8_0 .net "p", 0 0, v006A35E0_0; 1 drivers
+v006A3530_0 .net "q", 0 0, v006AEBE8_0; 1 drivers
+v006A3588_0 .alias "s", 0 0, v006AEC40_0;
+S_006A2FE8 .scope begin, "start" "start" 2 26, 2 26, S_006AFEB0;
+ .timescale 0 0;
+S_006AFF38 .scope begin, "main" "main" 2 31, 2 31, S_006AFEB0;
+ .timescale 0 0;
+    .scope S_006AFEB0;
+T_0 ;
+    %fork t_1, S_006A2FE8;
+    %jmp t_0;
+    .scope S_006A2FE8;
+t_1 ;
+    %set/v v006A35E0_0, 0, 1;
+    %set/v v006AEBE8_0, 0, 1;
+    %end;
+    .scope S_006AFEB0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006AFEB0;
+T_1 ;
+    %fork t_3, S_006AFF38;
+    %jmp t_2;
+    .scope S_006AFF38;
+t_3 ;
+    %vpi_call 2 32 "$display", "Exemplo0008 - Exercicio0003 - Ana Cristina Pereira Teixeira - 427385";
+    %vpi_call 2 33 "$display", "Test xnor gate";
+    %vpi_call 2 34 "$display", "\012 ~(a ^ b) = s\012";
+    %vpi_call 2 35 "$monitor", "~(%b ^ %b) = %b", v006A35E0_0, v006AEBE8_0, v006AEC40_0;
+    %delay 1, 0;
+    %set/v v006A35E0_0, 0, 1;
+    %set/v v006AEBE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A35E0_0, 0, 1;
+    %set/v v006AEBE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A35E0_0, 1, 1;
+    %set/v v006AEBE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A35E0_0, 1, 1;
+    %set/v v006AEBE8_0, 1, 1;
+    %end;
+    .scope S_006AFEB0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2-2012\arq\guia01\427385_guia01\Exemplo0008.v";

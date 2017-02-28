@@ -1,0 +1,74 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00612CF0 .scope module, "testmeiadiferenca" "testmeiadiferenca" 2 31;
+ .timescale 0 0;
+v0064AD48_0 .var "a", 0 0;
+v0064ADA0_0 .var "b", 0 0;
+v0064ADF8_0 .net "s0", 0 0, L_0064BA68; 1 drivers
+v0064AE50_0 .net "s1", 0 0, L_00614E00; 1 drivers
+S_00616A20 .scope module, "MEIADIFERENCA1" "meiadiferenca" 2 35, 2 11, S_00612CF0;
+ .timescale 0 0;
+L_00615E28 .functor NAND 1, v0064AD48_0, v0064ADA0_0, C4<1>, C4<1>;
+L_0079E0C8 .functor NAND 1, v0064AD48_0, v0064AD48_0, C4<1>, C4<1>;
+L_00612DF0 .functor NAND 1, L_0079E0C8, v0064ADA0_0, C4<1>, C4<1>;
+L_00614E00 .functor NAND 1, L_00612DF0, L_00612DF0, C4<1>, C4<1>;
+L_00614EA8 .functor NAND 1, v0064AD48_0, v0064ADA0_0, C4<1>, C4<1>;
+L_0079E090 .functor NAND 1, v0064AD48_0, L_00614EA8, C4<1>, C4<1>;
+L_0064BA30 .functor NAND 1, L_00614EA8, v0064ADA0_0, C4<1>, C4<1>;
+L_0064BA68 .functor NAND 1, L_0079E090, L_0064BA30, C4<1>, C4<1>;
+v0079E038_0 .net "a", 0 0, v0064AD48_0; 1 drivers
+v0064AA30_0 .net "b", 0 0, v0064ADA0_0; 1 drivers
+v0064AA88_0 .alias "s0", 0 0, v0064ADF8_0;
+v0064AAE0_0 .alias "s1", 0 0, v0064AE50_0;
+v0064AB38_0 .net "s2", 0 0, L_00615E28; 1 drivers
+v0064AB90_0 .net "s3", 0 0, L_00614EA8; 1 drivers
+v0064ABE8_0 .net "s4", 0 0, L_0079E090; 1 drivers
+v0064AC40_0 .net "s5", 0 0, L_0064BA30; 1 drivers
+v0064AC98_0 .net "s6", 0 0, L_0079E0C8; 1 drivers
+v0064ACF0_0 .net "s7", 0 0, L_00612DF0; 1 drivers
+S_0079DFB8 .scope begin, "start" "start" 2 37, 2 37, S_00612CF0;
+ .timescale 0 0;
+S_00612D70 .scope begin, "main" "main" 2 42, 2 42, S_00612CF0;
+ .timescale 0 0;
+    .scope S_00612CF0;
+T_0 ;
+    %fork t_1, S_0079DFB8;
+    %jmp t_0;
+t_1 ;
+    %set/v v0064AD48_0, 0, 1;
+    %set/v v0064ADA0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00612CF0;
+T_1 ;
+    %fork t_3, S_00612D70;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 43 "$display", "Guia 03_03 - Heitor Terozendi - 396698";
+    %vpi_call 2 44 "$display", "Test Meia Diferenca NAND gate";
+    %vpi_call 2 45 "$display", "\012 a | b = s0 s1\012";
+    %vpi_call 2 46 "$monitor", " %b | %b = %b %b", v0064AD48_0, v0064ADA0_0, v0064ADF8_0, v0064AE50_0;
+    %delay 1, 0;
+    %set/v v0064AD48_0, 0, 1;
+    %set/v v0064ADA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064AD48_0, 1, 1;
+    %set/v v0064ADA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064AD48_0, 1, 1;
+    %set/v v0064ADA0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Heitor\Desktop\ARQ I\Guias\Guia 3\Guia 03_03.v";

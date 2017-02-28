@@ -1,0 +1,67 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lda	dado2H
+add	dado2H
+sto	dado2H
+lda	dado2L
+add	dado2L
+inc
+inc
+sto	dado2L
+jumpc	30
+jump	36
+lda	dado2L
+sub	1000_0000
+sto	dado2L
+lda	dado2H
+inc
+sto	dado2H //fim
+lda	dado1L
+sub	dado2L
+sto	dado1L
+jumpc	41
+jump	46
+sub	1000_0000
+sto	dado1L
+lda	dado1H
+dec
+sto	dado1H //fim sub L
+lda	dado1H
+jumpc	52
+lda	dado1H
+sub	dado2H
+sto	dado1H
+jump	47	//fim sub H
+lda	dado1L
+add	dado2L
+sto	resultL
+lda	dado1H
+add	dado2H
+sto	resultH
+lda	resultL
+jumpc	61
+halt
+lda	resultL
+sub	1000_0000
+sto	resultL
+lda	resultH
+inc	
+lda	resultH
+halt

@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00388F80 .scope module, "test_f4" "test_f4" 2 36;
+ .timescale 0 0;
+v005CE730_0 .var "x", 2 0;
+v005CE788_0 .net "z", 0 0, L_005CF470; 1 drivers
+L_005CE7E0 .part v005CE730_0, 0, 1;
+L_005CE838 .part v005CE730_0, 1, 1;
+L_005CE890 .part v005CE730_0, 2, 1;
+S_00388EF8 .scope module, "modulo" "f4" 2 40, 2 9, S_00388F80;
+ .timescale 0 0;
+L_00382DB0 .functor AND 1, L_005CE7E0, L_005CE838, C4<1>, C4<1>;
+L_00382E20 .functor OR 1, L_005CE7E0, L_005CE838, C4<0>, C4<0>;
+v005CE520_0 .net "a", 0 0, L_005CE7E0; 1 drivers
+v005CE578_0 .net "b", 0 0, L_005CE838; 1 drivers
+v005CE5D0_0 .net "c", 0 0, L_005CE890; 1 drivers
+v005CE628_0 .alias "s", 0 0, v005CE788_0;
+v005CE680_0 .net "s4", 0 0, L_00382DB0; 1 drivers
+v005CE6D8_0 .net "s5", 0 0, L_00382E20; 1 drivers
+S_00389090 .scope module, "M1" "mux" 2 18, 2 22, S_00388EF8;
+ .timescale 0 0;
+L_00384190 .functor NOT 1, L_005CE890, C4<0>, C4<0>, C4<0>;
+L_00384200 .functor AND 1, L_00382DB0, L_00384190, C4<1>, C4<1>;
+L_0038F5A0 .functor AND 1, L_00382E20, L_005CE890, C4<1>, C4<1>;
+L_005CF470 .functor OR 1, L_00384200, L_0038F5A0, C4<0>, C4<0>;
+v0038D570_0 .alias "a", 0 0, v005CE680_0;
+v0038D5C8_0 .alias "b", 0 0, v005CE6D8_0;
+v0038D620_0 .alias "c", 0 0, v005CE5D0_0;
+v00382D00_0 .net "nc", 0 0, L_00384190; 1 drivers
+v00382D58_0 .alias "s1", 0 0, v005CE788_0;
+v005CE470_0 .net "s2", 0 0, L_00384200; 1 drivers
+v005CE4C8_0 .net "s3", 0 0, L_0038F5A0; 1 drivers
+    .scope S_00388F80;
+T_0 ;
+    %vpi_call 2 43 "$display", "Exemplo0032 - Gabriel Carlos Damasceno Arriel - 451557";
+    %vpi_call 2 44 "$display", "Test LU's module";
+    %set/v v005CE730_0, 0, 3;
+    %delay 1, 0;
+    %vpi_call 2 47 "$monitor", "Entradas : %3b %3b | Selecao: %3b | Saida: %3b", &PV<v005CE730_0, 1, 1>, &PV<v005CE730_0, 0, 1>, &PV<v005CE730_0, 2, 1>, v005CE788_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v005CE730_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v005CE730_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gabriel\Desktop\Guia03-Gabriel Carlos Damasceno Arriel\Exemplo0032.v";

@@ -1,0 +1,180 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005B9E98 .scope module, "testorgate" "testorgate" 2 20;
+ .timescale 0 0;
+v007650C0_0 .var "a", 7 0;
+v00765118_0 .net "s", 0 0, L_0073CD78; 1 drivers
+S_005B9FA8 .scope module, "OR1" "orgate" 2 26, 2 12, S_005B9E98;
+ .timescale 0 0;
+L_005BF958 .functor OR 1, L_00765170, L_007651C8, C4<0>, C4<0>;
+L_005BF990 .functor OR 1, L_005BF958, L_00765220, C4<0>, C4<0>;
+L_005BFAA8 .functor OR 1, L_005BF990, L_00765278, C4<0>, C4<0>;
+L_005BFB50 .functor OR 1, L_005BFAA8, L_007652D0, C4<0>, C4<0>;
+L_005BFBF8 .functor OR 1, L_005BFB50, L_00765328, C4<0>, C4<0>;
+L_0073CCD0 .functor OR 1, L_005BFBF8, L_00765380, C4<0>, C4<0>;
+L_0073CD78 .functor OR 1, L_0073CCD0, L_007653D8, C4<0>, C4<0>;
+v005B5010_0 .net *"_s1", 0 0, L_00765170; 1 drivers
+v005B5068_0 .net *"_s11", 0 0, L_00765278; 1 drivers
+v005B50C0_0 .net *"_s12", 0 0, L_005BFAA8; 1 drivers
+v005B31B0_0 .net *"_s15", 0 0, L_007652D0; 1 drivers
+v005B3208_0 .net *"_s16", 0 0, L_005BFB50; 1 drivers
+v005B3260_0 .net *"_s19", 0 0, L_00765328; 1 drivers
+v005B32B8_0 .net *"_s20", 0 0, L_005BFBF8; 1 drivers
+v00764D90_0 .net *"_s23", 0 0, L_00765380; 1 drivers
+v00764DE8_0 .net *"_s24", 0 0, L_0073CCD0; 1 drivers
+v00764E40_0 .net *"_s27", 0 0, L_007653D8; 1 drivers
+v00764EB0_0 .net *"_s3", 0 0, L_007651C8; 1 drivers
+v00764F08_0 .net *"_s4", 0 0, L_005BF958; 1 drivers
+v00764F60_0 .net *"_s7", 0 0, L_00765220; 1 drivers
+v00764FB8_0 .net *"_s8", 0 0, L_005BF990; 1 drivers
+v00765010_0 .net "p", 7 0, v007650C0_0; 1 drivers
+v00765068_0 .alias "s", 0 0, v00765118_0;
+L_00765170 .part v007650C0_0, 0, 1;
+L_007651C8 .part v007650C0_0, 1, 1;
+L_00765220 .part v007650C0_0, 2, 1;
+L_00765278 .part v007650C0_0, 3, 1;
+L_007652D0 .part v007650C0_0, 4, 1;
+L_00765328 .part v007650C0_0, 5, 1;
+L_00765380 .part v007650C0_0, 6, 1;
+L_007653D8 .part v007650C0_0, 7, 1;
+S_005B9F20 .scope begin, "start" "start" 2 29, 2 29, S_005B9E98;
+ .timescale 0 0;
+    .scope S_005B9E98;
+T_0 ;
+    %fork t_1, S_005B9F20;
+    %jmp t_0;
+    .scope S_005B9F20;
+t_1 ;
+    %set/v v007650C0_0, 0, 8;
+    %end;
+    .scope S_005B9E98;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005B9E98;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exercicio0012 - Mateus Guilherme do Carmo Cruz - 427446";
+    %vpi_call 2 36 "$display", "Test OR gate com 1 byte";
+    %vpi_call 2 37 "$display", "\012abcedfgh = s\012";
+    %vpi_call 2 38 "$monitor", "%8b = %b", v007650C0_0, v00765118_0;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 32, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 128, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 3, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 6, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 12, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 24, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 48, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 96, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 192, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 5, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 10, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 20, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 40, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 80, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 160, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 9, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 18, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 36, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 72, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 144, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 17, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 34, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 68, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 136, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 33, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 66, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 132, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 65, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 130, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 129, 8;
+    %set/v v007650C0_0, 8, 8;
+    %delay 1, 0;
+    %set/v v007650C0_0, 1, 8;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio0012.v";

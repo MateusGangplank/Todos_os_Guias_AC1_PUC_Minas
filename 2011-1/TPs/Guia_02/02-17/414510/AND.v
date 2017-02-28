@@ -1,0 +1,59 @@
+//-----------------------
+// Guia 02-02 - AND
+// Nome : Marley Ribeiro 
+// Matricula : 414510
+//-----------------------
+
+
+// ----------------------------
+// -- AND gate feita de NOR
+// ----------------------------
+
+module Andgate ( j , k , g);
+
+output j;
+input  k,g;
+wire temp1, temp2;
+
+nor NOR1 ( temp1 ,k ) ;
+nor NOR2 (temp2 , g ) ;
+
+assign j = ~( temp1 | temp2  );
+
+
+endmodule // Andgate
+
+//----------------
+// --test or gate
+//----------------
+
+ module testANDgate;
+
+ reg  y , u;
+ 
+ wire o ;
+
+//instancia
+
+ and AND1 (o , y , u );
+
+//main part
+
+initial begin
+   
+	$display("\n Marley Ribeiro-414510\n");
+   $display("Teste AND gate baseado em Nor \n");
+   $display("\n y	& u = s \n");
+   $monitor("%b & %b = %b", y,u ,o );
+ 
+   y=0 ; u=0;
+#1 y=0 ; u=1;
+#1 y=1 ; u=0;
+#1 y=1 ; u=1;
+
+end
+
+endmodule// testNORgate
+
+// SUGESTAO: SE COMECOU A USAR DEFINICOES DE PORTAS, CONTINUE.
+//           EVITE MISTURAR.

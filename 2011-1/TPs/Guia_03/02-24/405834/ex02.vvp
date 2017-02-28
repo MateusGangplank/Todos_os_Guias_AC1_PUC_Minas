@@ -1,0 +1,146 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006766D0 .scope module, "TesteEx02" "TesteEx02" 2 45;
+ .timescale 0 0;
+v006AA0C8_0 .net "C1", 0 0, L_006AA658; 1 drivers
+v006AA120_0 .net "S0", 0 0, L_006AA978; 1 drivers
+v006AA1E0_0 .var "x", 0 0;
+v006AA238_0 .var "y", 0 0;
+S_00676A08 .scope module, "ha1" "HalfAdder" 2 50, 2 36, S_006766D0;
+ .timescale 0 0;
+v006A9DE0_0 .alias "c", 0 0, v006AA0C8_0;
+v006A9E38_0 .net "p", 0 0, v006AA1E0_0; 1 drivers
+v006A9E90_0 .net "q", 0 0, v006AA238_0; 1 drivers
+v006A9EE8_0 .alias "s", 0 0, v006AA120_0;
+v006A9F40_0 .net "s0", 0 0, L_006AA4C8; 1 drivers
+v006AA008_0 .net "s1", 0 0, L_006AA7E8; 1 drivers
+S_006A9210 .scope module, "or1" "orGate" 2 39, 2 21, S_00676A08;
+ .timescale 0 0;
+v006A9C28_0 .alias "p", 0 0, v006A9E38_0;
+v006A9C80_0 .alias "q", 0 0, v006A9E90_0;
+v006A9CD8_0 .alias "s", 0 0, v006A9F40_0;
+v006A9D30_0 .net "s1", 0 0, L_00677420; 1 drivers
+v006A9D88_0 .net "s2", 0 0, L_006AA438; 1 drivers
+S_006A9860 .scope module, "not1" "notGate" 2 24, 2 15, S_006A9210;
+ .timescale 0 0;
+v006A9B10_0 .alias "p", 0 0, v006A9E38_0;
+v006A9BD0_0 .alias "s", 0 0, v006A9D30_0;
+S_006A98E0 .scope module, "nand1" "nandGate" 2 18, 2 9, S_006A9860;
+ .timescale 0 0;
+L_006773E8 .functor AND 1, v006AA1E0_0, v006AA1E0_0, C4<1>, C4<1>;
+L_00677420 .functor NOT 1, L_006773E8, C4<0>, C4<0>, C4<0>;
+v006A9960_0 .net *"_s0", 0 0, L_006773E8; 1 drivers
+v006A99B8_0 .alias "p", 0 0, v006A9E38_0;
+v006A9A48_0 .alias "q", 0 0, v006A9E38_0;
+v006A9AB8_0 .alias "s0", 0 0, v006A9D30_0;
+S_006A94B8 .scope module, "not2" "notGate" 2 25, 2 15, S_006A9210;
+ .timescale 0 0;
+v006A9748_0 .alias "p", 0 0, v006A9E90_0;
+v006A9808_0 .alias "s", 0 0, v006A9D88_0;
+S_006A9538 .scope module, "nand1" "nandGate" 2 18, 2 9, S_006A94B8;
+ .timescale 0 0;
+L_006A8D28 .functor AND 1, v006AA238_0, v006AA238_0, C4<1>, C4<1>;
+L_006AA438 .functor NOT 1, L_006A8D28, C4<0>, C4<0>, C4<0>;
+v006A95B8_0 .net *"_s0", 0 0, L_006A8D28; 1 drivers
+v006A9628_0 .alias "p", 0 0, v006A9E90_0;
+v006A9680_0 .alias "q", 0 0, v006A9E90_0;
+v006A96F0_0 .alias "s0", 0 0, v006A9D88_0;
+S_006A9290 .scope module, "nand1" "nandGate" 2 26, 2 9, S_006A9210;
+ .timescale 0 0;
+L_006AA480 .functor AND 1, L_00677420, L_006AA438, C4<1>, C4<1>;
+L_006AA4C8 .functor NOT 1, L_006AA480, C4<0>, C4<0>, C4<0>;
+v006A9310_0 .net *"_s0", 0 0, L_006AA480; 1 drivers
+v006A9368_0 .alias "p", 0 0, v006A9D30_0;
+v006A93D8_0 .alias "q", 0 0, v006A9D88_0;
+v006A9460_0 .alias "s0", 0 0, v006A9F40_0;
+S_006A89C0 .scope module, "and1" "andGate" 2 40, 2 29, S_00676A08;
+ .timescale 0 0;
+v006A9048_0 .alias "p", 0 0, v006A9E38_0;
+v006A90A0_0 .alias "q", 0 0, v006A9E90_0;
+v006A90F8_0 .alias "s", 0 0, v006AA0C8_0;
+v006A9150_0 .net "s0", 0 0, L_006AA590; 1 drivers
+S_006A8E20 .scope module, "nand1" "nandGate" 2 32, 2 9, S_006A89C0;
+ .timescale 0 0;
+L_006AA548 .functor AND 1, v006AA1E0_0, v006AA238_0, C4<1>, C4<1>;
+L_006AA590 .functor NOT 1, L_006AA548, C4<0>, C4<0>, C4<0>;
+v006A8EA0_0 .net *"_s0", 0 0, L_006AA548; 1 drivers
+v006A8EF8_0 .alias "p", 0 0, v006A9E38_0;
+v006A8F68_0 .alias "q", 0 0, v006A9E90_0;
+v006A8FF0_0 .alias "s0", 0 0, v006A9150_0;
+S_006A8A40 .scope module, "not1" "notGate" 2 33, 2 15, S_006A89C0;
+ .timescale 0 0;
+v006A8CD0_0 .alias "p", 0 0, v006A9150_0;
+v006A8D60_0 .alias "s", 0 0, v006AA0C8_0;
+S_006A8AC0 .scope module, "nand1" "nandGate" 2 18, 2 9, S_006A8A40;
+ .timescale 0 0;
+L_006AA610 .functor AND 1, L_006AA590, L_006AA590, C4<1>, C4<1>;
+L_006AA658 .functor NOT 1, L_006AA610, C4<0>, C4<0>, C4<0>;
+v006A8B40_0 .net *"_s0", 0 0, L_006AA610; 1 drivers
+v006A8B98_0 .alias "p", 0 0, v006A9150_0;
+v006A8C08_0 .alias "q", 0 0, v006A9150_0;
+v006A8C78_0 .alias "s0", 0 0, v006AA0C8_0;
+S_006A8648 .scope module, "not1" "notGate" 2 41, 2 15, S_00676A08;
+ .timescale 0 0;
+v006A88D8_0 .alias "p", 0 0, v006AA0C8_0;
+v006A8968_0 .alias "s", 0 0, v006AA008_0;
+S_006A86C8 .scope module, "nand1" "nandGate" 2 18, 2 9, S_006A8648;
+ .timescale 0 0;
+L_006AA7A0 .functor AND 1, L_006AA658, L_006AA658, C4<1>, C4<1>;
+L_006AA7E8 .functor NOT 1, L_006AA7A0, C4<0>, C4<0>, C4<0>;
+v006A8748_0 .net *"_s0", 0 0, L_006AA7A0; 1 drivers
+v006A87A0_0 .alias "p", 0 0, v006AA0C8_0;
+v006A8810_0 .alias "q", 0 0, v006AA0C8_0;
+v006A8880_0 .alias "s0", 0 0, v006AA008_0;
+S_00676D70 .scope module, "and2" "andGate" 2 42, 2 29, S_00676A08;
+ .timescale 0 0;
+v006A8480_0 .alias "p", 0 0, v006A9F40_0;
+v006A84D8_0 .alias "q", 0 0, v006AA008_0;
+v006A8530_0 .alias "s", 0 0, v006AA120_0;
+v006A8588_0 .net "s0", 0 0, L_006AA8B0; 1 drivers
+S_006A8258 .scope module, "nand1" "nandGate" 2 32, 2 9, S_00676D70;
+ .timescale 0 0;
+L_006AA868 .functor AND 1, L_006AA4C8, L_006AA7E8, C4<1>, C4<1>;
+L_006AA8B0 .functor NOT 1, L_006AA868, C4<0>, C4<0>, C4<0>;
+v006A82D8_0 .net *"_s0", 0 0, L_006AA868; 1 drivers
+v006A8330_0 .alias "p", 0 0, v006A9F40_0;
+v006A83A0_0 .alias "q", 0 0, v006AA008_0;
+v006A8428_0 .alias "s0", 0 0, v006A8588_0;
+S_00677108 .scope module, "not1" "notGate" 2 33, 2 15, S_00676D70;
+ .timescale 0 0;
+v006A81A8_0 .alias "p", 0 0, v006A8588_0;
+v006A8200_0 .alias "s", 0 0, v006AA120_0;
+S_00675930 .scope module, "nand1" "nandGate" 2 18, 2 9, S_00677108;
+ .timescale 0 0;
+L_006AA930 .functor AND 1, L_006AA8B0, L_006AA8B0, C4<1>, C4<1>;
+L_006AA978 .functor NOT 1, L_006AA930, C4<0>, C4<0>, C4<0>;
+v00675C80_0 .net *"_s0", 0 0, L_006AA930; 1 drivers
+v006A8070_0 .alias "p", 0 0, v006A8588_0;
+v006A80E0_0 .alias "q", 0 0, v006A8588_0;
+v006A8150_0 .alias "s0", 0 0, v006AA120_0;
+    .scope S_006766D0;
+T_0 ;
+    %vpi_call 2 54 "$display", "Ex02_Guia03_Rafael Moreira Melo_405834";
+    %vpi_call 2 55 "$display", "Teste EX02";
+    %vpi_call 2 57 "$monitor", "%b + %b = %b %b", v006AA1E0_0, v006AA238_0, v006AA0C8_0, v006AA120_0;
+    %set/v v006AA1E0_0, 0, 1;
+    %set/v v006AA238_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA1E0_0, 1, 1;
+    %set/v v006AA238_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA1E0_0, 0, 1;
+    %set/v v006AA238_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA1E0_0, 1, 1;
+    %set/v v006AA238_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "ex02.v";

@@ -1,0 +1,102 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00389BD8 .scope module, "test_LU" "test_LU" 2 23;
+ .timescale 0 0;
+v0038BFB8_0 .var "m", 0 0;
+v0038C010_0 .net "w", 0 0, L_005D6FD8; 1 drivers
+v0038C068_0 .var "x", 0 0;
+v0038C0C0_0 .var "y", 0 0;
+v0038C118_0 .net "z", 0 0, L_005D7390; 1 drivers
+S_00389CE8 .scope module, "modulo" "LU" 2 31, 2 7, S_00389BD8;
+ .timescale 0 0;
+L_005AD790 .functor NOT 1, v0038BFB8_0, C4<0>, C4<0>, C4<0>;
+L_005D7010 .functor AND 1, v0038C068_0, v0038C0C0_0, C4<1>, C4<1>;
+L_005D70B8 .functor OR 1, v0038C068_0, v0038C0C0_0, C4<0>, C4<0>;
+L_005D70F0 .functor NAND 1, v0038C068_0, v0038C0C0_0, C4<1>, C4<1>;
+L_005D7080 .functor NOR 1, v0038C068_0, v0038C0C0_0, C4<0>, C4<0>;
+L_005D7048 .functor AND 1, L_005D7010, L_005AD790, C4<1>, C4<1>;
+L_005D7198 .functor AND 1, L_005D70B8, L_005AD790, C4<1>, C4<1>;
+L_005D7208 .functor AND 1, L_005D70F0, v0038BFB8_0, C4<1>, C4<1>;
+L_005D7278 .functor AND 1, L_005D7080, v0038BFB8_0, C4<1>, C4<1>;
+L_005D6FD8 .functor OR 1, L_005D7048, L_005D7198, C4<0>, C4<0>;
+L_005D7390 .functor OR 1, L_005D7208, L_005D7278, C4<0>, C4<0>;
+v0038BAE8_0 .net "a", 0 0, v0038C068_0; 1 drivers
+v0038BB40_0 .net "and1", 0 0, L_005D7048; 1 drivers
+v0038BB98_0 .net "and2", 0 0, L_005D7198; 1 drivers
+v0038BBF0_0 .net "and3", 0 0, L_005D7208; 1 drivers
+v0038BC48_0 .net "and4", 0 0, L_005D7278; 1 drivers
+v0038BCA0_0 .net "andAB", 0 0, L_005D7010; 1 drivers
+v0038BCF8_0 .net "b", 0 0, v0038C0C0_0; 1 drivers
+v0038BD50_0 .net "m", 0 0, v0038BFB8_0; 1 drivers
+v0038BDA8_0 .net "nandAB", 0 0, L_005D70F0; 1 drivers
+v0038BE00_0 .net "norAB", 0 0, L_005D7080; 1 drivers
+v0038BE58_0 .net "notM", 0 0, L_005AD790; 1 drivers
+v0038BEB0_0 .net "orAB", 0 0, L_005D70B8; 1 drivers
+v0038BF08_0 .alias "sAO", 0 0, v0038C010_0;
+v0038BF60_0 .alias "sNN", 0 0, v0038C118_0;
+S_00389C60 .scope begin, "start" "start" 2 33, 2 33, S_00389BD8;
+ .timescale 0 0;
+    .scope S_00389BD8;
+T_0 ;
+    %fork t_1, S_00389C60;
+    %jmp t_0;
+    .scope S_00389C60;
+t_1 ;
+    %set/v v0038C068_0, 0, 1;
+    %set/v v0038C0C0_0, 0, 1;
+    %set/v v0038BFB8_0, 0, 1;
+    %end;
+    .scope S_00389BD8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00389BD8;
+T_1 ;
+    %vpi_call 2 41 "$display", "Exemplo0033 - Mateus Lara Carvalho - 441700";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %vpi_call 2 43 "$display", "--- CHAVE = 0 ---";
+    %vpi_call 2 44 "$monitor", "a = %b b = %b sAND-OR = %b", v0038C068_0, v0038C0C0_0, v0038C010_0;
+    %set/v v0038C068_0, 0, 1;
+    %set/v v0038C0C0_0, 0, 1;
+    %set/v v0038BFB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0038C068_0, 0, 1;
+    %set/v v0038C0C0_0, 1, 1;
+    %set/v v0038BFB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0038C068_0, 1, 1;
+    %set/v v0038C0C0_0, 0, 1;
+    %set/v v0038BFB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0038C068_0, 1, 1;
+    %set/v v0038C0C0_0, 1, 1;
+    %set/v v0038BFB8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 53 "$display", "--- CHAVE = 1 ---";
+    %vpi_call 2 54 "$monitor", "a = %b b = %b sNAND-NOR = %b", v0038C068_0, v0038C0C0_0, v0038C118_0;
+    %set/v v0038C068_0, 0, 1;
+    %set/v v0038C0C0_0, 0, 1;
+    %set/v v0038BFB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0038C068_0, 0, 1;
+    %set/v v0038C0C0_0, 1, 1;
+    %set/v v0038BFB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0038C068_0, 1, 1;
+    %set/v v0038C0C0_0, 0, 1;
+    %set/v v0038BFB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0038C068_0, 1, 1;
+    %set/v v0038C0C0_0, 1, 1;
+    %set/v v0038BFB8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Mateus\Desktop\Mateus\Ciência da Computação\2013-1\Arquitetura\Trabalhos\ED 03\Exemplo0033.v";

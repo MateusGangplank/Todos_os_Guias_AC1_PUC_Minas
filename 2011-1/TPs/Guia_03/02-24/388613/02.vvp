@@ -1,0 +1,83 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00671F58 .scope module, "testExe02" "testExe02" 2 40;
+ .timescale 0 0;
+v006A5E50_0 .net "a", 0 0, C4<z>; 0 drivers
+v006A5EA8_0 .net "b", 0 0, C4<z>; 0 drivers
+v006A5F00_0 .var "reg1", 0 0;
+v006A5F58_0 .var "reg2", 0 0;
+v006A5FC8_0 .net "s0", 0 0, L_003EFA70; 1 drivers
+v006A6020_0 .net "s1", 0 0, L_006A5E18; 1 drivers
+S_00675648 .scope module, "testHalfAdder" "halfAdder" 2 44, 2 7, S_00671F58;
+ .timescale 0 0;
+v006A5B98_0 .alias "a", 0 0, v006A5E50_0;
+v006A5BF0_0 .alias "b", 0 0, v006A5EA8_0;
+v006A5C48_0 .alias "s0", 0 0, v006A5FC8_0;
+v006A5CD8_0 .alias "s1", 0 0, v006A6020_0;
+v006A5D30_0 .net "w1", 0 0, L_006A6270; 1 drivers
+v006A5DC0_0 .net "w2", 0 0, L_006A6330; 1 drivers
+S_006A5978 .scope module, "AND01" "AndNand" 2 11, 2 26, S_00675648;
+ .timescale 0 0;
+L_006A60B0 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_003EFA70 .functor NAND 1, L_006A60B0, L_006A60B0, C4<1>, C4<1>;
+v006A59F8_0 .alias "a", 0 0, v006A5E50_0;
+v006A5A50_0 .alias "b", 0 0, v006A5EA8_0;
+v006A5AC8_0 .alias "s0", 0 0, v006A5FC8_0;
+v006A5B40_0 .net "w1", 0 0, L_006A60B0; 1 drivers
+S_006A5710 .scope module, "OR01" "OrNand" 2 12, 2 17, S_00675648;
+ .timescale 0 0;
+L_003EFAA8 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A6238 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A6270 .functor NAND 1, L_003EFAA8, L_006A6238, C4<1>, C4<1>;
+v006A5790_0 .alias "a", 0 0, v006A5E50_0;
+v006A57E8_0 .alias "b", 0 0, v006A5EA8_0;
+v006A5858_0 .alias "s0", 0 0, v006A5D30_0;
+v006A58C8_0 .net "w1", 0 0, L_003EFAA8; 1 drivers
+v006A5920_0 .net "w2", 0 0, L_006A6238; 1 drivers
+S_006A55C8 .scope module, "NOT01" "NotNand" 2 13, 2 34, S_00675648;
+ .timescale 0 0;
+L_006A6330 .functor NAND 1, L_003EFA70, L_003EFA70, C4<1>, C4<1>;
+v006A5648_0 .alias "a", 0 0, v006A5FC8_0;
+v006A56B8_0 .alias "s0", 0 0, v006A5DC0_0;
+S_006756C8 .scope module, "AND02" "AndNand" 2 14, 2 26, S_00675648;
+ .timescale 0 0;
+L_006A6380 .functor NAND 1, L_006A6270, L_006A6330, C4<1>, C4<1>;
+L_006A5E18 .functor NAND 1, L_006A6380, L_006A6380, C4<1>, C4<1>;
+v00675748_0 .alias "a", 0 0, v006A5D30_0;
+v006A5460_0 .alias "b", 0 0, v006A5DC0_0;
+v006A54D0_0 .alias "s0", 0 0, v006A6020_0;
+v006A5558_0 .net "w1", 0 0, L_006A6380; 1 drivers
+    .scope S_00671F58;
+T_0 ;
+    %set/v v006A5F00_0, 0, 1;
+    %set/v v006A5F58_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00671F58;
+T_1 ;
+    %vpi_call 2 50 "$display", "Exercicio 02 - Marden Batista - 388613";
+    %vpi_call 2 51 "$display", "Exe02: Half Adder com NAND\012";
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "  reg1 + reg2 = s0 s1";
+    %delay 1, 0;
+    %vpi_call 2 53 "$monitor", "  %d + %d =  %d    %d", v006A5F00_0, v006A5F58_0, v006A5FC8_0, v006A6020_0;
+    %delay 1, 0;
+    %set/v v006A5F00_0, 0, 1;
+    %set/v v006A5F58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A5F00_0, 1, 1;
+    %set/v v006A5F58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5F00_0, 1, 1;
+    %set/v v006A5F00_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Temp_Arq\Nova pasta\02.v";

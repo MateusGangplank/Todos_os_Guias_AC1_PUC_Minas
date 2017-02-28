@@ -1,0 +1,64 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1e92f40 .scope module, "testnorgate" "testnorgate" 2 17;
+ .timescale 0 0;
+v0x1ea4f40_0 .var "a", 0 0;
+v0x1ea5010_0 .var "b", 0 0;
+v0x1ea50c0_0 .net "s", 0 0, L_0x1ea52a0; 1 drivers
+S_0x1e93af0 .scope module, "NOR1" "norgate" 2 24, 2 9, S_0x1e92f40;
+ .timescale 0 0;
+L_0x1ea5170 .functor OR 1, v0x1ea4f40_0, v0x1ea5010_0, C4<0>, C4<0>;
+L_0x1ea52a0 .functor NOT 1, L_0x1ea5170, C4<0>, C4<0>, C4<0>;
+v0x1e93be0_0 .net *"_s0", 0 0, L_0x1ea5170; 1 drivers
+v0x1ea4d50_0 .net "p", 0 0, v0x1ea4f40_0; 1 drivers
+v0x1ea4df0_0 .net "q", 0 0, v0x1ea5010_0; 1 drivers
+v0x1ea4e90_0 .alias "s", 0 0, v0x1ea50c0_0;
+S_0x1e93a00 .scope begin, "start" "start" 2 26, 2 26, S_0x1e92f40;
+ .timescale 0 0;
+S_0x1e93030 .scope begin, "main" "main" 2 32, 2 32, S_0x1e92f40;
+ .timescale 0 0;
+    .scope S_0x1e92f40;
+T_0 ;
+    %fork t_1, S_0x1e93a00;
+    %jmp t_0;
+    .scope S_0x1e93a00;
+t_1 ;
+    %set/v v0x1ea4f40_0, 0, 1;
+    %set/v v0x1ea5010_0, 0, 1;
+    %end;
+    .scope S_0x1e92f40;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x1e92f40;
+T_1 ;
+    %fork t_3, S_0x1e93030;
+    %jmp t_2;
+    .scope S_0x1e93030;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exercicio 02 - Victor Raphael Machado de Amorim - 420147";
+    %vpi_call 2 35 "$display", "Test NOR gate:";
+    %vpi_call 2 36 "$display", "\012a NOR b = s\012";
+    %vpi_call 2 37 "$monitor", "%b NOR %b = %b", v0x1ea4f40_0, v0x1ea5010_0, v0x1ea50c0_0;
+    %delay 1, 0;
+    %set/v v0x1ea4f40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x1ea4f40_0, 0, 1;
+    %set/v v0x1ea5010_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x1ea4f40_0, 1, 1;
+    %set/v v0x1ea5010_0, 1, 1;
+    %end;
+    .scope S_0x1e92f40;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/victor/Dropbox/Primeiro Semestre 2013/AC/Exercicios/Exercicio02.v";

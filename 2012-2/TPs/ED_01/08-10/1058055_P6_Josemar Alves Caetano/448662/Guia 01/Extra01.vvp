@@ -1,0 +1,86 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006894A8 .scope module, "testnorgate" "testnorgate" 2 18;
+ .timescale 0 0;
+v005C3A30_0 .var "a", 0 0;
+v005C3A88_0 .var "b", 0 0;
+v005C3AE0_0 .var "c", 0 0;
+v005C3B38_0 .var "d", 0 0;
+v005C3B90_0 .var "e", 0 0;
+v005C3BE8_0 .var "f", 0 0;
+v005C3C40_0 .var "g", 0 0;
+v005C3C98_0 .var "h", 0 0;
+v005C3CF0_0 .net "u", 0 0, L_005C4950; 1 drivers
+S_00689640 .scope module, "NOR1" "norgate" 2 25, 2 11, S_006894A8;
+ .timescale 0 0;
+L_006848D8 .functor OR 1, v005C3A30_0, v005C3A88_0, C4<0>, C4<0>;
+L_0068BF10 .functor OR 1, L_006848D8, v005C3AE0_0, C4<0>, C4<0>;
+L_00591BD0 .functor OR 1, L_0068BF10, v005C3B38_0, C4<0>, C4<0>;
+L_00591C78 .functor OR 1, L_00591BD0, v005C3B90_0, C4<0>, C4<0>;
+L_00591D20 .functor OR 1, L_00591C78, v005C3BE8_0, C4<0>, C4<0>;
+L_005C4800 .functor OR 1, L_00591D20, v005C3C40_0, C4<0>, C4<0>;
+L_005C48A8 .functor OR 1, L_005C4800, v005C3C98_0, C4<0>, C4<0>;
+L_005C4950 .functor NOT 1, L_005C48A8, C4<0>, C4<0>, C4<0>;
+v0068F388_0 .net *"_s0", 0 0, L_006848D8; 1 drivers
+v0068CE20_0 .net *"_s10", 0 0, L_005C4800; 1 drivers
+v006847D0_0 .net *"_s12", 0 0, L_005C48A8; 1 drivers
+v00684828_0 .net *"_s2", 0 0, L_0068BF10; 1 drivers
+v00684880_0 .net *"_s4", 0 0, L_00591BD0; 1 drivers
+v00682AE8_0 .net *"_s6", 0 0, L_00591C78; 1 drivers
+v00682B40_0 .net *"_s8", 0 0, L_00591D20; 1 drivers
+v00682B98_0 .net "a", 0 0, v005C3A30_0; 1 drivers
+v0068BE48_0 .net "b", 0 0, v005C3A88_0; 1 drivers
+v005C37C8_0 .net "c", 0 0, v005C3AE0_0; 1 drivers
+v005C3820_0 .net "d", 0 0, v005C3B38_0; 1 drivers
+v005C3878_0 .net "e", 0 0, v005C3B90_0; 1 drivers
+v005C38D0_0 .net "f", 0 0, v005C3BE8_0; 1 drivers
+v005C3928_0 .net "g", 0 0, v005C3C40_0; 1 drivers
+v005C3980_0 .net "h", 0 0, v005C3C98_0; 1 drivers
+v005C39D8_0 .alias "u", 0 0, v005C3CF0_0;
+S_006895B8 .scope begin, "start" "start" 2 28, 2 28, S_006894A8;
+ .timescale 0 0;
+S_00689530 .scope begin, "main" "main" 2 33, 2 33, S_006894A8;
+ .timescale 0 0;
+    .scope S_006894A8;
+T_0 ;
+    %fork t_1, S_006895B8;
+    %jmp t_0;
+    .scope S_006895B8;
+t_1 ;
+    %set/v v005C3A30_0, 0, 1;
+    %set/v v005C3A88_0, 0, 1;
+    %set/v v005C3AE0_0, 0, 1;
+    %set/v v005C3B38_0, 0, 1;
+    %set/v v005C3B90_0, 0, 1;
+    %set/v v005C3BE8_0, 0, 1;
+    %set/v v005C3C40_0, 0, 1;
+    %set/v v005C3C98_0, 0, 1;
+    %end;
+    .scope S_006894A8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006894A8;
+T_1 ;
+    %fork t_3, S_00689530;
+    %jmp t_2;
+    .scope S_00689530;
+t_3 ;
+    %vpi_call 2 34 "$display", "Extra01 - Josemar Alves Caetano - 448662";
+    %vpi_call 2 35 "$display", "Circuito que retorna 1 quando todas as entradas s\343o iguais a 0.";
+    %vpi_call 2 36 "$display", "\011~(a | b | c | d | e | f | g | h ) = s\012";
+    %vpi_call 2 38 "$monitor", "\011~(%b | %b | %b | %b | %b | %b | %b | %b ) = %b", v005C3A30_0, v005C3A88_0, v005C3AE0_0, v005C3B38_0, v005C3B90_0, v005C3BE8_0, v005C3C40_0, v005C3C98_0, v005C3CF0_0;
+    %end;
+    .scope S_006894A8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\3º Período\Exercícios resolvidos (AC II)\Guia 01\Extra01.v";

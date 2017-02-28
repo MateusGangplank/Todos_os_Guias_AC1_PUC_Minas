@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00888F98 .scope module, "test_f4" "test_f4" 2 37;
+ .timescale 0 0;
+v007187F0_0 .var "x", 2 0;
+v00718848_0 .net "z", 0 0, L_00719530; 1 drivers
+L_007188A0 .part v007187F0_0, 0, 1;
+L_007188F8 .part v007187F0_0, 1, 1;
+L_00718950 .part v007187F0_0, 2, 1;
+S_00888F10 .scope module, "modulo" "f4" 2 41, 2 10, S_00888F98;
+ .timescale 0 0;
+L_00882DC8 .functor AND 1, L_007188A0, L_007188F8, C4<1>, C4<1>;
+L_00882E38 .functor OR 1, L_007188A0, L_007188F8, C4<0>, C4<0>;
+v007185E0_0 .net "a", 0 0, L_007188A0; 1 drivers
+v00718638_0 .net "b", 0 0, L_007188F8; 1 drivers
+v00718690_0 .net "c", 0 0, L_00718950; 1 drivers
+v007186E8_0 .alias "s1", 0 0, v00718848_0;
+v00718740_0 .net "s5", 0 0, L_00882DC8; 1 drivers
+v00718798_0 .net "s6", 0 0, L_00882E38; 1 drivers
+S_008890A8 .scope module, "M1" "m" 2 19, 2 23, S_00888F10;
+ .timescale 0 0;
+L_00884198 .functor NOT 1, L_00718950, C4<0>, C4<0>, C4<0>;
+L_00884208 .functor AND 1, L_00882DC8, L_00884198, C4<1>, C4<1>;
+L_0088F5A0 .functor AND 1, L_00882E38, L_00718950, C4<1>, C4<1>;
+L_00719530 .functor OR 1, L_00884208, L_0088F5A0, C4<0>, C4<0>;
+v0088D570_0 .alias "a", 0 0, v00718740_0;
+v0088D5C8_0 .alias "b", 0 0, v00718798_0;
+v0088D620_0 .alias "c", 0 0, v00718690_0;
+v00882D18_0 .net "nc", 0 0, L_00884198; 1 drivers
+v00882D70_0 .alias "s2", 0 0, v00718848_0;
+v00718530_0 .net "s3", 0 0, L_00884208; 1 drivers
+v00718588_0 .net "s4", 0 0, L_0088F5A0; 1 drivers
+    .scope S_00888F98;
+T_0 ;
+    %vpi_call 2 44 "$display", "Exemplo0032 - Guilherme Augusto Bueno Borba - 451564";
+    %vpi_call 2 45 "$display", "Test LU's module";
+    %set/v v007187F0_0, 0, 3;
+    %delay 1, 0;
+    %vpi_call 2 48 "$monitor", "entradas : %3b %3b | Selecao: %3b | Saida: %3b", &PV<v007187F0_0, 1, 1>, &PV<v007187F0_0, 0, 1>, &PV<v007187F0_0, 2, 1>, v00718848_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v007187F0_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v007187F0_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Desktop\Puc\3 periodo\AC\AC3\Exemplo0032.v";

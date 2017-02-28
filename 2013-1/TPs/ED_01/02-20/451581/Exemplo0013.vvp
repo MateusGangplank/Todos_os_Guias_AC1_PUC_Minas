@@ -1,0 +1,85 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00912C00 .scope module, "testeandgate" "testeandgate" 2 11;
+ .timescale 0 0;
+v00919260_0 .var "a", 0 0;
+v0091C868_0 .var "b", 0 0;
+v0091C8C0_0 .var "c", 0 0;
+v0091C918_0 .net "s", 0 0, L_0091C9E0; 1 drivers
+S_00913250 .scope module, "AND1" "andgate" 2 16, 2 5, S_00912C00;
+ .timescale 0 0;
+L_00912D10 .functor AND 1, v00919260_0, v0091C868_0, C4<1>, C4<1>;
+L_0091C9E0 .functor AND 1, L_00912D10, v0091C8C0_0, C4<1>, C4<1>;
+v0091FDD8_0 .net *"_s0", 0 0, L_00912D10; 1 drivers
+v009132D8_0 .net "p", 0 0, v00919260_0; 1 drivers
+v00919158_0 .net "q", 0 0, v0091C868_0; 1 drivers
+v009191B0_0 .net "r", 0 0, v0091C8C0_0; 1 drivers
+v00919208_0 .alias "s", 0 0, v0091C918_0;
+S_009131C8 .scope begin, "start" "start" 2 18, 2 18, S_00912C00;
+ .timescale 0 0;
+S_00912C88 .scope begin, "main" "main" 2 26, 2 26, S_00912C00;
+ .timescale 0 0;
+    .scope S_00912C00;
+T_0 ;
+    %fork t_1, S_009131C8;
+    %jmp t_0;
+    .scope S_009131C8;
+t_1 ;
+    %set/v v00919260_0, 0, 1;
+    %set/v v0091C868_0, 0, 1;
+    %set/v v0091C8C0_0, 0, 1;
+    %end;
+    .scope S_00912C00;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00912C00;
+T_1 ;
+    %fork t_3, S_00912C88;
+    %jmp t_2;
+    .scope S_00912C88;
+t_3 ;
+    %vpi_call 2 28 "$display", "Exemplo0008 - \315talo Guimar\343es Otoni - 451581";
+    %vpi_call 2 29 "$monitor", "%b %b %b = %b", v00919260_0, v0091C868_0, v0091C8C0_0, v0091C918_0;
+    %delay 1, 0;
+    %set/v v00919260_0, 0, 1;
+    %set/v v0091C868_0, 0, 1;
+    %set/v v0091C8C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00919260_0, 0, 1;
+    %set/v v0091C868_0, 1, 1;
+    %set/v v0091C8C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00919260_0, 0, 1;
+    %set/v v0091C868_0, 1, 1;
+    %set/v v0091C8C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00919260_0, 1, 1;
+    %set/v v0091C868_0, 0, 1;
+    %set/v v0091C8C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00919260_0, 1, 1;
+    %set/v v0091C868_0, 0, 1;
+    %set/v v0091C8C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00919260_0, 1, 1;
+    %set/v v0091C868_0, 1, 1;
+    %set/v v0091C8C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00919260_0, 1, 1;
+    %set/v v0091C868_0, 1, 1;
+    %set/v v0091C8C0_0, 1, 1;
+    %end;
+    .scope S_00912C00;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Ítalo\Dropbox\PUC\2° Periodo\AC\Exemplo0013.v";

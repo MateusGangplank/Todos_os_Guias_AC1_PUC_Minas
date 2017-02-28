@@ -1,0 +1,54 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0034A270 .scope module, "testhalfAddernor" "testhalfAddernor" 2 30;
+ .timescale 0 0;
+v0064EA80_0 .var "a", 0 0;
+v0064EAD8_0 .var "b", 0 0;
+v0064EB30_0 .net "s", 0 0, L_0064F870; 1 drivers
+v0064EB88_0 .net "v1", 0 0, L_003493C0; 1 drivers
+S_0034A2F8 .scope module, "NOR1" "halfAddernor" 2 34, 2 9, S_0034A270;
+ .timescale 0 0;
+L_0034EC18 .functor NOR 1, v0064EA80_0, v0064EA80_0, C4<0>, C4<0>;
+L_0034EC88 .functor NOR 1, v0064EAD8_0, v0064EAD8_0, C4<0>, C4<0>;
+L_003493C0 .functor NOR 1, L_0034EC18, L_0034EC88, C4<0>, C4<0>;
+L_003494A0 .functor NOR 1, v0064EA80_0, v0064EAD8_0, C4<0>, C4<0>;
+L_00349388 .functor NOR 1, L_003494A0, L_003494A0, C4<0>, C4<0>;
+L_0034FCC0 .functor NOR 1, L_00349388, L_00349388, C4<0>, C4<0>;
+L_0064F870 .functor NOR 1, L_003493C0, L_0034FCC0, C4<0>, C4<0>;
+v0034EBC0_0 .net "a", 0 0, v0064EA80_0; 1 drivers
+v0034F660_0 .net "b", 0 0, v0064EAD8_0; 1 drivers
+v0034F6B8_0 .alias "s", 0 0, v0064EB30_0;
+v0064E870_0 .net "tem1", 0 0, L_0034EC18; 1 drivers
+v0064E8C8_0 .net "tem2", 0 0, L_0034EC88; 1 drivers
+v0064E920_0 .net "tem3", 0 0, L_003494A0; 1 drivers
+v0064E978_0 .net "tem4", 0 0, L_00349388; 1 drivers
+v0064E9D0_0 .net "tem5", 0 0, L_0034FCC0; 1 drivers
+v0064EA28_0 .alias "v1", 0 0, v0064EB88_0;
+    .scope S_0034A270;
+T_0 ;
+    %vpi_call 2 37 "$display", "Guia 04 - Karen Alves Pereira - 407451";
+    %vpi_call 2 38 "$display", "Operador de meia-soma apenas com portas NOR";
+    %vpi_call 2 39 "$display", "\012a b s v1";
+    %vpi_call 2 40 "$monitor", "%b %b %b %b", v0064EA80_0, v0064EAD8_0, v0064EB30_0, v0064EB88_0;
+    %set/v v0064EA80_0, 0, 1;
+    %set/v v0064EAD8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064EA80_0, 0, 1;
+    %set/v v0064EAD8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064EA80_0, 1, 1;
+    %set/v v0064EAD8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064EA80_0, 1, 1;
+    %set/v v0064EAD8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\arquivos\407451\Guia04_meiasomanor.v";

@@ -1,0 +1,171 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00289D48 .scope module, "teste" "teste" 2 33;
+ .timescale 0 0;
+v002FB738_0 .var "a0", 0 0;
+v002FB790_0 .var "a1", 0 0;
+v002FB7E8_0 .var "b0", 0 0;
+v002FB840_0 .var "b1", 0 0;
+v002FB898_0 .net "c0", 0 0, L_002D5120; 1 drivers
+v002FB8F0_0 .net "s0", 0 0, L_002D5008; 1 drivers
+v002FB948_0 .net "s1", 0 0, L_002D5158; 1 drivers
+v002FB9A0_0 .net "s2", 0 0, L_002D4F60; 1 drivers
+S_0028A078 .scope module, "md1" "meiadiferenca" 2 41, 2 1, S_00289D48;
+ .timescale 0 0;
+L_002D5008 .functor XOR 1, v002FB738_0, v002FB7E8_0, C4<0>, C4<0>;
+L_002D50E8 .functor NOT 1, v002FB738_0, C4<0>, C4<0>, C4<0>;
+L_002D5120 .functor AND 1, L_002D50E8, v002FB7E8_0, C4<1>, C4<1>;
+v002FB580_0 .net "a", 0 0, v002FB738_0; 1 drivers
+v002FB5D8_0 .net "b", 0 0, v002FB7E8_0; 1 drivers
+v002FB630_0 .alias "s0", 0 0, v002FB8F0_0;
+v002FB688_0 .alias "s1", 0 0, v002FB898_0;
+v002FB6E0_0 .net "w0", 0 0, L_002D50E8; 1 drivers
+S_00289EE0 .scope module, "dc1" "diferencacompleta" 2 42, 2 17, S_00289D48;
+ .timescale 0 0;
+L_002D52A8 .functor OR 1, L_002D5200, C4<z>, C4<0>, C4<0>;
+v002FB268_0 .net "a", 0 0, v002FB790_0; 1 drivers
+v002FB2C0_0 .net "b", 0 0, v002FB840_0; 1 drivers
+v002FB318_0 .alias "c", 0 0, v002FB898_0;
+v002FB370_0 .alias "s0", 0 0, v002FB948_0;
+v002FB3C8_0 .alias "s1", 0 0, v002FB9A0_0;
+v002FB420_0 .net "s2", 0 0, L_002D52A8; 1 drivers
+v002FB478_0 .net "w0", 0 0, L_002D4F28; 1 drivers
+v002FB4D0_0 .net "w1", 0 0, L_002D5200; 1 drivers
+v002FB528_0 .net "w2", 0 0, C4<z>; 0 drivers
+S_00289FF0 .scope module, "md1" "meiadiferenca" 2 26, 2 1, S_00289EE0;
+ .timescale 0 0;
+L_002D5158 .functor XOR 1, v002FB790_0, v002FB840_0, C4<0>, C4<0>;
+L_002D5190 .functor NOT 1, v002FB790_0, C4<0>, C4<0>, C4<0>;
+L_002D4F28 .functor AND 1, L_002D5190, v002FB840_0, C4<1>, C4<1>;
+v002FB0B0_0 .alias "a", 0 0, v002FB268_0;
+v002FB108_0 .alias "b", 0 0, v002FB2C0_0;
+v002FB160_0 .alias "s0", 0 0, v002FB948_0;
+v002FB1B8_0 .alias "s1", 0 0, v002FB478_0;
+v002FB210_0 .net "w0", 0 0, L_002D5190; 1 drivers
+S_00289F68 .scope module, "md2" "meiadiferenca" 2 27, 2 1, S_00289EE0;
+ .timescale 0 0;
+L_002D4F60 .functor XOR 1, L_002D4F28, L_002D5120, C4<0>, C4<0>;
+L_002D4EB8 .functor NOT 1, L_002D4F28, C4<0>, C4<0>, C4<0>;
+L_002D5200 .functor AND 1, L_002D4EB8, L_002D5120, C4<1>, C4<1>;
+v0028D298_0 .alias "a", 0 0, v002FB478_0;
+v0028D2F0_0 .alias "b", 0 0, v002FB898_0;
+v0028D348_0 .alias "s0", 0 0, v002FB9A0_0;
+v002FB000_0 .alias "s1", 0 0, v002FB4D0_0;
+v002FB058_0 .net "w0", 0 0, L_002D4EB8; 1 drivers
+S_00289E58 .scope begin, "start" "start" 2 44, 2 44, S_00289D48;
+ .timescale 0 0;
+S_00289DD0 .scope begin, "main" "main" 2 50, 2 50, S_00289D48;
+ .timescale 0 0;
+    .scope S_00289D48;
+T_0 ;
+    %fork t_1, S_00289E58;
+    %jmp t_0;
+t_1 ;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00289D48;
+T_1 ;
+    %fork t_3, S_00289DD0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 52 "$display", "a0 a1 b0 b1   s0 s1 s2";
+    %vpi_call 2 53 "$monitor", "%b  %b  %b  %b    %b  %b  %b", v002FB738_0, v002FB790_0, v002FB7E8_0, v002FB840_0, v002FB9A0_0, v002FB948_0, v002FB8F0_0;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 0, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 0, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 0, 1;
+    %set/v v002FB840_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FB738_0, 1, 1;
+    %set/v v002FB790_0, 1, 1;
+    %set/v v002FB7E8_0, 1, 1;
+    %set/v v002FB840_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Augusto\Documents\PUC\Arquitetura\Trabalhos\guia5 - 412727\guia5 - 412727 - ex2.v";

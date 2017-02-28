@@ -1,0 +1,60 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003FF370 .scope module, "testandgate" "testandgate" 2 20;
+ .timescale 0 0;
+v003F3770_0 .var "a", 0 0;
+v003F37C8_0 .var "b", 0 0;
+v003FFE60_0 .net "s", 0 0, L_003F3300; 1 drivers
+S_003F3278 .scope module, "AND1" "andgate" 2 25, 2 11, S_003FF370;
+ .timescale 0 0;
+L_003F3300 .functor AND 1, v003F3770_0, v003F37C8_0, C4<1>, C4<1>;
+v003FF3F8_0 .net "p", 0 0, v003F3770_0; 1 drivers
+v003F36C0_0 .net "q", 0 0, v003F37C8_0; 1 drivers
+v003F3718_0 .alias "s", 0 0, v003FFE60_0;
+S_003F31F0 .scope begin, "start" "start" 2 27, 2 27, S_003FF370;
+ .timescale 0 0;
+    .scope S_003FF370;
+T_0 ;
+    %fork t_1, S_003F31F0;
+    %jmp t_0;
+    .scope S_003F31F0;
+t_1 ;
+    %set/v v003F3770_0, 0, 1;
+    %set/v v003F37C8_0, 0, 1;
+    %end;
+    .scope S_003FF370;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003FF370;
+T_1 ;
+    %vpi_call 2 34 "$display", "Exemplo0003 - Mateus Augusto Moraes Ferreira - 435669";
+    %vpi_call 2 35 "$display", "Test AND gate";
+    %vpi_call 2 36 "$display", "\012a & b = s\012";
+    %set/v v003F3770_0, 0, 1;
+    %set/v v003F37C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v003F3770_0, v003F37C8_0, v003FFE60_0;
+    %set/v v003F3770_0, 0, 1;
+    %set/v v003F37C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v003F3770_0, v003F37C8_0, v003FFE60_0;
+    %set/v v003F3770_0, 1, 1;
+    %set/v v003F37C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v003F3770_0, v003F37C8_0, v003FFE60_0;
+    %set/v v003F3770_0, 1, 1;
+    %set/v v003F37C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b = %b", v003F3770_0, v003F37C8_0, v003FFE60_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\2011-2\Arquitetura\435669\Exemplo0003.v";

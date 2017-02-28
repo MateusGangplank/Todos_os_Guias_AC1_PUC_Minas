@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002F9750 .scope module, "testNORNAND" "testNORNAND" 2 41;
+ .timescale 0 0;
+v00364200_0 .var "a", 0 0;
+v00364258_0 .var "b", 0 0;
+v003642B0_0 .net "sai0", 0 0, L_002F2B80; 1 drivers
+S_002F9860 .scope module, "nornand1" "NORNAND" 2 46, 2 28, S_002F9750;
+ .timescale 0 0;
+v003640A0_0 .net "a", 0 0, v00364200_0; 1 drivers
+v003640F8_0 .net "b", 0 0, v00364258_0; 1 drivers
+v00364150_0 .alias "s0", 0 0, v003642B0_0;
+v003641A8_0 .net "w1", 0 0, L_002FD0C0; 1 drivers
+S_002F9A80 .scope module, "ornand1" "ORNAND" 2 33, 2 9, S_002F9860;
+ .timescale 0 0;
+v00363EE8_0 .alias "a", 0 0, v003640A0_0;
+v00363F40_0 .alias "b", 0 0, v003640F8_0;
+v00363F98_0 .alias "s0", 0 0, v003641A8_0;
+v00363FF0_0 .net "w1", 0 0, L_002F34D8; 1 drivers
+v00364048_0 .net "w2", 0 0, L_002FD278; 1 drivers
+S_002F9C18 .scope module, "nand1" "NAND" 2 14, 2 1, S_002F9A80;
+ .timescale 0 0;
+L_002FD088 .functor AND 1, v00364200_0, v00364200_0, C4<1>, C4<1>;
+L_002F34D8 .functor NOT 1, L_002FD088, C4<0>, C4<0>, C4<0>;
+v00363D88_0 .net *"_s0", 0 0, L_002FD088; 1 drivers
+v00363DE0_0 .alias "a", 0 0, v003640A0_0;
+v00363E38_0 .alias "b", 0 0, v003640A0_0;
+v00363E90_0 .alias "s0", 0 0, v00363FF0_0;
+S_002F9B90 .scope module, "nand2" "NAND" 2 15, 2 1, S_002F9A80;
+ .timescale 0 0;
+L_002FD240 .functor AND 1, v00364258_0, v00364258_0, C4<1>, C4<1>;
+L_002FD278 .functor NOT 1, L_002FD240, C4<0>, C4<0>, C4<0>;
+v00363C28_0 .net *"_s0", 0 0, L_002FD240; 1 drivers
+v00363C80_0 .alias "a", 0 0, v003640F8_0;
+v00363CD8_0 .alias "b", 0 0, v003640F8_0;
+v00363D30_0 .alias "s0", 0 0, v00364048_0;
+S_002F9B08 .scope module, "nand3" "NAND" 2 16, 2 1, S_002F9A80;
+ .timescale 0 0;
+L_002FD2E8 .functor AND 1, L_002F34D8, L_002FD278, C4<1>, C4<1>;
+L_002FD0C0 .functor NOT 1, L_002FD2E8, C4<0>, C4<0>, C4<0>;
+v002F3480_0 .net *"_s0", 0 0, L_002FD2E8; 1 drivers
+v002FCFD8_0 .alias "a", 0 0, v00363FF0_0;
+v002FD030_0 .alias "b", 0 0, v00364048_0;
+v00363BD0_0 .alias "s0", 0 0, v003641A8_0;
+S_002F9970 .scope module, "notnand2" "NOTNAND" 2 34, 2 20, S_002F9860;
+ .timescale 0 0;
+v002F33D0_0 .alias "a", 0 0, v003641A8_0;
+v002F3428_0 .alias "s0", 0 0, v003642B0_0;
+S_002F99F8 .scope module, "nand1" "NAND" 2 24, 2 1, S_002F9970;
+ .timescale 0 0;
+L_002FDAE8 .functor AND 1, L_002FD0C0, L_002FD0C0, C4<1>, C4<1>;
+L_002F2B80 .functor NOT 1, L_002FDAE8, C4<0>, C4<0>, C4<0>;
+v002FBA98_0 .net *"_s0", 0 0, L_002FDAE8; 1 drivers
+v002FD9E0_0 .alias "a", 0 0, v003641A8_0;
+v002FDA38_0 .alias "b", 0 0, v003641A8_0;
+v002FDA90_0 .alias "s0", 0 0, v003642B0_0;
+    .scope S_002F9750;
+T_0 ;
+    %vpi_call 2 48 "$display", "Guia 02 - Ex03 - Tabela verdade NOR usando NAND";
+    %vpi_call 2 49 "$display", "Test NORNAND";
+    %vpi_call 2 50 "$display", "\012a  b  = saida\012";
+    %set/v v00364200_0, 0, 1;
+    %set/v v00364258_0, 0, 1;
+    %vpi_call 2 52 "$monitor", "%b %b = %b", v00364200_0, v00364258_0, v003642B0_0;
+    %delay 1, 0;
+    %set/v v00364258_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00364200_0, 1, 1;
+    %set/v v00364258_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00364258_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\365595\Nova pasta\Guia02_04_NORNAND.v";

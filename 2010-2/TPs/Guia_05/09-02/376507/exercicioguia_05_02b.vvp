@@ -1,0 +1,103 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_02029AE8 .scope module, "primeiro" "primeiro" 2 12;
+ .timescale 0 0;
+v0202EC80_0 .var "a", 0 0;
+v0202ECD8_0 .var "b", 0 0;
+v00A3EEF0_0 .net "s0", 0 0, L_02026F78; 1 drivers
+S_02029B68 .scope module, "XOR1" "xorgate" 2 16, 2 6, S_02029AE8;
+ .timescale 0 0;
+L_02026F78 .functor OR 1, v0202EC80_0, v0202ECD8_0, C4<0>, C4<0>;
+v02029250_0 .net "a", 0 0, v0202EC80_0; 1 drivers
+v0202D298_0 .net "b", 0 0, v0202ECD8_0; 1 drivers
+v0202EC28_0 .alias "s0", 0 0, v00A3EEF0_0;
+S_020299E8 .scope module, "segundaparte" "segundaparte" 2 41;
+ .timescale 0 0;
+v02026EC8_0 .var "a", 0 0;
+v02026F20_0 .var "b", 0 0;
+v02023B50_0 .net "s1", 0 0, L_020614F8; 1 drivers
+S_02029BE8 .scope module, "AND1" "andgate" 2 44, 2 35, S_020299E8;
+ .timescale 0 0;
+L_020614F8 .functor AND 1, v02026EC8_0, v02026F20_0, C4<1>, C4<1>;
+v00A3EF48_0 .net "a", 0 0, v02026EC8_0; 1 drivers
+v00A3EFA0_0 .net "b", 0 0, v02026F20_0; 1 drivers
+v02026E70_0 .alias "s1", 0 0, v02023B50_0;
+S_02029968 .scope module, "terceiraparte" "terceiraparte" 2 68;
+ .timescale 0 0;
+v02060570_0 .var "b", 0 0;
+v020605C8_0 .net "s1", 0 0, L_02061610; 1 drivers
+S_02029C68 .scope module, "NOT1" "notgate" 2 71, 2 63, S_02029968;
+ .timescale 0 0;
+L_02061610 .functor NOT 1, L_02060620, C4<0>, C4<0>, C4<0>;
+v02023BA8_0 .net *"_s0", 0 0, L_02060620; 1 drivers
+v020604C0_0 .net "b", 0 0, v02060570_0; 1 drivers
+v02060518_0 .alias "s1", 0 0, v020605C8_0;
+L_02060620 .reduce/and v02060570_0;
+    .scope S_02029AE8;
+T_0 ;
+    %vpi_call 2 20 "$display", "exercicioguia_05_02";
+    %vpi_call 2 21 "$display", "xorgate";
+    %vpi_call 2 22 "$display", "\012a | b=s0 \012";
+    %set/v v0202EC80_0, 0, 1;
+    %set/v v0202ECD8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 24 "$display", "%b |%b=%b ", v0202EC80_0, v0202ECD8_0, v00A3EEF0_0;
+    %set/v v0202EC80_0, 0, 1;
+    %set/v v0202ECD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 26 "$display", "%b |%b=%b ", v0202EC80_0, v0202ECD8_0, v00A3EEF0_0;
+    %set/v v0202EC80_0, 1, 1;
+    %set/v v0202ECD8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 28 "$display", "%b |%b=%b ", v0202EC80_0, v0202ECD8_0, v00A3EEF0_0;
+    %set/v v0202EC80_0, 1, 1;
+    %set/v v0202ECD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 30 "$display", "%b |%b=%b ", v0202EC80_0, v0202ECD8_0, v00A3EEF0_0;
+    %end;
+    .thread T_0;
+    .scope S_020299E8;
+T_1 ;
+    %vpi_call 2 48 "$display", "exercicioguia_04_02";
+    %vpi_call 2 49 "$display", "andgate";
+    %vpi_call 2 50 "$display", "\012a & b=s1 \012 ";
+    %set/v v02026EC8_0, 0, 1;
+    %set/v v02026F20_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%b & %b\011=%b ", v02026EC8_0, v02026F20_0, v02023B50_0;
+    %set/v v02026EC8_0, 0, 1;
+    %set/v v02026F20_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 54 "$display", "%b & %b\011=%b ", v02026EC8_0, v02026F20_0, v02023B50_0;
+    %set/v v02026EC8_0, 1, 1;
+    %set/v v02026F20_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 56 "$display", "%b & %b\011=%b ", v02026EC8_0, v02026F20_0, v02023B50_0;
+    %set/v v02026EC8_0, 1, 1;
+    %set/v v02026F20_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 58 "$display", "%b & %b\011=%b ", v02026EC8_0, v02026F20_0, v02023B50_0;
+    %end;
+    .thread T_1;
+    .scope S_02029968;
+T_2 ;
+    %vpi_call 2 74 "$display", "exercicioguia_04_02";
+    %vpi_call 2 75 "$display", "notgate";
+    %vpi_call 2 76 "$display", "\012a ~ b=s1\012";
+    %set/v v02060570_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 78 "$display", "%b~ =%b", v02060570_0, v020605C8_0;
+    %set/v v02060570_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 80 "$display", "%b~ =%b", v02060570_0, v020605C8_0;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicioguia_05_02b.v";

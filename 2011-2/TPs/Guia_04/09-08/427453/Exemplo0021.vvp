@@ -1,0 +1,88 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00619510 .scope module, "test_fullAdder" "test_fullAdder" 2 24;
+ .timescale 0 0;
+v006850F0_0 .net *"_s13", 2 0, C4<000>; 1 drivers
+v00685148_0 .net *"_s18", 2 0, C4<000>; 1 drivers
+v006851A0_0 .net *"_s3", 2 0, C4<000>; 1 drivers
+v006851F8_0 .net *"_s8", 2 0, C4<000>; 1 drivers
+v00685250_0 .var "carry", 5 0;
+v006852A8_0 .net "s0f", 2 0, L_00685568; 1 drivers
+v00685300_0 .net "s1f", 2 0, L_00685720; 1 drivers
+v00685358_0 .net "sand1", 2 0, L_00685618; 1 drivers
+v006853B0_0 .net "sand2", 2 0, L_00685670; 1 drivers
+v00685408_0 .net "sxor", 2 0, L_00685510; 1 drivers
+v00685460_0 .var "y", 5 0;
+v006854B8_0 .var "z", 5 0;
+L_006855C0 .concat [ 3 3 0 0], L_00685510, C4<000>;
+L_006856C8 .concat [ 3 3 0 0], L_00685510, C4<000>;
+L_00685778 .concat [ 3 3 0 0], L_00685618, C4<000>;
+L_006857D0 .concat [ 3 3 0 0], L_00685670, C4<000>;
+S_00619620 .scope module, "s00" "xorgate" 2 34, 2 9, S_00619510;
+ .timescale 0 0;
+L_00651A70 .functor XOR 6, v00685250_0, v00685460_0, C4<000000>, C4<000000>;
+v00684F90_0 .net *"_s0", 5 0, L_00651A70; 1 drivers
+v00684FE8_0 .alias "sxor", 2 0, v00685408_0;
+v00685040_0 .net "w", 5 0, v00685250_0; 1 drivers
+v00685098_0 .net "x", 5 0, v00685460_0; 1 drivers
+L_00685510 .part L_00651A70, 0, 3;
+S_00619400 .scope module, "s01" "xorgate" 2 35, 2 9, S_00619510;
+ .timescale 0 0;
+L_00651B18 .functor XOR 6, L_006855C0, v006854B8_0, C4<000000>, C4<000000>;
+v00684E30_0 .net *"_s0", 5 0, L_00651B18; 1 drivers
+v00684E88_0 .alias "sxor", 2 0, v006852A8_0;
+v00684EE0_0 .net "w", 5 0, L_006855C0; 1 drivers
+v00684F38_0 .net "x", 5 0, v006854B8_0; 1 drivers
+L_00685568 .part L_00651B18, 0, 3;
+S_006192F0 .scope module, "s10" "andgate" 2 36, 2 14, S_00619510;
+ .timescale 0 0;
+L_00651C30 .functor AND 6, v00685250_0, v00685460_0, C4<111111>, C4<111111>;
+v00684CD0_0 .net *"_s0", 5 0, L_00651C30; 1 drivers
+v00684D28_0 .alias "sand", 2 0, v00685358_0;
+v00684D80_0 .alias "w", 5 0, v00685040_0;
+v00684DD8_0 .alias "x", 5 0, v00685098_0;
+L_00685618 .part L_00651C30, 0, 3;
+S_00619A60 .scope module, "s11" "andgate" 2 37, 2 14, S_00619510;
+ .timescale 0 0;
+L_00651C68 .functor AND 6, L_006856C8, v006854B8_0, C4<111111>, C4<111111>;
+v00684B70_0 .net *"_s0", 5 0, L_00651C68; 1 drivers
+v00684BC8_0 .alias "sand", 2 0, v006853B0_0;
+v00684C20_0 .net "w", 5 0, L_006856C8; 1 drivers
+v00684C78_0 .alias "x", 5 0, v00684F38_0;
+L_00685670 .part L_00651C68, 0, 3;
+S_00619B70 .scope module, "s12" "orgate" 2 38, 2 19, S_00619510;
+ .timescale 0 0;
+L_00651D10 .functor OR 6, L_00685778, L_006857D0, C4<000000>, C4<000000>;
+v00653340_0 .net *"_s0", 5 0, L_00651D10; 1 drivers
+v00653398_0 .alias "sor", 2 0, v00685300_0;
+v00612C58_0 .net "w", 5 0, L_00685778; 1 drivers
+v00612CB0_0 .net "x", 5 0, L_006857D0; 1 drivers
+L_00685720 .part L_00651D10, 0, 3;
+    .scope S_00619510;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0021 - Pedro Henrique Vilar Locatelli - 427453";
+    %vpi_call 2 42 "$display", "Test ALU's full adder";
+    %delay 1, 0;
+    %movi 8, 1, 6;
+    %set/v v00685460_0, 8, 6;
+    %movi 8, 1, 6;
+    %set/v v006854B8_0, 8, 6;
+    %set/v v00685250_0, 0, 6;
+    %vpi_call 2 45 "$monitor", "%b + %b = %b%b", v00685460_0, v006854B8_0, v00685300_0, v006852A8_0;
+    %delay 2, 0;
+    %movi 8, 5, 6;
+    %set/v v00685460_0, 8, 6;
+    %movi 8, 5, 6;
+    %set/v v006854B8_0, 8, 6;
+    %set/v v00685250_0, 0, 6;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Brock\pedLoc\Aulas\puccdc2\terrorVerilog\Guia04\Exemplo0021.v";

@@ -1,0 +1,126 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002EA2D0 .scope module, "testandnor" "testandnor" 2 16;
+ .timescale 0 0;
+v00355CB8_0 .var "e1", 0 0;
+v00355D10_0 .var "e2", 0 0;
+v00355D68_0 .var "e3", 0 0;
+v00355DC0_0 .net "s", 0 0, L_00356A20; 1 drivers
+v00355E18_0 .net "s1", 0 0, L_003566D8; 1 drivers
+v00355E70_0 .net "s2", 0 0, L_003567F0; 1 drivers
+v00355EC8_0 .net "s3", 0 0, L_00356908; 1 drivers
+S_002EA820 .scope module, "ANDNOR1" "metodoandnor" 2 21, 2 5, S_002EA2D0;
+ .timescale 0 0;
+L_00356630 .functor OR 1, v00355CB8_0, v00355CB8_0, C4<0>, C4<0>;
+L_00356668 .functor OR 1, L_00356630, v00355CB8_0, C4<0>, C4<0>;
+L_003566D8 .functor NOT 1, L_00356668, C4<0>, C4<0>, C4<0>;
+v00355AA8_0 .net *"_s0", 0 0, L_00356630; 1 drivers
+v00355B00_0 .net *"_s2", 0 0, L_00356668; 1 drivers
+v00355B58_0 .net "e1", 0 0, v00355CB8_0; 1 drivers
+v00355BB0_0 .alias "e2", 0 0, v00355B58_0;
+v00355C08_0 .alias "e3", 0 0, v00355B58_0;
+v00355C60_0 .alias "s", 0 0, v00355E18_0;
+S_002EA798 .scope module, "ANDNOR2" "metodoandnor" 2 22, 2 5, S_002EA2D0;
+ .timescale 0 0;
+L_00356748 .functor OR 1, v00355D10_0, v00355D10_0, C4<0>, C4<0>;
+L_00356780 .functor OR 1, L_00356748, v00355D10_0, C4<0>, C4<0>;
+L_003567F0 .functor NOT 1, L_00356780, C4<0>, C4<0>, C4<0>;
+v00355898_0 .net *"_s0", 0 0, L_00356748; 1 drivers
+v003558F0_0 .net *"_s2", 0 0, L_00356780; 1 drivers
+v00355948_0 .net "e1", 0 0, v00355D10_0; 1 drivers
+v003559A0_0 .alias "e2", 0 0, v00355948_0;
+v003559F8_0 .alias "e3", 0 0, v00355948_0;
+v00355A50_0 .alias "s", 0 0, v00355E70_0;
+S_002EA710 .scope module, "ANDNOR3" "metodoandnor" 2 23, 2 5, S_002EA2D0;
+ .timescale 0 0;
+L_00356860 .functor OR 1, v00355D68_0, v00355D68_0, C4<0>, C4<0>;
+L_00356898 .functor OR 1, L_00356860, v00355D68_0, C4<0>, C4<0>;
+L_00356908 .functor NOT 1, L_00356898, C4<0>, C4<0>, C4<0>;
+v00355688_0 .net *"_s0", 0 0, L_00356860; 1 drivers
+v003556E0_0 .net *"_s2", 0 0, L_00356898; 1 drivers
+v00355738_0 .net "e1", 0 0, v00355D68_0; 1 drivers
+v00355790_0 .alias "e2", 0 0, v00355738_0;
+v003557E8_0 .alias "e3", 0 0, v00355738_0;
+v00355840_0 .alias "s", 0 0, v00355EC8_0;
+S_002EA688 .scope module, "ANDNOR4" "metodoandnor" 2 24, 2 5, S_002EA2D0;
+ .timescale 0 0;
+L_00356978 .functor OR 1, L_003566D8, L_003567F0, C4<0>, C4<0>;
+L_003569B0 .functor OR 1, L_00356978, L_00356908, C4<0>, C4<0>;
+L_00356A20 .functor NOT 1, L_003569B0, C4<0>, C4<0>, C4<0>;
+v002E3E18_0 .net *"_s0", 0 0, L_00356978; 1 drivers
+v002E3E70_0 .net *"_s2", 0 0, L_003569B0; 1 drivers
+v002E3EC8_0 .alias "e1", 0 0, v00355E18_0;
+v002E3F20_0 .alias "e2", 0 0, v00355E70_0;
+v002E2C40_0 .alias "e3", 0 0, v00355EC8_0;
+v00355630_0 .alias "s", 0 0, v00355DC0_0;
+S_002EA600 .scope begin, "start" "start" 2 27, 2 27, S_002EA2D0;
+ .timescale 0 0;
+S_002EA468 .scope begin, "main" "main" 2 32, 2 32, S_002EA2D0;
+ .timescale 0 0;
+    .scope S_002EA2D0;
+T_0 ;
+    %fork t_1, S_002EA600;
+    %jmp t_0;
+    .scope S_002EA600;
+t_1 ;
+    %set/v v00355CB8_0, 0, 1;
+    %set/v v00355D10_0, 0, 1;
+    %set/v v00355D68_0, 0, 1;
+    %end;
+    .scope S_002EA2D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002EA2D0;
+T_1 ;
+    %fork t_3, S_002EA468;
+    %jmp t_2;
+    .scope S_002EA468;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", " Tabela verdade da porta NOR com 3 entradas utilizando portas NAND ";
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "  e1 & e2 & e3  =  s ";
+    %vpi_call 2 37 "$monitor", " %b & %b & %b = %b", v00355CB8_0, v00355D10_0, v00355D68_0, v00355DC0_0;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 0, 1;
+    %set/v v00355D10_0, 0, 1;
+    %set/v v00355D68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 0, 1;
+    %set/v v00355D10_0, 1, 1;
+    %set/v v00355D68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 0, 1;
+    %set/v v00355D10_0, 1, 1;
+    %set/v v00355D68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 1, 1;
+    %set/v v00355D10_0, 0, 1;
+    %set/v v00355D68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 1, 1;
+    %set/v v00355D10_0, 0, 1;
+    %set/v v00355D68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 1, 1;
+    %set/v v00355D10_0, 1, 1;
+    %set/v v00355D68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00355CB8_0, 1, 1;
+    %set/v v00355D10_0, 1, 1;
+    %set/v v00355D68_0, 1, 1;
+    %end;
+    .scope S_002EA2D0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\guia2\420120\Exercicio02.v";

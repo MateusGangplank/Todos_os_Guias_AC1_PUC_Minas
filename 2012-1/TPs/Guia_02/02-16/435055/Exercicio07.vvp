@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00662C20 .scope module, "test_exercicio07" "test_exercicio07" 2 11;
+ .timescale 0 0;
+v0066E2A8_0 .var "a", 7 0;
+v0066E300_0 .net "s", 7 0, L_0066FCD8; 1 drivers
+S_00663150 .scope module, "TEST1" "exercicio07" 2 16, 2 7, S_00662C20;
+ .timescale 0 0;
+v006631D8_0 .net *"_s0", 7 0, C4<00000000>; 1 drivers
+v0066E1F8_0 .net "p", 7 0, v0066E2A8_0; 1 drivers
+v0066E250_0 .alias "s", 7 0, v0066E300_0;
+L_0066FCD8 .arith/sub 8, C4<00000000>, v0066E2A8_0;
+S_006630C8 .scope begin, "start" "start" 2 18, 2 18, S_00662C20;
+ .timescale 0 0;
+S_00662CA8 .scope begin, "main" "main" 2 23, 2 23, S_00662C20;
+ .timescale 0 0;
+    .scope S_00662C20;
+T_0 ;
+    %fork t_1, S_006630C8;
+    %jmp t_0;
+    .scope S_006630C8;
+t_1 ;
+    %set/v v0066E2A8_0, 0, 8;
+    %end;
+    .scope S_00662C20;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00662C20;
+T_1 ;
+    %fork t_3, S_00662CA8;
+    %jmp t_2;
+    .scope S_00662CA8;
+t_3 ;
+    %vpi_call 2 24 "$display", "Exercicio07 - Samuel Eus\351bio da Silva - 435055";
+    %vpi_call 2 25 "$display", "Test";
+    %vpi_call 2 26 "$monitor", "Complemento de 2 de %8b = %8b", v0066E2A8_0, v0066E300_0;
+    %delay 1, 0;
+    %movi 8, 84, 8;
+    %set/v v0066E2A8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 235, 8;
+    %set/v v0066E2A8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 89, 8;
+    %set/v v0066E2A8_0, 8, 8;
+    %end;
+    .scope S_00662C20;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Samuel\Documents\Faculdade\Arquitetura de Computadores I\Guias\Guia02\Exercicio07.v";

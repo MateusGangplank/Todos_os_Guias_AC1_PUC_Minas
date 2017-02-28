@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0069E6F0 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v00693268_0 .var "a", 0 0;
+v0069E090_0 .var "b", 0 0;
+v0069E0E8_0 .net "s", 0 0, L_00692DA0; 1 drivers
+S_00692D18 .scope module, "OR1" "orgate" 2 23, 2 10, S_0069E6F0;
+ .timescale 0 0;
+L_00692DA0 .functor OR 1, v00693268_0, v0069E090_0, C4<0>, C4<0>;
+v00693160_0 .net "p", 0 0, v00693268_0; 1 drivers
+v006931B8_0 .net "q", 0 0, v0069E090_0; 1 drivers
+v00693210_0 .alias "s", 0 0, v0069E0E8_0;
+S_00692C90 .scope begin, "start" "start" 2 25, 2 25, S_0069E6F0;
+ .timescale 0 0;
+    .scope S_0069E6F0;
+T_0 ;
+    %fork t_1, S_00692C90;
+    %jmp t_0;
+    .scope S_00692C90;
+t_1 ;
+    %set/v v00693268_0, 0, 1;
+    %set/v v0069E090_0, 0, 1;
+    %end;
+    .scope S_0069E6F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0069E6F0;
+T_1 ;
+    %vpi_call 2 34 "$display", "Exemplo0004 - Marcio Enio G Dutra Junior - 441698";
+    %vpi_call 2 35 "$display", "Test OR gate";
+    %vpi_call 2 36 "$display", "\012a & b = s\012";
+    %set/v v00693268_0, 0, 1;
+    %set/v v0069E090_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00693268_0, v0069E090_0, v0069E0E8_0;
+    %set/v v00693268_0, 0, 1;
+    %set/v v0069E090_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00693268_0, v0069E090_0, v0069E0E8_0;
+    %set/v v00693268_0, 1, 1;
+    %set/v v0069E090_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v00693268_0, v0069E090_0, v0069E0E8_0;
+    %set/v v00693268_0, 1, 1;
+    %set/v v0069E090_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b = %b", v00693268_0, v0069E090_0, v0069E0E8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\PUC Minas\2012\2º Semestre\ARQUITETURA I\Guia 01\Exemplo0004.v";

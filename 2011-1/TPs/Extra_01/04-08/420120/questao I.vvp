@@ -1,0 +1,156 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006592C0 .scope module, "testprova1" "testprova1" 2 25;
+ .timescale 0 0;
+v0065BAE8_0 .var "a", 0 0;
+v0065BB40_0 .var "b", 0 0;
+v0065BB98_0 .var "c", 0 0;
+v0065BBF0_0 .var "d", 0 0;
+v0065BC48_0 .net "saida", 0 0, L_006A3990; 1 drivers
+S_00659458 .scope module, "PROVAI" "metodoprovai" 2 29, 2 4, S_006592C0;
+ .timescale 0 0;
+L_006A35D8 .functor XOR 1, v0065BAE8_0, v0065BBF0_0, C4<0>, C4<0>;
+L_006A3648 .functor AND 1, L_006A35D8, v0065BB98_0, C4<1>, C4<1>;
+L_006A36F0 .functor XOR 1, v0065BAE8_0, v0065BB40_0, C4<0>, C4<0>;
+L_006A3760 .functor AND 1, L_006A36F0, v0065BBF0_0, C4<1>, C4<1>;
+L_006A37D0 .functor NOT 1, v0065BB98_0, C4<0>, C4<0>, C4<0>;
+L_006A3808 .functor AND 1, v0065BB40_0, L_006A37D0, C4<1>, C4<1>;
+L_006A3878 .functor NOT 1, v0065BBF0_0, C4<0>, C4<0>, C4<0>;
+L_006A3610 .functor AND 1, v0065BB98_0, L_006A3878, C4<1>, C4<1>;
+L_006A38B0 .functor OR 1, L_006A3808, L_006A3610, C4<0>, C4<0>;
+L_006A3958 .functor AND 1, v0065BAE8_0, L_006A38B0, C4<1>, C4<1>;
+L_006A3990 .functor OR 1, L_006A3648, L_006A3760, L_006A3958, C4<0>;
+v0065B5C0_0 .net "a", 0 0, v0065BAE8_0; 1 drivers
+v0065B618_0 .net "b", 0 0, v0065BB40_0; 1 drivers
+v0065B670_0 .net "c", 0 0, v0065BB98_0; 1 drivers
+v0065B6C8_0 .net "d", 0 0, v0065BBF0_0; 1 drivers
+v0065B720_0 .alias "saida", 0 0, v0065BC48_0;
+v0065B778_0 .net "temp1", 0 0, L_006A35D8; 1 drivers
+v0065B7D0_0 .net "temp10", 0 0, L_006A3958; 1 drivers
+v0065B828_0 .net "temp2", 0 0, L_006A3648; 1 drivers
+v0065B880_0 .net "temp3", 0 0, L_006A36F0; 1 drivers
+v0065B8D8_0 .net "temp4", 0 0, L_006A3760; 1 drivers
+v0065B930_0 .net "temp5", 0 0, L_006A37D0; 1 drivers
+v0065B988_0 .net "temp6", 0 0, L_006A3808; 1 drivers
+v0065B9E0_0 .net "temp7", 0 0, L_006A3878; 1 drivers
+v0065BA38_0 .net "temp8", 0 0, L_006A3610; 1 drivers
+v0065BA90_0 .net "temp9", 0 0, L_006A38B0; 1 drivers
+S_006593D0 .scope begin, "start" "start" 2 31, 2 31, S_006592C0;
+ .timescale 0 0;
+S_00659348 .scope begin, "main" "main" 2 35, 2 35, S_006592C0;
+ .timescale 0 0;
+    .scope S_006592C0;
+T_0 ;
+    %fork t_1, S_006593D0;
+    %jmp t_0;
+    .scope S_006593D0;
+t_1 ;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %end;
+    .scope S_006592C0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006592C0;
+T_1 ;
+    %fork t_3, S_00659348;
+    %jmp t_2;
+    .scope S_00659348;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", " Circuito da questao i da prova ";
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", " a |  b |  c |  d  =  saida ";
+    %vpi_call 2 38 "$monitor", " %b  | %b  | %b |  %b  =   %b ", v0065BAE8_0, v0065BB40_0, v0065BB98_0, v0065BBF0_0, v0065BC48_0;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 0, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 0, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 0, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065BAE8_0, 1, 1;
+    %set/v v0065BB40_0, 1, 1;
+    %set/v v0065BB98_0, 1, 1;
+    %set/v v0065BBF0_0, 1, 1;
+    %end;
+    .scope S_006592C0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\Prova - 1\420120\questao I.v";

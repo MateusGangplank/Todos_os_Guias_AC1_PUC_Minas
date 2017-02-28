@@ -1,0 +1,56 @@
+// -------------------------
+//  Exemplo0032
+// Nome: Gustavo Barbosa
+// Matricula: 427410
+// -------------------------
+
+module not(output [1:0] s, input [1:0]a);
+
+	assign s = ~a;
+
+endmodule
+
+module and(output [1:0] s,input  [1:0] a,input  [1:0] b);
+	assign s = a & b;
+endmodule //andgate
+
+module and3(output [1:0] s,input  [1:0] a,input  [1:0] b,input  [1:0] c);
+	wire [1:0] x;
+	and AND1(x,a,b);
+	and AND2(s,x,c);
+endmodule //and3
+
+module or(output [1:0] s,input  [1:0] a,input  [1:0] b);
+	assign s = a | b;
+endmodule //orgate
+
+module test_f4;
+// ------------------------- definir dados
+	reg [1:0] x;
+	reg [1:0] y;
+	reg [1:0] op;
+	wire [1:0] s1;
+	wire [1:0] s2;
+	wire [1:0] s3;
+	wire [1:0] s4;
+	wire [1:0] s;
+	
+	or OR1(s4,x,y);
+	and3 AND1(s3,x,y,op);
+	not NOT1(s2,op);
+	and AND2(s1,s4,s2);
+	or OR2(s,s1,s3);
+	
+// ------------------------- parte principal
+   initial begin
+      $display("Exemplo0032 - Gustavo Barbosa - 427410");
+      $display("Test");
+		x = 2'b00;      y = 2'b00;
+
+		$monitor("%4b %4b %4b = %4b",op,x,y,s);
+		#1 x = 2'b00; y = 2'b00; op = 2'b01;
+		#1 x = 2'b00; y = 2'b11; op = 2'b01;
+		#1 x = 2'b11; y = 2'b00; op = 2'b01;
+		#1 x = 2'b11; y = 2'b11; op = 2'b01;
+end
+endmodule

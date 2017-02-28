@@ -1,0 +1,37 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00813910 .scope module, "test_compD" "test_compD" 2 18;
+ .timescale 0 0;
+v00812BA8_0 .net "r", 3 0, L_0081FFA0; 1 drivers
+v00812C00_0 .var "x", 3 0;
+v0081DD88_0 .var "y", 3 0;
+S_00813998 .scope module, "modulo" "compD" 2 26, 2 11, S_00813910;
+ .timescale 0 0;
+L_0081FFA0 .functor XOR 4, v00812C00_0, v0081DD88_0, C4<0000>, C4<0000>;
+v00812B50_0 .net "a", 3 0, v00812C00_0; 1 drivers
+v0081FEF0_0 .net "b", 3 0, v0081DD88_0; 1 drivers
+v0081FF48_0 .alias "s", 3 0, v00812BA8_0;
+    .scope S_00813910;
+T_0 ;
+    %vpi_call 2 30 "$display", "Exemplo0024 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 31 "$display", "Teste Comparador de Diferen\377a";
+    %set/v v00812C00_0, 0, 4;
+    %set/v v0081DD88_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b  %b = %b", v00812C00_0, v0081DD88_0, v00812BA8_0;
+    %movi 8, 1, 4;
+    %set/v v00812C00_0, 8, 4;
+    %set/v v0081DD88_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b  %b = %b", v00812C00_0, v0081DD88_0, v00812BA8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 04\Exemplo0024.v";

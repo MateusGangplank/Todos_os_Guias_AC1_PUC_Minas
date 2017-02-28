@@ -1,0 +1,122 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x9bd90f0 .scope module, "test_sub" "test_sub" 2 28;
+ .timescale 0 0;
+v0x9c16dc0_0 .var "carry", 0 0;
+RS_0x9bfd714 .resolv tri, L_0x9c174e0, L_0x9c179f0, L_0x9c17f28, C4<zzz>;
+v0x9c16e20_0 .net8 "carry1", 2 0, RS_0x9bfd714; 3 drivers
+RS_0x9bfd72c .resolv tri, L_0x9c17458, L_0x9c17930, L_0x9c17ea0, C4<zzz>;
+v0x9c16e70_0 .net8 "soma", 2 0, RS_0x9bfd72c; 3 drivers
+v0x9c16ed0 .array "x", 0 2, 0 0;
+v0x9c16f80 .array "y", 0 2, 0 0;
+L_0x9c17458 .part/pv L_0x9c17130, 0, 1, 3;
+L_0x9c174e0 .part/pv L_0x9c17358, 0, 1, 3;
+L_0x9c17930 .part/pv L_0x9c17648, 1, 1, 3;
+L_0x9c179f0 .part/pv L_0x9c17830, 1, 1, 3;
+L_0x9c17ac8 .part RS_0x9bfd714, 0, 1;
+L_0x9c17ea0 .part/pv L_0x9c17bf8, 2, 1, 3;
+L_0x9c17f28 .part/pv L_0x9c17dc0, 2, 1, 3;
+L_0x9c17fe0 .part RS_0x9bfd714, 1, 1;
+S_0x9c168f0 .scope module, "sub1" "sub" 2 36, 2 9, S_0x9bd90f0;
+ .timescale 0 0;
+v0x9c16ed0_0 .array/port v0x9c16ed0, 0;
+L_0x9c17030 .functor NOT 1, v0x9c16ed0_0, C4<0>, C4<0>, C4<0>;
+v0x9c16f80_0 .array/port v0x9c16f80, 0;
+L_0x9c170c0 .functor XOR 1, v0x9c16ed0_0, v0x9c16f80_0, C4<0>, C4<0>;
+L_0x9c17130 .functor XOR 1, v0x9c16ed0_0, v0x9c16f80_0, C4<0>, C4<0>;
+L_0x9c17088 .functor AND 1, L_0x9c17030, v0x9c16f80_0, C4<1>, C4<1>;
+L_0x9c170f8 .functor AND 1, L_0x9c17030, C4<z>, C4<1>, C4<1>;
+L_0x9c172c8 .functor AND 1, v0x9c16f80_0, C4<z>, C4<1>, C4<1>;
+L_0x9c17358 .functor OR 1, L_0x9c17088, L_0x9c170f8, L_0x9c172c8, C4<0>;
+v0x9c16970_0 .net "a", 0 0, v0x9c16ed0_0; 1 drivers
+v0x9c169e0_0 .net "and1", 0 0, L_0x9c17088; 1 drivers
+v0x9c16a40_0 .net "and2", 0 0, L_0x9c170f8; 1 drivers
+v0x9c16aa0_0 .net "and3", 0 0, L_0x9c172c8; 1 drivers
+v0x9c16af0_0 .net "axorb", 0 0, L_0x9c170c0; 1 drivers
+v0x9c16b50_0 .net "b", 0 0, v0x9c16f80_0; 1 drivers
+v0x9c16bb0_0 .net "carry", 0 0, C4<z>; 0 drivers
+v0x9c16c10_0 .net "carryIn", 0 0, v0x9c16dc0_0; 1 drivers
+v0x9c16c70_0 .net "carryOut", 0 0, L_0x9c17358; 1 drivers
+v0x9c16cd0_0 .net "nota", 0 0, L_0x9c17030; 1 drivers
+v0x9c16d60_0 .net "s", 0 0, L_0x9c17130; 1 drivers
+S_0x9c16420 .scope module, "sub2" "sub" 2 37, 2 9, S_0x9bd90f0;
+ .timescale 0 0;
+v0x9c16ed0_1 .array/port v0x9c16ed0, 1;
+L_0x9c17568 .functor NOT 1, v0x9c16ed0_1, C4<0>, C4<0>, C4<0>;
+v0x9c16f80_1 .array/port v0x9c16f80, 1;
+L_0x9c175d8 .functor XOR 1, v0x9c16ed0_1, v0x9c16f80_1, C4<0>, C4<0>;
+L_0x9c17648 .functor XOR 1, v0x9c16ed0_1, v0x9c16f80_1, C4<0>, C4<0>;
+L_0x9c175a0 .functor AND 1, L_0x9c17568, v0x9c16f80_1, C4<1>, C4<1>;
+L_0x9c17610 .functor AND 1, L_0x9c17568, C4<z>, C4<1>, C4<1>;
+L_0x9c177a0 .functor AND 1, v0x9c16f80_1, C4<z>, C4<1>, C4<1>;
+L_0x9c17830 .functor OR 1, L_0x9c175a0, L_0x9c17610, L_0x9c177a0, C4<0>;
+v0x9c164a0_0 .net "a", 0 0, v0x9c16ed0_1; 1 drivers
+v0x9c16510_0 .net "and1", 0 0, L_0x9c175a0; 1 drivers
+v0x9c16570_0 .net "and2", 0 0, L_0x9c17610; 1 drivers
+v0x9c165d0_0 .net "and3", 0 0, L_0x9c177a0; 1 drivers
+v0x9c16620_0 .net "axorb", 0 0, L_0x9c175d8; 1 drivers
+v0x9c16680_0 .net "b", 0 0, v0x9c16f80_1; 1 drivers
+v0x9c166e0_0 .net "carry", 0 0, C4<z>; 0 drivers
+v0x9c16740_0 .net "carryIn", 0 0, L_0x9c17ac8; 1 drivers
+v0x9c167a0_0 .net "carryOut", 0 0, L_0x9c17830; 1 drivers
+v0x9c16800_0 .net "nota", 0 0, L_0x9c17568; 1 drivers
+v0x9c16890_0 .net "s", 0 0, L_0x9c17648; 1 drivers
+S_0x9bd9c08 .scope module, "sub3" "sub" 2 38, 2 9, S_0x9bd90f0;
+ .timescale 0 0;
+v0x9c16ed0_2 .array/port v0x9c16ed0, 2;
+L_0x9c17b18 .functor NOT 1, v0x9c16ed0_2, C4<0>, C4<0>, C4<0>;
+v0x9c16f80_2 .array/port v0x9c16f80, 2;
+L_0x9c17b88 .functor XOR 1, v0x9c16ed0_2, v0x9c16f80_2, C4<0>, C4<0>;
+L_0x9c17bf8 .functor XOR 1, v0x9c16ed0_2, v0x9c16f80_2, C4<0>, C4<0>;
+L_0x9c17b50 .functor AND 1, L_0x9c17b18, v0x9c16f80_2, C4<1>, C4<1>;
+L_0x9c17bc0 .functor AND 1, L_0x9c17b18, C4<z>, C4<1>, C4<1>;
+L_0x9c17d50 .functor AND 1, v0x9c16f80_2, C4<z>, C4<1>, C4<1>;
+L_0x9c17dc0 .functor OR 1, L_0x9c17b50, L_0x9c17bc0, L_0x9c17d50, C4<0>;
+v0x9bd8678_0 .net "a", 0 0, v0x9c16ed0_2; 1 drivers
+v0x9c15fe0_0 .net "and1", 0 0, L_0x9c17b50; 1 drivers
+v0x9c16040_0 .net "and2", 0 0, L_0x9c17bc0; 1 drivers
+v0x9c160a0_0 .net "and3", 0 0, L_0x9c17d50; 1 drivers
+v0x9c16108_0 .net "axorb", 0 0, L_0x9c17b88; 1 drivers
+v0x9c16168_0 .net "b", 0 0, v0x9c16f80_2; 1 drivers
+v0x9c161e8_0 .net "carry", 0 0, C4<z>; 0 drivers
+v0x9c16248_0 .net "carryIn", 0 0, L_0x9c17fe0; 1 drivers
+v0x9c162d0_0 .net "carryOut", 0 0, L_0x9c17dc0; 1 drivers
+v0x9c16330_0 .net "nota", 0 0, L_0x9c17b18; 1 drivers
+v0x9c163c0_0 .net "s", 0 0, L_0x9c17bf8; 1 drivers
+    .scope S_0x9bd90f0;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0022 - Guilherme alves de oliveira - 450161";
+    %vpi_call 2 42 "$display", "Test ALU\222s Subitrator";
+   %ix/load 1, 0, 0;
+   %ix/load 3, 0, 0;
+   %set/av v0x9c16ed0, 1, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 1, 0;
+   %set/av v0x9c16ed0, 0, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 2, 0;
+   %set/av v0x9c16ed0, 0, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 0, 0;
+   %set/av v0x9c16f80, 1, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 1, 0;
+   %set/av v0x9c16f80, 0, 1;
+   %ix/load 1, 0, 0;
+   %ix/load 3, 2, 0;
+   %set/av v0x9c16f80, 1, 1;
+    %set/v v0x9c16dc0_0, 0, 1;
+    %vpi_call 2 45 "$monitor", " ", &A<v0x9c16ed0, 0>, &A<v0x9c16ed0, 1>, &A<v0x9c16ed0, 2>, "\012", "-", &A<v0x9c16f80, 0>, &A<v0x9c16f80, 1>, &A<v0x9c16f80, 2>;
+    %delay 1, 0;
+    %vpi_call 2 47 "$monitor", "=", &PV<v0x9c16e70_0, 0, 1>, &PV<v0x9c16e70_0, 1, 1>, &PV<v0x9c16e70_0, 2, 1>;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/XP_USB/guia4/exemplo0022.v";

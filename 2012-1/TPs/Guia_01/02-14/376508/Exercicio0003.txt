@@ -1,0 +1,47 @@
+//---------------------
+// Exercicio0003 - XNOR
+// Nome: Felipe Barros
+// Matricula: 376508
+//---------------------
+
+module xnorgate (output s, input p, input q);
+
+assign s = ~(p^q);
+
+endmodule
+
+//---------------------
+ 
+
+//-- teste de modulo
+
+
+module testxnorgate;
+
+reg a, b;// entrada
+wire s; // saida
+
+xnorgate XNOR1 (s, a, b);
+
+initial begin: start
+a=0; b=0;
+end
+
+
+// parte principal
+
+initial begin
+
+$display ( "test xnorgate");
+$display ("\na  b = s\n");
+a=0; b=0;
+#1 $display ("%b  %b  %b", a, b, s);
+a=0; b=1;
+#1 $display ("%b  %b  %b", a, b, s);
+a=1; b=0;
+#1 $display (" %b  %b  %b", a, b, s);
+a=1; b=1;
+#1 $display (" %b  %b  %b", a, b, s);
+
+
+

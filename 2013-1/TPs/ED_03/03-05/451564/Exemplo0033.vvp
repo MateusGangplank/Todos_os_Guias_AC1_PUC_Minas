@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003D90A8 .scope module, "test_f4" "test_f4" 2 32;
+ .timescale 0 0;
+v003DB598_0 .net "k", 0 0, L_005ECD38; 1 drivers
+v003DB5F0_0 .var "x", 2 0;
+v003DB648_0 .net "z", 0 0, L_003DFED8; 1 drivers
+L_003DB6A0 .part v003DB5F0_0, 0, 1;
+L_003DB6F8 .part v003DB5F0_0, 1, 1;
+L_003DB750 .part v003DB5F0_0, 2, 1;
+S_003D9020 .scope module, "modulo" "f4" 2 37, 2 10, S_003D90A8;
+ .timescale 0 0;
+L_003DD620 .functor AND 1, L_003DB6A0, L_003DB6F8, C4<1>, C4<1>;
+L_003DD658 .functor AND 1, L_005ECE18, L_003D2DC0, C4<1>, C4<1>;
+L_003DD690 .functor AND 1, L_003D2DF8, L_003DB750, C4<1>, C4<1>;
+L_003DD6C8 .functor AND 1, L_005ECE88, L_003D2DC0, C4<1>, C4<1>;
+L_003D2D18 .functor AND 1, L_003DD620, L_003DB750, C4<1>, C4<1>;
+L_003D2DC0 .functor NOT 1, L_003DB750, C4<0>, C4<0>, C4<0>;
+L_003D2DF8 .functor OR 1, L_003DB6A0, L_003DB6F8, C4<0>, C4<0>;
+L_003DFED8 .functor OR 1, L_003DD658, L_003DD690, C4<0>, C4<0>;
+L_005ECD38 .functor OR 1, L_003DD6C8, L_003D2D18, C4<0>, C4<0>;
+L_005ECE18 .functor NOR 1, L_003DB6A0, L_003DB6F8, C4<0>, C4<0>;
+L_005ECE88 .functor NAND 1, L_003DB6A0, L_003DB6F8, C4<1>, C4<1>;
+v003DB0C8_0 .net "a", 0 0, L_003DB6A0; 1 drivers
+v003DB120_0 .net "b", 0 0, L_003DB6F8; 1 drivers
+v003DB178_0 .net "c", 0 0, L_003DB750; 1 drivers
+v003DB1D0_0 .net "nc", 0 0, L_003D2DC0; 1 drivers
+v003DB228_0 .alias "s1", 0 0, v003DB648_0;
+v003DB280_0 .net "s10", 0 0, L_003D2D18; 1 drivers
+v003DB2D8_0 .alias "s2", 0 0, v003DB598_0;
+v003DB330_0 .net "s3", 0 0, L_005ECE18; 1 drivers
+v003DB388_0 .net "s4", 0 0, L_003D2DF8; 1 drivers
+v003DB3E0_0 .net "s5", 0 0, L_005ECE88; 1 drivers
+v003DB438_0 .net "s6", 0 0, L_003DD620; 1 drivers
+v003DB490_0 .net "s7", 0 0, L_003DD658; 1 drivers
+v003DB4E8_0 .net "s8", 0 0, L_003DD690; 1 drivers
+v003DB540_0 .net "s9", 0 0, L_003DD6C8; 1 drivers
+    .scope S_003D90A8;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo0033 - Guilherme Augusto Bueno Borba - 451564";
+    %vpi_call 2 41 "$display", "Test LU's module";
+    %set/v v003DB5F0_0, 0, 3;
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "entradas : %3b %3b | Selecao: %3b | Saida: %3b , %3b", &PV<v003DB5F0_0, 0, 1>, &PV<v003DB5F0_0, 1, 1>, &PV<v003DB5F0_0, 2, 1>, v003DB648_0, v003DB598_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v003DB5F0_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v003DB5F0_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Desktop\Puc\3 periodo\AC\AC3\Exemplo0033.v";

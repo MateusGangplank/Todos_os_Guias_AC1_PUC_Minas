@@ -1,0 +1,165 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003AA788 .scope module, "testexercicio2" "testexercicio2" 2 57;
+ .timescale 0 0;
+v00591B00_0 .var "a", 0 0;
+v00591B58_0 .var "b", 0 0;
+v00591BB0_0 .var "c", 0 0;
+v00591C08_0 .var "d", 0 0;
+v00591C60_0 .net "s", 0 0, L_005920A8; 1 drivers
+S_003AA700 .scope module, "exercicio2" "exercicio2" 2 62, 2 44, S_003AA788;
+ .timescale 0 0;
+L_005922A0 .functor NOT 1, v00591B58_0, C4<0>, C4<0>, C4<0>;
+L_00592348 .functor NOT 1, v00591BB0_0, C4<0>, C4<0>, C4<0>;
+L_00592508 .functor NOT 1, v00591B00_0, C4<0>, C4<0>, C4<0>;
+L_00592578 .functor NOT 1, v00591C08_0, C4<0>, C4<0>, C4<0>;
+v005918F0_0 .net "a", 0 0, v00591B00_0; 1 drivers
+v00591948_0 .net "b", 0 0, v00591B58_0; 1 drivers
+v005919A0_0 .net "c", 0 0, v00591BB0_0; 1 drivers
+v005919F8_0 .net "d", 0 0, v00591C08_0; 1 drivers
+v00591A50_0 .alias "s", 0 0, v00591C60_0;
+v00591AA8 .array "temp", 2 0;
+v00591AA8_0 .net v00591AA8 0, 0 0, L_005921C0; 1 drivers
+v00591AA8_1 .net v00591AA8 1, 0 0, L_00592460; 1 drivers
+v00591AA8_2 .net v00591AA8 2, 0 0, L_005920E0; 1 drivers
+S_003AAB40 .scope module, "AND1" "Andgate3" 2 50, 2 7, S_003AA700;
+ .timescale 0 0;
+L_00592150 .functor NOR 1, v00591B00_0, C4<0>, C4<0>, C4<0>;
+L_00592000 .functor NOR 1, L_005922A0, C4<0>, C4<0>, C4<0>;
+L_00592188 .functor NOR 1, L_00592348, C4<0>, C4<0>, C4<0>;
+L_005921C0 .functor NOR 1, L_00592150, L_00592000, L_00592188, C4<0>;
+v00591738_0 .alias "a", 0 0, v005918F0_0;
+v00591790_0 .net "b", 0 0, L_005922A0; 1 drivers
+v005917E8_0 .net "c", 0 0, L_00592348; 1 drivers
+v00591840_0 .alias "s", 0 0, v00591AA8_0;
+v00591898 .array "temp", 2 0;
+v00591898_0 .net v00591898 0, 0 0, L_00592150; 1 drivers
+v00591898_1 .net v00591898 1, 0 0, L_00592000; 1 drivers
+v00591898_2 .net v00591898 2, 0 0, L_00592188; 1 drivers
+S_003AABC8 .scope module, "AND2" "Andgate2" 2 51, 2 20, S_003AA700;
+ .timescale 0 0;
+L_005923F0 .functor NOR 1, L_00592508, C4<0>, C4<0>, C4<0>;
+L_00592428 .functor NOR 1, L_00592578, C4<0>, C4<0>, C4<0>;
+L_00592460 .functor NOR 1, L_005923F0, L_00592428, C4<0>, C4<0>;
+v005915D8_0 .net "a", 0 0, L_00592508; 1 drivers
+v00591630_0 .net "b", 0 0, L_00592578; 1 drivers
+v00591688_0 .alias "s", 0 0, v00591AA8_1;
+v005916E0 .array "temp", 1 0;
+v005916E0_0 .net v005916E0 0, 0 0, L_005923F0; 1 drivers
+v005916E0_1 .net v005916E0 1, 0 0, L_00592428; 1 drivers
+S_003AAC50 .scope module, "AND3" "Andgate2" 2 52, 2 20, S_003AA700;
+ .timescale 0 0;
+L_005925E8 .functor NOR 1, v00591B00_0, C4<0>, C4<0>, C4<0>;
+L_00592620 .functor NOR 1, v00591C08_0, C4<0>, C4<0>, C4<0>;
+L_005920E0 .functor NOR 1, L_005925E8, L_00592620, C4<0>, C4<0>;
+v00591478_0 .alias "a", 0 0, v005918F0_0;
+v005914D0_0 .alias "b", 0 0, v005919F8_0;
+v00591528_0 .alias "s", 0 0, v00591AA8_2;
+v00591580 .array "temp", 1 0;
+v00591580_0 .net v00591580 0, 0 0, L_005925E8; 1 drivers
+v00591580_1 .net v00591580 1, 0 0, L_00592620; 1 drivers
+S_003AA458 .scope module, "OR1" "Orgate" 2 53, 2 32, S_003AA700;
+ .timescale 0 0;
+L_005926C8 .functor NOR 1, L_005921C0, L_00592460, L_005920E0, C4<0>;
+L_005920A8 .functor NOR 1, L_005926C8, C4<0>, C4<0>, C4<0>;
+v005912C0_0 .alias "a", 0 0, v00591AA8_0;
+v00591318_0 .alias "b", 0 0, v00591AA8_1;
+v00591370_0 .alias "c", 0 0, v00591AA8_2;
+v005913C8_0 .alias "s", 0 0, v00591C60_0;
+v00591420_0 .net "t", 0 0, L_005926C8; 1 drivers
+    .scope S_003AA788;
+T_0 ;
+    %vpi_call 2 65 "$display", "\012guia08_05 - Ludmily Caldeira da Silva - 417290\012";
+    %vpi_call 2 66 "$display", "TESTE\012";
+    %vpi_call 2 67 "$display", "\012a   b   c    d    s\012";
+    %vpi_call 2 68 "$monitor", "%b   %b   %b    %b    %b", v00591B00_0, v00591B58_0, v00591BB0_0, v00591C08_0, v00591C60_0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 0, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 0, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 0, 1;
+    %set/v v00591C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00591B00_0, 1, 1;
+    %set/v v00591B58_0, 1, 1;
+    %set/v v00591BB0_0, 1, 1;
+    %set/v v00591C08_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\417290\ARQ1\guia08\guia08-05.v";

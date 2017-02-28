@@ -1,0 +1,107 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002E0D70 .scope module, "circuito" "circuito" 2 29;
+ .timescale 0 0;
+v003032D8_0 .var "a", 0 0;
+v00303330_0 .var "b", 0 0;
+v00303388_0 .var "c", 0 0;
+v003033E0_0 .var "d", 0 0;
+v00303438_0 .var "e", 0 0;
+v00303490_0 .var "f", 0 0;
+v003034E8_0 .var "g", 0 0;
+v00303540_0 .var "h", 0 0;
+v00303598_0 .net "s", 0 0, L_0032E248; 1 drivers
+v003035F0_0 .net "s1", 0 0, C4<z>; 0 drivers
+v00303648_0 .net "s2", 0 0, C4<z>; 0 drivers
+S_002E1128 .scope module, "OR1" "orgate" 2 34, 2 13, S_002E0D70;
+ .timescale 0 0;
+L_002C3B70 .functor OR 1, v003032D8_0, v00303330_0, C4<0>, C4<0>;
+L_002C4A60 .functor OR 1, L_002C3B70, v00303388_0, C4<0>, C4<0>;
+L_002C4B08 .functor OR 1, L_002C4A60, v003033E0_0, C4<0>, C4<0>;
+v00303018_0 .net *"_s0", 0 0, L_002C3B70; 1 drivers
+v00303070_0 .net *"_s2", 0 0, L_002C4A60; 1 drivers
+v003030C8_0 .net "p", 0 0, v003032D8_0; 1 drivers
+v00303120_0 .net "q", 0 0, v00303330_0; 1 drivers
+v00303178_0 .net "r", 0 0, v00303388_0; 1 drivers
+v003031D0_0 .net "s", 0 0, L_002C4B08; 1 drivers
+v00303228_0 .alias "s1", 0 0, v003035F0_0;
+v00303280_0 .net "t", 0 0, v003033E0_0; 1 drivers
+S_002E10A0 .scope module, "AND1" "andgate" 2 35, 2 19, S_002E0D70;
+ .timescale 0 0;
+L_002E42F8 .functor AND 1, v00303438_0, v00303490_0, C4<1>, C4<1>;
+L_0032E050 .functor AND 1, L_002E42F8, v003034E8_0, C4<1>, C4<1>;
+L_0032E0F8 .functor AND 1, L_0032E050, v00303540_0, C4<1>, C4<1>;
+v002C4790_0 .net *"_s0", 0 0, L_002E42F8; 1 drivers
+v002C47E8_0 .net *"_s2", 0 0, L_0032E050; 1 drivers
+v002C3AE0_0 .net "p", 0 0, v00303438_0; 1 drivers
+v00302E60_0 .net "q", 0 0, v00303490_0; 1 drivers
+v00302EB8_0 .net "r", 0 0, v003034E8_0; 1 drivers
+v00302F10_0 .net "s", 0 0, L_0032E0F8; 1 drivers
+v00302F68_0 .alias "s2", 0 0, v00303648_0;
+v00302FC0_0 .net "t", 0 0, v00303540_0; 1 drivers
+S_002E1018 .scope module, "NOR1" "norgate" 2 36, 2 25, S_002E0D70;
+ .timescale 0 0;
+L_0032E1A0 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_0032E1D8 .functor NOT 1, L_0032E1A0, C4<0>, C4<0>, C4<0>;
+L_0032E248 .functor NOT 1, L_0032E1D8, C4<0>, C4<0>, C4<0>;
+v00308F60_0 .net *"_s0", 0 0, L_0032E1A0; 1 drivers
+v002CFC88_0 .net *"_s2", 0 0, L_0032E1D8; 1 drivers
+v002CFCE0_0 .alias "p", 0 0, v003035F0_0;
+v002CFD38_0 .alias "q", 0 0, v00303648_0;
+v002C4738_0 .alias "s", 0 0, v00303598_0;
+S_002E0F90 .scope begin, "start" "start" 2 38, 2 38, S_002E0D70;
+ .timescale 0 0;
+S_002E0F08 .scope begin, "main" "main" 2 42, 2 42, S_002E0D70;
+ .timescale 0 0;
+    .scope S_002E0D70;
+T_0 ;
+    %fork t_1, S_002E0F90;
+    %jmp t_0;
+    .scope S_002E0F90;
+t_1 ;
+    %set/v v003032D8_0, 0, 1;
+    %set/v v00303330_0, 0, 1;
+    %set/v v00303388_0, 0, 1;
+    %set/v v003033E0_0, 0, 1;
+    %set/v v00303438_0, 0, 1;
+    %set/v v00303490_0, 0, 1;
+    %set/v v003034E8_0, 0, 1;
+    %set/v v00303540_0, 0, 1;
+    %end;
+    .scope S_002E0D70;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002E0D70;
+T_1 ;
+    %fork t_3, S_002E0F08;
+    %jmp t_2;
+    .scope S_002E0F08;
+t_3 ;
+    %vpi_call 2 43 "$display", "Exercicio04 -  Milton teles da silva - 2751";
+    %vpi_call 2 44 "$display", "Test circuito gate";
+    %vpi_call 2 45 "$display", "\012a b c d e f g h = s\012";
+    %vpi_call 2 46 "$monitor", "%b %b %b %b %b %b %b %b = %b", v003032D8_0, v00303330_0, v00303388_0, v003033E0_0, v00303438_0, v00303490_0, v003034E8_0, v00303540_0, v00303598_0;
+    %delay 1, 0;
+    %set/v v003032D8_0, 0, 1;
+    %set/v v00303330_0, 0, 1;
+    %set/v v00303388_0, 0, 1;
+    %set/v v003033E0_0, 0, 1;
+    %set/v v00303438_0, 0, 1;
+    %set/v v00303490_0, 0, 1;
+    %set/v v003034E8_0, 0, 1;
+    %set/v v00303540_0, 0, 1;
+    %end;
+    .scope S_002E0D70;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\COMPUTAÇAO  2011 2º SEMESTRE\A. C.  I\Milton teles 2751\extra_01.v";

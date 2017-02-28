@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00892D48 .scope module, "testandgate" "testandgate" 2 14;
+ .timescale 0 0;
+v00893218_0 .var "a", 0 0;
+v00893270_0 .var "b", 0 0;
+v008932C8_0 .net "s", 0 0, L_0089E7F8; 1 drivers
+S_0089E6C0 .scope module, "AND1" "andgate" 2 22, 2 7, S_00892D48;
+ .timescale 0 0;
+L_0089E7F8 .functor AND 1, v00893218_0, v00893270_0, C4<1>, C4<1>;
+v0089E748_0 .net "p", 0 0, v00893218_0; 1 drivers
+v0089E7A0_0 .net "q", 0 0, v00893270_0; 1 drivers
+v0089FF50_0 .alias "s", 0 0, v008932C8_0;
+S_00892DD0 .scope begin, "start" "start" 2 24, 2 24, S_00892D48;
+ .timescale 0 0;
+    .scope S_00892D48;
+T_0 ;
+    %fork t_1, S_00892DD0;
+    %jmp t_0;
+    .scope S_00892DD0;
+t_1 ;
+    %set/v v00893218_0, 0, 1;
+    %set/v v00893270_0, 0, 1;
+    %end;
+    .scope S_00892D48;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00892D48;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo 0003 - Luiz Henrique da Costa Silva - 449800";
+    %vpi_call 2 31 "$display", "Test AND gate:";
+    %vpi_call 2 32 "$display", "\012a & b = s\012";
+    %set/v v00893218_0, 0, 1;
+    %set/v v00893270_0, 0, 1;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v00893218_0, v00893270_0, v008932C8_0;
+    %set/v v00893218_0, 0, 1;
+    %set/v v00893270_0, 1, 1;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v00893218_0, v00893270_0, v008932C8_0;
+    %set/v v00893218_0, 1, 1;
+    %set/v v00893270_0, 0, 1;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00893218_0, v00893270_0, v008932C8_0;
+    %set/v v00893218_0, 1, 1;
+    %set/v v00893270_0, 1, 1;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00893218_0, v00893270_0, v008932C8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Dropbox\note to PC\PUC Minas\2º Período\Arquitetura de Computadores I\Atividades feitas\Guia01\Exemplo0003.v";

@@ -1,0 +1,53 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B8E1F0 .scope module, "testnotg1" "testnotg1" 2 15;
+ .timescale 0 0;
+v00B8DE70_0 .var "a", 7 0;
+v00B8DEC8_0 .var "q", 7 0;
+v00B8DF20_0 .net "s", 7 0, L_00B8DF78; 1 drivers
+S_00B83B90 .scope module, "NOT1" "notg1" 2 20, 2 9, S_00B8E1F0;
+ .timescale 0 0;
+L_00B83C18 .functor NOT 8, v00B8DE70_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v00B8E278_0 .net *"_s0", 7 0, L_00B83C18; 1 drivers
+v00B82D20_0 .net "p", 7 0, v00B8DE70_0; 1 drivers
+v00B82D78_0 .net "q", 7 0, v00B8DEC8_0; 1 drivers
+v00B82DD0_0 .alias "s", 7 0, v00B8DF20_0;
+L_00B8DF78 .arith/sum 8, L_00B83C18, v00B8DEC8_0;
+S_00B83B08 .scope begin, "start" "start" 2 22, 2 22, S_00B8E1F0;
+ .timescale 0 0;
+    .scope S_00B8E1F0;
+T_0 ;
+    %fork t_1, S_00B83B08;
+    %jmp t_0;
+    .scope S_00B83B08;
+t_1 ;
+    %movi 8, 2, 8;
+    %set/v v00B8DE70_0, 8, 8;
+    %movi 8, 1, 8;
+    %set/v v00B8DEC8_0, 8, 8;
+    %end;
+    .scope S_00B8E1F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00B8E1F0;
+T_1 ;
+    %vpi_call 2 31 "$display", "Exemplo07 - Lucas Ranieri - 451594";
+    %vpi_call 2 32 "$display", "Test number system";
+    %movi 8, 2, 8;
+    %set/v v00B8DE70_0, 8, 8;
+    %movi 8, 1, 8;
+    %set/v v00B8DEC8_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "~%b + %b = %b", v00B8DE70_0, v00B8DEC8_0, v00B8DF20_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Lucas\Documents\Guia0001\Guia02\Exercício07.vhdl";

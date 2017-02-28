@@ -1,0 +1,28 @@
+//Exercicio07
+//Samuel Eusebio da Silva - 435055
+//C050 = dado1 - C052 = dado 2 - C053 = dado3
+
+LDA C050    
+MVI B,02   
+CONTINUAR :  SUB B
+INR L
+JNC CONTINUAR
+DCR L
+MOV A,L
+STA C051
+//Fim divisao por dois
+LDA C052
+CONTINUAR2 :  SUB B
+JZ PAR
+JNC CONTINUAR2
+PAR: MVI L,01
+MOV A,L
+JMP FIM
+PAR: MVI L,00
+MOV A,L
+FIM: 
+MOV L,A
+LDA C051
+ADD L
+STA C053
+HLT

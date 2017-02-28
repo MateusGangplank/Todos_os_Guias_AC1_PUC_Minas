@@ -1,0 +1,63 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E8880 .scope module, "TesteExercicio04MEIASOMA" "TesteExercicio04MEIASOMA" 2 28;
+ .timescale 0 0;
+v005FAEF8_0 .var "a", 0 0;
+v005FAF50_0 .var "b", 0 0;
+v005FAFA8_0 .net "carry", 0 0, L_005FB0F0; 1 drivers
+v005FB008_0 .net "soma", 0 0, L_005FB4B0; 1 drivers
+S_003E8908 .scope module, "MEIASOMA1" "Exercicio04MEIASOMA" 2 33, 2 11, S_003E8880;
+ .timescale 0 0;
+L_005FB060 .functor NOR 1, v005FAEF8_0, v005FAF50_0, C4<0>, C4<0>;
+L_005FB128 .functor NOR 1, L_005FB060, L_005FB060, C4<0>, C4<0>;
+L_005FB198 .functor NOR 1, L_005FB128, L_005FB128, C4<0>, C4<0>;
+L_005FB208 .functor NOR 1, v005FAEF8_0, v005FAEF8_0, C4<0>, C4<0>;
+L_005FB0B8 .functor NOR 1, v005FAF50_0, v005FAF50_0, C4<0>, C4<0>;
+L_005FB0F0 .functor NOR 1, L_005FB208, L_005FB0B8, C4<0>, C4<0>;
+L_005FB3D8 .functor NOR 1, L_005FB0F0, L_005FB0F0, C4<0>, C4<0>;
+L_005FB330 .functor NOR 1, L_005FB3D8, L_005FB3D8, C4<0>, C4<0>;
+L_005FB4B0 .functor NOR 1, L_005FB198, L_005FB330, C4<0>, C4<0>;
+v003E7050_0 .net "a", 0 0, v005FAEF8_0; 1 drivers
+v005FAA40_0 .net "b", 0 0, v005FAF50_0; 1 drivers
+v005FAAB0_0 .alias "carry", 0 0, v005FAFA8_0;
+v005FAB38_0 .alias "soma", 0 0, v005FB008_0;
+v005FABA8_0 .net "temp1", 0 0, L_005FB060; 1 drivers
+v005FAC00_0 .net "temp2", 0 0, L_005FB128; 1 drivers
+v005FAC70_0 .net "temp3", 0 0, L_005FB198; 1 drivers
+v005FAD08_0 .net "temp4", 0 0, L_005FB208; 1 drivers
+v005FAD78_0 .net "temp5", 0 0, L_005FB0B8; 1 drivers
+v005FAE18_0 .net "temp6", 0 0, L_005FB3D8; 1 drivers
+v005FAE88_0 .net "temp7", 0 0, L_005FB330; 1 drivers
+    .scope S_003E8880;
+T_0 ;
+    %set/v v005FAEF8_0, 0, 1;
+    %set/v v005FAF50_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003E8880;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", " Larissa Fernandes Leijoto - 410476 ";
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", " a | b | carry | soma ";
+    %vpi_call 2 43 "$monitor", " %b | %b |   %b   |  %b", v005FAEF8_0, v005FAF50_0, v005FAFA8_0, v005FB008_0;
+    %delay 1, 0;
+    %set/v v005FAEF8_0, 0, 1;
+    %set/v v005FAF50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FAEF8_0, 1, 1;
+    %set/v v005FAF50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FAEF8_0, 1, 1;
+    %set/v v005FAF50_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2º periodo\Arquitetura de computadores\guia_03\guia03exercicio04extra.v";

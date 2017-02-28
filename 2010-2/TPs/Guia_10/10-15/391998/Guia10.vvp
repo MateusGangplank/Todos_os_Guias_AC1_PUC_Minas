@@ -1,0 +1,180 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067C360 .scope module, "test" "test" 2 71;
+ .timescale 0 0;
+v006B42E8_0 .var "cl1", 0 0;
+v006B4340_0 .var "cl2", 0 0;
+v006B4398_0 .var "d1", 0 0;
+v006B43F0_0 .var "d2", 0 0;
+v006B4448_0 .net "p1", 0 0, L_0067E708; 1 drivers
+v006B44A0_0 .net "p2", 0 0, L_006B49E8; 1 drivers
+v006B44F8_0 .net "p3", 0 0, L_006B4C18; 1 drivers
+v006B4578_0 .net "p4", 0 0, L_006B4E10; 1 drivers
+v006B45D0_0 .var "pr1", 0 0;
+v006B4628_0 .var "pr2", 0 0;
+v006B4680_0 .net "q1", 0 0, L_006B4978; 1 drivers
+v006B46D8_0 .net "q2", 0 0, L_006B4B00; 1 drivers
+v006B4730_0 .net "q3", 0 0, L_006B4CF8; 1 drivers
+v006B4788_0 .net "q4", 0 0, L_006B4EB8; 1 drivers
+v006B47E0_0 .var "r1", 0 0;
+v006B4838_0 .var "r2", 0 0;
+v006B4890_0 .var "s1", 0 0;
+v006B48E8_0 .var "s2", 0 0;
+S_006B4090 .scope module, "EX1" "ex01" 2 75, 2 6, S_0067C360;
+ .timescale 0 0;
+L_0067E708 .functor NOR 1, v006B4890_0, L_006B4978, C4<0>, C4<0>;
+L_006B4978 .functor NOR 1, v006B47E0_0, L_0067E708, C4<0>, C4<0>;
+v006B4110_0 .alias "p", 0 0, v006B4448_0;
+v006B4180_0 .alias "q", 0 0, v006B4680_0;
+v006B41F0_0 .net "r", 0 0, v006B47E0_0; 1 drivers
+v006B4278_0 .net "s", 0 0, v006B4890_0; 1 drivers
+S_0067CEE0 .scope module, "EX2" "ex02" 2 76, 2 21, S_0067C360;
+ .timescale 0 0;
+L_006B49E8 .functor NAND 1, v006B45D0_0, v006B48E8_0, L_006B4B00, C4<1>;
+L_006B4B00 .functor NAND 1, v006B42E8_0, v006B4838_0, L_006B49E8, C4<1>;
+v006B3DF0_0 .net "cl", 0 0, v006B42E8_0; 1 drivers
+v006B3E60_0 .alias "p", 0 0, v006B44A0_0;
+v006B3ED0_0 .net "pr", 0 0, v006B45D0_0; 1 drivers
+v006B3F58_0 .alias "q", 0 0, v006B46D8_0;
+v006B3FC8_0 .net "r", 0 0, v006B4838_0; 1 drivers
+v006B4020_0 .net "s", 0 0, v006B48E8_0; 1 drivers
+S_0067C9E0 .scope module, "EX3" "ex03" 2 77, 2 36, S_0067C360;
+ .timescale 0 0;
+L_006B4BA8 .functor NOT 1, v006B4398_0, C4<0>, C4<0>, C4<0>;
+L_006B4C18 .functor NAND 1, v006B4628_0, v006B4398_0, L_006B4CF8, C4<1>;
+L_006B4CF8 .functor NAND 1, v006B4340_0, L_006B4BA8, L_006B4C18, C4<1>;
+v006B3B50_0 .net "cl", 0 0, v006B4340_0; 1 drivers
+v006B3BC0_0 .net "d", 0 0, v006B4398_0; 1 drivers
+v006B3C30_0 .net "nd", 0 0, L_006B4BA8; 1 drivers
+v006B3CB8_0 .alias "p", 0 0, v006B44F8_0;
+v006B3D28_0 .net "pr", 0 0, v006B4628_0; 1 drivers
+v006B3D80_0 .alias "q", 0 0, v006B4730_0;
+S_0067CA80 .scope module, "EX5" "ex05" 2 78, 2 53, S_0067C360;
+ .timescale 0 0;
+L_006B4DA0 .functor NOT 1, v006B43F0_0, C4<0>, C4<0>, C4<0>;
+L_006B4E10 .functor NOR 1, v006B43F0_0, L_006B4EB8, C4<0>, C4<0>;
+L_006B4EB8 .functor NOR 1, L_006B4DA0, L_006B4E10, C4<0>, C4<0>;
+v0067C400_0 .net "d", 0 0, v006B43F0_0; 1 drivers
+v006B39E8_0 .net "nd", 0 0, L_006B4DA0; 1 drivers
+v006B3A58_0 .alias "p", 0 0, v006B4578_0;
+v006B3AE0_0 .alias "q", 0 0, v006B4788_0;
+    .scope S_0067C360;
+T_0 ;
+    %set/v v006B47E0_0, 0, 1;
+    %set/v v006B4890_0, 0, 1;
+    %vpi_call 2 82 "$display", "Andre Sulivam 391998\012";
+    %vpi_call 2 83 "$display", "Guia 10 Ex01";
+    %vpi_call 2 84 "$monitor", "r = %b; s = %b: Q' = %b; Q = %b", v006B47E0_0, v006B4890_0, v006B4448_0, v006B4680_0;
+    %delay 1, 0;
+    %set/v v006B47E0_0, 1, 1;
+    %set/v v006B4890_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B47E0_0, 0, 1;
+    %set/v v006B4890_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B47E0_0, 0, 1;
+    %set/v v006B4890_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B47E0_0, 0, 1;
+    %set/v v006B4890_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B47E0_0, 1, 1;
+    %set/v v006B4890_0, 0, 1;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 0, 1;
+    %set/v v006B45D0_0, 0, 1;
+    %vpi_call 2 92 "$display", "";
+    %vpi_call 2 93 "$display", "Guia 10 Ex 02 e Ex 04";
+    %vpi_call 2 94 "$monitor", "r = %b; s = %b; Clear = %b; Preset = %b: Q' = %b; Q = %b", v006B4838_0, v006B48E8_0, v006B42E8_0, v006B45D0_0, v006B44A0_0, v006B46D8_0;
+    %delay 1, 0;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 0, 1;
+    %set/v v006B45D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 0, 1;
+    %set/v v006B45D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 1, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 1, 1;
+    %set/v v006B45D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 1, 1;
+    %set/v v006B45D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 1, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 1, 1;
+    %set/v v006B45D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 1, 1;
+    %set/v v006B42E8_0, 1, 1;
+    %set/v v006B45D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 1, 1;
+    %set/v v006B42E8_0, 1, 1;
+    %set/v v006B45D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B4838_0, 0, 1;
+    %set/v v006B48E8_0, 0, 1;
+    %set/v v006B42E8_0, 1, 1;
+    %set/v v006B45D0_0, 1, 1;
+    %set/v v006B4398_0, 0, 1;
+    %set/v v006B4340_0, 0, 1;
+    %set/v v006B4628_0, 0, 1;
+    %vpi_call 2 105 "$display", "";
+    %vpi_call 2 106 "$display", "Guia 10 Ex 03";
+    %vpi_call 2 107 "$monitor", "d = %b; Clear = %b: Preset = %b: Q' = %b; Q = %b", v006B4398_0, v006B4340_0, v006B4628_0, v006B44F8_0, v006B4730_0;
+    %delay 1, 0;
+    %set/v v006B4398_0, 1, 1;
+    %set/v v006B4340_0, 0, 1;
+    %set/v v006B4628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4398_0, 0, 1;
+    %set/v v006B4340_0, 1, 1;
+    %set/v v006B4628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4398_0, 1, 1;
+    %set/v v006B4340_0, 1, 1;
+    %set/v v006B4628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B4398_0, 0, 1;
+    %set/v v006B4340_0, 0, 1;
+    %set/v v006B4628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B4398_0, 1, 1;
+    %set/v v006B4340_0, 0, 1;
+    %set/v v006B4628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B4398_0, 1, 1;
+    %set/v v006B4340_0, 1, 1;
+    %set/v v006B4628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B4398_0, 0, 1;
+    %set/v v006B4340_0, 1, 1;
+    %set/v v006B4628_0, 1, 1;
+    %set/v v006B43F0_0, 0, 1;
+    %vpi_call 2 118 "$display", "";
+    %vpi_call 2 119 "$display", "Guia 10 Ex 05";
+    %vpi_call 2 120 "$monitor", "d = %b: Q' = %b; Q = %b", v006B43F0_0, v006B4578_0, v006B4788_0;
+    %delay 1, 0;
+    %set/v v006B43F0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\391998\Guia 10\Guia10.v";

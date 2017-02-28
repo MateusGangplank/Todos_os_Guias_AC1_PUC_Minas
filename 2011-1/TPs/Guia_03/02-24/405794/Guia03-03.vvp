@@ -1,0 +1,61 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EFC20 .scope module, "testeexercicio03" "testeexercicio03" 2 10;
+ .timescale 0 0;
+L_003EE140 .functor NAND 1, v003EFCA0_0, v003EFCA0_0, C4<1>, C4<1>;
+L_006A4148 .functor NAND 1, v006A3AE8_0, v006A3AE8_0, C4<1>, C4<1>;
+L_006A41B8 .functor NAND 1, v003EFCA0_0, L_006A4148, C4<1>, C4<1>;
+L_006A4228 .functor NAND 1, L_003EE140, v006A3AE8_0, C4<1>, C4<1>;
+L_006A4298 .functor NAND 1, L_006A41B8, L_006A41B8, C4<1>, C4<1>;
+L_006A4308 .functor NAND 1, L_006A4228, L_006A4228, C4<1>, C4<1>;
+L_006A4378 .functor NAND 1, L_006A4298, L_006A4308, C4<1>, C4<1>;
+L_006A4420 .functor NAND 1, L_006A4298, L_006A4378, C4<1>, C4<1>;
+L_006A4490 .functor NAND 1, L_006A4308, L_006A4378, C4<1>, C4<1>;
+L_006A44C8 .functor NAND 1, L_006A4490, L_006A4420, C4<1>, C4<1>;
+L_006A4570 .functor NAND 1, L_006A4610, v006A3AE8_0, C4<1>, C4<1>;
+L_006A4610 .functor NAND 1, v003EFCA0_0, v003EFCA0_0, C4<1>, C4<1>;
+L_003EE108 .functor NAND 1, L_006A4570, L_006A4570, C4<1>, C4<1>;
+v003EFCA0_0 .var "a", 0 0;
+v006A3AE8_0 .var "b", 0 0;
+v006A3B58_0 .net "c0", 0 0, L_003EE108; 1 drivers
+v006A3BE0_0 .net "cnot", 0 0, L_006A4610; 1 drivers
+v006A3C50_0 .net "n0", 0 0, L_006A4570; 1 drivers
+v006A3CA8_0 .net "nand4", 0 0, L_006A4298; 1 drivers
+v006A3D18_0 .net "nand5", 0 0, L_006A4308; 1 drivers
+v006A3DB0_0 .net "notA", 0 0, L_003EE140; 1 drivers
+v006A3E20_0 .net "notB", 0 0, L_006A4148; 1 drivers
+v006A3E90_0 .net "s", 0 0, L_006A44C8; 1 drivers
+v006A3F00_0 .net "s0", 0 0, L_006A4490; 1 drivers
+v006A3F70_0 .net "s1", 0 0, L_006A4420; 1 drivers
+v006A3FE0_0 .net "s2", 0 0, L_006A4378; 1 drivers
+v006A4050_0 .net "sand", 0 0, L_006A41B8; 1 drivers
+v006A40C0_0 .net "snot", 0 0, L_006A4228; 1 drivers
+    .scope S_003EFC20;
+T_0 ;
+    %vpi_call 2 31 "$display", "Guia03 - 03 - Caio Ragacci Pimentel - 405794";
+    %vpi_call 2 32 "$display", " MEIO SUBTRATOR.";
+    %vpi_call 2 33 "$display", "\012A  -  B  =  C  S";
+    %set/v v003EFCA0_0, 0, 1;
+    %set/v v006A3AE8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$monitor", " %b  -  %b  =  %b  %b", v003EFCA0_0, v006A3AE8_0, v006A3B58_0, v006A3E90_0;
+    %delay 1, 0;
+    %set/v v003EFCA0_0, 0, 1;
+    %set/v v006A3AE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003EFCA0_0, 1, 1;
+    %set/v v006A3AE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003EFCA0_0, 1, 1;
+    %set/v v006A3AE8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_03\Guia03-03.v";

@@ -1,0 +1,211 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00369DE8 .scope module, "test_f4selectable" "test_f4selectable" 2 32;
+ .timescale 0 0;
+v005DB3C8_0 .var "a", 1 0;
+v005DB420_0 .var "b", 1 0;
+v005DB478_0 .var "chave", 0 0;
+v005DB4D0_0 .net "s", 1 0, v0036D420_0; 1 drivers
+RS_005B2FD4 .resolv tri, L_005DB5D8, L_005DB6E0, C4<zz>, C4<zz>;
+v005DB528_0 .net8 "w0", 1 0, RS_005B2FD4; 2 drivers
+RS_005B2FEC .resolv tri, L_005DB7E8, L_005DB8F0, C4<zz>, C4<zz>;
+v005DB580_0 .net8 "w1", 1 0, RS_005B2FEC; 2 drivers
+S_00369EF8 .scope module, "f4s1" "f4selectable" 2 42, 2 8, S_00369DE8;
+ .timescale 0 0;
+L_005AD288 .functor OR 1, L_005DB630, L_005DB688, C4<0>, C4<0>;
+L_005AD218 .functor OR 1, L_005DB738, L_005DB790, C4<0>, C4<0>;
+L_005AD480 .functor AND 1, L_005DB840, L_005DB898, C4<1>, C4<1>;
+L_005AD250 .functor AND 1, L_005DB948, L_005DB9A0, C4<1>, C4<1>;
+v00362CD8_0 .net *"_s0", 0 0, L_005AD288; 1 drivers
+v00362D30_0 .net *"_s11", 0 0, L_005DB790; 1 drivers
+v00362D88_0 .net *"_s12", 0 0, L_005AD480; 1 drivers
+v0036CE08_0 .net *"_s15", 0 0, L_005DB840; 1 drivers
+v0036CE60_0 .net *"_s17", 0 0, L_005DB898; 1 drivers
+v005DB000_0 .net *"_s18", 0 0, L_005AD250; 1 drivers
+v005DB058_0 .net *"_s21", 0 0, L_005DB948; 1 drivers
+v005DB0B0_0 .net *"_s23", 0 0, L_005DB9A0; 1 drivers
+v005DB108_0 .net *"_s3", 0 0, L_005DB630; 1 drivers
+v005DB160_0 .net *"_s5", 0 0, L_005DB688; 1 drivers
+v005DB1B8_0 .net *"_s6", 0 0, L_005AD218; 1 drivers
+v005DB210_0 .net *"_s9", 0 0, L_005DB738; 1 drivers
+v005DB268_0 .net "a", 1 0, v005DB3C8_0; 1 drivers
+v005DB2C0_0 .net "b", 1 0, v005DB420_0; 1 drivers
+v005DB318_0 .alias "s0", 1 0, v005DB528_0;
+v005DB370_0 .alias "s1", 1 0, v005DB580_0;
+L_005DB5D8 .part/pv L_005AD288, 0, 1, 2;
+L_005DB630 .part v005DB3C8_0, 0, 1;
+L_005DB688 .part v005DB420_0, 0, 1;
+L_005DB6E0 .part/pv L_005AD218, 1, 1, 2;
+L_005DB738 .part v005DB3C8_0, 1, 1;
+L_005DB790 .part v005DB420_0, 1, 1;
+L_005DB7E8 .part/pv L_005AD480, 0, 1, 2;
+L_005DB840 .part v005DB3C8_0, 0, 1;
+L_005DB898 .part v005DB420_0, 0, 1;
+L_005DB8F0 .part/pv L_005AD250, 1, 1, 2;
+L_005DB948 .part v005DB3C8_0, 1, 1;
+L_005DB9A0 .part v005DB420_0, 1, 1;
+S_00369E70 .scope module, "chave1" "chave" 2 43, 2 15, S_00369DE8;
+ .timescale 0 0;
+v0036D370_0 .alias "a", 1 0, v005DB528_0;
+v0036D3C8_0 .alias "b", 1 0, v005DB580_0;
+v0036D420_0 .var "s", 1 0;
+v00362C80_0 .net "sinal", 0 0, v005DB478_0; 1 drivers
+E_00364128 .event edge, v00362C80_0, v0036D3C8_0, v0036D370_0;
+    .scope S_00369E70;
+T_0 ;
+    %wait E_00364128;
+    %load/v 8, v00362C80_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v0036D370_0, 2;
+    %set/v v0036D420_0, 8, 2;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0036D3C8_0, 2;
+    %set/v v0036D420_0, 8, 2;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_00369DE8;
+T_1 ;
+    %set/v v005DB3C8_0, 0, 2;
+    %set/v v005DB420_0, 0, 2;
+    %set/v v005DB478_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_00369DE8;
+T_2 ;
+    %vpi_call 2 54 "$display", "Exemplo0032 - Julio Machado - 435666";
+    %vpi_call 2 55 "$display", "LU selectable - running tests -(0):or,(1):and";
+    %vpi_call 2 56 "$display", "\012chave\011 a   (| ou &)   b = s";
+    %vpi_call 2 57 "$monitor", "%b\011 %4b or/and %4b = %4b", v005DB478_0, v005DB3C8_0, v005DB420_0, v005DB4D0_0;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB3C8_0, 0, 2;
+    %movi 8, 1, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB420_0, 1, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005DB3C8_0, 8, 2;
+    %set/v v005DB420_0, 0, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB420_0, 1, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005DB3C8_0, 8, 2;
+    %set/v v005DB420_0, 0, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB420_0, 1, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB3C8_0, 1, 2;
+    %set/v v005DB420_0, 0, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005DB420_0, 8, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DB420_0, 1, 2;
+    %set/v v005DB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DB478_0, 1, 1;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0032.v";

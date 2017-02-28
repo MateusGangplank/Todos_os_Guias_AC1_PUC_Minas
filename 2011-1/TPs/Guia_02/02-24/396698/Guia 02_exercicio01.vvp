@@ -1,0 +1,84 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00715150 .scope module, "testorgate" "testorgate" 2 40;
+ .timescale 0 0;
+v0074AC90_0 .var "a", 0 0;
+v0074ACE8_0 .var "b", 0 0;
+v0074AD40_0 .net "s", 0 0, L_0074BAE8; 1 drivers
+S_007153D0 .scope module, "OR1" "orgate" 2 44, 2 24, S_00715150;
+ .timescale 0 0;
+v0074AAD8_0 .net "p", 0 0, v0074AC90_0; 1 drivers
+v0074AB30_0 .net "q", 0 0, v0074ACE8_0; 1 drivers
+v0074AB88_0 .alias "s0", 0 0, v0074AD40_0;
+v0074ABE0_0 .net "s1", 0 0, L_007175F8; 1 drivers
+v0074AC38_0 .net "s2", 0 0, L_00717630; 1 drivers
+S_00715550 .scope module, "NAND1" "nandgate" 2 29, 2 11, S_007153D0;
+ .timescale 0 0;
+L_00717710 .functor AND 1, v0074AC90_0, v0074AC90_0, C4<1>, C4<1>;
+L_007175F8 .functor NOT 1, L_00717710, C4<0>, C4<0>, C4<0>;
+v006CE568_0 .net *"_s0", 0 0, L_00717710; 1 drivers
+v006CE5C0_0 .alias "p", 0 0, v0074AAD8_0;
+v007175A0_0 .alias "q", 0 0, v0074AAD8_0;
+v0074AA80_0 .alias "s", 0 0, v0074ABE0_0;
+S_007154D0 .scope module, "NAND2" "nandgate" 2 30, 2 11, S_007153D0;
+ .timescale 0 0;
+L_007177E8 .functor AND 1, v0074ACE8_0, v0074ACE8_0, C4<1>, C4<1>;
+L_00717630 .functor NOT 1, L_007177E8, C4<0>, C4<0>, C4<0>;
+v006CE070_0 .net *"_s0", 0 0, L_007177E8; 1 drivers
+v006CE0C8_0 .alias "p", 0 0, v0074AB30_0;
+v006CE4B8_0 .alias "q", 0 0, v0074AB30_0;
+v006CE510_0 .alias "s", 0 0, v0074AC38_0;
+S_00715450 .scope module, "NAND3" "nandgate" 2 31, 2 11, S_007153D0;
+ .timescale 0 0;
+L_007178C0 .functor AND 1, L_007175F8, L_00717630, C4<1>, C4<1>;
+L_0074BAE8 .functor NOT 1, L_007178C0, C4<0>, C4<0>, C4<0>;
+v00712D78_0 .net *"_s0", 0 0, L_007178C0; 1 drivers
+v00712DD0_0 .alias "p", 0 0, v0074ABE0_0;
+v006CDFC0_0 .alias "q", 0 0, v0074AC38_0;
+v006CE018_0 .alias "s", 0 0, v0074AD40_0;
+S_00715350 .scope begin, "start" "start" 2 46, 2 46, S_00715150;
+ .timescale 0 0;
+S_00715250 .scope begin, "main" "main" 2 51, 2 51, S_00715150;
+ .timescale 0 0;
+    .scope S_00715150;
+T_0 ;
+    %fork t_1, S_00715350;
+    %jmp t_0;
+t_1 ;
+    %set/v v0074AC90_0, 0, 1;
+    %set/v v0074ACE8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00715150;
+T_1 ;
+    %fork t_3, S_00715250;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 52 "$display", "Guia 02_01 - Heitor Terozendi - 396698";
+    %vpi_call 2 53 "$display", "Test OR gate";
+    %vpi_call 2 54 "$display", "\012~(~a & ~b) = s\012";
+    %vpi_call 2 55 "$monitor", "~(~%b & ~%b) = %b", v0074AC90_0, v0074ACE8_0, v0074AD40_0;
+    %delay 1, 0;
+    %set/v v0074AC90_0, 0, 1;
+    %set/v v0074ACE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0074AC90_0, 1, 1;
+    %set/v v0074ACE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0074AC90_0, 1, 1;
+    %set/v v0074ACE8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Heitor\Desktop\ARQ I\Guias\Guia 2\Guia 02_01.v";

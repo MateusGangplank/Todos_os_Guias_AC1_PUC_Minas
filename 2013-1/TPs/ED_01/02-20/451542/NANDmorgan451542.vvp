@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C12BD8 .scope module, "testnandmorgangate" "testnandmorgangate" 2 13;
+ .timescale 0 0;
+v00C1E2A0_0 .var "a", 0 0;
+v00C1E2F8_0 .var "b", 0 0;
+v00C1FC40_0 .net "s", 0 0, L_00C1FCD0; 1 drivers
+S_00C130E8 .scope module, "NANDMORGAN1" "nandmorgangate" 2 18, 2 6, S_00C12BD8;
+ .timescale 0 0;
+L_00C13220 .functor NOT 1, v00C1E2A0_0, C4<0>, C4<0>, C4<0>;
+L_00C12CE8 .functor NOT 1, v00C1E2F8_0, C4<0>, C4<0>, C4<0>;
+L_00C1FCD0 .functor OR 1, L_00C13220, L_00C12CE8, C4<0>, C4<0>;
+v00C13170_0 .net *"_s0", 0 0, L_00C13220; 1 drivers
+v00C131C8_0 .net *"_s2", 0 0, L_00C12CE8; 1 drivers
+v00C1E198_0 .net "p", 0 0, v00C1E2A0_0; 1 drivers
+v00C1E1F0_0 .net "q", 0 0, v00C1E2F8_0; 1 drivers
+v00C1E248_0 .alias "s", 0 0, v00C1FC40_0;
+S_00C12C60 .scope begin, "start" "start" 2 20, 2 20, S_00C12BD8;
+ .timescale 0 0;
+    .scope S_00C12BD8;
+T_0 ;
+    %fork t_1, S_00C12C60;
+    %jmp t_0;
+    .scope S_00C12C60;
+t_1 ;
+    %set/v v00C1E2A0_0, 0, 1;
+    %set/v v00C1E2F8_0, 0, 1;
+    %end;
+    .scope S_00C12BD8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00C12BD8;
+T_1 ;
+    %vpi_call 2 25 "$display", "Bernardo MP Olimpio - 451542";
+    %vpi_call 2 26 "$display", "Test NAND MORGAN gate";
+    %set/v v00C1E2A0_0, 0, 1;
+    %set/v v00C1E2F8_0, 0, 1;
+    %vpi_call 2 29 "$monitor", "~%b | %b = %b", v00C1E2A0_0, v00C1E2F8_0, v00C1FC40_0;
+    %delay 1, 0;
+    %set/v v00C1E2A0_0, 0, 1;
+    %set/v v00C1E2F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00C1E2A0_0, 0, 1;
+    %set/v v00C1E2F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00C1E2A0_0, 1, 1;
+    %set/v v00C1E2F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00C1E2A0_0, 1, 1;
+    %set/v v00C1E2F8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Bernardo\Desktop\Arquitetura de Computadores\TP1\NANDmorgan451542.v";

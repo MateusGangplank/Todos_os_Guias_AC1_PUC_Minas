@@ -1,0 +1,53 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E5F28 .scope module, "test_base_01" "test_base_01" 2 13;
+ .timescale 0 0;
+v005F9D78_0 .var "a", 7 0;
+v005F9DD0_0 .net "s", 7 0, L_005FA140; 1 drivers
+S_003E5FB0 .scope module, "c2" "complementoDeDois" 2 18, 2 6, S_003E5F28;
+ .timescale 0 0;
+L_005F9EB0 .functor NOT 9, L_005F9E28, C4<000000000>, C4<000000000>, C4<000000000>;
+v003E4F08_0 .net *"_s0", 8 0, L_005F9E28; 1 drivers
+v005F99A0_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v005F9A10_0 .net *"_s11", 31 0, L_005F9F60; 1 drivers
+v005F9A98_0 .net *"_s12", 31 0, L_005FA078; 1 drivers
+v005F9B08_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v005F9B60_0 .net *"_s4", 8 0, L_005F9EB0; 1 drivers
+v005F9BD0_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v005F9C68_0 .net "p", 7 0, v005F9D78_0; 1 drivers
+v005F9CD8_0 .alias "s", 7 0, v005F9DD0_0;
+L_005F9E28 .concat [ 8 1 0 0], v005F9D78_0, C4<0>;
+L_005F9F60 .concat [ 9 23 0 0], L_005F9EB0, C4<00000000000000000000000>;
+L_005FA078 .arith/sum 32, L_005F9F60, C4<00000000000000000000000000000001>;
+L_005FA140 .part L_005FA078, 0, 8;
+    .scope S_003E5F28;
+T_0 ;
+    %movi 8, 39, 8;
+    %set/v v005F9D78_0, 8, 8;
+    %end;
+    .thread T_0;
+    .scope S_003E5F28;
+T_1 ;
+    %vpi_call 2 28 "$display", "Extra07 - Debora Amaral Chaves - 437659";
+    %vpi_call 2 29 "$display", "Complementos de 2 ";
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "Complemento de 2 de %b(2) = %b(2)", v005F9D78_0, v005F9DD0_0;
+    %delay 1, 0;
+    %movi 8, 53, 8;
+    %set/v v005F9D78_0, 8, 8;
+    %vpi_call 2 35 "$display", "Complemento de 2 de %b(2) = %b(2)", v005F9D78_0, v005F9DD0_0;
+    %delay 1, 0;
+    %movi 8, 20, 8;
+    %set/v v005F9D78_0, 8, 8;
+    %vpi_call 2 38 "$display", "Complemento de 2 de %b(2) = %b(2)", v005F9D78_0, v005F9DD0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PenDrive\PUC\2periodo\AC\Guia02\Extra07.V";

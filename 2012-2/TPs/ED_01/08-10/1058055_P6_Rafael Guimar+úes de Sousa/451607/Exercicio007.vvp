@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0073E040 .scope module, "testeXnor" "testeXnor" 2 11;
+ .timescale 0 0;
+v005AF1A8_0 .var "a", 0 0;
+v005AF200_0 .var "b", 0 0;
+v005AF258_0 .net "s", 0 0, L_005AF438; 1 drivers
+S_0073EE30 .scope module, "XNO1" "xnorgate" 2 16, 2 7, S_0073E040;
+ .timescale 0 0;
+L_005A9B70 .functor AND 1, v005AF1A8_0, v005AF200_0, C4<1>, C4<1>;
+L_005AF320 .functor NOT 1, v005AF1A8_0, C4<0>, C4<0>, C4<0>;
+L_005AF358 .functor NOT 1, v005AF200_0, C4<0>, C4<0>, C4<0>;
+L_005AF390 .functor AND 1, L_005AF320, L_005AF358, C4<1>, C4<1>;
+L_005AF438 .functor OR 1, L_005A9B70, L_005AF390, C4<0>, C4<0>;
+v005A95D0_0 .net *"_s0", 0 0, L_005A9B70; 1 drivers
+v0073E150_0 .net *"_s2", 0 0, L_005AF320; 1 drivers
+v0073EEB8_0 .net *"_s4", 0 0, L_005AF358; 1 drivers
+v005AF048_0 .net *"_s6", 0 0, L_005AF390; 1 drivers
+v005AF0A0_0 .net "a", 0 0, v005AF1A8_0; 1 drivers
+v005AF0F8_0 .net "b", 0 0, v005AF200_0; 1 drivers
+v005AF150_0 .alias "s", 0 0, v005AF258_0;
+S_0073EDA8 .scope begin, "start" "start" 2 18, 2 18, S_0073E040;
+ .timescale 0 0;
+S_0073E0C8 .scope begin, "main" "main" 2 25, 2 25, S_0073E040;
+ .timescale 0 0;
+    .scope S_0073E040;
+T_0 ;
+    %fork t_1, S_0073EDA8;
+    %jmp t_0;
+    .scope S_0073EDA8;
+t_1 ;
+    %set/v v005AF1A8_0, 0, 1;
+    %set/v v005AF200_0, 0, 1;
+    %end;
+    .scope S_0073E040;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0073E040;
+T_1 ;
+    %fork t_3, S_0073E0C8;
+    %jmp t_2;
+    .scope S_0073E0C8;
+t_3 ;
+    %vpi_call 2 26 "$display", "Exercicio 007 - Rafael Guimaraes de Sousa - 451607";
+    %vpi_call 2 27 "$display", "Test xnor:";
+    %vpi_call 2 28 "$monitor", "%d\011%b xnor %b = %b", $time, v005AF1A8_0, v005AF200_0, v005AF258_0;
+    %delay 1, 0;
+    %set/v v005AF1A8_0, 0, 1;
+    %set/v v005AF200_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AF1A8_0, 1, 1;
+    %set/v v005AF200_0, 0, 1;
+    %delay 2, 0;
+    %set/v v005AF1A8_0, 1, 1;
+    %set/v v005AF200_0, 1, 1;
+    %end;
+    .scope S_0073E040;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Documents\PUC\AC\Exercicios\Guia01\Exercicio007.v";

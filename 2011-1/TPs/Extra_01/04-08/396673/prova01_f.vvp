@@ -1,0 +1,135 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E9CF8 .scope module, "testes0algebra" "testes0algebra" 2 34;
+ .timescale 0 0;
+v00602860_0 .var "a", 0 0;
+v006028B8_0 .var "b", 0 0;
+v00602910_0 .var "c", 0 0;
+v00602968_0 .var "d", 0 0;
+v006029C0_0 .net "s0", 0 0, L_00602F68; 1 drivers
+S_003E9D80 .scope module, "Teste" "s0algebra" 2 39, 2 11, S_003E9CF8;
+ .timescale 0 0;
+L_003E6BB8 .functor XOR 1, v00602910_0, v00602968_0, C4<0>, C4<0>;
+L_00602A88 .functor XOR 1, v00602860_0, v00602910_0, C4<0>, C4<0>;
+L_00602AF8 .functor XOR 1, v00602860_0, v006028B8_0, C4<0>, C4<0>;
+L_00602B68 .functor XOR 1, v006028B8_0, v00602968_0, C4<0>, C4<0>;
+L_00602BA0 .functor AND 1, L_00602C10, L_00602AC0, L_003E6BB8, C4<1>;
+L_00602C10 .functor NOT 1, v00602860_0, C4<0>, C4<0>, C4<0>;
+L_00602AC0 .functor NOT 1, v006028B8_0, C4<0>, C4<0>, C4<0>;
+L_00602B30 .functor AND 1, L_00602A88, v006028B8_0, v00602968_0, C4<1>;
+L_00602A50 .functor AND 1, L_00602AF8, L_00602D90, L_00602A18, C4<1>;
+L_00602D90 .functor NOT 1, v00602910_0, C4<0>, C4<0>, C4<0>;
+L_00602A18 .functor NOT 1, v00602968_0, C4<0>, C4<0>, C4<0>;
+L_00602EF8 .functor AND 1, L_00602B68, v00602860_0, v00602910_0, C4<1>;
+L_00602F68 .functor OR 1, L_00602BA0, L_00602B30, L_00602A50, L_00602EF8;
+v003E9E08_0 .net *"_s0", 0 0, L_00602C10; 1 drivers
+v00602070_0 .net *"_s2", 0 0, L_00602AC0; 1 drivers
+v006020E0_0 .net *"_s4", 0 0, L_00602D90; 1 drivers
+v00602168_0 .net *"_s6", 0 0, L_00602A18; 1 drivers
+v006021D8_0 .net "a", 0 0, v00602860_0; 1 drivers
+v00602230_0 .net "b", 0 0, v006028B8_0; 1 drivers
+v006022A0_0 .net "c", 0 0, v00602910_0; 1 drivers
+v00602338_0 .net "d", 0 0, v00602968_0; 1 drivers
+v006023A8_0 .alias "s0", 0 0, v006029C0_0;
+v00602448_0 .net "t1", 0 0, L_003E6BB8; 1 drivers
+v006024B8_0 .net "t2", 0 0, L_00602A88; 1 drivers
+v00602528_0 .net "t3", 0 0, L_00602AF8; 1 drivers
+v00602598_0 .net "t4", 0 0, L_00602B68; 1 drivers
+v00602608_0 .net "t5", 0 0, L_00602BA0; 1 drivers
+v00602678_0 .net "t6", 0 0, L_00602B30; 1 drivers
+v00602730_0 .net "t7", 0 0, L_00602A50; 1 drivers
+v006027A0_0 .net "t8", 0 0, L_00602EF8; 1 drivers
+    .scope S_003E9CF8;
+T_0 ;
+    %vpi_call 2 42 "$display", "\012a  b   c   d  s0\012";
+    %vpi_call 2 43 "$monitor", "%b  %b   %b   %b  %b", v00602860_0, v006028B8_0, v00602910_0, v00602968_0, v006029C0_0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 0, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 0, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 0, 1;
+    %set/v v00602968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602860_0, 1, 1;
+    %set/v v006028B8_0, 1, 1;
+    %set/v v00602910_0, 1, 1;
+    %set/v v00602968_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Ciência da Computação\AC I - 2\Guias\Nova pasta\prova01_f.v";

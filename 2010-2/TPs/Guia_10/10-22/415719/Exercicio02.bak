@@ -1,0 +1,41 @@
+// ---------------------------
+// -- Exercicio02
+// -- Marcos Felipe Martins Silva
+// -- 415719
+// ---------------------------
+//-----------------
+//--Module SRlatch
+//-----------------
+module SRlatch ( qn, q, r, s );
+	input  r, s;
+	output qn, q;	
+
+	nand NAND1(q,s,qn);
+	nand NAND2(qn,r,q);
+endmodule
+
+//----------------------
+//--Test module SrLatch
+//----------------------
+
+module test;
+SRlatch srlatch (p1,q1,r1,s1);
+
+reg  r1, s1;
+wire p1, q1;
+
+  initial begin
+ 
+   $display("Exercicio 02");
+   $display("Marcos Felipe Martins Silva - 415719");
+   $display("\n Set b | Clear b | Q = b |Q = b\n");
+   $monitor("Set %b | Clear %b | Q = %b |Q = %b", s1,r1, q1, p1);
+           
+           s1 = 0; r1=0;
+        #1 s1 = 1; r1=0;
+        #1 s1 = 0; r1=1;
+        #1 s1 = 1; r1=1;
+
+
+end
+endmodule

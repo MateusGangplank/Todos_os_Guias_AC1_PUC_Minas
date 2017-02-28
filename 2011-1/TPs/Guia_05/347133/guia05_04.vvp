@@ -1,0 +1,218 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E89C8 .scope module, "testSC" "testSC" 2 45;
+ .timescale 0 0;
+v006054B0_0 .var "a", 2 0;
+v00605508_0 .var "b", 2 0;
+v00605560_0 .var/i "i", 31 0;
+v006055B8_0 .var/i "j", 31 0;
+RS_005E44EC .resolv tri, L_00605990, L_00606518, L_00607088, L_00607148;
+v00605628_0 .net8 "s", 3 0, RS_005E44EC; 4 drivers
+S_003E9BB8 .scope module, "SC3B" "SC3Bits" 2 50, 2 34, S_003E89C8;
+ .timescale 0 0;
+v006052D8_0 .net "a", 2 0, v006054B0_0; 1 drivers
+v00605348_0 .net "b", 2 0, v00605508_0; 1 drivers
+RS_005E44D4 .resolv tri, L_00605A58, L_00606570, C4<zz>, C4<zz>;
+v006053B8_0 .net8 "c", 1 0, RS_005E44D4; 2 drivers
+v00605440_0 .alias "s", 3 0, v00605628_0;
+L_00605990 .part/pv L_006058E8, 0, 1, 4;
+L_00605A58 .part/pv L_00605958, 0, 1, 2;
+L_00605AE8 .part v006054B0_0, 0, 1;
+L_00605B40 .part v00605508_0, 0, 1;
+L_00606518 .part/pv L_00606260, 1, 1, 4;
+L_00606570 .part/pv L_00606340, 1, 1, 2;
+L_00606638 .part v006054B0_0, 1, 1;
+L_006066B8 .part v00605508_0, 1, 1;
+L_00606710 .part RS_005E44D4, 0, 1;
+L_00607088 .part/pv L_00606DD0, 2, 1, 4;
+L_00607148 .part/pv L_00606EB0, 3, 1, 4;
+L_006071D8 .part v006054B0_0, 2, 1;
+L_00607298 .part v00605508_0, 2, 1;
+L_00607358 .part RS_005E44D4, 1, 1;
+S_00604E78 .scope module, "MD1" "operadorMS" 2 39, 2 4, S_003E9BB8;
+ .timescale 0 0;
+L_00605680 .functor NAND 1, L_00605AE8, L_00605AE8, C4<1>, C4<1>;
+L_006056F0 .functor NAND 1, L_00605B40, L_00605B40, C4<1>, C4<1>;
+L_00605760 .functor NAND 1, L_006056F0, L_00605680, C4<1>, C4<1>;
+L_00605808 .functor NAND 1, L_00605AE8, L_00605B40, C4<1>, C4<1>;
+L_00605840 .functor NAND 1, L_00605808, L_00605760, C4<1>, C4<1>;
+L_006058E8 .functor NAND 1, L_00605840, C4<1>, C4<1>, C4<1>;
+L_00605958 .functor NAND 1, L_00605808, C4<1>, C4<1>, C4<1>;
+v00604F00_0 .net "a", 0 0, L_00605AE8; 1 drivers
+v00604F58_0 .net "b", 0 0, L_00605B40; 1 drivers
+v00604FB0_0 .net "s0", 0 0, L_006058E8; 1 drivers
+v00605020_0 .net "s1", 0 0, L_00605958; 1 drivers
+v00605090_0 .net "s2", 0 0, L_00605840; 1 drivers
+v006050E8_0 .net "s3", 0 0, L_00605808; 1 drivers
+v00605158_0 .net "s4", 0 0, L_00605760; 1 drivers
+v006051C8_0 .net "s5", 0 0, L_006056F0; 1 drivers
+v00605238_0 .net "s6", 0 0, L_00605680; 1 drivers
+S_00604140 .scope module, "SC1" "operadorSC" 2 40, 2 20, S_003E9BB8;
+ .timescale 0 0;
+L_006063A0 .functor NAND 1, L_00605F38, L_00605F38, C4<1>, C4<1>;
+L_00605F70 .functor NAND 1, L_00606308, L_00606308, C4<1>, C4<1>;
+L_00606340 .functor NAND 1, L_006063A0, L_00605F70, C4<1>, C4<1>;
+v00604AA0_0 .net "a", 0 0, L_00606638; 1 drivers
+v00604AF8_0 .net "b", 0 0, L_006066B8; 1 drivers
+v00604B50_0 .net "c", 0 0, L_00606710; 1 drivers
+v00604BA8_0 .net "s0", 0 0, L_00606260; 1 drivers
+v00604C00_0 .net "s1", 0 0, L_00606340; 1 drivers
+v00604C58_0 .net "s2", 0 0, L_00605EC8; 1 drivers
+v00604CE8_0 .net "s3", 0 0, L_00605F38; 1 drivers
+v00604D40_0 .net "s4", 0 0, L_00606308; 1 drivers
+v00604D98_0 .net "s5", 0 0, L_006063A0; 1 drivers
+v00604E20_0 .net "s6", 0 0, L_00605F70; 1 drivers
+S_00604628 .scope module, "MS1" "operadorMS" 2 25, 2 4, S_00604140;
+ .timescale 0 0;
+L_00605C00 .functor NAND 1, L_00606638, L_00606638, C4<1>, C4<1>;
+L_00605C70 .functor NAND 1, L_006066B8, L_006066B8, C4<1>, C4<1>;
+L_00605CE0 .functor NAND 1, L_00605C70, L_00605C00, C4<1>, C4<1>;
+L_00605D88 .functor NAND 1, L_00606638, L_006066B8, C4<1>, C4<1>;
+L_00605CA8 .functor NAND 1, L_00605D88, L_00605CE0, C4<1>, C4<1>;
+L_00605EC8 .functor NAND 1, L_00605CA8, C4<1>, C4<1>, C4<1>;
+L_00605F38 .functor NAND 1, L_00605D88, C4<1>, C4<1>, C4<1>;
+v006046B0_0 .alias "a", 0 0, v00604AA0_0;
+v00604720_0 .alias "b", 0 0, v00604AF8_0;
+v00604790_0 .alias "s0", 0 0, v00604C58_0;
+v00604800_0 .alias "s1", 0 0, v00604CE8_0;
+v00604858_0 .net "s2", 0 0, L_00605CA8; 1 drivers
+v006048B0_0 .net "s3", 0 0, L_00605D88; 1 drivers
+v00604920_0 .net "s4", 0 0, L_00605CE0; 1 drivers
+v00604990_0 .net "s5", 0 0, L_00605C70; 1 drivers
+v00604A00_0 .net "s6", 0 0, L_00605C00; 1 drivers
+S_006041C8 .scope module, "MS2" "operadorMS" 2 26, 2 4, S_00604140;
+ .timescale 0 0;
+L_00605FD0 .functor NAND 1, L_00605EC8, L_00605EC8, C4<1>, C4<1>;
+L_00604CB0 .functor NAND 1, L_00606710, L_00606710, C4<1>, C4<1>;
+L_006060A8 .functor NAND 1, L_00604CB0, L_00605FD0, C4<1>, C4<1>;
+L_00606150 .functor NAND 1, L_00605EC8, L_00606710, C4<1>, C4<1>;
+L_00606070 .functor NAND 1, L_00606150, L_006060A8, C4<1>, C4<1>;
+L_00606260 .functor NAND 1, L_00606070, C4<1>, C4<1>, C4<1>;
+L_00606308 .functor NAND 1, L_00606150, C4<1>, C4<1>, C4<1>;
+v00604250_0 .alias "a", 0 0, v00604C58_0;
+v006042A8_0 .alias "b", 0 0, v00604B50_0;
+v00604300_0 .alias "s0", 0 0, v00604BA8_0;
+v00604370_0 .alias "s1", 0 0, v00604D40_0;
+v006043E0_0 .net "s2", 0 0, L_00606070; 1 drivers
+v00604438_0 .net "s3", 0 0, L_00606150; 1 drivers
+v006044A8_0 .net "s4", 0 0, L_006060A8; 1 drivers
+v00604518_0 .net "s5", 0 0, L_00604CB0; 1 drivers
+v00604588_0 .net "s6", 0 0, L_00605FD0; 1 drivers
+S_003E8F18 .scope module, "SC2" "operadorSC" 2 41, 2 20, S_003E9BB8;
+ .timescale 0 0;
+L_00606F10 .functor NAND 1, L_00606AD0, L_00606AD0, C4<1>, C4<1>;
+L_00606B08 .functor NAND 1, L_00606E78, L_00606E78, C4<1>, C4<1>;
+L_00606EB0 .functor NAND 1, L_00606F10, L_00606B08, C4<1>, C4<1>;
+v00603D98_0 .net "a", 0 0, L_006071D8; 1 drivers
+v00603DF0_0 .net "b", 0 0, L_00607298; 1 drivers
+v00603E48_0 .net "c", 0 0, L_00607358; 1 drivers
+v00603EA0_0 .net "s0", 0 0, L_00606DD0; 1 drivers
+v00603EF8_0 .net "s1", 0 0, L_00606EB0; 1 drivers
+v00603F50_0 .net "s2", 0 0, L_00606A60; 1 drivers
+v00603FA8_0 .net "s3", 0 0, L_00606AD0; 1 drivers
+v00604008_0 .net "s4", 0 0, L_00606E78; 1 drivers
+v00604060_0 .net "s5", 0 0, L_00606F10; 1 drivers
+v006040E8_0 .net "s6", 0 0, L_00606B08; 1 drivers
+S_00603920 .scope module, "MS1" "operadorMS" 2 25, 2 4, S_003E8F18;
+ .timescale 0 0;
+L_00606798 .functor NAND 1, L_006071D8, L_006071D8, C4<1>, C4<1>;
+L_00606808 .functor NAND 1, L_00607298, L_00607298, C4<1>, C4<1>;
+L_00606878 .functor NAND 1, L_00606808, L_00606798, C4<1>, C4<1>;
+L_00606920 .functor NAND 1, L_006071D8, L_00607298, C4<1>, C4<1>;
+L_00606840 .functor NAND 1, L_00606920, L_00606878, C4<1>, C4<1>;
+L_00606A60 .functor NAND 1, L_00606840, C4<1>, C4<1>, C4<1>;
+L_00606AD0 .functor NAND 1, L_00606920, C4<1>, C4<1>, C4<1>;
+v006039A8_0 .alias "a", 0 0, v00603D98_0;
+v00603A18_0 .alias "b", 0 0, v00603DF0_0;
+v00603A88_0 .alias "s0", 0 0, v00603F50_0;
+v00603AF8_0 .alias "s1", 0 0, v00603FA8_0;
+v00603B50_0 .net "s2", 0 0, L_00606840; 1 drivers
+v00603BA8_0 .net "s3", 0 0, L_00606920; 1 drivers
+v00603C18_0 .net "s4", 0 0, L_00606878; 1 drivers
+v00603C88_0 .net "s5", 0 0, L_00606808; 1 drivers
+v00603CF8_0 .net "s6", 0 0, L_00606798; 1 drivers
+S_003E8D80 .scope module, "MS2" "operadorMS" 2 26, 2 4, S_003E8F18;
+ .timescale 0 0;
+L_00606B40 .functor NAND 1, L_00606A60, L_00606A60, C4<1>, C4<1>;
+L_003E6B98 .functor NAND 1, L_00607358, L_00607358, C4<1>, C4<1>;
+L_00606C18 .functor NAND 1, L_003E6B98, L_00606B40, C4<1>, C4<1>;
+L_00606CC0 .functor NAND 1, L_00606A60, L_00607358, C4<1>, C4<1>;
+L_00606BE0 .functor NAND 1, L_00606CC0, L_00606C18, C4<1>, C4<1>;
+L_00606DD0 .functor NAND 1, L_00606BE0, C4<1>, C4<1>, C4<1>;
+L_00606E78 .functor NAND 1, L_00606CC0, C4<1>, C4<1>, C4<1>;
+v003ECCC8_0 .alias "a", 0 0, v00603F50_0;
+v00603548_0 .alias "b", 0 0, v00603E48_0;
+v006035B8_0 .alias "s0", 0 0, v00603EA0_0;
+v00603640_0 .alias "s1", 0 0, v00604008_0;
+v006036B0_0 .net "s2", 0 0, L_00606BE0; 1 drivers
+v00603708_0 .net "s3", 0 0, L_00606CC0; 1 drivers
+v00603778_0 .net "s4", 0 0, L_00606C18; 1 drivers
+v00603810_0 .net "s5", 0 0, L_003E6B98; 1 drivers
+v00603880_0 .net "s6", 0 0, L_00606B40; 1 drivers
+S_003EE970 .scope begin, "start" "start" 2 52, 2 52, S_003E89C8;
+ .timescale 0 0;
+S_003ED420 .scope begin, "main" "main" 2 58, 2 58, S_003E89C8;
+ .timescale 0 0;
+    .scope S_003E89C8;
+T_0 ;
+    %fork t_1, S_003EE970;
+    %jmp t_0;
+    .scope S_003EE970;
+t_1 ;
+    %set/v v006054B0_0, 0, 3;
+    %set/v v00605508_0, 0, 3;
+    %end;
+    .scope S_003E89C8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E89C8;
+T_1 ;
+    %fork t_3, S_003ED420;
+    %jmp t_2;
+    .scope S_003ED420;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 60 "$display", " Operador Soma Completa Com Portas NAND - 3 Bits ";
+    %delay 1, 0;
+    %vpi_call 2 61 "$display", "   a  +  b   =  s   ";
+    %vpi_call 2 62 "$monitor", " %3b  %3b  = %4b ", v006054B0_0, v00605508_0, v00605628_0;
+    %set/v v00605560_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v00605560_0, 32;
+   %cmpi/s 8, 8, 32;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v00605560_0, 32;
+    %set/v v006054B0_0, 8, 3;
+    %set/v v006055B8_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v006055B8_0, 32;
+   %cmpi/s 8, 8, 32;
+    %jmp/0xz T_1.3, 5;
+    %delay 1, 0;
+    %load/v 8, v006055B8_0, 32;
+    %set/v v00605508_0, 8, 3;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006055B8_0, 32;
+    %set/v v006055B8_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v00605560_0, 32;
+    %set/v v00605560_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_003E89C8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\Guia_05 - 347133\guia05_04.v";

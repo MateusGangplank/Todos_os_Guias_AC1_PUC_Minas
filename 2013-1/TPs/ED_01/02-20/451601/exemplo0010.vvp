@@ -1,0 +1,51 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00802BE8 .scope module, "testexorgate" "testexorgate" 2 7;
+ .timescale 0 0;
+v0080E398_0 .var "a", 0 0;
+v0080E3F0_0 .var "b", 0 0;
+v0080E448_0 .net "s", 0 0, L_0076B138; 1 drivers
+S_00802C70 .scope module, "nor1" "xorgate" 2 11, 2 3, S_00802BE8;
+ .timescale 0 0;
+L_0080FFB0 .functor NOT 1, v0080E398_0, C4<0>, C4<0>, C4<0>;
+L_0076B058 .functor AND 1, L_0080FFB0, L_0080E4A0, C4<1>, C4<1>;
+L_0076B100 .functor NOT 1, v0080E3F0_0, C4<0>, C4<0>, C4<0>;
+L_0076B138 .functor AND 1, L_0076B058, L_0076B100, C4<1>, C4<1>;
+v00803920_0 .net *"_s0", 0 0, L_0080FFB0; 1 drivers
+v00803978_0 .net *"_s2", 0 0, L_0080E4A0; 1 drivers
+v008039D0_0 .net *"_s4", 0 0, L_0076B058; 1 drivers
+v00803A28_0 .net *"_s6", 0 0, L_0076B100; 1 drivers
+v0080FEA8_0 .net "p", 0 0, v0080E398_0; 1 drivers
+v0080FF00_0 .net "q", 0 0, v0080E3F0_0; 1 drivers
+v0080FF58_0 .alias "s", 0 0, v0080E448_0;
+L_0080E4A0 .arith/sum 1, v0080E3F0_0, v0080E398_0;
+    .scope S_00802BE8;
+T_0 ;
+    %set/v v0080E398_0, 0, 1;
+    %set/v v0080E3F0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00802BE8;
+T_1 ;
+    %vpi_call 2 17 "$display", "blabla";
+    %vpi_call 2 18 "$monitor", "%b | %b = %b", v0080E398_0, v0080E3F0_0, v0080E448_0;
+    %delay 1, 0;
+    %set/v v0080E398_0, 0, 1;
+    %set/v v0080E3F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0080E398_0, 1, 1;
+    %set/v v0080E3F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0080E398_0, 1, 1;
+    %set/v v0080E3F0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Matheus\Documents\exemplo0010.v";

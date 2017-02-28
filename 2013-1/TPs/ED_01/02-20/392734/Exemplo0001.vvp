@@ -1,0 +1,55 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006D2BD0 .scope module, "testbuffer" "testbuffer" 2 16;
+ .timescale 0 0;
+v006D9B80_0 .var "a", 0 0;
+v006D9BD8_0 .net "s", 0 0, L_006D2CE0; 1 drivers
+S_006D2FF8 .scope module, "BF1" "buffer" 2 23, 2 9, S_006D2BD0;
+ .timescale 0 0;
+L_006D2CE0 .functor BUFZ 1, v006D9B80_0, C4<0>, C4<0>, C4<0>;
+v006D3080_0 .net "p", 0 0, v006D9B80_0; 1 drivers
+v006D9B28_0 .alias "s", 0 0, v006D9BD8_0;
+S_006D2F70 .scope begin, "start" "start" 2 25, 2 25, S_006D2BD0;
+ .timescale 0 0;
+S_006D2C58 .scope begin, "main" "main" 2 29, 2 29, S_006D2BD0;
+ .timescale 0 0;
+    .scope S_006D2BD0;
+T_0 ;
+    %fork t_1, S_006D2F70;
+    %jmp t_0;
+    .scope S_006D2F70;
+t_1 ;
+    %set/v v006D9B80_0, 0, 1;
+    %end;
+    .scope S_006D2BD0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006D2BD0;
+T_1 ;
+    %fork t_3, S_006D2C58;
+    %jmp t_2;
+    .scope S_006D2C58;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exemplo 0001 - Rafael Tadeu - 451609";
+    %vpi_call 2 32 "$display", "Test buffer:";
+    %vpi_call 2 33 "$display", "\011 time\011a = s";
+    %vpi_call 2 35 "$monitor", "%d\011%b = %b", $time, v006D9B80_0, v006D9BD8_0;
+    %delay 1, 0;
+    %set/v v006D9B80_0, 1, 1;
+    %delay 2, 0;
+    %set/v v006D9B80_0, 0, 1;
+    %end;
+    .scope S_006D2BD0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Google Drive\Puc\Arquitetura\Guias\Guia 01\Exemplo0001.v";

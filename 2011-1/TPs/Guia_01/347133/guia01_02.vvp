@@ -1,0 +1,84 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7C38 .scope module, "testnorgate" "testnorgate" 2 23;
+ .timescale 0 0;
+v005FE2A0_0 .var "a", 0 0;
+v005FE2F8_0 .var "b", 0 0;
+v005FE350_0 .var "c", 0 0;
+v005FE3A8_0 .net "s", 0 0, L_005FE518; 1 drivers
+S_003E7D48 .scope module, "NOR1" "norgate" 2 27, 2 10, S_003E7C38;
+ .timescale 0 0;
+L_003E6BD0 .functor OR 1, v005FE2A0_0, v005FE2F8_0, C4<0>, C4<0>;
+L_005FE470 .functor OR 1, L_003E6BD0, v005FE350_0, C4<0>, C4<0>;
+L_005FE518 .functor NOT 1, L_005FE470, C4<0>, C4<0>, C4<0>;
+v005E10D8_0 .net *"_s0", 0 0, L_003E6BD0; 1 drivers
+v005FE070_0 .net *"_s2", 0 0, L_005FE470; 1 drivers
+v005FE0E0_0 .net "p", 0 0, v005FE2A0_0; 1 drivers
+v005FE168_0 .net "q", 0 0, v005FE2F8_0; 1 drivers
+v005FE1D8_0 .net "r", 0 0, v005FE350_0; 1 drivers
+v005FE230_0 .alias "s0", 0 0, v005FE3A8_0;
+S_003E7CC0 .scope begin, "main" "main" 2 30, 2 30, S_003E7C38;
+ .timescale 0 0;
+    .scope S_003E7C38;
+T_0 ;
+    %fork t_1, S_003E7CC0;
+    %jmp t_0;
+    .scope S_003E7CC0;
+t_1 ;
+    %vpi_call 2 31 "$display", "Guia 01_02 - Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 32 "$display", "Test NOR gate";
+    %vpi_call 2 33 "$display", "\012~(a | b | c) = s\012";
+    %set/v v005FE2A0_0, 0, 1;
+    %set/v v005FE2F8_0, 0, 1;
+    %set/v v005FE350_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 0, 1;
+    %set/v v005FE2F8_0, 0, 1;
+    %set/v v005FE350_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 0, 1;
+    %set/v v005FE2F8_0, 1, 1;
+    %set/v v005FE350_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 0, 1;
+    %set/v v005FE2F8_0, 1, 1;
+    %set/v v005FE350_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 1, 1;
+    %set/v v005FE2F8_0, 0, 1;
+    %set/v v005FE350_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 1, 1;
+    %set/v v005FE2F8_0, 0, 1;
+    %set/v v005FE350_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 1, 1;
+    %set/v v005FE2F8_0, 1, 1;
+    %set/v v005FE350_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %set/v v005FE2A0_0, 1, 1;
+    %set/v v005FE2F8_0, 1, 1;
+    %set/v v005FE350_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "~(%b | %b | %b) = %b", v005FE2A0_0, v005FE2F8_0, v005FE350_0, v005FE3A8_0;
+    %end;
+    .scope S_003E7C38;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\Guia01\guia01_02.v";

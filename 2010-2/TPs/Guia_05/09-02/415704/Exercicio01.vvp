@@ -1,0 +1,145 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EA750 .scope module, "Teste" "Teste" 2 30;
+ .timescale 0 0;
+v00358C10_0 .var "a0", 0 0;
+v00358C68_0 .var "a1", 0 0;
+v00358CC0_0 .var "a2", 0 0;
+v00358D18_0 .var "b0", 0 0;
+v00358D70_0 .var "b1", 0 0;
+v00358DC8_0 .var "b2", 0 0;
+v00358E20_0 .net "s0", 0 0, L_0031F4A8; 1 drivers
+v00358E78_0 .net "s1", 0 0, L_0031F358; 1 drivers
+v00358ED0_0 .net "s2", 0 0, L_0031F518; 1 drivers
+v00358F28_0 .net "s3", 0 0, L_0031F550; 1 drivers
+S_003EA8E8 .scope module, "A31" "Adder_3bit" 2 33, 2 21, S_003EA750;
+ .timescale 0 0;
+v0032CD38_0 .net "a0", 0 0, v00358C10_0; 1 drivers
+v0032CD90_0 .net "a1", 0 0, v00358C68_0; 1 drivers
+v0032CDE8_0 .net "a2", 0 0, v00358CC0_0; 1 drivers
+v0032CE40_0 .net "b0", 0 0, v00358D18_0; 1 drivers
+v0032CE98_0 .net "b1", 0 0, v00358D70_0; 1 drivers
+v0032CEF0_0 .net "b2", 0 0, v00358DC8_0; 1 drivers
+v0032CF48_0 .net "q0", 0 0, L_0031F4E0; 1 drivers
+v0032CFA0_0 .net "q1", 0 0, L_0031F208; 1 drivers
+v0032CFF8_0 .alias "s0", 0 0, v00358E20_0;
+v0032D050_0 .alias "s1", 0 0, v00358E78_0;
+v0032D0A8_0 .alias "s2", 0 0, v00358ED0_0;
+v0032D100_0 .alias "s3", 0 0, v00358F28_0;
+S_003EACA0 .scope module, "HA3" "Half_adder" 2 25, 2 5, S_003EA8E8;
+ .timescale 0 0;
+L_0031F4A8 .functor XOR 1, v00358C10_0, v00358D18_0, C4<0>, C4<0>;
+L_0031F4E0 .functor AND 1, v00358C10_0, v00358D18_0, C4<1>, C4<1>;
+v0032CBD8_0 .alias "a", 0 0, v0032CD38_0;
+v0032CC30_0 .alias "b", 0 0, v0032CE40_0;
+v0032CC88_0 .alias "s0", 0 0, v00358E20_0;
+v0032CCE0_0 .alias "s1", 0 0, v0032CF48_0;
+S_003EAB08 .scope module, "A1" "Adder" 2 26, 2 12, S_003EA8E8;
+ .timescale 0 0;
+L_0031F208 .functor OR 1, L_0031F2B0, L_0031F160, C4<0>, C4<0>;
+v0032C918_0 .alias "a", 0 0, v0032CD90_0;
+v0032C970_0 .alias "b", 0 0, v0032CE98_0;
+v0032C9C8_0 .alias "c", 0 0, v0032CF48_0;
+v0032CA20_0 .net "q0", 0 0, L_0031F400; 1 drivers
+v0032CA78_0 .net "q1", 0 0, L_0031F2B0; 1 drivers
+v0032CAD0_0 .net "q3", 0 0, L_0031F160; 1 drivers
+v0032CB28_0 .alias "s0", 0 0, v00358E78_0;
+v0032CB80_0 .alias "s1", 0 0, v0032CFA0_0;
+S_003EAC18 .scope module, "HA1" "Half_adder" 2 16, 2 5, S_003EAB08;
+ .timescale 0 0;
+L_0031F400 .functor XOR 1, v00358C68_0, v00358D70_0, C4<0>, C4<0>;
+L_0031F2B0 .functor AND 1, v00358C68_0, v00358D70_0, C4<1>, C4<1>;
+v0032C7B8_0 .alias "a", 0 0, v0032CD90_0;
+v0032C810_0 .alias "b", 0 0, v0032CE98_0;
+v0032C868_0 .alias "s0", 0 0, v0032CA20_0;
+v0032C8C0_0 .alias "s1", 0 0, v0032CA78_0;
+S_003EAB90 .scope module, "HA2" "Half_adder" 2 17, 2 5, S_003EAB08;
+ .timescale 0 0;
+L_0031F358 .functor XOR 1, L_0031F4E0, L_0031F400, C4<0>, C4<0>;
+L_0031F160 .functor AND 1, L_0031F4E0, L_0031F400, C4<1>, C4<1>;
+v0032C658_0 .alias "a", 0 0, v0032CF48_0;
+v0032C6B0_0 .alias "b", 0 0, v0032CA20_0;
+v0032C708_0 .alias "s0", 0 0, v00358E78_0;
+v0032C760_0 .alias "s1", 0 0, v0032CAD0_0;
+S_003EA970 .scope module, "A2" "Adder" 2 27, 2 12, S_003EA8E8;
+ .timescale 0 0;
+L_0031F550 .functor OR 1, L_0031F2E8, L_0031F128, C4<0>, C4<0>;
+v0032C398_0 .alias "a", 0 0, v0032CDE8_0;
+v0032C3F0_0 .alias "b", 0 0, v0032CEF0_0;
+v0032C448_0 .alias "c", 0 0, v0032CFA0_0;
+v0032C4A0_0 .net "q0", 0 0, L_0031F1D0; 1 drivers
+v0032C4F8_0 .net "q1", 0 0, L_0031F2E8; 1 drivers
+v0032C550_0 .net "q3", 0 0, L_0031F128; 1 drivers
+v0032C5A8_0 .alias "s0", 0 0, v00358ED0_0;
+v0032C600_0 .alias "s1", 0 0, v00358F28_0;
+S_003EAA80 .scope module, "HA1" "Half_adder" 2 16, 2 5, S_003EA970;
+ .timescale 0 0;
+L_0031F1D0 .functor XOR 1, v00358CC0_0, v00358DC8_0, C4<0>, C4<0>;
+L_0031F2E8 .functor AND 1, v00358CC0_0, v00358DC8_0, C4<1>, C4<1>;
+v0032C238_0 .alias "a", 0 0, v0032CDE8_0;
+v0032C290_0 .alias "b", 0 0, v0032CEF0_0;
+v0032C2E8_0 .alias "s0", 0 0, v0032C4A0_0;
+v0032C340_0 .alias "s1", 0 0, v0032C4F8_0;
+S_003EA9F8 .scope module, "HA2" "Half_adder" 2 17, 2 5, S_003EA970;
+ .timescale 0 0;
+L_0031F518 .functor XOR 1, L_0031F208, L_0031F1D0, C4<0>, C4<0>;
+L_0031F128 .functor AND 1, L_0031F208, L_0031F1D0, C4<1>, C4<1>;
+v003ECEF8_0 .alias "a", 0 0, v0032CFA0_0;
+v003ECF50_0 .alias "b", 0 0, v0032C4A0_0;
+v0032C188_0 .alias "s0", 0 0, v00358ED0_0;
+v0032C1E0_0 .alias "s1", 0 0, v0032C550_0;
+S_003EA860 .scope begin, "start" "start" 2 34, 2 34, S_003EA750;
+ .timescale 0 0;
+S_003EA7D8 .scope begin, "main" "main" 2 38, 2 38, S_003EA750;
+ .timescale 0 0;
+    .scope S_003EA750;
+T_0 ;
+    %fork t_1, S_003EA860;
+    %jmp t_0;
+t_1 ;
+    %set/v v00358C10_0, 0, 1;
+    %set/v v00358C68_0, 0, 1;
+    %set/v v00358CC0_0, 0, 1;
+    %set/v v00358D18_0, 0, 1;
+    %set/v v00358D70_0, 0, 1;
+    %set/v v00358DC8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EA750;
+T_1 ;
+    %fork t_3, S_003EA7D8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 39 "$display", "Nome: Jonathan Felipe Xavier \011Matricula:415704";
+    %vpi_call 2 40 "$display", "Circuito somador de pares de tres bits";
+    %vpi_call 2 41 "$display", "\012 a0 | a1 | a2 | b0 | b1 | b2 | = | s3 | s2 | s1 | s0 |";
+    %vpi_call 2 42 "$monitor", " %b | %b | %b | %b | %b | %b | = | %2b | %2b | %2b | %2b |", v00358C10_0, v00358C68_0, v00358CC0_0, v00358D18_0, v00358D70_0, v00358DC8_0, v00358F28_0, v00358ED0_0, v00358E78_0, v00358E20_0;
+    %delay 1, 0;
+    %set/v v00358C10_0, 0, 1;
+    %set/v v00358C68_0, 1, 1;
+    %set/v v00358CC0_0, 0, 1;
+    %set/v v00358D18_0, 0, 1;
+    %set/v v00358D70_0, 1, 1;
+    %set/v v00358DC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00358C10_0, 1, 1;
+    %set/v v00358C68_0, 1, 1;
+    %set/v v00358CC0_0, 1, 1;
+    %set/v v00358D18_0, 1, 1;
+    %set/v v00358D70_0, 0, 1;
+    %set/v v00358DC8_0, 0, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Arquitetura I\Tps\Guia05\Exercicio01.v";

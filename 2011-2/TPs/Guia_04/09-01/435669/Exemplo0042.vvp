@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E2D08 .scope module, "test_fullSubtractor" "test_fullSubtractor" 2 30;
+ .timescale 0 0;
+v005DF938_0 .var "borrowIn", 5 0;
+v005DF990_0 .net "borrowOut", 5 0, L_005FD4F8; 1 drivers
+v005DF9E8_0 .net "s", 5 0, L_005FD338; 1 drivers
+v005DFA40_0 .var "x", 5 0;
+v005DFA98_0 .var "y", 5 0;
+S_005E2D90 .scope module, "modulo1" "fullSubtractor" 2 36, 2 10, S_005E2D08;
+ .timescale 0 0;
+L_003E6D10 .functor XOR 6, v005DFA40_0, v005DFA98_0, C4<000000>, C4<000000>;
+L_005DFBC0 .functor NOT 1, L_005DFDE0, C4<0>, C4<0>, C4<0>;
+L_005DFBF8 .functor NOT 1, L_005DFE80, C4<0>, C4<0>, C4<0>;
+L_005DFC68 .functor NOT 1, L_005DFF78, C4<0>, C4<0>, C4<0>;
+L_005DFCC0 .functor NOT 1, L_005FD008, C4<0>, C4<0>, C4<0>;
+L_005DFC30 .functor NOT 1, L_005FD060, C4<0>, C4<0>, C4<0>;
+L_005DFD78 .functor NOT 1, L_005FD0F0, C4<0>, C4<0>, C4<0>;
+L_005FD248 .functor AND 6, v005DFA98_0, L_005FD280, C4<111111>, C4<111111>;
+L_005FD338 .functor XOR 6, L_003E6D10, v005DF938_0, C4<000000>, C4<000000>;
+L_005FD418 .functor NOT 6, L_003E6D10, C4<000000>, C4<000000>, C4<000000>;
+L_005FD450 .functor AND 6, v005DF938_0, L_005FD418, C4<111111>, C4<111111>;
+L_005FD4F8 .functor OR 6, L_005FD450, L_005FD248, C4<000000>, C4<000000>;
+v005E16A0_0 .net *"_s1", 0 0, L_005DFDE0; 1 drivers
+v005DF1E0_0 .net *"_s11", 0 0, L_005FD0F0; 1 drivers
+v005DF250_0 .net *"_s13", 5 0, L_005FD280; 1 drivers
+v005DF2D8_0 .net *"_s3", 0 0, L_005DFE80; 1 drivers
+v005DF348_0 .net *"_s5", 0 0, L_005DFF78; 1 drivers
+v005DF3A0_0 .net *"_s7", 0 0, L_005FD008; 1 drivers
+v005DF410_0 .net *"_s9", 0 0, L_005FD060; 1 drivers
+v005DF4A8_0 .net "borrowIn", 5 0, v005DF938_0; 1 drivers
+v005DF518_0 .alias "borrowOut", 5 0, v005DF990_0;
+v005DF5B8_0 .net "nw1", 5 0, L_005FD418; 1 drivers
+RS_005E3604/0/0 .resolv tri, L_005DFBC0, L_005DFBF8, L_005DFC68, L_005DFCC0;
+RS_005E3604/0/4 .resolv tri, L_005DFC30, L_005DFD78, C4<z>, C4<z>;
+RS_005E3604 .resolv tri, RS_005E3604/0/0, RS_005E3604/0/4, C4<z>, C4<z>;
+v005DF628_0 .net8 "nx", 0 0, RS_005E3604; 6 drivers
+v005DF698_0 .alias "s", 5 0, v005DF9E8_0;
+v005DF708_0 .net "w1", 5 0, L_003E6D10; 1 drivers
+v005DF778_0 .net "w2", 5 0, L_005FD248; 1 drivers
+v005DF7E8_0 .net "w3", 5 0, L_005FD450; 1 drivers
+v005DF858_0 .net "x", 5 0, v005DFA40_0; 1 drivers
+v005DF8C8_0 .net "y", 5 0, v005DFA98_0; 1 drivers
+L_005DFDE0 .part v005DFA40_0, 0, 1;
+L_005DFE80 .part v005DFA40_0, 1, 1;
+L_005DFF78 .part v005DFA40_0, 2, 1;
+L_005FD008 .part v005DFA40_0, 3, 1;
+L_005FD060 .part v005DFA40_0, 4, 1;
+L_005FD0F0 .part v005DFA40_0, 5, 1;
+L_005FD280 .repeat 6, 6, RS_005E3604;
+    .scope S_005E2D08;
+T_0 ;
+    %set/v v005DFA40_0, 1, 6;
+    %set/v v005DFA98_0, 0, 6;
+    %set/v v005DF938_0, 0, 6;
+    %end;
+    .thread T_0;
+    .scope S_005E2D08;
+T_1 ;
+    %vpi_call 2 47 "$display", "Exemplo0021 - Mateus Augusto Moraes Ferreira - 435669";
+    %vpi_call 2 48 "$display", "Test ALU’s full subtractor";
+    %vpi_call 2 52 "$monitor", "x=%6b  y=%6b borrowIn=%6b s=%6b borrowOut=%6b", v005DFA40_0, v005DFA98_0, v005DF938_0, v005DF9E8_0, v005DF990_0;
+    %delay 1, 0;
+    %movi 8, 1, 6;
+    %set/v v005DF938_0, 8, 6;
+    %delay 1, 0;
+    %set/v v005DF938_0, 1, 6;
+    %delay 1, 0;
+    %set/v v005DFA40_0, 1, 6;
+    %movi 8, 1, 6;
+    %set/v v005DFA98_0, 8, 6;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2011-2\Arquitetura\Guia04_435669\Exemplo0042.v";

@@ -1,0 +1,78 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000398F0 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v0063C498_0 .var "a", 0 0;
+v0063C4F0_0 .var "b", 0 0;
+v0063C548_0 .net "s", 0 0, L_0063C748; 1 drivers
+S_00039A00 .scope module, "XNOR1" "xnorgate" 2 25, 2 10, S_000398F0;
+ .timescale 0 0;
+L_000366C8 .functor AND 1, v0063C498_0, v0063C4F0_0, C4<1>, C4<1>;
+L_0063C610 .functor NOT 1, v0063C498_0, C4<0>, C4<0>, C4<0>;
+L_0063C648 .functor NOT 1, v0063C4F0_0, C4<0>, C4<0>, C4<0>;
+L_0063C680 .functor AND 1, L_0063C610, L_0063C648, C4<1>, C4<1>;
+L_0063C748 .functor OR 1, L_000366C8, L_0063C680, C4<0>, C4<0>;
+v00610EA8_0 .net *"_s0", 0 0, L_000366C8; 1 drivers
+v0063C1D0_0 .net *"_s2", 0 0, L_0063C610; 1 drivers
+v0063C240_0 .net *"_s4", 0 0, L_0063C648; 1 drivers
+v0063C2C8_0 .net *"_s6", 0 0, L_0063C680; 1 drivers
+v0063C338_0 .net "a", 0 0, v0063C498_0; 1 drivers
+v0063C390_0 .net "b", 0 0, v0063C4F0_0; 1 drivers
+v0063C400_0 .alias "s", 0 0, v0063C548_0;
+S_00039978 .scope begin, "start" "start" 2 27, 2 27, S_000398F0;
+ .timescale 0 0;
+    .scope S_000398F0;
+T_0 ;
+    %fork t_1, S_00039978;
+    %jmp t_0;
+    .scope S_00039978;
+t_1 ;
+    %set/v v0063C498_0, 0, 1;
+    %set/v v0063C4F0_0, 0, 1;
+    %set/v v0063C498_0, 0, 1;
+    %set/v v0063C4F0_0, 0, 1;
+    %end;
+    .scope S_000398F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_000398F0;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exemplo0012 - Douglas Henrique Silva Correa - 466503";
+    %vpi_call 2 36 "$display", "Test XNOR gate";
+    %vpi_call 2 37 "$display", "\012(a & b)|(~a & ~b) = s\012";
+    %set/v v0063C498_0, 0, 1;
+    %set/v v0063C4F0_0, 0, 1;
+    %set/v v0063C498_0, 0, 1;
+    %set/v v0063C4F0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "(%b & %b)|(~%b & ~%b) = %b", v0063C498_0, v0063C4F0_0, v0063C498_0, v0063C4F0_0, v0063C548_0;
+    %set/v v0063C498_0, 0, 1;
+    %set/v v0063C4F0_0, 1, 1;
+    %set/v v0063C498_0, 0, 1;
+    %set/v v0063C4F0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "(%b & %b)|(~%b & ~%b) = %b", v0063C498_0, v0063C4F0_0, v0063C498_0, v0063C4F0_0, v0063C548_0;
+    %set/v v0063C498_0, 1, 1;
+    %set/v v0063C4F0_0, 0, 1;
+    %set/v v0063C498_0, 1, 1;
+    %set/v v0063C4F0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "(%b & %b)|(~%b & ~%b) = %b", v0063C498_0, v0063C4F0_0, v0063C498_0, v0063C4F0_0, v0063C548_0;
+    %set/v v0063C498_0, 1, 1;
+    %set/v v0063C4F0_0, 1, 1;
+    %set/v v0063C498_0, 1, 1;
+    %set/v v0063C4F0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "(%b & %b)|(~%b & ~%b) = %b", v0063C498_0, v0063C4F0_0, v0063C498_0, v0063C4F0_0, v0063C548_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\†Douglas†\Desktop\Nova pasta\Exemplo0012.v";

@@ -1,0 +1,60 @@
+// Breno macena Pereira de Souza
+// 462017
+
+// -----------------
+// -- RAM 4x8
+// -----------------
+
+`include "ram1x8.v"
+
+module mux4 (output out, input a, input b, input c, input d, input [1:0] key);
+   wire s0, s1, s2, s3;
+   and AND1 (s0, a, ~key[1], ~key[0]);
+   and AND2 (s1, b, ~key[1], key[0]);
+   and AND3 (s2, c, key[1], ~key[0]);
+   and AND4 (s3, d, key[1], key1[0]);
+   or  OR   (out, s0, s1, s2, s3); 
+endmodule
+
+module mux4_8_bits (output [7:0] out, input [7:0] a, input [7:0] b, input [7:0] c, input  [7:0] d, input [1:0] key);
+   mux4 M1 (out[0], a[0], b[0], c[0], d[0], key);
+   mux4 M2 (out[1], a[1], b[1], c[1], d[1], key);
+   mux4 M3 (out[2], a[2], b[2], c[2], d[2], key);
+   mux4 M4 (out[3], a[3], b[3], c[3], d[3], key);
+   mux4 M5 (out[4], a[4], b[4], c[4], d[4], key);
+   mux4 M6 (out[5], a[5], b[5], c[5], d[5], key);
+   mux4 M7 (out[6], a[6], b[6], c[6], d[6], key);
+   mux4 M8 (out[7], a[7], b[7], c[7], d[7], key);
+endmodule
+
+module RAM4x8 (output [7:0] out, input [7:0] in, input clk, input rw, input [1:0] addr, input clear);
+   wire [7:0] s0, s1, s2, s3;
+   reg t1, t2, t3, t4;
+   
+   always @ (posedge clk)
+      begin
+        if(addr == 2'b00)
+          begin
+            t1 <= 1; t2 <= 0; t3 <= 0; t4 <= 0;
+          end
+        if(addr == 2'b01)
+          begin
+            t1 <= 0; t2 <= 1; t3 <= 0; t4 <= 0;
+          end
+        if(addr == 2'b10)
+          begin
+            t1 <= 0; t2 <= 0; t3 <= 1; t4 <= 0;
+          end
+        if(addr == 2'b11)
+          begin
+            t1 <= 0; t2 <= 0; t3 <= 0; t4 <= 1;
+          end
+      end
+  
+   RAM1x8 R1 (s0, in, clk, rw, t1, clear);
+   RAM1x8 R2 (s1, in, clk, rw, t2, clear);
+   RAM1x8 R3 (s2, in, clk, rw, t3, clear);
+   RAM1x8 R4 (s3, in, clk, rw, t4, clear);
+   mux4_8_bits M (out, s0, s1, s2, s3, addr);
+
+endmodule

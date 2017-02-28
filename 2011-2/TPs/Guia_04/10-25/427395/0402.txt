@@ -1,0 +1,62 @@
+//ARQ1 - Eduardo Botelho de Andrade - 427395
+
+module fa (output s, output cout, input a, input b, input cin);
+   wire w1,w2,w3,w4;
+       xor xor1 (w1,a,b);
+       xor xor2 (s,c,w1);
+       and and1 (w3,a,b);
+       and and2 (w4,c,w1);
+         or or1 (cout, w3,w4);
+
+endmodule
+
+
+module fullAdder (output [5:0] s,
+                     output cout,
+                   input [5:0] a,
+                   input [5:0] b,
+                   input carryIn);
+
+     reg cin;
+     wire w1,w2,w3,w4,w5,w6,w7,w8;
+
+     fa fa1(s[0],w1,a[0],b[0],cin);
+     fa fa2(s[1],w2,a[1],b[1],w1);
+     fa fa3(s[2],w3,a[2],b[2],w2);
+     fa fa4(s[3],w4,a[3],b[3],w3);
+     fa fa5(s[4],w5,a[4],b[4],w4);
+     fa fa6(s[5],w6,a[5],b[5],w5);
+
+
+endmodule
+
+module fs (output s, output bout, input a, input b, input bin);
+   wire w1,w2,w3,w4,w5;
+      
+      xor xor1
+
+module testAlu;
+  reg [5:0] a;
+  reg [5:0] b;
+  reg cin;
+  wire [5:0] s;
+  wire cout;
+
+  fullAdder fa (s,cout,a,b,cin);
+
+  initial begin
+   a=6'b000000; b=6'b000000; cin = 1'b0;   
+  end
+
+  initial begin
+    $display("Teste ALU - Eduardo Botelho");
+    $display("s   cout   a   b    cin");
+    $monitor("%b %b %b %b %b",s,cout,a,b,cin);
+
+    #1 a=6'b000001;
+    #1 a=6'b000011; b=6'b000001;
+    #1 a=6'b000000; b=6'b001110;
+    #1 cin = 1'b1;
+
+  end
+endmodule

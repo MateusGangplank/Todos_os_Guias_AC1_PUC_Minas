@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009EDEC0 .scope module, "testandgate" "testandgate" 2 17;
+ .timescale 0 0;
+v009E3320_0 .var "a", 0 0;
+v009E3378_0 .var "b", 0 0;
+v009E33D0_0 .net "s", 0 0, L_009EFCA8; 1 drivers
+S_009E2E20 .scope module, "AND1" "andgate" 2 22, 2 10, S_009EDEC0;
+ .timescale 0 0;
+L_009EFCA8 .functor AND 1, v009E3320_0, v009E3378_0, C4<1>, C4<1>;
+v009E2EA8_0 .net "p", 0 0, v009E3320_0; 1 drivers
+v009E2F00_0 .net "q", 0 0, v009E3378_0; 1 drivers
+v009E32C8_0 .alias "s", 0 0, v009E33D0_0;
+S_009EDF48 .scope begin, "start" "start" 2 24, 2 24, S_009EDEC0;
+ .timescale 0 0;
+    .scope S_009EDEC0;
+T_0 ;
+    %fork t_1, S_009EDF48;
+    %jmp t_0;
+    .scope S_009EDF48;
+t_1 ;
+    %set/v v009E3320_0, 0, 1;
+    %set/v v009E3378_0, 0, 1;
+    %end;
+    .scope S_009EDEC0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_009EDEC0;
+T_1 ;
+    %vpi_call 2 31 "$display", "Exemplo0003 - Ana Cristina Pereira Teixeira - 427385";
+    %vpi_call 2 32 "$display", "Test AND gate";
+    %vpi_call 2 33 "$display", "\012a & b = s\012";
+    %set/v v009E3320_0, 0, 1;
+    %set/v v009E3378_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v009E3320_0, v009E3378_0, v009E33D0_0;
+    %set/v v009E3320_0, 0, 1;
+    %set/v v009E3378_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b = %b", v009E3320_0, v009E3378_0, v009E33D0_0;
+    %set/v v009E3320_0, 1, 1;
+    %set/v v009E3378_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v009E3320_0, v009E3378_0, v009E33D0_0;
+    %set/v v009E3320_0, 1, 1;
+    %set/v v009E3378_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b = %b", v009E3320_0, v009E3378_0, v009E33D0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\1-2012\arq\0_guias\guia_01\Exemplo0003.v";

@@ -1,0 +1,65 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BFEEA0 .scope module, "testeMorgan" "testeMorgan" 2 17;
+ .timescale 0 0;
+v00BF3460_0 .var "a", 0 0;
+v00BFE178_0 .var "b", 0 0;
+v00BFE1D0_0 .net "s", 0 0, L_00AE0400; 1 drivers
+S_00BF2E58 .scope module, "nandmorgan" "portaMorganNand" 2 23, 2 10, S_00BFEEA0;
+ .timescale 0 0;
+L_00BFCCE8 .functor NOT 1, v00BF3460_0, C4<0>, C4<0>, C4<0>;
+L_00BFE260 .functor NOT 1, v00BFE178_0, C4<0>, C4<0>, C4<0>;
+L_00AE0400 .functor OR 1, L_00BFCCE8, L_00BFE260, C4<0>, C4<0>;
+v00BF2EE0_0 .net *"_s0", 0 0, L_00BFCCE8; 1 drivers
+v00BF2F38_0 .net *"_s2", 0 0, L_00BFE260; 1 drivers
+v00BF3358_0 .net "p", 0 0, v00BF3460_0; 1 drivers
+v00BF33B0_0 .net "q", 0 0, v00BFE178_0; 1 drivers
+v00BF3408_0 .alias "s", 0 0, v00BFE1D0_0;
+S_00BFEF28 .scope begin, "start" "start" 2 26, 2 26, S_00BFEEA0;
+ .timescale 0 0;
+    .scope S_00BFEEA0;
+T_0 ;
+    %fork t_1, S_00BFEF28;
+    %jmp t_0;
+    .scope S_00BFEF28;
+t_1 ;
+    %set/v v00BF3460_0, 0, 1;
+    %set/v v00BFE178_0, 0, 1;
+    %end;
+    .scope S_00BFEEA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00BFEEA0;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "guia0104 - Felipe Barros - 376508";
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "tabela verdade NAND em propriedade de Morgan";
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~a |  ~b  = s";
+    %delay 1, 0;
+    %vpi_call 2 38 "$monitor", " %b |  %b =  %b ", v00BF3460_0, v00BFE178_0, v00BFE1D0_0;
+    %delay 1, 0;
+    %set/v v00BF3460_0, 0, 1;
+    %set/v v00BFE178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BF3460_0, 0, 1;
+    %set/v v00BFE178_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00BF3460_0, 1, 1;
+    %set/v v00BFE178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00BF3460_0, 1, 1;
+    %set/v v00BFE178_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\guia0101\guia0104.v";

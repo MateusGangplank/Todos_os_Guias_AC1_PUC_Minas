@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00702FD0 .scope module, "testxnorgate" "testxnorgate" 2 17;
+ .timescale 0 0;
+v0070E108_0 .var "a", 0 0;
+v0070E160_0 .var "b", 0 0;
+v0070FC20_0 .net "s", 0 0, L_0070FCE8; 1 drivers
+S_00703558 .scope module, "XNOR1" "xnorgate" 2 22, 2 9, S_00702FD0;
+ .timescale 0 0;
+L_0070E1B8 .functor XOR 1, v0070E108_0, v0070E160_0, C4<0>, C4<0>;
+L_0070FCE8 .functor NOT 1, L_0070E1B8, C4<0>, C4<0>, C4<0>;
+v007030E0_0 .net *"_s0", 0 0, L_0070E1B8; 1 drivers
+v007035E0_0 .net "a", 0 0, v0070E108_0; 1 drivers
+v0070E058_0 .net "b", 0 0, v0070E160_0; 1 drivers
+v0070E0B0_0 .alias "s", 0 0, v0070FC20_0;
+S_007034D0 .scope begin, "start" "start" 2 24, 2 24, S_00702FD0;
+ .timescale 0 0;
+S_00703058 .scope begin, "main" "main" 2 29, 2 29, S_00702FD0;
+ .timescale 0 0;
+    .scope S_00702FD0;
+T_0 ;
+    %fork t_1, S_007034D0;
+    %jmp t_0;
+    .scope S_007034D0;
+t_1 ;
+    %set/v v0070E108_0, 0, 1;
+    %set/v v0070E160_0, 0, 1;
+    %end;
+    .scope S_00702FD0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00702FD0;
+T_1 ;
+    %fork t_3, S_00703058;
+    %jmp t_2;
+    .scope S_00703058;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exercicio0003 - Lucas Cardoso - 441694";
+    %vpi_call 2 31 "$display", "Test XNOR gate";
+    %vpi_call 2 32 "$display", "\012a & b = s\012";
+    %vpi_call 2 33 "$monitor", "%b & %b = %b", v0070E108_0, v0070E160_0, v0070FC20_0;
+    %set/v v0070E108_0, 0, 1;
+    %set/v v0070E160_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0070E108_0, 0, 1;
+    %set/v v0070E160_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0070E108_0, 1, 1;
+    %set/v v0070E160_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0070E108_0, 1, 1;
+    %set/v v0070E160_0, 1, 1;
+    %end;
+    .scope S_00702FD0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Lucas\Puc\441694\AC1\Guia01\Exercicio0003.v";

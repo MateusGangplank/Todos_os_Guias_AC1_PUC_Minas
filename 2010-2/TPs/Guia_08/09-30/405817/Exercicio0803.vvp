@@ -1,0 +1,185 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00739E30 .scope module, "Exercicio0803" "Exercicio0803" 2 39;
+ .timescale 0 0;
+v0073C5A0_0 .var "a", 0 0;
+v0073C5F8_0 .var "b", 0 0;
+v0073C650_0 .var "c", 0 0;
+v0073C6A8_0 .var "d", 0 0;
+v0073C700_0 .var "e", 0 0;
+v0073C758_0 .net "s0", 0 0, L_00627420; 1 drivers
+S_00739EB8 .scope module, "circuito03" "circuito" 2 43, 2 11, S_00739E30;
+ .timescale 0 0;
+L_006270A0 .functor NOT 1, v0073C5A0_0, C4<0>, C4<0>, C4<0>;
+L_006270D8 .functor NOT 1, v0073C5F8_0, C4<0>, C4<0>, C4<0>;
+L_00627148 .functor NOT 1, v0073C650_0, C4<0>, C4<0>, C4<0>;
+L_006271B8 .functor NOT 1, v0073C6A8_0, C4<0>, C4<0>, C4<0>;
+L_00627228 .functor NOT 1, v0073C700_0, C4<0>, C4<0>, C4<0>;
+L_00627298 .functor AND 1, v0073C650_0, v0073C6A8_0, v0073C700_0, C4<1>;
+L_006272D0/0/0 .functor AND 1, v0073C5A0_0, L_006270D8, L_00627148, v0073C6A8_0;
+L_006272D0/0/4 .functor AND 1, L_00627228, C4<1>, C4<1>, C4<1>;
+L_006272D0 .functor AND 1, L_006272D0/0/0, L_006272D0/0/4, C4<1>, C4<1>;
+L_00627378 .functor AND 1, v0073C5A0_0, v0073C5F8_0, v0073C6A8_0, v0073C700_0;
+L_00627260 .functor AND 1, L_006270A0, L_00627148, L_006271B8, C4<1>;
+L_006273E8 .functor AND 1, v0073C5F8_0, L_006271B8, v0073C700_0, C4<1>;
+L_00627110 .functor AND 1, L_006270D8, v0073C650_0, L_006271B8, C4<1>;
+L_00627180 .functor AND 1, v0073C5A0_0, v0073C650_0, v0073C700_0, C4<1>;
+L_006273B0 .functor AND 1, v0073C5F8_0, v0073C650_0, v0073C6A8_0, C4<1>;
+L_00627420/0/0 .functor OR 1, L_00627298, L_006272D0, L_00627378, L_00627260;
+L_00627420/0/4 .functor OR 1, L_006273E8, L_00627110, L_00627180, L_006273B0;
+L_00627420 .functor OR 1, L_00627420/0/0, L_00627420/0/4, C4<0>, C4<0>;
+v0073BF18_0 .net "a", 0 0, v0073C5A0_0; 1 drivers
+v0073BF70_0 .net "b", 0 0, v0073C5F8_0; 1 drivers
+v0073BFC8_0 .net "c", 0 0, v0073C650_0; 1 drivers
+v0073C020_0 .net "d", 0 0, v0073C6A8_0; 1 drivers
+v0073C078_0 .net "e", 0 0, v0073C700_0; 1 drivers
+v0073C0D0_0 .alias "f", 0 0, v0073C758_0;
+v0073C128_0 .net "s0", 0 0, L_00627298; 1 drivers
+v0073C180_0 .net "s1", 0 0, L_006272D0; 1 drivers
+v0073C1D8_0 .net "s10", 0 0, L_00627148; 1 drivers
+v0073C230_0 .net "s11", 0 0, L_006271B8; 1 drivers
+v0073C288_0 .net "s12", 0 0, L_00627228; 1 drivers
+v0073C2E0_0 .net "s2", 0 0, L_00627378; 1 drivers
+v0073C338_0 .net "s3", 0 0, L_00627260; 1 drivers
+v0073C390_0 .net "s4", 0 0, L_006273E8; 1 drivers
+v0073C3E8_0 .net "s5", 0 0, L_00627110; 1 drivers
+v0073C440_0 .net "s6", 0 0, L_00627180; 1 drivers
+v0073C498_0 .net "s7", 0 0, L_006273B0; 1 drivers
+v0073C4F0_0 .net "s8", 0 0, L_006270A0; 1 drivers
+v0073C548_0 .net "s9", 0 0, L_006270D8; 1 drivers
+    .scope S_00739E30;
+T_0 ;
+    %vpi_call 2 47 "$display", "Exercicio0803";
+    %vpi_call 2 48 "$display", "Luiz Felipe Fonseca";
+    %vpi_call 2 49 "$display", "\012a  b  c  d  e =  s0  \012";
+    %vpi_call 2 50 "$monitor", "%b  %b  %b  %b %b  =  %b", v0073C5A0_0, v0073C5F8_0, v0073C650_0, v0073C6A8_0, v0073C700_0, v0073C758_0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 1, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 1, 1;
+    %set/v v0073C650_0, 0, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 0, 1;
+    %set/v v0073C700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073C5A0_0, 0, 1;
+    %set/v v0073C5F8_0, 0, 1;
+    %set/v v0073C650_0, 1, 1;
+    %set/v v0073C6A8_0, 1, 1;
+    %set/v v0073C700_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\405817\Exercicio0803.v";

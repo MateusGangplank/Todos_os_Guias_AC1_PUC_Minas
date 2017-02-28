@@ -1,0 +1,55 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007134F0 .scope module, "Guia0901" "Guia0901" 2 20;
+ .timescale 0 0;
+v00714350_0 .net "clock", 0 0, v00712BC0_0; 1 drivers
+v007143A8_0 .net "p1", 0 0, v00712AE0_0; 1 drivers
+S_00712B38 .scope module, "clk" "clock" 2 23, 3 5, S_007134F0;
+ .timescale 0 0;
+v00712BC0_0 .var "clk", 0 0;
+S_00713578 .scope module, "pls1" "pulse1" 2 26, 2 7, S_007134F0;
+ .timescale 0 0;
+v0071E388_0 .alias "clock", 0 0, v00714350_0;
+v00712AE0_0 .var "signal", 0 0;
+E_00718D58 .event edge, v0071E388_0;
+    .scope S_00712B38;
+T_0 ;
+    %set/v v00712BC0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00712B38;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00712BC0_0, 1;
+    %inv 8, 1;
+    %set/v v00712BC0_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00713578;
+T_2 ;
+    %wait E_00718D58;
+    %set/v v00712AE0_0, 1, 1;
+    %delay 24, 0;
+    %set/v v00712AE0_0, 0, 1;
+    %delay 24, 0;
+    %set/v v00712AE0_0, 1, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_007134F0;
+T_3 ;
+    %vpi_call 2 29 "$dumpfile", "Guia0901.vcd";
+    %vpi_call 2 30 "$dumpvars", 2'sb01, v00714350_0, v007143A8_0;
+    %delay 480, 0;
+    %vpi_call 2 32 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Lucas\Documents\PUC\2\ARQ\Aulas\Guia09\Guia0901.V";
+    "./clock.v";

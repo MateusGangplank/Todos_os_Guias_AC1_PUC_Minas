@@ -1,0 +1,183 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A69E28 .scope module, "test_f4selectable" "test_f4selectable" 2 32;
+ .timescale 0 0;
+v005CC3B8_0 .var "a", 1 0;
+v005CC410_0 .var "b", 1 0;
+v005CC468_0 .var "chave", 0 0;
+v005CC4C0_0 .net "s", 1 0, v00A6D3B8_0; 1 drivers
+RS_005A4FCC .resolv tri, L_005CC5C8, L_005CC6D0, C4<zz>, C4<zz>;
+v005CC518_0 .net8 "w0", 1 0, RS_005A4FCC; 2 drivers
+RS_005A4FE4 .resolv tri, L_005CC7D8, L_005CC8E0, C4<zz>, C4<zz>;
+v005CC570_0 .net8 "w1", 1 0, RS_005A4FE4; 2 drivers
+S_00A69F38 .scope module, "f4s1" "f4selectable" 2 40, 2 8, S_00A69E28;
+ .timescale 0 0;
+L_005A2D50 .functor OR 1, L_005CC620, L_005CC678, C4<0>, C4<0>;
+L_005A2D18 .functor OR 1, L_005CC728, L_005CC780, C4<0>, C4<0>;
+L_005A2F48 .functor AND 1, L_005CC830, L_005CC888, C4<1>, C4<1>;
+L_005A2CE0 .functor AND 1, L_005CC938, L_005CC990, C4<1>, C4<1>;
+v00A6D468_0 .net *"_s0", 0 0, L_005A2D50; 1 drivers
+v00A6CF08_0 .net *"_s11", 0 0, L_005CC780; 1 drivers
+v00A6CF60_0 .net *"_s12", 0 0, L_005A2F48; 1 drivers
+v00A6CFB8_0 .net *"_s15", 0 0, L_005CC830; 1 drivers
+v00A62CE0_0 .net *"_s17", 0 0, L_005CC888; 1 drivers
+v005CBFF0_0 .net *"_s18", 0 0, L_005A2CE0; 1 drivers
+v005CC048_0 .net *"_s21", 0 0, L_005CC938; 1 drivers
+v005CC0A0_0 .net *"_s23", 0 0, L_005CC990; 1 drivers
+v005CC0F8_0 .net *"_s3", 0 0, L_005CC620; 1 drivers
+v005CC150_0 .net *"_s5", 0 0, L_005CC678; 1 drivers
+v005CC1A8_0 .net *"_s6", 0 0, L_005A2D18; 1 drivers
+v005CC200_0 .net *"_s9", 0 0, L_005CC728; 1 drivers
+v005CC258_0 .net "a", 1 0, v005CC3B8_0; 1 drivers
+v005CC2B0_0 .net "b", 1 0, v005CC410_0; 1 drivers
+v005CC308_0 .alias "s0", 1 0, v005CC518_0;
+v005CC360_0 .alias "s1", 1 0, v005CC570_0;
+L_005CC5C8 .part/pv L_005A2D50, 0, 1, 2;
+L_005CC620 .part v005CC3B8_0, 0, 1;
+L_005CC678 .part v005CC410_0, 0, 1;
+L_005CC6D0 .part/pv L_005A2D18, 1, 1, 2;
+L_005CC728 .part v005CC3B8_0, 1, 1;
+L_005CC780 .part v005CC410_0, 1, 1;
+L_005CC7D8 .part/pv L_005A2F48, 0, 1, 2;
+L_005CC830 .part v005CC3B8_0, 0, 1;
+L_005CC888 .part v005CC410_0, 0, 1;
+L_005CC8E0 .part/pv L_005A2CE0, 1, 1, 2;
+L_005CC938 .part v005CC3B8_0, 1, 1;
+L_005CC990 .part v005CC410_0, 1, 1;
+S_00A69EB0 .scope module, "chave1" "chave" 2 41, 2 15, S_00A69E28;
+ .timescale 0 0;
+v00592DF8_0 .alias "a", 1 0, v005CC518_0;
+v00592E50_0 .alias "b", 1 0, v005CC570_0;
+v00A6D3B8_0 .var "s", 1 0;
+v00A6D410_0 .net "sinal", 0 0, v005CC468_0; 1 drivers
+E_00A64188 .event edge, v00A6D410_0, v00592E50_0, v00592DF8_0;
+    .scope S_00A69EB0;
+T_0 ;
+    %wait E_00A64188;
+    %load/v 8, v00A6D410_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v00592DF8_0, 2;
+    %set/v v00A6D3B8_0, 8, 2;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v00592E50_0, 2;
+    %set/v v00A6D3B8_0, 8, 2;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_00A69E28;
+T_1 ;
+    %set/v v005CC3B8_0, 0, 2;
+    %set/v v005CC410_0, 0, 2;
+    %set/v v005CC468_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_00A69E28;
+T_2 ;
+    %vpi_call 2 50 "$display", "Exemplo0032 - Silvino Henrique Santos de Souza - 412773";
+    %vpi_call 2 51 "$display", "LU selectable - running tests -(0):or,(1):and";
+    %vpi_call 2 52 "$display", "\012chave\011 a   (| ou &)   b = s";
+    %vpi_call 2 53 "$monitor", "%b\011 %4b or/and %4b = %4b", v005CC468_0, v005CC3B8_0, v005CC410_0, v005CC4C0_0;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CC3B8_0, 0, 2;
+    %movi 8, 1, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CC410_0, 1, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005CC3B8_0, 8, 2;
+    %set/v v005CC410_0, 0, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CC410_0, 1, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005CC3B8_0, 8, 2;
+    %set/v v005CC410_0, 0, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CC410_0, 1, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CC3B8_0, 1, 2;
+    %set/v v005CC410_0, 0, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v005CC410_0, 8, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CC410_0, 1, 2;
+    %set/v v005CC468_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CC468_0, 1, 1;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Dropbox\PUC\2013\1º Semestre 2013\AC\Guias\Guia 3 - 412773\Exemplo0032.v";

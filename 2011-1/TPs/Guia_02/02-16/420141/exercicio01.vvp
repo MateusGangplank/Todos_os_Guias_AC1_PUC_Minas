@@ -1,0 +1,121 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF250 .scope module, "testeNAND" "testeNAND" 2 21;
+ .timescale 0 0;
+v006A7248_0 .var "a", 0 0;
+v006A72A0_0 .var "b", 0 0;
+v006A72F8_0 .var "c", 0 0;
+v006A7350_0 .net "s", 0 0, L_006A7548; 1 drivers
+v006A73A8_0 .net "s1", 0 0, L_006A75F0; 1 drivers
+v006A7438_0 .net "s2", 0 0, L_006A76E0; 1 drivers
+v006A74C8_0 .net "s3", 0 0, L_006A7838; 1 drivers
+S_006A6F68 .scope module, "NAND1" "PORTANAND" 2 25, 2 10, S_003EF250;
+ .timescale 0 0;
+L_006A7580 .functor AND 1, v006A7248_0, v006A7248_0, C4<1>, C4<1>;
+L_006A71B8 .functor AND 1, L_006A7580, v006A7248_0, C4<1>, C4<1>;
+L_006A75F0 .functor NOT 1, L_006A71B8, C4<0>, C4<0>, C4<0>;
+v006A6FE8_0 .net *"_s0", 0 0, L_006A7580; 1 drivers
+v006A7040_0 .net *"_s2", 0 0, L_006A71B8; 1 drivers
+v006A7098_0 .net "a", 0 0, v006A7248_0; 1 drivers
+v006A7108_0 .alias "b", 0 0, v006A7098_0;
+v006A7160_0 .alias "c", 0 0, v006A7098_0;
+v006A71F0_0 .alias "s", 0 0, v006A73A8_0;
+S_006A6CC0 .scope module, "NAND2" "PORTANAND" 2 26, 2 10, S_003EF250;
+ .timescale 0 0;
+L_006A7670 .functor AND 1, v006A72A0_0, v006A72A0_0, C4<1>, C4<1>;
+L_00674648 .functor AND 1, L_006A7670, v006A72A0_0, C4<1>, C4<1>;
+L_006A76E0 .functor NOT 1, L_00674648, C4<0>, C4<0>, C4<0>;
+v006A6D40_0 .net *"_s0", 0 0, L_006A7670; 1 drivers
+v006A6D98_0 .net *"_s2", 0 0, L_00674648; 1 drivers
+v006A6DF0_0 .net "a", 0 0, v006A72A0_0; 1 drivers
+v006A6E60_0 .alias "b", 0 0, v006A6DF0_0;
+v006A6EB8_0 .alias "c", 0 0, v006A6DF0_0;
+v006A6F10_0 .alias "s", 0 0, v006A7438_0;
+S_006A69D0 .scope module, "NAND3" "PORTANAND" 2 27, 2 10, S_003EF250;
+ .timescale 0 0;
+L_006A7760 .functor AND 1, v006A72F8_0, v006A72F8_0, C4<1>, C4<1>;
+L_00674680 .functor AND 1, L_006A7760, v006A72F8_0, C4<1>, C4<1>;
+L_006A7838 .functor NOT 1, L_00674680, C4<0>, C4<0>, C4<0>;
+v006A6A50_0 .net *"_s0", 0 0, L_006A7760; 1 drivers
+v006A6AC0_0 .net *"_s2", 0 0, L_00674680; 1 drivers
+v006A6B30_0 .net "a", 0 0, v006A72F8_0; 1 drivers
+v006A6BB8_0 .alias "b", 0 0, v006A6B30_0;
+v006A6C10_0 .alias "c", 0 0, v006A6B30_0;
+v006A6C68_0 .alias "s", 0 0, v006A74C8_0;
+S_00674208 .scope module, "NAND4" "PORTANAND" 2 28, 2 10, S_003EF250;
+ .timescale 0 0;
+L_006A78B8 .functor AND 1, L_006A75F0, L_006A76E0, C4<1>, C4<1>;
+L_006A7490 .functor AND 1, L_006A78B8, L_006A7838, C4<1>, C4<1>;
+L_006A7548 .functor NOT 1, L_006A7490, C4<0>, C4<0>, C4<0>;
+v006767F8_0 .net *"_s0", 0 0, L_006A78B8; 1 drivers
+v006A67A0_0 .net *"_s2", 0 0, L_006A7490; 1 drivers
+v006A6810_0 .alias "a", 0 0, v006A73A8_0;
+v006A6898_0 .alias "b", 0 0, v006A7438_0;
+v006A6908_0 .alias "c", 0 0, v006A74C8_0;
+v006A6960_0 .alias "s", 0 0, v006A7350_0;
+S_003EFCB0 .scope begin, "start" "start" 2 30, 2 30, S_003EF250;
+ .timescale 0 0;
+S_003EF780 .scope begin, "main" "main" 2 38, 2 38, S_003EF250;
+ .timescale 0 0;
+    .scope S_003EF250;
+T_0 ;
+    %fork t_1, S_003EFCB0;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A7248_0, 0, 1;
+    %set/v v006A72A0_0, 0, 1;
+    %set/v v006A72F8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EF250;
+T_1 ;
+    %fork t_3, S_003EF780;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 40 "$display", "Guia 02 - Raphaela Fernanda Silva - 420141";
+    %vpi_call 2 41 "$display", "Teste PORTANAND";
+    %vpi_call 2 42 "$display", "a | b | c = s";
+    %vpi_call 2 43 "$monitor", "%b   %b   %b = %b", v006A7248_0, v006A72A0_0, v006A72F8_0, v006A7350_0;
+    %delay 1, 0;
+    %set/v v006A7248_0, 0, 1;
+    %set/v v006A72A0_0, 0, 1;
+    %set/v v006A72F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7248_0, 0, 1;
+    %set/v v006A72A0_0, 1, 1;
+    %set/v v006A72F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7248_0, 0, 1;
+    %set/v v006A72A0_0, 1, 1;
+    %set/v v006A72F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7248_0, 1, 1;
+    %set/v v006A72A0_0, 0, 1;
+    %set/v v006A72F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7248_0, 1, 1;
+    %set/v v006A72A0_0, 0, 1;
+    %set/v v006A72F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7248_0, 1, 1;
+    %set/v v006A72A0_0, 1, 1;
+    %set/v v006A72F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7248_0, 1, 1;
+    %set/v v006A72A0_0, 1, 1;
+    %set/v v006A72F8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\420141\exercicio01.v";

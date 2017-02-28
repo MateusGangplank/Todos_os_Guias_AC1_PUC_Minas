@@ -1,0 +1,132 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003ED818 .scope module, "guia08" "guia08" 2 42;
+ .timescale 0 0;
+v006A91F8_0 .var "a", 0 0;
+v006A9260_0 .var "b", 0 0;
+v006A92B8_0 .var "c", 0 0;
+v006A9310_0 .var "d", 0 0;
+v006A9368_0 .net "w1", 0 0, L_006A97D8; 1 drivers
+v006A93F8_0 .net "w2", 0 0, L_00676788; 1 drivers
+v006A9488_0 .net "w3", 0 0, L_006A9840; 1 drivers
+v006A9508_0 .net "w4", 0 0, L_00676648; 1 drivers
+v006A9598_0 .net "w5", 0 0, L_006A93C0; 1 drivers
+v006A9628_0 .net "w6", 0 0, L_006A9560; 1 drivers
+v006A96B8_0 .net "w7", 0 0, L_006A9450; 1 drivers
+v006A9780_0 .net "w8", 0 0, L_006A9748; 1 drivers
+S_006A90B8 .scope module, "NN1" "notnand" 2 46, 2 4, S_003ED818;
+ .timescale 0 0;
+L_006A97D8 .functor NAND 1, v006A91F8_0, C4<1>, C4<1>, C4<1>;
+v006A9138_0 .net "entrada", 0 0, v006A91F8_0; 1 drivers
+v006A91A0_0 .alias "saida", 0 0, v006A9368_0;
+S_006A8F88 .scope module, "NN2" "notnand" 2 47, 2 4, S_003ED818;
+ .timescale 0 0;
+L_00676788 .functor NAND 1, v006A9260_0, C4<1>, C4<1>, C4<1>;
+v006A9008_0 .net "entrada", 0 0, v006A9260_0; 1 drivers
+v006A9060_0 .alias "saida", 0 0, v006A93F8_0;
+S_006A8E58 .scope module, "NN3" "notnand" 2 48, 2 4, S_003ED818;
+ .timescale 0 0;
+L_006A9840 .functor NAND 1, v006A92B8_0, C4<1>, C4<1>, C4<1>;
+v006A8ED8_0 .net "entrada", 0 0, v006A92B8_0; 1 drivers
+v006A8F30_0 .alias "saida", 0 0, v006A9488_0;
+S_006A8D10 .scope module, "NN4" "notnand" 2 49, 2 4, S_003ED818;
+ .timescale 0 0;
+L_00676648 .functor NAND 1, v006A9310_0, C4<1>, C4<1>, C4<1>;
+v006A8D90_0 .net "entrada", 0 0, v006A9310_0; 1 drivers
+v006A8E00_0 .alias "saida", 0 0, v006A9508_0;
+S_006A8B30 .scope module, "AN1" "andnand2" 2 51, 2 33, S_003ED818;
+ .timescale 0 0;
+L_006A9990 .functor NAND 1, L_006A97D8, v006A92B8_0, C4<1>, C4<1>;
+L_006A93C0 .functor NAND 1, L_006A9990, C4<1>, C4<1>, C4<1>;
+v006A8BB0_0 .alias "e1", 0 0, v006A9368_0;
+v006A8C08_0 .alias "e2", 0 0, v006A8ED8_0;
+v006A8C60_0 .alias "saida", 0 0, v006A9598_0;
+v006A8CB8_0 .net "w1", 0 0, L_006A9990; 1 drivers
+S_006A88E0 .scope module, "AN2" "andnand" 2 52, 2 12, S_003ED818;
+ .timescale 0 0;
+L_006A9A88 .functor NAND 1, v006A91F8_0, v006A9260_0, L_00676648, C4<1>;
+L_006A9560 .functor NAND 1, L_006A9A88, C4<1>, C4<1>, C4<1>;
+v006A8960_0 .alias "e1", 0 0, v006A9138_0;
+v006A89B8_0 .alias "e2", 0 0, v006A9008_0;
+v006A8A10_0 .alias "e3", 0 0, v006A9508_0;
+v006A8A80_0 .alias "saida", 0 0, v006A9628_0;
+v006A8AD8_0 .net "w1", 0 0, L_006A9A88; 1 drivers
+S_006A8648 .scope module, "AN3" "andnand" 2 53, 2 12, S_003ED818;
+ .timescale 0 0;
+L_006A9BB0 .functor NAND 1, v006A91F8_0, L_00676788, v006A92B8_0, C4<1>;
+L_006A9450 .functor NAND 1, L_006A9BB0, C4<1>, C4<1>, C4<1>;
+v006A86C8_0 .alias "e1", 0 0, v006A9138_0;
+v006A8738_0 .alias "e2", 0 0, v006A93F8_0;
+v006A87A8_0 .alias "e3", 0 0, v006A8ED8_0;
+v006A8830_0 .alias "saida", 0 0, v006A96B8_0;
+v006A8888_0 .net "w1", 0 0, L_006A9BB0; 1 drivers
+S_006784D8 .scope module, "ON1" "ornand" 2 54, 2 22, S_003ED818;
+ .timescale 0 0;
+L_006A9CA8 .functor NAND 1, L_006A93C0, C4<1>, C4<1>, C4<1>;
+L_006A95F0 .functor NAND 1, L_006A9560, C4<1>, C4<1>, C4<1>;
+L_006A9680 .functor NAND 1, L_006A9450, C4<1>, C4<1>, C4<1>;
+L_006A9748 .functor NAND 1, L_006A9CA8, L_006A95F0, L_006A9680, C4<1>;
+v00678558_0 .alias "e1", 0 0, v006A9598_0;
+v006A8380_0 .alias "e2", 0 0, v006A9628_0;
+v006A83F0_0 .alias "e3", 0 0, v006A96B8_0;
+v006A8478_0 .alias "saida", 0 0, v006A9780_0;
+v006A84E8_0 .net "w1", 0 0, L_006A9CA8; 1 drivers
+v006A8540_0 .net "w2", 0 0, L_006A95F0; 1 drivers
+v006A85B0_0 .net "w3", 0 0, L_006A9680; 1 drivers
+S_00678458 .scope begin, "main" "main" 2 59, 2 59, S_003ED818;
+ .timescale 0 0;
+    .scope S_003ED818;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_003ED818;
+T_1 ;
+    %fork t_1, S_00678458;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 60 "$display", "Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 61 "$display", "Guia 08 Ex:04\012";
+    %vpi_call 2 63 "$display", "a b c d = s\012";
+    %delay 1, 0;
+    %set/v v006A91F8_0, 0, 1;
+    %set/v v006A9260_0, 0, 1;
+    %set/v v006A92B8_0, 0, 1;
+    %set/v v006A9310_0, 0, 1;
+    %vpi_call 2 65 "$monitor", "%b %b %b %b = %b", v006A91F8_0, v006A9260_0, v006A92B8_0, v006A9310_0, v006A9780_0;
+    %delay 1, 0;
+    %set/v v006A91F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A91F8_0, 0, 1;
+    %set/v v006A9260_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A9260_0, 0, 1;
+    %set/v v006A92B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A92B8_0, 0, 1;
+    %set/v v006A9310_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A9310_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A91F8_0, 1, 1;
+    %set/v v006A9260_0, 1, 1;
+    %set/v v006A92B8_0, 1, 1;
+    %set/v v006A9310_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A91F8_0, 0, 1;
+    %set/v v006A92B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A91F8_0, 1, 1;
+    %set/v v006A92B8_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\Henrique\GUIA 08 - Henrique Carvalho Parreira\Guia0804.v";

@@ -1,0 +1,88 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006740C0 .scope module, "MeiaDiferenca" "MeiaDiferenca" 2 11;
+ .timescale 0 0;
+L_00676710 .functor NAND 1, C4<z>, C4<1>, C4<1>, C4<1>;
+L_006766D8 .functor NAND 1, L_00676710, C4<z>, C4<1>, C4<1>;
+L_006A7380 .functor NAND 1, L_006766D8, C4<1>, C4<1>, C4<1>;
+L_006A73F0 .functor NAND 1, L_006A7380, C4<1>, C4<1>, C4<1>;
+L_006A7460 .functor NAND 1, C4<z>, C4<1>, C4<1>, C4<1>;
+L_006A74D0 .functor NAND 1, C4<z>, L_006A7460, C4<1>, C4<1>;
+L_006A7578 .functor NAND 1, L_006A74D0, C4<1>, C4<1>, C4<1>;
+L_006A7610 .functor NAND 1, L_006A7578, C4<1>, C4<1>, C4<1>;
+L_006A7680 .functor NAND 1, L_006A7610, L_006A73F0, C4<1>, C4<1>;
+L_006A7758 .functor NAND 1, C4<z>, C4<1>, C4<1>, C4<1>;
+L_006A77A0 .functor NAND 1, L_006A7758, C4<z>, C4<1>, C4<1>;
+L_006A7848 .functor NAND 1, L_006A77A0, C4<1>, C4<1>, C4<1>;
+v00675810_0 .net "Vem1", 0 0, L_006A7848; 1 drivers
+v006A6DA8_0 .net "d", 0 0, L_006A7680; 1 drivers
+v006A6E18_0 .net "p", 0 0, C4<z>; 0 drivers
+v006A6EA0_0 .net "q", 0 0, C4<z>; 0 drivers
+v006A6F10 .array "temp", 9 0;
+v006A6F10_0 .net v006A6F10 0, 0 0, L_00676710; 1 drivers
+v006A6F10_1 .net v006A6F10 1, 0 0, L_006766D8; 1 drivers
+v006A6F10_2 .net v006A6F10 2, 0 0, L_006A7380; 1 drivers
+v006A6F10_3 .net v006A6F10 3, 0 0, L_006A73F0; 1 drivers
+v006A6F10_4 .net v006A6F10 4, 0 0, L_006A7460; 1 drivers
+v006A6F10_5 .net v006A6F10 5, 0 0, L_006A74D0; 1 drivers
+v006A6F10_6 .net v006A6F10 6, 0 0, L_006A7578; 1 drivers
+v006A6F10_7 .net v006A6F10 7, 0 0, L_006A7610; 1 drivers
+v006A6F10_8 .net v006A6F10 8, 0 0, L_006A7758; 1 drivers
+v006A6F10_9 .net v006A6F10 9, 0 0, L_006A77A0; 1 drivers
+S_003EFF38 .scope module, "TestMeiaDiferenca" "TestMeiaDiferenca" 2 36;
+ .timescale 0 0;
+L_006A78C8 .functor NAND 1, v006A70B0_0, C4<1>, C4<1>, C4<1>;
+L_006A7920 .functor NAND 1, L_006A78C8, v006A7120_0, C4<1>, C4<1>;
+L_006A7990 .functor NAND 1, L_006A7920, C4<1>, C4<1>, C4<1>;
+L_006A7A10 .functor NAND 1, L_006A7990, C4<1>, C4<1>, C4<1>;
+L_006A7A80 .functor NAND 1, v006A7120_0, C4<1>, C4<1>, C4<1>;
+L_006A7B00 .functor NAND 1, v006A70B0_0, L_006A7A80, C4<1>, C4<1>;
+L_006A7BA8 .functor NAND 1, L_006A7B00, C4<1>, C4<1>, C4<1>;
+L_006A7C28 .functor NAND 1, L_006A7BA8, C4<1>, C4<1>, C4<1>;
+L_006A7CA8 .functor NAND 1, L_006A7C28, L_006A7A10, C4<1>, C4<1>;
+L_006A7D50 .functor NAND 1, v006A70B0_0, C4<1>, C4<1>, C4<1>;
+L_006A7D98 .functor NAND 1, L_006A7D50, v006A7120_0, C4<1>, C4<1>;
+L_006A7E40 .functor NAND 1, L_006A7D98, C4<1>, C4<1>, C4<1>;
+v006A7040_0 .net "Vem1", 0 0, L_006A7E40; 1 drivers
+v006A70B0_0 .var "a", 0 0;
+v006A7120_0 .var "b", 0 0;
+v006A71A8_0 .net "d", 0 0, L_006A7CA8; 1 drivers
+v006A7218 .array "t", 9 0;
+v006A7218_0 .net v006A7218 0, 0 0, L_006A78C8; 1 drivers
+v006A7218_1 .net v006A7218 1, 0 0, L_006A7920; 1 drivers
+v006A7218_2 .net v006A7218 2, 0 0, L_006A7990; 1 drivers
+v006A7218_3 .net v006A7218 3, 0 0, L_006A7A10; 1 drivers
+v006A7218_4 .net v006A7218 4, 0 0, L_006A7A80; 1 drivers
+v006A7218_5 .net v006A7218 5, 0 0, L_006A7B00; 1 drivers
+v006A7218_6 .net v006A7218 6, 0 0, L_006A7BA8; 1 drivers
+v006A7218_7 .net v006A7218 7, 0 0, L_006A7C28; 1 drivers
+v006A7218_8 .net v006A7218 8, 0 0, L_006A7D50; 1 drivers
+v006A7218_9 .net v006A7218 9, 0 0, L_006A7D98; 1 drivers
+    .scope S_003EFF38;
+T_0 ;
+    %vpi_call 2 59 "$display", "\012guia03_03 - Ludmily Caldeira da Silva - 417290\012";
+    %vpi_call 2 60 "$display", "Test Meia diferenca\012";
+    %vpi_call 2 61 "$display", "\012a  b   d   Vem1\012";
+    %vpi_call 2 62 "$monitor", "%b  %b   %b    %b", v006A70B0_0, v006A7120_0, v006A71A8_0, v006A7040_0;
+    %set/v v006A70B0_0, 0, 1;
+    %set/v v006A7120_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A70B0_0, 0, 1;
+    %set/v v006A7120_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A70B0_0, 1, 1;
+    %set/v v006A7120_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A70B0_0, 1, 1;
+    %set/v v006A7120_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_03\417290\guia03-03.v";

@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00753000 .scope module, "testnandgate" "testnandgate" 2 18;
+ .timescale 0 0;
+v0075F390_0 .var "a", 0 0;
+v0075F3E8_0 .var "b", 0 0;
+v007CC858_0 .net "s", 0 0, L_007CC920; 1 drivers
+S_00753588 .scope module, "NAND1" "nandgate" 2 25, 2 10, S_00753000;
+ .timescale 0 0;
+L_0075DA48 .functor AND 1, v0075F390_0, v0075F3E8_0, C4<1>, C4<1>;
+L_007CC920 .functor NOT 1, L_0075DA48, C4<0>, C4<0>, C4<0>;
+v00753110_0 .net *"_s0", 0 0, L_0075DA48; 1 drivers
+v00753610_0 .net "p", 0 0, v0075F390_0; 1 drivers
+v0075F2E0_0 .net "q", 0 0, v0075F3E8_0; 1 drivers
+v0075F338_0 .alias "s", 0 0, v007CC858_0;
+S_00753500 .scope begin, "start" "start" 2 28, 2 28, S_00753000;
+ .timescale 0 0;
+S_00753088 .scope begin, "main" "main" 2 34, 2 34, S_00753000;
+ .timescale 0 0;
+    .scope S_00753000;
+T_0 ;
+    %fork t_1, S_00753500;
+    %jmp t_0;
+    .scope S_00753500;
+t_1 ;
+    %set/v v0075F390_0, 0, 1;
+    %set/v v0075F3E8_0, 0, 1;
+    %end;
+    .scope S_00753000;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00753000;
+T_1 ;
+    %fork t_3, S_00753088;
+    %jmp t_2;
+    .scope S_00753088;
+t_3 ;
+    %vpi_call 2 35 "$display", "Exemplo0006 - Mateus Lara Carvalho - 441700";
+    %vpi_call 2 36 "$display", "Test nand gate";
+    %vpi_call 2 37 "$display", "\012 a' | b' = s\012";
+    %set/v v0075F390_0, 0, 1;
+    %set/v v0075F3E8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b | %b = %b", v0075F390_0, v0075F3E8_0, v007CC858_0;
+    %set/v v0075F390_0, 0, 1;
+    %set/v v0075F3E8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b | %b = %b", v0075F390_0, v0075F3E8_0, v007CC858_0;
+    %set/v v0075F390_0, 1, 1;
+    %set/v v0075F3E8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b | %b = %b", v0075F390_0, v0075F3E8_0, v007CC858_0;
+    %set/v v0075F390_0, 1, 1;
+    %set/v v0075F3E8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b | %b = %b", v0075F390_0, v0075F3E8_0, v007CC858_0;
+    %end;
+    .scope S_00753000;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Mateus\Desktop\Mateus\Ciência da Computação\2013-1\Arquitetura\Trabalhos\ED 01\Exemplo0006.v";

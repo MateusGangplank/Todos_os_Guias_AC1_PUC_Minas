@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005971C0 .scope module, "test_circuit_equality" "test_circuit_equality" 2 24;
+ .timescale 0 0;
+v005BA468_0 .var "x", 3 0;
+v005BA4C0_0 .var "y", 3 0;
+RS_00599194/0/0 .resolv tri, L_005BA570, L_005BA678, L_005BA780, L_005BA888;
+RS_00599194/0/4 .resolv tri, L_005BA990, C4<zzzzz>, C4<zzzzz>, C4<zzzzz>;
+RS_00599194 .resolv tri, RS_00599194/0/0, RS_00599194/0/4, C4<zzzzz>, C4<zzzzz>;
+v005BA518_0 .net8 "z", 4 0, RS_00599194; 5 drivers
+S_005972D0 .scope module, "equality" "circuit_equality" 2 30, 2 9, S_005971C0;
+ .timescale 0 0;
+L_003AFE98 .functor XNOR 1, L_005BA5C8, L_005BA620, C4<0>, C4<0>;
+L_00572648 .functor XNOR 1, L_005BA6D0, L_005BA728, C4<0>, C4<0>;
+L_003A4AD0 .functor XNOR 1, L_005BA7D8, L_005BA830, C4<0>, C4<0>;
+L_005938B8 .functor XNOR 1, L_005BA8E0, L_005BA938, C4<0>, C4<0>;
+L_005939D0 .functor AND 1, L_005BA9E8, L_005BAA40, L_005BAA98, L_005BAAF0;
+v003A49C8_0 .net *"_s0", 0 0, L_003AFE98; 1 drivers
+v003A4A20_0 .net *"_s11", 0 0, L_005BA728; 1 drivers
+v003A4A78_0 .net *"_s12", 0 0, L_003A4AD0; 1 drivers
+v00574340_0 .net *"_s15", 0 0, L_005BA7D8; 1 drivers
+v00574398_0 .net *"_s17", 0 0, L_005BA830; 1 drivers
+v005743F0_0 .net *"_s18", 0 0, L_005938B8; 1 drivers
+v003AFDE8_0 .net *"_s21", 0 0, L_005BA8E0; 1 drivers
+v005B9FF0_0 .net *"_s23", 0 0, L_005BA938; 1 drivers
+v005BA048_0 .net *"_s24", 0 0, L_005939D0; 1 drivers
+v005BA0A0_0 .net *"_s27", 0 0, L_005BA9E8; 1 drivers
+v005BA0F8_0 .net *"_s29", 0 0, L_005BAA40; 1 drivers
+v005BA150_0 .net *"_s3", 0 0, L_005BA5C8; 1 drivers
+v005BA1A8_0 .net *"_s31", 0 0, L_005BAA98; 1 drivers
+v005BA200_0 .net *"_s33", 0 0, L_005BAAF0; 1 drivers
+v005BA258_0 .net *"_s5", 0 0, L_005BA620; 1 drivers
+v005BA2B0_0 .net *"_s6", 0 0, L_00572648; 1 drivers
+v005BA308_0 .net *"_s9", 0 0, L_005BA6D0; 1 drivers
+v005BA360_0 .net "a", 3 0, v005BA468_0; 1 drivers
+v005BA3B8_0 .net "b", 3 0, v005BA4C0_0; 1 drivers
+v005BA410_0 .alias "s", 4 0, v005BA518_0;
+L_005BA570 .part/pv L_003AFE98, 0, 1, 5;
+L_005BA5C8 .part v005BA468_0, 0, 1;
+L_005BA620 .part v005BA4C0_0, 0, 1;
+L_005BA678 .part/pv L_00572648, 1, 1, 5;
+L_005BA6D0 .part v005BA468_0, 1, 1;
+L_005BA728 .part v005BA4C0_0, 1, 1;
+L_005BA780 .part/pv L_003A4AD0, 2, 1, 5;
+L_005BA7D8 .part v005BA468_0, 2, 1;
+L_005BA830 .part v005BA4C0_0, 2, 1;
+L_005BA888 .part/pv L_005938B8, 3, 1, 5;
+L_005BA8E0 .part v005BA468_0, 3, 1;
+L_005BA938 .part v005BA4C0_0, 3, 1;
+L_005BA990 .part/pv L_005939D0, 4, 1, 5;
+L_005BA9E8 .part RS_00599194, 0, 1;
+L_005BAA40 .part RS_00599194, 1, 1;
+L_005BAA98 .part RS_00599194, 2, 1;
+L_005BAAF0 .part RS_00599194, 3, 1;
+S_00597248 .scope begin, "main" "main" 2 32, 2 32, S_005971C0;
+ .timescale 0 0;
+    .scope S_005971C0;
+T_0 ;
+    %fork t_1, S_00597248;
+    %jmp t_0;
+    .scope S_00597248;
+t_1 ;
+    %vpi_call 2 34 "$display", "Exemplo0023 - Fernando Silva - 414506";
+    %vpi_call 2 35 "$display", "Test ALU's equality";
+    %vpi_call 2 36 "$display", "1= Equality";
+    %movi 8, 5, 4;
+    %set/v v005BA468_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v005BA4C0_0, 8, 4;
+    %vpi_call 2 38 "$monitor", "%3b  %3b  %1b", v005BA468_0, v005BA4C0_0, &PV<v005BA518_0, 4, 1>;
+    %delay 1, 0;
+    %set/v v005BA468_0, 1, 4;
+    %set/v v005BA4C0_0, 1, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v005BA468_0, 8, 4;
+    %movi 8, 8, 4;
+    %set/v v005BA4C0_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 6, 4;
+    %set/v v005BA468_0, 8, 4;
+    %movi 8, 6, 4;
+    %set/v v005BA4C0_0, 8, 4;
+    %end;
+    .scope S_005971C0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsilv\Desktop\exercicio23.v";

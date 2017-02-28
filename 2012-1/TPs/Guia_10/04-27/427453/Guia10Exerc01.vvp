@@ -1,0 +1,236 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A3AF38 .scope module, "test" "test" 2 46;
+ .timescale 0 0;
+v00933630_0 .var "addr", 0 0;
+v00933688_0 .var "clear", 0 0;
+v009336E0_0 .var "clk", 0 0;
+v00933738_0 .var "inpu", 3 0;
+v00933790_0 .var "rw", 0 0;
+RS_0090C294 .resolv tri, L_00933840, L_009338F0, L_009339A0, L_00933A50;
+v009337E8_0 .net8 "we", 0 3, RS_0090C294; 4 drivers
+S_00A3AEB0 .scope module, "ramiel" "ram1x4" 2 52, 2 34, S_00A3AF38;
+ .timescale 0 0;
+v00933420_0 .net "addr", 0 0, v00933630_0; 1 drivers
+v00933478_0 .net "clear", 0 0, v00933688_0; 1 drivers
+v009334D0_0 .net "clk", 0 0, v009336E0_0; 1 drivers
+v00933528_0 .net "inpu", 3 0, v00933738_0; 1 drivers
+v00933580_0 .net "rw", 0 0, v00933790_0; 1 drivers
+v009335D8_0 .alias "we", 3 0, v009337E8_0;
+L_00933840 .part/pv L_008FAE68, 0, 1, 4;
+L_00933898 .part v00933738_0, 0, 1;
+L_009338F0 .part/pv L_008FB060, 1, 1, 4;
+L_00933948 .part v00933738_0, 1, 1;
+L_009339A0 .part/pv L_008FB1E8, 2, 1, 4;
+L_009339F8 .part v00933738_0, 2, 1;
+L_00933A50 .part/pv L_008FB300, 3, 1, 4;
+L_00933AA8 .part v00933738_0, 3, 1;
+S_00A3B158 .scope module, "Rodrigo" "ram1x1" 2 38, 2 21, S_00A3AEB0;
+ .timescale 0 0;
+L_008FAD88 .functor AND 1, v00933630_0, v00933790_0, C4<1>, C4<1>;
+L_008FADF8 .functor AND 1, L_008FAD88, v009336E0_0, C4<1>, C4<1>;
+L_008FAE68 .functor AND 1, v00933630_0, v00933000_0, C4<1>, C4<1>;
+v009330B0_0 .alias "addr", 0 0, v00933420_0;
+v00933108_0 .alias "clear", 0 0, v00933478_0;
+v00933160_0 .alias "clk", 0 0, v009334D0_0;
+v009331B8_0 .net "inpu", 0 0, L_00933898; 1 drivers
+v00933210_0 .alias "rw", 0 0, v00933580_0;
+v00933268_0 .net "s1", 0 0, L_008FAD88; 1 drivers
+v009332C0_0 .net "s2", 0 0, L_008FADF8; 1 drivers
+v00933318_0 .net "s3", 0 0, v00933000_0; 1 drivers
+v00933370_0 .net "s4", 0 0, v00933058_0; 1 drivers
+v009333C8_0 .net "w", 0 0, L_008FAE68; 1 drivers
+S_00A3B1E0 .scope module, "kai" "dff" 2 28, 2 7, S_00A3B158;
+ .timescale 0 0;
+v00932EC8_0 .alias "clear", 0 0, v00933478_0;
+v00932F20_0 .alias "clk", 0 0, v009334D0_0;
+v00932F78_0 .alias "d", 0 0, v009331B8_0;
+v00933000_0 .var "q", 0 0;
+v00933058_0 .var "qnot", 0 0;
+S_00A3AFC0 .scope module, "Gustavo" "ram1x1" 2 39, 2 21, S_00A3AEB0;
+ .timescale 0 0;
+L_008FAFB8 .functor AND 1, v00933630_0, v00933790_0, C4<1>, C4<1>;
+L_008FAFF0 .functor AND 1, L_008FAFB8, v009336E0_0, C4<1>, C4<1>;
+L_008FB060 .functor AND 1, v00933630_0, v00932AA8_0, C4<1>, C4<1>;
+v00932B58_0 .alias "addr", 0 0, v00933420_0;
+v00932BB0_0 .alias "clear", 0 0, v00933478_0;
+v00932C08_0 .alias "clk", 0 0, v009334D0_0;
+v00932C60_0 .net "inpu", 0 0, L_00933948; 1 drivers
+v00932CB8_0 .alias "rw", 0 0, v00933580_0;
+v00932D10_0 .net "s1", 0 0, L_008FAFB8; 1 drivers
+v00932D68_0 .net "s2", 0 0, L_008FAFF0; 1 drivers
+v00932DC0_0 .net "s3", 0 0, v00932AA8_0; 1 drivers
+v00932E18_0 .net "s4", 0 0, v00932B00_0; 1 drivers
+v00932E70_0 .net "w", 0 0, L_008FB060; 1 drivers
+S_00A3AD18 .scope module, "kai" "dff" 2 28, 2 7, S_00A3AFC0;
+ .timescale 0 0;
+v009329A0_0 .alias "clear", 0 0, v00933478_0;
+v009329F8_0 .alias "clk", 0 0, v009334D0_0;
+v00932A50_0 .alias "d", 0 0, v00932C60_0;
+v00932AA8_0 .var "q", 0 0;
+v00932B00_0 .var "qnot", 0 0;
+S_00A3B0D0 .scope module, "Ana" "ram1x1" 2 40, 2 21, S_00A3AEB0;
+ .timescale 0 0;
+L_008FB140 .functor AND 1, v00933630_0, v00933790_0, C4<1>, C4<1>;
+L_008FB178 .functor AND 1, L_008FB140, v009336E0_0, C4<1>, C4<1>;
+L_008FB1E8 .functor AND 1, v00933630_0, v00932580_0, C4<1>, C4<1>;
+v00932630_0 .alias "addr", 0 0, v00933420_0;
+v00932688_0 .alias "clear", 0 0, v00933478_0;
+v009326E0_0 .alias "clk", 0 0, v009334D0_0;
+v00932738_0 .net "inpu", 0 0, L_009339F8; 1 drivers
+v00932790_0 .alias "rw", 0 0, v00933580_0;
+v009327E8_0 .net "s1", 0 0, L_008FB140; 1 drivers
+v00932840_0 .net "s2", 0 0, L_008FB178; 1 drivers
+v00932898_0 .net "s3", 0 0, v00932580_0; 1 drivers
+v009328F0_0 .net "s4", 0 0, v009325D8_0; 1 drivers
+v00932948_0 .net "w", 0 0, L_008FB1E8; 1 drivers
+S_00A3B048 .scope module, "kai" "dff" 2 28, 2 7, S_00A3B0D0;
+ .timescale 0 0;
+v00932478_0 .alias "clear", 0 0, v00933478_0;
+v009324D0_0 .alias "clk", 0 0, v009334D0_0;
+v00932528_0 .alias "d", 0 0, v00932738_0;
+v00932580_0 .var "q", 0 0;
+v009325D8_0 .var "qnot", 0 0;
+S_00A3AE28 .scope module, "Larissa" "ram1x1" 2 41, 2 21, S_00A3AEB0;
+ .timescale 0 0;
+L_008FAF80 .functor AND 1, v00933630_0, v00933790_0, C4<1>, C4<1>;
+L_008FB290 .functor AND 1, L_008FAF80, v009336E0_0, C4<1>, C4<1>;
+L_008FB300 .functor AND 1, v00933630_0, v00932058_0, C4<1>, C4<1>;
+v00932108_0 .alias "addr", 0 0, v00933420_0;
+v00932160_0 .alias "clear", 0 0, v00933478_0;
+v009321B8_0 .alias "clk", 0 0, v009334D0_0;
+v00932210_0 .net "inpu", 0 0, L_00933AA8; 1 drivers
+v00932268_0 .alias "rw", 0 0, v00933580_0;
+v009322C0_0 .net "s1", 0 0, L_008FAF80; 1 drivers
+v00932318_0 .net "s2", 0 0, L_008FB290; 1 drivers
+v00932370_0 .net "s3", 0 0, v00932058_0; 1 drivers
+v009323C8_0 .net "s4", 0 0, v009320B0_0; 1 drivers
+v00932420_0 .net "w", 0 0, L_008FB300; 1 drivers
+S_00A3ADA0 .scope module, "kai" "dff" 2 28, 2 7, S_00A3AE28;
+ .timescale 0 0;
+v008F97F0_0 .alias "clear", 0 0, v00933478_0;
+v008FA400_0 .alias "clk", 0 0, v009334D0_0;
+v00932000_0 .alias "d", 0 0, v00932210_0;
+v00932058_0 .var "q", 0 0;
+v009320B0_0 .var "qnot", 0 0;
+E_0090B820 .event posedge, v008FA400_0;
+    .scope S_00A3B1E0;
+T_0 ;
+    %wait E_0090B820;
+    %load/v 8, v00932EC8_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00933000_0, 0, 0;
+    %load/v 8, v00933000_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00933058_0, 0, 8;
+T_0.0 ;
+    %load/v 8, v00932F78_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00933000_0, 0, 8;
+    %load/v 8, v00933000_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00933058_0, 0, 8;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_00A3AD18;
+T_1 ;
+    %wait E_0090B820;
+    %load/v 8, v009329A0_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932AA8_0, 0, 0;
+    %load/v 8, v00932AA8_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932B00_0, 0, 8;
+T_1.0 ;
+    %load/v 8, v00932A50_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932AA8_0, 0, 8;
+    %load/v 8, v00932AA8_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932B00_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00A3B048;
+T_2 ;
+    %wait E_0090B820;
+    %load/v 8, v00932478_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_2.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932580_0, 0, 0;
+    %load/v 8, v00932580_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v009325D8_0, 0, 8;
+T_2.0 ;
+    %load/v 8, v00932528_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932580_0, 0, 8;
+    %load/v 8, v00932580_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v009325D8_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_00A3ADA0;
+T_3 ;
+    %wait E_0090B820;
+    %load/v 8, v008F97F0_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_3.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932058_0, 0, 0;
+    %load/v 8, v00932058_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v009320B0_0, 0, 8;
+T_3.0 ;
+    %load/v 8, v00932000_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00932058_0, 0, 8;
+    %load/v 8, v00932058_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v009320B0_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00A3AF38;
+T_4 ;
+    %vpi_call 2 55 "$display", "Guia10Exerc01 - Pedro Henrique Vilar Locatelli - 427453";
+    %vpi_call 2 57 "$monitor", "%4d\011%1b\011%1b\011%1b\011%4b\011%1b\011%1b%1b%1b%1b", $time, v00933630_0, v00933790_0, v009336E0_0, v00933738_0, v00933688_0, &PV<v009337E8_0, 3, 1>, &PV<v009337E8_0, 2, 1>, &PV<v009337E8_0, 1, 1>, &PV<v009337E8_0, 0, 1>;
+    %delay 1, 0;
+    %set/v v00933688_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00933688_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009336E0_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v00933738_0, 8, 4;
+    %delay 1, 0;
+    %set/v v00933630_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00933790_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009336E0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009336E0_0, 0, 1;
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Baste\Downloads\Arq1\Guia10\Guia10Exerc01.v";

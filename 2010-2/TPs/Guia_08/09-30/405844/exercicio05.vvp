@@ -1,0 +1,104 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003D7598 .scope module, "guia08" "guia08" 2 20;
+ .timescale 0 0;
+L_0069EA28 .functor NOR 1, L_00682260, L_0069E7D0, L_0069E960, C4<0>;
+L_0069EA70 .functor NOR 1, L_00682260, L_0069E898, L_0069E960, C4<0>;
+L_0069E9A8 .functor NOR 1, v0069E250_0, L_0069E7D0, L_0069E898, C4<0>;
+L_0069E8E0 .functor NOR 1, v0069E250_0, L_0069E898, v0069E368_0, C4<0>;
+L_0069E788 .functor NOR 1, v0069E250_0, L_0069E7D0, v0069E368_0, C4<0>;
+L_0069E9E0/0/0 .functor OR 1, L_0069EA28, L_0069EA70, L_0069E9A8, L_0069E8E0;
+L_0069E9E0/0/4 .functor OR 1, L_0069E788, C4<0>, C4<0>, C4<0>;
+L_0069E9E0 .functor NOR 1, L_0069E9E0/0/0, L_0069E9E0/0/4, C4<0>, C4<0>;
+v0069E250_0 .var "a", 0 0;
+v0069E2B8_0 .var "b", 0 0;
+v0069E310_0 .var "c", 0 0;
+v0069E368_0 .var "d", 0 0;
+v0069E3C0_0 .net "w1", 0 0, L_00682260; 1 drivers
+v0069E418_0 .net "w10", 0 0, L_0069E9E0; 1 drivers
+v0069E470_0 .net "w2", 0 0, L_0069E7D0; 1 drivers
+v0069E4F0_0 .net "w3", 0 0, L_0069E898; 1 drivers
+v0069E548_0 .net "w4", 0 0, L_0069E960; 1 drivers
+v0069E5D0_0 .net "w5", 0 0, L_0069EA28; 1 drivers
+v0069E628_0 .net "w6", 0 0, L_0069EA70; 1 drivers
+v0069E680_0 .net "w7", 0 0, L_0069E9A8; 1 drivers
+v0069E6D8_0 .net "w8", 0 0, L_0069E8E0; 1 drivers
+v0069E730_0 .net "w9", 0 0, L_0069E788; 1 drivers
+S_0069E0E8 .scope module, "NN1" "nornot" 2 24, 2 13, S_003D7598;
+ .timescale 0 0;
+L_00682260 .functor NOR 1, v0069E250_0, C4<0>, C4<0>, C4<0>;
+v0069E170_0 .net "e1", 0 0, v0069E250_0; 1 drivers
+v0069E1E0_0 .alias "saida", 0 0, v0069E3C0_0;
+S_0069DF80 .scope module, "NN2" "nornot" 2 25, 2 13, S_003D7598;
+ .timescale 0 0;
+L_0069E7D0 .functor NOR 1, v0069E2B8_0, C4<0>, C4<0>, C4<0>;
+v0069E008_0 .net "e1", 0 0, v0069E2B8_0; 1 drivers
+v0069E078_0 .alias "saida", 0 0, v0069E470_0;
+S_0069DE18 .scope module, "NN3" "nornot" 2 26, 2 13, S_003D7598;
+ .timescale 0 0;
+L_0069E898 .functor NOR 1, v0069E310_0, C4<0>, C4<0>, C4<0>;
+v0069DEA0_0 .net "e1", 0 0, v0069E310_0; 1 drivers
+v0069DF10_0 .alias "saida", 0 0, v0069E4F0_0;
+S_003D76A8 .scope module, "NN4" "nornot" 2 27, 2 13, S_003D7598;
+ .timescale 0 0;
+L_0069E960 .functor NOR 1, v0069E368_0, C4<0>, C4<0>, C4<0>;
+v00682420_0 .net "e1", 0 0, v0069E368_0; 1 drivers
+v006823C8_0 .alias "saida", 0 0, v0069E548_0;
+S_003D7620 .scope begin, "main" "main" 2 43, 2 43, S_003D7598;
+ .timescale 0 0;
+    .scope S_003D7598;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_003D7598;
+T_1 ;
+    %fork t_1, S_003D7620;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 44 "$display", "Guia08 - Exercicio 02";
+    %vpi_call 2 45 "$display", "Fazer a saida para a função\012¬(abd) + ¬(acd) + ¬(abc) + a¬cd + a¬bc\012";
+    %vpi_call 2 46 "$display", "Aluno: Tiago Menegaz de Melo Garcia\011\011Matricula:405844\012";
+    %vpi_call 2 47 "$display", "Relatorio de Testes";
+    %delay 1, 0;
+    %set/v v0069E250_0, 0, 1;
+    %set/v v0069E2B8_0, 0, 1;
+    %set/v v0069E310_0, 0, 1;
+    %set/v v0069E368_0, 0, 1;
+    %vpi_call 2 49 "$monitor", "a = %b b = %b c = %b d = %b Saida [%b]", v0069E250_0, v0069E2B8_0, v0069E310_0, v0069E368_0, v0069E418_0;
+    %delay 1, 0;
+    %set/v v0069E250_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E250_0, 0, 1;
+    %set/v v0069E2B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E2B8_0, 0, 1;
+    %set/v v0069E310_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E310_0, 0, 1;
+    %set/v v0069E368_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E368_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069E250_0, 1, 1;
+    %set/v v0069E2B8_0, 1, 1;
+    %set/v v0069E310_0, 1, 1;
+    %set/v v0069E368_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E250_0, 0, 1;
+    %set/v v0069E310_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069E250_0, 1, 1;
+    %set/v v0069E310_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Arquitetura\Guia_08\exercicio05.v";

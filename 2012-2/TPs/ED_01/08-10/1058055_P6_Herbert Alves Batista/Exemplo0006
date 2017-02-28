@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C3FF08 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v00C3F5B8_0 .var "a", 0 0;
+v00C3F610_0 .var "b", 0 0;
+v00C3F668_0 .net "s", 0 0, L_00C3F6F8; 1 drivers
+S_00C33498 .scope module, "NAND1" "nandgate" 2 22, 2 9, S_00C3FF08;
+ .timescale 0 0;
+L_00C335D0 .functor AND 1, v00C3F5B8_0, v00C3F610_0, C4<1>, C4<1>;
+L_00C3F6F8 .functor NOT 1, L_00C335D0, C4<0>, C4<0>, C4<0>;
+v00C3FF90_0 .net *"_s0", 0 0, L_00C335D0; 1 drivers
+v00C3D8B8_0 .net "p", 0 0, v00C3F5B8_0; 1 drivers
+v00C33520_0 .net "q", 0 0, v00C3F610_0; 1 drivers
+v00C33578_0 .alias "s", 0 0, v00C3F668_0;
+S_00C33060 .scope begin, "start" "start" 2 24, 2 24, S_00C3FF08;
+ .timescale 0 0;
+S_00C32FD8 .scope begin, "main" "main" 2 29, 2 29, S_00C3FF08;
+ .timescale 0 0;
+    .scope S_00C3FF08;
+T_0 ;
+    %fork t_1, S_00C33060;
+    %jmp t_0;
+    .scope S_00C33060;
+t_1 ;
+    %set/v v00C3F5B8_0, 0, 1;
+    %set/v v00C3F610_0, 0, 1;
+    %end;
+    .scope S_00C3FF08;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00C3FF08;
+T_1 ;
+    %fork t_3, S_00C32FD8;
+    %jmp t_2;
+    .scope S_00C32FD8;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exemplo0006 - Herbert Alves - 461971";
+    %vpi_call 2 31 "$display", "Test nand gate";
+    %vpi_call 2 32 "$display", "\012 ~(a & b) = s\012";
+    %delay 1, 0;
+    %set/v v00C3F5B8_0, 0, 1;
+    %set/v v00C3F610_0, 0, 1;
+    %vpi_call 2 34 "$display", "~(%b & %b) = %b", v00C3F5B8_0, v00C3F610_0, v00C3F668_0;
+    %delay 1, 0;
+    %set/v v00C3F5B8_0, 0, 1;
+    %set/v v00C3F610_0, 1, 1;
+    %vpi_call 2 36 "$display", "~(%b & %b) = %b", v00C3F5B8_0, v00C3F610_0, v00C3F668_0;
+    %delay 1, 0;
+    %set/v v00C3F5B8_0, 1, 1;
+    %set/v v00C3F610_0, 0, 1;
+    %vpi_call 2 38 "$display", "~(%b & %b) = %b", v00C3F5B8_0, v00C3F610_0, v00C3F668_0;
+    %delay 1, 0;
+    %set/v v00C3F5B8_0, 1, 1;
+    %set/v v00C3F610_0, 1, 1;
+    %vpi_call 2 40 "$display", "~(%b & %b) = %b", v00C3F5B8_0, v00C3F610_0, v00C3F668_0;
+    %end;
+    .scope S_00C3FF08;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0006.v";

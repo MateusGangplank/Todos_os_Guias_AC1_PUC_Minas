@@ -1,0 +1,99 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00659020 .scope module, "testxorgate" "testxorgate" 2 29;
+ .timescale 0 0;
+v007732E0_0 .var "a", 0 1;
+v00773338_0 .net "s", 0 0, L_00774020; 1 drivers
+S_006591B8 .scope module, "XOR1" "xorgate" 2 33, 2 11, S_00659020;
+ .timescale 0 0;
+L_0065FFB0 .functor NOT 1, L_007733E8, C4<0>, C4<0>, C4<0>;
+L_00652C50 .functor NOT 1, L_00773498, C4<0>, C4<0>, C4<0>;
+L_0065B968 .functor AND 1, L_00773548, L_007735A0, C4<1>, C4<1>;
+L_00652BE0 .functor AND 1, L_00773650, L_007736A8, C4<1>, C4<1>;
+L_00774020 .functor OR 1, L_00773700, L_00773758, C4<0>, C4<0>;
+v0065FF58_0 .net *"_s0", 0 0, L_0065FFB0; 1 drivers
+v0065F8B8_0 .net *"_s11", 0 0, L_00773548; 1 drivers
+v0065F910_0 .net *"_s13", 0 0, L_007735A0; 1 drivers
+v0065CE88_0 .net *"_s14", 0 0, L_00652BE0; 1 drivers
+v0065CEE0_0 .net *"_s17", 0 0, L_00773650; 1 drivers
+v0065CF38_0 .net *"_s19", 0 0, L_007736A8; 1 drivers
+v00652B50_0 .net *"_s21", 0 0, L_00773700; 1 drivers
+v00773020_0 .net *"_s23", 0 0, L_00773758; 1 drivers
+v00773078_0 .net *"_s3", 0 0, L_007733E8; 1 drivers
+v007730D0_0 .net *"_s4", 0 0, L_00652C50; 1 drivers
+v00773128_0 .net *"_s7", 0 0, L_00773498; 1 drivers
+v00773180_0 .net *"_s8", 0 0, L_0065B968; 1 drivers
+v007731D8_0 .net "p", 0 1, v007732E0_0; 1 drivers
+v00773230_0 .alias "s", 0 0, v00773338_0;
+RS_0074114C .resolv tri, L_00773390, L_00773440, L_007734F0, L_007735F8;
+v00773288_0 .net8 "temp", 0 3, RS_0074114C; 4 drivers
+L_00773390 .part/pv L_0065FFB0, 1, 1, 4;
+L_007733E8 .part v007732E0_0, 1, 1;
+L_00773440 .part/pv L_00652C50, 0, 1, 4;
+L_00773498 .part v007732E0_0, 0, 1;
+L_007734F0 .part/pv L_0065B968, 3, 1, 4;
+L_00773548 .part RS_0074114C, 1, 1;
+L_007735A0 .part v007732E0_0, 0, 1;
+L_007735F8 .part/pv L_00652BE0, 2, 1, 4;
+L_00773650 .part v007732E0_0, 1, 1;
+L_007736A8 .part RS_0074114C, 0, 1;
+L_00773700 .part RS_0074114C, 3, 1;
+L_00773758 .part RS_0074114C, 2, 1;
+S_00659130 .scope begin, "start" "start" 2 35, 2 35, S_00659020;
+ .timescale 0 0;
+S_006590A8 .scope begin, "main" "main" 2 40, 2 40, S_00659020;
+ .timescale 0 0;
+    .scope S_00659020;
+T_0 ;
+    %fork t_1, S_00659130;
+    %jmp t_0;
+    .scope S_00659130;
+t_1 ;
+    %ix/load 0, 1, 0;
+    %set/x0 v007732E0_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v007732E0_0, 0, 1;
+    %end;
+    .scope S_00659020;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00659020;
+T_1 ;
+    %fork t_3, S_006590A8;
+    %jmp t_2;
+    .scope S_006590A8;
+t_3 ;
+    %vpi_call 2 41 "$display", "Exemplo 05_08 - xxx yyy zzz - 999999";
+    %vpi_call 2 42 "$display", "Test xor gate";
+    %vpi_call 2 43 "$display", "\012a ^ b = s\012";
+    %vpi_call 2 44 "$monitor", "%b ^%b = %b", &PV<v007732E0_0, 1, 1>, &PV<v007732E0_0, 0, 1>, v00773338_0;
+    %delay 1, 0;
+    %ix/load 0, 1, 0;
+    %set/x0 v007732E0_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v007732E0_0, 1, 1;
+    %delay 1, 0;
+    %ix/load 0, 1, 0;
+    %set/x0 v007732E0_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v007732E0_0, 0, 1;
+    %delay 1, 0;
+    %ix/load 0, 1, 0;
+    %set/x0 v007732E0_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v007732E0_0, 1, 1;
+    %end;
+    .scope S_00659020;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "testxor08.v";

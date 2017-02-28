@@ -1,0 +1,137 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0037A920 .scope module, "test_diferenca" "test_diferenca" 2 35;
+ .timescale 0 0;
+v005C9CC0_0 .var "carryIn", 0 0;
+v005C9D18_0 .net "carryOut", 0 0, L_005CAD28; 1 drivers
+RS_005A52BC .resolv tri, L_005C9E78, L_005C9F80, L_005CA088, C4<zzz>;
+v005C9D70_0 .net8 "d", 2 0, RS_005A52BC; 3 drivers
+v005C9DC8_0 .var "x", 2 0;
+v005C9E20_0 .var "y", 2 0;
+S_0037A898 .scope module, "D" "diferenca2" 2 43, 2 27, S_0037A920;
+ .timescale 0 0;
+v0037D068_0 .net "a", 2 0, v005C9DC8_0; 1 drivers
+v0037D0C0_0 .net "b", 2 0, v005C9E20_0; 1 drivers
+v0037D118_0 .net "carryIn", 0 0, v005C9CC0_0; 1 drivers
+v0037D170_0 .alias "carryOut", 0 0, v005C9D18_0;
+v0037D1C8_0 .alias "diff", 2 0, v005C9D70_0;
+v005C9C10_0 .net "p", 0 0, L_0059FED0; 1 drivers
+v005C9C68_0 .net "q", 0 0, L_005A02C0; 1 drivers
+L_005C9E78 .part/pv L_0059FDB8, 0, 1, 3;
+L_005C9ED0 .part v005C9DC8_0, 0, 1;
+L_005C9F28 .part v005C9E20_0, 0, 1;
+L_005C9F80 .part/pv L_005A01A8, 1, 1, 3;
+L_005C9FD8 .part v005C9DC8_0, 1, 1;
+L_005CA030 .part v005C9E20_0, 1, 1;
+L_005CA088 .part/pv L_005CAC10, 2, 1, 3;
+L_005CA0E0 .part v005C9DC8_0, 2, 1;
+L_005CA138 .part v005C9E20_0, 2, 1;
+S_0037AB40 .scope module, "A" "diferenca" 2 30, 2 10, S_0037A898;
+ .timescale 0 0;
+L_0037D660 .functor XOR 1, L_005C9ED0, L_005C9F28, C4<0>, C4<0>;
+L_0037D698 .functor NOT 1, L_005C9ED0, C4<0>, C4<0>, C4<0>;
+L_0059FD10 .functor AND 1, L_0037D698, L_005C9F28, C4<1>, C4<1>;
+L_0059FDB8 .functor XOR 1, L_0037D660, v005C9CC0_0, C4<0>, C4<0>;
+L_0059FE28 .functor NOT 1, L_0037D660, C4<0>, C4<0>, C4<0>;
+L_0059FE60 .functor AND 1, L_0059FE28, v005C9CC0_0, C4<1>, C4<1>;
+L_0059FED0 .functor OR 1, L_0059FD10, L_0059FE60, C4<0>, C4<0>;
+v0037CCF8_0 .net "a", 0 0, L_005C9ED0; 1 drivers
+v0037CD50_0 .net "b", 0 0, L_005C9F28; 1 drivers
+v0037CDA8_0 .net "c1", 0 0, L_0059FD10; 1 drivers
+v0037CE00_0 .net "c2", 0 0, L_0059FE60; 1 drivers
+v0037CE58_0 .alias "carryIn", 0 0, v0037D118_0;
+v0037CEB0_0 .alias "carryOut", 0 0, v005C9C10_0;
+v0037CF08_0 .net "diff", 0 0, L_0059FDB8; 1 drivers
+v0037CF60_0 .net "s1", 0 0, L_0037D660; 1 drivers
+v0037CFB8_0 .net "s2", 0 0, L_0037D698; 1 drivers
+v0037D010_0 .net "s3", 0 0, L_0059FE28; 1 drivers
+S_0037ABC8 .scope module, "B" "diferenca" 2 31, 2 10, S_0037A898;
+ .timescale 0 0;
+L_005A0058 .functor XOR 1, L_005C9FD8, L_005CA030, C4<0>, C4<0>;
+L_005A0090 .functor NOT 1, L_005C9FD8, C4<0>, C4<0>, C4<0>;
+L_005A0100 .functor AND 1, L_005A0090, L_005CA030, C4<1>, C4<1>;
+L_005A01A8 .functor XOR 1, L_005A0058, L_0059FED0, C4<0>, C4<0>;
+L_005A0218 .functor NOT 1, L_005A0058, C4<0>, C4<0>, C4<0>;
+L_005A0250 .functor AND 1, L_005A0218, L_0059FED0, C4<1>, C4<1>;
+L_005A02C0 .functor OR 1, L_005A0100, L_005A0250, C4<0>, C4<0>;
+v0037C988_0 .net "a", 0 0, L_005C9FD8; 1 drivers
+v0037C9E0_0 .net "b", 0 0, L_005CA030; 1 drivers
+v0037CA38_0 .net "c1", 0 0, L_005A0100; 1 drivers
+v0037CA90_0 .net "c2", 0 0, L_005A0250; 1 drivers
+v0037CAE8_0 .alias "carryIn", 0 0, v005C9C10_0;
+v0037CB40_0 .alias "carryOut", 0 0, v005C9C68_0;
+v0037CB98_0 .net "diff", 0 0, L_005A01A8; 1 drivers
+v0037CBF0_0 .net "s1", 0 0, L_005A0058; 1 drivers
+v0037CC48_0 .net "s2", 0 0, L_005A0090; 1 drivers
+v0037CCA0_0 .net "s3", 0 0, L_005A0218; 1 drivers
+S_0037A810 .scope module, "C" "diferenca" 2 32, 2 10, S_0037A898;
+ .timescale 0 0;
+L_005A03A0 .functor XOR 1, L_005CA0E0, L_005CA138, C4<0>, C4<0>;
+L_005A03D8 .functor NOT 1, L_005CA0E0, C4<0>, C4<0>, C4<0>;
+L_005A0448 .functor AND 1, L_005A03D8, L_005CA138, C4<1>, C4<1>;
+L_005CAC10 .functor XOR 1, L_005A03A0, L_005A02C0, C4<0>, C4<0>;
+L_005CAC80 .functor NOT 1, L_005A03A0, C4<0>, C4<0>, C4<0>;
+L_005CACB8 .functor AND 1, L_005CAC80, L_005A02C0, C4<1>, C4<1>;
+L_005CAD28 .functor OR 1, L_005A0448, L_005CACB8, C4<0>, C4<0>;
+v0037C618_0 .net "a", 0 0, L_005CA0E0; 1 drivers
+v0037C670_0 .net "b", 0 0, L_005CA138; 1 drivers
+v0037C6C8_0 .net "c1", 0 0, L_005A0448; 1 drivers
+v0037C720_0 .net "c2", 0 0, L_005CACB8; 1 drivers
+v0037C778_0 .alias "carryIn", 0 0, v005C9C68_0;
+v0037C7D0_0 .alias "carryOut", 0 0, v005C9D18_0;
+v0037C828_0 .net "diff", 0 0, L_005CAC10; 1 drivers
+v0037C880_0 .net "s1", 0 0, L_005A03A0; 1 drivers
+v0037C8D8_0 .net "s2", 0 0, L_005A03D8; 1 drivers
+v0037C930_0 .net "s3", 0 0, L_005CAC80; 1 drivers
+    .scope S_0037A920;
+T_0 ;
+    %vpi_call 2 46 "$display", "Exemplo0022 - Thais Mairink - 441710";
+    %vpi_call 2 47 "$display", "Subtrator";
+    %delay 1, 0;
+    %set/v v005C9DC8_0, 0, 3;
+    %set/v v005C9E20_0, 0, 3;
+    %set/v v005C9CC0_0, 0, 1;
+    %vpi_call 2 51 "$monitor", "%b - %b = %b", v005C9DC8_0, v005C9E20_0, v005C9D70_0;
+    %delay 1, 0;
+    %set/v v005C9DC8_0, 0, 3;
+    %movi 8, 1, 3;
+    %set/v v005C9E20_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C9DC8_0, 8, 3;
+    %set/v v005C9E20_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C9DC8_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v005C9E20_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C9DC8_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v005C9E20_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005C9DC8_0, 0, 3;
+    %set/v v005C9E20_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v005C9DC8_0, 8, 3;
+    %movi 8, 6, 3;
+    %set/v v005C9E20_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005C9DC8_0, 0, 3;
+    %set/v v005C9E20_0, 0, 3;
+    %delay 1, 0;
+    %set/v v005C9DC8_0, 0, 3;
+    %set/v v005C9E20_0, 0, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0022.V";

@@ -1,0 +1,62 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00882FC8 .scope module, "testxnorgate" "testxnorgate" 2 17;
+ .timescale 0 0;
+v0088DF68_0 .var "a", 0 0;
+v0088DFC0_0 .var "b", 0 0;
+v0088E018_0 .net "s", 0 0, L_007AF3F8; 1 drivers
+S_00883460 .scope module, "XNOR1" "xnorgate" 2 22, 2 10, S_00882FC8;
+ .timescale 0 0;
+L_0088FFA8 .functor XOR 1, v0088DF68_0, v0088DFC0_0, C4<0>, C4<0>;
+L_007AF3F8 .functor NOT 1, L_0088FFA8, C4<0>, C4<0>, C4<0>;
+v008834E8_0 .net *"_s0", 0 0, L_0088FFA8; 1 drivers
+v00883540_0 .net "p", 0 0, v0088DF68_0; 1 drivers
+v0088DEB8_0 .net "q", 0 0, v0088DFC0_0; 1 drivers
+v0088DF10_0 .alias "s", 0 0, v0088E018_0;
+S_00883050 .scope begin, "start" "start" 2 24, 2 24, S_00882FC8;
+ .timescale 0 0;
+    .scope S_00882FC8;
+T_0 ;
+    %fork t_1, S_00883050;
+    %jmp t_0;
+    .scope S_00883050;
+t_1 ;
+    %set/v v0088DF68_0, 0, 1;
+    %set/v v0088DFC0_0, 0, 1;
+    %end;
+    .scope S_00882FC8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00882FC8;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exemplo0011 - Guilherme Terra - 427407";
+    %vpi_call 2 30 "$display", "Test XNOR gate";
+    %vpi_call 2 31 "$display", "\012a ^ b = s\012";
+    %set/v v0088DF68_0, 0, 1;
+    %set/v v0088DFC0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b ^ %b = %b", v0088DF68_0, v0088DFC0_0, v0088E018_0;
+    %set/v v0088DF68_0, 0, 1;
+    %set/v v0088DFC0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b ^ %b = %b", v0088DF68_0, v0088DFC0_0, v0088E018_0;
+    %set/v v0088DF68_0, 1, 1;
+    %set/v v0088DFC0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b ^ %b = %b", v0088DF68_0, v0088DFC0_0, v0088E018_0;
+    %set/v v0088DF68_0, 1, 1;
+    %set/v v0088DFC0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b ^ %b = %b", v0088DF68_0, v0088DFC0_0, v0088E018_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\CIÊNCIA_DA_COMPUTAÇÃO\2_Periodo\ARQ_I\Guias\Concluídas\Guia 01\Exemplo0011.v";

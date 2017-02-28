@@ -1,0 +1,131 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0069E048 .scope module, "test_sel" "test_sel" 2 21;
+ .timescale 0 0;
+v005A0338_0 .var "c", 0 0;
+v005A01D8_0 .var "x", 3 0;
+v005A0230_0 .var "y", 3 0;
+v005A0440_0 .net "z", 0 0, L_005C93A8; 1 drivers
+S_0069DA70 .scope module, "modulo" "sel" 2 27, 2 6, S_0069E048;
+ .timescale 0 0;
+L_00694888 .functor XNOR 1, L_005A1330, L_005A1178, C4<0>, C4<0>;
+L_005C8E48 .functor XNOR 1, L_005A0CA8, L_005A11D0, C4<0>, C4<0>;
+L_005C8E10 .functor XNOR 1, L_005A0EB8, L_005A0B48, C4<0>, C4<0>;
+L_005C8F98 .functor XNOR 1, L_005A1388, L_005A10C8, C4<0>, C4<0>;
+L_005C8CF8 .functor AND 1, L_005A0FC0, L_005A0F68, L_005A0E60, L_005A1120;
+L_005C93A8 .functor XOR 1, v005A0338_0, L_005C8CF8, C4<0>, C4<0>;
+v0069EEB8_0 .net *"_s0", 0 0, L_00694888; 1 drivers
+v0069EF10_0 .net *"_s11", 0 0, L_005A11D0; 1 drivers
+v0069EF68_0 .net *"_s12", 0 0, L_005C8E10; 1 drivers
+v006947D0_0 .net *"_s15", 0 0, L_005A0EB8; 1 drivers
+v005A0700_0 .net *"_s17", 0 0, L_005A0B48; 1 drivers
+v005A04F0_0 .net *"_s18", 0 0, L_005C8F98; 1 drivers
+v005A0548_0 .net *"_s21", 0 0, L_005A1388; 1 drivers
+v005A06A8_0 .net *"_s23", 0 0, L_005A10C8; 1 drivers
+v005A05A0_0 .net *"_s25", 0 0, L_005A0FC0; 1 drivers
+v005A05F8_0 .net *"_s27", 0 0, L_005A0F68; 1 drivers
+v005A0390_0 .net *"_s29", 0 0, L_005A0E60; 1 drivers
+v005A02E0_0 .net *"_s3", 0 0, L_005A1330; 1 drivers
+v005A0650_0 .net *"_s31", 0 0, L_005A1120; 1 drivers
+v005A0180_0 .net *"_s5", 0 0, L_005A1178; 1 drivers
+v005A0498_0 .net *"_s6", 0 0, L_005C8E48; 1 drivers
+v005A0758_0 .net *"_s9", 0 0, L_005A0CA8; 1 drivers
+v005A03E8_0 .net "c", 0 0, v005A0338_0; 1 drivers
+v005A0288_0 .net "entrada01", 3 0, v005A01D8_0; 1 drivers
+v005A00D0_0 .net "entrada02", 3 0, v005A0230_0; 1 drivers
+v005A07B0_0 .alias "saida", 0 0, v005A0440_0;
+RS_005A41CC .resolv tri, L_005A1018, L_005A1070, L_005A0E08, L_005A1228;
+v005A0808_0 .net8 "saida_XNOR", 3 0, RS_005A41CC; 4 drivers
+v005A0128_0 .net "saida_and", 0 0, L_005C8CF8; 1 drivers
+L_005A1018 .part/pv L_00694888, 0, 1, 4;
+L_005A1330 .part v005A01D8_0, 0, 1;
+L_005A1178 .part v005A0230_0, 0, 1;
+L_005A1070 .part/pv L_005C8E48, 1, 1, 4;
+L_005A0CA8 .part v005A01D8_0, 1, 1;
+L_005A11D0 .part v005A0230_0, 1, 1;
+L_005A0E08 .part/pv L_005C8E10, 2, 1, 4;
+L_005A0EB8 .part v005A01D8_0, 2, 1;
+L_005A0B48 .part v005A0230_0, 2, 1;
+L_005A1228 .part/pv L_005C8F98, 3, 1, 4;
+L_005A1388 .part v005A01D8_0, 3, 1;
+L_005A10C8 .part v005A0230_0, 3, 1;
+L_005A0FC0 .part RS_005A41CC, 0, 1;
+L_005A0F68 .part RS_005A41CC, 1, 1;
+L_005A0E60 .part RS_005A41CC, 2, 1;
+L_005A1120 .part RS_005A41CC, 3, 1;
+S_0069E0D0 .scope begin, "main" "main" 2 29, 2 29, S_0069E048;
+ .timescale 0 0;
+    .scope S_0069E048;
+T_0 ;
+    %fork t_1, S_0069E0D0;
+    %jmp t_0;
+    .scope S_0069E0D0;
+t_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0036 - Rama Alvim Sales Schiavo";
+    %vpi_call 2 31 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005A01D8_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$monitor", "%3b %3b Option: %1b = %3b", v005A01D8_0, v005A0230_0, v005A0338_0, v005A0440_0;
+    %delay 1, 0;
+    %set/v v005A0338_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v005A01D8_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v005A01D8_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A01D8_0, 1, 4;
+    %set/v v005A0230_0, 1, 4;
+    %set/v v005A0338_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A01D8_0, 1, 4;
+    %set/v v005A0230_0, 1, 4;
+    %set/v v005A0338_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A01D8_0, 0, 4;
+    %movi 8, 8, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v005A01D8_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v005A01D8_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v005A01D8_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005A0230_0, 8, 4;
+    %set/v v005A0338_0, 1, 1;
+    %end;
+    .scope S_0069E048;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rama\Dropbox\PUC-Ciência da Computação\AC01\Todos os guias já feitos\2013-1\TPs\ED_03\03-05\392734\Exemplo0036.v";

@@ -1,0 +1,58 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E9BD0 .scope module, "testc2gate" "testc2gate" 2 22;
+ .timescale 0 0;
+v005FB8F8_0 .var "a", 10 0;
+v005FB950_0 .net "s", 5 0, L_005FBD08; 1 drivers
+S_003E9AC0 .scope module, "C2" "c2gate" 2 28, 2 14, S_003E9BD0;
+ .timescale 0 0;
+L_005FBA68 .functor NOT 12, L_005FB9A8, C4<000000000000>, C4<000000000000>, C4<000000000000>;
+v003E7040_0 .net *"_s0", 11 0, L_005FB9A8; 1 drivers
+v005FB520_0 .net *"_s10", 19 0, C4<00000000000000000000>; 1 drivers
+v005FB590_0 .net *"_s11", 31 0, L_005FBB28; 1 drivers
+v005FB618_0 .net *"_s12", 31 0, L_005FBC40; 1 drivers
+v005FB688_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v005FB6E0_0 .net *"_s4", 11 0, L_005FBA68; 1 drivers
+v005FB750_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v005FB7E8_0 .net "p", 10 0, v005FB8F8_0; 1 drivers
+v005FB858_0 .alias "s", 5 0, v005FB950_0;
+L_005FB9A8 .concat [ 11 1 0 0], v005FB8F8_0, C4<0>;
+L_005FBB28 .concat [ 12 20 0 0], L_005FBA68, C4<00000000000000000000>;
+L_005FBC40 .arith/sum 32, L_005FBB28, C4<00000000000000000000000000000001>;
+L_005FBD08 .part L_005FBC40, 0, 6;
+    .scope S_003E9BD0;
+T_0 ;
+    %vpi_call 2 32 "$display", "Exemplo0018 - Wender Zacarias Xavier - 427472";
+    %vpi_call 2 33 "$display", "Test Complemento de 2";
+    %movi 8, 39, 11;
+    %set/v v005FB8F8_0, 8, 11;
+    %vpi_call 2 36 "$display", "\012 Resultados \012";
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "a =  C2[100111(2)] = %b(2)", v005FB950_0;
+    %movi 8, 44, 11;
+    %set/v v005FB8F8_0, 8, 11;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "b = C2[54(8)] = %b(2)", v005FB950_0;
+    %movi 8, 13, 11;
+    %set/v v005FB8F8_0, 8, 11;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "c = C2[13(8)] = %b(2)", v005FB950_0;
+    %movi 8, 27, 11;
+    %set/v v005FB8F8_0, 8, 11;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "d = C2[1B(16)] = %b(2)", v005FB950_0;
+    %movi 8, 8182, 14;
+    %set/v v005FB8F8_0, 8, 11;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "e = C2[25(10)-36(10)] = %b(2)", v005FB950_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\427472\Exemplo0018.vhdl";

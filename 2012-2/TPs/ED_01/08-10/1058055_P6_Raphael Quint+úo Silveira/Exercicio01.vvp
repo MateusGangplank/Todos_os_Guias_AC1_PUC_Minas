@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0092FEE8 .scope module, "testnandgate" "testnandgate" 2 15;
+ .timescale 0 0;
+v00923588_0 .var "a", 0 0;
+v009235E0_0 .var "b", 0 0;
+v0092F3B8_0 .net "s", 0 0, L_0092F4B8; 1 drivers
+S_00923070 .scope module, "NAND1" "nandgate" 2 20, 2 9, S_0092FEE8;
+ .timescale 0 0;
+L_0092F410 .functor AND 1, v00923588_0, v009235E0_0, C4<1>, C4<1>;
+L_0092F4B8 .functor NOT 1, L_0092F410, C4<0>, C4<0>, C4<0>;
+v009230F8_0 .net *"_s0", 0 0, L_0092F410; 1 drivers
+v0092FF70_0 .net "p", 0 0, v00923588_0; 1 drivers
+v009234D8_0 .net "q", 0 0, v009235E0_0; 1 drivers
+v00923530_0 .alias "s", 0 0, v0092F3B8_0;
+S_00922FE8 .scope begin, "start" "start" 2 22, 2 22, S_0092FEE8;
+ .timescale 0 0;
+    .scope S_0092FEE8;
+T_0 ;
+    %fork t_1, S_00922FE8;
+    %jmp t_0;
+    .scope S_00922FE8;
+t_1 ;
+    %set/v v00923588_0, 0, 1;
+    %set/v v009235E0_0, 0, 1;
+    %end;
+    .scope S_0092FEE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0092FEE8;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exercicio01 - Raphael Quintao - 445171";
+    %vpi_call 2 30 "$display", "Test NAND gate";
+    %vpi_call 2 31 "$display", "\012~(a & b) = s\012";
+    %set/v v00923588_0, 0, 1;
+    %set/v v009235E0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "~(%b & %b) = %b", v00923588_0, v009235E0_0, v0092F3B8_0;
+    %set/v v00923588_0, 0, 1;
+    %set/v v009235E0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~(%b & %b) = %b", v00923588_0, v009235E0_0, v0092F3B8_0;
+    %set/v v00923588_0, 1, 1;
+    %set/v v009235E0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~(%b & %b) = %b", v00923588_0, v009235E0_0, v0092F3B8_0;
+    %set/v v00923588_0, 1, 1;
+    %set/v v009235E0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~(%b & %b) = %b", v00923588_0, v009235E0_0, v0092F3B8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Exercicio01.v";

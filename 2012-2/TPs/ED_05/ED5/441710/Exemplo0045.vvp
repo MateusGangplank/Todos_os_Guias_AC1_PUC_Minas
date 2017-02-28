@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007836F8 .scope module, "Exemplo0045" "Exemplo0045" 2 24;
+ .timescale 0 0;
+v007844D0_0 .net "clock", 0 0, v0078FF88_0; 1 drivers
+v00784528_0 .net "p1", 0 0, v00782D50_0; 1 drivers
+S_0078FF00 .scope module, "clk" "clock" 2 26, 3 9, S_007836F8;
+ .timescale 0 0;
+v0078FF88_0 .var "clk", 0 0;
+S_00782C70 .scope module, "pls1" "pulse1" 2 28, 2 10, S_007836F8;
+ .timescale 0 0;
+v00782CF8_0 .alias "clock", 0 0, v007844D0_0;
+v00782D50_0 .var "signal", 0 0;
+E_006ADE78 .event edge, v00782CF8_0;
+    .scope S_0078FF00;
+T_0 ;
+    %set/v v0078FF88_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0078FF00;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v0078FF88_0, 1;
+    %inv 8, 1;
+    %set/v v0078FF88_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00782C70;
+T_2 ;
+    %wait E_006ADE78;
+    %set/v v00782D50_0, 1, 1;
+    %delay 24, 0;
+    %set/v v00782D50_0, 0, 1;
+    %delay 24, 0;
+    %set/v v00782D50_0, 1, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_007836F8;
+T_3 ;
+    %vpi_call 2 30 "$dumpfile", "Nome: Raphael Quintao Matricula: 445171";
+    %vpi_call 2 31 "$dumpfile", " Exemplo0045.vcd";
+    %vpi_call 2 32 "$dumpvars", 2'sb01, v007844D0_0, v00784528_0;
+    %delay 480, 0;
+    %vpi_call 2 33 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Ailton\Desktop\445171\Exemplo0045.v";
+    "./clock.v";

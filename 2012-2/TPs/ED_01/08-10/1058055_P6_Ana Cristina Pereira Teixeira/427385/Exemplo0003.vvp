@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0072DEA0 .scope module, "testandgate" "testandgate" 2 16;
+ .timescale 0 0;
+v00723350_0 .var "a", 0 0;
+v007233A8_0 .var "b", 0 0;
+v00723400_0 .net "s", 0 0, L_0072DFB0; 1 drivers
+S_00722E60 .scope module, "AND1" "andgate" 2 21, 2 9, S_0072DEA0;
+ .timescale 0 0;
+L_0072DFB0 .functor AND 1, v00723350_0, v007233A8_0, C4<1>, C4<1>;
+v00722EE8_0 .net "p", 0 0, v00723350_0; 1 drivers
+v00722F40_0 .net "q", 0 0, v007233A8_0; 1 drivers
+v007232F8_0 .alias "s", 0 0, v00723400_0;
+S_0072DF28 .scope begin, "start" "start" 2 23, 2 23, S_0072DEA0;
+ .timescale 0 0;
+    .scope S_0072DEA0;
+T_0 ;
+    %fork t_1, S_0072DF28;
+    %jmp t_0;
+    .scope S_0072DF28;
+t_1 ;
+    %set/v v00723350_0, 0, 1;
+    %set/v v007233A8_0, 0, 1;
+    %end;
+    .scope S_0072DEA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0072DEA0;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0003 - Ana Cristina - 427385";
+    %vpi_call 2 31 "$display", "Test AND gate";
+    %vpi_call 2 32 "$display", "\012a & b = s\012";
+    %set/v v00723350_0, 0, 1;
+    %set/v v007233A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b & %b = %b", v00723350_0, v007233A8_0, v00723400_0;
+    %set/v v00723350_0, 0, 1;
+    %set/v v007233A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00723350_0, v007233A8_0, v00723400_0;
+    %set/v v00723350_0, 1, 1;
+    %set/v v007233A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b & %b = %b", v00723350_0, v007233A8_0, v00723400_0;
+    %set/v v00723350_0, 1, 1;
+    %set/v v007233A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b & %b = %b", v00723350_0, v007233A8_0, v00723400_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\2-2012\arq\guia01\427385\Exemplo0003.v";

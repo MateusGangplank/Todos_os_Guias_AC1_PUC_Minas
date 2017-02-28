@@ -1,0 +1,62 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00ADE448 .scope module, "testcircuito" "testcircuito" 2 22;
+ .timescale 0 0;
+v00995730_0 .var "a", 0 0;
+v00995788_0 .var "b", 0 0;
+v009957E0_0 .net "s0", 0 0, L_009CD298; 1 drivers
+v00995838_0 .net "s1", 0 0, L_009930F0; 1 drivers
+S_00993000 .scope module, "CIRCUITO1" "circuito" 2 26, 2 5, S_00ADE448;
+ .timescale 0 0;
+L_00993080 .functor NOR 1, v00995730_0, v00995788_0, C4<0>, C4<0>;
+L_00993128 .functor NOR 1, L_00993080, L_00993080, C4<0>, C4<0>;
+L_00997B88 .functor NOR 1, v00995730_0, v00995730_0, C4<0>, C4<0>;
+L_009930B8 .functor NOR 1, v00995788_0, v00995788_0, C4<0>, C4<0>;
+L_009930F0 .functor NOR 1, L_00997B88, L_009930B8, C4<0>, C4<0>;
+L_00995000 .functor NOR 1, L_009930F0, L_009930F0, C4<0>, C4<0>;
+L_009CD1B8 .functor NOR 1, L_00995000, L_00995000, C4<0>, C4<0>;
+L_009CD228 .functor NOR 1, L_00993128, L_00993128, C4<0>, C4<0>;
+L_009CD298 .functor NOR 1, L_009CD1B8, L_009CD228, C4<0>, C4<0>;
+v00995368_0 .net "a", 0 0, v00995730_0; 1 drivers
+v009953C0_0 .net "b", 0 0, v00995788_0; 1 drivers
+v00995418_0 .alias "s0", 0 0, v009957E0_0;
+v00995470_0 .alias "s1", 0 0, v00995838_0;
+v009954C8_0 .net "s2", 0 0, L_00993080; 1 drivers
+v00995520_0 .net "s3", 0 0, L_00993128; 1 drivers
+v00995578_0 .net "s4", 0 0, L_00997B88; 1 drivers
+v009955D0_0 .net "s5", 0 0, L_009930B8; 1 drivers
+v00995628_0 .net "s6", 0 0, L_00995000; 1 drivers
+v00995680_0 .net "s7", 0 0, L_009CD1B8; 1 drivers
+v009956D8_0 .net "s8", 0 0, L_009CD228; 1 drivers
+    .scope S_00ADE448;
+T_0 ;
+    %vpi_call 2 29 "$display", "Exemplo 01 - Bruno Rafael Nicolletti - 380752";
+    %vpi_call 2 30 "$display", "Test Circuito Meia-Soma Tradicional";
+    %vpi_call 2 31 "$display", "\012a + b = s1 s0";
+    %set/v v00995730_0, 0, 1;
+    %set/v v00995788_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b + %b =  %b  %b", v00995730_0, v00995788_0, v00995838_0, v009957E0_0;
+    %set/v v00995730_0, 0, 1;
+    %set/v v00995788_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b + %b =  %b  %b", v00995730_0, v00995788_0, v00995838_0, v009957E0_0;
+    %set/v v00995730_0, 1, 1;
+    %set/v v00995788_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b + %b =  %b  %b", v00995730_0, v00995788_0, v00995838_0, v009957E0_0;
+    %set/v v00995730_0, 1, 1;
+    %set/v v00995788_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b + %b =  %b  %b", v00995730_0, v00995788_0, v00995838_0, v009957E0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Bruno\Ciencia_da_Computacao\2010-2\AC_1\Guias\Guia 4\Exemplo 01.v";

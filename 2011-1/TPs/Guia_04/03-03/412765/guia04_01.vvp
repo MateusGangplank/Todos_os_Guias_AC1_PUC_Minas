@@ -1,0 +1,76 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E8688 .scope module, "halfAddertest" "halfAddertest" 2 27;
+ .timescale 0 0;
+v005FAD70_0 .var "a", 0 0;
+v005FADC8_0 .var "b", 0 0;
+v005FAE20_0 .net "s1", 0 0, L_005FAF98; 1 drivers
+v005FAE78_0 .net "s2", 0 0, L_005FB188; 1 drivers
+S_003E8820 .scope module, "HALF" "halfAdder" 2 33, 2 8, S_003E8688;
+ .timescale 0 0;
+L_003E6BC8 .functor NOR 1, v005FAD70_0, v005FAD70_0, C4<0>, C4<0>;
+L_005FAF28 .functor NOR 1, v005FADC8_0, v005FADC8_0, C4<0>, C4<0>;
+L_005FAF98 .functor NOR 1, L_003E6BC8, L_005FAF28, C4<0>, C4<0>;
+L_005FB078 .functor NOR 1, v005FAD70_0, v005FADC8_0, C4<0>, C4<0>;
+L_005FAF60 .functor NOR 1, L_005FB078, L_005FB078, C4<0>, C4<0>;
+L_005FB118 .functor NOR 1, L_005FAF60, L_005FAF60, C4<0>, C4<0>;
+L_005FB188 .functor NOR 1, L_005FAF98, L_005FB118, C4<0>, C4<0>;
+v005D0EA8_0 .net "p", 0 0, v005FAD70_0; 1 drivers
+v005FA998_0 .net "q", 0 0, v005FADC8_0; 1 drivers
+v005FAA08_0 .alias "s1", 0 0, v005FAE20_0;
+v005FAA90_0 .alias "s2", 0 0, v005FAE78_0;
+v005FAB00_0 .net "s3", 0 0, L_003E6BC8; 1 drivers
+v005FAB58_0 .net "s4", 0 0, L_005FAF28; 1 drivers
+v005FABC8_0 .net "s5", 0 0, L_005FB078; 1 drivers
+v005FAC60_0 .net "s6", 0 0, L_005FAF60; 1 drivers
+v005FACD0_0 .net "s7", 0 0, L_005FB118; 1 drivers
+S_003E8798 .scope begin, "start" "start" 2 35, 2 35, S_003E8688;
+ .timescale 0 0;
+S_003E8710 .scope begin, "main" "main" 2 42, 2 42, S_003E8688;
+ .timescale 0 0;
+    .scope S_003E8688;
+T_0 ;
+    %fork t_1, S_003E8798;
+    %jmp t_0;
+    .scope S_003E8798;
+t_1 ;
+    %set/v v005FAD70_0, 0, 1;
+    %set/v v005FADC8_0, 0, 1;
+    %end;
+    .scope S_003E8688;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E8688;
+T_1 ;
+    %fork t_3, S_003E8710;
+    %jmp t_2;
+    .scope S_003E8710;
+t_3 ;
+    %vpi_call 2 44 "$display", "\012Guia 04 - exercicio 01 - Paulo Henrique - 412765";
+    %vpi_call 2 45 "$display", "\012Teste Half Adder gate";
+    %vpi_call 2 46 "$display", "\012a + b = s";
+    %vpi_call 2 47 "$monitor", "%b + %b = %b%b", v005FAD70_0, v005FADC8_0, v005FAE20_0, v005FAE78_0;
+    %delay 1, 0;
+    %set/v v005FAD70_0, 0, 1;
+    %set/v v005FADC8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FAD70_0, 1, 1;
+    %set/v v005FADC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FAD70_0, 1, 1;
+    %set/v v005FADC8_0, 1, 1;
+    %end;
+    .scope S_003E8688;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Arquitetura\TPS\guia04\guia04_01.v";

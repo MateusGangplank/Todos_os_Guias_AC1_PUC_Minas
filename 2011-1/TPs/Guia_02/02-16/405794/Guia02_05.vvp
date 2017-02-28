@@ -1,0 +1,71 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006733E0 .scope module, "testeportaNAND" "testeportaNAND" 2 21;
+ .timescale 0 0;
+v006A3E80_0 .var "a", 0 0;
+v006A3ED8_0 .var "b", 0 0;
+v006A3F30_0 .net "s1", 0 0, L_003EE0D8; 1 drivers
+v006A3FC0_0 .net "s2", 0 0, L_003EE218; 1 drivers
+v006A4050_0 .net "s3", 0 0, L_006A4018; 1 drivers
+v006A40A8_0 .net "s4", 0 0, L_006A4440; 1 drivers
+S_006A3C88 .scope module, "NOR1" "portaNOR" 2 26, 2 11, S_006733E0;
+ .timescale 0 0;
+L_006A4100 .functor OR 1, v006A3E80_0, v006A3E80_0, C4<0>, C4<0>;
+L_003EE0D8 .functor NOT 1, L_006A4100, C4<0>, C4<0>, C4<0>;
+v006A3D08_0 .net *"_s0", 0 0, L_006A4100; 1 drivers
+v006A3D60_0 .net "a", 0 0, v006A3E80_0; 1 drivers
+v006A3DB8_0 .alias "b", 0 0, v006A3D60_0;
+v006A3E28_0 .alias "s", 0 0, v006A3F30_0;
+S_00673E28 .scope module, "NOR2" "portaNOR" 2 27, 2 11, S_006733E0;
+ .timescale 0 0;
+L_006A41D8 .functor OR 1, v006A3ED8_0, v006A3ED8_0, C4<0>, C4<0>;
+L_003EE218 .functor NOT 1, L_006A41D8, C4<0>, C4<0>, C4<0>;
+v006A3AE0_0 .net *"_s0", 0 0, L_006A41D8; 1 drivers
+v006A3B50_0 .net "a", 0 0, v006A3ED8_0; 1 drivers
+v006A3BC0_0 .alias "b", 0 0, v006A3B50_0;
+v006A3C30_0 .alias "s", 0 0, v006A3FC0_0;
+S_00673AC0 .scope module, "NOR3" "portaNOR" 2 28, 2 11, S_006733E0;
+ .timescale 0 0;
+L_006A42B0 .functor OR 1, L_003EE0D8, L_003EE218, C4<0>, C4<0>;
+L_006A4018 .functor NOT 1, L_006A42B0, C4<0>, C4<0>, C4<0>;
+v006A3920_0 .net *"_s0", 0 0, L_006A42B0; 1 drivers
+v006A3990_0 .alias "a", 0 0, v006A3F30_0;
+v006A3A00_0 .alias "b", 0 0, v006A3FC0_0;
+v006A3A88_0 .alias "s", 0 0, v006A4050_0;
+S_00673750 .scope module, "NOR4" "portaNOR" 2 29, 2 11, S_006733E0;
+ .timescale 0 0;
+L_006A3F88 .functor OR 1, L_006A4018, L_006A4018, C4<0>, C4<0>;
+L_006A4440 .functor NOT 1, L_006A3F88, C4<0>, C4<0>, C4<0>;
+v003EF930_0 .net *"_s0", 0 0, L_006A3F88; 1 drivers
+v006A37E8_0 .alias "a", 0 0, v006A4050_0;
+v006A3858_0 .alias "b", 0 0, v006A4050_0;
+v006A38C8_0 .alias "s", 0 0, v006A40A8_0;
+    .scope S_006733E0;
+T_0 ;
+    %vpi_call 2 35 "$display", "\012 Guia 02 - Caio Ragacci Pimentel - 405794 ";
+    %vpi_call 2 36 "$display", "\012 Tabela - Verdade da Porta NAND";
+    %vpi_call 2 37 "$display", "\012 ~(A & B) = S\012";
+    %delay 1, 0;
+    %set/v v006A3E80_0, 0, 1;
+    %set/v v006A3ED8_0, 0, 1;
+    %vpi_call 2 41 "$monitor", " ~(%b & %b) = %b", v006A3E80_0, v006A3ED8_0, v006A40A8_0;
+    %delay 1, 0;
+    %set/v v006A3E80_0, 0, 1;
+    %set/v v006A3ED8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3E80_0, 1, 1;
+    %set/v v006A3ED8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3E80_0, 1, 1;
+    %set/v v006A3ED8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_02\Guia02_05.v";

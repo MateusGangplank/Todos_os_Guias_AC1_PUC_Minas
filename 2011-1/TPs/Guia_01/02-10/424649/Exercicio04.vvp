@@ -1,0 +1,68 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006729E8 .scope module, "testexor" "testexor" 2 12;
+ .timescale 0 0;
+v006A2B80_0 .var "a", 0 0;
+v006A2BD8_0 .var "b", 0 0;
+v006A2C30_0 .net "s", 0 0, L_006A2D30; 1 drivers
+S_003EE9E0 .scope module, "XOR1" "exercicioXOR" 2 16, 2 4, S_006729E8;
+ .timescale 0 0;
+L_006A2C88 .functor XOR 1, v006A2B80_0, v006A2BD8_0, C4<0>, C4<0>;
+L_006A2D30 .functor NOT 1, L_006A2C88, C4<0>, C4<0>, C4<0>;
+v003EEA60_0 .net *"_s0", 0 0, L_006A2C88; 1 drivers
+v006A2A18_0 .net "a", 0 0, v006A2B80_0; 1 drivers
+v006A2A88_0 .net "b", 0 0, v006A2BD8_0; 1 drivers
+v006A2B10_0 .alias "s", 0 0, v006A2C30_0;
+S_003EE960 .scope begin, "start" "start" 2 17, 2 17, S_006729E8;
+ .timescale 0 0;
+S_003EE8E0 .scope begin, "main" "main" 2 22, 2 22, S_006729E8;
+ .timescale 0 0;
+    .scope S_006729E8;
+T_0 ;
+    %fork t_1, S_003EE960;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A2B80_0, 0, 1;
+    %set/v v006A2BD8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006729E8;
+T_1 ;
+    %fork t_3, S_003EE8E0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio 04";
+    %vpi_call 2 24 "$display", "Teste XOR";
+    %vpi_call 2 25 "$display", "~(a^b) = s\012";
+    %delay 1, 0;
+    %vpi_call 2 28 "$display", "%b ^ %b = %b\012", v006A2B80_0, v006A2BD8_0, v006A2C30_0;
+    %delay 1, 0;
+    %set/v v006A2B80_0, 0, 1;
+    %set/v v006A2BD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 30 "$display", "%b ^ %b = %b\012", v006A2B80_0, v006A2BD8_0, v006A2C30_0;
+    %delay 1, 0;
+    %set/v v006A2B80_0, 1, 1;
+    %set/v v006A2BD8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "%b ^ %b = %b\012", v006A2B80_0, v006A2BD8_0, v006A2C30_0;
+    %delay 1, 0;
+    %set/v v006A2B80_0, 1, 1;
+    %set/v v006A2BD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b ^ %b = %b\012", v006A2B80_0, v006A2BD8_0, v006A2C30_0;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\Arquitetura de computadores\Exercicios\424649\Exercicio04.v";

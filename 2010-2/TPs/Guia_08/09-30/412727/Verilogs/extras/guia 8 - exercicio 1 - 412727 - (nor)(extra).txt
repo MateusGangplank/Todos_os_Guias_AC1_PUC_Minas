@@ -1,0 +1,77 @@
+module exercicio1 (a , b , c , d , s);
+
+input a , b, ,c , d;
+
+output s;
+
+wire w0 , w1 , w2 , w3 , w4 , na , nb , nc;
+
+nor(na , a);
+nor(nb , b);
+nor(nc , c);
+
+nor(w0 , na , nb , d);
+nor(w1 , nc , d);
+nor(w2 , nc, b);
+nor(w3 , a , nc);
+nor(w4 , w0 , w1 , w2 , w3);
+nor(s , w4);
+
+
+
+
+endmodule
+
+
+
+
+
+
+module teste;
+
+output s;
+
+reg a , b, c , d;
+
+exercicio1 ex1 (s , a , b , c , d);
+
+
+
+initial begin
+
+a=0;b=0;c=0;d=0;
+
+end
+
+initial begin: start
+
+$display ("Augusto Ferreira Andrade do Carmo - Guia 8 - 412727 - Exercicio 1 -  (nor - extra)");
+$monitor ("%b %b %b %b   %b", a , b , c , d , s); 
+$display ("%b %b %b %b   %b", a , b , c , d , s); 
+
+#1 a=0;b=0;c=0;d=0;
+#1 a=0;b=0;c=0;d=1;
+#1 a=0;b=0;c=1;d=0;
+#1 a=0;b=0;c=1;d=1;
+#1 a=0;b=1;c=0;d=0;
+#1 a=0;b=1;c=0;d=1;
+#1 a=0;b=1;c=1;d=0;
+#1 a=0;b=1;c=1;d=1;
+#1 a=1;b=0;c=0;d=0;
+#1 a=1;b=0;c=0;d=1;
+#1 a=1;b=0;c=1;d=0;
+#1 a=1;b=0;c=1;d=1;
+#1 a=1;b=1;c=0;d=0;
+#1 a=1;b=1;c=0;d=1;
+#1 a=1;b=1;c=1;d=0;
+#1 a=1;b=1;c=1;d=1;
+
+
+end
+
+
+endmodule
+
+
+
+

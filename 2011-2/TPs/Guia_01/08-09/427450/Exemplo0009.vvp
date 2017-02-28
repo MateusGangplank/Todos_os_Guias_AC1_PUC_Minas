@@ -1,0 +1,95 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE7D0 .scope module, "testandgate" "testandgate" 2 21;
+ .timescale 0 0;
+v006A55F0_0 .var "a", 0 0;
+v006A5648_0 .var "b", 0 0;
+v006A56A0_0 .var "c", 0 0;
+v006A56F8_0 .net "s", 0 0, L_006A59C0; 1 drivers
+S_00675280 .scope module, "AND1" "andgate" 2 26, 2 11, S_003EE7D0;
+ .timescale 0 0;
+L_003EEC80 .functor NOT 1, v006A55F0_0, C4<0>, C4<0>, C4<0>;
+L_006A5770 .functor NOT 1, v006A5648_0, C4<0>, C4<0>, C4<0>;
+L_006A57F0 .functor NOT 1, v006A56A0_0, C4<0>, C4<0>, C4<0>;
+L_006A5870 .functor OR 1, L_003EEC80, L_006A5770, C4<0>, C4<0>;
+L_006A5918 .functor OR 1, L_006A5870, L_006A57F0, C4<0>, C4<0>;
+L_006A59C0 .functor NOT 1, L_006A5918, C4<0>, C4<0>, C4<0>;
+v00675300_0 .net *"_s0", 0 0, L_006A5870; 1 drivers
+v006A5248_0 .net *"_s2", 0 0, L_006A5918; 1 drivers
+v006A52B8_0 .net "p", 0 0, v006A55F0_0; 1 drivers
+v006A5340_0 .net "q", 0 0, v006A5648_0; 1 drivers
+v006A53B0_0 .net "r", 0 0, v006A56A0_0; 1 drivers
+v006A5408_0 .alias "s", 0 0, v006A56F8_0;
+v006A5478_0 .net "s1", 0 0, L_003EEC80; 1 drivers
+v006A5510_0 .net "s2", 0 0, L_006A5770; 1 drivers
+v006A5580_0 .net "s3", 0 0, L_006A57F0; 1 drivers
+S_00675200 .scope begin, "start" "start" 2 29, 2 29, S_003EE7D0;
+ .timescale 0 0;
+S_00675180 .scope begin, "main" "main" 2 36, 2 36, S_003EE7D0;
+ .timescale 0 0;
+    .scope S_003EE7D0;
+T_0 ;
+    %fork t_1, S_00675200;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A55F0_0, 0, 1;
+    %set/v v006A5648_0, 0, 1;
+    %set/v v006A56A0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EE7D0;
+T_1 ;
+    %fork t_3, S_00675180;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 37 "$display", "Exemplo0009 - Patrick Fl\3777ÿÿÿÛ‘|ÛÁÀwT`jvio Teixeira Coura - 427450";
+    %vpi_call 2 38 "$display", "Test and gate";
+    %vpi_call 2 39 "$display", "a & b & c = s\012";
+    %vpi_call 2 40 "$monitor", "%b & %b & %b = %b", v006A55F0_0, v006A5648_0, v006A56A0_0, v006A56F8_0;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 0, 1;
+    %set/v v006A5648_0, 0, 1;
+    %set/v v006A56A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 0, 1;
+    %set/v v006A5648_0, 0, 1;
+    %set/v v006A56A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 0, 1;
+    %set/v v006A5648_0, 1, 1;
+    %set/v v006A56A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 0, 1;
+    %set/v v006A5648_0, 1, 1;
+    %set/v v006A56A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 1, 1;
+    %set/v v006A5648_0, 0, 1;
+    %set/v v006A56A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 1, 1;
+    %set/v v006A5648_0, 0, 1;
+    %set/v v006A56A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 1, 1;
+    %set/v v006A5648_0, 1, 1;
+    %set/v v006A56A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A55F0_0, 1, 1;
+    %set/v v006A5648_0, 1, 1;
+    %set/v v006A56A0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\427450\427450\Exemplo0009.v";

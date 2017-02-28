@@ -1,0 +1,119 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00639C38 .scope module, "test_f4" "test_f4" 2 47;
+ .timescale 0 0;
+v0063C1A0_0 .var "chave", 0 0;
+v0063C1F8_0 .var "x", 0 0;
+v0063C250_0 .var "y", 0 0;
+v0063C2A8_0 .net "z0", 0 0, L_006AE380; 1 drivers
+v0063C300_0 .net "z1", 0 0, L_006AE460; 1 drivers
+S_00639DD0 .scope module, "modulo" "f4" 2 55, 2 37, S_00639C38;
+ .timescale 0 0;
+v0063BFE8_0 .net "a", 0 0, v0063C1F8_0; 1 drivers
+v0063C040_0 .net "b", 0 0, v0063C250_0; 1 drivers
+v0063C098_0 .net "chave", 0 0, v0063C1A0_0; 1 drivers
+v0063C0F0_0 .alias "s0", 0 0, v0063C2A8_0;
+v0063C148_0 .alias "s1", 0 0, v0063C300_0;
+S_00639E58 .scope module, "l1" "lu03" 2 40, 2 11, S_00639DD0;
+ .timescale 0 0;
+L_006AE000 .functor AND 1, v0063C1F8_0, v0063C250_0, C4<1>, C4<1>;
+L_006AE038 .functor NAND 1, v0063C1F8_0, v0063C250_0, C4<1>, C4<1>;
+L_006AE070 .functor OR 1, v0063C1F8_0, v0063C250_0, C4<0>, C4<0>;
+L_006AE0A8 .functor NOR 1, v0063C1F8_0, v0063C250_0, C4<0>, C4<0>;
+L_006AE0E0 .functor NOT 1, v0063C1A0_0, C4<0>, C4<0>, C4<0>;
+L_006AE118 .functor BUF 1, v0063C1A0_0, C4<0>, C4<0>, C4<0>;
+L_006AE150 .functor AND 1, L_006AE000, L_006AE0E0, C4<1>, C4<1>;
+L_006AE1F8 .functor AND 1, L_006AE038, L_006AE118, C4<1>, C4<1>;
+L_006AE2A0 .functor AND 1, L_006AE070, L_006AE0E0, C4<1>, C4<1>;
+L_006AE310 .functor AND 1, L_006AE0A8, L_006AE118, C4<1>, C4<1>;
+L_006AE380 .functor OR 1, L_006AE150, L_006AE1F8, C4<0>, C4<0>;
+L_006AE460 .functor OR 1, L_006AE2A0, L_006AE310, C4<0>, C4<0>;
+v0063BAC0_0 .alias "a", 0 0, v0063BFE8_0;
+v0063BB18_0 .alias "b", 0 0, v0063C040_0;
+v0063BB70_0 .net "c0", 0 0, L_006AE0E0; 1 drivers
+v0063BBC8_0 .net "c1", 0 0, L_006AE118; 1 drivers
+v0063BC20_0 .alias "chave", 0 0, v0063C098_0;
+v0063BC78_0 .net "d0", 0 0, L_006AE150; 1 drivers
+v0063BCD0_0 .net "d1", 0 0, L_006AE1F8; 1 drivers
+v0063BD28_0 .net "d2", 0 0, L_006AE2A0; 1 drivers
+v0063BD80_0 .net "d3", 0 0, L_006AE310; 1 drivers
+v0063BDD8_0 .net "s0", 0 0, L_006AE000; 1 drivers
+v0063BE30_0 .net "s1", 0 0, L_006AE038; 1 drivers
+v0063BE88_0 .net "s2", 0 0, L_006AE070; 1 drivers
+v0063BEE0_0 .net "s3", 0 0, L_006AE0A8; 1 drivers
+v0063BF38_0 .alias "saida0", 0 0, v0063C2A8_0;
+v0063BF90_0 .alias "saida1", 0 0, v0063C300_0;
+S_00639D48 .scope begin, "start" "start" 2 58, 2 58, S_00639C38;
+ .timescale 0 0;
+S_00639CC0 .scope begin, "main" "main" 2 64, 2 64, S_00639C38;
+ .timescale 0 0;
+    .scope S_00639C38;
+T_0 ;
+    %fork t_1, S_00639D48;
+    %jmp t_0;
+    .scope S_00639D48;
+t_1 ;
+    %set/v v0063C1F8_0, 0, 1;
+    %set/v v0063C250_0, 0, 1;
+    %set/v v0063C1A0_0, 0, 1;
+    %end;
+    .scope S_00639C38;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00639C38;
+T_1 ;
+    %fork t_3, S_00639CC0;
+    %jmp t_2;
+    .scope S_00639CC0;
+t_3 ;
+    %vpi_call 2 65 "$display", "Exemplo0033 - Josemar Alves Caetano - 448662";
+    %vpi_call 2 66 "$display", "Test LU's module";
+    %delay 1, 0;
+    %vpi_call 2 70 "$display", "\012Teste de opera\347\365es:\012";
+    %vpi_call 2 71 "$display", "AND       -     OR:\012";
+    %vpi_call 2 72 "$display", "%b & %b = %b  -  %b | %b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 0, 1;
+    %set/v v0063C250_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 75 "$display", "%b & %b = %b  -  %b | %b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 1, 1;
+    %set/v v0063C250_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 78 "$display", "%b & %b = %b  -  %b | %b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 1, 1;
+    %set/v v0063C250_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 81 "$display", "%b & %b = %b  -  %b | %b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 0, 1;
+    %set/v v0063C250_0, 0, 1;
+    %set/v v0063C1A0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 85 "$display", "\012NAND       -      NOR:\012";
+    %vpi_call 2 86 "$display", "~%b | ~%b = %b  -  ~%b & ~%b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 0, 1;
+    %set/v v0063C250_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 89 "$display", "~%b | ~%b = %b  -  ~%b & ~%b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 1, 1;
+    %set/v v0063C250_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 92 "$display", "~%b | ~%b = %b  -  ~%b & ~%b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %set/v v0063C1F8_0, 1, 1;
+    %set/v v0063C250_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 95 "$display", "~%b | ~%b = %b  -  ~%b & ~%b = %b", v0063C1F8_0, v0063C250_0, v0063C2A8_0, v0063C1F8_0, v0063C250_0, v0063C300_0;
+    %end;
+    .scope S_00639C38;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

@@ -1,0 +1,44 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00343C60 .scope module, "test_comp" "test_comp" 2 18;
+ .timescale 0 0;
+v0034DBE8_0 .net "r", 5 0, L_0034FD78; 1 drivers
+v0034DC40_0 .var "x", 5 0;
+v0034DC98_0 .var "y", 5 0;
+S_00343CE8 .scope module, "modulo" "comp" 2 24, 2 10, S_00343C60;
+ .timescale 0 0;
+L_0034DCF0 .functor XOR 6, v0034DC40_0, v0034DC98_0, C4<000000>, C4<000000>;
+L_0034FD78 .functor NOT 6, L_0034DCF0, C4<000000>, C4<000000>, C4<000000>;
+v00342EC8_0 .net *"_s0", 5 0, L_0034DCF0; 1 drivers
+v00342F20_0 .net "a", 5 0, v0034DC40_0; 1 drivers
+v00342F78_0 .net "b", 5 0, v0034DC98_0; 1 drivers
+v0034DB90_0 .alias "s", 5 0, v0034DBE8_0;
+    .scope S_00343C60;
+T_0 ;
+    %vpi_call 2 28 "$display", "Exemplo0023 - Lorena Danielle Gon\347alves Bento - 435049";
+    %vpi_call 2 29 "$display", "Teste comparador para igualdade";
+    %set/v v0034DC40_0, 0, 6;
+    %set/v v0034DC98_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b == %b = %b", v0034DC40_0, v0034DC98_0, v0034DBE8_0;
+    %movi 8, 36, 6;
+    %set/v v0034DC40_0, 8, 6;
+    %movi 8, 33, 6;
+    %set/v v0034DC98_0, 8, 6;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b == %b = %b", v0034DC40_0, v0034DC98_0, v0034DBE8_0;
+    %set/v v0034DC40_0, 1, 6;
+    %set/v v0034DC98_0, 1, 6;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b == %b = %b", v0034DC40_0, v0034DC98_0, v0034DBE8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exemplo0023.v";

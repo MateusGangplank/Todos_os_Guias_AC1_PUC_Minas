@@ -1,0 +1,85 @@
+// -------------- 
+// --- Moore FSM  (Flying Spaguetti Monster)
+// -------------- 
+ 
+/*//--
+//----  e1(0) -1> e2(1) / e2(1) -1> e2(1)  / e3(10) -1> e4(101) / e4(1010) -1> e5(10101) / e5(10101) -1> end true 
+//----        -0> e1(0) /       -0> e3(10) /        -0> e1(0)   /          -0> end true  /           -0> e1(0)
+*///--
+ 
+//-- constant definitions 
+`define found    1 
+`define notfound 0 
+ 
+//-- FSM by Moore 
+module exempo0052 ( y, x, clk, reset ); 
+ output  y; 
+ input   x; 
+ input   clk; 
+ input   reset; 
+ 
+ reg      y; 
+ 
+ parameter         // --state identifiers  
+   start   = 5'b00000, 
+   id1     = 5'b00001, 
+   id10    = 5'b00010,
+	id101   = 5'b00101,
+	id1010  = 5'b01010; 
+ 
+   reg [4:0] E1; // --current state variables 
+   reg [4:0] E2; // --next state logic output 
+ 
+ 
+// --next state logic 
+   always @( x or E1 ) 
+    begin 
+     y = `notfound; 
+     case ( E1 ) 
+      start: 
+        if ( x ) 
+         E2 = id1; 
+        else 
+         E2 = start; 
+      id1: 
+        if ( x ) 
+         E2 = id10; 
+        else 
+         E2 = id1; 
+      id10: 
+        if ( x ) 
+         E2 = id101; 
+        else 
+         E2 = start;
+		id101:
+		  if ( x ) 
+         E2 = id1; 
+        else 
+         E2 = id1010;
+		id1010:
+		  if ( x ) 
+         begin 
+           E2 =  start; 
+           y  = `notfound; 
+         end 
+        else 
+         begin 
+           E2 =  start; 
+           y  = `found; 
+         end 
+      default:   // undefined state 
+           E2 =  5'bxx; 
+     endcase 
+    end // always at signal or state changing 
+ 
+// state variables 
+   always @( posedge clk or negedge reset ) 
+    begin 
+     if ( reset ) 
+      E1 = E2;    // updates current state 
+     else 
+      E1 = 0;     // reset 
+    end // always at signal changing 
+ 
+endmodule // mealy10101 
+ 

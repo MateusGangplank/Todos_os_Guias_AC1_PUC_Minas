@@ -1,0 +1,152 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006777C0 .scope module, "produtoCompleto" "produtoCompleto" 2 55;
+ .timescale 0 0;
+v006A9D40_0 .net "a0", 0 0, C4<z>; 0 drivers
+v006A9DD0_0 .net "a1", 0 0, C4<z>; 0 drivers
+v006A9E60_0 .net "b0", 0 0, C4<z>; 0 drivers
+v006A9EF0_0 .net "b1", 0 0, C4<z>; 0 drivers
+v006A9F80_0 .net "cout1", 0 0, L_006AA5A8; 1 drivers
+v006A9FD8_0 .net "cout2", 0 0, L_006AAA28; 1 drivers
+v006AA030_0 .var "p", 0 0;
+v006AA088_0 .net "s0", 0 0, L_006AA498; 1 drivers
+v006AA0E0_0 .net "s1", 0 0, L_006AA820; 1 drivers
+v006AA168_0 .net "s2", 0 0, L_006AAC80; 1 drivers
+v006AA1C0_0 .net "s3", 0 0, L_006AAE88; 1 drivers
+S_006A9098 .scope module, "P1" "produto" 2 60, 2 40, S_006777C0;
+ .timescale 0 0;
+L_006AA288 .functor AND 1, v006AA030_0, v006AA030_0, C4<1>, C4<1>;
+L_006AA388 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v006A98F0_0 .net "cin", 0 0, v006AA030_0; 1 drivers
+v006A99B0_0 .alias "cout", 0 0, v006A9F80_0;
+v006A9A70_0 .alias "e0", 0 0, v006A98F0_0;
+v006A9AC8_0 .alias "e1", 0 0, v006A98F0_0;
+v006A9B20_0 .alias "e2", 0 0, v006A9D40_0;
+v006A9B78_0 .alias "e3", 0 0, v006A9E60_0;
+v006A9BD0_0 .net "p1", 0 0, L_006AA288; 1 drivers
+v006A9C28_0 .net "p2", 0 0, L_006AA388; 1 drivers
+v006A9C80_0 .alias "s0", 0 0, v006AA088_0;
+S_006A9118 .scope module, "soma" "somaCompleta" 2 47, 2 24, S_006A9098;
+ .timescale 0 0;
+L_006AA5A8 .functor OR 1, L_006AA538, L_006A92C8, C4<0>, C4<0>;
+v006A95A8_0 .alias "a", 0 0, v006A9BD0_0;
+v006A9600_0 .alias "b", 0 0, v006A9C28_0;
+v006A9658_0 .net "r", 0 0, C4<z>; 0 drivers
+v006A96B0_0 .alias "s0", 0 0, v006AA088_0;
+v006A9708_0 .alias "s1", 0 0, v006A9F80_0;
+v006A9760_0 .alias "vaium", 0 0, v006A98F0_0;
+v006A97B8_0 .net "w1", 0 0, L_006A92C8; 1 drivers
+v006A9810_0 .net "w2", 0 0, L_006AA3C0; 1 drivers
+v006A9868_0 .net "w3", 0 0, L_006AA538; 1 drivers
+S_006A93B0 .scope module, "MS1" "meiasoma" 2 30, 2 11, S_006A9118;
+ .timescale 0 0;
+L_006AA3C0 .functor XOR 1, L_006AA288, L_006AA388, C4<0>, C4<0>;
+L_006A92C8 .functor AND 1, L_006AA288, L_006AA388, C4<1>, C4<1>;
+v006A9430_0 .alias "a", 0 0, v006A9BD0_0;
+v006A9488_0 .alias "b", 0 0, v006A9C28_0;
+v006A94E0_0 .alias "s0", 0 0, v006A9810_0;
+v006A9538_0 .alias "s1", 0 0, v006A97B8_0;
+S_006A9198 .scope module, "MS2" "meiasoma" 2 31, 2 11, S_006A9118;
+ .timescale 0 0;
+L_006AA498 .functor XOR 1, C4<z>, v006AA030_0, C4<0>, C4<0>;
+L_006AA538 .functor AND 1, C4<z>, v006AA030_0, C4<1>, C4<1>;
+v006A9218_0 .alias "a", 0 0, v006A9658_0;
+v006A9270_0 .alias "b", 0 0, v006A98F0_0;
+v006A9300_0 .alias "s0", 0 0, v006AA088_0;
+v006A9358_0 .alias "s1", 0 0, v006A9868_0;
+S_006A83D8 .scope module, "P2" "produto" 2 61, 2 40, S_006777C0;
+ .timescale 0 0;
+L_006AA5E0 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A9D98 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v006A8C40_0 .alias "cin", 0 0, v006A9F80_0;
+v006A8CD0_0 .alias "cout", 0 0, v006A9FD8_0;
+v006A8D90_0 .alias "e0", 0 0, v006A9D40_0;
+v006A8DE8_0 .alias "e1", 0 0, v006A9EF0_0;
+v006A8E40_0 .alias "e2", 0 0, v006A9DD0_0;
+v006A8E98_0 .alias "e3", 0 0, v006A9E60_0;
+v006A8EF0_0 .net "p1", 0 0, L_006AA5E0; 1 drivers
+v006A8F48_0 .net "p2", 0 0, L_006A9D98; 1 drivers
+v006A8FD8_0 .alias "s0", 0 0, v006AA0E0_0;
+S_006A8458 .scope module, "soma" "somaCompleta" 2 47, 2 24, S_006A83D8;
+ .timescale 0 0;
+L_006AAA28 .functor OR 1, L_006AA8D8, L_006A8FA0, C4<0>, C4<0>;
+v006A88F8_0 .alias "a", 0 0, v006A8EF0_0;
+v006A8950_0 .alias "b", 0 0, v006A8F48_0;
+v006A89A8_0 .net "r", 0 0, C4<z>; 0 drivers
+v006A8A00_0 .alias "s0", 0 0, v006AA0E0_0;
+v006A8A58_0 .alias "s1", 0 0, v006A9FD8_0;
+v006A8AB0_0 .alias "vaium", 0 0, v006A9F80_0;
+v006A8B08_0 .net "w1", 0 0, L_006A8FA0; 1 drivers
+v006A8B60_0 .net "w2", 0 0, L_006A9EB8; 1 drivers
+v006A8BB8_0 .net "w3", 0 0, L_006AA8D8; 1 drivers
+S_006A86B8 .scope module, "MS1" "meiasoma" 2 30, 2 11, S_006A8458;
+ .timescale 0 0;
+L_006A9EB8 .functor XOR 1, L_006AA5E0, L_006A9D98, C4<0>, C4<0>;
+L_006A8FA0 .functor AND 1, L_006AA5E0, L_006A9D98, C4<1>, C4<1>;
+v006A8738_0 .alias "a", 0 0, v006A8EF0_0;
+v006A8790_0 .alias "b", 0 0, v006A8F48_0;
+v006A8800_0 .alias "s0", 0 0, v006A8B60_0;
+v006A8888_0 .alias "s1", 0 0, v006A8B08_0;
+S_006A84D8 .scope module, "MS2" "meiasoma" 2 31, 2 11, S_006A8458;
+ .timescale 0 0;
+L_006AA820 .functor XOR 1, C4<z>, L_006AA5A8, C4<0>, C4<0>;
+L_006AA8D8 .functor AND 1, C4<z>, L_006AA5A8, C4<1>, C4<1>;
+v006A8558_0 .alias "a", 0 0, v006A89A8_0;
+v006A85B0_0 .alias "b", 0 0, v006A9F80_0;
+v006A8608_0 .alias "s0", 0 0, v006AA0E0_0;
+v006A8660_0 .alias "s1", 0 0, v006A8BB8_0;
+S_00677840 .scope module, "P3" "produto" 2 62, 2 40, S_006777C0;
+ .timescale 0 0;
+L_006AAA78 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A9F48 .functor AND 1, v006AA030_0, v006AA030_0, C4<1>, C4<1>;
+v006A7FB0_0 .alias "cin", 0 0, v006A9FD8_0;
+v006A8040_0 .alias "cout", 0 0, v006AA1C0_0;
+v006A8098_0 .alias "e0", 0 0, v006A9DD0_0;
+v006A80F0_0 .alias "e1", 0 0, v006A9EF0_0;
+v006A8148_0 .alias "e2", 0 0, v006A98F0_0;
+v006A81A0_0 .alias "e3", 0 0, v006A98F0_0;
+v006A81F8_0 .net "p1", 0 0, L_006AAA78; 1 drivers
+v006A8288_0 .net "p2", 0 0, L_006A9F48; 1 drivers
+v006A8318_0 .alias "s0", 0 0, v006AA168_0;
+S_006778C0 .scope module, "soma" "somaCompleta" 2 47, 2 24, S_00677840;
+ .timescale 0 0;
+L_006AAE88 .functor OR 1, L_006AAD38, L_006A82E0, C4<0>, C4<0>;
+v006A7C68_0 .alias "a", 0 0, v006A81F8_0;
+v006A7CC0_0 .alias "b", 0 0, v006A8288_0;
+v006A7D18_0 .net "r", 0 0, C4<z>; 0 drivers
+v006A7D70_0 .alias "s0", 0 0, v006AA168_0;
+v006A7DC8_0 .alias "s1", 0 0, v006AA1C0_0;
+v006A7E20_0 .alias "vaium", 0 0, v006A9FD8_0;
+v006A7E78_0 .net "w1", 0 0, L_006A82E0; 1 drivers
+v006A7ED0_0 .net "w2", 0 0, L_006A9E28; 1 drivers
+v006A7F28_0 .net "w3", 0 0, L_006AAD38; 1 drivers
+S_006A7A10 .scope module, "MS1" "meiasoma" 2 30, 2 11, S_006778C0;
+ .timescale 0 0;
+L_006A9E28 .functor XOR 1, L_006AAA78, L_006A9F48, C4<0>, C4<0>;
+L_006A82E0 .functor AND 1, L_006AAA78, L_006A9F48, C4<1>, C4<1>;
+v006A7A90_0 .alias "a", 0 0, v006A81F8_0;
+v006A7B00_0 .alias "b", 0 0, v006A8288_0;
+v006A7B70_0 .alias "s0", 0 0, v006A7ED0_0;
+v006A7BF8_0 .alias "s1", 0 0, v006A7E78_0;
+S_00677940 .scope module, "MS2" "meiasoma" 2 31, 2 11, S_006778C0;
+ .timescale 0 0;
+L_006AAC80 .functor XOR 1, C4<z>, L_006AAA28, C4<0>, C4<0>;
+L_006AAD38 .functor AND 1, C4<z>, L_006AAA28, C4<1>, C4<1>;
+v006779C0_0 .alias "a", 0 0, v006A7D18_0;
+v006A78A8_0 .alias "b", 0 0, v006A9FD8_0;
+v006A7918_0 .alias "s0", 0 0, v006AA168_0;
+v006A79A0_0 .alias "s1", 0 0, v006A7F28_0;
+    .scope S_006777C0;
+T_0 ;
+    %set/v v006AA030_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\380776\Ex0503.v";

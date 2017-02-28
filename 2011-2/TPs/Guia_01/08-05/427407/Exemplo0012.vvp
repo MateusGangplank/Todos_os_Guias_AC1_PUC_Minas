@@ -1,0 +1,97 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BEA420 .scope module, "testorgate" "testorgate" 2 17;
+ .timescale 0 0;
+v00BE3DF8_0 .var "a", 0 0;
+v00BE3E50_0 .var "b", 0 0;
+v005A0000_0 .var "c", 0 0;
+v005A0058_0 .net "s", 0 0, L_005C60F0; 1 drivers
+S_00BEA530 .scope module, "OR1" "orgate" 2 22, 2 10, S_00BEA420;
+ .timescale 0 0;
+L_00BE30D0 .functor NOT 1, v00BE3DF8_0, C4<0>, C4<0>, C4<0>;
+L_00BECBB8 .functor NOT 1, v00BE3E50_0, C4<0>, C4<0>, C4<0>;
+L_00BECC28 .functor AND 1, L_00BE30D0, L_00BECBB8, C4<1>, C4<1>;
+L_005C5FD8 .functor NOT 1, v005A0000_0, C4<0>, C4<0>, C4<0>;
+L_005C6048 .functor AND 1, L_00BECC28, L_005C5FD8, C4<1>, C4<1>;
+L_005C60F0 .functor NOT 1, L_005C6048, C4<0>, C4<0>, C4<0>;
+v005A2880_0 .net *"_s0", 0 0, L_00BE30D0; 1 drivers
+v005C5EB8_0 .net *"_s2", 0 0, L_00BECBB8; 1 drivers
+v005C5F10_0 .net *"_s4", 0 0, L_00BECC28; 1 drivers
+v005C5F68_0 .net *"_s6", 0 0, L_005C5FD8; 1 drivers
+v00BE2FC8_0 .net *"_s8", 0 0, L_005C6048; 1 drivers
+v00BE3020_0 .net "p", 0 0, v00BE3DF8_0; 1 drivers
+v00BE3078_0 .net "q", 0 0, v00BE3E50_0; 1 drivers
+v00BE3D48_0 .net "r", 0 0, v005A0000_0; 1 drivers
+v00BE3DA0_0 .alias "s", 0 0, v005A0058_0;
+S_00BEA4A8 .scope begin, "start" "start" 2 24, 2 24, S_00BEA420;
+ .timescale 0 0;
+    .scope S_00BEA420;
+T_0 ;
+    %fork t_1, S_00BEA4A8;
+    %jmp t_0;
+    .scope S_00BEA4A8;
+t_1 ;
+    %set/v v00BE3DF8_0, 0, 1;
+    %set/v v00BE3E50_0, 0, 1;
+    %set/v v005A0000_0, 0, 1;
+    %end;
+    .scope S_00BEA420;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00BEA420;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exemplo0012 - Guilherme Terra - 427407";
+    %vpi_call 2 30 "$display", "Test OR gate";
+    %vpi_call 2 31 "$display", "\012a | b | c = s\012";
+    %set/v v00BE3DF8_0, 0, 1;
+    %set/v v00BE3E50_0, 0, 1;
+    %set/v v005A0000_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 0, 1;
+    %set/v v00BE3E50_0, 0, 1;
+    %set/v v005A0000_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 0, 1;
+    %set/v v00BE3E50_0, 1, 1;
+    %set/v v005A0000_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 0, 1;
+    %set/v v00BE3E50_0, 1, 1;
+    %set/v v005A0000_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 1, 1;
+    %set/v v00BE3E50_0, 0, 1;
+    %set/v v005A0000_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 1, 1;
+    %set/v v00BE3E50_0, 0, 1;
+    %set/v v005A0000_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 1, 1;
+    %set/v v00BE3E50_0, 1, 1;
+    %set/v v005A0000_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %set/v v00BE3DF8_0, 1, 1;
+    %set/v v00BE3E50_0, 1, 1;
+    %set/v v005A0000_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b | %b | %b = %b", v00BE3DF8_0, v00BE3E50_0, v005A0000_0, v005A0058_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\CIÊNCIA_DA_COMPUTAÇÃO\2_Periodo\ARQ_I\Guias\Concluídas\Guia 01\Exemplo0012.v";

@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006B9038 .scope module, "test_f4" "test_f4" 2 33;
+ .timescale 0 0;
+v006BB4A0_0 .net "k", 0 0, L_005C5BF8; 1 drivers
+v006BB4F8_0 .var "x", 2 0;
+v006BB550_0 .net "z", 0 0, L_006BF918; 1 drivers
+L_006BB5A8 .part v006BB4F8_0, 0, 1;
+L_006BB600 .part v006BB4F8_0, 1, 1;
+L_006BB658 .part v006BB4F8_0, 2, 1;
+S_006B8FB0 .scope module, "modulo" "f4" 2 38, 2 10, S_006B9038;
+ .timescale 0 0;
+L_006BD4F8 .functor AND 1, L_006BB5A8, L_006BB600, C4<1>, C4<1>;
+L_006BD530 .functor AND 1, L_005C5CD8, L_006B2C10, C4<1>, C4<1>;
+L_006BD568 .functor AND 1, L_006B2C48, L_006BB658, C4<1>, C4<1>;
+L_006BD5A0 .functor AND 1, L_005C5D48, L_006B2C10, C4<1>, C4<1>;
+L_006B2B68 .functor AND 1, L_006BD4F8, L_006BB658, C4<1>, C4<1>;
+L_006B2C10 .functor NOT 1, L_006BB658, C4<0>, C4<0>, C4<0>;
+L_006B2C48 .functor OR 1, L_006BB5A8, L_006BB600, C4<0>, C4<0>;
+L_006BF918 .functor OR 1, L_006BD530, L_006BD568, C4<0>, C4<0>;
+L_005C5BF8 .functor OR 1, L_006BD5A0, L_006B2B68, C4<0>, C4<0>;
+L_005C5CD8 .functor NOR 1, L_006BB5A8, L_006BB600, C4<0>, C4<0>;
+L_005C5D48 .functor NAND 1, L_006BB5A8, L_006BB600, C4<1>, C4<1>;
+v006BAFD0_0 .net "a", 0 0, L_006BB5A8; 1 drivers
+v006BB028_0 .net "b", 0 0, L_006BB600; 1 drivers
+v006BB080_0 .net "c", 0 0, L_006BB658; 1 drivers
+v006BB0D8_0 .net "nc", 0 0, L_006B2C10; 1 drivers
+v006BB130_0 .alias "s1", 0 0, v006BB550_0;
+v006BB188_0 .net "s10", 0 0, L_006B2B68; 1 drivers
+v006BB1E0_0 .alias "s2", 0 0, v006BB4A0_0;
+v006BB238_0 .net "s3", 0 0, L_005C5CD8; 1 drivers
+v006BB290_0 .net "s4", 0 0, L_006B2C48; 1 drivers
+v006BB2E8_0 .net "s5", 0 0, L_005C5D48; 1 drivers
+v006BB340_0 .net "s6", 0 0, L_006BD4F8; 1 drivers
+v006BB398_0 .net "s7", 0 0, L_006BD530; 1 drivers
+v006BB3F0_0 .net "s8", 0 0, L_006BD568; 1 drivers
+v006BB448_0 .net "s9", 0 0, L_006BD5A0; 1 drivers
+    .scope S_006B9038;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0032 - Pedro Henrique Lima Pinheiro - 451605";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %set/v v006BB4F8_0, 0, 3;
+    %delay 1, 0;
+    %vpi_call 2 45 "$monitor", "entradas : %3b %3b | Selecao: %3b | Saida: %3b , %3b", &PV<v006BB4F8_0, 0, 1>, &PV<v006BB4F8_0, 1, 1>, &PV<v006BB4F8_0, 2, 1>, v006BB550_0, v006BB4A0_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v006BB4F8_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v006BB4F8_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

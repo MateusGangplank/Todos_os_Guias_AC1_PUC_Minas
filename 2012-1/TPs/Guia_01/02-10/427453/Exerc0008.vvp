@@ -1,0 +1,87 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00379068 .scope module, "testandgate" "testandgate" 2 17;
+ .timescale 0 0;
+v0037CDC0_0 .var "a", 0 0;
+v0037CE18_0 .var "b", 0 0;
+v0037CE70_0 .var "c", 0 0;
+v0037CEC8_0 .net "s", 0 0, L_0037CF90; 1 drivers
+S_00372E90 .scope module, "AND1" "andgate" 2 22, 2 7, S_00379068;
+ .timescale 0 0;
+L_00372F18 .functor AND 1, v0037CDC0_0, v0037CE18_0, C4<1>, C4<1>;
+L_0037CF90 .functor AND 1, L_00372F18, v0037CE70_0, C4<1>, C4<1>;
+v003733E0_0 .net *"_s0", 0 0, L_00372F18; 1 drivers
+v00373438_0 .net "p", 0 0, v0037CDC0_0; 1 drivers
+v00373490_0 .net "q", 0 0, v0037CE18_0; 1 drivers
+v003734E8_0 .net "r", 0 0, v0037CE70_0; 1 drivers
+v0037CD68_0 .alias "s", 0 0, v0037CEC8_0;
+S_00372E08 .scope begin, "start" "start" 2 24, 2 24, S_00379068;
+ .timescale 0 0;
+S_003790F0 .scope begin, "main" "main" 2 30, 2 30, S_00379068;
+ .timescale 0 0;
+    .scope S_00379068;
+T_0 ;
+    %fork t_1, S_00372E08;
+    %jmp t_0;
+    .scope S_00372E08;
+t_1 ;
+    %set/v v0037CDC0_0, 0, 1;
+    %set/v v0037CE18_0, 0, 1;
+    %set/v v0037CE70_0, 0, 1;
+    %end;
+    .scope S_00379068;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00379068;
+T_1 ;
+    %fork t_3, S_003790F0;
+    %jmp t_2;
+    .scope S_003790F0;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exerc0008 - Pedro Henrique Vilar Locatelli  - 427453";
+    %vpi_call 2 32 "$display", "Test and gate";
+    %vpi_call 2 33 "$display", "\012 a ^ b ^ c = s\012";
+    %vpi_call 2 34 "$monitor", "%b ^ %b ^ %b = %b", v0037CDC0_0, v0037CE18_0, v0037CE70_0, v0037CEC8_0;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 0, 1;
+    %set/v v0037CE18_0, 0, 1;
+    %set/v v0037CE70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 0, 1;
+    %set/v v0037CE18_0, 1, 1;
+    %set/v v0037CE70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 0, 1;
+    %set/v v0037CE18_0, 1, 1;
+    %set/v v0037CE70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 1, 1;
+    %set/v v0037CE18_0, 0, 1;
+    %set/v v0037CE70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 1, 1;
+    %set/v v0037CE18_0, 0, 1;
+    %set/v v0037CE70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 1, 1;
+    %set/v v0037CE18_0, 1, 1;
+    %set/v v0037CE70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037CDC0_0, 1, 1;
+    %set/v v0037CE18_0, 1, 1;
+    %set/v v0037CE70_0, 1, 1;
+    %end;
+    .scope S_00379068;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Baste\Downloads\Arq1\Guia01\Exerc0008.v";

@@ -1,0 +1,45 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00642BE8 .scope module, "testexnorgate" "testexnorgate" 2 7;
+ .timescale 0 0;
+v0064FF78_0 .var "a", 0 0;
+v006430D8_0 .var "b", 0 0;
+v00643130_0 .net "s", 0 0, L_0064DF60; 1 drivers
+S_00642C70 .scope module, "nor1" "xnorgate" 2 11, 2 3, S_00642BE8;
+ .timescale 0 0;
+L_00643188 .functor XOR 1, v0064FF78_0, v006430D8_0, C4<0>, C4<0>;
+L_0064DF60 .functor NOT 1, L_00643188, C4<0>, C4<0>, C4<0>;
+v00642CF8_0 .net *"_s0", 0 0, L_00643188; 1 drivers
+v0064FE70_0 .net "p", 0 0, v0064FF78_0; 1 drivers
+v0064FEC8_0 .net "q", 0 0, v006430D8_0; 1 drivers
+v0064FF20_0 .alias "s", 0 0, v00643130_0;
+    .scope S_00642BE8;
+T_0 ;
+    %set/v v0064FF78_0, 0, 1;
+    %set/v v006430D8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00642BE8;
+T_1 ;
+    %vpi_call 2 17 "$display", "blabla";
+    %vpi_call 2 18 "$monitor", "%b | %b = %b", v0064FF78_0, v006430D8_0, v00643130_0;
+    %delay 1, 0;
+    %set/v v0064FF78_0, 0, 1;
+    %set/v v006430D8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064FF78_0, 1, 1;
+    %set/v v006430D8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064FF78_0, 1, 1;
+    %set/v v006430D8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Matheus\Documents\exemplo0008.v";

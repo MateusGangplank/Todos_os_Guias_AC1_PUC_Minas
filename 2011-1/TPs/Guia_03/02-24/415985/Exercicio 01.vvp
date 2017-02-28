@@ -1,0 +1,47 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E6090 .scope module, "testemeiasoma" "testemeiasoma" 2 9;
+ .timescale 0 0;
+L_00661370 .functor NOT 1, v003E6118_0, C4<0>, C4<0>, C4<0>;
+L_003EA9B0 .functor NOT 1, v00699038_0, C4<0>, C4<0>, C4<0>;
+L_003E44B8 .functor AND 1, L_00661370, v00699038_0, C4<1>, C4<1>;
+L_00699410 .functor AND 1, v003E6118_0, L_003EA9B0, C4<1>, C4<1>;
+L_006994B8 .functor OR 1, L_003E44B8, L_00699410, C4<0>, C4<0>;
+L_00699560 .functor AND 1, v003E6118_0, v00699038_0, C4<1>, C4<1>;
+v003E6118_0 .var "a", 0 0;
+v00699038_0 .var "b", 0 0;
+v006990A8_0 .net "s", 0 0, L_006994B8; 1 drivers
+v00699130_0 .net "s0", 0 0, L_00699560; 1 drivers
+v006991A0_0 .net "s1", 0 0, L_00661370; 1 drivers
+v006991F8_0 .net "s2", 0 0, L_003EA9B0; 1 drivers
+v00699268_0 .net "s3", 0 0, L_003E44B8; 1 drivers
+v00699300_0 .net "s4", 0 0, L_00699410; 1 drivers
+    .scope S_003E6090;
+T_0 ;
+    %vpi_call 2 22 "$display", "Guia 03 - Exercicio 01";
+    %vpi_call 2 23 "$display", "Bruno Cesar Lopes Silva - 415985";
+    %vpi_call 2 24 "$display", "Meia Soma";
+    %vpi_call 2 25 "$display", "\012 a + b = s - vai um\012";
+    %set/v v003E6118_0, 0, 1;
+    %set/v v00699038_0, 0, 1;
+    %vpi_call 2 27 "$monitor", " %b & %b = %b - %b", v003E6118_0, v00699038_0, v006990A8_0, v00699130_0;
+    %delay 1, 0;
+    %set/v v003E6118_0, 0, 1;
+    %set/v v00699038_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003E6118_0, 1, 1;
+    %set/v v00699038_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003E6118_0, 1, 1;
+    %set/v v00699038_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Bruno\Desktop\Exercicio 01.v";

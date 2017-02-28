@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003ED718 .scope module, "Testemeiadiferenca" "Testemeiadiferenca" 2 51;
+ .timescale 0 0;
+v006A56D8_0 .net "Vout2", 0 0, L_006A5C40; 1 drivers
+v006A5768_0 .var "a", 0 0;
+v006A5828_0 .var "b", 0 0;
+v006A5880_0 .net "d2", 0 0, L_006A5A78; 1 drivers
+S_003ED798 .scope module, "meiadife1" "meiadife" 2 57, 2 40, S_003ED718;
+ .timescale 0 0;
+v006A5540_0 .alias "Vout1", 0 0, v006A56D8_0;
+v006A5598_0 .net "f1", 0 0, v006A5768_0; 1 drivers
+v006A55F0_0 .net "g1", 0 0, v006A5828_0; 1 drivers
+v006A5680_0 .alias "s1", 0 0, v006A5880_0;
+S_006A51C0 .scope module, "NOR1" "usandonor" 2 45, 2 4, S_003ED798;
+ .timescale 0 0;
+L_006A58D8 .functor NOR 1, v006A5768_0, C4<0>, C4<0>, C4<0>;
+L_006A5920 .functor NOR 1, v006A5828_0, C4<0>, C4<0>, C4<0>;
+L_006A5648 .functor NOR 1, v006A5768_0, v006A5828_0, C4<0>, C4<0>;
+L_006A59D0 .functor NOR 1, L_006A58D8, L_006A5920, C4<0>, C4<0>;
+L_006A5A78 .functor NOR 1, L_006A59D0, L_006A5648, C4<0>, C4<0>;
+v006A5240_0 .alias "a", 0 0, v006A5598_0;
+v006A52D0_0 .alias "b", 0 0, v006A55F0_0;
+v006A5328_0 .net "temp1", 0 0, L_006A58D8; 1 drivers
+v006A5398_0 .net "temp2", 0 0, L_006A5920; 1 drivers
+v006A5408_0 .net "temp3", 0 0, L_006A5648; 1 drivers
+v006A5460_0 .net "temp4", 0 0, L_006A59D0; 1 drivers
+v006A54D0_0 .alias "x", 0 0, v006A5880_0;
+S_00674F90 .scope module, "AND1" "usandonoreand" 2 46, 2 27, S_003ED798;
+ .timescale 0 0;
+L_006A5B20 .functor NOR 1, v006A5828_0, C4<0>, C4<0>, C4<0>;
+L_006A5BF8 .functor NOR 1, L_006A5B68, C4<0>, C4<0>, C4<0>;
+L_006A5C40 .functor NOR 1, L_006A5BF8, L_006A5B20, C4<0>, C4<0>;
+v006A4F80_0 .alias "b1", 0 0, v006A5598_0;
+v006A4FD8_0 .alias "c", 0 0, v006A55F0_0;
+v006A5030_0 .net "e1", 0 0, L_006A5B20; 1 drivers
+v006A50B8_0 .net "e2", 0 0, L_006A5B68; 1 drivers
+v006A5110_0 .net "e3", 0 0, L_006A5BF8; 1 drivers
+v006A5168_0 .alias "x2", 0 0, v006A56D8_0;
+S_00675010 .scope module, "NOT1" "usandonot" 2 34, 2 18, S_00674F90;
+ .timescale 0 0;
+L_006A5B68 .functor NOR 1, v006A5768_0, C4<0>, C4<0>, C4<0>;
+v003ED818_0 .alias "a1", 0 0, v006A5598_0;
+v006A4F10_0 .alias "x1", 0 0, v006A50B8_0;
+    .scope S_003ED718;
+T_0 ;
+    %vpi_call 2 60 "$display", "\012a  b  Vout  d\012";
+    %vpi_call 2 61 "$monitor", "%b  %b   %b   %b", v006A5768_0, v006A5828_0, v006A56D8_0, v006A5880_0;
+    %set/v v006A5768_0, 0, 1;
+    %set/v v006A5828_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 0, 1;
+    %set/v v006A5828_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 0, 1;
+    %set/v v006A5828_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 0, 1;
+    %set/v v006A5828_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 1, 1;
+    %set/v v006A5828_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 1, 1;
+    %set/v v006A5828_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 1, 1;
+    %set/v v006A5828_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A5768_0, 1, 1;
+    %set/v v006A5828_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\Arquitetura de computadores\Exercicios\424649_guia04\exercicio04.v";

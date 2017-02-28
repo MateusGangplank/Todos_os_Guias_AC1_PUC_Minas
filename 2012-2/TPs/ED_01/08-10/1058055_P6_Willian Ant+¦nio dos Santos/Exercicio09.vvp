@@ -1,0 +1,131 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007A91E8 .scope module, "testandgate" "testandgate" 2 24;
+ .timescale 0 0;
+v00821A50_0 .var "a", 0 0;
+v00821AA8_0 .var "b", 0 0;
+v00821B00_0 .var "c", 0 0;
+v00821B58_0 .var "count", 3 0;
+v00821BB0_0 .var "d", 0 0;
+v00821C08_0 .net "s", 0 0, L_007AFD90; 1 drivers
+S_007A9408 .scope module, "AND4" "andgate4" 2 30, 2 15, S_007A91E8;
+ .timescale 0 0;
+v007A3488_0 .net "p", 0 0, v00821A50_0; 1 drivers
+v007ACAC0_0 .net "q", 0 0, v00821AA8_0; 1 drivers
+v007ACB18_0 .net "r", 0 0, v00821B00_0; 1 drivers
+v007ACB70_0 .alias "s", 0 0, v00821C08_0;
+v007ACBC8_0 .net "s1", 0 0, L_007AFD20; 1 drivers
+v008219A0_0 .net "s2", 0 0, L_007AFD58; 1 drivers
+v008219F8_0 .net "t", 0 0, v00821BB0_0; 1 drivers
+S_007A95A0 .scope module, "AND1" "andgate" 2 17, 2 9, S_007A9408;
+ .timescale 0 0;
+L_007AFD20 .functor AND 1, v00821A50_0, v00821AA8_0, C4<1>, C4<1>;
+v007A3380_0 .alias "p", 0 0, v007A3488_0;
+v007A33D8_0 .alias "q", 0 0, v007ACAC0_0;
+v007A3430_0 .alias "s", 0 0, v007ACBC8_0;
+S_007A9518 .scope module, "AND2" "andgate" 2 18, 2 9, S_007A9408;
+ .timescale 0 0;
+L_007AFD58 .functor AND 1, v00821B00_0, v00821BB0_0, C4<1>, C4<1>;
+v007A2EB0_0 .alias "p", 0 0, v007ACB18_0;
+v007A2F08_0 .alias "q", 0 0, v008219F8_0;
+v007A2F60_0 .alias "s", 0 0, v008219A0_0;
+S_007A9490 .scope module, "AND3" "andgate" 2 19, 2 9, S_007A9408;
+ .timescale 0 0;
+L_007AFD90 .functor AND 1, L_007AFD20, L_007AFD58, C4<1>, C4<1>;
+v007AD100_0 .alias "p", 0 0, v007ACBC8_0;
+v007AD158_0 .alias "q", 0 0, v008219A0_0;
+v007AD1B0_0 .alias "s", 0 0, v00821C08_0;
+S_007A92F8 .scope begin, "start" "start" 2 32, 2 32, S_007A91E8;
+ .timescale 0 0;
+S_007A9270 .scope begin, "main" "main" 2 37, 2 37, S_007A91E8;
+ .timescale 0 0;
+    .scope S_007A91E8;
+T_0 ;
+    %fork t_1, S_007A92F8;
+    %jmp t_0;
+    .scope S_007A92F8;
+t_1 ;
+    %set/v v00821A50_0, 0, 1;
+    %set/v v00821AA8_0, 0, 1;
+    %set/v v00821B00_0, 0, 1;
+    %set/v v00821BB0_0, 0, 1;
+    %set/v v00821B58_0, 0, 4;
+    %end;
+    .scope S_007A91E8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007A91E8;
+T_1 ;
+    %fork t_3, S_007A9270;
+    %jmp t_2;
+    .scope S_007A9270;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exercicio09 - Willian Antonio dos Santos - 462020";
+    %vpi_call 2 40 "$display", "Test AND gate 4IN:";
+    %vpi_call 2 41 "$display", "\012(a & b & c & d) = s\012";
+    %vpi_call 2 42 "$monitor", "(%b & %b & %b & %b) = %b", v00821A50_0, v00821AA8_0, v00821B00_0, v00821BB0_0, v00821C08_0;
+    %set/v v00821B58_0, 0, 4;
+    %movi 8, 15, 5;
+T_1.0 %cmp/s 0, 8, 5;
+    %jmp/0xz T_1.1, 5;
+    %add 8, 1, 5;
+    %load/v 13, v00821B58_0, 4;
+    %mov 17, 0, 28;
+    %addi 13, 1, 32;
+    %ix/load 0, 4, 0;
+    %assign/v0 v00821B58_0, 0, 13;
+    %delay 1, 0;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.2, 4;
+    %load/x1p 13, v00821B58_0, 1;
+    %jmp T_1.3;
+T_1.2 ;
+    %mov 13, 2, 1;
+T_1.3 ;
+; Save base=13 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %assign/v0 v00821A50_0, 0, 13;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.4, 4;
+    %load/x1p 13, v00821B58_0, 1;
+    %jmp T_1.5;
+T_1.4 ;
+    %mov 13, 2, 1;
+T_1.5 ;
+; Save base=13 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %assign/v0 v00821AA8_0, 0, 13;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.6, 4;
+    %load/x1p 13, v00821B58_0, 1;
+    %jmp T_1.7;
+T_1.6 ;
+    %mov 13, 2, 1;
+T_1.7 ;
+; Save base=13 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %assign/v0 v00821B00_0, 0, 13;
+    %load/v 13, v00821B58_0, 1; Only need 1 of 4 bits
+; Save base=13 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %assign/v0 v00821BB0_0, 0, 13;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_007A91E8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio09.v";

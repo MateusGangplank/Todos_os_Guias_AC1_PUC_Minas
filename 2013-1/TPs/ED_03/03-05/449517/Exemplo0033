@@ -1,0 +1,63 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00036048 .scope module, "teste" "teste" 2 21;
+ .timescale 0 0;
+v0063A968_0 .var "a", 0 0;
+v0063A9C0_0 .var "chave", 0 0;
+v0063AA18_0 .net "s", 0 0, L_0063AD88; 1 drivers
+S_00037350 .scope module, "teste" "LU" 2 26, 2 6, S_00036048;
+ .timescale 0 0;
+L_00036778 .functor NOT 1, v0063A9C0_0, C4<0>, C4<0>, C4<0>;
+L_0063AA70 .functor AND 1, v0063A968_0, v0063A9C0_0, C4<1>, C4<1>;
+L_0063AAE0 .functor OR 1, v0063A968_0, v0063A9C0_0, C4<0>, C4<0>;
+L_00035868 .functor NOR 1, v0063A968_0, v0063A9C0_0, C4<0>, C4<0>;
+L_0063AAA8 .functor NAND 1, v0063A968_0, v0063A9C0_0, C4<1>, C4<1>;
+L_0063ABE0 .functor AND 1, L_0063AA70, L_0063AAE0, C4<1>, C4<1>;
+L_0063ACA8 .functor AND 1, L_00035868, L_0063AAA8, L_00036778, C4<1>;
+L_0063AD88 .functor OR 1, L_0063ACA8, L_0063ABE0, C4<0>, C4<0>;
+v00035978_0 .net "a", 0 0, v0063A968_0; 1 drivers
+v00035E20_0 .net "chave", 0 0, v0063A9C0_0; 1 drivers
+v0063A590_0 .net "notchave", 0 0, L_00036778; 1 drivers
+v0063A618_0 .alias "s", 0 0, v0063AA18_0;
+v0063A688_0 .net "s0", 0 0, L_0063AA70; 1 drivers
+v0063A6E0_0 .net "s1", 0 0, L_0063AAE0; 1 drivers
+v0063A750_0 .net "s3", 0 0, L_00035868; 1 drivers
+v0063A7E8_0 .net "s4", 0 0, L_0063AAA8; 1 drivers
+v0063A858_0 .net "s5", 0 0, L_0063ABE0; 1 drivers
+v0063A8F8_0 .net "s6", 0 0, L_0063ACA8; 1 drivers
+S_000372C8 .scope begin, "main" "main" 2 29, 2 29, S_00036048;
+ .timescale 0 0;
+    .scope S_00036048;
+T_0 ;
+    %fork t_1, S_000372C8;
+    %jmp t_0;
+    .scope S_000372C8;
+t_1 ;
+    %vpi_call 2 31 "$display", "Exemplo0033 - Ana Carolina - 449517";
+    %vpi_call 2 32 "$display", "ULA teste";
+    %set/v v0063A9C0_0, 0, 1;
+    %set/v v0063A968_0, 0, 1;
+    %vpi_call 2 36 "$display", "\012chave = 0 (operacao nand e nor ) chave = 1 (operacao and e or)";
+    %delay 1, 0;
+    %vpi_call 2 38 "$monitor", " entrada = %b saida = %b chave = %b", v0063A968_0, v0063AA18_0, v0063A9C0_0;
+    %delay 1, 0;
+    %set/v v0063A9C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063A9C0_0, 0, 1;
+    %set/v v0063A968_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063A9C0_0, 1, 1;
+    %end;
+    .scope S_00036048;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

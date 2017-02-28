@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00ABF280 .scope module, "test_porta_nand" "test_porta_nand" 2 21;
+ .timescale 0 0;
+v00AB4690_0 .var "a", 0 0;
+v00AB46E8_0 .var "b", 0 0;
+v00AB4740_0 .net "s", 0 0, L_00ABEDF8; 1 drivers
+S_00ABFE70 .scope module, "NAND1" "porta_nand" 2 28, 2 11, S_00ABF280;
+ .timescale 0 0;
+L_00ABFFA8 .functor AND 1, v00AB4690_0, v00AB46E8_0, C4<1>, C4<1>;
+L_00ABEDF8 .functor NOT 1, L_00ABFFA8, C4<0>, C4<0>, C4<0>;
+v00AB4240_0 .net *"_s0", 0 0, L_00ABFFA8; 1 drivers
+v00ABFEF8_0 .net "p", 0 0, v00AB4690_0; 1 drivers
+v00ABFF50_0 .net "q", 0 0, v00AB46E8_0; 1 drivers
+v00AB4638_0 .alias "s", 0 0, v00AB4740_0;
+S_00AB41B8 .scope begin, "start" "start" 2 31, 2 31, S_00ABF280;
+ .timescale 0 0;
+S_00AB4130 .scope begin, "main" "main" 2 36, 2 36, S_00ABF280;
+ .timescale 0 0;
+    .scope S_00ABF280;
+T_0 ;
+    %fork t_1, S_00AB41B8;
+    %jmp t_0;
+    .scope S_00AB41B8;
+t_1 ;
+    %set/v v00AB4690_0, 0, 1;
+    %set/v v00AB46E8_0, 0, 1;
+    %end;
+    .scope S_00ABF280;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00ABF280;
+T_1 ;
+    %fork t_3, S_00AB4130;
+    %jmp t_2;
+    .scope S_00AB4130;
+t_3 ;
+    %vpi_call 2 37 "$display", "Exercicio01 - Thais Mairink - 441710";
+    %vpi_call 2 38 "$display", "Test porta_nand";
+    %vpi_call 2 39 "$display", "\012(~(a&b)) = s\012";
+    %set/v v00AB4690_0, 0, 1;
+    %set/v v00AB46E8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b ~& %b = %b", v00AB4690_0, v00AB46E8_0, v00AB4740_0;
+    %set/v v00AB4690_0, 0, 1;
+    %set/v v00AB46E8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b ~& %b = %b", v00AB4690_0, v00AB46E8_0, v00AB4740_0;
+    %set/v v00AB4690_0, 1, 1;
+    %set/v v00AB46E8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "%b ~& %b = %b", v00AB4690_0, v00AB46E8_0, v00AB4740_0;
+    %set/v v00AB4690_0, 1, 1;
+    %set/v v00AB46E8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%b ~& %b = %b", v00AB4690_0, v00AB46E8_0, v00AB4740_0;
+    %end;
+    .scope S_00ABF280;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Thaís Mairink\Documents\thais\Arq1\exercicio01.V";

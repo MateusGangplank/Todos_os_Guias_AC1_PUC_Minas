@@ -1,0 +1,57 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7D00 .scope module, "Exemplo0064" "Exemplo0064" 2 63;
+ .timescale 0 0;
+v005F8ED8_0 .net "clock", 0 0, v005F8E80_0; 1 drivers
+v005F8F40_0 .net "p1", 0 0, v005F8D88_0; 1 drivers
+S_005F8DF8 .scope module, "clk" "clock" 2 65, 2 25, S_003E7D00;
+ .timescale 0 0;
+v005F8E80_0 .var "clk", 0 0;
+S_003E7D88 .scope module, "pulse1" "pulse" 2 67, 2 45, S_003E7D00;
+ .timescale 0 0;
+v003E6E60_0 .alias "clock", 0 0, v005F8ED8_0;
+v005F8D88_0 .var "signal", 0 0;
+E_003E51E0 .event edge, v003E6E60_0;
+    .scope S_005F8DF8;
+T_0 ;
+    %set/v v005F8E80_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_005F8DF8;
+T_1 ;
+    %delay 24, 0;
+    %load/v 8, v005F8E80_0, 1;
+    %inv 8, 1;
+    %set/v v005F8E80_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_003E7D88;
+T_2 ;
+    %wait E_003E51E0;
+    %set/v v005F8D88_0, 1, 1;
+    %delay 24, 0;
+    %set/v v005F8D88_0, 0, 1;
+    %delay 24, 0;
+    %set/v v005F8D88_0, 1, 1;
+    %delay 24, 0;
+    %set/v v005F8D88_0, 0, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_003E7D00;
+T_3 ;
+    %vpi_call 2 70 "$display", "Mateus Augusto Moraes Ferreira  Matricula:435669";
+    %vpi_call 2 71 "$dumpfile", "Exemplo0064.vcd";
+    %vpi_call 2 72 "$dumpvars", 2'sb01, v005F8ED8_0, v005F8F40_0;
+    %delay 376, 0;
+    %vpi_call 2 74 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2011-2\Arquitetura\Guia06_435669\Exemplo0064.v";

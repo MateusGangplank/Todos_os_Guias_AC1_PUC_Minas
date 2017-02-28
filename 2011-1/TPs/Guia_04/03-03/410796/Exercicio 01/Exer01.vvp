@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E85F8 .scope module, "test" "test" 2 40;
+ .timescale 0 0;
+v005FB1F8_0 .var "a", 0 0;
+v005FB250_0 .var "b", 0 0;
+v005FB2A8_0 .net "s0", 0 0, L_005FB3B0; 1 drivers
+v005FB300_0 .net "s1", 0 0, L_005FB790; 1 drivers
+S_003E8790 .scope module, "HA1" "half_adder" 2 44, 2 11, S_003E85F8;
+ .timescale 0 0;
+L_005FB358 .functor NAND 1, v005FB1F8_0, v005FB1F8_0, C4<1>, C4<1>;
+L_005FB3E8 .functor NAND 1, v005FB250_0, v005FB250_0, C4<1>, C4<1>;
+L_005FB458 .functor NAND 1, L_005FB358, L_005FB3E8, C4<1>, C4<1>;
+L_005FB500 .functor NAND 1, v005FB1F8_0, v005FB250_0, C4<1>, C4<1>;
+L_005FB420 .functor NAND 1, v005FB1F8_0, v005FB250_0, C4<1>, C4<1>;
+L_005FB3B0 .functor NAND 1, L_005FB500, L_005FB420, C4<1>, C4<1>;
+L_005FB648 .functor NAND 1, L_005FB3B0, L_005FB3B0, C4<1>, C4<1>;
+L_005FB5A0 .functor NAND 1, L_005FB648, L_005FB458, C4<1>, C4<1>;
+L_005FB758 .functor NAND 1, L_005FB648, L_005FB458, C4<1>, C4<1>;
+L_005FB790 .functor NAND 1, L_005FB5A0, L_005FB758, C4<1>, C4<1>;
+v003E6C90_0 .net "p", 0 0, v005FB1F8_0; 1 drivers
+v005FACC8_0 .net "q", 0 0, v005FB250_0; 1 drivers
+v005FAD38_0 .alias "s0", 0 0, v005FB300_0;
+v005FADC0_0 .alias "s1", 0 0, v005FB2A8_0;
+v005FAE30_0 .net "temp1", 0 0, L_005FB358; 1 drivers
+v005FAE88_0 .net "temp2", 0 0, L_005FB3E8; 1 drivers
+v005FAEF8_0 .net "temp3", 0 0, L_005FB458; 1 drivers
+v005FAF90_0 .net "temp4", 0 0, L_005FB500; 1 drivers
+v005FB008_0 .net "temp5", 0 0, L_005FB420; 1 drivers
+v005FB0A8_0 .net "temp6", 0 0, L_005FB648; 1 drivers
+v005FB118_0 .net "temp7", 0 0, L_005FB5A0; 1 drivers
+v005FB188_0 .net "temp8", 0 0, L_005FB758; 1 drivers
+S_003E8708 .scope begin, "start" "start" 2 46, 2 46, S_003E85F8;
+ .timescale 0 0;
+S_003E8680 .scope begin, "main" "main" 2 51, 2 51, S_003E85F8;
+ .timescale 0 0;
+    .scope S_003E85F8;
+T_0 ;
+    %fork t_1, S_003E8708;
+    %jmp t_0;
+    .scope S_003E8708;
+t_1 ;
+    %set/v v005FB1F8_0, 0, 1;
+    %set/v v005FB250_0, 0, 1;
+    %end;
+    .scope S_003E85F8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E85F8;
+T_1 ;
+    %fork t_3, S_003E8680;
+    %jmp t_2;
+    .scope S_003E8680;
+t_3 ;
+    %vpi_call 2 52 "$display", "Exercico 1 - GUIA 04\012Marco Antonio M. Belo - 410796\012";
+    %vpi_call 2 53 "$display", "Half Adder";
+    %vpi_call 2 54 "$display", "\012a + b = s\012";
+    %vpi_call 2 55 "$monitor", "%b + %b = %b%b", v005FB1F8_0, v005FB250_0, v005FB2A8_0, v005FB300_0;
+    %delay 1, 0;
+    %set/v v005FB1F8_0, 0, 1;
+    %set/v v005FB250_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FB1F8_0, 1, 1;
+    %set/v v005FB250_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FB1F8_0, 1, 1;
+    %set/v v005FB250_0, 1, 1;
+    %end;
+    .scope S_003E85F8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Faculdade\Arquitetura I\Exercicios\Guia 04\Exercicio 01\Exer01.v";

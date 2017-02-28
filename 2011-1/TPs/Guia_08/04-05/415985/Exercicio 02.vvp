@@ -1,0 +1,130 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003ED670 .scope module, "teste02" "teste02" 2 30;
+ .timescale 0 0;
+v006A2CD8_0 .var "a", 0 0;
+v006A2D30_0 .var "b", 0 0;
+v006A2D88_0 .var "c", 0 0;
+v006A2DE0_0 .var "d", 0 0;
+v006A2E38_0 .net "s", 0 0, L_006A3200; 1 drivers
+S_003ED6F8 .scope module, "E" "exe02" 2 35, 2 9, S_003ED670;
+ .timescale 0 0;
+L_006613A8 .functor NOT 1, v006A2CD8_0, C4<0>, C4<0>, C4<0>;
+L_003E6B78 .functor NOT 1, v006A2D30_0, C4<0>, C4<0>, C4<0>;
+L_006A2ED8 .functor NOT 1, v006A2D88_0, C4<0>, C4<0>, C4<0>;
+L_006A2F58 .functor NOT 1, v006A2DE0_0, C4<0>, C4<0>, C4<0>;
+L_006A2FC8 .functor AND 1, L_003E6B78, L_006A2ED8, C4<1>, C4<1>;
+L_006A3078 .functor OR 1, L_006A2FC8, L_006613A8, C4<0>, C4<0>;
+L_006A3120 .functor AND 1, L_006A3078, L_006A2F58, C4<1>, C4<1>;
+L_006A31C8 .functor AND 1, v006A2CD8_0, v006A2DE0_0, C4<1>, C4<1>;
+L_006A3200 .functor OR 1, L_006A3120, L_006A31C8, C4<0>, C4<0>;
+v003ED780_0 .net "a", 0 0, v006A2CD8_0; 1 drivers
+v006A2700_0 .net "b", 0 0, v006A2D30_0; 1 drivers
+v006A2770_0 .net "c", 0 0, v006A2D88_0; 1 drivers
+v006A27F8_0 .net "d", 0 0, v006A2DE0_0; 1 drivers
+v006A2868_0 .alias "s", 0 0, v006A2E38_0;
+v006A28C0_0 .net "w1", 0 0, L_006613A8; 1 drivers
+v006A2930_0 .net "w2", 0 0, L_003E6B78; 1 drivers
+v006A29C8_0 .net "w3", 0 0, L_006A2ED8; 1 drivers
+v006A2A38_0 .net "w4", 0 0, L_006A2F58; 1 drivers
+v006A2AD8_0 .net "w5", 0 0, L_006A2FC8; 1 drivers
+v006A2B48_0 .net "w6", 0 0, L_006A3078; 1 drivers
+v006A2BB8_0 .net "w7", 0 0, L_006A3120; 1 drivers
+v006A2C28_0 .net "w8", 0 0, L_006A31C8; 1 drivers
+    .scope S_003ED670;
+T_0 ;
+    %vpi_call 2 39 "$display", "Guia 08 - Exercicio 02";
+    %vpi_call 2 40 "$display", "Bruno Cesar Lopes Silva - 415985";
+    %vpi_call 2 41 "$display", "Exercicio 02";
+    %vpi_call 2 42 "$display", "\012 a - b - c - d = s\012";
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %vpi_call 2 44 "$monitor", " %b - %b - %b - %b = %b", v006A2CD8_0, v006A2D30_0, v006A2D88_0, v006A2DE0_0, v006A2E38_0;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 0, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 0, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 0, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2CD8_0, 1, 1;
+    %set/v v006A2D30_0, 1, 1;
+    %set/v v006A2D88_0, 1, 1;
+    %set/v v006A2DE0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Bruno\Desktop\PUC\Periodo 2\Arquitetura de Computadores I (2)\Guias\Guia 08\Exercicio 02.v";

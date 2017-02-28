@@ -1,0 +1,69 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672C70 .scope module, "testorgate" "testorgate" 2 27;
+ .timescale 0 0;
+v006A2FA8_0 .var "a", 0 0;
+v006A3008_0 .var "b", 0 0;
+v006A3060_0 .net "s", 0 0, L_006A3278; 1 drivers
+S_003EED08 .scope module, "OR1" "orgate" 2 32, 2 11, S_00672C70;
+ .timescale 0 0;
+L_006732B8 .functor AND 1, v006A2FA8_0, v006A2FA8_0, C4<1>, C4<1>;
+L_00673430 .functor NOT 1, L_006732B8, C4<0>, C4<0>, C4<0>;
+L_006A30F0 .functor AND 1, v006A3008_0, v006A3008_0, C4<1>, C4<1>;
+L_006A3160 .functor NOT 1, L_006A30F0, C4<0>, C4<0>, C4<0>;
+L_006A31D0 .functor AND 1, L_00673430, L_006A3160, C4<1>, C4<1>;
+L_006A3278 .functor NOT 1, L_006A31D0, C4<0>, C4<0>, C4<0>;
+v003EED88_0 .net *"_s0", 0 0, L_006732B8; 1 drivers
+v006A2C70_0 .net *"_s4", 0 0, L_006A30F0; 1 drivers
+v006A2CE0_0 .net *"_s8", 0 0, L_006A31D0; 1 drivers
+v006A2D68_0 .net "a", 0 0, v006A2FA8_0; 1 drivers
+v006A2DD8_0 .net "b", 0 0, v006A3008_0; 1 drivers
+v006A2E30_0 .alias "s", 0 0, v006A3060_0;
+v006A2EA0_0 .net "temp1", 0 0, L_00673430; 1 drivers
+v006A2F38_0 .net "temp2", 0 0, L_006A3160; 1 drivers
+S_00672FE0 .scope begin, "start" "start" 2 34, 2 34, S_00672C70;
+ .timescale 0 0;
+S_00672920 .scope begin, "main" "main" 2 38, 2 38, S_00672C70;
+ .timescale 0 0;
+    .scope S_00672C70;
+T_0 ;
+    %fork t_1, S_00672FE0;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A2FA8_0, 0, 1;
+    %set/v v006A3008_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00672C70;
+T_1 ;
+    %fork t_3, S_00672920;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 39 "$display", "Guia 02_01 - Alyson Deives - 416589";
+    %vpi_call 2 40 "$display", "PORTA OR (USANDO PORTAS NAND)";
+    %vpi_call 2 41 "$display", "\012A ^ B = S\012";
+    %vpi_call 2 42 "$monitor", "%b ^ %b = %b", v006A2FA8_0, v006A3008_0, v006A3060_0;
+    %delay 1, 0;
+    %set/v v006A2FA8_0, 0, 1;
+    %set/v v006A3008_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2FA8_0, 1, 1;
+    %set/v v006A3008_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2FA8_0, 1, 1;
+    %set/v v006A3008_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_02\416589\Ex_01.v";

@@ -1,0 +1,52 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003F2A98 .scope module, "Exe_XOR" "Exe_XOR" 2 18;
+ .timescale 0 0;
+v003FFD88_0 .var "a", 0 0;
+v003FFDE0_0 .var "b", 0 0;
+v003FFE38_0 .net "e", 0 0, L_003FFFA8; 1 drivers
+S_003F2B20 .scope module, "XOR1" "XOR" 2 23, 2 9, S_003F2A98;
+ .timescale 0 0;
+L_003F2BA8 .functor NOT 1, v003FFD88_0, C4<0>, C4<0>, C4<0>;
+L_003F3D08 .functor AND 1, L_003F2BA8, v003FFDE0_0, C4<1>, C4<1>;
+L_003FFF00 .functor NOT 1, v003FFDE0_0, C4<0>, C4<0>, C4<0>;
+L_003FFF38 .functor AND 1, v003FFD88_0, L_003FFF00, C4<1>, C4<1>;
+L_003FFFA8 .functor OR 1, L_003F3D08, L_003FFF38, C4<0>, C4<0>;
+v003F3C00_0 .net *"_s0", 0 0, L_003F2BA8; 1 drivers
+v003F3C58_0 .net *"_s2", 0 0, L_003F3D08; 1 drivers
+v003F3CB0_0 .net *"_s4", 0 0, L_003FFF00; 1 drivers
+v003FE7E0_0 .net *"_s6", 0 0, L_003FFF38; 1 drivers
+v003FE838_0 .net "e1", 0 0, v003FFD88_0; 1 drivers
+v003FE890_0 .net "e2", 0 0, v003FFDE0_0; 1 drivers
+v003FE8E8_0 .alias "s1", 0 0, v003FFE38_0;
+    .scope S_003F2A98;
+T_0 ;
+    %vpi_call 2 27 "$display", "Guia 01 Ex05";
+    %vpi_call 2 28 "$display", "Vinicius dos Santos Bordoni";
+    %vpi_call 2 29 "$display", "365595";
+    %vpi_call 2 30 "$display", "Teste da porta XOR com 2 entradas.";
+    %vpi_call 2 31 "$display", "\012 e1 e2 e3\012";
+    %vpi_call 2 32 "$monitor", " %b  %b  %b", v003FFD88_0, v003FFDE0_0, v003FFE38_0;
+    %delay 1, 0;
+    %set/v v003FFD88_0, 0, 1;
+    %set/v v003FFDE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003FFD88_0, 0, 1;
+    %set/v v003FFDE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003FFD88_0, 1, 1;
+    %set/v v003FFDE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003FFD88_0, 1, 1;
+    %set/v v003FFDE0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\365595\guia01-05.v";

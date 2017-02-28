@@ -1,0 +1,150 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01EF5010 .scope module, "test_f4" "test_f4" 2 48;
+ .timescale 0 0;
+v01F2D0B0_0 .var "f", 0 0;
+v01F2D058_0 .var "x", 1 0;
+v01F2D5D8_0 .var "y", 1 0;
+RS_01F04174 .resolv tri, L_01F2EF20, L_01F2EDC0, C4<zz>, C4<zz>;
+v01F2D160_0 .net8 "z", 1 0, RS_01F04174; 2 drivers
+S_01EF5230 .scope module, "modulo" "f4" 2 54, 2 31, S_01EF5010;
+ .timescale 0 0;
+L_0076A258 .functor AND 1, L_01F2D108, L_01F2D840, C4<1>, C4<1>;
+L_0076A1B0 .functor AND 1, L_01F2D6E0, L_01F2D210, C4<1>, C4<1>;
+L_0076A370 .functor OR 1, L_01F2DC08, L_01F2DCB8, C4<0>, C4<0>;
+L_0076A418 .functor OR 1, L_01F2DC60, L_01F2DD68, C4<0>, C4<0>;
+v01F2D3C8_0 .net *"_s0", 0 0, L_0076A258; 1 drivers
+v01F2D268_0 .net *"_s11", 0 0, L_01F2D210; 1 drivers
+v01F2D898_0 .net *"_s12", 0 0, L_0076A370; 1 drivers
+v01F2D8F0_0 .net *"_s15", 0 0, L_01F2DC08; 1 drivers
+v01F2D948_0 .net *"_s17", 0 0, L_01F2DCB8; 1 drivers
+v01F2D420_0 .net *"_s18", 0 0, L_0076A418; 1 drivers
+v01F2D4D0_0 .net *"_s21", 0 0, L_01F2DC60; 1 drivers
+v01F2D2C0_0 .net *"_s23", 0 0, L_01F2DD68; 1 drivers
+v01F2D9F8_0 .net *"_s3", 0 0, L_01F2D108; 1 drivers
+v01F2D318_0 .net *"_s5", 0 0, L_01F2D840; 1 drivers
+v01F2D738_0 .net *"_s6", 0 0, L_0076A1B0; 1 drivers
+v01F2DA50_0 .net *"_s9", 0 0, L_01F2D6E0; 1 drivers
+v01F2D478_0 .net "a", 1 0, v01F2D058_0; 1 drivers
+v01F2D528_0 .net "b", 1 0, v01F2D5D8_0; 1 drivers
+v01F2DAA8_0 .net "f", 0 0, v01F2D0B0_0; 1 drivers
+v01F2D580_0 .alias "s", 1 0, v01F2D160_0;
+RS_01F0412C .resolv tri, L_01F2D1B8, L_01F2D630, C4<zz>, C4<zz>;
+v01F2D688_0 .net8 "saida_and", 1 0, RS_01F0412C; 2 drivers
+RS_01F04144 .resolv tri, L_01F2D790, L_01F2DD10, C4<zz>, C4<zz>;
+v01F2D000_0 .net8 "saida_or", 1 0, RS_01F04144; 2 drivers
+L_01F2D1B8 .part/pv L_0076A258, 0, 1, 2;
+L_01F2D108 .part v01F2D058_0, 0, 1;
+L_01F2D840 .part v01F2D5D8_0, 0, 1;
+L_01F2D630 .part/pv L_0076A1B0, 1, 1, 2;
+L_01F2D6E0 .part v01F2D058_0, 1, 1;
+L_01F2D210 .part v01F2D5D8_0, 1, 1;
+L_01F2D790 .part/pv L_0076A370, 0, 1, 2;
+L_01F2DC08 .part v01F2D058_0, 0, 1;
+L_01F2DCB8 .part v01F2D5D8_0, 0, 1;
+L_01F2DD10 .part/pv L_0076A418, 1, 1, 2;
+L_01F2DC60 .part v01F2D058_0, 1, 1;
+L_01F2DD68 .part v01F2D5D8_0, 1, 1;
+S_01EF52B8 .scope module, "SEL1" "selecionador" 2 41, 2 11, S_01EF5230;
+ .timescale 0 0;
+L_00769DC0 .functor NOT 1, v01F2D0B0_0, C4<0>, C4<0>, C4<0>;
+L_00769E30 .functor AND 1, L_01F2DE18, v01F2D0B0_0, C4<1>, C4<1>;
+L_0076A300 .functor AND 1, L_01F2DE70, v01F2D0B0_0, C4<1>, C4<1>;
+L_00769ED8 .functor AND 1, L_01F2DB00, L_00769DC0, C4<1>, C4<1>;
+L_00769EA0 .functor AND 1, L_01F2DBB0, L_00769DC0, C4<1>, C4<1>;
+L_0076A488 .functor OR 1, L_01F2ED68, L_01F2EEC8, C4<0>, C4<0>;
+L_01F00F88 .functor OR 1, L_01F2EE70, L_01F2ECB8, C4<0>, C4<0>;
+v00769480_0 .net *"_s0", 0 0, L_00769E30; 1 drivers
+v00768E50_0 .net *"_s11", 0 0, L_01F2DB00; 1 drivers
+v00768DA0_0 .net *"_s12", 0 0, L_00769EA0; 1 drivers
+v00769378_0 .net *"_s15", 0 0, L_01F2DBB0; 1 drivers
+v00769218_0 .net *"_s16", 0 0, L_0076A488; 1 drivers
+v00769168_0 .net *"_s19", 0 0, L_01F2ED68; 1 drivers
+v00769270_0 .net *"_s21", 0 0, L_01F2EEC8; 1 drivers
+v007692C8_0 .net *"_s22", 0 0, L_01F00F88; 1 drivers
+v00768F00_0 .net *"_s25", 0 0, L_01F2EE70; 1 drivers
+v00768FB0_0 .net *"_s27", 0 0, L_01F2ECB8; 1 drivers
+v00769008_0 .net *"_s3", 0 0, L_01F2DE18; 1 drivers
+v00769060_0 .net *"_s4", 0 0, L_0076A300; 1 drivers
+v00769320_0 .net *"_s7", 0 0, L_01F2DE70; 1 drivers
+v007690B8_0 .net *"_s8", 0 0, L_00769ED8; 1 drivers
+v00769110_0 .alias "chave", 0 0, v01F2DAA8_0;
+v007693D0_0 .alias "entrada1", 1 0, v01F2D688_0;
+v00768DF8_0 .alias "entrada2", 1 0, v01F2D000_0;
+RS_01F0415C .resolv tri, L_01F2DDC0, L_01F2DEC8, L_01F2DF20, L_01F2DB58;
+v01F2D9A0_0 .net8 "s1", 3 0, RS_01F0415C; 4 drivers
+v01F2D7E8_0 .alias "saida", 1 0, v01F2D160_0;
+v01F2D370_0 .net "saida_not", 0 0, L_00769DC0; 1 drivers
+L_01F2DDC0 .part/pv L_00769E30, 0, 1, 4;
+L_01F2DE18 .part RS_01F0412C, 0, 1;
+L_01F2DEC8 .part/pv L_0076A300, 1, 1, 4;
+L_01F2DE70 .part RS_01F0412C, 1, 1;
+L_01F2DF20 .part/pv L_00769ED8, 2, 1, 4;
+L_01F2DB00 .part RS_01F04144, 0, 1;
+L_01F2DB58 .part/pv L_00769EA0, 3, 1, 4;
+L_01F2DBB0 .part RS_01F04144, 1, 1;
+L_01F2EF20 .part/pv L_0076A488, 0, 1, 2;
+L_01F2ED68 .part RS_01F0415C, 0, 1;
+L_01F2EEC8 .part RS_01F0415C, 2, 1;
+L_01F2EDC0 .part/pv L_01F00F88, 1, 1, 2;
+L_01F2EE70 .part RS_01F0415C, 1, 1;
+L_01F2ECB8 .part RS_01F0415C, 3, 1;
+    .scope S_01EF5010;
+T_0 ;
+    %vpi_call 2 58 "$display", "Exemplo 0032 - ANA CRISTINA - 427385";
+    %vpi_call 2 59 "$display", "Test LU's module";
+    %vpi_call 2 60 "$display", "Legenda da chave: O-OR 1-AND \012";
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v01F2D058_0, 8, 2;
+    %movi 8, 2, 2;
+    %set/v v01F2D5D8_0, 8, 2;
+    %set/v v01F2D0B0_0, 0, 1;
+    %vpi_call 2 64 "$monitor", "ch = %1b\011 x = %2b\011 y = %2b\011 s = %3b", v01F2D0B0_0, v01F2D058_0, v01F2D5D8_0, v01F2D160_0;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v01F2D058_0, 8, 2;
+    %movi 8, 2, 2;
+    %set/v v01F2D5D8_0, 8, 2;
+    %set/v v01F2D0B0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v01F2D058_0, 1, 2;
+    %set/v v01F2D5D8_0, 0, 2;
+    %set/v v01F2D0B0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01F2D058_0, 1, 2;
+    %set/v v01F2D5D8_0, 0, 2;
+    %set/v v01F2D0B0_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v01F2D058_0, 8, 2;
+    %movi 8, 2, 2;
+    %set/v v01F2D5D8_0, 8, 2;
+    %set/v v01F2D0B0_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 2, 2;
+    %set/v v01F2D058_0, 8, 2;
+    %movi 8, 2, 2;
+    %set/v v01F2D5D8_0, 8, 2;
+    %set/v v01F2D0B0_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v01F2D058_0, 8, 2;
+    %set/v v01F2D5D8_0, 0, 2;
+    %set/v v01F2D0B0_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 1, 2;
+    %set/v v01F2D058_0, 8, 2;
+    %set/v v01F2D5D8_0, 0, 2;
+    %set/v v01F2D0B0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0032_427385_AnaCristina.v";

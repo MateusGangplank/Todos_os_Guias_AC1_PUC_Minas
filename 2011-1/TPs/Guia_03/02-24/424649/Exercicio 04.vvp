@@ -1,0 +1,65 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006733D0 .scope module, "testexercicio04" "testexercicio04" 2 41;
+ .timescale 0 0;
+v006A4A90_0 .var "a", 0 0;
+v006A4AE8_0 .var "b", 0 0;
+v006A4B40_0 .net "s", 0 0, L_006A5028; 1 drivers
+v006A4B98_0 .net "v1", 0 0, L_003EEC70; 1 drivers
+S_003EF710 .scope module, "meia" "exercicio04" 2 47, 2 5, S_006733D0;
+ .timescale 0 0;
+L_003EECA8 .functor OR 1, v006A4A90_0, C4<0>, C4<0>, C4<0>;
+L_006A4C10 .functor OR 1, L_003EECA8, C4<0>, C4<0>, C4<0>;
+L_006A4C90 .functor OR 1, v006A4AE8_0, C4<0>, C4<0>, C4<0>;
+L_006A4D10 .functor OR 1, L_006A4C10, L_006A4C90, C4<0>, C4<0>;
+L_006A4DB8 .functor OR 1, v006A4AE8_0, C4<0>, C4<0>, C4<0>;
+L_006A4DF0 .functor OR 1, L_006A4DB8, C4<0>, C4<0>, C4<0>;
+L_006A4E90 .functor OR 1, v006A4A90_0, C4<0>, C4<0>, C4<0>;
+L_006A4ED8 .functor OR 1, L_006A4DF0, L_006A4E90, C4<0>, C4<0>;
+L_006A4F80 .functor OR 1, L_006A4D10, L_006A4ED8, C4<0>, C4<0>;
+L_006A5028 .functor OR 1, L_006A4F80, C4<0>, C4<0>, C4<0>;
+L_006A50E0 .functor OR 1, v006A4AE8_0, C4<0>, C4<0>, C4<0>;
+L_006A5118 .functor OR 1, v006A4A90_0, C4<0>, C4<0>, C4<0>;
+L_003EEC70 .functor OR 1, L_006A50E0, L_006A5118, C4<0>, C4<0>;
+v003EEEE8_0 .net "a", 0 0, v006A4A90_0; 1 drivers
+v003EEE90_0 .net "b", 0 0, v006A4AE8_0; 1 drivers
+v006A44B8_0 .alias "s", 0 0, v006A4B40_0;
+v006A4540_0 .net "t1", 0 0, L_003EECA8; 1 drivers
+v006A45B0_0 .net "t10", 0 0, L_006A50E0; 1 drivers
+v006A4608_0 .net "t11", 0 0, L_006A5118; 1 drivers
+v006A4678_0 .net "t2", 0 0, L_006A4C10; 1 drivers
+v006A4710_0 .net "t3", 0 0, L_006A4C90; 1 drivers
+v006A4780_0 .net "t4", 0 0, L_006A4D10; 1 drivers
+v006A47F0_0 .net "t5", 0 0, L_006A4DB8; 1 drivers
+v006A4860_0 .net "t6", 0 0, L_006A4DF0; 1 drivers
+v006A48D0_0 .net "t7", 0 0, L_006A4E90; 1 drivers
+v006A4940_0 .net "t8", 0 0, L_006A4ED8; 1 drivers
+v006A49B0_0 .net "t9", 0 0, L_006A4F80; 1 drivers
+v006A4A20_0 .alias "v1", 0 0, v006A4B98_0;
+    .scope S_006733D0;
+T_0 ;
+    %vpi_call 2 51 "$display", "Exercicio 04";
+    %vpi_call 2 53 "$display", "Meia soma usando apenas portas NOR /modelo tradicional: AND, OR, NOT, AND, s0 e s1";
+    %vpi_call 2 55 "$monitor", "%b  %b  s=%b v1=%b", v006A4A90_0, v006A4AE8_0, v006A4B40_0, v006A4B98_0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 0, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4AE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4A90_0, 1, 1;
+    %set/v v006A4AE8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\Arquitetura de computadores\Exercicios\424649_guia03\Exercicio 04.v";

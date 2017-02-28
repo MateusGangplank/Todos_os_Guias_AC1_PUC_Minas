@@ -1,0 +1,49 @@
+// Oswaldo Oliveira Paulino
+// 382175
+
+	LDA C050
+
+	MVI B,02
+
+
+AHEAD :
+
+	SUB B
+
+	INR L
+
+	JNC AHEAD
+
+	DCR L
+
+	MOV A,L
+
+	STA C051
+	LDA C052
+
+
+AHEAD2 :
+	
+	SUB B
+	JZ PAR
+	JNC AHEAD2
+
+PAR : 
+
+	MVI L,01
+	MOV A,L
+	JMP END
+
+PAR : 
+	
+	MVI L,00
+	MOV A,L
+
+END :
+
+	MOV L,A
+	LDA C051
+	ADD L
+	STA C053
+
+	HLT	

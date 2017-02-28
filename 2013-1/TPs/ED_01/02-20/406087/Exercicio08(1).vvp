@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00882D48 .scope module, "testand3entradasgate" "testand3entradasgate" 2 14;
+ .timescale 0 0;
+v00889650_0 .var "a", 0 0;
+v008896A8_0 .var "b", 0 0;
+v00889700_0 .var "c", 0 0;
+v00889758_0 .net "s", 0 0, L_0088CEF0; 1 drivers
+S_00883310 .scope module, "AND3ENTRADAS1" "and3entradasgate" 2 22, 2 7, S_00882D48;
+ .timescale 0 0;
+L_008897B0 .functor AND 1, v00889650_0, v008896A8_0, C4<1>, C4<1>;
+L_0088CEF0 .functor AND 1, L_008897B0, v00889700_0, C4<1>, C4<1>;
+v00883398_0 .net *"_s0", 0 0, L_008897B0; 1 drivers
+v008833F0_0 .net "p", 0 0, v00889650_0; 1 drivers
+v0088CE98_0 .net "q", 0 0, v008896A8_0; 1 drivers
+v008895A0_0 .net "r", 0 0, v00889700_0; 1 drivers
+v008895F8_0 .alias "s", 0 0, v00889758_0;
+S_00882DD0 .scope begin, "start" "start" 2 24, 2 24, S_00882D48;
+ .timescale 0 0;
+    .scope S_00882D48;
+T_0 ;
+    %fork t_1, S_00882DD0;
+    %jmp t_0;
+    .scope S_00882DD0;
+t_1 ;
+    %set/v v00889650_0, 0, 1;
+    %set/v v008896A8_0, 0, 1;
+    %set/v v00889700_0, 0, 1;
+    %end;
+    .scope S_00882D48;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00882D48;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exercicio08 - Luiz Henrique da Costa Silva - 449800";
+    %vpi_call 2 31 "$display", "Test AND 3entradas gate:";
+    %vpi_call 2 32 "$display", "\012 a & b & c = s \012";
+    %vpi_call 2 33 "$monitor", "%b ^ %b ^ %b = %b", v00889650_0, v008896A8_0, v00889700_0, v00889758_0;
+    %delay 1, 0;
+    %set/v v00889650_0, 0, 1;
+    %set/v v008896A8_0, 0, 1;
+    %set/v v00889700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 0, 1;
+    %set/v v008896A8_0, 0, 1;
+    %set/v v00889700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 0, 1;
+    %set/v v008896A8_0, 1, 1;
+    %set/v v00889700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 0, 1;
+    %set/v v008896A8_0, 1, 1;
+    %set/v v00889700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 1, 1;
+    %set/v v008896A8_0, 0, 1;
+    %set/v v00889700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 1, 1;
+    %set/v v008896A8_0, 0, 1;
+    %set/v v00889700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 1, 1;
+    %set/v v008896A8_0, 1, 1;
+    %set/v v00889700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889650_0, 1, 1;
+    %set/v v008896A8_0, 1, 1;
+    %set/v v00889700_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Dropbox\note to PC\PUC Minas\2º Período\Arquitetura de Computadores I\Atividades feitas\Guia01\Exercicio08.v";

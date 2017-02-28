@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0078F750 .scope module, "Teste" "Teste" 2 33;
+ .timescale 0 0;
+v00609610_0 .var "a", 0 0;
+v00609668_0 .var "b", 0 0;
+v006096C0_0 .net "s0", 0 0, L_0078CD78; 1 drivers
+v00609718_0 .net "s1", 0 0, L_0078CE20; 1 drivers
+v00609770_0 .var "x", 0 0;
+S_0078F8E8 .scope module, "gr" "Grupos" 2 36, 2 21, S_0078F750;
+ .timescale 0 0;
+L_0060CC80 .functor NAND 1, v00609610_0, v00609668_0, C4<1>, C4<1>;
+L_0060E688 .functor NOR 1, v00609610_0, v00609668_0, C4<0>, C4<0>;
+L_0060E6F8 .functor AND 1, v00609610_0, v00609668_0, C4<1>, C4<1>;
+L_0060E618 .functor OR 1, v00609610_0, v00609668_0, C4<0>, C4<0>;
+v006092A0_0 .net "a", 0 0, v00609610_0; 1 drivers
+v006092F8_0 .net "b", 0 0, v00609668_0; 1 drivers
+v00609350_0 .net "q0", 0 0, L_0060CC80; 1 drivers
+v006093A8_0 .net "q1", 0 0, L_0060E688; 1 drivers
+v00609400_0 .net "q2", 0 0, C4<z>; 0 drivers
+v00609458_0 .net "q3", 0 0, L_0060E6F8; 1 drivers
+v006094B0_0 .net "q4", 0 0, L_0060E618; 1 drivers
+v00609508_0 .alias "s0", 0 0, v006096C0_0;
+v00609560_0 .alias "s1", 0 0, v00609718_0;
+v006095B8_0 .net "x", 0 0, v00609770_0; 1 drivers
+S_0078F970 .scope module, "mx" "Multiplex" 2 29, 2 8, S_0078F8E8;
+ .timescale 0 0;
+L_0060E650 .functor NOT 1, v00609770_0, C4<0>, C4<0>, C4<0>;
+L_00604688 .functor AND 1, L_0060CC80, L_0060E650, C4<1>, C4<1>;
+L_0078CC98 .functor AND 1, L_0060E650, L_0060E688, C4<1>, C4<1>;
+L_0078CCD0 .functor AND 1, C4<z>, v00609770_0, C4<1>, C4<1>;
+L_0078CD40 .functor AND 1, L_0060E6F8, v00609770_0, C4<1>, C4<1>;
+L_0078CD78 .functor OR 1, L_00604688, L_0078CCD0, C4<0>, C4<0>;
+L_0078CE20 .functor OR 1, L_0078CC98, L_0078CD40, C4<0>, C4<0>;
+v00608E80_0 .alias "a", 0 0, v00609350_0;
+v00608ED8_0 .alias "b", 0 0, v006093A8_0;
+v00608F30_0 .alias "c", 0 0, v00609400_0;
+v00608F88_0 .alias "d", 0 0, v00609458_0;
+v00608FE0_0 .net "q0", 0 0, L_0060E650; 1 drivers
+v00609038_0 .net "q1", 0 0, L_00604688; 1 drivers
+v00609090_0 .net "q2", 0 0, L_0078CC98; 1 drivers
+v006090E8_0 .net "q3", 0 0, L_0078CCD0; 1 drivers
+v00609140_0 .net "q4", 0 0, L_0078CD40; 1 drivers
+v00609198_0 .alias "s0", 0 0, v006096C0_0;
+v006091F0_0 .alias "s1", 0 0, v00609718_0;
+v00609248_0 .alias "x", 0 0, v006095B8_0;
+S_0078F860 .scope begin, "start" "start" 2 37, 2 37, S_0078F750;
+ .timescale 0 0;
+S_0078F7D8 .scope begin, "main" "main" 2 41, 2 41, S_0078F750;
+ .timescale 0 0;
+    .scope S_0078F750;
+T_0 ;
+    %fork t_1, S_0078F860;
+    %jmp t_0;
+    .scope S_0078F860;
+t_1 ;
+    %set/v v00609610_0, 0, 1;
+    %set/v v00609668_0, 0, 1;
+    %set/v v00609770_0, 0, 1;
+    %end;
+    .scope S_0078F750;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0078F750;
+T_1 ;
+    %fork t_3, S_0078F7D8;
+    %jmp t_2;
+    .scope S_0078F7D8;
+t_3 ;
+    %vpi_call 2 42 "$display", "Nome: Roger Rubens Machado - 430533";
+    %vpi_call 2 43 "$display", "Operador de Meia-Soma com portas primitivas.";
+    %vpi_call 2 44 "$display", " a | b | = | s0 | s1 |\012";
+    %vpi_call 2 45 "$monitor", " %b | %b | = | %2b | %2b |", v00609610_0, v00609668_0, v006096C0_0, v00609718_0;
+    %delay 1, 0;
+    %set/v v00609610_0, 0, 1;
+    %set/v v00609668_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00609610_0, 1, 1;
+    %set/v v00609668_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00609610_0, 1, 1;
+    %set/v v00609668_0, 1, 1;
+    %end;
+    .scope S_0078F750;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Roger Rubens\Desktop\Nova pasta\Exemplo0033.v";

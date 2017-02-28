@@ -1,0 +1,240 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0066BC88 .scope module, "test_fullAdder" "test_fullAdder" 2 37;
+ .timescale 0 0;
+v005D1148_0 .net "borrow", 0 0, L_00662FB8; 1 drivers
+v005D11A0_0 .net "borrow2", 0 0, L_005D1B80; 1 drivers
+v005D11F8_0 .net "borrow3", 0 0, L_005D1F38; 1 drivers
+v005D1250_0 .net "borrow4", 0 0, L_005D2268; 1 drivers
+v005D12A8_0 .net "borrow5", 0 0, L_005D2508; 1 drivers
+v005D1300_0 .net "borrow6", 0 0, L_005D3800; 1 drivers
+RS_005A54FC/0/0 .resolv tri, L_005D1460, L_005D1568, L_005D1670, L_005D1778;
+RS_005A54FC/0/4 .resolv tri, L_005D28B0, L_005D29B8, C4<zzzzzz>, C4<zzzzzz>;
+RS_005A54FC .resolv tri, RS_005A54FC/0/0, RS_005A54FC/0/4, C4<zzzzzz>, C4<zzzzzz>;
+v005D1358_0 .net8 "diferenca", 5 0, RS_005A54FC; 6 drivers
+v005D13B0_0 .var "x", 5 0;
+v005D1408_0 .var "y", 5 0;
+L_005D1460 .part/pv L_00662F80, 0, 1, 6;
+L_005D14B8 .part v005D13B0_0, 0, 1;
+L_005D1510 .part v005D1408_0, 0, 1;
+L_005D1568 .part/pv L_005D1B48, 1, 1, 6;
+L_005D15C0 .part v005D13B0_0, 1, 1;
+L_005D1618 .part v005D1408_0, 1, 1;
+L_005D1670 .part/pv L_005D1F00, 2, 1, 6;
+L_005D16C8 .part v005D13B0_0, 2, 1;
+L_005D1720 .part v005D1408_0, 2, 1;
+L_005D1778 .part/pv L_005D2230, 3, 1, 6;
+L_005D2800 .part v005D13B0_0, 3, 1;
+L_005D2858 .part v005D1408_0, 3, 1;
+L_005D28B0 .part/pv L_005D24D0, 4, 1, 6;
+L_005D2908 .part v005D13B0_0, 4, 1;
+L_005D2960 .part v005D1408_0, 4, 1;
+L_005D29B8 .part/pv L_005D27A8, 5, 1, 6;
+L_005D2A10 .part v005D13B0_0, 5, 1;
+L_005D2A68 .part v005D1408_0, 5, 1;
+S_0066B8D0 .scope module, "dife0" "meiaDiferenca" 2 51, 2 9, S_0066BC88;
+ .timescale 0 0;
+L_00662F80 .functor XOR 1, L_005D14B8, L_005D1510, C4<0>, C4<0>;
+L_00662FB8 .functor AND 1, L_00662FF0, L_005D1510, C4<1>, C4<1>;
+L_00662FF0 .functor NOT 1, L_005D14B8, C4<0>, C4<0>, C4<0>;
+v005D0F90_0 .net *"_s2", 0 0, L_00662FF0; 1 drivers
+v005D0FE8_0 .net "a", 0 0, L_005D14B8; 1 drivers
+v005D1040_0 .net "b", 0 0, L_005D1510; 1 drivers
+v005D1098_0 .net "s", 0 0, L_00662F80; 1 drivers
+v005D10F0_0 .alias "s1", 0 0, v005D1148_0;
+S_0066BA68 .scope module, "dife1" "fullSubtrator" 2 52, 2 21, S_0066BC88;
+ .timescale 0 0;
+L_005D1B48 .functor BUFZ 1, L_005D19F8, C4<0>, C4<0>, C4<0>;
+L_005D1B80 .functor OR 1, L_005D1918, L_005D1A68, C4<0>, C4<0>;
+v005D0D28_0 .net "a", 0 0, L_005D15C0; 1 drivers
+v005D0D80_0 .net "b", 0 0, L_005D1618; 1 drivers
+v005D0DD8_0 .alias "borrowIn", 0 0, v005D1148_0;
+v005D0E30 .array "ms1", 1 0;
+v005D0E30_0 .net v005D0E30 0, 0 0, L_005D1918; 1 drivers
+v005D0E30_1 .net v005D0E30 1, 0 0, L_005D1870; 1 drivers
+v005D0E88 .array "ms2", 1 0;
+v005D0E88_0 .net v005D0E88 0, 0 0, L_005D1A68; 1 drivers
+v005D0E88_1 .net v005D0E88 1, 0 0, L_005D19F8; 1 drivers
+v005D0EE0_0 .net "s", 0 0, L_005D1B48; 1 drivers
+v005D0F38_0 .alias "s1", 0 0, v005D11A0_0;
+S_0066B958 .scope module, "hs1" "meiaDiferenca" 2 29, 2 9, S_0066BA68;
+ .timescale 0 0;
+L_005D1870 .functor XOR 1, L_005D15C0, L_005D1618, C4<0>, C4<0>;
+L_005D1918 .functor AND 1, L_005D1988, L_005D1618, C4<1>, C4<1>;
+L_005D1988 .functor NOT 1, L_005D15C0, C4<0>, C4<0>, C4<0>;
+v005D0B70_0 .net *"_s2", 0 0, L_005D1988; 1 drivers
+v005D0BC8_0 .alias "a", 0 0, v005D0D28_0;
+v005D0C20_0 .alias "b", 0 0, v005D0D80_0;
+v005D0C78_0 .alias "s", 0 0, v005D0E30_1;
+v005D0CD0_0 .alias "s1", 0 0, v005D0E30_0;
+S_0066B9E0 .scope module, "hs2" "meiaDiferenca" 2 30, 2 9, S_0066BA68;
+ .timescale 0 0;
+L_005D19F8 .functor XOR 1, L_005D1870, L_00662FB8, C4<0>, C4<0>;
+L_005D1A68 .functor AND 1, L_005D1AD8, L_00662FB8, C4<1>, C4<1>;
+L_005D1AD8 .functor NOT 1, L_005D1870, C4<0>, C4<0>, C4<0>;
+v005D09B8_0 .net *"_s2", 0 0, L_005D1AD8; 1 drivers
+v005D0A10_0 .alias "a", 0 0, v005D0E30_1;
+v005D0A68_0 .alias "b", 0 0, v005D1148_0;
+v005D0AC0_0 .alias "s", 0 0, v005D0E88_1;
+v005D0B18_0 .alias "s1", 0 0, v005D0E88_0;
+S_0066B518 .scope module, "dife2" "fullSubtrator" 2 53, 2 21, S_0066BC88;
+ .timescale 0 0;
+L_005D1F00 .functor BUFZ 1, L_005D1DB0, C4<0>, C4<0>, C4<0>;
+L_005D1F38 .functor OR 1, L_005D1CD0, L_005D1E20, C4<0>, C4<0>;
+v005D0720_0 .net "a", 0 0, L_005D16C8; 1 drivers
+v005D0778_0 .net "b", 0 0, L_005D1720; 1 drivers
+v005D0800_0 .alias "borrowIn", 0 0, v005D11A0_0;
+v005D0858 .array "ms1", 1 0;
+v005D0858_0 .net v005D0858 0, 0 0, L_005D1CD0; 1 drivers
+v005D0858_1 .net v005D0858 1, 0 0, L_005D1C28; 1 drivers
+v005D08B0 .array "ms2", 1 0;
+v005D08B0_0 .net v005D08B0 0, 0 0, L_005D1E20; 1 drivers
+v005D08B0_1 .net v005D08B0 1, 0 0, L_005D1DB0; 1 drivers
+v005D0908_0 .net "s", 0 0, L_005D1F00; 1 drivers
+v005D0960_0 .alias "s1", 0 0, v005D11F8_0;
+S_0066BAF0 .scope module, "hs1" "meiaDiferenca" 2 29, 2 9, S_0066B518;
+ .timescale 0 0;
+L_005D1C28 .functor XOR 1, L_005D16C8, L_005D1720, C4<0>, C4<0>;
+L_005D1CD0 .functor AND 1, L_005D1D40, L_005D1720, C4<1>, C4<1>;
+L_005D1D40 .functor NOT 1, L_005D16C8, C4<0>, C4<0>, C4<0>;
+v005D0568_0 .net *"_s2", 0 0, L_005D1D40; 1 drivers
+v005D05C0_0 .alias "a", 0 0, v005D0720_0;
+v005D0618_0 .alias "b", 0 0, v005D0778_0;
+v005D0670_0 .alias "s", 0 0, v005D0858_1;
+v005D06C8_0 .alias "s1", 0 0, v005D0858_0;
+S_0066BB78 .scope module, "hs2" "meiaDiferenca" 2 30, 2 9, S_0066B518;
+ .timescale 0 0;
+L_005D1DB0 .functor XOR 1, L_005D1C28, L_005D1B80, C4<0>, C4<0>;
+L_005D1E20 .functor AND 1, L_005D1E90, L_005D1B80, C4<1>, C4<1>;
+L_005D1E90 .functor NOT 1, L_005D1C28, C4<0>, C4<0>, C4<0>;
+v005D03B0_0 .net *"_s2", 0 0, L_005D1E90; 1 drivers
+v005D0408_0 .alias "a", 0 0, v005D0858_1;
+v005D0460_0 .alias "b", 0 0, v005D11A0_0;
+v005D04B8_0 .alias "s", 0 0, v005D08B0_1;
+v005D0510_0 .alias "s1", 0 0, v005D08B0_0;
+S_0066C480 .scope module, "dife3" "fullSubtrator" 2 54, 2 21, S_0066BC88;
+ .timescale 0 0;
+L_005D2230 .functor BUFZ 1, L_005D20E0, C4<0>, C4<0>, C4<0>;
+L_005D2268 .functor OR 1, L_005D2000, L_005D2150, C4<0>, C4<0>;
+v005D0148_0 .net "a", 0 0, L_005D2800; 1 drivers
+v005D01A0_0 .net "b", 0 0, L_005D2858; 1 drivers
+v005D01F8_0 .alias "borrowIn", 0 0, v005D11F8_0;
+v005D0250 .array "ms1", 1 0;
+v005D0250_0 .net v005D0250 0, 0 0, L_005D2000; 1 drivers
+v005D0250_1 .net v005D0250 1, 0 0, L_005D1C98; 1 drivers
+v005D02A8 .array "ms2", 1 0;
+v005D02A8_0 .net v005D02A8 0, 0 0, L_005D2150; 1 drivers
+v005D02A8_1 .net v005D02A8 1, 0 0, L_005D20E0; 1 drivers
+v005D0300_0 .net "s", 0 0, L_005D2230; 1 drivers
+v005D0358_0 .alias "s1", 0 0, v005D1250_0;
+S_0066BD98 .scope module, "hs1" "meiaDiferenca" 2 29, 2 9, S_0066C480;
+ .timescale 0 0;
+L_005D1C98 .functor XOR 1, L_005D2800, L_005D2858, C4<0>, C4<0>;
+L_005D2000 .functor AND 1, L_005D2070, L_005D2858, C4<1>, C4<1>;
+L_005D2070 .functor NOT 1, L_005D2800, C4<0>, C4<0>, C4<0>;
+v005CFF90_0 .net *"_s2", 0 0, L_005D2070; 1 drivers
+v005CFFE8_0 .alias "a", 0 0, v005D0148_0;
+v005D0040_0 .alias "b", 0 0, v005D01A0_0;
+v005D0098_0 .alias "s", 0 0, v005D0250_1;
+v005D00F0_0 .alias "s1", 0 0, v005D0250_0;
+S_0066C3F8 .scope module, "hs2" "meiaDiferenca" 2 30, 2 9, S_0066C480;
+ .timescale 0 0;
+L_005D20E0 .functor XOR 1, L_005D1C98, L_005D1F38, C4<0>, C4<0>;
+L_005D2150 .functor AND 1, L_005D21C0, L_005D1F38, C4<1>, C4<1>;
+L_005D21C0 .functor NOT 1, L_005D1C98, C4<0>, C4<0>, C4<0>;
+v005CFDD8_0 .net *"_s2", 0 0, L_005D21C0; 1 drivers
+v005CFE30_0 .alias "a", 0 0, v005D0250_1;
+v005CFE88_0 .alias "b", 0 0, v005D11F8_0;
+v005CFEE0_0 .alias "s", 0 0, v005D02A8_1;
+v005CFF38_0 .alias "s1", 0 0, v005D02A8_0;
+S_0066CBF0 .scope module, "dife4" "fullSubtrator" 2 55, 2 21, S_0066BC88;
+ .timescale 0 0;
+L_005D24D0 .functor BUFZ 1, L_005D2380, C4<0>, C4<0>, C4<0>;
+L_005D2508 .functor OR 1, L_005D22A0, L_005D23F0, C4<0>, C4<0>;
+v005CFB70_0 .net "a", 0 0, L_005D2908; 1 drivers
+v005CFBC8_0 .net "b", 0 0, L_005D2960; 1 drivers
+v005CFC20_0 .alias "borrowIn", 0 0, v005D1250_0;
+v005CFC78 .array "ms1", 1 0;
+v005CFC78_0 .net v005CFC78 0, 0 0, L_005D22A0; 1 drivers
+v005CFC78_1 .net v005CFC78 1, 0 0, L_005D18A8; 1 drivers
+v005CFCD0 .array "ms2", 1 0;
+v005CFCD0_0 .net v005CFCD0 0, 0 0, L_005D23F0; 1 drivers
+v005CFCD0_1 .net v005CFCD0 1, 0 0, L_005D2380; 1 drivers
+v005CFD28_0 .net "s", 0 0, L_005D24D0; 1 drivers
+v005CFD80_0 .alias "s1", 0 0, v005D12A8_0;
+S_0066C508 .scope module, "hs1" "meiaDiferenca" 2 29, 2 9, S_0066CBF0;
+ .timescale 0 0;
+L_005D18A8 .functor XOR 1, L_005D2908, L_005D2960, C4<0>, C4<0>;
+L_005D22A0 .functor AND 1, L_005D2310, L_005D2960, C4<1>, C4<1>;
+L_005D2310 .functor NOT 1, L_005D2908, C4<0>, C4<0>, C4<0>;
+v005CF9B8_0 .net *"_s2", 0 0, L_005D2310; 1 drivers
+v005CFA10_0 .alias "a", 0 0, v005CFB70_0;
+v005CFA68_0 .alias "b", 0 0, v005CFBC8_0;
+v005CFAC0_0 .alias "s", 0 0, v005CFC78_1;
+v005CFB18_0 .alias "s1", 0 0, v005CFC78_0;
+S_0066CB68 .scope module, "hs2" "meiaDiferenca" 2 30, 2 9, S_0066CBF0;
+ .timescale 0 0;
+L_005D2380 .functor XOR 1, L_005D18A8, L_005D2268, C4<0>, C4<0>;
+L_005D23F0 .functor AND 1, L_005D2460, L_005D2268, C4<1>, C4<1>;
+L_005D2460 .functor NOT 1, L_005D18A8, C4<0>, C4<0>, C4<0>;
+v005CF800_0 .net *"_s2", 0 0, L_005D2460; 1 drivers
+v005CF858_0 .alias "a", 0 0, v005CFC78_1;
+v005CF8B0_0 .alias "b", 0 0, v005D1250_0;
+v005CF908_0 .alias "s", 0 0, v005CFCD0_1;
+v005CF960_0 .alias "s1", 0 0, v005CFCD0_0;
+S_0066B628 .scope module, "dife5" "fullSubtrator" 2 56, 2 21, S_0066BC88;
+ .timescale 0 0;
+L_005D27A8 .functor BUFZ 1, L_005D2658, C4<0>, C4<0>, C4<0>;
+L_005D3800 .functor OR 1, L_005D2578, L_005D26C8, C4<0>, C4<0>;
+v00594160_0 .net "a", 0 0, L_005D2A10; 1 drivers
+v005941B8_0 .net "b", 0 0, L_005D2A68; 1 drivers
+v00594210_0 .alias "borrowIn", 0 0, v005D12A8_0;
+v00594268 .array "ms1", 1 0;
+v00594268_0 .net v00594268 0, 0 0, L_005D2578; 1 drivers
+v00594268_1 .net v00594268 1, 0 0, L_005D1C60; 1 drivers
+v005942C0 .array "ms2", 1 0;
+v005942C0_0 .net v005942C0 0, 0 0, L_005D26C8; 1 drivers
+v005942C0_1 .net v005942C0 1, 0 0, L_005D2658; 1 drivers
+v00594318_0 .net "s", 0 0, L_005D27A8; 1 drivers
+v00594370_0 .alias "s1", 0 0, v005D1300_0;
+S_0066CC78 .scope module, "hs1" "meiaDiferenca" 2 29, 2 9, S_0066B628;
+ .timescale 0 0;
+L_005D1C60 .functor XOR 1, L_005D2A10, L_005D2A68, C4<0>, C4<0>;
+L_005D2578 .functor AND 1, L_005D25E8, L_005D2A68, C4<1>, C4<1>;
+L_005D25E8 .functor NOT 1, L_005D2A10, C4<0>, C4<0>, C4<0>;
+v00593FA8_0 .net *"_s2", 0 0, L_005D25E8; 1 drivers
+v00594000_0 .alias "a", 0 0, v00594160_0;
+v00594058_0 .alias "b", 0 0, v005941B8_0;
+v005940B0_0 .alias "s", 0 0, v00594268_1;
+v00594108_0 .alias "s1", 0 0, v00594268_0;
+S_0066B5A0 .scope module, "hs2" "meiaDiferenca" 2 30, 2 9, S_0066B628;
+ .timescale 0 0;
+L_005D2658 .functor XOR 1, L_005D1C60, L_005D2508, C4<0>, C4<0>;
+L_005D26C8 .functor AND 1, L_005D2738, L_005D2508, C4<1>, C4<1>;
+L_005D2738 .functor NOT 1, L_005D1C60, C4<0>, C4<0>, C4<0>;
+v00593DF0_0 .net *"_s2", 0 0, L_005D2738; 1 drivers
+v00593E48_0 .alias "a", 0 0, v00594268_1;
+v00593EA0_0 .alias "b", 0 0, v005D12A8_0;
+v00593EF8_0 .alias "s", 0 0, v005942C0_1;
+v00593F50_0 .alias "s1", 0 0, v005942C0_0;
+    .scope S_0066BC88;
+T_0 ;
+    %vpi_call 2 60 "$display", "Exemplo0022 - Rafael Lopes Barbosa - 435052";
+    %vpi_call 2 61 "$display", "Test ALU's full subtrator";
+    %movi 8, 3, 6;
+    %set/v v005D13B0_0, 8, 6;
+    %movi 8, 5, 6;
+    %set/v v005D1408_0, 8, 6;
+    %delay 1, 0;
+    %vpi_call 2 63 "$display", "%b - %b = %b", v005D13B0_0, v005D1408_0, v005D1358_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USER\Desktop\Apostila Arq\Guias\Guia04\Exemplo0022.v";

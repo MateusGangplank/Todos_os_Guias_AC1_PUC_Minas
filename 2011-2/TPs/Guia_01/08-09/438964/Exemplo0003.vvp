@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7B30 .scope module, "testandgate" "testandgate" 2 20;
+ .timescale 0 0;
+v005F9F30_0 .var "a", 0 0;
+v005F9F88_0 .var "b", 0 0;
+v005F9FE0_0 .net "s", 0 0, L_003E6C98; 1 drivers
+S_003E7C40 .scope module, "AND1" "andgate" 2 25, 2 12, S_003E7B30;
+ .timescale 0 0;
+L_003E6C98 .functor AND 1, v005F9F30_0, v005F9F88_0, C4<1>, C4<1>;
+v005D0EE8_0 .net "p", 0 0, v005F9F30_0; 1 drivers
+v005F9E38_0 .net "q", 0 0, v005F9F88_0; 1 drivers
+v005F9EA8_0 .alias "s", 0 0, v005F9FE0_0;
+S_003E7BB8 .scope begin, "start" "start" 2 27, 2 27, S_003E7B30;
+ .timescale 0 0;
+    .scope S_003E7B30;
+T_0 ;
+    %fork t_1, S_003E7BB8;
+    %jmp t_0;
+    .scope S_003E7BB8;
+t_1 ;
+    %set/v v005F9F30_0, 0, 1;
+    %set/v v005F9F88_0, 0, 1;
+    %end;
+    .scope S_003E7B30;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E7B30;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0003 - Ederson Cristiano - 438964";
+    %vpi_call 2 33 "$display", "Test AND gate";
+    %vpi_call 2 34 "$display", "\012a & b = s\012";
+    %set/v v005F9F30_0, 0, 1;
+    %set/v v005F9F88_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v005F9F30_0, v005F9F88_0, v005F9FE0_0;
+    %set/v v005F9F30_0, 0, 1;
+    %set/v v005F9F88_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v005F9F30_0, v005F9F88_0, v005F9FE0_0;
+    %set/v v005F9F30_0, 1, 1;
+    %set/v v005F9F88_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v005F9F30_0, v005F9F88_0, v005F9FE0_0;
+    %set/v v005F9F30_0, 1, 1;
+    %set/v v005F9F88_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v005F9F30_0, v005F9F88_0, v005F9FE0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\438964\puc_trabalhos\ARQ.COMP_Trabalho&exercicios\guia01\438964\Exemplo0003.v";

@@ -1,0 +1,75 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0034FD68 .scope module, "testxnorgate" "testxnorgate" 2 15;
+ .timescale 0 0;
+v0034F3B8_0 .var "a", 0 0;
+v0034F410_0 .var "b", 0 0;
+v0034CD60_0 .net "s", 0 0, L_0034CF40; 1 drivers
+S_00349978 .scope module, "XNOR1" "xnorgate" 2 20, 2 7, S_0034FD68;
+ .timescale 0 0;
+L_0034FDF0 .functor AND 1, v0034F3B8_0, v0034F410_0, C4<1>, C4<1>;
+L_0034CE28 .functor NOT 1, v0034F3B8_0, C4<0>, C4<0>, C4<0>;
+L_0034CE60 .functor NOT 1, v0034F410_0, C4<0>, C4<0>, C4<0>;
+L_0034CE98 .functor AND 1, L_0034CE28, L_0034CE60, C4<1>, C4<1>;
+L_0034CF40 .functor OR 1, L_0034FDF0, L_0034CE98, C4<0>, C4<0>;
+v00342F18_0 .net *"_s0", 0 0, L_0034FDF0; 1 drivers
+v00343B80_0 .net *"_s2", 0 0, L_0034CE28; 1 drivers
+v00343BD8_0 .net *"_s4", 0 0, L_0034CE60; 1 drivers
+v00343C30_0 .net *"_s6", 0 0, L_0034CE98; 1 drivers
+v00343C88_0 .net "p", 0 0, v0034F3B8_0; 1 drivers
+v0034F308_0 .net "q", 0 0, v0034F410_0; 1 drivers
+v0034F360_0 .alias "s", 0 0, v0034CD60_0;
+S_00342E90 .scope begin, "start" "start" 2 22, 2 22, S_0034FD68;
+ .timescale 0 0;
+S_00342E08 .scope begin, "main" "main" 2 27, 2 27, S_0034FD68;
+ .timescale 0 0;
+    .scope S_0034FD68;
+T_0 ;
+    %fork t_1, S_00342E90;
+    %jmp t_0;
+    .scope S_00342E90;
+t_1 ;
+    %set/v v0034F3B8_0, 0, 1;
+    %set/v v0034F410_0, 0, 1;
+    %end;
+    .scope S_0034FD68;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0034FD68;
+T_1 ;
+    %fork t_3, S_00342E08;
+    %jmp t_2;
+    .scope S_00342E08;
+t_3 ;
+    %vpi_call 2 28 "$display", "Exerc0007 - Pedro Henrique Vilar Locatelli  - 427453";
+    %vpi_call 2 29 "$display", "Test xnor gate";
+    %vpi_call 2 30 "$display", "\012 a ^ b = s\012";
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "%b ^ %b = %b", v0034F3B8_0, v0034F410_0, v0034CD60_0;
+    %set/v v0034F3B8_0, 0, 1;
+    %set/v v0034F410_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b ^ %b = %b", v0034F3B8_0, v0034F410_0, v0034CD60_0;
+    %set/v v0034F3B8_0, 1, 1;
+    %set/v v0034F410_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b ^ %b = %b", v0034F3B8_0, v0034F410_0, v0034CD60_0;
+    %set/v v0034F3B8_0, 1, 1;
+    %set/v v0034F410_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b ^ %b = %b", v0034F3B8_0, v0034F410_0, v0034CD60_0;
+    %end;
+    .scope S_0034FD68;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Baste\Downloads\Arq1\Guia01\Exerc0007.v";

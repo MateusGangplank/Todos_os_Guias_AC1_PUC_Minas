@@ -1,0 +1,112 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006D97C0 .scope module, "testSoma" "testSoma" 2 43;
+ .timescale 0 0;
+v006DB6C0_0 .var "a", 2 0;
+v006DB718_0 .var "b", 2 0;
+RS_00304FB4 .resolv tri, L_006DB7C8, L_006DB8D0, L_006DB9D8, L_006DBA30;
+v006DB770_0 .net8 "s", 3 0, RS_00304FB4; 4 drivers
+S_006D9738 .scope module, "teste" "somacompleta" 2 49, 2 31, S_006D97C0;
+ .timescale 0 0;
+v006DB508_0 .alias "S", 3 0, v006DB770_0;
+v006DB560_0 .net "a", 2 0, v006DB6C0_0; 1 drivers
+v006DB5B8_0 .net "b", 2 0, v006DB718_0; 1 drivers
+v006DB610_0 .net "s2", 0 0, L_003032C0; 1 drivers
+v006DB668_0 .net "s4", 0 0, L_00328020; 1 drivers
+L_006DB7C8 .part/pv L_00303288, 0, 1, 4;
+L_006DB820 .part v006DB6C0_0, 0, 1;
+L_006DB878 .part v006DB718_0, 0, 1;
+L_006DB8D0 .part/pv L_00327FE8, 1, 1, 4;
+L_006DB928 .part v006DB6C0_0, 1, 1;
+L_006DB980 .part v006DB718_0, 1, 1;
+L_006DB9D8 .part/pv L_00328250, 2, 1, 4;
+L_006DBA30 .part/pv L_00328288, 3, 1, 4;
+L_006DBA88 .part v006DB6C0_0, 2, 1;
+L_006DBAE0 .part v006DB718_0, 2, 1;
+S_006D9A68 .scope module, "soma1" "soma" 2 35, 2 10, S_006D9738;
+ .timescale 0 0;
+L_00303288 .functor XOR 1, L_006DB820, L_006DB878, C4<0>, C4<0>;
+L_003032C0 .functor AND 1, L_006DB820, L_006DB878, C4<1>, C4<1>;
+v006DB3A8_0 .net "a", 0 0, L_006DB820; 1 drivers
+v006DB400_0 .net "b", 0 0, L_006DB878; 1 drivers
+v006DB458_0 .net "s1", 0 0, L_00303288; 1 drivers
+v006DB4B0_0 .alias "s2", 0 0, v006DB610_0;
+S_006D9AF0 .scope module, "soma2" "somavai1" 2 36, 2 18, S_006D9738;
+ .timescale 0 0;
+L_00327E98 .functor XOR 1, L_006DB928, L_006DB980, C4<0>, C4<0>;
+L_00327ED0 .functor AND 1, L_006DB928, L_006DB980, C4<1>, C4<1>;
+L_00327F78 .functor AND 1, L_00327E98, L_003032C0, C4<1>, C4<1>;
+L_00327FE8 .functor XOR 1, L_00327E98, L_003032C0, C4<0>, C4<0>;
+L_00328020 .functor OR 1, L_00327F78, L_00327ED0, C4<0>, C4<0>;
+v006DB0E8_0 .net "a", 0 0, L_006DB928; 1 drivers
+v006DB140_0 .net "b", 0 0, L_006DB980; 1 drivers
+v006DB198_0 .net "s1", 0 0, L_00327FE8; 1 drivers
+v006DB1F0_0 .alias "s2", 0 0, v006DB668_0;
+v006DB248_0 .alias "v", 0 0, v006DB610_0;
+v006DB2A0_0 .net "w1", 0 0, L_00327E98; 1 drivers
+v006DB2F8_0 .net "w2", 0 0, L_00327ED0; 1 drivers
+v006DB350_0 .net "w3", 0 0, L_00327F78; 1 drivers
+S_006D96B0 .scope module, "soma3" "somavai1" 2 37, 2 18, S_006D9738;
+ .timescale 0 0;
+L_00328100 .functor XOR 1, L_006DBA88, L_006DBAE0, C4<0>, C4<0>;
+L_00328138 .functor AND 1, L_006DBA88, L_006DBAE0, C4<1>, C4<1>;
+L_003281E0 .functor AND 1, L_00328100, L_00328020, C4<1>, C4<1>;
+L_00328250 .functor XOR 1, L_00328100, L_00328020, C4<0>, C4<0>;
+L_00328288 .functor OR 1, L_003281E0, L_00328138, C4<0>, C4<0>;
+v006DAE28_0 .net "a", 0 0, L_006DBA88; 1 drivers
+v006DAE80_0 .net "b", 0 0, L_006DBAE0; 1 drivers
+v006DAED8_0 .net "s1", 0 0, L_00328250; 1 drivers
+v006DAF30_0 .net "s2", 0 0, L_00328288; 1 drivers
+v006DAF88_0 .alias "v", 0 0, v006DB668_0;
+v006DAFE0_0 .net "w1", 0 0, L_00328100; 1 drivers
+v006DB038_0 .net "w2", 0 0, L_00328138; 1 drivers
+v006DB090_0 .net "w3", 0 0, L_003281E0; 1 drivers
+    .scope S_006D97C0;
+T_0 ;
+    %vpi_call 2 55 "$display", "Exemplo0021 - Yousef -441714";
+    %vpi_call 2 56 "$display", "Soma Completa";
+    %vpi_call 2 58 "$monitor", "x = %3b  y = %3b  x+y = %4b\012", v006DB6C0_0, v006DB718_0, v006DB770_0;
+    %delay 1, 0;
+    %set/v v006DB6C0_0, 0, 3;
+    %set/v v006DB718_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v006DB6C0_0, 8, 3;
+    %set/v v006DB718_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v006DB6C0_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v006DB718_0, 8, 3;
+    %delay 1, 0;
+    %set/v v006DB6C0_0, 1, 3;
+    %set/v v006DB718_0, 1, 3;
+    %delay 1, 0;
+    %set/v v006DB6C0_0, 1, 3;
+    %set/v v006DB718_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 4, 3;
+    %set/v v006DB6C0_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v006DB718_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v006DB6C0_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v006DB718_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v006DB6C0_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v006DB718_0, 8, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Downloads\441714\Downloads\Nova pasta\exemplo0021.v";

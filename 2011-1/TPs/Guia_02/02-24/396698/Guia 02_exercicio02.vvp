@@ -1,0 +1,77 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00335098 .scope module, "testandgate" "testandgate" 2 39;
+ .timescale 0 0;
+v0036A900_0 .var "a", 0 0;
+v0036A958_0 .var "b", 0 0;
+v0036A9B0_0 .net "s", 0 0, L_0036B838; 1 drivers
+S_00335298 .scope module, "AND1" "andgate" 2 43, 2 23, S_00335098;
+ .timescale 0 0;
+v0036A748_0 .net "p", 0 0, v0036A900_0; 1 drivers
+v0036A7A0_0 .net "q", 0 0, v0036A958_0; 1 drivers
+v0036A7F8_0 .alias "s0", 0 0, v0036A9B0_0;
+v0036A850_0 .net "s1", 0 0, L_002CE0C8; 1 drivers
+v0036A8A8_0 .net "s2", 0 0, L_003376F0; 1 drivers
+S_00335418 .scope module, "NOR1" "norgate" 2 28, 2 11, S_00335298;
+ .timescale 0 0;
+L_003377D0 .functor OR 1, v0036A900_0, v0036A900_0, C4<0>, C4<0>;
+L_002CE0C8 .functor NOT 1, L_003377D0, C4<0>, C4<0>, C4<0>;
+v002CE5B8_0 .net *"_s0", 0 0, L_003377D0; 1 drivers
+v00337640_0 .alias "p", 0 0, v0036A748_0;
+v00337698_0 .alias "q", 0 0, v0036A748_0;
+v0036A6F0_0 .alias "s", 0 0, v0036A850_0;
+S_00335398 .scope module, "NOR2" "norgate" 2 29, 2 11, S_00335298;
+ .timescale 0 0;
+L_0036B710 .functor OR 1, v0036A958_0, v0036A958_0, C4<0>, C4<0>;
+L_003376F0 .functor NOT 1, L_0036B710, C4<0>, C4<0>, C4<0>;
+v002CE070_0 .net *"_s0", 0 0, L_0036B710; 1 drivers
+v002CE4B0_0 .alias "p", 0 0, v0036A7A0_0;
+v002CE508_0 .alias "q", 0 0, v0036A7A0_0;
+v002CE560_0 .alias "s", 0 0, v0036A8A8_0;
+S_00335318 .scope module, "NOR3" "norgate" 2 30, 2 11, S_00335298;
+ .timescale 0 0;
+L_0036B800 .functor OR 1, L_002CE0C8, L_003376F0, C4<0>, C4<0>;
+L_0036B838 .functor NOT 1, L_0036B800, C4<0>, C4<0>, C4<0>;
+v00332D78_0 .net *"_s0", 0 0, L_0036B800; 1 drivers
+v00332DD0_0 .alias "p", 0 0, v0036A850_0;
+v002CDFC0_0 .alias "q", 0 0, v0036A8A8_0;
+v002CE018_0 .alias "s", 0 0, v0036A9B0_0;
+S_00335198 .scope begin, "start" "start" 2 45, 2 45, S_00335098;
+ .timescale 0 0;
+    .scope S_00335098;
+T_0 ;
+    %fork t_1, S_00335198;
+    %jmp t_0;
+t_1 ;
+    %set/v v0036A900_0, 0, 1;
+    %set/v v0036A958_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00335098;
+T_1 ;
+    %vpi_call 2 51 "$display", "Guia 02_02 - Heitor Terozendi - 396698";
+    %vpi_call 2 52 "$display", "Test AND gate";
+    %vpi_call 2 53 "$display", "\012a & b = s\012";
+    %vpi_call 2 54 "$monitor", "%b & %b = %b", v0036A900_0, v0036A958_0, v0036A9B0_0;
+    %delay 1, 0;
+    %set/v v0036A900_0, 0, 1;
+    %set/v v0036A958_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0036A900_0, 1, 1;
+    %set/v v0036A958_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0036A900_0, 1, 1;
+    %set/v v0036A958_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Heitor\Desktop\ARQ I\Guias\Guia 2\Guia 02_02.v";

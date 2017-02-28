@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003B27A8 .scope module, "testnxnorgate" "testnxnorgate" 2 17;
+ .timescale 0 0;
+v003B78A8_0 .var "a", 0 0;
+v003B7900_0 .var "b", 0 0;
+v003B7958_0 .net "s", 0 0, L_003B8FB0; 1 drivers
+S_003B2F40 .scope module, "XNOR1" "xnorgate" 2 24, 2 10, S_003B27A8;
+ .timescale 0 0;
+L_003B8F08 .functor XOR 1, v003B78A8_0, v003B7900_0, C4<0>, C4<0>;
+L_003B8FB0 .functor NOT 1, L_003B8F08, C4<0>, C4<0>, C4<0>;
+v003B2FC8_0 .net *"_s0", 0 0, L_003B8F08; 1 drivers
+v003B28B8_0 .net "p", 0 0, v003B78A8_0; 1 drivers
+v003B77F8_0 .net "q", 0 0, v003B7900_0; 1 drivers
+v003B7850_0 .alias "s", 0 0, v003B7958_0;
+S_003B2EB8 .scope begin, "start" "start" 2 26, 2 26, S_003B27A8;
+ .timescale 0 0;
+S_003B2830 .scope begin, "main" "main" 2 31, 2 31, S_003B27A8;
+ .timescale 0 0;
+    .scope S_003B27A8;
+T_0 ;
+    %fork t_1, S_003B2EB8;
+    %jmp t_0;
+    .scope S_003B2EB8;
+t_1 ;
+    %set/v v003B78A8_0, 0, 1;
+    %set/v v003B7900_0, 0, 1;
+    %end;
+    .scope S_003B27A8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003B27A8;
+T_1 ;
+    %fork t_3, S_003B2830;
+    %jmp t_2;
+    .scope S_003B2830;
+t_3 ;
+    %vpi_call 2 32 "$display", "Exemplo0008 - Mateus Lima Batista - 451410";
+    %vpi_call 2 33 "$display", "Test XNOR gate";
+    %vpi_call 2 34 "$display", "\012~(a^b)=s\012";
+    %set/v v003B78A8_0, 0, 1;
+    %set/v v003B7900_0, 0, 1;
+    %vpi_call 2 36 "$monitor", "~(%b ^ %b) = %b", v003B78A8_0, v003B7900_0, v003B7958_0;
+    %delay 1, 0;
+    %set/v v003B78A8_0, 0, 1;
+    %set/v v003B7900_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003B78A8_0, 1, 1;
+    %set/v v003B7900_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003B78A8_0, 1, 1;
+    %set/v v003B7900_0, 1, 1;
+    %end;
+    .scope S_003B27A8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Mozão\Exemplo0008.v";

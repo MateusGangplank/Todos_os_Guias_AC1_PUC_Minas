@@ -1,0 +1,170 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EA630 .scope module, "testguia8" "testguia8" 2 33;
+ .timescale 0 0;
+v00605330_0 .var "a", 0 0;
+v00605388_0 .var "b", 0 0;
+v006053E0_0 .var "c", 0 0;
+v00605438_0 .var "d", 0 0;
+v00605490_0 .net "saida", 0 0, L_00605C50; 1 drivers
+S_003EA7C8 .scope module, "REDUZIRQUINENOR" "metodoreduzirquinenor" 2 37, 2 4, S_003EA630;
+ .timescale 0 0;
+L_003E6B98 .functor NOR 1, v00605388_0, v00605388_0, C4<0>, C4<0>;
+L_006054E8 .functor NOR 1, v00605438_0, v00605438_0, C4<0>, C4<0>;
+L_00605558 .functor NOR 1, L_003E6B98, L_003E6B98, C4<0>, C4<0>;
+L_006055C8 .functor NOR 1, L_006054E8, L_006054E8, C4<0>, C4<0>;
+L_00605638 .functor NOR 1, L_00605558, L_006055C8, C4<0>, C4<0>;
+L_006056E0 .functor NOR 1, v00605330_0, v00605330_0, C4<0>, C4<0>;
+L_00605750 .functor NOR 1, v00605438_0, v00605438_0, C4<0>, C4<0>;
+L_00605520 .functor NOR 1, L_006056E0, L_00605750, C4<0>, C4<0>;
+L_006057F8 .functor NOR 1, v00605330_0, v00605330_0, C4<0>, C4<0>;
+L_00605718 .functor NOR 1, v00605438_0, v00605438_0, C4<0>, C4<0>;
+L_00605830 .functor NOR 1, L_006057F8, v00605388_0, L_00605718, C4<0>;
+L_00605940 .functor NOR 1, v00605330_0, v00605330_0, C4<0>, C4<0>;
+L_00605978 .functor NOR 1, v00605388_0, v00605388_0, C4<0>, C4<0>;
+L_00605908 .functor NOR 1, v006053E0_0, v006053E0_0, C4<0>, C4<0>;
+L_006059E8 .functor NOR 1, L_00605908, L_00605908, C4<0>, C4<0>;
+L_00605A58 .functor NOR 1, L_00605940, L_00605978, L_006059E8, C4<0>;
+L_00605B38 .functor NOR 1, L_00605638, L_00605520, L_00605830, L_00605A58;
+L_00605C50 .functor NOR 1, L_00605B38, L_00605B38, C4<0>, C4<0>;
+v003EFCA0_0 .net "a", 0 0, v00605330_0; 1 drivers
+v006049A0_0 .net "b", 0 0, v00605388_0; 1 drivers
+v00604A10_0 .net "c", 0 0, v006053E0_0; 1 drivers
+v00604A98_0 .net "d", 0 0, v00605438_0; 1 drivers
+v00604B08_0 .alias "saida", 0 0, v00605490_0;
+v00604B60_0 .net "temp1", 0 0, L_003E6B98; 1 drivers
+v00604BD0_0 .net "temp10", 0 0, L_00605718; 1 drivers
+v00604C68_0 .net "temp11", 0 0, L_00605830; 1 drivers
+v00604CD8_0 .net "temp12", 0 0, L_00605940; 1 drivers
+v00604D78_0 .net "temp13", 0 0, L_00605978; 1 drivers
+v00604DE8_0 .net "temp14", 0 0, L_00605908; 1 drivers
+v00604E58_0 .net "temp15", 0 0, L_006059E8; 1 drivers
+v00604EC8_0 .net "temp16", 0 0, L_00605A58; 1 drivers
+v00604F38_0 .net "temp17", 0 0, L_00605B38; 1 drivers
+v00604FA8_0 .net "temp2", 0 0, L_006054E8; 1 drivers
+v00605020_0 .net "temp3", 0 0, L_00605558; 1 drivers
+v00605090_0 .net "temp4", 0 0, L_006055C8; 1 drivers
+v00605100_0 .net "temp5", 0 0, L_00605638; 1 drivers
+v00605170_0 .net "temp6", 0 0, L_006056E0; 1 drivers
+v00605238_0 .net "temp7", 0 0, L_00605750; 1 drivers
+v006052A8_0 .net "temp8", 0 0, L_00605520; 1 drivers
+v006051C8_0 .net "temp9", 0 0, L_006057F8; 1 drivers
+S_003EA740 .scope begin, "start" "start" 2 39, 2 39, S_003EA630;
+ .timescale 0 0;
+S_003EA6B8 .scope begin, "main" "main" 2 43, 2 43, S_003EA630;
+ .timescale 0 0;
+    .scope S_003EA630;
+T_0 ;
+    %fork t_1, S_003EA740;
+    %jmp t_0;
+    .scope S_003EA740;
+t_1 ;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 0, 1;
+    %end;
+    .scope S_003EA630;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EA630;
+T_1 ;
+    %fork t_3, S_003EA6B8;
+    %jmp t_2;
+    .scope S_003EA6B8;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", " Circuito do exercicio 05-guia8 com portas NOR ";
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", " a |  b |  c |  d  =  saida ";
+    %vpi_call 2 46 "$monitor", " %b  | %b  | %b |  %b  =   %b ", v00605330_0, v00605388_0, v006053E0_0, v00605438_0, v00605490_0;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 0, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 0, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 0, 1;
+    %set/v v00605438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00605330_0, 1, 1;
+    %set/v v00605388_0, 1, 1;
+    %set/v v006053E0_0, 1, 1;
+    %set/v v00605438_0, 1, 1;
+    %end;
+    .scope S_003EA630;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\Guia_08 - 347133\guia08_05.v";

@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003A83E8 .scope module, "testorgate" "testorgate" 2 23;
+ .timescale 0 0;
+v023690C8_0 .var "a", 0 0;
+v02369140_0 .var "b", 0 0;
+v023691B8_0 .var "c", 0 0;
+v02369230_0 .net "s", 0 0, L_02305298; 1 drivers
+S_003A8538 .scope module, "OR1" "orgate" 2 27, 2 11, S_003A83E8;
+ .timescale 0 0;
+L_02304E78 .functor NOT 1, v023690C8_0, C4<0>, C4<0>, C4<0>;
+L_02304F28 .functor NOT 1, v02369140_0, C4<0>, C4<0>, C4<0>;
+L_02304FD8 .functor AND 1, L_02304E78, L_02304F28, C4<1>, C4<1>;
+L_023050E0 .functor NOT 1, v023691B8_0, C4<0>, C4<0>, C4<0>;
+L_02305190 .functor AND 1, L_02304FD8, L_023050E0, C4<1>, C4<1>;
+L_02305298 .functor NOT 1, L_02305190, C4<0>, C4<0>, C4<0>;
+v0230C770_0 .net *"_s0", 0 0, L_02304E78; 1 drivers
+v02312BE8_0 .net *"_s2", 0 0, L_02304F28; 1 drivers
+v02312C60_0 .net *"_s4", 0 0, L_02304FD8; 1 drivers
+v02312CD8_0 .net *"_s6", 0 0, L_023050E0; 1 drivers
+v02312D50_0 .net *"_s8", 0 0, L_02305190; 1 drivers
+v02312DC8_0 .net "p", 0 0, v023690C8_0; 1 drivers
+v02312E40_0 .net "q", 0 0, v02369140_0; 1 drivers
+v02368FD8_0 .net "r", 0 0, v023691B8_0; 1 drivers
+v02369050_0 .alias "s", 0 0, v02369230_0;
+S_003A8490 .scope begin, "start" "start" 2 29, 2 29, S_003A83E8;
+ .timescale 0 0;
+    .scope S_003A83E8;
+T_0 ;
+    %fork t_1, S_003A8490;
+    %jmp t_0;
+    .scope S_003A8490;
+t_1 ;
+    %set/v v023690C8_0, 0, 1;
+    %set/v v02369140_0, 0, 1;
+    %set/v v023691B8_0, 0, 1;
+    %vpi_call 2 31 "$display", "Guia01_05 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 32 "$display", "Test OR gate usando De Morgan";
+    %vpi_call 2 33 "$display", "~(~a|~b|~c)= S";
+    %vpi_call 2 34 "$monitor", "   %b  %b  %b = %b", v023690C8_0, v02369140_0, v023691B8_0, v02369230_0;
+    %delay 1, 0;
+    %set/v v023690C8_0, 0, 1;
+    %set/v v02369140_0, 0, 1;
+    %set/v v023691B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v023690C8_0, 0, 1;
+    %set/v v02369140_0, 1, 1;
+    %set/v v023691B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v023690C8_0, 0, 1;
+    %set/v v02369140_0, 1, 1;
+    %set/v v023691B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v023690C8_0, 1, 1;
+    %set/v v02369140_0, 0, 1;
+    %set/v v023691B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v023690C8_0, 1, 1;
+    %set/v v02369140_0, 0, 1;
+    %set/v v023691B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v023690C8_0, 1, 1;
+    %set/v v02369140_0, 1, 1;
+    %set/v v023691B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v023690C8_0, 1, 1;
+    %set/v v02369140_0, 1, 1;
+    %set/v v023691B8_0, 1, 1;
+    %end;
+    .scope S_003A83E8;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\AULA\2011-2\AC I\Guia 01\Guia01_05.v";

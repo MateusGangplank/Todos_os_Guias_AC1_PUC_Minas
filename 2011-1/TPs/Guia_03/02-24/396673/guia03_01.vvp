@@ -1,0 +1,66 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C3DE8 .scope module, "testmeiasoma" "testmeiasoma" 2 28;
+ .timescale 0 0;
+v003CFEE0_0 .var "a", 0 0;
+v003CFF38_0 .var "b", 0 0;
+v003CFF90_0 .net "s0", 0 0, L_006403F8; 1 drivers
+v0063F410_0 .net "s1", 0 0, L_006404A0; 1 drivers
+S_003CF608 .scope module, "MEIASOMA1" "meiasoma" 2 32, 2 11, S_003C3DE8;
+ .timescale 0 0;
+L_003C3E70 .functor OR 1, v003CFEE0_0, v003CFF38_0, C4<0>, C4<0>;
+L_00640468 .functor NAND 1, v003CFEE0_0, v003CFF38_0, C4<1>, C4<1>;
+L_006404A0 .functor AND 1, v003CFEE0_0, v003CFF38_0, C4<1>, C4<1>;
+L_006403F8 .functor AND 1, L_003C3E70, L_00640468, C4<1>, C4<1>;
+v003C2A30_0 .net "a", 0 0, v003CFEE0_0; 1 drivers
+v003CF690_0 .net "b", 0 0, v003CFF38_0; 1 drivers
+v003CF6E8_0 .alias "s0", 0 0, v003CFF90_0;
+v003CFDD8_0 .alias "s1", 0 0, v0063F410_0;
+v003CFE30_0 .net "s2", 0 0, L_003C3E70; 1 drivers
+v003CFE88_0 .net "s3", 0 0, L_00640468; 1 drivers
+S_003C29A8 .scope begin, "start" "start" 2 34, 2 34, S_003C3DE8;
+ .timescale 0 0;
+S_003C2920 .scope begin, "main" "main" 2 39, 2 39, S_003C3DE8;
+ .timescale 0 0;
+    .scope S_003C3DE8;
+T_0 ;
+    %fork t_1, S_003C29A8;
+    %jmp t_0;
+t_1 ;
+    %set/v v003CFEE0_0, 0, 1;
+    %set/v v003CFF38_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003C3DE8;
+T_1 ;
+    %fork t_3, S_003C2920;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 40 "$display", "Guia 03_01 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 41 "$display", "Test Meia Soma gate";
+    %vpi_call 2 42 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 43 "$monitor", " %b & %b = %b %b", v003CFEE0_0, v003CFF38_0, v003CFF90_0, v0063F410_0;
+    %delay 1, 0;
+    %set/v v003CFEE0_0, 0, 1;
+    %set/v v003CFF38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFEE0_0, 1, 1;
+    %set/v v003CFF38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CFEE0_0, 1, 1;
+    %set/v v003CFF38_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Ciência da Computação\AC I - 2\Guias\Guia03\guia03_01.v";

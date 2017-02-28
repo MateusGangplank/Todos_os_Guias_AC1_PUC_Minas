@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007CEDD0 .scope module, "testxnorgate" "testxnorgate" 2 15;
+ .timescale 0 0;
+v007CFF18_0 .var "a", 0 0;
+v007CFF70_0 .var "b", 0 0;
+v007C35B8_0 .net "s", 0 0, L_007C36B8; 1 drivers
+S_007C3140 .scope module, "XNOR1" "xnorgate" 2 20, 2 9, S_007CEDD0;
+ .timescale 0 0;
+L_007C3610 .functor XOR 1, v007CFF18_0, v007CFF70_0, C4<0>, C4<0>;
+L_007C36B8 .functor NOT 1, L_007C3610, C4<0>, C4<0>, C4<0>;
+v007CEEE0_0 .net *"_s0", 0 0, L_007C3610; 1 drivers
+v007C31C8_0 .net "p", 0 0, v007CFF18_0; 1 drivers
+v007CFE68_0 .net "q", 0 0, v007CFF70_0; 1 drivers
+v007CFEC0_0 .alias "s", 0 0, v007C35B8_0;
+S_007C30B8 .scope begin, "start" "start" 2 22, 2 22, S_007CEDD0;
+ .timescale 0 0;
+S_007CEE58 .scope begin, "main" "main" 2 29, 2 29, S_007CEDD0;
+ .timescale 0 0;
+    .scope S_007CEDD0;
+T_0 ;
+    %fork t_1, S_007C30B8;
+    %jmp t_0;
+    .scope S_007C30B8;
+t_1 ;
+    %set/v v007CFF18_0, 0, 1;
+    %set/v v007CFF70_0, 0, 1;
+    %end;
+    .scope S_007CEDD0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007CEDD0;
+T_1 ;
+    %fork t_3, S_007CEE58;
+    %jmp t_2;
+    .scope S_007CEE58;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exemplo0008 - Rafael Santos Moura - 441705";
+    %vpi_call 2 31 "$display", "Test xnor gate";
+    %vpi_call 2 32 "$display", "\012 (a ^ b)' = s\012";
+    %vpi_call 2 33 "$monitor", "%b ^ %b = %b", v007CFF18_0, v007CFF70_0, v007C35B8_0;
+    %delay 1, 0;
+    %set/v v007CFF18_0, 0, 1;
+    %set/v v007CFF70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007CFF18_0, 0, 1;
+    %set/v v007CFF70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007CFF18_0, 1, 1;
+    %set/v v007CFF70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007CFF18_0, 1, 1;
+    %set/v v007CFF70_0, 1, 1;
+    %end;
+    .scope S_007CEDD0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Mateus\Desktop\Rafael\ED 1\Exemplo0008.v";

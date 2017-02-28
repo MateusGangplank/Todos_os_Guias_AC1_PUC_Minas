@@ -1,0 +1,84 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008A90B0 .scope module, "TestSomaCompleta" "TestSomaCompleta" 2 37;
+ .timescale 0 0;
+v005A0268_0 .var "Cin1", 0 0;
+v005A02C0_0 .net "Cout2", 0 0, L_005A43E0; 1 drivers
+v005A0318_0 .net "Soma2", 0 0, L_008A2BD0; 1 drivers
+v005A0370_0 .var "a", 0 0;
+v005A03C8_0 .var "b", 0 0;
+S_008A9138 .scope module, "SC1" "SC" 2 42, 2 21, S_008A90B0;
+ .timescale 0 0;
+L_005A43E0 .functor OR 1, L_008A2CB0, L_008A2C08, C4<0>, C4<0>;
+v008A3EB8_0 .net "Cin", 0 0, v005A0268_0; 1 drivers
+v005A0000_0 .alias "Cout1", 0 0, v005A02C0_0;
+v005A0058_0 .alias "Soma1", 0 0, v005A0318_0;
+v005A00B0_0 .net "t1", 0 0, L_008A2C78; 1 drivers
+v005A0108_0 .net "t2", 0 0, L_008A2C08; 1 drivers
+v005A0160_0 .net "t3", 0 0, L_008A2CB0; 1 drivers
+v005A01B8_0 .net "x1", 0 0, v005A0370_0; 1 drivers
+v005A0210_0 .net "y1", 0 0, v005A03C8_0; 1 drivers
+S_008A9248 .scope module, "MS1" "MS" 2 27, 2 11, S_008A9138;
+ .timescale 0 0;
+L_008A2C08 .functor AND 1, v005A0370_0, v005A03C8_0, C4<1>, C4<1>;
+L_008A2C78 .functor XOR 1, v005A0370_0, v005A03C8_0, C4<0>, C4<0>;
+v008AD2B8_0 .alias "Cout", 0 0, v005A00B0_0;
+v008AD310_0 .alias "Soma", 0 0, v005A0108_0;
+v008A3E08_0 .alias "x", 0 0, v005A01B8_0;
+v008A3E60_0 .alias "y", 0 0, v005A0210_0;
+S_008A91C0 .scope module, "MS2" "MS" 2 28, 2 11, S_008A9138;
+ .timescale 0 0;
+L_008A2CB0 .functor AND 1, v005A0268_0, L_008A2C78, C4<1>, C4<1>;
+L_008A2BD0 .functor XOR 1, v005A0268_0, L_008A2C78, C4<0>, C4<0>;
+v005A4F90_0 .alias "Cout", 0 0, v005A0318_0;
+v005A4330_0 .alias "Soma", 0 0, v005A0160_0;
+v005A4388_0 .alias "x", 0 0, v008A3EB8_0;
+v008AD260_0 .alias "y", 0 0, v005A00B0_0;
+    .scope S_008A90B0;
+T_0 ;
+    %vpi_call 2 46 "$display", "\012guia04_02 - Ludmily Caldeira da Silva - 417290\012";
+    %vpi_call 2 47 "$display", "Test Soma completa\012";
+    %vpi_call 2 48 "$display", "\012a  b  Cin  Cout  s\012";
+    %vpi_call 2 49 "$monitor", "%b  %b   %b    %b    %b", v005A0370_0, v005A03C8_0, v005A0268_0, v005A02C0_0, v005A0318_0;
+    %set/v v005A0370_0, 0, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %set/v v005A0268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 0, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %set/v v005A0268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 0, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %set/v v005A0268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 0, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %set/v v005A0268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 1, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %set/v v005A0268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 1, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %set/v v005A0268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 1, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %set/v v005A0268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0370_0, 1, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %set/v v005A0268_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\417290\ARQ1\guia04\guia04-02.v";

@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006D9190 .scope module, "testeNand" "testeNand" 2 11;
+ .timescale 0 0;
+v0070E638_0 .var "a", 0 0;
+v006D93F0_0 .var "b", 0 0;
+v006D9448_0 .net "s", 0 0, L_006D9548; 1 drivers
+S_0070E0C8 .scope module, "NA1" "nandgate" 2 16, 2 7, S_006D9190;
+ .timescale 0 0;
+L_006D94A0 .functor AND 1, v0070E638_0, v006D93F0_0, C4<1>, C4<1>;
+L_006D9548 .functor NOT 1, L_006D94A0, C4<0>, C4<0>, C4<0>;
+v0070E150_0 .net *"_s0", 0 0, L_006D94A0; 1 drivers
+v0070E530_0 .net "a", 0 0, v0070E638_0; 1 drivers
+v0070E588_0 .net "b", 0 0, v006D93F0_0; 1 drivers
+v0070E5E0_0 .alias "s", 0 0, v006D9448_0;
+S_0070E040 .scope begin, "start" "start" 2 18, 2 18, S_006D9190;
+ .timescale 0 0;
+S_006D9218 .scope begin, "main" "main" 2 25, 2 25, S_006D9190;
+ .timescale 0 0;
+    .scope S_006D9190;
+T_0 ;
+    %fork t_1, S_0070E040;
+    %jmp t_0;
+    .scope S_0070E040;
+t_1 ;
+    %set/v v0070E638_0, 0, 1;
+    %set/v v006D93F0_0, 0, 1;
+    %end;
+    .scope S_006D9190;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006D9190;
+T_1 ;
+    %fork t_3, S_006D9218;
+    %jmp t_2;
+    .scope S_006D9218;
+t_3 ;
+    %vpi_call 2 26 "$display", "Exercicio 001 - Guilherme Diniz de Assumpcao - 462269 ";
+    %vpi_call 2 27 "$display", "Test nand:";
+    %vpi_call 2 28 "$monitor", "%d\011%b nand %b = %b", $time, v0070E638_0, v006D93F0_0, v006D9448_0;
+    %delay 1, 0;
+    %set/v v0070E638_0, 0, 1;
+    %set/v v006D93F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0070E638_0, 1, 1;
+    %set/v v006D93F0_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0070E638_0, 1, 1;
+    %set/v v006D93F0_0, 1, 1;
+    %end;
+    .scope S_006D9190;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Documents\PUC\AC\Exercicios\Guia01\Exercicio001.v";

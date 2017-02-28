@@ -1,0 +1,81 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006DA8D8 .scope module, "alu1" "alu1" 2 5;
+ .timescale 0 0;
+L_006D3278 .functor XOR 1, L_006DD0D0, L_006DD128, C4<0>, C4<0>;
+v006DCE10_0 .net *"_s1", 0 0, L_006DD0D0; 1 drivers
+v006DCE68_0 .net *"_s3", 0 0, L_006DD128; 1 drivers
+v006DCEC0_0 .net "a", 3 0, C4<zzzz>; 0 drivers
+v006DCF18_0 .net "b", 3 0, C4<zzzz>; 0 drivers
+RS_019D0A5C .resolv tri, L_006DD180, L_006DD288, L_006DD390, L_01A03010;
+v006DCF70_0 .net8 "s", 3 0, RS_019D0A5C; 4 drivers
+v006DCFC8_0 .net "w1", 0 0, L_006D32B0; 1 drivers
+v006DD020_0 .net "w2", 0 0, L_01A025D0; 1 drivers
+v006DD078_0 .net "x1", 0 0, L_006D3278; 1 drivers
+L_006DD0D0 .part C4<zzzz>, 3, 1;
+L_006DD128 .part C4<zzzz>, 3, 1;
+L_006DD180 .part/pv L_006DD930, 0, 1, 4;
+L_006DD1D8 .part C4<zzzz>, 0, 1;
+L_006DD230 .part C4<zzzz>, 0, 1;
+L_006DD288 .part/pv L_01A02598, 1, 1, 4;
+L_006DD2E0 .part C4<zzzz>, 1, 1;
+L_006DD338 .part C4<zzzz>, 1, 1;
+L_006DD390 .part/pv L_01A02838, 2, 1, 4;
+L_01A03010 .part/pv L_01A02870, 3, 1, 4;
+L_01A03068 .part C4<zzzz>, 2, 1;
+L_01A030C0 .part C4<zzzz>, 2, 1;
+S_006DAC90 .scope module, "fa1" "fa" 2 10, 3 3, S_006DA8D8;
+ .timescale 0 0;
+L_006D4638 .functor AND 1, L_006DD1D8, L_006DD230, C4<1>, C4<1>;
+L_006D4670 .functor XOR 1, L_006DD1D8, L_006DD230, C4<0>, C4<0>;
+L_006D4718 .functor AND 1, L_006D3278, L_006D4670, C4<1>, C4<1>;
+L_006DD930 .functor XOR 1, L_006D3278, L_006D4670, C4<0>, C4<0>;
+L_006D32B0 .functor OR 1, L_006D4638, L_006D4718, C4<0>, C4<0>;
+v006DCB50_0 .net "a", 0 0, L_006DD1D8; 1 drivers
+v006DCBA8_0 .net "b", 0 0, L_006DD230; 1 drivers
+v006DCC00_0 .alias "carryin", 0 0, v006DD078_0;
+v006DCC58_0 .alias "carryout", 0 0, v006DCFC8_0;
+v006DCCB0_0 .net "s", 0 0, L_006DD930; 1 drivers
+v006DCD08_0 .net "w1", 0 0, L_006D4638; 1 drivers
+v006DCD60_0 .net "w2", 0 0, L_006D4670; 1 drivers
+v006DCDB8_0 .net "w3", 0 0, L_006D4718; 1 drivers
+S_006DAD18 .scope module, "fa2" "fa" 2 11, 3 3, S_006DA8D8;
+ .timescale 0 0;
+L_01A02448 .functor AND 1, L_006DD2E0, L_006DD338, C4<1>, C4<1>;
+L_01A02480 .functor XOR 1, L_006DD2E0, L_006DD338, C4<0>, C4<0>;
+L_01A02528 .functor AND 1, L_006D32B0, L_01A02480, C4<1>, C4<1>;
+L_01A02598 .functor XOR 1, L_006D32B0, L_01A02480, C4<0>, C4<0>;
+L_01A025D0 .functor OR 1, L_01A02448, L_01A02528, C4<0>, C4<0>;
+v006DC890_0 .net "a", 0 0, L_006DD2E0; 1 drivers
+v006DC8E8_0 .net "b", 0 0, L_006DD338; 1 drivers
+v006DC940_0 .alias "carryin", 0 0, v006DCFC8_0;
+v006DC998_0 .alias "carryout", 0 0, v006DD020_0;
+v006DC9F0_0 .net "s", 0 0, L_01A02598; 1 drivers
+v006DCA48_0 .net "w1", 0 0, L_01A02448; 1 drivers
+v006DCAA0_0 .net "w2", 0 0, L_01A02480; 1 drivers
+v006DCAF8_0 .net "w3", 0 0, L_01A02528; 1 drivers
+S_006DA850 .scope module, "fa3" "fa" 2 12, 3 3, S_006DA8D8;
+ .timescale 0 0;
+L_01A026E8 .functor AND 1, L_01A03068, L_01A030C0, C4<1>, C4<1>;
+L_01A02720 .functor XOR 1, L_01A03068, L_01A030C0, C4<0>, C4<0>;
+L_01A027C8 .functor AND 1, L_01A025D0, L_01A02720, C4<1>, C4<1>;
+L_01A02838 .functor XOR 1, L_01A025D0, L_01A02720, C4<0>, C4<0>;
+L_01A02870 .functor OR 1, L_01A026E8, L_01A027C8, C4<0>, C4<0>;
+v006DC5D0_0 .net "a", 0 0, L_01A03068; 1 drivers
+v006DC628_0 .net "b", 0 0, L_01A030C0; 1 drivers
+v006DC680_0 .alias "carryin", 0 0, v006DD020_0;
+v006DC6D8_0 .net "carryout", 0 0, L_01A02870; 1 drivers
+v006DC730_0 .net "s", 0 0, L_01A02838; 1 drivers
+v006DC788_0 .net "w1", 0 0, L_01A026E8; 1 drivers
+v006DC7E0_0 .net "w2", 0 0, L_01A02720; 1 drivers
+v006DC838_0 .net "w3", 0 0, L_01A027C8; 1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "0501.v";
+    "./fa.v";

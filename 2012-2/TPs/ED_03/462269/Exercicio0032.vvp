@@ -1,0 +1,50 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B1E490 .scope module, "TESTE" "TESTE" 2 23;
+ .timescale 0 0;
+v005C12D0_0 .var "x", 0 0;
+v005C1328_0 .var "y", 0 0;
+v005C1380_0 .net "z", 0 0, L_00B1F7A8; 1 drivers
+S_00B18F00 .scope module, "portas" "F4" 2 34, 2 7, S_00B1E490;
+ .timescale 0 0;
+L_00B12D80 .functor NOT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_00B12DB8 .functor BUF 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_00B12E28 .functor OR 1, v005C12D0_0, v005C1328_0, C4<0>, C4<0>;
+L_00B1F7A8 .functor OR 1, L_00B1F850, L_00B1CF58, C4<0>, C4<0>;
+L_00B1F818 .functor AND 1, v005C12D0_0, v005C1328_0, C4<1>, C4<1>;
+L_00B1F850 .functor AND 1, L_00B12E28, L_00B12D80, C4<1>, C4<1>;
+L_00B1CF58 .functor AND 1, L_00B1F818, L_00B12DB8, C4<1>, C4<1>;
+v00B1E518_0 .net "a", 0 0, v005C12D0_0; 1 drivers
+v00B12D28_0 .net "b", 0 0, v005C1328_0; 1 drivers
+v005C1010_0 .net "c1", 0 0, L_00B12D80; 1 drivers
+v005C1068_0 .net "c2", 0 0, L_00B12DB8; 1 drivers
+v005C10C0_0 .net "chave", 0 0, C4<0>; 1 drivers
+v005C1118_0 .alias "s", 0 0, v005C1380_0;
+v005C1170_0 .net "s1", 0 0, L_00B12E28; 1 drivers
+v005C11C8_0 .net "s2", 0 0, L_00B1F818; 1 drivers
+v005C1220_0 .net "s3", 0 0, L_00B1F850; 1 drivers
+v005C1278_0 .net "s4", 0 0, L_00B1CF58; 1 drivers
+    .scope S_00B1E490;
+T_0 ;
+    %set/v v005C12D0_0, 0, 1;
+    %set/v v005C1328_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00B1E490;
+T_1 ;
+    %vpi_call 2 38 "$display", "Exercicio0032 - Guilherme Diniz de Assumpcao - 462269";
+    %vpi_call 2 39 "$display", "Teste LU's module";
+    %set/v v005C12D0_0, 1, 1;
+    %set/v v005C1328_0, 0, 1;
+    %vpi_call 2 44 "$monitor", "x | y = %b", v005C1380_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Downloads\Guia03\Guia03\Exercicio0032.v";

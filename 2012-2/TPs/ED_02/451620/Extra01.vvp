@@ -1,0 +1,39 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A23070 .scope module, "complemento_de_1" "complemento_de_1" 2 7;
+ .timescale 0 0;
+v00A230F8_0 .net *"_s0", 7 0, C4<11111111>; 1 drivers
+v00A23498_0 .net *"_s2", 7 0, L_00A2FE60; 1 drivers
+v00A234F0_0 .net *"_s5", 6 0, C4<0000000>; 1 drivers
+v00A2EB70_0 .net *"_s6", 7 0, L_00A2FEF0; 1 drivers
+v00A2EBC8_0 .net "a", 0 0, C4<z>; 0 drivers
+v00A2EC20_0 .net "b", 0 0, L_00A2E628; 1 drivers
+L_00A2FE60 .concat [ 1 7 0 0], C4<z>, C4<0000000>;
+L_00A2FEF0 .arith/sub 8, C4<11111111>, L_00A2FE60;
+L_00A2E628 .part L_00A2FEF0, 0, 1;
+S_00A23410 .scope module, "test_base_11" "test_base_11" 2 13;
+ .timescale 0 0;
+v00A2EC78_0 .var "a", 7 0;
+v00A2FE08_0 .var "b", 7 0;
+    .scope S_00A23410;
+T_0 ;
+    %vpi_call 2 19 "$display", "Extra01 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 20 "$display", "Complemento de 1: ";
+    %movi 8, 170, 8;
+    %set/v v00A2EC78_0, 8, 8;
+    %load/v 8, v00A2EC78_0, 8;
+    %mov 16, 1, 8;
+    %sub 16, 8, 8;
+    %set/v v00A2FE08_0, 16, 8;
+    %vpi_call 2 24 "$display", "o complemento de 1 de a = %8b", v00A2FE08_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc 2 periodo\Arquitetura 1\Exercicios\Guia02\Extra01.v";

@@ -1,0 +1,96 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003594E0 .scope module, "testexemplo0033" "testexemplo0033" 2 30;
+ .timescale 0 0;
+v0035B5D8_0 .var "a", 0 0;
+v0035B630_0 .var "b", 0 0;
+v0035B688_0 .var "c", 0 0;
+v0035B6E0_0 .net "s", 0 0, L_005AD258; 1 drivers
+v0035B738_0 .net "s1", 0 0, L_005AD3E0; 1 drivers
+S_00359568 .scope module, "Q03" "exemplo0033" 2 34, 2 16, S_003594E0;
+ .timescale 0 0;
+L_0035D600 .functor AND 1, v0035B5D8_0, v0035B630_0, C4<1>, C4<1>;
+L_00352B88 .functor NAND 1, v0035B5D8_0, v0035B630_0, C4<1>, C4<1>;
+L_005AD098 .functor OR 1, v0035B5D8_0, v0035B630_0, C4<0>, C4<0>;
+L_005AD108 .functor NOR 1, v0035B5D8_0, v0035B630_0, C4<0>, C4<0>;
+v0035B2C0_0 .net "chave", 0 0, v0035B688_0; 1 drivers
+v0035B318_0 .net "p", 0 0, v0035B5D8_0; 1 drivers
+v0035B370_0 .net "q", 0 0, v0035B630_0; 1 drivers
+v0035B3C8_0 .alias "s", 0 0, v0035B6E0_0;
+v0035B420_0 .alias "s1", 0 0, v0035B738_0;
+v0035B478_0 .net "temp1", 0 0, L_0035D600; 1 drivers
+v0035B4D0_0 .net "temp2", 0 0, L_00352B88; 1 drivers
+v0035B528_0 .net "temp3", 0 0, L_005AD098; 1 drivers
+v0035B580_0 .net "temp4", 0 0, L_005AD108; 1 drivers
+S_00359678 .scope module, "MULT" "multiplexador" 2 25, 2 5, S_00359568;
+ .timescale 0 0;
+L_005AD178 .functor NOT 1, v0035B688_0, C4<0>, C4<0>, C4<0>;
+L_005AD1B0 .functor AND 1, L_0035D600, L_005AD178, C4<1>, C4<1>;
+L_005AD220 .functor AND 1, L_00352B88, v0035B688_0, C4<1>, C4<1>;
+L_005AD258 .functor OR 1, L_005AD1B0, L_005AD220, C4<0>, C4<0>;
+v0035B058_0 .alias "p", 0 0, v0035B478_0;
+v0035B0B0_0 .alias "q", 0 0, v0035B4D0_0;
+v0035B108_0 .alias "r", 0 0, v0035B2C0_0;
+v0035B160_0 .alias "s", 0 0, v0035B6E0_0;
+v0035B1B8_0 .net "temp1", 0 0, L_005AD1B0; 1 drivers
+v0035B210_0 .net "temp2", 0 0, L_005AD220; 1 drivers
+v0035B268_0 .net "temp3", 0 0, L_005AD178; 1 drivers
+S_003595F0 .scope module, "MULT2" "multiplexador" 2 26, 2 5, S_00359568;
+ .timescale 0 0;
+L_005AD300 .functor NOT 1, v0035B688_0, C4<0>, C4<0>, C4<0>;
+L_005AD338 .functor AND 1, L_005AD098, L_005AD300, C4<1>, C4<1>;
+L_005AD3A8 .functor AND 1, L_005AD108, v0035B688_0, C4<1>, C4<1>;
+L_005AD3E0 .functor OR 1, L_005AD338, L_005AD3A8, C4<0>, C4<0>;
+v0035ADF0_0 .alias "p", 0 0, v0035B528_0;
+v0035AE48_0 .alias "q", 0 0, v0035B580_0;
+v0035AEA0_0 .alias "r", 0 0, v0035B2C0_0;
+v0035AEF8_0 .alias "s", 0 0, v0035B738_0;
+v0035AF50_0 .net "temp1", 0 0, L_005AD338; 1 drivers
+v0035AFA8_0 .net "temp2", 0 0, L_005AD3A8; 1 drivers
+v0035B000_0 .net "temp3", 0 0, L_005AD300; 1 drivers
+    .scope S_003594E0;
+T_0 ;
+    %set/v v0035B5D8_0, 0, 1;
+    %set/v v0035B630_0, 0, 1;
+    %set/v v0035B688_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$monitor", "%3b %3b %3b = %3b %3b", v0035B5D8_0, v0035B630_0, v0035B688_0, v0035B6E0_0, v0035B738_0;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 0, 1;
+    %set/v v0035B630_0, 0, 1;
+    %set/v v0035B688_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 0, 1;
+    %set/v v0035B630_0, 1, 1;
+    %set/v v0035B688_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 0, 1;
+    %set/v v0035B630_0, 1, 1;
+    %set/v v0035B688_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 1, 1;
+    %set/v v0035B630_0, 0, 1;
+    %set/v v0035B688_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 1, 1;
+    %set/v v0035B630_0, 0, 1;
+    %set/v v0035B688_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 1, 1;
+    %set/v v0035B630_0, 1, 1;
+    %set/v v0035B688_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035B5D8_0, 1, 1;
+    %set/v v0035B630_0, 1, 1;
+    %set/v v0035B688_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\win7\Desktop\[451542]Exemplo0033.v";

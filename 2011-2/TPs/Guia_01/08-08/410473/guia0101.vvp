@@ -1,0 +1,67 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E6EF8 .scope module, "testnandgate" "testnandgate" 2 23;
+ .timescale 0 0;
+v0069A220_0 .var "a", 0 0;
+v0069A278_0 .var "b", 0 0;
+v0069A2D0_0 .net "s", 0 0, L_0069A360; 1 drivers
+S_003E7090 .scope module, "NAND1" "nandgate" 2 28, 2 13, S_003E6EF8;
+ .timescale 0 0;
+L_003E4508 .functor AND 1, v0069A220_0, v0069A278_0, C4<1>, C4<1>;
+L_0069A360 .functor NOT 1, L_003E4508, C4<0>, C4<0>, C4<0>;
+v003E7118_0 .net *"_s0", 0 0, L_003E4508; 1 drivers
+v0069A0B8_0 .net "p", 0 0, v0069A220_0; 1 drivers
+v0069A128_0 .net "q", 0 0, v0069A278_0; 1 drivers
+v0069A1B0_0 .alias "s", 0 0, v0069A2D0_0;
+S_003E7008 .scope begin, "start" "start" 2 30, 2 30, S_003E6EF8;
+ .timescale 0 0;
+S_003E6F80 .scope begin, "main" "main" 2 36, 2 36, S_003E6EF8;
+ .timescale 0 0;
+    .scope S_003E6EF8;
+T_0 ;
+    %fork t_1, S_003E7008;
+    %jmp t_0;
+t_1 ;
+    %set/v v0069A220_0, 0, 1;
+    %set/v v0069A278_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E6EF8;
+T_1 ;
+    %fork t_3, S_003E6F80;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 38 "$display", "Guia01 - Exercicio 01 - Pedro Tronbin - 410473";
+    %vpi_call 2 39 "$display", "TEST NAND GATE: ";
+    %vpi_call 2 40 "$display", "\012( ~ ( a & b ) ) = s";
+    %set/v v0069A220_0, 0, 1;
+    %set/v v0069A278_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "( ~ ( %b & %b ) ) = %b", v0069A220_0, v0069A278_0, v0069A2D0_0;
+    %set/v v0069A220_0, 0, 1;
+    %set/v v0069A278_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "( ~ ( %b & %b ) ) = %b", v0069A220_0, v0069A278_0, v0069A2D0_0;
+    %set/v v0069A220_0, 1, 1;
+    %set/v v0069A278_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "( ~ ( %b & %b ) ) = %b", v0069A220_0, v0069A278_0, v0069A2D0_0;
+    %set/v v0069A220_0, 1, 1;
+    %set/v v0069A278_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "( ~ ( %b & %b ) ) = %b", v0069A220_0, v0069A278_0, v0069A2D0_0;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\pT\AC\guia01\guia0101.v";

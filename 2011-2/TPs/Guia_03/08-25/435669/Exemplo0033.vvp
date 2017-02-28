@@ -1,0 +1,77 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E2A98 .scope module, "teste" "teste" 2 31;
+ .timescale 0 0;
+v005DF800_0 .net "s1", 3 0, L_005DFE70; 1 drivers
+v005DF858_0 .net "s2", 3 0, L_005FD008; 1 drivers
+v005DF8B0_0 .net "s3", 3 0, L_005DFAA0; 1 drivers
+v005DF908_0 .net "s4", 3 0, L_005FD2F0; 1 drivers
+v005DF960_0 .var "x", 3 0;
+v005DF9B8_0 .var "y", 3 0;
+v005DFA10_0 .var "z", 3 0;
+S_005E2B20 .scope module, "modulo1" "ex033" 2 36, 2 7, S_005E2A98;
+ .timescale 0 0;
+L_003E6948 .functor NAND 4, v005DF960_0, v005DF9B8_0, C4<1111>, C4<1111>;
+L_005DFAD8 .functor NOT 1, L_005DFBF0, C4<0>, C4<0>, C4<0>;
+L_005DFB10 .functor NOT 1, L_005DFC90, C4<0>, C4<0>, C4<0>;
+L_005DFB80 .functor NOT 1, L_005DFD20, C4<0>, C4<0>, C4<0>;
+L_005DFBB8 .functor NOT 1, L_005DFE18, C4<0>, C4<0>, C4<0>;
+L_005DFE70 .functor AND 4, L_003E6948, L_005DFF18, C4<1111>, C4<1111>;
+L_005DFFA8 .functor NOR 4, v005DF960_0, v005DF9B8_0, C4<0000>, C4<0000>;
+L_005FD008 .functor AND 4, L_005DFFA8, L_005FD0B0, C4<1111>, C4<1111>;
+L_005FD140 .functor AND 4, v005DF960_0, v005DF9B8_0, C4<1111>, C4<1111>;
+L_005DFAA0 .functor AND 4, L_005FD140, v005DFA10_0, C4<1111>, C4<1111>;
+L_005FD280 .functor OR 4, v005DF960_0, v005DF9B8_0, C4<0000>, C4<0000>;
+L_005FD2F0 .functor AND 4, L_005FD280, v005DFA10_0, C4<1111>, C4<1111>;
+v005E1AC0_0 .net *"_s1", 0 0, L_005DFBF0; 1 drivers
+v005DF060_0 .net *"_s11", 3 0, L_005FD0B0; 1 drivers
+v005DF0D0_0 .net *"_s3", 0 0, L_005DFC90; 1 drivers
+v005DF158_0 .net *"_s5", 0 0, L_005DFD20; 1 drivers
+v005DF1C8_0 .net *"_s7", 0 0, L_005DFE18; 1 drivers
+v005DF220_0 .net *"_s9", 3 0, L_005DFF18; 1 drivers
+v005DF290_0 .net "chave", 3 0, v005DFA10_0; 1 drivers
+RS_005E36D4 .resolv tri, L_005DFAD8, L_005DFB10, L_005DFB80, L_005DFBB8;
+v005DF300_0 .net8 "nchave", 0 0, RS_005E36D4; 4 drivers
+v005DF370_0 .alias "s1", 3 0, v005DF800_0;
+v005DF410_0 .alias "s2", 3 0, v005DF858_0;
+v005DF480_0 .alias "s3", 3 0, v005DF8B0_0;
+v005DF4F0_0 .alias "s4", 3 0, v005DF908_0;
+v005DF560_0 .net "w1", 3 0, L_003E6948; 1 drivers
+v005DF5D0_0 .net "w2", 3 0, L_005DFFA8; 1 drivers
+v005DF640_0 .net "w3", 3 0, L_005FD140; 1 drivers
+v005DF6B0_0 .net "w4", 3 0, L_005FD280; 1 drivers
+v005DF720_0 .net "x", 3 0, v005DF960_0; 1 drivers
+v005DF790_0 .net "y", 3 0, v005DF9B8_0; 1 drivers
+L_005DFBF0 .part v005DFA10_0, 0, 1;
+L_005DFC90 .part v005DFA10_0, 1, 1;
+L_005DFD20 .part v005DFA10_0, 2, 1;
+L_005DFE18 .part v005DFA10_0, 3, 1;
+L_005DFF18 .repeat 4, 4, RS_005E36D4;
+L_005FD0B0 .repeat 4, 4, RS_005E36D4;
+    .scope S_005E2A98;
+T_0 ;
+    %movi 8, 3, 4;
+    %set/v v005DF960_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005DF9B8_0, 8, 4;
+    %set/v v005DFA10_0, 0, 4;
+    %end;
+    .thread T_0;
+    .scope S_005E2A98;
+T_1 ;
+    %vpi_call 2 45 "$display", "Exemplo0032 - Mateus Augusto Moraes Ferreira - 435669";
+    %vpi_call 2 46 "$display", "Test LU's module";
+    %vpi_call 2 47 "$monitor", "x=%4b y=%4b z=%4b s1=%4b s2=%4b s3=%4b s4=%4b ", v005DF960_0, v005DF9B8_0, v005DFA10_0, v005DF800_0, v005DF858_0, v005DF8B0_0, v005DF908_0;
+    %delay 1, 0;
+    %set/v v005DFA10_0, 1, 4;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2011-2\Arquitetura\Guia03_435669\Exemplo0033.v";

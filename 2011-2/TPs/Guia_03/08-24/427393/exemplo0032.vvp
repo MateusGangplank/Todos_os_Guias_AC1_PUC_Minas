@@ -1,0 +1,47 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00798F40 .scope module, "test_f4" "test_f4" 2 17;
+ .timescale 0 0;
+v0079EED0_0 .net "r", 3 0, L_0079FF38; 1 drivers
+v0079EF28_0 .var "x", 3 0;
+v0080C070_0 .var "y", 3 0;
+v0080C0C8_0 .var "z", 3 0;
+S_00798FC8 .scope module, "modulo" "f4" 2 24, 2 11, S_00798F40;
+ .timescale 0 0;
+L_00792DB0 .functor AND 4, v0080C0C8_0, v0079EF28_0, C4<1111>, C4<1111>;
+L_0079EFB8 .functor AND 4, L_00792DB0, v0080C070_0, C4<1111>, C4<1111>;
+L_0079FE20 .functor OR 4, v0080C0C8_0, v0079EF28_0, C4<0000>, C4<0000>;
+L_0079FE58 .functor NOT 4, v0080C070_0, C4<0000>, C4<0000>, C4<0000>;
+L_0079FE90 .functor AND 4, L_0079FE20, L_0079FE58, C4<1111>, C4<1111>;
+L_0079FF38 .functor OR 4, L_0079EFB8, L_0079FE90, C4<0000>, C4<0000>;
+v0079E088_0 .net *"_s0", 3 0, L_00792DB0; 1 drivers
+v00794398_0 .net *"_s2", 3 0, L_0079EFB8; 1 drivers
+v007943F0_0 .net *"_s4", 3 0, L_0079FE20; 1 drivers
+v00794448_0 .net *"_s6", 3 0, L_0079FE58; 1 drivers
+v00792CA8_0 .net *"_s8", 3 0, L_0079FE90; 1 drivers
+v00792D00_0 .net "a", 3 0, v0080C0C8_0; 1 drivers
+v00792D58_0 .net "b", 3 0, v0079EF28_0; 1 drivers
+v0079EE20_0 .net "c", 3 0, v0080C070_0; 1 drivers
+v0079EE78_0 .alias "s", 3 0, v0079EED0_0;
+    .scope S_00798F40;
+T_0 ;
+    %vpi_call 2 29 "$display", "Exemplo0032 - Camila Guedes Silveira - 427393";
+    %vpi_call 2 30 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v0079EF28_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0080C070_0, 8, 4;
+    %set/v v0080C0C8_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "\012%3b  %3b = %3b", v0079EF28_0, v0080C070_0, v0079EED0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Camila\Desktop\PUC_II\AC\Guia03\Nova pasta\exemplo0032.v";

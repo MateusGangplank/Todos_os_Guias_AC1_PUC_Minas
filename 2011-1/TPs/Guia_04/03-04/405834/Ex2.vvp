@@ -1,0 +1,124 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00675EB8 .scope module, "Teste" "Teste" 2 53;
+ .timescale 0 0;
+v006A95E8_0 .var "e1", 0 0;
+v006A9640_0 .var "e2", 0 0;
+v006A9700_0 .var "e3", 0 0;
+v006A97C0_0 .net "s0", 0 0, L_006A9D10; 1 drivers
+v006A9818_0 .net "s1", 0 0, L_006A9D80; 1 drivers
+S_006760A8 .scope module, "SC" "SomaCompleta" 2 57, 2 42, S_00675EB8;
+ .timescale 0 0;
+v006A92C8_0 .net "b", 0 0, L_006A99B8; 1 drivers
+v006A9320_0 .net "c", 0 0, L_006A9A60; 1 drivers
+v006A9378_0 .net "d", 0 0, L_006A9150; 1 drivers
+v006A93D0_0 .net "e1", 0 0, v006A95E8_0; 1 drivers
+v006A9428_0 .net "e2", 0 0, v006A9640_0; 1 drivers
+v006A9480_0 .net "e3", 0 0, v006A9700_0; 1 drivers
+v006A94D8_0 .alias "s0", 0 0, v006A97C0_0;
+v006A9590_0 .alias "s1", 0 0, v006A9818_0;
+S_006A8B80 .scope module, "HA1" "HalfAdder" 2 47, 2 34, S_006760A8;
+ .timescale 0 0;
+v006A90F8_0 .alias "e1", 0 0, v006A9428_0;
+v006A9188_0 .alias "e2", 0 0, v006A9480_0;
+v006A9218_0 .alias "s0", 0 0, v006A92C8_0;
+v006A9270_0 .alias "s1", 0 0, v006A9378_0;
+S_006A8F70 .scope module, "AND1" "AndGate" 2 38, 2 10, S_006A8B80;
+ .timescale 0 0;
+L_006A9150 .functor AND 1, v006A9640_0, v006A9700_0, C4<1>, C4<1>;
+v006A8FF0_0 .alias "e1", 0 0, v006A9428_0;
+v006A9048_0 .alias "e2", 0 0, v006A9480_0;
+v006A90A0_0 .alias "s0", 0 0, v006A9378_0;
+S_006A8C00 .scope module, "XOR1" "XorGate" 2 39, 2 18, S_006A8B80;
+ .timescale 0 0;
+L_00676F48 .functor NOT 1, v006A9640_0, C4<0>, C4<0>, C4<0>;
+L_00676F80 .functor AND 1, L_00676F48, v006A9700_0, C4<1>, C4<1>;
+L_006A9910 .functor NOT 1, v006A9700_0, C4<0>, C4<0>, C4<0>;
+L_006A9948 .functor AND 1, v006A9640_0, L_006A9910, C4<1>, C4<1>;
+L_006A99B8 .functor OR 1, L_00676F80, L_006A9948, C4<0>, C4<0>;
+v006A8C80_0 .net *"_s0", 0 0, L_00676F48; 1 drivers
+v006A8CD8_0 .net *"_s2", 0 0, L_00676F80; 1 drivers
+v006A8D30_0 .net *"_s4", 0 0, L_006A9910; 1 drivers
+v006A8DB8_0 .net *"_s6", 0 0, L_006A9948; 1 drivers
+v006A8E28_0 .alias "e1", 0 0, v006A9428_0;
+v006A8E80_0 .alias "e2", 0 0, v006A9480_0;
+v006A8EF0_0 .alias "s0", 0 0, v006A92C8_0;
+S_00676B28 .scope module, "HA2" "HalfAdder" 2 48, 2 34, S_006760A8;
+ .timescale 0 0;
+v006A89E8_0 .alias "e1", 0 0, v006A93D0_0;
+v006A8A40_0 .alias "e2", 0 0, v006A92C8_0;
+v006A8A98_0 .alias "s0", 0 0, v006A97C0_0;
+v006A8AF0_0 .alias "s1", 0 0, v006A9320_0;
+S_006A8860 .scope module, "AND1" "AndGate" 2 38, 2 10, S_00676B28;
+ .timescale 0 0;
+L_006A9A60 .functor AND 1, v006A95E8_0, L_006A99B8, C4<1>, C4<1>;
+v006A88E0_0 .alias "e1", 0 0, v006A93D0_0;
+v006A8938_0 .alias "e2", 0 0, v006A92C8_0;
+v006A8990_0 .alias "s0", 0 0, v006A9320_0;
+S_006A84A8 .scope module, "XOR1" "XorGate" 2 39, 2 18, S_00676B28;
+ .timescale 0 0;
+L_006A8B48 .functor NOT 1, v006A95E8_0, C4<0>, C4<0>, C4<0>;
+L_006A9B20 .functor AND 1, L_006A8B48, L_006A99B8, C4<1>, C4<1>;
+L_006A9C58 .functor NOT 1, L_006A99B8, C4<0>, C4<0>, C4<0>;
+L_006A9CA0 .functor AND 1, v006A95E8_0, L_006A9C58, C4<1>, C4<1>;
+L_006A9D10 .functor OR 1, L_006A9B20, L_006A9CA0, C4<0>, C4<0>;
+v006A8528_0 .net *"_s0", 0 0, L_006A8B48; 1 drivers
+v006A8598_0 .net *"_s2", 0 0, L_006A9B20; 1 drivers
+v006A8608_0 .net *"_s4", 0 0, L_006A9C58; 1 drivers
+v006A8690_0 .net *"_s6", 0 0, L_006A9CA0; 1 drivers
+v006A8700_0 .alias "e1", 0 0, v006A93D0_0;
+v006A8758_0 .alias "e2", 0 0, v006A92C8_0;
+v006A87C8_0 .alias "s0", 0 0, v006A97C0_0;
+S_00676938 .scope module, "OR1" "OrGate" 2 50, 2 26, S_006760A8;
+ .timescale 0 0;
+L_006A9D80 .functor OR 1, L_006A9A60, L_006A9150, C4<0>, C4<0>;
+v003EFD40_0 .alias "e1", 0 0, v006A9320_0;
+v006A83B0_0 .alias "e2", 0 0, v006A9378_0;
+v006A8420_0 .alias "s0", 0 0, v006A9818_0;
+    .scope S_00675EB8;
+T_0 ;
+    %set/v v006A95E8_0, 0, 1;
+    %set/v v006A9640_0, 0, 1;
+    %set/v v006A9700_0, 0, 1;
+    %vpi_call 2 62 "$display", "Ex02_Guia04_Rafael Moreira Melo_405834";
+    %vpi_call 2 63 "$display", "Teste EX02";
+    %vpi_call 2 65 "$monitor", "%b %b %b = %b %b", v006A95E8_0, v006A9640_0, v006A9700_0, v006A9818_0, v006A97C0_0;
+    %delay 1, 0;
+    %set/v v006A95E8_0, 0, 1;
+    %set/v v006A9640_0, 0, 1;
+    %set/v v006A9700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A95E8_0, 0, 1;
+    %set/v v006A9640_0, 1, 1;
+    %set/v v006A9700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A95E8_0, 0, 1;
+    %set/v v006A9640_0, 1, 1;
+    %set/v v006A9700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A95E8_0, 1, 1;
+    %set/v v006A9640_0, 0, 1;
+    %set/v v006A9700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A95E8_0, 1, 1;
+    %set/v v006A9640_0, 0, 1;
+    %set/v v006A9700_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A95E8_0, 1, 1;
+    %set/v v006A9640_0, 1, 1;
+    %set/v v006A9700_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A9640_0, 1, 1;
+    %set/v v006A9640_0, 1, 1;
+    %set/v v006A9700_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Ex2.v";

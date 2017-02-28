@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0003E1B8 .scope module, "testnandgate" "testnandgate" 2 10;
+ .timescale 0 0;
+v000331C0_0 .var "a", 0 0;
+v0003F9C8_0 .var "b", 0 0;
+v0003FA20_0 .net "s", 0 0, L_0003FAE8; 1 drivers
+S_00032C50 .scope module, "NAND1" "nandgate" 2 15, 2 4, S_0003E1B8;
+ .timescale 0 0;
+L_0003CE50 .functor AND 1, v000331C0_0, v0003F9C8_0, C4<1>, C4<1>;
+L_0003FAE8 .functor NOT 1, L_0003CE50, C4<0>, C4<0>, C4<0>;
+v00032CD8_0 .net *"_s0", 0 0, L_0003CE50; 1 drivers
+v000330B8_0 .net "p", 0 0, v000331C0_0; 1 drivers
+v00033110_0 .net "q", 0 0, v0003F9C8_0; 1 drivers
+v00033168_0 .alias "s", 0 0, v0003FA20_0;
+S_00032BC8 .scope begin, "start" "start" 2 17, 2 17, S_0003E1B8;
+ .timescale 0 0;
+    .scope S_0003E1B8;
+T_0 ;
+    %fork t_1, S_00032BC8;
+    %jmp t_0;
+    .scope S_00032BC8;
+t_1 ;
+    %set/v v000331C0_0, 0, 1;
+    %set/v v0003F9C8_0, 0, 1;
+    %end;
+    .scope S_0003E1B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0003E1B8;
+T_1 ;
+    %vpi_call 2 22 "$display", "Lucas Ranieri 451594";
+    %vpi_call 2 23 "$display", "Test NAND gate";
+    %vpi_call 2 24 "$display", "\012a & b = s\012";
+    %set/v v000331C0_0, 0, 1;
+    %set/v v0003F9C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 26 "$display", "%b & %b = %b", v000331C0_0, v0003F9C8_0, v0003FA20_0;
+    %set/v v000331C0_0, 0, 1;
+    %set/v v0003F9C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 28 "$display", "%b & %b = %b", v000331C0_0, v0003F9C8_0, v0003FA20_0;
+    %set/v v000331C0_0, 1, 1;
+    %set/v v0003F9C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 30 "$display", "%b & %b = %b", v000331C0_0, v0003F9C8_0, v0003FA20_0;
+    %set/v v000331C0_0, 1, 1;
+    %set/v v0003F9C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "%b & %b = %b", v000331C0_0, v0003F9C8_0, v0003FA20_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Bernardo\Desktop\Arquitetura de Computadores\tp01 rany\Exercicio01.v";

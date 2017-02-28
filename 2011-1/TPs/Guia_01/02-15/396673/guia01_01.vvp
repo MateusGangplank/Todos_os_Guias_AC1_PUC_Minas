@@ -1,0 +1,75 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00382920 .scope module, "testnandgate" "testnandgate" 2 23;
+ .timescale 0 0;
+v0038A090_0 .var "a", 0 0;
+v0038A0E8_0 .var "b", 0 0;
+v0038A140_0 .var "c", 0 0;
+v0038B0D8_0 .net "s", 0 0, L_0038B248; 1 drivers
+S_003829A8 .scope module, "NAND1" "nandgate" 2 27, 2 11, S_00382920;
+ .timescale 0 0;
+L_0038A198 .functor AND 1, v0038A090_0, v0038A0E8_0, C4<1>, C4<1>;
+L_0038B1A0 .functor AND 1, L_0038A198, v0038A140_0, C4<1>, C4<1>;
+L_0038B248 .functor NOT 1, L_0038B1A0, C4<0>, C4<0>, C4<0>;
+v00382A30_0 .net *"_s0", 0 0, L_0038A198; 1 drivers
+v00383AF0_0 .net *"_s2", 0 0, L_0038B1A0; 1 drivers
+v00383B48_0 .net "p", 0 0, v0038A090_0; 1 drivers
+v00383BA0_0 .net "q", 0 0, v0038A0E8_0; 1 drivers
+v00383BF8_0 .net "r", 0 0, v0038A140_0; 1 drivers
+v0038A038_0 .alias "s", 0 0, v0038B0D8_0;
+    .scope S_00382920;
+T_0 ;
+    %vpi_call 2 31 "$display", "Guia 01_01 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 32 "$display", "Test NAND gate";
+    %vpi_call 2 33 "$display", "\012a & b = s\012";
+    %set/v v0038A090_0, 0, 1;
+    %set/v v0038A0E8_0, 0, 1;
+    %set/v v0038A140_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 0, 1;
+    %set/v v0038A0E8_0, 0, 1;
+    %set/v v0038A140_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 0, 1;
+    %set/v v0038A0E8_0, 1, 1;
+    %set/v v0038A140_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 0, 1;
+    %set/v v0038A0E8_0, 1, 1;
+    %set/v v0038A140_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 1, 1;
+    %set/v v0038A0E8_0, 0, 1;
+    %set/v v0038A140_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 1, 1;
+    %set/v v0038A0E8_0, 0, 1;
+    %set/v v0038A140_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 1, 1;
+    %set/v v0038A0E8_0, 1, 1;
+    %set/v v0038A140_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %set/v v0038A090_0, 1, 1;
+    %set/v v0038A0E8_0, 1, 1;
+    %set/v v0038A140_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "~(%b & %b & %b) = %b", v0038A090_0, v0038A0E8_0, v0038A140_0, v0038B0D8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Ciência da Computação\AC I - 2\Guias\Guia01\guia01_01.v";

@@ -1,0 +1,39 @@
+// Exercicio04
+// Wadson Gomes Ferreira
+// 460631
+
+module c2;
+       //alternativa a
+       reg[7:0] a,b;
+       //alternativa b
+       reg[6:0] c,d;
+       //alternativa c
+       reg[5:0] e,f;
+       //alternativa d
+       reg[4:0] g,h;
+       //alternativa e
+       reg[7:0] i,j;
+       initial begin
+           #1
+             a=8'b00101011;
+             b=~a+1;
+             $display("\nAlternativa A\na=%b    c2=%b",a,b);
+           #1
+             c=7'b0111001; //321(4) => 0111001(2) => c1=1000110 => c2=1000111
+             d=~c+1;
+             $display("\nAlternativa B\nc=%b    c2=%b",c,d);
+           #1
+             e=27;
+             f=~e+1;
+             $display("\nAlternativa C\ne=%b    c2=%b",e,f);
+           #1
+             g=16;
+             h=~g+1;
+             $display("\nAlternativa D\ng=%b    c2=%b",g,h);
+           #1
+           // 00010001  11101110     11101111
+             i=8'o21;
+             j=~i+1;
+             $display("\nAlternativa E\ni=%b    c2=%b",i,j);
+       end
+endmodule

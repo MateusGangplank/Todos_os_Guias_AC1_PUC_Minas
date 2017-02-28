@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00699678 .scope module, "test_f4" "test_f4" 2 38;
+ .timescale 0 0;
+v0069B888_0 .var "c", 0 0;
+v0069B8E0_0 .var "x", 0 0;
+v0069B938_0 .var "y", 0 0;
+v0069B990_0 .net "z1", 0 0, L_0059E060; 1 drivers
+v0069B9E8_0 .net "z2", 0 0, L_0059E140; 1 drivers
+v0069BA40_0 .net "z3", 0 0, L_0059E1B0; 1 drivers
+v0069BA98_0 .net "z4", 0 0, L_0059E108; 1 drivers
+v0069BAF0_0 .net "z5", 0 0, L_0059E220; 1 drivers
+v0069BB48_0 .net "z6", 0 0, L_0059E338; 1 drivers
+v0069BBA0_0 .net "z7", 0 0, L_0059E418; 1 drivers
+v0069BBF8_0 .net "z8", 0 0, L_0059E300; 1 drivers
+v0069BC50_0 .net "zF1", 0 0, L_0059E4C0; 1 drivers
+v0069BCA8_0 .net "zF2", 0 0, L_0059E530; 1 drivers
+S_00699700 .scope module, "modulo" "f4" 2 53, 2 10, S_00699678;
+ .timescale 0 0;
+L_0059E060 .functor AND 1, v0069B8E0_0, v0069B938_0, C4<1>, C4<1>;
+L_0059E140 .functor OR 1, v0069B8E0_0, v0069B938_0, C4<0>, C4<0>;
+L_0059E1B0 .functor NAND 1, v0069B8E0_0, v0069B938_0, C4<1>, C4<1>;
+L_0059E108 .functor NOR 1, v0069B8E0_0, v0069B938_0, C4<0>, C4<0>;
+L_0059E220 .functor AND 1, L_0059E060, L_0059E290, C4<1>, C4<1>;
+L_0059E290 .functor NOT 1, v0069B888_0, C4<0>, C4<0>, C4<0>;
+L_0059E338 .functor AND 1, L_0059E140, L_0059E3A8, C4<1>, C4<1>;
+L_0059E3A8 .functor NOT 1, v0069B888_0, C4<0>, C4<0>, C4<0>;
+L_0059E418 .functor AND 1, L_0059E1B0, v0069B888_0, C4<1>, C4<1>;
+L_0059E300 .functor AND 1, L_0059E108, v0069B888_0, C4<1>, C4<1>;
+L_0059E4C0 .functor OR 1, L_0059E220, L_0059E418, C4<0>, C4<0>;
+L_0059E530 .functor OR 1, L_0059E338, L_0059E300, C4<0>, C4<0>;
+v0069B360_0 .alias "SF1", 0 0, v0069BC50_0;
+v0069B3B8_0 .alias "SF2", 0 0, v0069BCA8_0;
+v0069B410_0 .net *"_s0", 0 0, L_0059E290; 1 drivers
+v0069B468_0 .net *"_s2", 0 0, L_0059E3A8; 1 drivers
+v0069B4C0_0 .net "a", 0 0, v0069B8E0_0; 1 drivers
+v0069B518_0 .net "b", 0 0, v0069B938_0; 1 drivers
+v0069B570_0 .net "chave", 0 0, v0069B888_0; 1 drivers
+v0069B5C8_0 .alias "s1", 0 0, v0069B990_0;
+v0069B620_0 .alias "s2", 0 0, v0069B9E8_0;
+v0069B678_0 .alias "s3", 0 0, v0069BA40_0;
+v0069B6D0_0 .alias "s4", 0 0, v0069BA98_0;
+v0069B728_0 .alias "s5", 0 0, v0069BAF0_0;
+v0069B780_0 .alias "s6", 0 0, v0069BB48_0;
+v0069B7D8_0 .alias "s7", 0 0, v0069BBA0_0;
+v0069B830_0 .alias "s8", 0 0, v0069BBF8_0;
+    .scope S_00699678;
+T_0 ;
+    %vpi_call 2 56 "$display", "Exemplo0033 - Lucas Siqueira Chagas - 380783";
+    %vpi_call 2 57 "$display", "Test LU's module";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

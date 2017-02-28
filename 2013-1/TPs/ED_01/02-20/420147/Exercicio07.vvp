@@ -1,0 +1,70 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xd85b90 .scope module, "testxnorgate" "testxnorgate" 2 17;
+ .timescale 0 0;
+v0xd97bd0_0 .var "a", 0 0;
+v0xd97c70_0 .var "b", 0 0;
+v0xd97d20_0 .net "s", 0 0, L_0xd980f0; 1 drivers
+S_0xd85030 .scope module, "XNOR1" "xnorgate" 2 24, 2 9, S_0xd85b90;
+ .timescale 0 0;
+L_0xd97dd0 .functor AND 1, v0xd97bd0_0, v0xd97c70_0, C4<1>, C4<1>;
+L_0xd97f00 .functor NOT 1, v0xd97bd0_0, C4<0>, C4<0>, C4<0>;
+L_0xd97f60 .functor NOT 1, v0xd97c70_0, C4<0>, C4<0>, C4<0>;
+L_0xd97fc0 .functor AND 1, L_0xd97f00, L_0xd97f60, C4<1>, C4<1>;
+L_0xd980f0 .functor OR 1, L_0xd97dd0, L_0xd97fc0, C4<0>, C4<0>;
+v0xd85120_0 .net *"_s0", 0 0, L_0xd97dd0; 1 drivers
+v0xd977c0_0 .net *"_s2", 0 0, L_0xd97f00; 1 drivers
+v0xd97860_0 .net *"_s4", 0 0, L_0xd97f60; 1 drivers
+v0xd97900_0 .net *"_s6", 0 0, L_0xd97fc0; 1 drivers
+v0xd979b0_0 .net "p", 0 0, v0xd97bd0_0; 1 drivers
+v0xd97a50_0 .net "q", 0 0, v0xd97c70_0; 1 drivers
+v0xd97b30_0 .alias "s", 0 0, v0xd97d20_0;
+S_0xd84f40 .scope begin, "start" "start" 2 26, 2 26, S_0xd85b90;
+ .timescale 0 0;
+S_0xd85c80 .scope begin, "main" "main" 2 32, 2 32, S_0xd85b90;
+ .timescale 0 0;
+    .scope S_0xd85b90;
+T_0 ;
+    %fork t_1, S_0xd84f40;
+    %jmp t_0;
+    .scope S_0xd84f40;
+t_1 ;
+    %set/v v0xd97bd0_0, 0, 1;
+    %set/v v0xd97c70_0, 0, 1;
+    %end;
+    .scope S_0xd85b90;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0xd85b90;
+T_1 ;
+    %fork t_3, S_0xd85c80;
+    %jmp t_2;
+    .scope S_0xd85c80;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exercicio 02 - Victor Raphael Machado de Amorim - 420147";
+    %vpi_call 2 35 "$display", "Test XNOR gate:";
+    %vpi_call 2 36 "$display", "\012a XNOR b = s\012";
+    %vpi_call 2 37 "$monitor", "%b XNOR %b = %b", v0xd97bd0_0, v0xd97c70_0, v0xd97d20_0;
+    %delay 1, 0;
+    %set/v v0xd97bd0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xd97bd0_0, 0, 1;
+    %set/v v0xd97c70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xd97bd0_0, 1, 1;
+    %set/v v0xd97c70_0, 1, 1;
+    %end;
+    .scope S_0xd85b90;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/victor/Dropbox/Primeiro Semestre 2013/AC/Exercicios/Exercicio07.v";

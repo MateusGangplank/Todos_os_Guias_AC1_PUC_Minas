@@ -1,0 +1,53 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672AF0 .scope module, "testemeiaSoma" "testemeiaSoma" 2 29;
+ .timescale 0 0;
+v006A3478_0 .var "a", 0 0;
+v006A34D0_0 .var "b", 0 0;
+v006A3528_0 .net "s0", 0 0, L_006A35F8; 1 drivers
+v006A3580_0 .net "s1", 0 0, L_006A36D8; 1 drivers
+S_00672A30 .scope module, "TESTE" "meiaSoma" 2 34, 2 13, S_00672AF0;
+ .timescale 0 0;
+L_006739C0 .functor NAND 1, v006A3478_0, v006A34D0_0, C4<1>, C4<1>;
+L_006A3630 .functor NAND 1, L_006739C0, v006A3478_0, C4<1>, C4<1>;
+L_006A36A0 .functor NAND 1, L_006739C0, v006A34D0_0, C4<1>, C4<1>;
+L_006A36D8 .functor NAND 1, L_006A3630, L_006A36A0, C4<1>, C4<1>;
+L_006A37B8 .functor NAND 1, v006A3478_0, v006A34D0_0, C4<1>, C4<1>;
+L_006A35F8 .functor NAND 1, L_006A37B8, L_006A37B8, C4<1>, C4<1>;
+v003EF370_0 .net "a", 0 0, v006A3478_0; 1 drivers
+v006A3140_0 .net "b", 0 0, v006A34D0_0; 1 drivers
+v006A31B0_0 .alias "s0", 0 0, v006A3528_0;
+v006A3238_0 .alias "s1", 0 0, v006A3580_0;
+v006A32A8_0 .net "temp1", 0 0, L_006739C0; 1 drivers
+v006A3300_0 .net "temp2", 0 0, L_006A3630; 1 drivers
+v006A3370_0 .net "temp3", 0 0, L_006A36A0; 1 drivers
+v006A3408_0 .net "temp4", 0 0, L_006A37B8; 1 drivers
+    .scope S_00672AF0;
+T_0 ;
+    %vpi_call 2 38 "$display", "\012 Guia 04 - 01 - Caio Ragacci Pimentel - 405794 ";
+    %vpi_call 2 39 "$display", "\012 MEIO SOMADOR";
+    %vpi_call 2 40 "$display", "\012 A + B = s0 s1 \012";
+    %delay 1, 0;
+    %set/v v006A3478_0, 0, 1;
+    %set/v v006A34D0_0, 0, 1;
+    %vpi_call 2 43 "$monitor", " %b + %b = %b %b", v006A3478_0, v006A34D0_0, v006A3528_0, v006A3580_0;
+    %delay 1, 0;
+    %set/v v006A3478_0, 0, 1;
+    %set/v v006A34D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3478_0, 1, 1;
+    %set/v v006A34D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3478_0, 1, 1;
+    %set/v v006A34D0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_04\Guia04-01.v";

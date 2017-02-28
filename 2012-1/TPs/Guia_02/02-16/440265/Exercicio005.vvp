@@ -1,0 +1,217 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0039AB58 .scope module, "test_operacoes_01" "test_operacoes_01" 2 24;
+ .timescale 0 0;
+v005CEFD8_0 .var "a", 7 0;
+v005CF030_0 .var "b", 7 0;
+v005CF088_0 .var "c", 7 0;
+v005CF0E0_0 .var "d", 7 0;
+v005CF138_0 .var "e", 7 0;
+v005CF190_0 .var "f", 7 0;
+v005CF1E8_0 .var "g", 7 0;
+v005CF240_0 .var "h", 7 0;
+v005CF298_0 .var "i", 7 0;
+v005CF2F0_0 .var "j", 7 0;
+v005CF348_0 .net "sab", 7 0, L_005CF660; 1 drivers
+v005CF3A0_0 .net "scd", 7 0, L_005CF818; 1 drivers
+v005CF3F8_0 .net "sef", 7 0, L_005CF9D0; 1 drivers
+v005CF450_0 .net "sgh", 7 0, L_005CFB88; 1 drivers
+v005CF4A8_0 .net "sij", 7 0, L_005D0570; 1 drivers
+S_005927E8 .scope module, "SUB1" "subtracao" 2 44, 2 14, S_0039AB58;
+ .timescale 0 0;
+v005CEE78_0 .net "a", 7 0, v005CEFD8_0; 1 drivers
+v005CEED0_0 .net "b", 7 0, v005CF030_0; 1 drivers
+v005CEF28_0 .alias "s", 7 0, v005CF348_0;
+v005CEF80_0 .net "s1", 7 0, L_005CF608; 1 drivers
+S_005928F8 .scope module, "COMP1" "complemento2" 2 16, 2 6, S_005927E8;
+ .timescale 0 0;
+L_005A0A48 .functor NOT 9, L_005CF500, C4<000000000>, C4<000000000>, C4<000000000>;
+v005CEB30_0 .net *"_s0", 8 0, L_005CF500; 1 drivers
+v005CEB88_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v005CEC10_0 .net *"_s11", 31 0, L_005CF558; 1 drivers
+v005CEC68_0 .net *"_s12", 31 0, L_005CF5B0; 1 drivers
+v005CECC0_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v005CED18_0 .net *"_s4", 8 0, L_005A0A48; 1 drivers
+v005CED70_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v005CEDC8_0 .alias "a", 7 0, v005CEED0_0;
+v005CEE20_0 .alias "s", 7 0, v005CEF80_0;
+L_005CF500 .concat [ 8 1 0 0], v005CF030_0, C4<0>;
+L_005CF558 .concat [ 9 23 0 0], L_005A0A48, C4<00000000000000000000000>;
+L_005CF5B0 .arith/sum 32, L_005CF558, C4<00000000000000000000000000000001>;
+L_005CF608 .part L_005CF5B0, 0, 8;
+S_00592870 .scope module, "SOMA" "soma" 2 17, 2 10, S_005927E8;
+ .timescale 0 0;
+v005CEA28_0 .alias "a", 7 0, v005CEE78_0;
+v005CEA80_0 .alias "b", 7 0, v005CEF80_0;
+v005CEAD8_0 .alias "s", 7 0, v005CF348_0;
+L_005CF660 .arith/sum 8, v005CEFD8_0, L_005CF608;
+S_00592650 .scope module, "SUB2" "subtracao" 2 45, 2 14, S_0039AB58;
+ .timescale 0 0;
+v005CE8C8_0 .net "a", 7 0, v005CF088_0; 1 drivers
+v005CE920_0 .net "b", 7 0, v005CF0E0_0; 1 drivers
+v005CE978_0 .alias "s", 7 0, v005CF3A0_0;
+v005CE9D0_0 .net "s1", 7 0, L_005CF7C0; 1 drivers
+S_00592760 .scope module, "COMP1" "complemento2" 2 16, 2 6, S_00592650;
+ .timescale 0 0;
+L_005A0C08 .functor NOT 9, L_005CF6B8, C4<000000000>, C4<000000000>, C4<000000000>;
+v005CE5B0_0 .net *"_s0", 8 0, L_005CF6B8; 1 drivers
+v005CE608_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v005CE660_0 .net *"_s11", 31 0, L_005CF710; 1 drivers
+v005CE6B8_0 .net *"_s12", 31 0, L_005CF768; 1 drivers
+v005CE710_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v005CE768_0 .net *"_s4", 8 0, L_005A0C08; 1 drivers
+v005CE7C0_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v005CE818_0 .alias "a", 7 0, v005CE920_0;
+v005CE870_0 .alias "s", 7 0, v005CE9D0_0;
+L_005CF6B8 .concat [ 8 1 0 0], v005CF0E0_0, C4<0>;
+L_005CF710 .concat [ 9 23 0 0], L_005A0C08, C4<00000000000000000000000>;
+L_005CF768 .arith/sum 32, L_005CF710, C4<00000000000000000000000000000001>;
+L_005CF7C0 .part L_005CF768, 0, 8;
+S_005926D8 .scope module, "SOMA" "soma" 2 17, 2 10, S_00592650;
+ .timescale 0 0;
+v005CE4A8_0 .alias "a", 7 0, v005CE8C8_0;
+v005CE500_0 .alias "b", 7 0, v005CE9D0_0;
+v005CE558_0 .alias "s", 7 0, v005CF3A0_0;
+L_005CF818 .arith/sum 8, v005CF088_0, L_005CF7C0;
+S_005924B8 .scope module, "SUB3" "subtracao" 2 46, 2 14, S_0039AB58;
+ .timescale 0 0;
+v005CE348_0 .net "a", 7 0, v005CF138_0; 1 drivers
+v005CE3A0_0 .net "b", 7 0, v005CF190_0; 1 drivers
+v005CE3F8_0 .alias "s", 7 0, v005CF3F8_0;
+v005CE450_0 .net "s1", 7 0, L_005CF978; 1 drivers
+S_005925C8 .scope module, "COMP1" "complemento2" 2 16, 2 6, S_005924B8;
+ .timescale 0 0;
+L_005A0DC8 .functor NOT 9, L_005CF870, C4<000000000>, C4<000000000>, C4<000000000>;
+v005CE030_0 .net *"_s0", 8 0, L_005CF870; 1 drivers
+v005CE088_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v005CE0E0_0 .net *"_s11", 31 0, L_005CF8C8; 1 drivers
+v005CE138_0 .net *"_s12", 31 0, L_005CF920; 1 drivers
+v005CE190_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v005CE1E8_0 .net *"_s4", 8 0, L_005A0DC8; 1 drivers
+v005CE240_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v005CE298_0 .alias "a", 7 0, v005CE3A0_0;
+v005CE2F0_0 .alias "s", 7 0, v005CE450_0;
+L_005CF870 .concat [ 8 1 0 0], v005CF190_0, C4<0>;
+L_005CF8C8 .concat [ 9 23 0 0], L_005A0DC8, C4<00000000000000000000000>;
+L_005CF920 .arith/sum 32, L_005CF8C8, C4<00000000000000000000000000000001>;
+L_005CF978 .part L_005CF920, 0, 8;
+S_00592540 .scope module, "SOMA" "soma" 2 17, 2 10, S_005924B8;
+ .timescale 0 0;
+v005CDF28_0 .alias "a", 7 0, v005CE348_0;
+v005CDF80_0 .alias "b", 7 0, v005CE450_0;
+v005CDFD8_0 .alias "s", 7 0, v005CF3F8_0;
+L_005CF9D0 .arith/sum 8, v005CF138_0, L_005CF978;
+S_00591E58 .scope module, "SUB4" "subtracao" 2 47, 2 14, S_0039AB58;
+ .timescale 0 0;
+v005CDDC8_0 .net "a", 7 0, v005CF1E8_0; 1 drivers
+v005CDE20_0 .net "b", 7 0, v005CF240_0; 1 drivers
+v005CDE78_0 .alias "s", 7 0, v005CF450_0;
+v005CDED0_0 .net "s1", 7 0, L_005CFB30; 1 drivers
+S_00592430 .scope module, "COMP1" "complemento2" 2 16, 2 6, S_00591E58;
+ .timescale 0 0;
+L_005A0F88 .functor NOT 9, L_005CFA28, C4<000000000>, C4<000000000>, C4<000000000>;
+v00593E70_0 .net *"_s0", 8 0, L_005CFA28; 1 drivers
+v00593EC8_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v00593F20_0 .net *"_s11", 31 0, L_005CFA80; 1 drivers
+v00593F78_0 .net *"_s12", 31 0, L_005CFAD8; 1 drivers
+v005CDC10_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v005CDC68_0 .net *"_s4", 8 0, L_005A0F88; 1 drivers
+v005CDCC0_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v005CDD18_0 .alias "a", 7 0, v005CDE20_0;
+v005CDD70_0 .alias "s", 7 0, v005CDED0_0;
+L_005CFA28 .concat [ 8 1 0 0], v005CF240_0, C4<0>;
+L_005CFA80 .concat [ 9 23 0 0], L_005A0F88, C4<00000000000000000000000>;
+L_005CFAD8 .arith/sum 32, L_005CFA80, C4<00000000000000000000000000000001>;
+L_005CFB30 .part L_005CFAD8, 0, 8;
+S_00591EE0 .scope module, "SOMA" "soma" 2 17, 2 10, S_00591E58;
+ .timescale 0 0;
+v00593D68_0 .alias "a", 7 0, v005CDDC8_0;
+v00593DC0_0 .alias "b", 7 0, v005CDED0_0;
+v00593E18_0 .alias "s", 7 0, v005CF450_0;
+L_005CFB88 .arith/sum 8, v005CF1E8_0, L_005CFB30;
+S_00591330 .scope module, "SUB5" "subtracao" 2 48, 2 14, S_0039AB58;
+ .timescale 0 0;
+v00593C08_0 .net "a", 7 0, v005CF298_0; 1 drivers
+v00593C60_0 .net "b", 7 0, v005CF2F0_0; 1 drivers
+v00593CB8_0 .alias "s", 7 0, v005CF4A8_0;
+v00593D10_0 .net "s1", 7 0, L_005D0518; 1 drivers
+S_00591908 .scope module, "COMP1" "complemento2" 2 16, 2 6, S_00591330;
+ .timescale 0 0;
+L_005CFC48 .functor NOT 9, L_005D0410, C4<000000000>, C4<000000000>, C4<000000000>;
+v005938F0_0 .net *"_s0", 8 0, L_005D0410; 1 drivers
+v00593948_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v005939A0_0 .net *"_s11", 31 0, L_005D0468; 1 drivers
+v005939F8_0 .net *"_s12", 31 0, L_005D04C0; 1 drivers
+v00593A50_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v00593AA8_0 .net *"_s4", 8 0, L_005CFC48; 1 drivers
+v00593B00_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v00593B58_0 .alias "a", 7 0, v00593C60_0;
+v00593BB0_0 .alias "s", 7 0, v00593D10_0;
+L_005D0410 .concat [ 8 1 0 0], v005CF2F0_0, C4<0>;
+L_005D0468 .concat [ 9 23 0 0], L_005CFC48, C4<00000000000000000000000>;
+L_005D04C0 .arith/sum 32, L_005D0468, C4<00000000000000000000000000000001>;
+L_005D0518 .part L_005D04C0, 0, 8;
+S_00591880 .scope module, "SOMA" "soma" 2 17, 2 10, S_00591330;
+ .timescale 0 0;
+v005937E8_0 .alias "a", 7 0, v00593C08_0;
+v00593840_0 .alias "b", 7 0, v00593D10_0;
+v00593898_0 .alias "s", 7 0, v005CF4A8_0;
+L_005D0570 .arith/sum 8, v005CF298_0, L_005D0518;
+S_005912A8 .scope begin, "start" "start" 2 51, 2 51, S_0039AB58;
+ .timescale 0 0;
+    .scope S_0039AB58;
+T_0 ;
+    %fork t_1, S_005912A8;
+    %jmp t_0;
+    .scope S_005912A8;
+t_1 ;
+    %movi 8, 42, 8;
+    %set/v v005CEFD8_0, 8, 8;
+    %movi 8, 13, 8;
+    %set/v v005CF030_0, 8, 8;
+    %movi 8, 26, 8;
+    %set/v v005CF088_0, 8, 8;
+    %movi 8, 13, 8;
+    %set/v v005CF0E0_0, 8, 8;
+    %movi 8, 28, 8;
+    %set/v v005CF138_0, 8, 8;
+    %movi 8, 11, 8;
+    %set/v v005CF190_0, 8, 8;
+    %movi 8, 202, 8;
+    %set/v v005CF1E8_0, 8, 8;
+    %movi 8, 185, 8;
+    %set/v v005CF240_0, 8, 8;
+    %movi 8, 25, 8;
+    %set/v v005CF298_0, 8, 8;
+    %movi 8, 26, 8;
+    %set/v v005CF2F0_0, 8, 8;
+    %end;
+    .scope S_0039AB58;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0039AB58;
+T_1 ;
+    %vpi_call 2 66 "$display", "Exercicio005 - Sad - 440265";
+    %vpi_call 2 67 "$display", "Test number system";
+    %delay 1, 0;
+    %vpi_call 2 69 "$display", "a) %8b - %8b = %b", v005CEFD8_0, v005CF030_0, v005CF348_0;
+    %delay 1, 0;
+    %vpi_call 2 71 "$display", "b) %8b - %8o = %b", v005CF088_0, v005CF0E0_0, v005CF3A0_0;
+    %delay 1, 0;
+    %vpi_call 2 73 "$display", "c) %8o - %8H = %b", v005CF138_0, v005CF190_0, v005CF3F8_0;
+    %delay 1, 0;
+    %vpi_call 2 75 "$display", "d) %8H - %8b = %b", v005CF1E8_0, v005CF240_0, v005CF450_0;
+    %delay 1, 0;
+    %vpi_call 2 77 "$display", "e) %8d - %8h = %b", v005CF298_0, v005CF2F0_0, v005CF4A8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Alexandre\PUC\2_periodo\Arquitetura I\TPs\Guia002\Exercicio005.v";

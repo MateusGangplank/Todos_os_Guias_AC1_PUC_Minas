@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009A9918 .scope module, "TESTE" "TESTE" 2 42;
+ .timescale 0 0;
+v008E7ED0_0 .var "chave0", 0 0;
+v008E7F28_0 .var "chave1", 0 0;
+v008E7F80_0 .var "chave2", 0 0;
+v008E7FD8_0 .var "x", 0 0;
+v008E8030_0 .var "y", 0 0;
+v008E8088_0 .net "z", 0 0, L_008C0830; 1 drivers
+S_009A99A0 .scope module, "portas" "F4" 2 55, 2 7, S_009A9918;
+ .timescale 0 0;
+L_009AF8D0 .functor NOT 1, v008E7FD8_0, C4<0>, C4<0>, C4<0>;
+L_009AF940 .functor NOT 1, v008E8030_0, C4<0>, C4<0>, C4<0>;
+L_009A2D28 .functor OR 1, v008E7FD8_0, v008E8030_0, C4<0>, C4<0>;
+L_009A2D60 .functor NOR 1, v008E7FD8_0, v008E8030_0, C4<0>, C4<0>;
+L_009AF978 .functor AND 1, v008E7FD8_0, v008E8030_0, C4<1>, C4<1>;
+L_009AF908 .functor NAND 1, v008E7FD8_0, v008E8030_0, C4<1>, C4<1>;
+L_009A2D98 .functor XOR 1, v008E7FD8_0, v008E8030_0, C4<0>, C4<0>;
+L_009A2DD0 .functor XNOR 1, v008E7FD8_0, v008E8030_0, C4<0>, C4<0>;
+L_009A2E08 .functor BUF 1, v008E7ED0_0, C4<0>, C4<0>, C4<0>;
+L_009ACD50 .functor NOT 1, v008E7ED0_0, C4<0>, C4<0>, C4<0>;
+L_009ACD88 .functor BUF 1, v008E7F28_0, C4<0>, C4<0>, C4<0>;
+L_008C06A8 .functor NOT 1, v008E7F28_0, C4<0>, C4<0>, C4<0>;
+L_008C06E0 .functor BUF 1, v008E7F80_0, C4<0>, C4<0>, C4<0>;
+L_008C0750 .functor NOT 1, v008E7F80_0, C4<0>, C4<0>, C4<0>;
+L_008C0788/0/0 .functor AND 1, L_009AF8D0, L_009AF940, L_009A2E08, L_009ACD88;
+L_008C0788/0/4 .functor AND 1, L_008C06E0, C4<1>, C4<1>, C4<1>;
+L_008C0788 .functor AND 1, L_008C0788/0/0, L_008C0788/0/4, C4<1>, C4<1>;
+L_008C08D8 .functor AND 1, L_009A2D28, L_009A2E08, L_009ACD88, L_008C0750;
+L_008C0980 .functor AND 1, L_009A2D60, L_009A2E08, L_008C06A8, L_008C06E0;
+L_008C09F0 .functor AND 1, L_009AF978, L_009A2E08, L_008C06A8, L_008C0750;
+L_008C0A60 .functor AND 1, L_009AF908, L_009ACD50, L_009ACD88, L_008C06E0;
+L_008C08A0 .functor AND 1, L_009A2D98, L_009ACD50, L_009ACD88, L_008C0750;
+L_008C0948 .functor AND 1, L_009A2DD0, L_009ACD50, L_008C06A8, L_008C06E0;
+L_008C0830/0/0 .functor OR 1, L_008C0788, L_008C08D8, L_008C0980, L_008C09F0;
+L_008C0830/0/4 .functor OR 1, L_008C0A60, L_008C08A0, L_008C0948, C4<0>;
+L_008C0830 .functor OR 1, L_008C0830/0/0, L_008C0830/0/4, C4<0>, C4<0>;
+v008C1958_0 .net "c0", 0 0, L_009A2E08; 1 drivers
+v008C19B0_0 .net "c1", 0 0, L_009ACD50; 1 drivers
+v008C1A08_0 .net "c2", 0 0, L_009ACD88; 1 drivers
+v008C1A60_0 .net "c3", 0 0, L_008C06A8; 1 drivers
+v008C1AB8_0 .net "c4", 0 0, L_008C06E0; 1 drivers
+v008C1B10_0 .net "c5", 0 0, L_008C0750; 1 drivers
+v008C1B68_0 .net "chave0", 0 0, v008E7ED0_0; 1 drivers
+v008C1BC0_0 .net "chave1", 0 0, v008E7F28_0; 1 drivers
+v008C1C18_0 .net "chave2", 0 0, v008E7F80_0; 1 drivers
+v008C1C70_0 .alias "s", 0 0, v008E8088_0;
+v008C1CC8_0 .net "s0", 0 0, L_009AF8D0; 1 drivers
+v008C1D20_0 .net "s1", 0 0, L_009A2D28; 1 drivers
+v008C1D78_0 .net "s10", 0 0, L_008C09F0; 1 drivers
+v008C1DD0_0 .net "s11", 0 0, L_008C0A60; 1 drivers
+v008C1E28_0 .net "s12", 0 0, L_008C08A0; 1 drivers
+v008C1E80_0 .net "s13", 0 0, L_008C0948; 1 drivers
+v008C1ED8_0 .net "s14", 0 0, L_009AF940; 1 drivers
+v008C1F30_0 .net "s2", 0 0, L_009A2D60; 1 drivers
+v008C1F88_0 .net "s3", 0 0, L_009AF978; 1 drivers
+v008E7C10_0 .net "s4", 0 0, L_009AF908; 1 drivers
+v008E7C68_0 .net "s5", 0 0, L_009A2D98; 1 drivers
+v008E7CC0_0 .net "s6", 0 0, L_009A2DD0; 1 drivers
+v008E7D18_0 .net "s7", 0 0, L_008C0788; 1 drivers
+v008E7D70_0 .net "s8", 0 0, L_008C08D8; 1 drivers
+v008E7DC8_0 .net "s9", 0 0, L_008C0980; 1 drivers
+v008E7E20_0 .net "x", 0 0, v008E7FD8_0; 1 drivers
+v008E7E78_0 .net "y", 0 0, v008E8030_0; 1 drivers
+    .scope S_009A9918;
+T_0 ;
+    %set/v v008E7FD8_0, 0, 1;
+    %set/v v008E8030_0, 0, 1;
+    %set/v v008E7ED0_0, 1, 1;
+    %set/v v008E7F28_0, 1, 1;
+    %set/v v008E7F80_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_009A9918;
+T_1 ;
+    %vpi_call 2 59 "$display", "Exercicio0035 - Guilherme Diniz de Assumpcao - 462269";
+    %vpi_call 2 60 "$display", " NOT - 111 \012 OR - 110 \012 NOR - 101 \012 AND - 100 \012 NAND - 011 \012 XOR - 010 \012 XNOR - 001\012\012";
+    %vpi_call 2 62 "$monitor", "x(%b) : y(%b) = %b       | Chave:%b%b%b", v008E7FD8_0, v008E8030_0, v008E8088_0, v008E7ED0_0, v008E7F28_0, v008E7F80_0;
+    %delay 1, 0;
+    %set/v v008E7FD8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008E7FD8_0, 0, 1;
+    %set/v v008E8030_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008E7FD8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Downloads\Guia03\Guia03\Exercicio0035.v";

@@ -1,0 +1,170 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEF28 .scope module, "test" "test" 2 38;
+ .timescale 0 0;
+v006048B0_0 .var "a", 0 0;
+v00604908_0 .var "b", 0 0;
+v00604960_0 .var "c", 0 0;
+v006049B8_0 .var "d", 0 0;
+v00604A10_0 .net "s", 0 0, L_006050F0; 1 drivers
+S_003EF0C0 .scope module, "EX05" "ex05" 2 43, 2 11, S_003EEF28;
+ .timescale 0 0;
+L_003E6BA8 .functor NOR 1, v006048B0_0, v006048B0_0, C4<0>, C4<0>;
+L_00604A68 .functor NOR 1, v00604908_0, L_003E6BA8, C4<0>, C4<0>;
+L_00604B10 .functor NOR 1, L_00604A68, L_00604A68, C4<0>, C4<0>;
+L_00604B80 .functor NOR 1, L_00604B10, v00604960_0, C4<0>, C4<0>;
+L_00604C28 .functor NOR 1, v006048B0_0, v006049B8_0, C4<0>, C4<0>;
+L_00604C60 .functor NOR 1, v006048B0_0, L_00604C28, C4<0>, C4<0>;
+L_00604CD0 .functor NOR 1, v006049B8_0, L_00604C28, C4<0>, C4<0>;
+L_00604D08 .functor NOR 1, L_00604C60, L_00604CD0, C4<0>, C4<0>;
+L_00604DB0 .functor NOR 1, v006048B0_0, v006048B0_0, C4<0>, C4<0>;
+L_00604DE8 .functor NOR 1, v00604908_0, v00604908_0, C4<0>, C4<0>;
+L_00604AA0 .functor NOR 1, L_00604DB0, L_00604DE8, C4<0>, C4<0>;
+L_00604EC8 .functor NOR 1, L_00604AA0, L_00604AA0, C4<0>, C4<0>;
+L_00604F38 .functor NOR 1, v006049B8_0, v006049B8_0, C4<0>, C4<0>;
+L_00604E90 .functor NOR 1, L_00604EC8, L_00604F38, C4<0>, C4<0>;
+L_00605010 .functor NOR 1, L_00604B80, L_00604D08, L_00604E90, C4<0>;
+L_006050F0 .functor NOR 1, L_00605010, L_00605010, C4<0>, C4<0>;
+v003E8178_0 .net "a", 0 0, v006048B0_0; 1 drivers
+v00603FB0_0 .net "b", 0 0, v00604908_0; 1 drivers
+v00604020_0 .net "c", 0 0, v00604960_0; 1 drivers
+v006040A8_0 .net "d", 0 0, v006049B8_0; 1 drivers
+v00604118_0 .alias "s", 0 0, v00604A10_0;
+v00604170_0 .net "temp1", 0 0, L_003E6BA8; 1 drivers
+v006041E0_0 .net "temp10", 0 0, L_00604AA0; 1 drivers
+v00604278_0 .net "temp11", 0 0, L_00604EC8; 1 drivers
+v006042E8_0 .net "temp12", 0 0, L_00604F38; 1 drivers
+v00604388_0 .net "temp13", 0 0, L_00604E90; 1 drivers
+v006043F8_0 .net "temp14", 0 0, L_00604B10; 1 drivers
+v00604468_0 .net "temp15", 0 0, L_00605010; 1 drivers
+v006044D8_0 .net "temp2", 0 0, L_00604A68; 1 drivers
+v00604548_0 .net "temp3", 0 0, L_00604B80; 1 drivers
+v006045B8_0 .net "temp4", 0 0, L_00604C28; 1 drivers
+v00604628_0 .net "temp5", 0 0, L_00604C60; 1 drivers
+v00604698_0 .net "temp6", 0 0, L_00604CD0; 1 drivers
+v00604708_0 .net "temp7", 0 0, L_00604D08; 1 drivers
+v00604778_0 .net "temp8", 0 0, L_00604DB0; 1 drivers
+v00604840_0 .net "temp9", 0 0, L_00604DE8; 1 drivers
+S_003EF038 .scope begin, "start" "start" 2 45, 2 45, S_003EEF28;
+ .timescale 0 0;
+S_003EEFB0 .scope begin, "main" "main" 2 51, 2 51, S_003EEF28;
+ .timescale 0 0;
+    .scope S_003EEF28;
+T_0 ;
+    %fork t_1, S_003EF038;
+    %jmp t_0;
+    .scope S_003EF038;
+t_1 ;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 0, 1;
+    %end;
+    .scope S_003EEF28;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EEF28;
+T_1 ;
+    %fork t_3, S_003EEFB0;
+    %jmp t_2;
+    .scope S_003EEFB0;
+t_3 ;
+    %vpi_call 2 52 "$display", "Guia 08_05 - Alyson Deives - 416589";
+    %vpi_call 2 53 "$display", "Simplificação de Circuitos por Quine McCluskey\012";
+    %vpi_call 2 54 "$display", "\012A B C D | S  \012";
+    %vpi_call 2 55 "$monitor", "%b %b %b %b | %b", v006048B0_0, v00604908_0, v00604960_0, v006049B8_0, v00604A10_0;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 0, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 0, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 0, 1;
+    %set/v v006049B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006048B0_0, 1, 1;
+    %set/v v00604908_0, 1, 1;
+    %set/v v00604960_0, 1, 1;
+    %set/v v006049B8_0, 1, 1;
+    %end;
+    .scope S_003EEF28;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC-MG\2° Periodo\Arquitetura I\Workspace\Guia_08\Guia08_05.v";

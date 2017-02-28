@@ -1,0 +1,59 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x97af7f0 .scope module, "testxnorgate" "testxnorgate" 2 16;
+ .timescale 0 0;
+v0x97ad220_0 .var "a", 0 0;
+v0x97ad2a0_0 .var "b", 0 0;
+v0x97ad310_0 .net "s", 0 0, L_0x97ad448; 1 drivers
+S_0x978d1d8 .scope module, "XNOR1" "xnorgate" 2 23, 2 9, S_0x97af7f0;
+ .timescale 0 0;
+L_0x97ad380 .functor XOR 1, v0x97ad220_0, v0x97ad2a0_0, C4<0>, C4<0>;
+L_0x97ad448 .functor NOT 1, L_0x97ad380, C4<0>, C4<0>, C4<0>;
+v0x97af8f0_0 .net *"_s0", 0 0, L_0x97ad380; 1 drivers
+v0x97ad0f8_0 .net "a", 0 0, v0x97ad220_0; 1 drivers
+v0x97ad158_0 .net "b", 0 0, v0x97ad2a0_0; 1 drivers
+v0x97ad1b8_0 .alias "s", 0 0, v0x97ad310_0;
+S_0x97af870 .scope begin, "start" "start" 2 25, 2 25, S_0x97af7f0;
+ .timescale 0 0;
+    .scope S_0x97af7f0;
+T_0 ;
+    %fork t_1, S_0x97af870;
+    %jmp t_0;
+    .scope S_0x97af870;
+t_1 ;
+    %set/v v0x97ad220_0, 0, 1;
+    %set/v v0x97ad2a0_0, 0, 1;
+    %end;
+    .scope S_0x97af7f0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x97af7f0;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exrcicio2 - Guilherme Alves - 450161";
+    %vpi_call 2 31 "$display", "Test XNOR gate";
+    %vpi_call 2 32 "$display", "a  b   s";
+    %vpi_call 2 33 "$monitor", v0x97ad220_0, "  ", v0x97ad2a0_0, "   ", v0x97ad310_0;
+    %delay 1, 0;
+    %set/v v0x97ad220_0, 0, 1;
+    %set/v v0x97ad2a0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x97ad220_0, 0, 1;
+    %set/v v0x97ad2a0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x97ad220_0, 1, 1;
+    %set/v v0x97ad2a0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x97ad220_0, 1, 1;
+    %set/v v0x97ad2a0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/guilherme/Área de Trabalho/ac/exercicio3.v";

@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A2E4F0 .scope module, "testnorgate" "testnorgate" 2 15;
+ .timescale 0 0;
+v00A2DF60_0 .var "a", 0 0;
+v00A2DFB8_0 .var "b", 0 0;
+v00A2E010_0 .net "s", 0 0, L_00A2FD68; 1 drivers
+S_00A22F18 .scope module, "NOR1" "norgate" 2 20, 2 9, S_00A2E4F0;
+ .timescale 0 0;
+L_00A22FA0 .functor NOT 1, v00A2DF60_0, C4<0>, C4<0>, C4<0>;
+L_00A2E0A0 .functor NOT 1, v00A2DFB8_0, C4<0>, C4<0>, C4<0>;
+L_00A2FD68 .functor AND 1, L_00A22FA0, L_00A2E0A0, C4<1>, C4<1>;
+v00A23378_0 .net *"_s0", 0 0, L_00A22FA0; 1 drivers
+v00A233D0_0 .net *"_s2", 0 0, L_00A2E0A0; 1 drivers
+v00A23428_0 .net "p", 0 0, v00A2DF60_0; 1 drivers
+v00A23480_0 .net "q", 0 0, v00A2DFB8_0; 1 drivers
+v00A2DF08_0 .alias "s", 0 0, v00A2E010_0;
+S_00A22E90 .scope begin, "start" "start" 2 22, 2 22, S_00A2E4F0;
+ .timescale 0 0;
+    .scope S_00A2E4F0;
+T_0 ;
+    %fork t_1, S_00A22E90;
+    %jmp t_0;
+    .scope S_00A22E90;
+t_1 ;
+    %set/v v00A2DF60_0, 0, 1;
+    %set/v v00A2DFB8_0, 0, 1;
+    %end;
+    .scope S_00A2E4F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00A2E4F0;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exercicio0005 - Filipe Viana de Miranda - 446415";
+    %vpi_call 2 30 "$display", "Test NOR gate";
+    %vpi_call 2 31 "$display", "\012~a & ~b = s\012";
+    %set/v v00A2DF60_0, 0, 1;
+    %set/v v00A2DFB8_0, 0, 1;
+    %vpi_call 2 33 "$monitor", "%b & %b = %b", v00A2DF60_0, v00A2DFB8_0, v00A2E010_0;
+    %delay 1, 0;
+    %set/v v00A2DF60_0, 0, 1;
+    %set/v v00A2DFB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A2DF60_0, 1, 1;
+    %set/v v00A2DFB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00A2DF60_0, 1, 1;
+    %set/v v00A2DFB8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Downloads\Faculdade\2° Periodo\Arquitetura de Computadores I\Programas e Ferramentas\Icarus_Verilog_v0_95\bin\Exercicio0005.v";

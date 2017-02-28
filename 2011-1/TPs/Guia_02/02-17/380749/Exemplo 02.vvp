@@ -1,0 +1,46 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00D3F0A8 .scope module, "testcircuito" "testcircuito" 2 16;
+ .timescale 0 0;
+v002A3108_0 .var "a", 0 0;
+v00D3FE68_0 .var "b", 0 0;
+v00D3FEC0_0 .net "s", 0 0, L_00D3F350; 1 drivers
+S_002A4398 .scope module, "CIRCUITO1" "circuito" 2 20, 2 5, S_00D3F0A8;
+ .timescale 0 0;
+L_00D3FF18 .functor NOR 1, v002A3108_0, v002A3108_0, C4<0>, C4<0>;
+L_00D3FF88 .functor NOR 1, v00D3FE68_0, v00D3FE68_0, C4<0>, C4<0>;
+L_00D3F350 .functor NOR 1, L_00D3FF18, L_00D3FF88, C4<0>, C4<0>;
+v002A4418_0 .net "a", 0 0, v002A3108_0; 1 drivers
+v002A4470_0 .net "b", 0 0, v00D3FE68_0; 1 drivers
+v002A3000_0 .alias "s", 0 0, v00D3FEC0_0;
+v002A3058_0 .net "s0", 0 0, L_00D3FF18; 1 drivers
+v002A30B0_0 .net "s1", 0 0, L_00D3FF88; 1 drivers
+    .scope S_00D3F0A8;
+T_0 ;
+    %vpi_call 2 23 "$display", "Exemplo 01 - Bruno Rafael Nicolletti - 380752";
+    %vpi_call 2 24 "$display", "Test Porta AND constituido com portas NOR";
+    %vpi_call 2 25 "$display", "\012a & b = s";
+    %vpi_call 2 26 "$monitor", "%b & %b = %b", v002A3108_0, v00D3FE68_0, v00D3FEC0_0;
+    %delay 1, 0;
+    %set/v v002A3108_0, 0, 1;
+    %set/v v00D3FE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002A3108_0, 0, 1;
+    %set/v v00D3FE68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002A3108_0, 1, 1;
+    %set/v v00D3FE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002A3108_0, 1, 1;
+    %set/v v00D3FE68_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Bruno\Ciencia_da_Computacao\2011-1\AC_1\Guias\Guia 2\Exemplo 02.v";

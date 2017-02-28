@@ -1,0 +1,106 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00829270 .scope module, "testsomacompleta" "testsomacompleta" 2 42;
+ .timescale 0 0;
+v006EF678_0 .var "a", 0 0;
+v006EF6D0_0 .var "b", 0 0;
+v006EF728_0 .var "c", 0 0;
+v006EF780_0 .net "s0", 0 0, L_006F0448; 1 drivers
+v006EF7D8_0 .net "s1", 0 0, L_006F04F0; 1 drivers
+S_00829408 .scope module, "SOMACOMPLETA1" "somacompleta" 2 46, 2 26, S_00829270;
+ .timescale 0 0;
+L_006F04F0 .functor OR 1, L_006F41E8, L_006F0480, C4<0>, C4<0>;
+v00822C28_0 .net "a", 0 0, v006EF678_0; 1 drivers
+v006EF410_0 .net "b", 0 0, v006EF6D0_0; 1 drivers
+v006EF468_0 .net "c", 0 0, v006EF728_0; 1 drivers
+v006EF4C0_0 .alias "s0", 0 0, v006EF780_0;
+v006EF518_0 .alias "s1", 0 0, v006EF7D8_0;
+v006EF570_0 .net "t1", 0 0, L_006F41B0; 1 drivers
+v006EF5C8_0 .net "t2", 0 0, L_006F41E8; 1 drivers
+v006EF620_0 .net "t3", 0 0, L_006F0480; 1 drivers
+S_00829518 .scope module, "MS1" "meiasoma" 2 32, 2 11, S_00829408;
+ .timescale 0 0;
+L_006F41B0 .functor XOR 1, v006EF678_0, v006EF6D0_0, C4<0>, C4<0>;
+L_006F41E8 .functor AND 1, v006EF678_0, v006EF6D0_0, C4<1>, C4<1>;
+v00823E78_0 .alias "a", 0 0, v00822C28_0;
+v00823ED0_0 .alias "b", 0 0, v006EF410_0;
+v00823F28_0 .alias "s0", 0 0, v006EF570_0;
+v00822BD0_0 .alias "s1", 0 0, v006EF5C8_0;
+S_00829490 .scope module, "MS2" "meiasoma" 2 33, 2 11, S_00829408;
+ .timescale 0 0;
+L_006F0448 .functor XOR 1, L_006F41B0, v006EF728_0, C4<0>, C4<0>;
+L_006F0480 .functor AND 1, L_006F41B0, v006EF728_0, C4<1>, C4<1>;
+v0082D420_0 .alias "a", 0 0, v006EF570_0;
+v0082D478_0 .alias "b", 0 0, v006EF468_0;
+v0082D4D0_0 .alias "s0", 0 0, v006EF780_0;
+v00823E20_0 .alias "s1", 0 0, v006EF620_0;
+S_00829380 .scope begin, "start" "start" 2 48, 2 48, S_00829270;
+ .timescale 0 0;
+S_008292F8 .scope begin, "main" "main" 2 53, 2 53, S_00829270;
+ .timescale 0 0;
+    .scope S_00829270;
+T_0 ;
+    %fork t_1, S_00829380;
+    %jmp t_0;
+    .scope S_00829380;
+t_1 ;
+    %set/v v006EF678_0, 0, 1;
+    %set/v v006EF6D0_0, 0, 1;
+    %set/v v006EF728_0, 0, 1;
+    %end;
+    .scope S_00829270;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00829270;
+T_1 ;
+    %fork t_3, S_008292F8;
+    %jmp t_2;
+    .scope S_008292F8;
+t_3 ;
+    %vpi_call 2 54 "$display", "Guia 04 Ex 2 - Alvaro Henrique - 395487";
+    %vpi_call 2 55 "$display", "Soma Completa.";
+    %vpi_call 2 56 "$display", "\012 a b c = s0 s1\012";
+    %vpi_call 2 57 "$monitor", " %b %b %b = %b %b", v006EF728_0, v006EF678_0, v006EF6D0_0, v006EF780_0, v006EF7D8_0;
+    %delay 1, 0;
+    %set/v v006EF678_0, 0, 1;
+    %set/v v006EF6D0_0, 1, 1;
+    %set/v v006EF728_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EF678_0, 1, 1;
+    %set/v v006EF6D0_0, 0, 1;
+    %set/v v006EF728_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EF678_0, 1, 1;
+    %set/v v006EF6D0_0, 1, 1;
+    %set/v v006EF728_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EF678_0, 0, 1;
+    %set/v v006EF6D0_0, 0, 1;
+    %set/v v006EF728_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EF678_0, 0, 1;
+    %set/v v006EF6D0_0, 1, 1;
+    %set/v v006EF728_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EF678_0, 1, 1;
+    %set/v v006EF6D0_0, 0, 1;
+    %set/v v006EF728_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EF678_0, 1, 1;
+    %set/v v006EF6D0_0, 1, 1;
+    %set/v v006EF728_0, 1, 1;
+    %end;
+    .scope S_00829270;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\AC 1\Guias\395487 - 04\Guia04Ex02.v";

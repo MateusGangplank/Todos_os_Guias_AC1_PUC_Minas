@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00709DF8 .scope module, "test_compde2" "test_compde2" 2 29;
+ .timescale 0 0;
+v01E41868_0 .net "comp", 0 0, L_0070ECC8; 1 drivers
+v01E418C0_0 .var "k", 0 0;
+v01E41918_0 .var "x", 0 0;
+v01E41970_0 .var "y", 0 0;
+S_00709F08 .scope module, "modulo" "compde2" 2 36, 2 12, S_00709DF8;
+ .timescale 0 0;
+L_007031C0 .functor XOR 1, v01E418C0_0, v01E41970_0, C4<0>, C4<0>;
+L_00704E98 .functor XOR 1, v01E418C0_0, v01E41918_0, C4<0>, C4<0>;
+L_00704F08 .functor XOR 1, v01E41918_0, v01E41970_0, C4<0>, C4<0>;
+L_0070EC20 .functor OR 1, L_007031C0, L_00704E98, C4<0>, C4<0>;
+L_0070ECC8 .functor OR 1, L_00704F08, L_0070EC20, C4<0>, C4<0>;
+v007030B8_0 .net "a", 0 0, v01E41918_0; 1 drivers
+v00703110_0 .net "b", 0 0, v01E41970_0; 1 drivers
+v00703168_0 .net "c", 0 0, v01E418C0_0; 1 drivers
+v0070D9C0_0 .net "d", 0 0, L_00704F08; 1 drivers
+v0070DA18_0 .net "f", 0 0, L_0070EC20; 1 drivers
+v0070DA70_0 .net "g", 0 0, L_00704E98; 1 drivers
+v00704DD0_0 .net "h", 0 0, L_007031C0; 1 drivers
+v01E41810_0 .alias "s", 0 0, v01E41868_0;
+S_00709E80 .scope begin, "start" "start" 2 38, 2 38, S_00709DF8;
+ .timescale 0 0;
+    .scope S_00709DF8;
+T_0 ;
+    %fork t_1, S_00709E80;
+    %jmp t_0;
+    .scope S_00709E80;
+t_1 ;
+    %set/v v01E41918_0, 1, 1;
+    %set/v v01E41970_0, 0, 1;
+    %set/v v01E418C0_0, 0, 1;
+    %end;
+    .scope S_00709DF8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00709DF8;
+T_1 ;
+    %vpi_call 2 46 "$display", "Exemplo0036 - Pedro Henrique Lima Pinheiro - 451605";
+    %vpi_call 2 47 "$display", "Test ALU\222s compde2";
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "%1b =? %1b =? %1b --> %1b (se igual 1 iguais se 0 diferentes", v01E41918_0, v01E41970_0, v01E418C0_0, v01E41868_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0039.v";

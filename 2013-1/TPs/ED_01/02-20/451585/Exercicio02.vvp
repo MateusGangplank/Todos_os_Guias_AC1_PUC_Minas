@@ -1,0 +1,52 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1007ef0 .scope module, "testnorgate" "testnorgate" 2 21;
+ .timescale 0 0;
+v0x1019530_0 .var "a", 0 0;
+v0x1019600_0 .var "b", 0 0;
+v0x10196b0_0 .net "s", 0 0, L_0x1019890; 1 drivers
+S_0x10089b0 .scope module, "NOR1" "norgate" 2 26, 2 11, S_0x1007ef0;
+ .timescale 0 0;
+L_0x1019760 .functor OR 1, v0x1019530_0, v0x1019600_0, C4<0>, C4<0>;
+L_0x1019890 .functor NOT 1, L_0x1019760, C4<0>, C4<0>, C4<0>;
+v0xfe51d0_0 .net *"_s0", 0 0, L_0x1019760; 1 drivers
+v0x1019340_0 .net "p", 0 0, v0x1019530_0; 1 drivers
+v0x10193e0_0 .net "q", 0 0, v0x1019600_0; 1 drivers
+v0x1019480_0 .alias "s", 0 0, v0x10196b0_0;
+S_0x1007fe0 .scope begin, "main" "main" 2 28, 2 28, S_0x1007ef0;
+ .timescale 0 0;
+    .scope S_0x1007ef0;
+T_0 ;
+    %fork t_1, S_0x1007fe0;
+    %jmp t_0;
+    .scope S_0x1007fe0;
+t_1 ;
+    %vpi_call 2 29 "$display", "test NOR:";
+    %vpi_call 2 30 "$display", "\012~(a & b) = s\012";
+    %vpi_call 2 31 "$monitor", "~ ( %b | %b = %b ) ", v0x1019530_0, v0x1019600_0, v0x10196b0_0;
+    %delay 1, 0;
+    %set/v v0x1019530_0, 0, 1;
+    %set/v v0x1019600_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x1019530_0, 0, 1;
+    %set/v v0x1019600_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x1019530_0, 1, 1;
+    %set/v v0x1019600_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x1019530_0, 1, 1;
+    %set/v v0x1019600_0, 1, 1;
+    %end;
+    .scope S_0x1007ef0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio02.v";

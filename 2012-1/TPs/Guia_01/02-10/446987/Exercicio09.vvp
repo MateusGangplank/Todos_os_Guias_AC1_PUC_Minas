@@ -1,0 +1,92 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E0A98 .scope module, "andgate1" "andgate1" 2 11;
+ .timescale 0 0;
+L_005DF680 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v005E0EF8_0 .net "p", 0 0, C4<z>; 0 drivers
+v005DEF58_0 .net "q", 0 0, C4<z>; 0 drivers
+v005DEFC8_0 .net "s1", 0 0, L_005DF680; 1 drivers
+S_005E0790 .scope module, "testandgate" "testandgate" 2 29;
+ .timescale 0 0;
+v005DF488_0 .var "a", 0 0;
+v005DF4E0_0 .var "b", 0 0;
+v005DF538_0 .var "c", 0 0;
+v005DF590_0 .net "s", 0 0, L_005DF7A0; 1 drivers
+v005DF608_0 .net "s1", 0 0, L_005DF6F8; 1 drivers
+S_005DF2C8 .scope module, "AND1" "andgate" 2 37, 2 18, S_005E0790;
+ .timescale 0 0;
+L_005DF6F8 .functor AND 1, v005DF488_0, v005DF4E0_0, C4<1>, C4<1>;
+v005DF350_0 .net "r", 0 0, v005DF4E0_0; 1 drivers
+v005DF3C0_0 .alias "s", 0 0, v005DF608_0;
+v005DF418_0 .net "s1", 0 0, v005DF488_0; 1 drivers
+S_005DF0D8 .scope module, "AND2" "andgate" 2 38, 2 18, S_005E0790;
+ .timescale 0 0;
+L_005DF7A0 .functor AND 1, L_005DF6F8, v005DF538_0, C4<1>, C4<1>;
+v005DF160_0 .net "r", 0 0, v005DF538_0; 1 drivers
+v005DF1D0_0 .alias "s", 0 0, v005DF590_0;
+v005DF240_0 .alias "s1", 0 0, v005DF608_0;
+S_005DF050 .scope begin, "start" "start" 2 41, 2 41, S_005E0790;
+ .timescale 0 0;
+    .scope S_005E0790;
+T_0 ;
+    %fork t_1, S_005DF050;
+    %jmp t_0;
+    .scope S_005DF050;
+t_1 ;
+    %set/v v005DF488_0, 0, 1;
+    %set/v v005DF4E0_0, 0, 1;
+    %set/v v005DF538_0, 0, 1;
+    %end;
+    .scope S_005E0790;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005E0790;
+T_1 ;
+    %vpi_call 2 50 "$display", "Exercicio09 - Luhan Mairinck - 446987";
+    %vpi_call 2 51 "$display", "Test AND gate";
+    %vpi_call 2 52 "$display", "\012a & b & c = s\012";
+    %vpi_call 2 54 "$monitor", "%b & %b & %b = %b", v005DF488_0, v005DF4E0_0, v005DF538_0, v005DF590_0;
+    %delay 1, 0;
+    %set/v v005DF488_0, 0, 1;
+    %set/v v005DF4E0_0, 0, 1;
+    %set/v v005DF538_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 0, 1;
+    %set/v v005DF4E0_0, 0, 1;
+    %set/v v005DF538_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 0, 1;
+    %set/v v005DF4E0_0, 1, 1;
+    %set/v v005DF538_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 0, 1;
+    %set/v v005DF4E0_0, 1, 1;
+    %set/v v005DF538_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 1, 1;
+    %set/v v005DF4E0_0, 0, 1;
+    %set/v v005DF538_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 1, 1;
+    %set/v v005DF4E0_0, 0, 1;
+    %set/v v005DF538_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 1, 1;
+    %set/v v005DF4E0_0, 1, 1;
+    %set/v v005DF538_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DF488_0, 1, 1;
+    %set/v v005DF4E0_0, 1, 1;
+    %set/v v005DF538_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Luhan\Meus documentos\Estudos\2º período\ARQ I\Guia 01\Exercicio09.v";

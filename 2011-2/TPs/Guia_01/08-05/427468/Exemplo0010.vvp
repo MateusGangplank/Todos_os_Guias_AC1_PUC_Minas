@@ -1,0 +1,99 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003F2CE8 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v0074FCD8_0 .var "a", 0 0;
+v0074FD30_0 .var "b", 0 0;
+v0074FD88_0 .var "c", 0 0;
+v0074FDE0_0 .net "s", 0 0, L_00752D98; 1 drivers
+S_0071E180 .scope module, "OR1" "orgate" 2 23, 2 9, S_003F2CE8;
+ .timescale 0 0;
+L_003F40E8 .functor NOT 1, v0074FCD8_0, C4<0>, C4<0>, C4<0>;
+L_003F4158 .functor NOT 1, v0074FD30_0, C4<0>, C4<0>, C4<0>;
+L_003FAC08 .functor NOT 1, v0074FD88_0, C4<0>, C4<0>, C4<0>;
+L_003FAC78 .functor AND 1, L_003F40E8, L_003F4158, C4<1>, C4<1>;
+L_00752CF0 .functor AND 1, L_003FAC78, L_003FAC08, C4<1>, C4<1>;
+L_00752D98 .functor NOT 1, L_00752CF0, C4<0>, C4<0>, C4<0>;
+v003F2D70_0 .net *"_s0", 0 0, L_003FAC78; 1 drivers
+v003F2DC8_0 .net *"_s2", 0 0, L_00752CF0; 1 drivers
+v003FA610_0 .net "o", 0 0, v0074FD88_0; 1 drivers
+v003FA668_0 .net "p", 0 0, v0074FCD8_0; 1 drivers
+v003FA6C0_0 .net "q", 0 0, v0074FD30_0; 1 drivers
+v003FA718_0 .alias "s", 0 0, v0074FDE0_0;
+v003F4008_0 .net "s1", 0 0, L_003F40E8; 1 drivers
+v003F4060_0 .net "s2", 0 0, L_003F4158; 1 drivers
+v0074FC80_0 .net "s3", 0 0, L_003FAC08; 1 drivers
+S_0071E0F8 .scope begin, "start" "start" 2 25, 2 25, S_003F2CE8;
+ .timescale 0 0;
+S_0071E070 .scope begin, "main" "main" 2 32, 2 32, S_003F2CE8;
+ .timescale 0 0;
+    .scope S_003F2CE8;
+T_0 ;
+    %fork t_1, S_0071E0F8;
+    %jmp t_0;
+    .scope S_0071E0F8;
+t_1 ;
+    %set/v v0074FCD8_0, 0, 1;
+    %set/v v0074FD30_0, 0, 1;
+    %set/v v0074FD88_0, 0, 1;
+    %end;
+    .scope S_003F2CE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003F2CE8;
+T_1 ;
+    %fork t_3, S_0071E070;
+    %jmp t_2;
+    .scope S_0071E070;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exemplo0010 - Ursula Rosa - 427468";
+    %vpi_call 2 34 "$display", "Test or gate";
+    %vpi_call 2 35 "$display", "\012 a | b | c = s\012";
+    %vpi_call 2 36 "$monitor", "%b | %b | %b = %b", v0074FCD8_0, v0074FD30_0, v0074FD88_0, v0074FDE0_0;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 0, 1;
+    %set/v v0074FD30_0, 0, 1;
+    %set/v v0074FD88_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 0, 1;
+    %set/v v0074FD30_0, 0, 1;
+    %set/v v0074FD88_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 0, 1;
+    %set/v v0074FD30_0, 1, 1;
+    %set/v v0074FD88_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 0, 1;
+    %set/v v0074FD30_0, 1, 1;
+    %set/v v0074FD88_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 1, 1;
+    %set/v v0074FD30_0, 0, 1;
+    %set/v v0074FD88_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 1, 1;
+    %set/v v0074FD30_0, 0, 1;
+    %set/v v0074FD88_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 1, 1;
+    %set/v v0074FD30_0, 1, 1;
+    %set/v v0074FD88_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0074FCD8_0, 1, 1;
+    %set/v v0074FD30_0, 1, 1;
+    %set/v v0074FD88_0, 1, 1;
+    %end;
+    .scope S_003F2CE8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\guia01\Exemplo0010.v";

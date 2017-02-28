@@ -1,0 +1,69 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1683080 .scope module, "TESTE" "TESTE" 2 32;
+ .timescale 0 0;
+v0x16ba290_0 .var "x", 0 0;
+v0x16ba330_0 .var "y", 0 0;
+v0x16ba3e0_0 .net "z", 0 0, L_0x16bacc0; 1 drivers
+S_0x1680540 .scope module, "portas" "F4" 2 42, 2 7, S_0x1683080;
+ .timescale 0 0;
+L_0x16b9cb0 .functor OR 1, v0x16ba290_0, v0x16ba330_0, C4<0>, C4<0>;
+L_0x16ba510 .functor NOR 1, v0x16ba290_0, v0x16ba330_0, C4<0>, C4<0>;
+L_0x16ba570 .functor XOR 1, v0x16ba290_0, v0x16ba330_0, C4<0>, C4<0>;
+L_0x16ba6f0 .functor XNOR 1, v0x16ba290_0, v0x16ba330_0, C4<0>, C4<0>;
+L_0x16ba7b0 .functor BUF 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x16ba870 .functor NOT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x16ba900 .functor BUF 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x16ba960 .functor NOT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x16baa40 .functor AND 1, L_0x16ba870, L_0x16ba960, L_0x16b9cb0, C4<1>;
+L_0x16babc0 .functor AND 1, L_0x16ba870, L_0x16ba900, L_0x16ba510, C4<1>;
+L_0x16bad20 .functor AND 1, L_0x16ba7b0, L_0x16ba960, L_0x16ba570, C4<1>;
+L_0x16badd0 .functor AND 1, L_0x16ba7b0, L_0x16ba900, L_0x16ba6f0, C4<1>;
+L_0x16bacc0 .functor OR 1, L_0x16baa40, L_0x16babc0, L_0x16bad20, L_0x16badd0;
+v0x167ff40_0 .net "a", 0 0, v0x16ba290_0; 1 drivers
+v0x16b9690_0 .net "b", 0 0, v0x16ba330_0; 1 drivers
+v0x16b9730_0 .net "c0", 0 0, L_0x16ba7b0; 1 drivers
+v0x16b97d0_0 .net "c1", 0 0, L_0x16ba870; 1 drivers
+v0x16b9880_0 .net "c2", 0 0, L_0x16ba900; 1 drivers
+v0x16b9920_0 .net "c3", 0 0, L_0x16ba960; 1 drivers
+v0x16b9a00_0 .net "chave0", 0 0, C4<0>; 1 drivers
+v0x16b9aa0_0 .net "chave1", 0 0, C4<0>; 1 drivers
+v0x16b9b90_0 .alias "s", 0 0, v0x16ba3e0_0;
+v0x16b9c30_0 .net "s0", 0 0, L_0x16b9cb0; 1 drivers
+v0x16b9d30_0 .net "s1", 0 0, L_0x16ba510; 1 drivers
+v0x16b9dd0_0 .net "s2", 0 0, L_0x16ba570; 1 drivers
+v0x16b9ee0_0 .net "s3", 0 0, L_0x16ba6f0; 1 drivers
+v0x16b9f80_0 .net "s4", 0 0, L_0x16baa40; 1 drivers
+v0x16ba0a0_0 .net "s5", 0 0, L_0x16babc0; 1 drivers
+v0x16ba140_0 .net "s6", 0 0, L_0x16bad20; 1 drivers
+v0x16ba000_0 .net "s7", 0 0, L_0x16badd0; 1 drivers
+    .scope S_0x1683080;
+T_0 ;
+    %set/v v0x16ba290_0, 0, 1;
+    %set/v v0x16ba330_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x1683080;
+T_1 ;
+    %vpi_call 2 46 "$display", "Exercicio0034";
+    %vpi_call 2 49 "$monitor", "X %b | Y %b = %b", v0x16ba290_0, v0x16ba330_0, v0x16ba3e0_0;
+    %delay 1, 0;
+    %set/v v0x16ba330_0, 0, 1;
+    %set/v v0x16ba290_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x16ba330_0, 1, 1;
+    %set/v v0x16ba290_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x16ba290_0, 1, 1;
+    %set/v v0x16ba330_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0034.v";

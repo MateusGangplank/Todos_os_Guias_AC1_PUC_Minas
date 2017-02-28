@@ -1,0 +1,47 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008980A0 .scope module, "testnandgate" "testnandgate" 2 23;
+ .timescale 0 0;
+v02302F98_0 .var "a", 0 0;
+v02303010_0 .var "b", 0 0;
+v02303088_0 .net "s", 0 0, L_022F73E0; 1 drivers
+S_00898148 .scope module, "NAND1" "nandgate" 2 27, 2 11, S_008980A0;
+ .timescale 0 0;
+L_022F72D8 .functor AND 1, v02302F98_0, v02303010_0, C4<1>, C4<1>;
+L_022F73E0 .functor NOT 1, L_022F72D8, C4<0>, C4<0>, C4<0>;
+v022E3B68_0 .net *"_s0", 0 0, L_022F72D8; 1 drivers
+v02302E30_0 .net "p", 0 0, v02302F98_0; 1 drivers
+v02302EA8_0 .net "q", 0 0, v02303010_0; 1 drivers
+v02302F20_0 .alias "s", 0 0, v02303088_0;
+    .scope S_008980A0;
+T_0 ;
+    %vpi_call 2 30 "$display", "Guia01_01 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 31 "$display", "Test NAND gate";
+    %vpi_call 2 32 "$display", "\012~(a & b) = s\012";
+    %set/v v02302F98_0, 0, 1;
+    %set/v v02303010_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "~(%b & %b )= %b", v02302F98_0, v02303010_0, v02303088_0;
+    %set/v v02302F98_0, 0, 1;
+    %set/v v02303010_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "~(%b & %b )= %b", v02302F98_0, v02303010_0, v02303088_0;
+    %set/v v02302F98_0, 1, 1;
+    %set/v v02303010_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "~(%b & %b )= %b", v02302F98_0, v02303010_0, v02303088_0;
+    %set/v v02302F98_0, 1, 1;
+    %set/v v02303010_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "~(%b & %b )= %b", v02302F98_0, v02303010_0, v02303088_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\AULA\2011-2\AC I\Guia 01\Guia01_01.v";

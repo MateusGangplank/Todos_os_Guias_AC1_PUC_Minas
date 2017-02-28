@@ -1,0 +1,105 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005B0000 .scope module, "testS2" "testS2" 2 26;
+ .timescale 0 0;
+v0068A9B8_0 .var "a", 0 0;
+v0068AA10_0 .var "b", 0 0;
+v0068AA68_0 .var "c", 0 0;
+v0068AAC0_0 .var "d", 0 0;
+v0068AB18_0 .net "s", 0 0, L_005ADBE0; 1 drivers
+S_005B0088 .scope module, "testeS2" "calculaS2" 2 32, 2 6, S_005B0000;
+ .timescale 0 0;
+L_0068CDD0 .functor NOT 1, v0068AA68_0, C4<0>, C4<0>, C4<0>;
+L_00684710 .functor NOT 1, v0068AAC0_0, C4<0>, C4<0>, C4<0>;
+L_00682B28 .functor AND 1, v0068AA10_0, L_0068AC78, C4<1>, C4<1>;
+L_00682C40 .functor AND 1, L_0068AD28, L_0068AD80, C4<1>, C4<1>;
+L_005AD908 .functor AND 1, v0068A9B8_0, v0068AA10_0, C4<1>, C4<1>;
+L_005AD9B0 .functor AND 1, L_0068AE88, L_0068AEE0, C4<1>, C4<1>;
+L_005ADA90 .functor AND 1, v0068A9B8_0, L_0068AF90, C4<1>, C4<1>;
+L_005ADAC8 .functor OR 1, L_0068AFE8, L_0068B040, C4<0>, C4<0>;
+L_005ADBE0 .functor OR 1, L_005ADAC8, L_0068B098, C4<0>, C4<0>;
+v0068A178_0 .net *"_s0", 0 0, L_0068CDD0; 1 drivers
+v0068A1D0_0 .net *"_s11", 0 0, L_0068AD28; 1 drivers
+v0068A228_0 .net *"_s13", 0 0, L_0068AD80; 1 drivers
+v0068A280_0 .net *"_s14", 0 0, L_005AD908; 1 drivers
+v0068A2D8_0 .net *"_s16", 0 0, L_005AD9B0; 1 drivers
+v0068A330_0 .net *"_s19", 0 0, L_0068AE88; 1 drivers
+v0068A388_0 .net *"_s2", 0 0, L_00684710; 1 drivers
+v0068A3E0_0 .net *"_s21", 0 0, L_0068AEE0; 1 drivers
+v0068A438_0 .net *"_s22", 0 0, L_005ADA90; 1 drivers
+v0068A490_0 .net *"_s25", 0 0, L_0068AF90; 1 drivers
+v0068A4E8_0 .net *"_s27", 0 0, L_0068AFE8; 1 drivers
+v0068A540_0 .net *"_s29", 0 0, L_0068B040; 1 drivers
+v0068A598_0 .net *"_s31", 0 0, L_0068B098; 1 drivers
+v0068A5F0_0 .net *"_s4", 0 0, L_00682B28; 1 drivers
+v0068A648_0 .net *"_s7", 0 0, L_0068AC78; 1 drivers
+v0068A6A0_0 .net *"_s8", 0 0, L_00682C40; 1 drivers
+v0068A6F8_0 .net "a", 0 0, v0068A9B8_0; 1 drivers
+v0068A750_0 .net "b", 0 0, v0068AA10_0; 1 drivers
+v0068A7A8_0 .net "c", 0 0, v0068AA68_0; 1 drivers
+v0068A800_0 .net "d", 0 0, v0068AAC0_0; 1 drivers
+v0068A858_0 .alias "s", 0 0, v0068AB18_0;
+RS_005B21C4/0/0 .resolv tri, L_0068AC20, L_0068ACD0, L_0068ADD8, L_0068AE30;
+RS_005B21C4/0/4 .resolv tri, L_0068AF38, C4<zzzzz>, C4<zzzzz>, C4<zzzzz>;
+RS_005B21C4 .resolv tri, RS_005B21C4/0/0, RS_005B21C4/0/4, C4<zzzzz>, C4<zzzzz>;
+v0068A8B0_0 .net8 "sAnd", 4 0, RS_005B21C4; 5 drivers
+RS_005B21DC .resolv tri, L_0068AB70, L_0068ABC8, C4<zz>, C4<zz>;
+v0068A908_0 .net8 "sNot", 1 0, RS_005B21DC; 2 drivers
+v0068A960_0 .net "sOr", 0 0, L_005ADAC8; 1 drivers
+L_0068AB70 .part/pv L_0068CDD0, 0, 1, 2;
+L_0068ABC8 .part/pv L_00684710, 1, 1, 2;
+L_0068AC20 .part/pv L_00682B28, 0, 1, 5;
+L_0068AC78 .part RS_005B21DC, 0, 1;
+L_0068ACD0 .part/pv L_00682C40, 1, 1, 5;
+L_0068AD28 .part RS_005B21C4, 0, 1;
+L_0068AD80 .part RS_005B21DC, 1, 1;
+L_0068ADD8 .part/pv L_005AD908, 2, 1, 5;
+L_0068AE30 .part/pv L_005AD9B0, 3, 1, 5;
+L_0068AE88 .part RS_005B21C4, 2, 1;
+L_0068AEE0 .part RS_005B21DC, 1, 1;
+L_0068AF38 .part/pv L_005ADA90, 4, 1, 5;
+L_0068AF90 .part RS_005B21DC, 0, 1;
+L_0068AFE8 .part RS_005B21C4, 1, 1;
+L_0068B040 .part RS_005B21C4, 3, 1;
+L_0068B098 .part RS_005B21C4, 4, 1;
+    .scope S_005B0000;
+T_0 ;
+    %vpi_call 2 34 "$display", "Exerc\355cio J";
+    %vpi_call 2 35 "$display", "\332rsula Rosa - 427468";
+    %vpi_call 2 36 "$display", "AB CD  S";
+    %set/v v0068A9B8_0, 0, 1;
+    %set/v v0068AA10_0, 0, 1;
+    %set/v v0068AA68_0, 0, 1;
+    %set/v v0068AAC0_0, 0, 1;
+    %vpi_call 2 38 "$monitor", "%b%b %b%b  %b", v0068A9B8_0, v0068AA10_0, v0068AA68_0, v0068AAC0_0, v0068AB18_0;
+    %delay 1, 0;
+    %set/v v0068A9B8_0, 0, 1;
+    %set/v v0068AA10_0, 0, 1;
+    %set/v v0068AA68_0, 0, 1;
+    %set/v v0068AAC0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0068A9B8_0, 0, 1;
+    %set/v v0068AA10_0, 0, 1;
+    %set/v v0068AA68_0, 1, 1;
+    %set/v v0068AAC0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0068A9B8_0, 0, 1;
+    %set/v v0068AA10_0, 1, 1;
+    %set/v v0068AA68_0, 0, 1;
+    %set/v v0068AAC0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0068A9B8_0, 1, 1;
+    %set/v v0068AA10_0, 0, 1;
+    %set/v v0068AA68_0, 0, 1;
+    %set/v v0068AAC0_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Dell\Desktop\Prova\ExercicioJ.v";

@@ -1,0 +1,55 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0070E0A0 .scope module, "testnorgate" "testnorgate" 2 9;
+ .timescale 0 0;
+v007031F0_0 .var "a", 0 0;
+v00703248_0 .var "b", 0 0;
+v007032A0_0 .net "s", 0 0, L_0070FCD8; 1 drivers
+S_0070E298 .scope module, "NOR1" "norgate" 2 15, 2 5, S_0070E0A0;
+ .timescale 0 0;
+L_0070E320 .functor OR 1, v007031F0_0, v00703248_0, C4<0>, C4<0>;
+L_0070FCD8 .functor NOT 1, L_0070E320, C4<0>, C4<0>, C4<0>;
+v00702CA0_0 .net *"_s0", 0 0, L_0070E320; 1 drivers
+v00702CF8_0 .net "a", 0 0, v007031F0_0; 1 drivers
+v00702D50_0 .net "b", 0 0, v00703248_0; 1 drivers
+v00703198_0 .alias "s", 0 0, v007032A0_0;
+S_0070E210 .scope begin, "start" "start" 2 18, 2 18, S_0070E0A0;
+ .timescale 0 0;
+    .scope S_0070E0A0;
+T_0 ;
+    %fork t_1, S_0070E210;
+    %jmp t_0;
+    .scope S_0070E210;
+t_1 ;
+    %set/v v007031F0_0, 0, 1;
+    %set/v v00703248_0, 0, 1;
+    %end;
+    .scope S_0070E0A0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0070E0A0;
+T_1 ;
+    %vpi_call 2 24 "$display", "NOR";
+    %vpi_call 2 25 "$display", "a b   s";
+    %vpi_call 2 26 "$monitor", "%b %b = %b", v007031F0_0, v00703248_0, v007032A0_0;
+    %delay 1, 0;
+    %set/v v007031F0_0, 1, 1;
+    %set/v v00703248_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007031F0_0, 0, 1;
+    %set/v v00703248_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007031F0_0, 1, 1;
+    %set/v v00703248_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Camila\Desktop\PUC_II\AC\Guia01\exercicio02.v";

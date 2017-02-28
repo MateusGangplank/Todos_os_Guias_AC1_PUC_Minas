@@ -1,0 +1,75 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00852BB0 .scope module, "testnorgate" "testnorgate" 2 23;
+ .timescale 0 0;
+v0085CDB8_0 .var "a", 0 0;
+v0085CE10_0 .var "b", 0 0;
+v0085CE68_0 .var "c", 0 0;
+v0085A140_0 .net "s", 0 0, L_0085A278; 1 drivers
+S_00852C38 .scope module, "NOR1" "norgate" 2 27, 2 11, S_00852BB0;
+ .timescale 0 0;
+L_0085CEC0 .functor OR 1, v0085CDB8_0, v0085CE10_0, C4<0>, C4<0>;
+L_0085A1D0 .functor OR 1, L_0085CEC0, v0085CE68_0, C4<0>, C4<0>;
+L_0085A278 .functor NOT 1, L_0085A1D0, C4<0>, C4<0>, C4<0>;
+v00853D60_0 .net *"_s0", 0 0, L_0085CEC0; 1 drivers
+v00853DB8_0 .net *"_s2", 0 0, L_0085A1D0; 1 drivers
+v00853E10_0 .net "p", 0 0, v0085CDB8_0; 1 drivers
+v00853E68_0 .net "q", 0 0, v0085CE10_0; 1 drivers
+v0085CD08_0 .net "r", 0 0, v0085CE68_0; 1 drivers
+v0085CD60_0 .alias "s", 0 0, v0085A140_0;
+    .scope S_00852BB0;
+T_0 ;
+    %vpi_call 2 31 "$display", "Exemplo 01_01 - xxx yyy zzz - 999999";
+    %vpi_call 2 32 "$display", "Test NOR gate";
+    %vpi_call 2 33 "$display", "\012a | b  | c = s\012";
+    %set/v v0085CDB8_0, 0, 1;
+    %set/v v0085CE10_0, 0, 1;
+    %set/v v0085CE68_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 0, 1;
+    %set/v v0085CE10_0, 0, 1;
+    %set/v v0085CE68_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 0, 1;
+    %set/v v0085CE10_0, 1, 1;
+    %set/v v0085CE68_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 0, 1;
+    %set/v v0085CE10_0, 1, 1;
+    %set/v v0085CE68_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 1, 1;
+    %set/v v0085CE10_0, 0, 1;
+    %set/v v0085CE68_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 1, 1;
+    %set/v v0085CE10_0, 0, 1;
+    %set/v v0085CE68_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 1, 1;
+    %set/v v0085CE10_0, 1, 1;
+    %set/v v0085CE68_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %set/v v0085CDB8_0, 1, 1;
+    %set/v v0085CE10_0, 1, 1;
+    %set/v v0085CE68_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b | %b | %b = %b", v0085CDB8_0, v0085CE10_0, v0085CE68_0, v0085A140_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Alvaro\Desktop\Guia 01\Guia01Ex2.v";

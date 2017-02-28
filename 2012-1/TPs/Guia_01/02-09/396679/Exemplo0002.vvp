@@ -1,0 +1,47 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0087DFF8 .scope module, "testnotgate" "testnotgate" 2 17;
+ .timescale 0 0;
+v00872BD8_0 .var "a", 0 0;
+v00872C30_0 .net "s", 0 0, L_0087FFB0; 1 drivers
+S_00872B50 .scope module, "NOT1" "notgate" 2 24, 2 10, S_0087DFF8;
+ .timescale 0 0;
+L_0087FFB0 .functor NOT 1, v00872BD8_0, C4<0>, C4<0>, C4<0>;
+v0087DBA0_0 .net "p", 0 0, v00872BD8_0; 1 drivers
+v0087FF58_0 .alias "s", 0 0, v00872C30_0;
+S_0087E080 .scope begin, "start" "start" 2 26, 2 26, S_0087DFF8;
+ .timescale 0 0;
+    .scope S_0087DFF8;
+T_0 ;
+    %fork t_1, S_0087E080;
+    %jmp t_0;
+    .scope S_0087E080;
+t_1 ;
+    %set/v v00872BD8_0, 0, 1;
+    %end;
+    .scope S_0087DFF8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0087DFF8;
+T_1 ;
+    %vpi_call 2 31 "$display", "Exemplo0002 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 32 "$display", "Test NOT gate";
+    %vpi_call 2 33 "$display", "\012~a = s\012";
+    %set/v v00872BD8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~%b = %b", v00872BD8_0, v00872C30_0;
+    %set/v v00872BD8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~%b = %b", v00872BD8_0, v00872C30_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 01\Exemplo0002.v";

@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006C49C8 .scope module, "test_compigual" "test_compigual" 2 27;
+ .timescale 0 0;
+v005C1468_0 .net "comp", 0 0, L_006CE308; 1 drivers
+v005C14C0_0 .var "k", 0 0;
+v005C1518_0 .var "x", 0 0;
+v005C1570_0 .var "y", 0 0;
+S_006C9538 .scope module, "modulo" "compigual" 2 34, 2 10, S_006C49C8;
+ .timescale 0 0;
+L_006C2D00 .functor XNOR 1, v005C14C0_0, v005C1570_0, C4<0>, C4<0>;
+L_006CE1B8 .functor XNOR 1, v005C14C0_0, v005C1518_0, C4<0>, C4<0>;
+L_006CE228 .functor XNOR 1, v005C1518_0, v005C1570_0, C4<0>, C4<0>;
+L_006CE260 .functor AND 1, L_006C2D00, L_006CE1B8, C4<1>, C4<1>;
+L_006CE308 .functor AND 1, L_006CE228, L_006CE260, C4<1>, C4<1>;
+v006C4AD8_0 .net "a", 0 0, v005C1518_0; 1 drivers
+v006CEC90_0 .net "b", 0 0, v005C1570_0; 1 drivers
+v006CFF68_0 .net "c", 0 0, v005C14C0_0; 1 drivers
+v006CCD20_0 .net "d", 0 0, L_006CE228; 1 drivers
+v006CCD78_0 .net "f", 0 0, L_006CE260; 1 drivers
+v006C2C50_0 .net "g", 0 0, L_006CE1B8; 1 drivers
+v006C2CA8_0 .net "h", 0 0, L_006C2D00; 1 drivers
+v005C1410_0 .alias "s", 0 0, v005C1468_0;
+S_006C4A50 .scope begin, "start" "start" 2 36, 2 36, S_006C49C8;
+ .timescale 0 0;
+    .scope S_006C49C8;
+T_0 ;
+    %fork t_1, S_006C4A50;
+    %jmp t_0;
+    .scope S_006C4A50;
+t_1 ;
+    %set/v v005C1518_0, 1, 1;
+    %set/v v005C1570_0, 0, 1;
+    %set/v v005C14C0_0, 0, 1;
+    %end;
+    .scope S_006C49C8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006C49C8;
+T_1 ;
+    %vpi_call 2 44 "$display", "Exemplo0036 - Pedro Henrique Lima Pinheiro - 451605";
+    %vpi_call 2 45 "$display", "Test ALU\222s compigual";
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%1b =? %1b =? %1b --> %1b (se igual 1 iguais se 0 diferentes", v005C1518_0, v005C1570_0, v005C14C0_0, v005C1468_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Pedro Henrique\trabalhos\arquitetura\ED04\Exemplo0038.v";

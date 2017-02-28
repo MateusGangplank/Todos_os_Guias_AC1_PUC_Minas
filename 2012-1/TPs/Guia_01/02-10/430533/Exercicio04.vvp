@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0030E580 .scope module, "testnandgate" "testnandgate" 2 11;
+ .timescale 0 0;
+v0030E8A0_0 .var "a", 0 0;
+v0030E8F8_0 .var "b", 0 0;
+v0030E950_0 .net "s", 0 0, L_0030EA50; 1 drivers
+S_00303068 .scope module, "NAND1" "nandgate" 2 15, 2 7, S_0030E580;
+ .timescale 0 0;
+L_003031A0 .functor NOT 1, v0030E8A0_0, C4<0>, C4<0>, C4<0>;
+L_0030E9E0 .functor NOT 1, v0030E8F8_0, C4<0>, C4<0>, C4<0>;
+L_0030EA50 .functor AND 1, L_003031A0, L_0030E9E0, C4<1>, C4<1>;
+v00302C58_0 .net *"_s0", 0 0, L_003031A0; 1 drivers
+v003030F0_0 .net *"_s2", 0 0, L_0030E9E0; 1 drivers
+v00303148_0 .net "p", 0 0, v0030E8A0_0; 1 drivers
+v0030E7F0_0 .net "q", 0 0, v0030E8F8_0; 1 drivers
+v0030E848_0 .alias "s", 0 0, v0030E950_0;
+S_00302BD0 .scope begin, "start" "start" 2 17, 2 17, S_0030E580;
+ .timescale 0 0;
+S_00302B48 .scope begin, "main" "main" 2 22, 2 22, S_0030E580;
+ .timescale 0 0;
+    .scope S_0030E580;
+T_0 ;
+    %fork t_1, S_00302BD0;
+    %jmp t_0;
+    .scope S_00302BD0;
+t_1 ;
+    %set/v v0030E8A0_0, 0, 1;
+    %set/v v0030E8F8_0, 0, 1;
+    %end;
+    .scope S_0030E580;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0030E580;
+T_1 ;
+    %fork t_3, S_00302B48;
+    %jmp t_2;
+    .scope S_00302B48;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio04 - Roger Rubens Machado - 430533";
+    %vpi_call 2 24 "$display", "Test nand gate";
+    %vpi_call 2 25 "$display", "\012\011\011\011(~a & ~b) = s\012";
+    %vpi_call 2 26 "$monitor", "%d\011(~%b & ~%b) = %b", $time, v0030E8A0_0, v0030E8F8_0, v0030E950_0;
+    %delay 1, 0;
+    %set/v v0030E8A0_0, 0, 1;
+    %set/v v0030E8F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0030E8A0_0, 0, 1;
+    %set/v v0030E8F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0030E8A0_0, 1, 1;
+    %set/v v0030E8F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0030E8A0_0, 1, 1;
+    %set/v v0030E8F8_0, 1, 1;
+    %end;
+    .scope S_0030E580;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Roger Rubens\Documents\Ciência da Computação\Arquitetura de Computadores I\Guias resolvidos\Exercicio04.v";

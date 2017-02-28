@@ -1,0 +1,52 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E43D8 .scope module, "testnotgate" "testnotgate" 2 24;
+ .timescale 0 0;
+v006979C0_0 .var "a", 0 0;
+v00697A18_0 .net "s", 0 0, L_00661338; 1 drivers
+S_003E4570 .scope module, "NOT1" "notgate" 2 32, 2 14, S_003E43D8;
+ .timescale 0 0;
+L_00661338 .functor NOT 1, v006979C0_0, C4<0>, C4<0>, C4<0>;
+v003E45F8_0 .net "p", 0 0, v006979C0_0; 1 drivers
+v00697950_0 .alias "s", 0 0, v00697A18_0;
+S_003E44E8 .scope begin, "start" "start" 2 34, 2 34, S_003E43D8;
+ .timescale 0 0;
+S_003E4460 .scope begin, "main" "main" 2 40, 2 40, S_003E43D8;
+ .timescale 0 0;
+    .scope S_003E43D8;
+T_0 ;
+    %fork t_1, S_003E44E8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006979C0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E43D8;
+T_1 ;
+    %fork t_3, S_003E4460;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 42 "$display", "Exemplo 0002 - xxx yyy zzz - 999999";
+    %vpi_call 2 43 "$display", "Test NOT gate:";
+    %vpi_call 2 44 "$display", "\012~a= s\012";
+    %set/v v006979C0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "~%b= %b", v006979C0_0, v00697A18_0;
+    %set/v v006979C0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "~%b= %b", v006979C0_0, v00697A18_0;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\pT\AC\guia01\Exemplo0002.v";

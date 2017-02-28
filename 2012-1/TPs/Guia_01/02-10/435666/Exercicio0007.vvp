@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0099E650 .scope module, "testxnorgate" "testxnorgate" 2 11;
+ .timescale 0 0;
+v0099E918_0 .var "a", 0 0;
+v0099E970_0 .var "b", 0 0;
+v0099E9C8_0 .net "s", 0 0, L_0099EB70; 1 drivers
+S_00999E90 .scope module, "XNOR1" "xnorgate" 2 15, 2 7, S_0099E650;
+ .timescale 0 0;
+L_0099FFB0 .functor AND 1, v0099E918_0, v0099E970_0, C4<1>, C4<1>;
+L_0099EA58 .functor NOT 1, v0099E918_0, C4<0>, C4<0>, C4<0>;
+L_0099EA90 .functor NOT 1, v0099E970_0, C4<0>, C4<0>, C4<0>;
+L_0099EAC8 .functor AND 1, L_0099EA58, L_0099EA90, C4<1>, C4<1>;
+L_0099EB70 .functor OR 1, L_0099FFB0, L_0099EAC8, C4<0>, C4<0>;
+v00992DA8_0 .net *"_s0", 0 0, L_0099FFB0; 1 drivers
+v0099FF58_0 .net *"_s2", 0 0, L_0099EA58; 1 drivers
+v00993A00_0 .net *"_s4", 0 0, L_0099EA90; 1 drivers
+v00993A58_0 .net *"_s6", 0 0, L_0099EAC8; 1 drivers
+v00993AB0_0 .net "p", 0 0, v0099E918_0; 1 drivers
+v00993B08_0 .net "q", 0 0, v0099E970_0; 1 drivers
+v0099E8C0_0 .alias "s", 0 0, v0099E9C8_0;
+S_00992D20 .scope begin, "start" "start" 2 17, 2 17, S_0099E650;
+ .timescale 0 0;
+S_00992C98 .scope begin, "main" "main" 2 22, 2 22, S_0099E650;
+ .timescale 0 0;
+    .scope S_0099E650;
+T_0 ;
+    %fork t_1, S_00992D20;
+    %jmp t_0;
+    .scope S_00992D20;
+t_1 ;
+    %set/v v0099E918_0, 0, 1;
+    %set/v v0099E970_0, 0, 1;
+    %end;
+    .scope S_0099E650;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0099E650;
+T_1 ;
+    %fork t_3, S_00992C98;
+    %jmp t_2;
+    .scope S_00992C98;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio07 - Julio Miranda Machado - 435666";
+    %vpi_call 2 24 "$display", "Test xnor gate";
+    %vpi_call 2 25 "$display", "\012\011\011\011((a&b)|(~a&~b)) = s\012";
+    %vpi_call 2 26 "$monitor", "%d\011((%b&%b)|(~%b&~%b)) = %b", $time, v0099E918_0, v0099E970_0, v0099E918_0, v0099E970_0, v0099E9C8_0;
+    %delay 1, 0;
+    %set/v v0099E918_0, 0, 1;
+    %set/v v0099E970_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0099E918_0, 0, 1;
+    %set/v v0099E970_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0099E918_0, 1, 1;
+    %set/v v0099E970_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0099E918_0, 1, 1;
+    %set/v v0099E970_0, 1, 1;
+    %end;
+    .scope S_0099E650;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio0007.v";

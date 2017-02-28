@@ -1,0 +1,89 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B9C3B8 .scope module, "testorNNgate" "testorNNgate" 2 16;
+ .timescale 0 0;
+v00B9C690_0 .var "a", 0 0;
+v00B9C6E8_0 .var "b", 0 0;
+v005C5CB8_0 .var "c", 0 0;
+v005C5D10_0 .net "s", 0 0, L_0059FD18; 1 drivers
+S_005A1130 .scope module, "ORNN1" "orNNgate" 2 21, 2 9, S_00B9C3B8;
+ .timescale 0 0;
+L_00B9C740 .functor NOT 1, v00B9C690_0, C4<0>, C4<0>, C4<0>;
+L_00B9C7B0 .functor NOT 1, v00B9C6E8_0, C4<0>, C4<0>, C4<0>;
+L_00B9C820 .functor OR 1, L_00B9C740, L_00B9C7B0, C4<0>, C4<0>;
+L_0059FC00 .functor NOT 1, v005C5CB8_0, C4<0>, C4<0>, C4<0>;
+L_0059FC70 .functor OR 1, L_00B9C820, L_0059FC00, C4<0>, C4<0>;
+L_0059FD18 .functor NOT 1, L_0059FC70, C4<0>, C4<0>, C4<0>;
+v00B99918_0 .net *"_s0", 0 0, L_00B9C740; 1 drivers
+v00B9E970_0 .net *"_s2", 0 0, L_00B9C7B0; 1 drivers
+v00B99970_0 .net *"_s4", 0 0, L_00B9C820; 1 drivers
+v00B999C8_0 .net *"_s6", 0 0, L_0059FC00; 1 drivers
+v00B99A20_0 .net *"_s8", 0 0, L_0059FC70; 1 drivers
+v00B9A728_0 .net "c", 0 0, v005C5CB8_0; 1 drivers
+v00B9A780_0 .net "p", 0 0, v00B9C690_0; 1 drivers
+v00B9A7D8_0 .net "q", 0 0, v00B9C6E8_0; 1 drivers
+v00B9A830_0 .alias "s", 0 0, v005C5D10_0;
+S_005A10A8 .scope begin, "start" "start" 2 23, 2 23, S_00B9C3B8;
+ .timescale 0 0;
+    .scope S_00B9C3B8;
+T_0 ;
+    %fork t_1, S_005A10A8;
+    %jmp t_0;
+    .scope S_005A10A8;
+t_1 ;
+    %set/v v00B9C690_0, 0, 1;
+    %set/v v00B9C6E8_0, 0, 1;
+    %end;
+    .scope S_00B9C3B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00B9C3B8;
+T_1 ;
+    %vpi_call 2 28 "$display", "Exercicio0004 - Jos\377 Ferreira Reis Fonseca  - 405808";
+    %vpi_call 2 29 "$display", "Test OR(NN)3 gate";
+    %vpi_call 2 30 "$display", "\012~((~a | ~b) | ~c) = s\012";
+    %vpi_call 2 31 "$monitor", "~((~%b | ~%b) | ~%b) = %b", v00B9C690_0, v00B9C6E8_0, v005C5CB8_0, v005C5D10_0;
+    %set/v v00B9C690_0, 0, 1;
+    %set/v v00B9C6E8_0, 0, 1;
+    %set/v v005C5CB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 0, 1;
+    %set/v v00B9C6E8_0, 0, 1;
+    %set/v v005C5CB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 0, 1;
+    %set/v v00B9C6E8_0, 1, 1;
+    %set/v v005C5CB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 0, 1;
+    %set/v v00B9C6E8_0, 1, 1;
+    %set/v v005C5CB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 1, 1;
+    %set/v v00B9C6E8_0, 0, 1;
+    %set/v v005C5CB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 1, 1;
+    %set/v v00B9C6E8_0, 0, 1;
+    %set/v v005C5CB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 1, 1;
+    %set/v v00B9C6E8_0, 1, 1;
+    %set/v v005C5CB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9C690_0, 1, 1;
+    %set/v v00B9C6E8_0, 1, 1;
+    %set/v v005C5CB8_0, 1, 1;
+    %delay 1, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\José F. R. Fonseca\Documents\Profissionais\Ativos\PUC\Semestre IV\ACI\Guias\Guia 1\Exercicio4.v";

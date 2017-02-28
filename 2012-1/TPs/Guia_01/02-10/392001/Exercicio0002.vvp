@@ -1,0 +1,57 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0066E740 .scope module, "testnorgate" "testnorgate" 2 18;
+ .timescale 0 0;
+v0066FE78_0 .var "a", 0 0;
+v0066FED0_0 .var "b", 0 0;
+v0066FF28_0 .net "s", 0 0, L_0066E038; 1 drivers
+S_00662CB8 .scope module, "NOR1" "norgate" 2 23, 2 10, S_0066E740;
+ .timescale 0 0;
+L_00662D40 .functor OR 1, v0066FE78_0, v0066FED0_0, C4<0>, C4<0>;
+L_0066E038 .functor NOT 1, L_00662D40, C4<0>, C4<0>, C4<0>;
+v00663128_0 .net *"_s0", 0 0, L_00662D40; 1 drivers
+v00663180_0 .net "a", 0 0, v0066FE78_0; 1 drivers
+v006631D8_0 .net "b", 0 0, v0066FED0_0; 1 drivers
+v00663230_0 .alias "s", 0 0, v0066FF28_0;
+S_00662C30 .scope begin, "start" "start" 2 25, 2 25, S_0066E740;
+ .timescale 0 0;
+    .scope S_0066E740;
+T_0 ;
+    %fork t_1, S_00662C30;
+    %jmp t_0;
+    .scope S_00662C30;
+t_1 ;
+    %set/v v0066FE78_0, 0, 1;
+    %set/v v0066FED0_0, 0, 1;
+    %end;
+    .scope S_0066E740;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0066E740;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exercicio0002 - Flavio Andrade Amaral Motta - 392001";
+    %vpi_call 2 33 "$display", "Test NOR gate";
+    %vpi_call 2 34 "$display", "\012a ~| b = s\012";
+    %set/v v0066FE78_0, 0, 1;
+    %set/v v0066FED0_0, 0, 1;
+    %vpi_call 2 36 "$monitor", "%d %b = %b", v0066FE78_0, v0066FED0_0, v0066FF28_0;
+    %delay 1, 0;
+    %set/v v0066FED0_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0066FED0_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0066FE78_0, 1, 1;
+    %delay 3, 0;
+    %set/v v0066FED0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Marcos\Downloads\Programacao\Programas\Exercicio0002.v";

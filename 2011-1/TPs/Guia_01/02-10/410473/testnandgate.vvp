@@ -1,0 +1,75 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7298 .scope module, "testnandgate" "testnandgate" 2 25;
+ .timescale 0 0;
+v0069DD78_0 .var "a", 0 0;
+v0069DDD0_0 .var "b", 0 0;
+v0069DE28_0 .var "c", 0 0;
+v0069DE80_0 .net "s", 0 0, L_0069DF80; 1 drivers
+S_003E7320 .scope module, "NAND1" "nandgate" 2 29, 2 13, S_003E7298;
+ .timescale 0 0;
+L_003E6710 .functor AND 1, v0069DD78_0, v0069DDD0_0, C4<1>, C4<1>;
+L_0069DED8 .functor AND 1, L_003E6710, v0069DE28_0, C4<1>, C4<1>;
+L_0069DF80 .functor NOT 1, L_0069DED8, C4<0>, C4<0>, C4<0>;
+v003E73A8_0 .net *"_s0", 0 0, L_003E6710; 1 drivers
+v0069DB48_0 .net *"_s2", 0 0, L_0069DED8; 1 drivers
+v0069DBB8_0 .net "p", 0 0, v0069DD78_0; 1 drivers
+v0069DC40_0 .net "q", 0 0, v0069DDD0_0; 1 drivers
+v0069DCB0_0 .net "r", 0 0, v0069DE28_0; 1 drivers
+v0069DD08_0 .alias "s", 0 0, v0069DE80_0;
+    .scope S_003E7298;
+T_0 ;
+    %vpi_call 2 33 "$display", "Guia-01 - Pedro Tronbin - 410473";
+    %vpi_call 2 34 "$display", "Test NAND gate";
+    %vpi_call 2 35 "$display", "\012( ~(a&b&c) ) = s\012";
+    %set/v v0069DD78_0, 0, 1;
+    %set/v v0069DDD0_0, 0, 1;
+    %set/v v0069DE28_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 0, 1;
+    %set/v v0069DDD0_0, 0, 1;
+    %set/v v0069DE28_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 0, 1;
+    %set/v v0069DDD0_0, 1, 1;
+    %set/v v0069DE28_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 0, 1;
+    %set/v v0069DDD0_0, 1, 1;
+    %set/v v0069DE28_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 1, 1;
+    %set/v v0069DDD0_0, 0, 1;
+    %set/v v0069DE28_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 1, 1;
+    %set/v v0069DDD0_0, 0, 1;
+    %set/v v0069DE28_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 1, 1;
+    %set/v v0069DDD0_0, 1, 1;
+    %set/v v0069DE28_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %set/v v0069DD78_0, 1, 1;
+    %set/v v0069DDD0_0, 1, 1;
+    %set/v v0069DE28_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "~( %b & %b & %b ) = %b", v0069DD78_0, v0069DDD0_0, v0069DE28_0, v0069DE80_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\pT\testnandgate.Vv";

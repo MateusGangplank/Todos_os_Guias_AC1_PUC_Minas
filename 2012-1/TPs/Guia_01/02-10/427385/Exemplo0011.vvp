@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0073E3D0 .scope module, "testxorgate" "testxorgate" 2 20;
+ .timescale 0 0;
+v0073EB10_0 .var "a", 0 0;
+v0073EB68_0 .var "b", 0 0;
+v0073EBC0_0 .net "s", 0 0, L_005BFBF8; 1 drivers
+S_00733B40 .scope module, "XOR1" "xorgate" 2 25, 2 12, S_0073E3D0;
+ .timescale 0 0;
+L_0073FFA8 .functor NOT 1, v0073EB10_0, C4<0>, C4<0>, C4<0>;
+L_00732F30 .functor AND 1, L_0073FFA8, v0073EB68_0, C4<1>, C4<1>;
+L_0073EC50 .functor NOT 1, v0073EB68_0, C4<0>, C4<0>, C4<0>;
+L_0073EC88 .functor AND 1, v0073EB10_0, L_0073EC50, C4<1>, C4<1>;
+L_005BFBF8 .functor OR 1, L_00732F30, L_0073EC88, C4<0>, C4<0>;
+v0073E458_0 .net *"_s0", 0 0, L_0073FFA8; 1 drivers
+v0073FEF8_0 .net *"_s2", 0 0, L_00732F30; 1 drivers
+v0073FF50_0 .net *"_s4", 0 0, L_0073EC50; 1 drivers
+v00733BC8_0 .net *"_s6", 0 0, L_0073EC88; 1 drivers
+v00733C20_0 .net "p", 0 0, v0073EB10_0; 1 drivers
+v0073EA60_0 .net "q", 0 0, v0073EB68_0; 1 drivers
+v0073EAB8_0 .alias "s", 0 0, v0073EBC0_0;
+S_00732EA8 .scope begin, "start" "start" 2 27, 2 27, S_0073E3D0;
+ .timescale 0 0;
+S_00732E20 .scope begin, "main" "main" 2 32, 2 32, S_0073E3D0;
+ .timescale 0 0;
+    .scope S_0073E3D0;
+T_0 ;
+    %fork t_1, S_00732EA8;
+    %jmp t_0;
+    .scope S_00732EA8;
+t_1 ;
+    %set/v v0073EB10_0, 0, 1;
+    %set/v v0073EB68_0, 0, 1;
+    %end;
+    .scope S_0073E3D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0073E3D0;
+T_1 ;
+    %fork t_3, S_00732E20;
+    %jmp t_2;
+    .scope S_00732E20;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exemplo0011 - Exercicio0006 - Ana Cristina Pereira Teixeira - 427385";
+    %vpi_call 2 34 "$display", "Test xor gate";
+    %vpi_call 2 35 "$display", "\012 ((~a) & b) | (a & (~b)) = s\012";
+    %vpi_call 2 36 "$monitor", "\011%b \011%b = %b", v0073EB10_0, v0073EB68_0, v0073EBC0_0;
+    %delay 1, 0;
+    %set/v v0073EB10_0, 0, 1;
+    %set/v v0073EB68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073EB10_0, 0, 1;
+    %set/v v0073EB68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0073EB10_0, 1, 1;
+    %set/v v0073EB68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0073EB10_0, 1, 1;
+    %set/v v0073EB68_0, 1, 1;
+    %end;
+    .scope S_0073E3D0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\1-2012\arq\0_guias\guia_01\Exemplo0011.v";

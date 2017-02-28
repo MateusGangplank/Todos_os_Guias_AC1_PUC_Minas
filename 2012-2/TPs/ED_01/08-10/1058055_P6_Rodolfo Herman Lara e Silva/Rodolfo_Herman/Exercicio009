@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008C92D8 .scope module, "testador" "testador" 2 19;
+ .timescale 0 0;
+v008C3258_0 .var "a", 0 0;
+v008CCCF8_0 .var "b", 0 0;
+v008CCD50_0 .var "c", 0 0;
+v008CCDA8_0 .var "d", 0 0;
+v008CCE00_0 .net "s1", 0 0, L_008CCE58; 1 drivers
+v00773010_0 .net "s2", 0 0, L_008CCF00; 1 drivers
+v00773068_0 .net "s3", 0 0, L_008CB620; 1 drivers
+S_008C9470 .scope module, "AND1" "pand" 2 28, 2 10, S_008C92D8;
+ .timescale 0 0;
+L_008CCE58 .functor AND 1, v008C3258_0, v008CCCF8_0, C4<1>, C4<1>;
+v008C3150_0 .net "p", 0 0, v008C3258_0; 1 drivers
+v008C31A8_0 .net "q", 0 0, v008CCCF8_0; 1 drivers
+v008C3200_0 .alias "s", 0 0, v008CCE00_0;
+S_008C93E8 .scope module, "AND2" "pand" 2 29, 2 10, S_008C92D8;
+ .timescale 0 0;
+L_008CCF00 .functor AND 1, v008CCD50_0, v008CCDA8_0, C4<1>, C4<1>;
+v008C2C80_0 .net "p", 0 0, v008CCD50_0; 1 drivers
+v008C2CD8_0 .net "q", 0 0, v008CCDA8_0; 1 drivers
+v008C2D30_0 .alias "s", 0 0, v00773010_0;
+S_008C9360 .scope module, "AND3" "pand" 2 30, 2 10, S_008C92D8;
+ .timescale 0 0;
+L_008CB620 .functor AND 1, L_008CCE58, L_008CCF00, C4<1>, C4<1>;
+v008CB2C0_0 .alias "p", 0 0, v008CCE00_0;
+v008CB318_0 .alias "q", 0 0, v00773010_0;
+v008CB370_0 .alias "s", 0 0, v00773068_0;
+    .scope S_008C92D8;
+T_0 ;
+    %set/v v008C3258_0, 0, 1;
+    %set/v v008CCCF8_0, 0, 1;
+    %set/v v008CCD50_0, 0, 1;
+    %set/v v008CCDA8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_008C92D8;
+T_1 ;
+    %vpi_call 2 45 "$display", "Exercicio 009";
+    %vpi_call 2 46 "$display", "Autor: Rodolfo Herman";
+    %vpi_call 2 47 "$display", "Testar porta AND";
+    %vpi_call 2 48 "$display", "(s1 & s2) = s \012";
+    %vpi_call 2 49 "$monitor", "( %b & %b ) = %b", v008CCE00_0, v00773010_0, v00773068_0;
+    %delay 1, 0;
+    %set/v v008C3258_0, 0, 1;
+    %set/v v008CCCF8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008C3258_0, 1, 1;
+    %set/v v008CCCF8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008C3258_0, 0, 1;
+    %set/v v008CCCF8_0, 0, 1;
+    %set/v v008CCD50_0, 1, 1;
+    %set/v v008CCDA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008C3258_0, 1, 1;
+    %set/v v008CCCF8_0, 1, 1;
+    %set/v v008CCD50_0, 1, 1;
+    %set/v v008CCDA8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio009.v";

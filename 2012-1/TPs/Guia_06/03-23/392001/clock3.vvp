@@ -1,0 +1,39 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00033718 .scope module, "clock3" "clock3" 2 23;
+ .timescale 0 0;
+v0003FED0_0 .net "clk", 0 0, v00039838_0; 1 drivers
+S_000337A0 .scope module, "CLK1" "clock" 2 25, 2 10, S_00033718;
+ .timescale 0 0;
+v00039838_0 .var "clk", 0 0;
+    .scope S_000337A0;
+T_0 ;
+    %set/v v00039838_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_000337A0;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00039838_0, 1;
+    %inv 8, 1;
+    %set/v v00039838_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00033718;
+T_2 ;
+    %vpi_call 2 27 "$display", "Flavio Andrade Amaral Motta";
+    %vpi_call 2 28 "$dumpfile", "clock3.vcd";
+    %vpi_call 2 29 "$dumpvars";
+    %delay 120, 0;
+    %vpi_call 2 30 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Marcos\Downloads\Estudos\AC\Guia06\clock3.v";

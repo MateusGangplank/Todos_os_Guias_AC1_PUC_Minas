@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008E2A80 .scope module, "testxorgate" "testxorgate" 2 16;
+ .timescale 0 0;
+v008E3838_0 .var "a", 0 0;
+v008E3890_0 .var "b", 0 0;
+v008E38E8_0 .net "s", 0 0, L_008EFB08; 1 drivers
+S_008EF1E8 .scope module, "xor1" "xorgate" 2 21, 2 8, S_008E2A80;
+ .timescale 0 0;
+L_008EFFB0 .functor NOT 1, v008E3838_0, C4<0>, C4<0>, C4<0>;
+L_008EF9B8 .functor AND 1, L_008EFFB0, v008E3890_0, C4<1>, C4<1>;
+L_008EFA60 .functor NOT 1, v008E3890_0, C4<0>, C4<0>, C4<0>;
+L_008EFA98 .functor AND 1, v008E3838_0, L_008EFA60, C4<1>, C4<1>;
+L_008EFB08 .functor OR 1, L_008EF9B8, L_008EFA98, C4<0>, C4<0>;
+v008EF270_0 .net *"_s0", 0 0, L_008EFFB0; 1 drivers
+v008EF2C8_0 .net *"_s2", 0 0, L_008EF9B8; 1 drivers
+v008EED60_0 .net *"_s4", 0 0, L_008EFA60; 1 drivers
+v008EEDB8_0 .net *"_s6", 0 0, L_008EFA98; 1 drivers
+v008EEE10_0 .net "p", 0 0, v008E3838_0; 1 drivers
+v008EEE68_0 .net "q", 0 0, v008E3890_0; 1 drivers
+v008E37E0_0 .alias "s", 0 0, v008E38E8_0;
+S_008E2B08 .scope begin, "start" "start" 2 23, 2 23, S_008E2A80;
+ .timescale 0 0;
+    .scope S_008E2A80;
+T_0 ;
+    %fork t_1, S_008E2B08;
+    %jmp t_0;
+    .scope S_008E2B08;
+t_1 ;
+    %set/v v008E3838_0, 0, 1;
+    %set/v v008E3890_0, 0, 1;
+    %end;
+    .scope S_008E2A80;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008E2A80;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0003 - Pedro Henrique Lima Pinheiro - 451605";
+    %vpi_call 2 31 "$display", "Test XOR gate";
+    %vpi_call 2 32 "$display", "\012 ( (~p&q)|(p&~q) ) = s\012";
+    %set/v v008E3838_0, 0, 1;
+    %set/v v008E3890_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v008E3838_0, v008E3890_0, v008E38E8_0;
+    %set/v v008E3838_0, 0, 1;
+    %set/v v008E3890_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v008E3838_0, v008E3890_0, v008E38E8_0;
+    %set/v v008E3838_0, 1, 1;
+    %set/v v008E3890_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v008E3838_0, v008E3890_0, v008E38E8_0;
+    %set/v v008E3838_0, 1, 1;
+    %set/v v008E3890_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v008E3838_0, v008E3890_0, v008E38E8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Pedro Henrique\trabalhos\arquitetura\ED01\Exemplo0011.v";

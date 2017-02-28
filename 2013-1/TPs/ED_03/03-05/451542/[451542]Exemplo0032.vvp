@@ -1,0 +1,77 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00378FC8 .scope module, "testexemplo0032" "testexemplo0032" 2 26;
+ .timescale 0 0;
+v005AB720_0 .var "a", 0 0;
+v005AB778_0 .var "b", 0 0;
+v005AB7D0_0 .var "c", 0 0;
+v005AB828_0 .net "s", 0 0, L_005AC540; 1 drivers
+S_00379050 .scope module, "Q02" "exemplo0032" 2 30, 2 16, S_00378FC8;
+ .timescale 0 0;
+L_00372BC0 .functor AND 1, v005AB720_0, v005AB778_0, C4<1>, C4<1>;
+L_00372CA0 .functor OR 1, v005AB720_0, v005AB778_0, C4<0>, C4<0>;
+v005AB510_0 .net "chave", 0 0, v005AB7D0_0; 1 drivers
+v005AB568_0 .net "p", 0 0, v005AB720_0; 1 drivers
+v005AB5C0_0 .net "q", 0 0, v005AB778_0; 1 drivers
+v005AB618_0 .alias "s", 0 0, v005AB828_0;
+v005AB670_0 .net "temp1", 0 0, L_00372BC0; 1 drivers
+v005AB6C8_0 .net "temp2", 0 0, L_00372CA0; 1 drivers
+S_003790D8 .scope module, "MULT" "multiplexador" 2 22, 2 5, S_00379050;
+ .timescale 0 0;
+L_005AC460 .functor NOT 1, v005AB7D0_0, C4<0>, C4<0>, C4<0>;
+L_005AC498 .functor AND 1, L_00372BC0, L_005AC460, C4<1>, C4<1>;
+L_005AC508 .functor AND 1, L_00372CA0, v005AB7D0_0, C4<1>, C4<1>;
+L_005AC540 .functor OR 1, L_005AC498, L_005AC508, C4<0>, C4<0>;
+v005B05F8_0 .alias "p", 0 0, v005AB670_0;
+v0037CE18_0 .alias "q", 0 0, v005AB6C8_0;
+v0037D498_0 .alias "r", 0 0, v005AB510_0;
+v0037D4F0_0 .alias "s", 0 0, v005AB828_0;
+v0037D548_0 .net "temp1", 0 0, L_005AC498; 1 drivers
+v005AB460_0 .net "temp2", 0 0, L_005AC508; 1 drivers
+v005AB4B8_0 .net "temp3", 0 0, L_005AC460; 1 drivers
+    .scope S_00378FC8;
+T_0 ;
+    %set/v v005AB720_0, 0, 1;
+    %set/v v005AB778_0, 0, 1;
+    %set/v v005AB7D0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$monitor", "%3b %3b %3b = %3b", v005AB720_0, v005AB778_0, v005AB7D0_0, v005AB828_0;
+    %delay 1, 0;
+    %set/v v005AB720_0, 0, 1;
+    %set/v v005AB778_0, 0, 1;
+    %set/v v005AB7D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AB720_0, 0, 1;
+    %set/v v005AB778_0, 1, 1;
+    %set/v v005AB7D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005AB720_0, 0, 1;
+    %set/v v005AB778_0, 1, 1;
+    %set/v v005AB7D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AB720_0, 1, 1;
+    %set/v v005AB778_0, 0, 1;
+    %set/v v005AB7D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005AB720_0, 1, 1;
+    %set/v v005AB778_0, 0, 1;
+    %set/v v005AB7D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AB720_0, 1, 1;
+    %set/v v005AB778_0, 1, 1;
+    %set/v v005AB7D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005AB720_0, 1, 1;
+    %set/v v005AB778_0, 1, 1;
+    %set/v v005AB7D0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Bernardo\Desktop\Arquitetura de Computadores\TP03\[451542]Exemplo0032.v";

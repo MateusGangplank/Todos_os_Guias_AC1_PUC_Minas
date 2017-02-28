@@ -1,0 +1,87 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E3BD0 .scope module, "testandgate" "testandgate" 2 25;
+ .timescale 0 0;
+v002F7138_0 .var "a", 0 0;
+v002F7190_0 .var "b", 0 0;
+v002F71E8_0 .var "c", 0 0;
+v002D3450_0 .net "s", 0 0, L_002D34E0; 1 drivers
+S_003E4618 .scope module, "AND1" "andgate" 2 29, 2 13, S_003E3BD0;
+ .timescale 0 0;
+L_002F7240 .functor AND 1, v002F7138_0, v002F7190_0, C4<1>, C4<1>;
+L_002D34E0 .functor AND 1, L_002F7240, v002F71E8_0, C4<1>, C4<1>;
+v003E46A0_0 .net *"_s0", 0 0, L_002F7240; 1 drivers
+v00317EB8_0 .net "p", 0 0, v002F7138_0; 1 drivers
+v00317F10_0 .net "q", 0 0, v002F7190_0; 1 drivers
+v00317F68_0 .alias "s", 0 0, v002D3450_0;
+v002F70E0_0 .net "v", 0 0, v002F71E8_0; 1 drivers
+S_003E4590 .scope begin, "start" "start" 2 33, 2 33, S_003E3BD0;
+ .timescale 0 0;
+S_003E3C58 .scope begin, "main" "main" 2 38, 2 38, S_003E3BD0;
+ .timescale 0 0;
+    .scope S_003E3BD0;
+T_0 ;
+    %fork t_1, S_003E4590;
+    %jmp t_0;
+    .scope S_003E4590;
+t_1 ;
+    %set/v v002F7138_0, 0, 1;
+    %set/v v002F7190_0, 0, 1;
+    %set/v v002F71E8_0, 0, 1;
+    %end;
+    .scope S_003E3BD0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E3BD0;
+T_1 ;
+    %fork t_3, S_003E3C58;
+    %jmp t_2;
+    .scope S_003E3C58;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exercicio08 -  Milton teles da silva - 002751";
+    %vpi_call 2 40 "$display", "Test AND gate";
+    %vpi_call 2 41 "$display", "\012a & b & c  = s\012";
+    %vpi_call 2 43 "$monitor", "%b %b %b = %b", v002F7138_0, v002F7190_0, v002F71E8_0, v002D3450_0;
+    %delay 1, 0;
+    %set/v v002F7138_0, 0, 1;
+    %set/v v002F7190_0, 0, 1;
+    %set/v v002F71E8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F7138_0, 0, 1;
+    %set/v v002F7190_0, 1, 1;
+    %set/v v002F71E8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F7138_0, 0, 1;
+    %set/v v002F7190_0, 1, 1;
+    %set/v v002F71E8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F7138_0, 1, 1;
+    %set/v v002F7190_0, 0, 1;
+    %set/v v002F71E8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F7138_0, 1, 1;
+    %set/v v002F7190_0, 0, 1;
+    %set/v v002F71E8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F7138_0, 1, 1;
+    %set/v v002F7190_0, 1, 1;
+    %set/v v002F71E8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F7138_0, 1, 1;
+    %set/v v002F7190_0, 1, 1;
+    %set/v v002F71E8_0, 1, 1;
+    %end;
+    .scope S_003E3BD0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\computação 1°semestre 2012\AC I\guia-01 0027541\Nova pasta (2)\Guia01Ex8.v";

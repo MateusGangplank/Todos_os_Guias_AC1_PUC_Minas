@@ -1,0 +1,47 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00631818 .scope module, "test_f4" "test_f4" 2 33;
+ .timescale 0 0;
+v00654468_0 .var "a", 3 0;
+v006544C0_0 .var "x", 3 0;
+v00677810_0 .var "y", 3 0;
+v00677868_0 .net "z", 3 0, L_00633BA8; 1 drivers
+S_006319B0 .scope module, "modulo" "AND_OR" 2 41, 2 10, S_00631818;
+ .timescale 0 0;
+L_0061FE00 .functor OR 4, v006544C0_0, v00677810_0, C4<0000>, C4<0000>;
+L_00654588 .functor AND 4, v006544C0_0, v00677810_0, C4<1111>, C4<1111>;
+L_00633A20 .functor AND 4, L_00654588, v00654468_0, C4<1111>, C4<1111>;
+L_00633AC8 .functor NOT 4, v00654468_0, C4<0000>, C4<0000>, C4<0000>;
+L_00633B00 .functor AND 4, L_0061FE00, L_00633AC8, C4<1111>, C4<1111>;
+L_00633BA8 .functor OR 4, L_00633A20, L_00633B00, C4<0000>, C4<0000>;
+v006314B0_0 .net *"_s6", 3 0, L_00633AC8; 1 drivers
+v006316E0_0 .net "a", 3 0, v006544C0_0; 1 drivers
+v006315C0_0 .net "and1", 3 0, L_00654588; 1 drivers
+v00633E90_0 .net "and2", 3 0, L_00633A20; 1 drivers
+v00633EE8_0 .net "and3", 3 0, L_00633B00; 1 drivers
+v00633F40_0 .net "b", 3 0, v00677810_0; 1 drivers
+v0061FCF8_0 .net "e", 3 0, v00654468_0; 1 drivers
+v0061FD50_0 .net "or1", 3 0, L_0061FE00; 1 drivers
+v0061FDA8_0 .alias "s1", 3 0, v00677868_0;
+    .scope S_00631818;
+T_0 ;
+    %vpi_call 2 46 "$display", "Exemplo0032 - Pedro Ballona - 427455";
+    %vpi_call 2 47 "$display", "Test LU's module";
+    %movi 8, 6, 4;
+    %set/v v006544C0_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v00677810_0, 8, 4;
+    %set/v v00654468_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%3b %3b %3b %3b", v006544C0_0, v00677810_0, v00654468_0, v00677868_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\New Pedro\escola\puc cc\2o period - 2S2011\ARQ1 - Arquitetura de computadores\exercicios\guia3\Exemplo0032.v";

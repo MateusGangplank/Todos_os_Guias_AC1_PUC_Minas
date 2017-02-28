@@ -1,0 +1,66 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009CEBA8 .scope module, "testnorgate" "testnorgate" 2 23;
+ .timescale 0 0;
+v009CEE40_0 .var "a", 0 0;
+v009CEE98_0 .var "b", 0 0;
+v009CEEF0_0 .net "s", 0 0, L_009CEFB8; 1 drivers
+S_009C2BD8 .scope module, "NOR1" "norgate" 2 27, 2 11, S_009CEBA8;
+ .timescale 0 0;
+L_009C2C60 .functor NOT 1, v009CEE40_0, C4<0>, C4<0>, C4<0>;
+L_009CEF48 .functor NOT 1, v009CEE98_0, C4<0>, C4<0>, C4<0>;
+L_009CEFB8 .functor AND 1, L_009C2C60, L_009CEF48, C4<1>, C4<1>;
+v009C3078_0 .net *"_s0", 0 0, L_009C2C60; 1 drivers
+v009C30D0_0 .net *"_s2", 0 0, L_009CEF48; 1 drivers
+v009C3128_0 .net "p", 0 0, v009CEE40_0; 1 drivers
+v009C3180_0 .net "q", 0 0, v009CEE98_0; 1 drivers
+v009CEDE8_0 .alias "s", 0 0, v009CEEF0_0;
+S_009C2B50 .scope begin, "start" "start" 2 29, 2 29, S_009CEBA8;
+ .timescale 0 0;
+    .scope S_009CEBA8;
+T_0 ;
+    %fork t_1, S_009C2B50;
+    %jmp t_0;
+    .scope S_009C2B50;
+t_1 ;
+    %set/v v009CEE40_0, 0, 1;
+    %set/v v009CEE98_0, 0, 1;
+    %vpi_call 2 31 "$display", "Guia01_05 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 32 "$display", "Test NOR gate usando De Morgan";
+    %vpi_call 2 33 "$display", "~(~a|~b)= S";
+    %vpi_call 2 34 "$monitor", "   %b  %b = %b", v009CEE40_0, v009CEE98_0, v009CEEF0_0;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 0, 1;
+    %set/v v009CEE98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 0, 1;
+    %set/v v009CEE98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 0, 1;
+    %set/v v009CEE98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 1, 1;
+    %set/v v009CEE98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 1, 1;
+    %set/v v009CEE98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 1, 1;
+    %set/v v009CEE98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009CEE40_0, 1, 1;
+    %set/v v009CEE98_0, 1, 1;
+    %end;
+    .scope S_009CEBA8;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 01\Guia01_05.v";

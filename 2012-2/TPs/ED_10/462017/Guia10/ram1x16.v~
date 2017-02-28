@@ -1,0 +1,31 @@
+// Breno Macena Pereira de Souza
+// 462017
+
+// -----------------
+// -- RAM 1x16
+// -----------------
+
+`include "ram1x8.v"
+
+module RAM1x16 (output [15:0] out, input [15:0] in, input clk, input rw, input addr, input clear);
+   //wire [7:0] s0, s1;
+
+   RAM1x8 R1 (out[7:0], in[7:0], clk, rw, addr, clear);
+   RAM1x8 R2 (out[15:8], in[15:8], clk, rw, addr, clear);
+   /*buf BUF1 (out[0], s0[0]);
+   buf BUF2 (out[1], s0[1]);
+   buf BUF3 (out[2], s0[2]);
+   buf BUF4 (out[3], s0[3]);
+   buf BUF5 (out[4], s1[0]);
+   buf BUF6 (out[5], s1[1]);
+   buf BUF7 (out[6], s1[2]);
+   buf BUF8 (out[7], s1[3]);
+   buf BUF9 (out[0], s0[0]);
+   buf BUF10 (out[1], s0[1]);
+   buf BUF11 (out[2], s0[2]);
+   buf BUF12 (out[3], s0[3]);
+   buf BUF13 (out[4], s1[0]);
+   buf BUF14 (out[5], s1[1]);
+   buf BUF7 (out[6], s1[2]);
+   buf BUF8 (out[7], s1[3]);*/
+endmodule

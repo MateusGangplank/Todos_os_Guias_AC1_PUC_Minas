@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E82F0 .scope module, "testorgate" "testorgate" 2 21;
+ .timescale 0 0;
+v005FEA18_0 .var "a", 0 0;
+v005FEA70_0 .var "b", 0 0;
+v005FEAC8_0 .var "c", 0 0;
+v005FEB20_0 .net "s", 0 0, L_005FEDE0; 1 drivers
+S_003E8400 .scope module, "OR1" "orgate" 2 26, 2 12, S_003E82F0;
+ .timescale 0 0;
+L_003E6C98 .functor NOT 1, v005FEA18_0, C4<0>, C4<0>, C4<0>;
+L_005FEBB0 .functor NOT 1, v005FEA70_0, C4<0>, C4<0>, C4<0>;
+L_005FEC20 .functor AND 1, L_003E6C98, L_005FEBB0, C4<1>, C4<1>;
+L_005FECC8 .functor NOT 1, v005FEAC8_0, C4<0>, C4<0>, C4<0>;
+L_005FED38 .functor AND 1, L_005FEC20, L_005FECC8, C4<1>, C4<1>;
+L_005FEDE0 .functor NOT 1, L_005FED38, C4<0>, C4<0>, C4<0>;
+v005E1C00_0 .net *"_s0", 0 0, L_003E6C98; 1 drivers
+v005FE640_0 .net *"_s2", 0 0, L_005FEBB0; 1 drivers
+v005FE6B0_0 .net *"_s4", 0 0, L_005FEC20; 1 drivers
+v005FE738_0 .net *"_s6", 0 0, L_005FECC8; 1 drivers
+v005FE7A8_0 .net *"_s8", 0 0, L_005FED38; 1 drivers
+v005FE800_0 .net "o", 0 0, v005FEA18_0; 1 drivers
+v005FE870_0 .net "p", 0 0, v005FEA70_0; 1 drivers
+v005FE908_0 .net "q", 0 0, v005FEAC8_0; 1 drivers
+v005FE978_0 .alias "s", 0 0, v005FEB20_0;
+S_003E8378 .scope begin, "start" "start" 2 28, 2 28, S_003E82F0;
+ .timescale 0 0;
+    .scope S_003E82F0;
+T_0 ;
+    %fork t_1, S_003E8378;
+    %jmp t_0;
+    .scope S_003E8378;
+t_1 ;
+    %set/v v005FEA18_0, 0, 1;
+    %set/v v005FEA70_0, 0, 1;
+    %set/v v005FEAC8_0, 0, 1;
+    %end;
+    .scope S_003E82F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E82F0;
+T_1 ;
+    %vpi_call 2 33 "$display", "Exemplo0010 - Ederson Cristiano - 438964";
+    %vpi_call 2 34 "$display", "Test OR gate";
+    %vpi_call 2 35 "$display", "\012a | b | c = s\012";
+    %set/v v005FEA18_0, 0, 1;
+    %set/v v005FEA70_0, 0, 1;
+    %set/v v005FEAC8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 0, 1;
+    %set/v v005FEA70_0, 0, 1;
+    %set/v v005FEAC8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 0, 1;
+    %set/v v005FEA70_0, 1, 1;
+    %set/v v005FEAC8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 0, 1;
+    %set/v v005FEA70_0, 1, 1;
+    %set/v v005FEAC8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 1, 1;
+    %set/v v005FEA70_0, 0, 1;
+    %set/v v005FEAC8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 1, 1;
+    %set/v v005FEA70_0, 0, 1;
+    %set/v v005FEAC8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 1, 1;
+    %set/v v005FEA70_0, 1, 1;
+    %set/v v005FEAC8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %set/v v005FEA18_0, 1, 1;
+    %set/v v005FEA70_0, 1, 1;
+    %set/v v005FEAC8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "%b | %b | %b = %b", v005FEA18_0, v005FEA70_0, v005FEAC8_0, v005FEB20_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\438964\puc_trabalhos\ARQ.COMP_Trabalho&exercicios\guia01\438964\Exemplo0010.v";

@@ -1,0 +1,83 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEFC0 .scope module, "testenandgate" "testenandgate" 2 26;
+ .timescale 0 0;
+v006A7478_0 .var "a", 0 0;
+v006A74D0_0 .var "b", 0 0;
+v006A7528_0 .var "c", 0 0;
+v006A7580_0 .net "d", 0 0, L_006A76B8; 1 drivers
+S_00677198 .scope module, "NAND1" "nandgate" 2 32, 2 11, S_003EEFC0;
+ .timescale 0 0;
+L_003EF2B0 .functor AND 1, v006A7478_0, v006A74D0_0, C4<1>, C4<1>;
+L_006A7610 .functor AND 1, L_003EF2B0, v006A7528_0, C4<1>, C4<1>;
+L_006A76B8 .functor NOT 1, L_006A7610, C4<0>, C4<0>, C4<0>;
+v00677218_0 .net *"_s0", 0 0, L_003EF2B0; 1 drivers
+v006A7248_0 .net *"_s2", 0 0, L_006A7610; 1 drivers
+v006A72B8_0 .net "a", 0 0, v006A7478_0; 1 drivers
+v006A7340_0 .net "b", 0 0, v006A74D0_0; 1 drivers
+v006A73B0_0 .net "c", 0 0, v006A7528_0; 1 drivers
+v006A7408_0 .alias "d", 0 0, v006A7580_0;
+    .scope S_003EEFC0;
+T_0 ;
+    %vpi_call 2 38 "$display", "\012 Guia 01 - Caio Ragacci Pimentel - 405794";
+    %vpi_call 2 39 "$display", " TESTE - Porta NAND ";
+    %vpi_call 2 40 "$display", "\012 a & b & c = ~d \012";
+    %delay 1, 0;
+    %set/v v006A7478_0, 0, 1;
+    %set/v v006A74D0_0, 0, 1;
+    %set/v v006A7528_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 0, 1;
+    %set/v v006A74D0_0, 0, 1;
+    %set/v v006A7528_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 0, 1;
+    %set/v v006A74D0_0, 1, 1;
+    %set/v v006A7528_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 0, 1;
+    %set/v v006A74D0_0, 1, 1;
+    %set/v v006A7528_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 1, 1;
+    %set/v v006A74D0_0, 0, 1;
+    %set/v v006A7528_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 1, 1;
+    %set/v v006A74D0_0, 1, 1;
+    %set/v v006A7528_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 1, 1;
+    %set/v v006A74D0_0, 0, 1;
+    %set/v v006A7528_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 54 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %delay 1, 0;
+    %set/v v006A7478_0, 1, 1;
+    %set/v v006A74D0_0, 1, 1;
+    %set/v v006A7528_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 56 "$display", "%b & %b & %b = %b", v006A7478_0, v006A74D0_0, v006A7528_0, v006A7580_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_01\NANDGATE.v";

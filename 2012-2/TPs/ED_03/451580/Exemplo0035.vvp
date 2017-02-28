@@ -1,0 +1,79 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00302F90 .scope module, "teste" "teste" 2 31;
+ .timescale 0 0;
+v003F9028_0 .var "a", 3 0;
+v003F9080_0 .var "b", 3 0;
+v003F90D8_0 .net "s1", 3 0, L_003FCC28; 1 drivers
+v003F9130_0 .net "s2", 3 0, L_00303FF0; 1 drivers
+v003F9188_0 .net "s3", 3 0, L_00304098; 1 drivers
+v003F91E0_0 .net "s4", 3 0, L_002FF400; 1 drivers
+v003F9238_0 .net "s5", 3 0, L_002FF470; 1 drivers
+v003F9290_0 .net "s6", 3 0, L_002FF4E0; 1 drivers
+v003F92E8_0 .net "s7", 3 0, L_002FF550; 1 drivers
+v003F9340_0 .net "s8", 3 0, L_002FF5C0; 1 drivers
+S_003030A0 .scope module, "circuito1" "LU" 2 44, 2 12, S_00302F90;
+ .timescale 0 0;
+L_003FCC28 .functor NOT 4, v003F9028_0, C4<0000>, C4<0000>, C4<0000>;
+L_00303FF0 .functor NOT 4, v003F9080_0, C4<0000>, C4<0000>, C4<0000>;
+L_00304098 .functor OR 4, v003F9028_0, v003F9080_0, C4<0000>, C4<0000>;
+L_002FF400 .functor NOR 4, v003F9028_0, v003F9080_0, C4<0000>, C4<0000>;
+L_002FF470 .functor AND 4, v003F9028_0, v003F9080_0, C4<1111>, C4<1111>;
+L_002FF4E0 .functor NAND 4, v003F9028_0, v003F9080_0, C4<1111>, C4<1111>;
+L_002FF550 .functor XOR 4, v003F9028_0, v003F9080_0, C4<0000>, C4<0000>;
+L_002FF5C0 .functor XNOR 4, v003F9028_0, v003F9080_0, C4<0000>, C4<0000>;
+v003F8CB8_0 .net "a", 3 0, v003F9028_0; 1 drivers
+v003F8D10_0 .net "b", 3 0, v003F9080_0; 1 drivers
+v003F8D68_0 .alias "s1", 3 0, v003F90D8_0;
+v003F8DC0_0 .alias "s2", 3 0, v003F9130_0;
+v003F8E18_0 .alias "s3", 3 0, v003F9188_0;
+v003F8E70_0 .alias "s4", 3 0, v003F91E0_0;
+v003F8EC8_0 .alias "s5", 3 0, v003F9238_0;
+v003F8F20_0 .alias "s6", 3 0, v003F9290_0;
+v003F8F78_0 .alias "s7", 3 0, v003F92E8_0;
+v003F8FD0_0 .alias "s8", 3 0, v003F9340_0;
+S_00303018 .scope begin, "start" "start" 2 49, 2 49, S_00302F90;
+ .timescale 0 0;
+    .scope S_00302F90;
+T_0 ;
+    %fork t_1, S_00303018;
+    %jmp t_0;
+    .scope S_00303018;
+t_1 ;
+    %vpi_call 2 57 "$display", "Exemplo0035 - Isabel Bicalho Amaro - 451580\012";
+    %vpi_call 2 58 "$display", "Test LU's module\012";
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v003F9028_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v003F9080_0, 8, 4;
+    %vpi_call 2 63 "$monitor", "a = %4b b = %4b s1 = %4b s2 = %4b s3 = %4b s4 = %4b s5 = %4b s6 = %4b s7 = %4b s8 = %4b", v003F9028_0, v003F9080_0, v003F90D8_0, v003F9130_0, v003F9188_0, v003F91E0_0, v003F9238_0, v003F9290_0, v003F92E8_0, v003F9340_0;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v003F9028_0, 8, 4;
+    %movi 8, 4, 4;
+    %set/v v003F9080_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 6, 4;
+    %set/v v003F9028_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v003F9080_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 12, 4;
+    %set/v v003F9028_0, 8, 4;
+    %movi 8, 8, 4;
+    %set/v v003F9080_0, 8, 4;
+    %end;
+    .scope S_00302F90;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\2º Periodo\Arquitetura de Computadores\Guia02\Exemplo0035.v";

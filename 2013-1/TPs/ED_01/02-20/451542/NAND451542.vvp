@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002FFF50 .scope module, "testnandgate" "testnandgate" 2 12;
+ .timescale 0 0;
+v002F31B8_0 .var "a", 0 0;
+v002FE100_0 .var "b", 0 0;
+v002FE158_0 .net "s", 0 0, L_002FE258; 1 drivers
+S_002F2C48 .scope module, "NAND1" "nandgate" 2 17, 2 6, S_002FFF50;
+ .timescale 0 0;
+L_002FE1B0 .functor AND 1, v002F31B8_0, v002FE100_0, C4<1>, C4<1>;
+L_002FE258 .functor NOT 1, L_002FE1B0, C4<0>, C4<0>, C4<0>;
+v002F2CD0_0 .net *"_s0", 0 0, L_002FE1B0; 1 drivers
+v002F30B0_0 .net "p", 0 0, v002F31B8_0; 1 drivers
+v002F3108_0 .net "q", 0 0, v002FE100_0; 1 drivers
+v002F3160_0 .alias "s", 0 0, v002FE158_0;
+S_002F2BC0 .scope begin, "start" "start" 2 19, 2 19, S_002FFF50;
+ .timescale 0 0;
+    .scope S_002FFF50;
+T_0 ;
+    %fork t_1, S_002F2BC0;
+    %jmp t_0;
+    .scope S_002F2BC0;
+t_1 ;
+    %set/v v002F31B8_0, 0, 1;
+    %set/v v002FE100_0, 0, 1;
+    %end;
+    .scope S_002FFF50;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002FFF50;
+T_1 ;
+    %vpi_call 2 24 "$display", "Exemplo0003 - Bernardo MP Olimpio - 451542";
+    %vpi_call 2 25 "$display", "Test NAND gate";
+    %vpi_call 2 26 "$display", "\012a & b = s\012";
+    %set/v v002F31B8_0, 0, 1;
+    %set/v v002FE100_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 28 "$display", "%b & %b = %b", v002F31B8_0, v002FE100_0, v002FE158_0;
+    %set/v v002F31B8_0, 0, 1;
+    %set/v v002FE100_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 30 "$display", "%b & %b = %b", v002F31B8_0, v002FE100_0, v002FE158_0;
+    %set/v v002F31B8_0, 1, 1;
+    %set/v v002FE100_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "%b & %b = %b", v002F31B8_0, v002FE100_0, v002FE158_0;
+    %set/v v002F31B8_0, 1, 1;
+    %set/v v002FE100_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v002F31B8_0, v002FE100_0, v002FE158_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Bernardo\Desktop\Arquitetura de Computadores\TP1\NAND451542.v";

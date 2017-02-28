@@ -1,0 +1,67 @@
+// ------------------------- 
+// Exemplo0024 - COMPARE MODULE 
+// Nome: Pedro Henrique Vilar Locatelli 
+// Matricula: 427453 
+// ------------------------- 
+// ------------------------- 
+		module comparator (output s0,
+				              input [1:0] w,  
+				              input [1:0] x); 
+		wire s11, s12, s13;
+		wire s21, s22, s23;
+		wire s31, s32, s33;
+		wire s41, s42, s43;
+		wire s51, s52;
+		
+		and (s11, ~w[0], ~w[1]);
+		and (s12, ~x[0], ~x[1]);
+		and (s13, s12, s11);
+		and (s21, w[0], ~w[1]);
+		and (s22, x[0], ~x[1]);
+		and (s23, s22, s21);
+		and (s31, ~w[0], w[1]);
+		and (s32, ~x[0], x[1]);
+		and (s33, s32, s31);
+		and (s41, w[0], w[1]);
+		and (s42, x[0], x[1]);
+		and (s43, s42, s41);
+		or (s51, s13, s23);
+		or (s52, s33, s43);
+		or (s0, s51, s52);
+		 
+		endmodule // comparator 
+		
+	module test_fullAdder; 
+// ------------------------- definir dados 
+		reg [5:0] y; 
+		reg [5:0] z; 
+		wire s1;
+		wire s2;
+		wire s3;
+		wire s12;
+		wire s0f;
+		wire s0ff;
+		
+		comparator hana (s1, y[1:0], z[1:0]);
+		comparator hinagiku (s2, y[3:2], z[3:2]);
+		comparator bakemonohana (s3, y[5:4], z[5:4]);
+		and (s12, s1, s2);
+		and (s0f, s12, s3);
+		not (s0ff, s0f);
+		
+// ------------------------- parte principal 
+	initial begin 
+		$display("Exemplo0024 - Pedro Henrique Vilar Locatelli - 427453"); 
+		$display("Test ALU's compare module"); 
+		
+		// projetar testes do somador complete
+		
+		#1 y = 6'b000001; z = 6'b000001;
+				
+		$monitor("%b comparar por diferença %b = %b", y, z, s0ff ); 
+		
+		#2 y = 6'b000100; z = 6'b000001;
+		#3 y = 6'b010000; z = 6'b000111;
+		
+	end 
+endmodule // test_fullAdder 

@@ -1,0 +1,252 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00639CB8 .scope module, "test_f4" "test_f4" 2 63;
+ .timescale 0 0;
+v006B95D8_0 .var "chaveb0", 0 0;
+v006B9630_0 .var "chaveb1", 0 0;
+v006B9688_0 .var "chaveb2", 0 0;
+v006B96E0_0 .var "x", 0 0;
+v006B9738_0 .var "y", 0 0;
+v006B9790_0 .net "z", 0 0, L_006BA230; 1 drivers
+S_00639E50 .scope module, "modulo" "f4" 2 71, 2 53, S_00639CB8;
+ .timescale 0 0;
+v006B93C8_0 .net "a", 0 0, v006B96E0_0; 1 drivers
+v006B9420_0 .net "b", 0 0, v006B9738_0; 1 drivers
+v006B9478_0 .net "chaveb0", 0 0, v006B95D8_0; 1 drivers
+v006B94D0_0 .net "chaveb1", 0 0, v006B9630_0; 1 drivers
+v006B9528_0 .net "chaveb2", 0 0, v006B9688_0; 1 drivers
+v006B9580_0 .alias "s", 0 0, v006B9790_0;
+S_00639ED8 .scope module, "l1" "lu05" 2 56, 2 11, S_00639E50;
+ .timescale 0 0;
+L_006898C8 .functor NOT 1, v006B96E0_0, C4<0>, C4<0>, C4<0>;
+L_00689900 .functor NOT 1, v006B9738_0, C4<0>, C4<0>, C4<0>;
+L_00689938 .functor OR 1, v006B96E0_0, v006B9738_0, C4<0>, C4<0>;
+L_00689858 .functor NOR 1, v006B96E0_0, v006B9738_0, C4<0>, C4<0>;
+L_00689820 .functor AND 1, v006B96E0_0, v006B9738_0, C4<1>, C4<1>;
+L_00689970 .functor NAND 1, v006B96E0_0, v006B9738_0, C4<1>, C4<1>;
+L_006899A8 .functor XOR 1, v006B96E0_0, v006B9738_0, C4<0>, C4<0>;
+L_006899E0 .functor XNOR 1, v006B96E0_0, v006B9738_0, C4<0>, C4<0>;
+L_00689A18 .functor NOT 1, v006B9688_0, C4<0>, C4<0>, C4<0>;
+L_00689A50 .functor NOT 1, v006B9630_0, C4<0>, C4<0>, C4<0>;
+L_00689A88 .functor NOT 1, v006B95D8_0, C4<0>, C4<0>, C4<0>;
+L_00689AF8 .functor BUF 1, v006B9688_0, C4<0>, C4<0>, C4<0>;
+L_00689AC0 .functor BUF 1, v006B9630_0, C4<0>, C4<0>, C4<0>;
+L_006897E8 .functor BUF 1, v006B95D8_0, C4<0>, C4<0>, C4<0>;
+L_006897B0 .functor AND 1, L_006898C8, L_00689A18, L_00689A50, L_00689A88;
+L_00689BD8 .functor AND 1, L_00689900, L_00689A18, L_00689A50, L_006897E8;
+L_006BA070 .functor AND 1, L_00689938, L_00689A18, L_00689AC0, L_00689A88;
+L_006BA0E0 .functor AND 1, L_00689858, L_00689A18, L_00689AC0, L_006897E8;
+L_006BA150 .functor AND 1, L_00689820, L_00689AF8, L_00689A50, L_00689A88;
+L_00689BA0 .functor AND 1, L_00689970, L_00689AF8, L_00689A50, L_006897E8;
+L_006BA038 .functor AND 1, L_006899A8, L_00689AF8, L_00689AC0, L_00689A88;
+L_00689B30 .functor AND 1, L_006899E0, L_00689AF8, L_00689AC0, L_006897E8;
+L_006BA230/0/0 .functor OR 1, L_006897B0, L_00689BD8, L_006BA070, L_006BA0E0;
+L_006BA230/0/4 .functor OR 1, L_006BA150, L_00689BA0, L_006BA038, L_00689B30;
+L_006BA230 .functor OR 1, L_006BA230/0/0, L_006BA230/0/4, C4<0>, C4<0>;
+v00681A08_0 .alias "a", 0 0, v006B93C8_0;
+v00681A60_0 .alias "b", 0 0, v006B9420_0;
+v00681AB8_0 .net "c0_b", 0 0, L_006897E8; 1 drivers
+v00681B10_0 .net "c0_n", 0 0, L_00689A88; 1 drivers
+v00681B68_0 .net "c1_b", 0 0, L_00689AC0; 1 drivers
+v00681BC0_0 .net "c1_n", 0 0, L_00689A50; 1 drivers
+v00681C18_0 .net "c2_b", 0 0, L_00689AF8; 1 drivers
+v00681C70_0 .net "c2_n", 0 0, L_00689A18; 1 drivers
+v00681CC8_0 .alias "chaveb0", 0 0, v006B9478_0;
+v00681D20_0 .alias "chaveb1", 0 0, v006B94D0_0;
+v00681D78_0 .alias "chaveb2", 0 0, v006B9528_0;
+v00681DD0_0 .net "d0", 0 0, L_006897B0; 1 drivers
+v00681E28_0 .net "d1", 0 0, L_00689BD8; 1 drivers
+v00681E80_0 .net "d2", 0 0, L_006BA070; 1 drivers
+v00681ED8_0 .net "d3", 0 0, L_006BA0E0; 1 drivers
+v00681F30_0 .net "d4", 0 0, L_006BA150; 1 drivers
+v00681F88_0 .net "d5", 0 0, L_00689BA0; 1 drivers
+v006B9000_0 .net "d6", 0 0, L_006BA038; 1 drivers
+v006B9058_0 .net "d7", 0 0, L_00689B30; 1 drivers
+v006B90B0_0 .net "s0", 0 0, L_006898C8; 1 drivers
+v006B9108_0 .net "s1", 0 0, L_00689900; 1 drivers
+v006B9160_0 .net "s2", 0 0, L_00689938; 1 drivers
+v006B91B8_0 .net "s3", 0 0, L_00689858; 1 drivers
+v006B9210_0 .net "s4", 0 0, L_00689820; 1 drivers
+v006B9268_0 .net "s5", 0 0, L_00689970; 1 drivers
+v006B92C0_0 .net "s6", 0 0, L_006899A8; 1 drivers
+v006B9318_0 .net "s7", 0 0, L_006899E0; 1 drivers
+v006B9370_0 .alias "saida", 0 0, v006B9790_0;
+S_00639DC8 .scope begin, "start" "start" 2 74, 2 74, S_00639CB8;
+ .timescale 0 0;
+S_00639D40 .scope begin, "main" "main" 2 82, 2 82, S_00639CB8;
+ .timescale 0 0;
+    .scope S_00639CB8;
+T_0 ;
+    %fork t_1, S_00639DC8;
+    %jmp t_0;
+    .scope S_00639DC8;
+t_1 ;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 0, 1;
+    %set/v v006B9630_0, 0, 1;
+    %set/v v006B95D8_0, 0, 1;
+    %end;
+    .scope S_00639CB8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00639CB8;
+T_1 ;
+    %fork t_3, S_00639D40;
+    %jmp t_2;
+    .scope S_00639D40;
+t_3 ;
+    %vpi_call 2 83 "$display", "Exemplo0035 - Josemar Alves Caetano - 448662";
+    %vpi_call 2 84 "$display", "Test LU's module";
+    %delay 1, 0;
+    %vpi_call 2 88 "$display", "\012Teste de opera\347\365es:\012";
+    %vpi_call 2 89 "$display", "NOT(a):\012";
+    %vpi_call 2 90 "$display", "~%b = %b", v006B96E0_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 93 "$display", "~%b = %b", v006B96E0_0, v006B9790_0;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 0, 1;
+    %set/v v006B9630_0, 0, 1;
+    %set/v v006B95D8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 99 "$display", "NOT(b):\012";
+    %vpi_call 2 100 "$display", "~%b = %b", v006B9738_0, v006B9790_0;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 103 "$display", "~%b = %b", v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 0, 1;
+    %set/v v006B9630_0, 1, 1;
+    %set/v v006B95D8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 109 "$display", "OR:\012";
+    %vpi_call 2 110 "$display", "%b | %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 113 "$display", "%b | %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 116 "$display", "%b | %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 119 "$display", "%b | %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 0, 1;
+    %set/v v006B9630_0, 1, 1;
+    %set/v v006B95D8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 125 "$display", "\012NOR:\012";
+    %vpi_call 2 126 "$display", "~%b & ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 129 "$display", "~%b & ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 132 "$display", "~%b & ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 135 "$display", "~%b & ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 1, 1;
+    %set/v v006B9630_0, 0, 1;
+    %set/v v006B95D8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 141 "$display", "AND:\012";
+    %vpi_call 2 142 "$display", "%b & %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 145 "$display", "%b & %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 148 "$display", "%b & %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 151 "$display", "%b & %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 1, 1;
+    %set/v v006B9630_0, 0, 1;
+    %set/v v006B95D8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 157 "$display", "\012NAND:\012";
+    %vpi_call 2 158 "$display", "~%b | ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 161 "$display", "~%b | ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 164 "$display", "~%b | ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 167 "$display", "~%b | ~%b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 1, 1;
+    %set/v v006B9630_0, 1, 1;
+    %set/v v006B95D8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 173 "$display", "\012XOR:\012";
+    %vpi_call 2 174 "$display", "%b ^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 177 "$display", "%b ^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 180 "$display", "%b ^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 183 "$display", "%b ^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 0, 1;
+    %set/v v006B9688_0, 1, 1;
+    %set/v v006B9630_0, 1, 1;
+    %set/v v006B95D8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 189 "$display", "\012XNOR:\012";
+    %vpi_call 2 190 "$display", "%b ~^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 0, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 193 "$display", "%b ~^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 196 "$display", "%b ~^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %set/v v006B96E0_0, 1, 1;
+    %set/v v006B9738_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 199 "$display", "%b ~^ %b = %b", v006B96E0_0, v006B9738_0, v006B9790_0;
+    %end;
+    .scope S_00639CB8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0035.v";

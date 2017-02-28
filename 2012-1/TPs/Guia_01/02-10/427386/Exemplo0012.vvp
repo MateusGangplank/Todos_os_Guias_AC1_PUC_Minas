@@ -1,0 +1,93 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0066FEC0 .scope module, "testxnorgate" "testxnorgate" 2 20;
+ .timescale 0 0;
+v0066F5D0_0 .var "a", 0 3;
+v0066F628_0 .var "b", 0 3;
+v0066F680_0 .net "s", 0 3, L_005C1010; 1 drivers
+S_006642C8 .scope module, "XNOR1" "xnorgate" 2 25, 2 11, S_0066FEC0;
+ .timescale 0 0;
+L_00664350 .functor AND 4, v0066F5D0_0, v0066F628_0, C4<1111>, C4<1111>;
+L_0066C868 .functor NOT 4, v0066F5D0_0, C4<0000>, C4<0000>, C4<0000>;
+L_0066C8A0 .functor NOT 4, v0066F628_0, C4<0000>, C4<0000>, C4<0000>;
+L_0066C8D8 .functor AND 4, L_0066C868, L_0066C8A0, C4<1111>, C4<1111>;
+L_005C1010 .functor OR 4, L_00664350, L_0066C8D8, C4<0000>, C4<0000>;
+v00662C20_0 .net *"_s0", 3 0, L_00664350; 1 drivers
+v00662C78_0 .net *"_s2", 3 0, L_0066C868; 1 drivers
+v00662CD0_0 .net *"_s4", 3 0, L_0066C8A0; 1 drivers
+v00662D28_0 .net *"_s6", 3 0, L_0066C8D8; 1 drivers
+v0066F4C8_0 .net "p", 0 3, v0066F5D0_0; 1 drivers
+v0066F520_0 .net "q", 0 3, v0066F628_0; 1 drivers
+v0066F578_0 .alias "s", 0 3, v0066F680_0;
+S_00664240 .scope begin, "start" "start" 2 27, 2 27, S_0066FEC0;
+ .timescale 0 0;
+S_0066FF48 .scope begin, "main" "main" 2 33, 2 33, S_0066FEC0;
+ .timescale 0 0;
+    .scope S_0066FEC0;
+T_0 ;
+    %fork t_1, S_00664240;
+    %jmp t_0;
+    .scope S_00664240;
+t_1 ;
+    %movi 8, 3, 4;
+    %set/v v0066F5D0_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0066F628_0, 8, 4;
+    %end;
+    .scope S_0066FEC0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0066FEC0;
+T_1 ;
+    %fork t_3, S_0066FF48;
+    %jmp t_2;
+    .scope S_0066FF48;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exemplo0012 - Andre Henriques Fernandes - 427386";
+    %vpi_call 2 35 "$display", "Test xnor gate";
+    %vpi_call 2 36 "$display", "\012 ~(a   &   b)  =   s\012";
+    %vpi_call 2 37 "$monitor", "~(%b & %b) = %b", v0066F5D0_0, v0066F628_0, v0066F680_0;
+    %delay 1, 0;
+    %set/v v0066F5D0_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v0066F628_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v0066F5D0_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0066F628_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 4, 4;
+    %set/v v0066F5D0_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0066F628_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 6, 4;
+    %set/v v0066F5D0_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v0066F628_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 8, 4;
+    %set/v v0066F5D0_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v0066F628_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v0066F5D0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v0066F628_0, 8, 4;
+    %end;
+    .scope S_0066FEC0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\André\Desktop\coisas\AC\Exemplo0012.v";

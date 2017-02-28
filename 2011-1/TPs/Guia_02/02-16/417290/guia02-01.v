@@ -1,0 +1,70 @@
+ // -------------------------------
+// Guia 02_01 - OR
+// Nome: Ludmily Caldeira da Silva
+// Matricula: 417290
+// --------------------------------
+
+// -------------------------------
+// -- OR gate feita de NANDs
+// -------------------------------
+
+module Orgate (s, p, q);
+ 
+output s;
+input  p, q;
+wire temp1, temp2;
+
+nand NAND1 (temp1, p);
+nand NAND2 (temp2, q);
+                                   // PODE USAR OUTRA NAND
+ assign s = ~(temp1 & temp2);
+
+endmodule // ORgate
+
+// ---------------------
+// -- test O gate
+// ---------------------
+
+module testORgate;
+
+ reg   a, b;
+ wire  s;
+ 
+// instancia
+
+Orgate OR1 (s, a, b);
+
+// parte principal
+
+ initial begin
+      $display("\nguia02_01 - Ludmily Caldeira da Silva - 417290\n");
+      $display("Test OR gate feita de NANDs\n");
+      $display("\na | b = s\n");
+      $monitor("%b | %b = %b", a, b, s);
+  
+	     a=0; b=0;
+    #1  a=0; b=1; 
+    #1  a=1; b=0;
+    #1  a=1; b=1; 
+  
+    end
+ 
+endmodule // testOrgate
+
+/* Resultados obtidos
+
+    guia02_01 - Ludmily Caldeira da Silva - 417290
+    
+	 Test OR gate feita de NANDs
+    
+    
+    a | b = s
+    
+    0 | 0 = 0
+    0 | 1 = 1
+    1 | 0 = 1
+    1 | 1 = 1
+
+
+*/
+

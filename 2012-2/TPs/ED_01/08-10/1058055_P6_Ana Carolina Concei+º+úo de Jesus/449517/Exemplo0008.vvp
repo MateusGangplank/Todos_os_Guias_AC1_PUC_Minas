@@ -1,0 +1,59 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0037DEA0 .scope module, "testxnorgate" "testxnorgate" 2 18;
+ .timescale 0 0;
+v003734F8_0 .var "a", 0 0;
+v0037E808_0 .var "b", 0 0;
+v0037E860_0 .net "s", 0 0, L_0037E928; 1 drivers
+S_00372FD0 .scope module, "XNOR1" "xnorgate" 2 24, 2 8, S_0037DEA0;
+ .timescale 0 0;
+L_00373058 .functor XOR 1, v003734F8_0, v0037E808_0, C4<0>, C4<0>;
+L_0037E928 .functor NOT 1, L_00373058, C4<0>, C4<0>, C4<0>;
+v0037DF28_0 .net *"_s0", 0 0, L_00373058; 1 drivers
+v003733F0_0 .net "a", 0 0, v003734F8_0; 1 drivers
+v00373448_0 .net "b", 0 0, v0037E808_0; 1 drivers
+v003734A0_0 .alias "s", 0 0, v0037E860_0;
+S_00372F48 .scope begin, "start" "start" 2 26, 2 26, S_0037DEA0;
+ .timescale 0 0;
+    .scope S_0037DEA0;
+T_0 ;
+    %fork t_1, S_00372F48;
+    %jmp t_0;
+    .scope S_00372F48;
+t_1 ;
+    %set/v v003734F8_0, 0, 1;
+    %set/v v0037E808_0, 0, 1;
+    %end;
+    .scope S_0037DEA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0037DEA0;
+T_1 ;
+    %vpi_call 2 34 "$display", "Exemplo0008 - Ana Carolina - 449517 ";
+    %vpi_call 2 35 "$display", "Test XNOR gate";
+    %vpi_call 2 36 "$display", "\012 ~(a^b) = s \012";
+    %vpi_call 2 37 "$monitor", " ~(%b ^ %b) = %b", v003734F8_0, v0037E808_0, v0037E860_0;
+    %delay 1, 0;
+    %set/v v003734F8_0, 0, 1;
+    %set/v v0037E808_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003734F8_0, 0, 1;
+    %set/v v0037E808_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003734F8_0, 1, 1;
+    %set/v v0037E808_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003734F8_0, 1, 1;
+    %set/v v0037E808_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0008.v";

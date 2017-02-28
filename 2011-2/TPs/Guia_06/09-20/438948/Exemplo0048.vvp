@@ -1,0 +1,58 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00643578 .scope module, "Exemplo0046" "Exemplo0046" 2 29;
+ .timescale 0 0;
+v006448F8_0 .net "clk", 0 0, v006448A0_0; 1 drivers
+v00660908_0 .net "p", 0 0, v00642BC0_0; 1 drivers
+S_00644818 .scope module, "CLK1" "clock" 2 32, 3 6, S_00643578;
+ .timescale 0 0;
+v006448A0_0 .var "clk", 0 0;
+S_00642AE0 .scope module, "pls1" "pulse" 2 36, 2 11, S_00643578;
+ .timescale 0 0;
+v00642B68_0 .alias "clock", 0 0, v006448F8_0;
+v00642BC0_0 .var "signal", 0 0;
+E_0064F970 .event edge, v00642B68_0;
+    .scope S_00644818;
+T_0 ;
+    %set/v v006448A0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00644818;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v006448A0_0, 1;
+    %inv 8, 1;
+    %set/v v006448A0_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00642AE0;
+T_2 ;
+    %wait E_0064F970;
+    %set/v v00642BC0_0, 0, 1;
+    %delay 3, 0;
+    %set/v v00642BC0_0, 1, 1;
+    %delay 3, 0;
+    %set/v v00642BC0_0, 0, 1;
+    %delay 3, 0;
+    %set/v v00642BC0_0, 1, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_00643578;
+T_3 ;
+    %vpi_call 2 41 "$display", "Exemplo0048 - Pulse synchronized with clock\012Nome: Tiago Moreira\012Matricula: 438948";
+    %vpi_call 2 42 "$dumpfile", "Exemplo0048.vcd";
+    %vpi_call 2 43 "$dumpvars", 2'sb01, v006448F8_0, v00660908_0;
+    %delay 120, 0;
+    %vpi_call 2 45 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "F:\2_periodo\arquitetura_I\para_entregar\guia06\Exemplo0048.v";
+    "./Clock.v";

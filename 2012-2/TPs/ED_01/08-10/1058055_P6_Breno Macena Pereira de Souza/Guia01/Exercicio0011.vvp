@@ -1,0 +1,135 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003CA870 .scope module, "testorgate" "testorgate" 2 17;
+ .timescale 0 0;
+v01E48728_0 .var "a", 0 0;
+v01E48780_0 .var "b", 0 0;
+v01E487D8_0 .var "c", 0 0;
+v01E48830_0 .var "d", 0 0;
+v01E48888_0 .var "e", 0 0;
+v01E488E0_0 .var "f", 0 0;
+v01E48938_0 .var "g", 0 0;
+v01E48990_0 .var "h", 0 0;
+v01E489E8_0 .net "s", 0 0, L_01E49530; 1 drivers
+S_003CAA08 .scope module, "EXTRA1" "extragates" 2 22, 2 10, S_003CA870;
+ .timescale 0 0;
+L_003C4E88 .functor NOT 1, v01E48728_0, C4<0>, C4<0>, C4<0>;
+L_003C30A8 .functor NOT 1, v01E48780_0, C4<0>, C4<0>, C4<0>;
+L_003C3118 .functor AND 1, L_003C4E88, L_003C30A8, C4<1>, C4<1>;
+L_003C31C0 .functor NOT 1, v01E48830_0, C4<0>, C4<0>, C4<0>;
+L_003CD828 .functor NOT 1, v01E487D8_0, C4<0>, C4<0>, C4<0>;
+L_01E49028 .functor OR 1, L_003C31C0, L_003CD828, C4<0>, C4<0>;
+L_01E490D0 .functor AND 1, L_003C3118, L_01E49028, C4<1>, C4<1>;
+L_01E49178 .functor NOT 1, v01E48888_0, C4<0>, C4<0>, C4<0>;
+L_01E491E8 .functor AND 1, L_01E490D0, L_01E49178, C4<1>, C4<1>;
+L_01E49290 .functor NOT 1, v01E488E0_0, C4<0>, C4<0>, C4<0>;
+L_01E49300 .functor AND 1, L_01E491E8, L_01E49290, C4<1>, C4<1>;
+L_01E493E0 .functor NOT 1, v01E48990_0, C4<0>, C4<0>, C4<0>;
+L_01E493A8 .functor NOT 1, v01E48938_0, C4<0>, C4<0>, C4<0>;
+L_01E49450 .functor OR 1, L_01E493E0, L_01E493A8, C4<0>, C4<0>;
+L_01E49530 .functor AND 1, L_01E49300, L_01E49450, C4<1>, C4<1>;
+v003C4D70_0 .net *"_s0", 0 0, L_003C4E88; 1 drivers
+v003C4DC8_0 .net *"_s10", 0 0, L_01E49028; 1 drivers
+v01E47FF0_0 .net *"_s12", 0 0, L_01E490D0; 1 drivers
+v01E48048_0 .net *"_s14", 0 0, L_01E49178; 1 drivers
+v01E480A0_0 .net *"_s16", 0 0, L_01E491E8; 1 drivers
+v01E480F8_0 .net *"_s18", 0 0, L_01E49290; 1 drivers
+v01E48150_0 .net *"_s2", 0 0, L_003C30A8; 1 drivers
+v01E481A8_0 .net *"_s20", 0 0, L_01E49300; 1 drivers
+v01E48200_0 .net *"_s22", 0 0, L_01E493E0; 1 drivers
+v01E48258_0 .net *"_s24", 0 0, L_01E493A8; 1 drivers
+v01E482B0_0 .net *"_s26", 0 0, L_01E49450; 1 drivers
+v01E48308_0 .net *"_s4", 0 0, L_003C3118; 1 drivers
+v01E48360_0 .net *"_s6", 0 0, L_003C31C0; 1 drivers
+v01E483B8_0 .net *"_s8", 0 0, L_003CD828; 1 drivers
+v01E48410_0 .net "a", 0 0, v01E48728_0; 1 drivers
+v01E48468_0 .net "b", 0 0, v01E48780_0; 1 drivers
+v01E484C0_0 .net "c", 0 0, v01E487D8_0; 1 drivers
+v01E48518_0 .net "d", 0 0, v01E48830_0; 1 drivers
+v01E48570_0 .net "e", 0 0, v01E48888_0; 1 drivers
+v01E485C8_0 .net "f", 0 0, v01E488E0_0; 1 drivers
+v01E48620_0 .net "g", 0 0, v01E48938_0; 1 drivers
+v01E48678_0 .net "h", 0 0, v01E48990_0; 1 drivers
+v01E486D0_0 .alias "s", 0 0, v01E489E8_0;
+S_003CA980 .scope begin, "start" "start" 2 25, 2 25, S_003CA870;
+ .timescale 0 0;
+S_003CA8F8 .scope begin, "main" "main" 2 30, 2 30, S_003CA870;
+ .timescale 0 0;
+    .scope S_003CA870;
+T_0 ;
+    %fork t_1, S_003CA980;
+    %jmp t_0;
+    .scope S_003CA980;
+t_1 ;
+    %set/v v01E48728_0, 0, 1;
+    %set/v v01E48780_0, 0, 1;
+    %set/v v01E487D8_0, 0, 1;
+    %set/v v01E48830_0, 0, 1;
+    %set/v v01E48888_0, 0, 1;
+    %set/v v01E488E0_0, 0, 1;
+    %set/v v01E48938_0, 0, 1;
+    %set/v v01E48990_0, 0, 1;
+    %end;
+    .scope S_003CA870;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003CA870;
+T_1 ;
+    %fork t_3, S_003CA8F8;
+    %jmp t_2;
+    .scope S_003CA8F8;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exerc\355cio 0011 - Breno Macena - 462017";
+    %vpi_call 2 32 "$display", "Test combination of ports:";
+    %vpi_call 2 34 "$monitor", "%b%b%b%b%b%b%b%b = %b", v01E48728_0, v01E48780_0, v01E487D8_0, v01E48830_0, v01E48888_0, v01E488E0_0, v01E48938_0, v01E48990_0, v01E489E8_0;
+    %delay 1, 0;
+    %set/v v01E48728_0, 0, 1;
+    %set/v v01E48780_0, 0, 1;
+    %set/v v01E487D8_0, 0, 1;
+    %set/v v01E48830_0, 0, 1;
+    %set/v v01E48888_0, 0, 1;
+    %set/v v01E488E0_0, 0, 1;
+    %set/v v01E48938_0, 0, 1;
+    %set/v v01E48990_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01E48728_0, 0, 1;
+    %set/v v01E48780_0, 1, 1;
+    %set/v v01E487D8_0, 0, 1;
+    %set/v v01E48830_0, 1, 1;
+    %set/v v01E48888_0, 0, 1;
+    %set/v v01E488E0_0, 1, 1;
+    %set/v v01E48938_0, 0, 1;
+    %set/v v01E48990_0, 1, 1;
+    %delay 1, 0;
+    %set/v v01E48728_0, 1, 1;
+    %set/v v01E48780_0, 0, 1;
+    %set/v v01E487D8_0, 1, 1;
+    %set/v v01E48830_0, 0, 1;
+    %set/v v01E48888_0, 1, 1;
+    %set/v v01E488E0_0, 0, 1;
+    %set/v v01E48938_0, 1, 1;
+    %set/v v01E48990_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01E48728_0, 1, 1;
+    %set/v v01E48780_0, 1, 1;
+    %set/v v01E487D8_0, 1, 1;
+    %set/v v01E48830_0, 1, 1;
+    %set/v v01E48888_0, 1, 1;
+    %set/v v01E488E0_0, 1, 1;
+    %set/v v01E48938_0, 1, 1;
+    %set/v v01E48990_0, 1, 1;
+    %end;
+    .scope S_003CA870;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio0011.v";

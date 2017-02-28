@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00906DD0 .scope module, "testxnorgate" "testxnorgate" 2 18;
+ .timescale 0 0;
+v00941300_0 .var "a", 0 0;
+v00941358_0 .var "b", 0 0;
+v009413B0_0 .net "s", 0 0, L_0090F550; 1 drivers
+S_00906EE0 .scope module, "XNOR1" "xnorgate" 2 23, 2 10, S_00906DD0;
+ .timescale 0 0;
+L_0090E710 .functor XOR 1, v00941300_0, v00941358_0, C4<0>, C4<0>;
+L_0090F550 .functor NOT 1, L_0090E710, C4<0>, C4<0>, C4<0>;
+v00940DF0_0 .net *"_s0", 0 0, L_0090E710; 1 drivers
+v00940E48_0 .net "p", 0 0, v00941300_0; 1 drivers
+v00940EA0_0 .net "q", 0 0, v00941358_0; 1 drivers
+v00940EF8_0 .alias "s", 0 0, v009413B0_0;
+S_00906E58 .scope begin, "star" "star" 2 25, 2 25, S_00906DD0;
+ .timescale 0 0;
+    .scope S_00906DD0;
+T_0 ;
+    %fork t_1, S_00906E58;
+    %jmp t_0;
+    .scope S_00906E58;
+t_1 ;
+    %set/v v00941300_0, 0, 1;
+    %set/v v00941358_0, 0, 1;
+    %end;
+    .scope S_00906DD0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00906DD0;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exerc\355cio 03 - Jo\343o Henrique M. de Oliveira - 392734";
+    %vpi_call 2 31 "$display", "Test XNOR gate";
+    %vpi_call 2 32 "$display", "\012 ~(a ^ b) = s\012";
+    %set/v v00941300_0, 0, 1;
+    %set/v v00941358_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v00941300_0, v00941358_0, v009413B0_0;
+    %set/v v00941300_0, 0, 1;
+    %set/v v00941358_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v00941300_0, v00941358_0, v009413B0_0;
+    %set/v v00941300_0, 1, 1;
+    %set/v v00941358_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00941300_0, v00941358_0, v009413B0_0;
+    %set/v v00941300_0, 1, 1;
+    %set/v v00941358_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00941300_0, v00941358_0, v009413B0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\João\Desktop\PUC\AC_1\TPs\Guia 01\Exercicio03.v";

@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00372FE8 .scope module, "testnorgate" "testnorgate" 2 16;
+ .timescale 0 0;
+v0037F020_0 .var "a", 0 0;
+v0037F078_0 .var "b", 0 0;
+v0037F0D0_0 .net "s", 0 0, L_0037D620; 1 drivers
+S_00373518 .scope module, "NOR1" "norgate" 2 21, 2 9, S_00372FE8;
+ .timescale 0 0;
+L_0037FFA8 .functor NOT 1, v0037F020_0, C4<0>, C4<0>, C4<0>;
+L_0037D5B0 .functor NOT 1, v0037F078_0, C4<0>, C4<0>, C4<0>;
+L_0037D620 .functor AND 1, L_0037FFA8, L_0037D5B0, C4<1>, C4<1>;
+v003730F8_0 .net *"_s0", 0 0, L_0037FFA8; 1 drivers
+v003735A0_0 .net *"_s2", 0 0, L_0037D5B0; 1 drivers
+v003735F8_0 .net "a", 0 0, v0037F020_0; 1 drivers
+v0037EF70_0 .net "b", 0 0, v0037F078_0; 1 drivers
+v0037EFC8_0 .alias "s", 0 0, v0037F0D0_0;
+S_00373070 .scope begin, "start" "start" 2 23, 2 23, S_00372FE8;
+ .timescale 0 0;
+    .scope S_00372FE8;
+T_0 ;
+    %fork t_1, S_00373070;
+    %jmp t_0;
+    .scope S_00373070;
+t_1 ;
+    %set/v v0037F020_0, 0, 1;
+    %set/v v0037F078_0, 0, 1;
+    %end;
+    .scope S_00372FE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00372FE8;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0010 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 31 "$display", "Test NOR gate de morgan";
+    %vpi_call 2 32 "$display", "\012~a & ~b = s\012";
+    %set/v v0037F020_0, 0, 1;
+    %set/v v0037F078_0, 0, 1;
+    %vpi_call 2 35 "$monitor", "~%b & ~%b = %b", v0037F020_0, v0037F078_0, v0037F0D0_0;
+    %delay 1, 0;
+    %set/v v0037F020_0, 0, 1;
+    %set/v v0037F078_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037F020_0, 1, 1;
+    %set/v v0037F078_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037F020_0, 1, 1;
+    %set/v v0037F078_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc 2 periodo\Arquitetura 1\Exercicios\Guia 01\Exemplo0010.v";

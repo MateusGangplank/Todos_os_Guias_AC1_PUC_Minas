@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00372DE0 .scope module, "testnandgate" "testnandgate" 2 20;
+ .timescale 0 0;
+v0037FE40_0 .var "a", 0 0;
+v0037FE98_0 .var "b", 0 0;
+v0037FEF0_0 .net "s", 0 0, L_0037C7E8; 1 drivers
+S_00373320 .scope module, "NAND1" "nandgate" 2 25, 2 12, S_00372DE0;
+ .timescale 0 0;
+L_0037E460 .functor NOT 1, v0037FE40_0, C4<0>, C4<0>, C4<0>;
+L_0037FF48 .functor NOT 1, v0037FE98_0, C4<0>, C4<0>, C4<0>;
+L_0037C7E8 .functor OR 1, L_0037E460, L_0037FF48, C4<0>, C4<0>;
+v003733A8_0 .net *"_s0", 0 0, L_0037E460; 1 drivers
+v0037E300_0 .net *"_s2", 0 0, L_0037FF48; 1 drivers
+v0037E358_0 .net "p", 0 0, v0037FE40_0; 1 drivers
+v0037E3B0_0 .net "q", 0 0, v0037FE98_0; 1 drivers
+v0037E408_0 .alias "s", 0 0, v0037FEF0_0;
+S_00373298 .scope begin, "start" "start" 2 27, 2 27, S_00372DE0;
+ .timescale 0 0;
+S_00372E68 .scope begin, "main" "main" 2 33, 2 33, S_00372DE0;
+ .timescale 0 0;
+    .scope S_00372DE0;
+T_0 ;
+    %fork t_1, S_00373298;
+    %jmp t_0;
+    .scope S_00373298;
+t_1 ;
+    %set/v v0037FE40_0, 0, 1;
+    %set/v v0037FE98_0, 0, 1;
+    %end;
+    .scope S_00372DE0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00372DE0;
+T_1 ;
+    %fork t_3, S_00372E68;
+    %jmp t_2;
+    .scope S_00372E68;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exercicio04-Filipe Santos-451555";
+    %vpi_call 2 35 "$display", "Test NAND gate";
+    %vpi_call 2 36 "$display", "\012~(a&b)=s\012";
+    %vpi_call 2 37 "$monitor", "%b ~& %b = %b", v0037FE40_0, v0037FE98_0, v0037FEF0_0;
+    %delay 1, 0;
+    %set/v v0037FE40_0, 0, 1;
+    %set/v v0037FE98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037FE40_0, 0, 1;
+    %set/v v0037FE98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0037FE40_0, 1, 1;
+    %set/v v0037FE98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0037FE40_0, 1, 1;
+    %set/v v0037FE98_0, 1, 1;
+    %end;
+    .scope S_00372DE0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Desktop\Filipe\CC Puc\Segundo Período\AC\Guia01\Exercicio04.V";

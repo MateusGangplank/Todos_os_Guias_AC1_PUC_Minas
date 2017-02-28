@@ -1,0 +1,33 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00369848 .scope module, "testandogate" "testandogate" 2 23;
+ .timescale 0 0;
+v00362AD0_0 .var "q", 0 0;
+v00362B28_0 .net "s", 0 0, L_00362BF0; 1 drivers
+S_00362F38 .scope module, "NOT1" "notgate" 2 29, 2 11, S_00369848;
+ .timescale 0 0;
+L_00362B80 .functor AND 1, v00362AD0_0, v00362AD0_0, C4<1>, C4<1>;
+L_00362BF0 .functor NOT 1, L_00362B80, C4<0>, C4<0>, C4<0>;
+v003698D0_0 .net *"_s0", 0 0, L_00362B80; 1 drivers
+v00362FC0_0 .net "p", 0 0, v00362AD0_0; 1 drivers
+v00363018_0 .alias "s", 0 0, v00362B28_0;
+    .scope S_00369848;
+T_0 ;
+    %vpi_call 2 34 "$display", "Guia_02_3 - Jessica Luisa Betonico Andrade - 412748";
+    %vpi_call 2 35 "$display", "Test NOT gate construida por NAND";
+    %vpi_call 2 36 "$display", "\012 ~q = s \012";
+    %vpi_call 2 37 "$monitor", "~%b = %b", v00362AD0_0, v00362B28_0;
+    %set/v v00362AD0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00362AD0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\trabalhos\ARQUITETURA DE COMPUTADORES\GUIA 02\guia02_3.v";

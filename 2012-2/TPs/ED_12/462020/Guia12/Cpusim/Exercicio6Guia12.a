@@ -1,0 +1,36 @@
+; Aluno : Willian Antonio dos Santos - 462020
+	load 	 dado01
+	MAIOR 	 dado02
+	store 	 dado03
+dado01:  .data 2 48 ; Dado 1
+dado02:  .data 2 6  ; Dado 2
+dado03:  .data 2 0  ; Resultado final
+
+; A cpu usada foi a Machine-Ex6 que incorpora os comandos
+; ADD, SUB, MUL e DIV para soma, subtracao, multiplicacao
+; e divisao, e mais comp2 para fazer o complemento de dois do acc.
+; comp2 usa duas novas microinstrucoes em relacao as cpu's
+; anteriores, comp1; que faz not de todo o acc e recoloca
+; o resultado no acc; e unit que seta o mdr para uma unidade
+; para ajudar a fazer o complemento de dois do acc.
+
+; Alem tambem do comando MULD, multiplicacao por um fator
+; passado junto com a instrucao. Para implementar essa 
+; instrucao foi necessario a criacao de duas microinstrucoes:
+; clearMDR, para zerar todos os bits do mdr, inclusive os
+; 3 primeiros que nao serao preenchidos... e ir4-15->mdr,
+; para passar o campo a frente do opcode como um dado para o mdr.
+; Na simulacao foi necessario criar o campo data, para dados
+; diretos da instrucao, 12 bits.
+
+; Incorpora a instrucao MOD, que pega o resto da divisao
+; entre o acc e o dado do endereco passado na instrucao.
+; Para tal foi necessario um registrador auxiliar rb, alem
+; das micro instrucoes de transferencia do acc para ele,
+; e dele para o acc. So numeros positivos.
+
+; Incorpora tambem a instrucao MAIOR, que mantem o maior valor
+; no acc entre o proprio acc e o valor do endereco passado.
+; Para tal foi necessario criar um nova microinstrucao de teste
+; , if rb>=0 skip-1, que sai da instrucao caso o rb seja maior
+; ou igual a zero.

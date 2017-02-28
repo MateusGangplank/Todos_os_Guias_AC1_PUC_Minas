@@ -1,0 +1,79 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_02027210 .scope module, "test_sumsub" "test_sumsub" 2 42;
+ .timescale 0 0;
+v0205E570_0 .var "a", 0 0;
+v0205E5C8_0 .var "b", 0 0;
+v0205E620_0 .var "op", 0 0;
+v0205E678_0 .net "s0", 0 0, L_005FF498; 1 drivers
+v0205E6D0_0 .net "s1", 0 0, L_0205F140; 1 drivers
+S_02027490 .scope module, "soma1" "soma" 2 50, 2 30, S_02027210;
+ .timescale 0 0;
+v0205E308_0 .net "a", 0 0, v0205E570_0; 1 drivers
+v0205E360_0 .net "b", 0 0, v0205E5C8_0; 1 drivers
+v0205E3B8_0 .net "cout", 0 0, L_0205F098; 1 drivers
+v0205E410_0 .net "op", 0 0, v0205E620_0; 1 drivers
+v0205E468_0 .alias "s0", 0 0, v0205E678_0;
+v0205E4C0_0 .alias "s1", 0 0, v0205E6D0_0;
+v0205E518_0 .net "sx1", 0 0, L_005FF578; 1 drivers
+S_02027610 .scope module, "bonanza" "xorGate" 2 37, 2 14, S_02027490;
+ .timescale 0 0;
+L_005FF578 .functor XOR 1, v0205E5C8_0, v0205E620_0, C4<0>, C4<0>;
+v0205E200_0 .alias "a", 0 0, v0205E360_0;
+v0205E258_0 .alias "b", 0 0, v0205E410_0;
+v0205E2B0_0 .alias "sx", 0 0, v0205E518_0;
+S_02027590 .scope module, "danubio" "fullAdder" 2 38, 2 21, S_02027490;
+ .timescale 0 0;
+L_02029B50 .functor XOR 1, v0205E570_0, L_005FF578, C4<0>, C4<0>;
+L_005FF498 .functor XOR 1, L_02029B50, v0205E620_0, C4<0>, C4<0>;
+L_02029BC0 .functor AND 1, v0205E570_0, L_005FF578, C4<1>, C4<1>;
+L_005FF4D0 .functor AND 1, v0205E570_0, v0205E620_0, C4<1>, C4<1>;
+L_02029BF8 .functor OR 1, L_02029BC0, L_005FF4D0, C4<0>, C4<0>;
+L_0205F060 .functor AND 1, L_005FF578, v0205E620_0, C4<1>, C4<1>;
+L_0205F098 .functor OR 1, L_02029BF8, L_0205F060, C4<0>, C4<0>;
+v020238F0_0 .net *"_s0", 0 0, L_02029B50; 1 drivers
+v02023948_0 .net *"_s10", 0 0, L_0205F060; 1 drivers
+v005FFDF8_0 .net *"_s4", 0 0, L_02029BC0; 1 drivers
+v005FFE50_0 .net *"_s6", 0 0, L_005FF4D0; 1 drivers
+v0205DFF0_0 .net *"_s8", 0 0, L_02029BF8; 1 drivers
+v0205E048_0 .alias "a", 0 0, v0205E308_0;
+v0205E0A0_0 .alias "b", 0 0, v0205E518_0;
+v0205E0F8_0 .alias "cin", 0 0, v0205E410_0;
+v0205E150_0 .alias "cout", 0 0, v0205E3B8_0;
+v0205E1A8_0 .alias "s", 0 0, v0205E678_0;
+S_02027510 .scope module, "bilara" "xorGate" 2 39, 2 14, S_02027490;
+ .timescale 0 0;
+L_0205F140 .functor XOR 1, L_0205F098, v0205E620_0, C4<0>, C4<0>;
+v005FF018_0 .alias "a", 0 0, v0205E3B8_0;
+v005FF070_0 .alias "b", 0 0, v0205E410_0;
+v02023898_0 .alias "sx", 0 0, v0205E6D0_0;
+    .scope S_02027210;
+T_0 ;
+    %set/v v0205E570_0, 0, 1;
+    %set/v v0205E5C8_0, 1, 1;
+    %set/v v0205E620_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_02027210;
+T_1 ;
+    %vpi_call 2 58 "$display", "Exemplo0031 - Guilherme Terra - 427407";
+    %vpi_call 2 59 "$display", "Test ALU's sum/sub";
+    %delay 1, 0;
+    %vpi_call 2 61 "$display", "\012%b (+ ou -) %b com op %b = %b", v0205E570_0, v0205E5C8_0, v0205E620_0, v0205E6D0_0, v0205E678_0;
+    %delay 1, 0;
+    %set/v v0205E570_0, 0, 1;
+    %set/v v0205E5C8_0, 1, 1;
+    %set/v v0205E620_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 63 "$display", "\012%b (+ ou -) %b com op %b = %b", v0205E570_0, v0205E5C8_0, v0205E620_0, v0205E6D0_0, v0205E678_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0031.v";

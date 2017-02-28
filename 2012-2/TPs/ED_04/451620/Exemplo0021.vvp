@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0036B6E8 .scope module, "test_fullAdder" "test_fullAdder" 2 24;
+ .timescale 0 0;
+v0090C8B8_0 .var "carry", 0 0;
+RS_0090DE4C .resolv tri, L_0090CA18, L_0090CA70, C4<zzz>, C4<zzz>;
+v0090C910_0 .net8 "soma", 2 0, RS_0090DE4C; 2 drivers
+v0090C968_0 .var "x", 0 0;
+v0090C9C0_0 .var "y", 0 0;
+L_0090CA18 .part/pv L_00930E98, 0, 1, 3;
+L_0090CA70 .part/pv L_00930F90, 1, 1, 3;
+S_0036A698 .scope module, "fa1" "fullAdder" 2 31, 2 9, S_0036B6E8;
+ .timescale 0 0;
+L_0036A7D0 .functor XOR 1, v0090C968_0, v0090C9C0_0, C4<0>, C4<0>;
+L_00930E60 .functor AND 1, v0090C968_0, v0090C9C0_0, C4<1>, C4<1>;
+L_00930E98 .functor XOR 1, v0090C8B8_0, L_0036A7D0, C4<0>, C4<0>;
+L_00930F40 .functor AND 1, v0090C8B8_0, L_0036A7D0, C4<1>, C4<1>;
+L_00930F90 .functor OR 1, L_00930E60, L_00930F40, C4<0>, C4<0>;
+v0036A720_0 .net "a", 0 0, v0090C968_0; 1 drivers
+v0036A778_0 .net "b", 0 0, v0090C9C0_0; 1 drivers
+v00369918_0 .net "carryIn", 0 0, v0090C8B8_0; 1 drivers
+v00369970_0 .net "s0", 0 0, L_00930E98; 1 drivers
+v003699C8_0 .net "s1", 0 0, L_00930F90; 1 drivers
+v00369A20_0 .net "temp1", 0 0, L_0036A7D0; 1 drivers
+v00930D98_0 .net "temp2", 0 0, L_00930E60; 1 drivers
+v0090C860_0 .net "temp3", 0 0, L_00930F40; 1 drivers
+    .scope S_0036B6E8;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exemplo0021 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 36 "$display", "Test ALU\222s full adder";
+    %set/v v0090C968_0, 0, 1;
+    %set/v v0090C9C0_0, 0, 1;
+    %set/v v0090C8B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$monitor", "%b + %b + %b = %b %b", v0090C968_0, v0090C9C0_0, v0090C8B8_0, &PV<v0090C910_0, 1, 1>, &PV<v0090C910_0, 0, 1>;
+    %delay 1, 0;
+    %set/v v0090C968_0, 0, 1;
+    %set/v v0090C9C0_0, 0, 1;
+    %set/v v0090C8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0090C968_0, 0, 1;
+    %set/v v0090C9C0_0, 1, 1;
+    %set/v v0090C8B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090C968_0, 0, 1;
+    %set/v v0090C9C0_0, 1, 1;
+    %set/v v0090C8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0090C968_0, 1, 1;
+    %set/v v0090C9C0_0, 0, 1;
+    %set/v v0090C8B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090C968_0, 1, 1;
+    %set/v v0090C9C0_0, 0, 1;
+    %set/v v0090C8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0090C968_0, 1, 1;
+    %set/v v0090C9C0_0, 1, 1;
+    %set/v v0090C8B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090C968_0, 1, 1;
+    %set/v v0090C9C0_0, 1, 1;
+    %set/v v0090C8B8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc_2_periodo\Arquitetura_1\Exercicios_Resolvidos\Guia04\Exemplo0021.v";

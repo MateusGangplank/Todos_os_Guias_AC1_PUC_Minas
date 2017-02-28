@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C3010 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v003CFED0_0 .var "a", 0 0;
+v003CFF28_0 .var "b", 0 0;
+v003CFF80_0 .net "s", 0 0, L_0090D070; 1 drivers
+S_003C3E20 .scope module, "XNOR" "xnorgate" 2 28, 2 11, S_003C3010;
+ .timescale 0 0;
+L_003CF6E0 .functor AND 1, v003CFED0_0, v003CFF28_0, C4<1>, C4<1>;
+L_003CD5B0 .functor NOT 1, v003CFED0_0, C4<0>, C4<0>, C4<0>;
+L_003CD5E8 .functor NOT 1, v003CFF28_0, C4<0>, C4<0>, C4<0>;
+L_003CD620 .functor AND 1, L_003CD5B0, L_003CD5E8, C4<1>, C4<1>;
+L_0090D070 .functor OR 1, L_003CF6E0, L_003CD620, C4<0>, C4<0>;
+v003C3120_0 .net *"_s0", 0 0, L_003CF6E0; 1 drivers
+v003C3EA8_0 .net *"_s2", 0 0, L_003CD5B0; 1 drivers
+v003CF688_0 .net *"_s4", 0 0, L_003CD5E8; 1 drivers
+v003CFD70_0 .net *"_s6", 0 0, L_003CD620; 1 drivers
+v003CFDC8_0 .net "a", 0 0, v003CFED0_0; 1 drivers
+v003CFE20_0 .net "b", 0 0, v003CFF28_0; 1 drivers
+v003CFE78_0 .alias "s", 0 0, v003CFF80_0;
+S_003C3D98 .scope begin, "start" "start" 2 32, 2 32, S_003C3010;
+ .timescale 0 0;
+S_003C3098 .scope begin, "main" "main" 2 38, 2 38, S_003C3010;
+ .timescale 0 0;
+    .scope S_003C3010;
+T_0 ;
+    %fork t_1, S_003C3D98;
+    %jmp t_0;
+    .scope S_003C3D98;
+t_1 ;
+    %set/v v003CFED0_0, 0, 1;
+    %set/v v003CFF28_0, 0, 1;
+    %end;
+    .scope S_003C3010;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003C3010;
+T_1 ;
+    %fork t_3, S_003C3098;
+    %jmp t_2;
+    .scope S_003C3098;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exemplo0012 - Isabel Bicalho Amaro - 451580";
+    %vpi_call 2 40 "$display", "Test xnor gate";
+    %vpi_call 2 41 "$display", "\012a  (a&b)|(~a&~b)  b  =  s\012";
+    %vpi_call 2 42 "$monitor", "%b  (a&b)|(~a&~b)  %b  =  %b", v003CFED0_0, v003CFF28_0, v003CFF80_0;
+    %delay 1, 0;
+    %set/v v003CFED0_0, 0, 1;
+    %set/v v003CFF28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CFED0_0, 0, 1;
+    %set/v v003CFF28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFED0_0, 1, 1;
+    %set/v v003CFF28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CFED0_0, 1, 1;
+    %set/v v003CFF28_0, 1, 1;
+    %end;
+    .scope S_003C3010;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Isabel\Documents\PUC\2º Período\Arquitetura de Computadores\Guias\Guia 1\Exemplo0012.v";

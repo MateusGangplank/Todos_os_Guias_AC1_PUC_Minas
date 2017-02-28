@@ -1,0 +1,52 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE748 .scope module, "testeHalfAdder" "testeHalfAdder" 2 18;
+ .timescale 0 0;
+v006A29C0_0 .var "reg1", 0 0;
+v006A2A18_0 .var "reg2", 0 0;
+v006A2A70_0 .net "w1", 0 0, L_00672E50; 1 drivers
+v006A2AC8_0 .net "w2", 0 0, L_006A2C20; 1 drivers
+S_003EE7C8 .scope module, "HalfAdder01" "halfAdder" 2 22, 2 8, S_003EE748;
+ .timescale 0 0;
+L_00672E50 .functor AND 1, v006A29C0_0, v006A2A18_0, C4<1>, C4<1>;
+L_006A2BB0 .functor OR 1, v006A29C0_0, v006A2A18_0, C4<0>, C4<0>;
+L_006A2BE8 .functor NOT 1, L_00672E50, C4<0>, C4<0>, C4<0>;
+L_006A2C20 .functor AND 1, L_006A2BB0, L_006A2BE8, C4<1>, C4<1>;
+v003EE848_0 .net "a", 0 0, v006A29C0_0; 1 drivers
+v006A2790_0 .net "b", 0 0, v006A2A18_0; 1 drivers
+v006A2800_0 .alias "s0", 0 0, v006A2A70_0;
+v006A2888_0 .alias "s1", 0 0, v006A2AC8_0;
+v006A28F8_0 .net "w1", 0 0, L_006A2BB0; 1 drivers
+v006A2950_0 .net "w2", 0 0, L_006A2BE8; 1 drivers
+    .scope S_003EE748;
+T_0 ;
+    %set/v v006A29C0_0, 0, 1;
+    %set/v v006A2A18_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003EE748;
+T_1 ;
+    %vpi_call 2 28 "$display", "Exercicio 01 - Marden Batista - 388613";
+    %vpi_call 2 29 "$display", "Half Hadder (Tradicional) \012";
+    %delay 1, 0;
+    %vpi_call 2 30 "$monitor", "  %d + %d =  %d    %d", v006A29C0_0, v006A2A18_0, v006A2A70_0, v006A2AC8_0;
+    %delay 1, 0;
+    %set/v v006A29C0_0, 0, 1;
+    %set/v v006A2A18_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A29C0_0, 1, 1;
+    %set/v v006A2A18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A29C0_0, 1, 1;
+    %set/v v006A2A18_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Temp_Arq\Nova pasta\01.v";

@@ -1,0 +1,183 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EAA20 .scope module, "teste" "teste" 2 45;
+ .timescale 0 0;
+v0032DE78_0 .var "a", 3 0;
+v0032DED0_0 .var "b", 3 0;
+v0032DF28_0 .var "chave", 0 0;
+RS_00305514 .resolv tri, L_0032E030, L_0032E190, L_0032E2F0, L_0032E450;
+v0032DF80_0 .net8 "s1", 3 0, RS_00305514; 4 drivers
+RS_0030552C .resolv tri, L_0032E088, L_0032E1E8, L_0032E348, L_0032E4A8;
+v0032DFD8_0 .net8 "s2", 3 0, RS_0030552C; 4 drivers
+S_003EA910 .scope module, "circuito1" "LU4" 2 53, 2 36, S_003EAA20;
+ .timescale 0 0;
+v0032DCC0_0 .net "a", 3 0, v0032DE78_0; 1 drivers
+v0032DD18_0 .net "b", 3 0, v0032DED0_0; 1 drivers
+v0032DD70_0 .net "chave", 0 0, v0032DF28_0; 1 drivers
+v0032DDC8_0 .alias "s1", 3 0, v0032DF80_0;
+v0032DE20_0 .alias "s2", 3 0, v0032DFD8_0;
+L_0032E030 .part/pv L_00300818, 0, 1, 4;
+L_0032E088 .part/pv L_003008C0, 0, 1, 4;
+L_0032E0E0 .part v0032DE78_0, 0, 1;
+L_0032E138 .part v0032DED0_0, 0, 1;
+L_0032E190 .part/pv L_00300E00, 1, 1, 4;
+L_0032E1E8 .part/pv L_00300EA8, 1, 1, 4;
+L_0032E240 .part v0032DE78_0, 1, 1;
+L_0032E298 .part v0032DED0_0, 1, 1;
+L_0032E2F0 .part/pv L_0032EF58, 2, 1, 4;
+L_0032E348 .part/pv L_0032F000, 2, 1, 4;
+L_0032E3A0 .part v0032DE78_0, 2, 1;
+L_0032E3F8 .part v0032DED0_0, 2, 1;
+L_0032E450 .part/pv L_0032F3B8, 3, 1, 4;
+L_0032E4A8 .part/pv L_0032F480, 3, 1, 4;
+L_0032E500 .part v0032DE78_0, 3, 1;
+L_0032E558 .part v0032DED0_0, 3, 1;
+S_003EA888 .scope module, "gate1" "LU" 2 38, 2 12, S_003EA910;
+ .timescale 0 0;
+L_003EFB80 .functor AND 1, L_0032E0E0, L_0032E138, C4<1>, C4<1>;
+L_003EFBF8 .functor NAND 1, L_0032E0E0, L_0032E138, C4<1>, C4<1>;
+L_003EFCA0 .functor OR 1, L_0032E0E0, L_0032E138, C4<0>, C4<0>;
+L_003ED330 .functor NOR 1, L_0032E0E0, L_0032E138, C4<0>, C4<0>;
+L_003EFC30 .functor NOT 1, v0032DF28_0, C4<0>, C4<0>, C4<0>;
+L_003EFC68 .functor AND 1, L_003EFC30, L_003EFB80, C4<1>, C4<1>;
+L_003ED3D8 .functor AND 1, v0032DF28_0, L_003EFBF8, C4<1>, C4<1>;
+L_003ED448 .functor AND 1, L_003EFC30, L_003EFCA0, C4<1>, C4<1>;
+L_003E2EF8 .functor AND 1, v0032DF28_0, L_003ED330, C4<1>, C4<1>;
+L_00300818 .functor OR 1, L_003EFC68, L_003ED448, C4<0>, C4<0>;
+L_003008C0 .functor OR 1, L_003ED3D8, L_003E2EF8, C4<0>, C4<0>;
+v00300390_0 .net "a", 0 0, L_0032E0E0; 1 drivers
+v003003E8_0 .net "a1", 0 0, L_003EFB80; 1 drivers
+v00300440_0 .net "a2", 0 0, L_003EFBF8; 1 drivers
+v00300498_0 .net "a3", 0 0, L_003EFCA0; 1 drivers
+v003004F0_0 .net "a4", 0 0, L_003ED330; 1 drivers
+v00300548_0 .net "a5", 0 0, L_003EFC68; 1 drivers
+v003005A0_0 .net "a6", 0 0, L_003ED3D8; 1 drivers
+v003005F8_0 .net "a7", 0 0, L_003ED448; 1 drivers
+v00300650_0 .net "a8", 0 0, L_003E2EF8; 1 drivers
+v003006A8_0 .net "b", 0 0, L_0032E138; 1 drivers
+v00300700_0 .alias "chave", 0 0, v0032DD70_0;
+v00300758_0 .net "nchave", 0 0, L_003EFC30; 1 drivers
+v0032DC10_0 .net "s1", 0 0, L_00300818; 1 drivers
+v0032DC68_0 .net "s2", 0 0, L_003008C0; 1 drivers
+S_003EAB30 .scope module, "gate2" "LU" 2 39, 2 12, S_003EA910;
+ .timescale 0 0;
+L_00300AF0 .functor AND 1, L_0032E240, L_0032E298, C4<1>, C4<1>;
+L_00300B28 .functor NAND 1, L_0032E240, L_0032E298, C4<1>, C4<1>;
+L_00300BD0 .functor OR 1, L_0032E240, L_0032E298, C4<0>, C4<0>;
+L_00300C08 .functor NOR 1, L_0032E240, L_0032E298, C4<0>, C4<0>;
+L_00300B98 .functor NOT 1, v0032DF28_0, C4<0>, C4<0>, C4<0>;
+L_00300B60 .functor AND 1, L_00300B98, L_00300AF0, C4<1>, C4<1>;
+L_00300CB0 .functor AND 1, v0032DF28_0, L_00300B28, C4<1>, C4<1>;
+L_00300D20 .functor AND 1, L_00300B98, L_00300BD0, C4<1>, C4<1>;
+L_00300D90 .functor AND 1, v0032DF28_0, L_00300C08, C4<1>, C4<1>;
+L_00300E00 .functor OR 1, L_00300B60, L_00300D20, C4<0>, C4<0>;
+L_00300EA8 .functor OR 1, L_00300CB0, L_00300D90, C4<0>, C4<0>;
+v002FFEC0_0 .net "a", 0 0, L_0032E240; 1 drivers
+v002FFF18_0 .net "a1", 0 0, L_00300AF0; 1 drivers
+v002FFF70_0 .net "a2", 0 0, L_00300B28; 1 drivers
+v002FFFC8_0 .net "a3", 0 0, L_00300BD0; 1 drivers
+v00300020_0 .net "a4", 0 0, L_00300C08; 1 drivers
+v00300078_0 .net "a5", 0 0, L_00300B60; 1 drivers
+v003000D0_0 .net "a6", 0 0, L_00300CB0; 1 drivers
+v00300128_0 .net "a7", 0 0, L_00300D20; 1 drivers
+v00300180_0 .net "a8", 0 0, L_00300D90; 1 drivers
+v003001D8_0 .net "b", 0 0, L_0032E298; 1 drivers
+v00300230_0 .alias "chave", 0 0, v0032DD70_0;
+v00300288_0 .net "nchave", 0 0, L_00300B98; 1 drivers
+v003002E0_0 .net "s1", 0 0, L_00300E00; 1 drivers
+v00300338_0 .net "s2", 0 0, L_00300EA8; 1 drivers
+S_003EABB8 .scope module, "gate3" "LU" 2 40, 2 12, S_003EA910;
+ .timescale 0 0;
+L_0032EC48 .functor AND 1, L_0032E3A0, L_0032E3F8, C4<1>, C4<1>;
+L_0032EC80 .functor NAND 1, L_0032E3A0, L_0032E3F8, C4<1>, C4<1>;
+L_0032ED28 .functor OR 1, L_0032E3A0, L_0032E3F8, C4<0>, C4<0>;
+L_0032ED60 .functor NOR 1, L_0032E3A0, L_0032E3F8, C4<0>, C4<0>;
+L_0032ECF0 .functor NOT 1, v0032DF28_0, C4<0>, C4<0>, C4<0>;
+L_0032ECB8 .functor AND 1, L_0032ECF0, L_0032EC48, C4<1>, C4<1>;
+L_0032EE08 .functor AND 1, v0032DF28_0, L_0032EC80, C4<1>, C4<1>;
+L_0032EE78 .functor AND 1, L_0032ECF0, L_0032ED28, C4<1>, C4<1>;
+L_0032EEE8 .functor AND 1, v0032DF28_0, L_0032ED60, C4<1>, C4<1>;
+L_0032EF58 .functor OR 1, L_0032ECB8, L_0032EE78, C4<0>, C4<0>;
+L_0032F000 .functor OR 1, L_0032EE08, L_0032EEE8, C4<0>, C4<0>;
+v002FF9F0_0 .net "a", 0 0, L_0032E3A0; 1 drivers
+v002FFA48_0 .net "a1", 0 0, L_0032EC48; 1 drivers
+v002FFAA0_0 .net "a2", 0 0, L_0032EC80; 1 drivers
+v002FFAF8_0 .net "a3", 0 0, L_0032ED28; 1 drivers
+v002FFB50_0 .net "a4", 0 0, L_0032ED60; 1 drivers
+v002FFBA8_0 .net "a5", 0 0, L_0032ECB8; 1 drivers
+v002FFC00_0 .net "a6", 0 0, L_0032EE08; 1 drivers
+v002FFC58_0 .net "a7", 0 0, L_0032EE78; 1 drivers
+v002FFCB0_0 .net "a8", 0 0, L_0032EEE8; 1 drivers
+v002FFD08_0 .net "b", 0 0, L_0032E3F8; 1 drivers
+v002FFD60_0 .alias "chave", 0 0, v0032DD70_0;
+v002FFDB8_0 .net "nchave", 0 0, L_0032ECF0; 1 drivers
+v002FFE10_0 .net "s1", 0 0, L_0032EF58; 1 drivers
+v002FFE68_0 .net "s2", 0 0, L_0032F000; 1 drivers
+S_003EAC40 .scope module, "gate4" "LU" 2 41, 2 12, S_003EA910;
+ .timescale 0 0;
+L_00300A80 .functor AND 1, L_0032E500, L_0032E558, C4<1>, C4<1>;
+L_0032F0E0 .functor NAND 1, L_0032E500, L_0032E558, C4<1>, C4<1>;
+L_0032F188 .functor OR 1, L_0032E500, L_0032E558, C4<0>, C4<0>;
+L_0032F1C0 .functor NOR 1, L_0032E500, L_0032E558, C4<0>, C4<0>;
+L_0032F150 .functor NOT 1, v0032DF28_0, C4<0>, C4<0>, C4<0>;
+L_0032F118 .functor AND 1, L_0032F150, L_00300A80, C4<1>, C4<1>;
+L_0032F268 .functor AND 1, v0032DF28_0, L_0032F0E0, C4<1>, C4<1>;
+L_0032F2D8 .functor AND 1, L_0032F150, L_0032F188, C4<1>, C4<1>;
+L_0032F348 .functor AND 1, v0032DF28_0, L_0032F1C0, C4<1>, C4<1>;
+L_0032F3B8 .functor OR 1, L_0032F118, L_0032F2D8, C4<0>, C4<0>;
+L_0032F480 .functor OR 1, L_0032F268, L_0032F348, C4<0>, C4<0>;
+v003EB9F8_0 .net "a", 0 0, L_0032E500; 1 drivers
+v003EBA50_0 .net "a1", 0 0, L_00300A80; 1 drivers
+v003EBAA8_0 .net "a2", 0 0, L_0032F0E0; 1 drivers
+v003EBB00_0 .net "a3", 0 0, L_0032F188; 1 drivers
+v003EBB58_0 .net "a4", 0 0, L_0032F1C0; 1 drivers
+v003EBBB0_0 .net "a5", 0 0, L_0032F118; 1 drivers
+v003EBC08_0 .net "a6", 0 0, L_0032F268; 1 drivers
+v003EBC60_0 .net "a7", 0 0, L_0032F2D8; 1 drivers
+v002FF7E0_0 .net "a8", 0 0, L_0032F348; 1 drivers
+v002FF838_0 .net "b", 0 0, L_0032E558; 1 drivers
+v002FF890_0 .alias "chave", 0 0, v0032DD70_0;
+v002FF8E8_0 .net "nchave", 0 0, L_0032F150; 1 drivers
+v002FF940_0 .net "s1", 0 0, L_0032F3B8; 1 drivers
+v002FF998_0 .net "s2", 0 0, L_0032F480; 1 drivers
+S_003EA998 .scope begin, "start" "start" 2 58, 2 58, S_003EAA20;
+ .timescale 0 0;
+    .scope S_003EAA20;
+T_0 ;
+    %fork t_1, S_003EA998;
+    %jmp t_0;
+    .scope S_003EA998;
+t_1 ;
+    %delay 1, 0;
+    %set/v v0032DE78_0, 0, 4;
+    %set/v v0032DED0_0, 0, 4;
+    %set/v v0032DF28_0, 0, 1;
+    %vpi_call 2 69 "$display", "Exemplo0031 - Isabel Bicalho Amaro - 451580\012";
+    %vpi_call 2 70 "$display", "Test LU's module\012";
+    %delay 1, 0;
+    %set/v v0032DE78_0, 0, 4;
+    %set/v v0032DED0_0, 0, 4;
+    %set/v v0032DF28_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 75 "$monitor", "a = %3b b = %3b chave = %3b s1(and e or) = %3b s2(nand e nor) = %3b", v0032DE78_0, v0032DED0_0, v0032DF28_0, v0032DF80_0, v0032DFD8_0;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v0032DE78_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v0032DED0_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0032DF28_0, 1, 1;
+    %end;
+    .scope S_003EAA20;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\2º Periodo\Arquitetura de Computadores\Guia02\Exemplo0033.v";

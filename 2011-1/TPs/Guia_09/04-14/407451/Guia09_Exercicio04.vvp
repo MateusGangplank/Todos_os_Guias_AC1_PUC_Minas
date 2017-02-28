@@ -1,0 +1,53 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E71C0 .scope module, "teste" "teste" 2 37;
+ .timescale 0 0;
+v005F8908_0 .net "clock", 0 0, v005F88B0_0; 1 drivers
+v005F8970_0 .net "saida", 0 0, v005F87B8_0; 1 drivers
+S_005F8828 .scope module, "cck1" "clock" 2 40, 2 7, S_003E71C0;
+ .timescale 0 0;
+v005F88B0_0 .var "cck", 0 0;
+S_003E77C8 .scope module, "EX04" "exercicio04" 2 43, 2 23, S_003E71C0;
+ .timescale 0 0;
+v005D0A78_0 .alias "clock", 0 0, v005F8908_0;
+v005F87B8_0 .var "signal", 0 0;
+E_003E5730 .event negedge, v005D0A78_0;
+    .scope S_005F8828;
+T_0 ;
+    %set/v v005F88B0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_005F8828;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v005F88B0_0, 1;
+    %inv 8, 1;
+    %set/v v005F88B0_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_003E77C8;
+T_2 ;
+    %wait E_003E5730;
+    %set/v v005F87B8_0, 1, 1;
+    %delay 48, 0;
+    %set/v v005F87B8_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_003E71C0;
+T_3 ;
+    %vpi_call 2 46 "$display", "Guia09 - Exercicio04 - Karen Alves - 407451";
+    %vpi_call 2 47 "$dumpfile", "Guia09_Exercicio04.vcd";
+    %vpi_call 2 48 "$dumpvars", 2'sb01, v005F8908_0, v005F8970_0;
+    %delay 120, 0;
+    %vpi_call 2 49 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\arquivos\407451\Guia09_Exercicio04.v";

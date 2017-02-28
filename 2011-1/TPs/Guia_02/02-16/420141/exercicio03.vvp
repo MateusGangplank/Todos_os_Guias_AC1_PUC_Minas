@@ -1,0 +1,46 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00671D70 .scope module, "testeNAND" "testeNAND" 2 18;
+ .timescale 0 0;
+v006A13C0_0 .var "g", 0 0;
+v006A1418_0 .net "s", 0 0, L_006A1510; 1 drivers
+S_006731A0 .scope module, "NAND1" "PORTANAND" 2 22, 2 7, S_00671D70;
+ .timescale 0 0;
+L_006720F0 .functor AND 1, v006A13C0_0, v006A13C0_0, C4<1>, C4<1>;
+L_00672128 .functor AND 1, L_006720F0, v006A13C0_0, C4<1>, C4<1>;
+L_006A1510 .functor NOT 1, L_00672128, C4<0>, C4<0>, C4<0>;
+v00673220_0 .net *"_s0", 0 0, L_006720F0; 1 drivers
+v006A11C0_0 .net *"_s2", 0 0, L_00672128; 1 drivers
+v006A1230_0 .net "g", 0 0, v006A13C0_0; 1 drivers
+v006A12B8_0 .alias "h", 0 0, v006A1230_0;
+v006A1310_0 .alias "i", 0 0, v006A1230_0;
+v006A1368_0 .alias "s", 0 0, v006A1418_0;
+S_00673120 .scope begin, "start" "start" 2 24, 2 24, S_00671D70;
+ .timescale 0 0;
+    .scope S_00671D70;
+T_0 ;
+    %fork t_1, S_00673120;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A13C0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00671D70;
+T_1 ;
+    %vpi_call 2 34 "$display", "Guia 02 - Raphaela Fernanda Silva - 420141";
+    %vpi_call 2 35 "$display", "Teste PORTANAND";
+    %vpi_call 2 36 "$display", "~g = s";
+    %vpi_call 2 37 "$monitor", " %b   %b", v006A13C0_0, v006A1418_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\420141\exercicio03.v";

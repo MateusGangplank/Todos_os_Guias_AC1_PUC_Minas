@@ -1,0 +1,147 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067C0A8 .scope module, "testexercicio02" "testexercicio02" 2 31;
+ .timescale 0 0;
+v006ACA20_0 .var "a", 0 0;
+v006ACA78_0 .var "b", 0 0;
+v006ACAD0_0 .var "c", 0 0;
+v006ACB28_0 .var "d", 0 0;
+v006ACB80_0 .net "s", 0 0, L_006ACEF0; 1 drivers
+S_0067C128 .scope module, "EX1" "exercicio02" 2 36, 2 13, S_0067C0A8;
+ .timescale 0 0;
+L_00678BE8 .functor AND 1, L_00678BB0, L_006ACC58, L_006ACD10, C4<1>;
+L_00678BB0 .functor NOT 1, v006ACA20_0, C4<0>, C4<0>, C4<0>;
+L_006ACC58 .functor NOT 1, v006ACA78_0, C4<0>, C4<0>, C4<0>;
+L_006ACD10 .functor NOT 1, v006ACB28_0, C4<0>, C4<0>, C4<0>;
+L_006ACDB8 .functor AND 1, L_006ACDF0, L_006ACE70, L_006ACF28, C4<1>;
+L_006ACDF0 .functor NOT 1, v006ACA20_0, C4<0>, C4<0>, C4<0>;
+L_006ACE70 .functor NOT 1, v006ACAD0_0, C4<0>, C4<0>, C4<0>;
+L_006ACF28 .functor NOT 1, v006ACB28_0, C4<0>, C4<0>, C4<0>;
+L_006ACFA8 .functor AND 1, v006ACA20_0, L_006ACC20, L_006AD028, C4<1>;
+L_006ACC20 .functor NOT 1, v006ACA78_0, C4<0>, C4<0>, C4<0>;
+L_006AD028 .functor NOT 1, v006ACAD0_0, C4<0>, C4<0>, C4<0>;
+L_006AD0E0 .functor AND 1, v006ACA20_0, L_006ACD80, v006ACB28_0, C4<1>;
+L_006ACD80 .functor NOT 1, v006ACA78_0, C4<0>, C4<0>, C4<0>;
+L_006AD0A8 .functor AND 1, v006ACA20_0, L_006ACCD8, v006ACB28_0, C4<1>;
+L_006ACCD8 .functor NOT 1, v006ACAD0_0, C4<0>, C4<0>, C4<0>;
+L_006ACEF0/0/0 .functor OR 1, L_00678BE8, L_006ACDB8, L_006ACFA8, L_006AD0E0;
+L_006ACEF0/0/4 .functor OR 1, L_006AD0A8, C4<0>, C4<0>, C4<0>;
+L_006ACEF0 .functor OR 1, L_006ACEF0/0/0, L_006ACEF0/0/4, C4<0>, C4<0>;
+v0067C1A8_0 .net *"_s0", 0 0, L_00678BB0; 1 drivers
+v006AC178_0 .net *"_s10", 0 0, L_006ACF28; 1 drivers
+v006AC1E8_0 .net *"_s12", 0 0, L_006ACC20; 1 drivers
+v006AC270_0 .net *"_s14", 0 0, L_006AD028; 1 drivers
+v006AC2E0_0 .net *"_s16", 0 0, L_006ACD80; 1 drivers
+v006AC338_0 .net *"_s18", 0 0, L_006ACCD8; 1 drivers
+v006AC3A8_0 .net *"_s2", 0 0, L_006ACC58; 1 drivers
+v006AC418_0 .net *"_s4", 0 0, L_006ACD10; 1 drivers
+v006AC488_0 .net *"_s6", 0 0, L_006ACDF0; 1 drivers
+v006AC4F8_0 .net *"_s8", 0 0, L_006ACE70; 1 drivers
+v006AC568_0 .net "a", 0 0, v006ACA20_0; 1 drivers
+v006AC5D8_0 .net "b", 0 0, v006ACA78_0; 1 drivers
+v006AC648_0 .net "c", 0 0, v006ACAD0_0; 1 drivers
+v006AC6B8_0 .net "d", 0 0, v006ACB28_0; 1 drivers
+v006AC728_0 .alias "s", 0 0, v006ACB80_0;
+v006AC798_0 .net "s1", 0 0, L_00678BE8; 1 drivers
+v006AC808_0 .net "s2", 0 0, L_006ACDB8; 1 drivers
+v006AC878_0 .net "s3", 0 0, L_006ACFA8; 1 drivers
+v006AC8E8_0 .net "s4", 0 0, L_006AD0E0; 1 drivers
+v006AC9B0_0 .net "s5", 0 0, L_006AD0A8; 1 drivers
+    .scope S_0067C0A8;
+T_0 ;
+    %vpi_call 2 41 "$display", "Bruno Santiago Pinheiro";
+    %vpi_call 2 42 "$display", "Matricula: 405792";
+    %vpi_call 2 43 "$display", "Simplificacao do circuito dado no exercicio02 guia08";
+    %vpi_call 2 44 "$display", "a b c d = s";
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %vpi_call 2 48 "$monitor", "%b %b %b %b = %b", v006ACA20_0, v006ACA78_0, v006ACAD0_0, v006ACB28_0, v006ACB80_0;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 0, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 0, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 0, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ACA20_0, 1, 1;
+    %set/v v006ACA78_0, 1, 1;
+    %set/v v006ACAD0_0, 1, 1;
+    %set/v v006ACB28_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio02.v";

@@ -1,0 +1,55 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007EEA38 .scope module, "test_base_01" "test_base_01" 2 14;
+ .timescale 0 0;
+v007E3278_0 .var "a", 7 0;
+v00700810_0 .net "sA", 7 0, L_00700970; 1 drivers
+S_007E9088 .scope module, "questao07" "Q07" 2 19, 2 10, S_007EEA38;
+ .timescale 0 0;
+L_007E3370 .functor NOT 9, L_00700868, C4<000000000>, C4<000000000>, C4<000000000>;
+v007EEAC0_0 .net *"_s0", 8 0, L_00700868; 1 drivers
+v007E2DB0_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v007E2E08_0 .net *"_s11", 31 0, L_007008C0; 1 drivers
+v007E2E60_0 .net *"_s12", 31 0, L_00700918; 1 drivers
+v007EE4A8_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v007EE500_0 .net *"_s4", 8 0, L_007E3370; 1 drivers
+v007EE558_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v007EE5B0_0 .net "a", 7 0, v007E3278_0; 1 drivers
+v007E3220_0 .alias "s", 7 0, v00700810_0;
+L_00700868 .concat [ 8 1 0 0], v007E3278_0, C4<0>;
+L_007008C0 .concat [ 9 23 0 0], L_007E3370, C4<00000000000000000000000>;
+L_00700918 .arith/sum 32, L_007008C0, C4<00000000000000000000000000000001>;
+L_00700970 .part L_00700918, 0, 8;
+S_007E9000 .scope begin, "start" "start" 2 21, 2 21, S_007EEA38;
+ .timescale 0 0;
+    .scope S_007EEA38;
+T_0 ;
+    %fork t_1, S_007E9000;
+    %jmp t_0;
+    .scope S_007E9000;
+t_1 ;
+    %movi 8, 85, 8;
+    %set/v v007E3278_0, 8, 8;
+    %end;
+    .scope S_007EEA38;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007EEA38;
+T_1 ;
+    %vpi_call 2 27 "$display", "Exemplo0022 - Oswaldo Oliveira Paulino - 382175";
+    %vpi_call 2 28 "$display", "Test number system";
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "\012Questao 07)";
+    %vpi_call 2 32 "$display", "%b = %b", v007E3278_0, v00700810_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Oswaldo\Documents\Ciência da Computação - LABORATÓRIO\382175\ARQ1_2012_2\Guia 02\Exemplo0022.v";

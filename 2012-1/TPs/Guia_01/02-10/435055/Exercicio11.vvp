@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003130A8 .scope module, "testcompare1gate" "testcompare1gate" 2 13;
+ .timescale 0 0;
+v0031E118_0 .var "a", 7 0;
+v0031FEB8_0 .net "s", 0 0, L_00312D28; 1 drivers
+S_00312CA0 .scope module, "COMP1" "compare1gate" 2 18, 2 7, S_003130A8;
+ .timescale 0 0;
+L_00312D28 .functor NOR 1, L_0031FF10, C4<0>, C4<0>, C4<0>;
+v0031E010_0 .net *"_s1", 0 0, L_0031FF10; 1 drivers
+v0031E068_0 .net "p", 7 0, v0031E118_0; 1 drivers
+v0031E0C0_0 .alias "s", 0 0, v0031FEB8_0;
+L_0031FF10 .part v0031E118_0, 0, 1;
+S_00312C18 .scope begin, "start" "start" 2 20, 2 20, S_003130A8;
+ .timescale 0 0;
+S_00313130 .scope begin, "main" "main" 2 24, 2 24, S_003130A8;
+ .timescale 0 0;
+    .scope S_003130A8;
+T_0 ;
+    %fork t_1, S_00312C18;
+    %jmp t_0;
+    .scope S_00312C18;
+t_1 ;
+    %set/v v0031E118_0, 0, 8;
+    %end;
+    .scope S_003130A8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003130A8;
+T_1 ;
+    %fork t_3, S_00313130;
+    %jmp t_2;
+    .scope S_00313130;
+t_3 ;
+    %vpi_call 2 25 "$display", "Exercicio11 - Samuel Eus\351bio da Silva - 435055";
+    %vpi_call 2 26 "$display", "Test compare1 gate";
+    %vpi_call 2 27 "$monitor", "%b = %b", v0031E118_0, v0031FEB8_0;
+    %delay 1, 0;
+    %movi 8, 129, 8;
+    %set/v v0031E118_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 119, 8;
+    %set/v v0031E118_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 15, 8;
+    %set/v v0031E118_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 101, 8;
+    %set/v v0031E118_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 199, 8;
+    %set/v v0031E118_0, 8, 8;
+    %end;
+    .scope S_003130A8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Samuel\Documents\Faculdade\Arquitetura de Computadores I\Guias\Guia01\Exercicio11.v";

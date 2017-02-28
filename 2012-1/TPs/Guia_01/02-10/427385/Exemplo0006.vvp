@@ -1,0 +1,75 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A0FC48 .scope module, "testnandgate" "testnandgate" 2 20;
+ .timescale 0 0;
+v00A0E8F0_0 .var "a", 0 0;
+v00A0E948_0 .var "b", 0 0;
+v00A0E9A0_0 .net "s", 0 0, L_00A0EA68; 1 drivers
+S_00A02EA8 .scope module, "NAND1" "nandgate" 2 25, 2 13, S_00A0FC48;
+ .timescale 0 0;
+L_00A02F30 .functor AND 1, v00A0E8F0_0, v00A0E948_0, C4<1>, C4<1>;
+L_00A0EA68 .functor NOT 1, L_00A02F30, C4<0>, C4<0>, C4<0>;
+v00A032F8_0 .net *"_s0", 0 0, L_00A02F30; 1 drivers
+v00A03350_0 .net "p", 0 0, v00A0E8F0_0; 1 drivers
+v00A033A8_0 .net "q", 0 0, v00A0E948_0; 1 drivers
+v00A03400_0 .alias "s", 0 0, v00A0E9A0_0;
+S_00A02E20 .scope begin, "start" "start" 2 27, 2 27, S_00A0FC48;
+ .timescale 0 0;
+S_00A0FCD0 .scope begin, "main" "main" 2 32, 2 32, S_00A0FC48;
+ .timescale 0 0;
+    .scope S_00A0FC48;
+T_0 ;
+    %fork t_1, S_00A02E20;
+    %jmp t_0;
+    .scope S_00A02E20;
+t_1 ;
+    %set/v v00A0E8F0_0, 0, 1;
+    %set/v v00A0E948_0, 0, 1;
+    %end;
+    .scope S_00A0FC48;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00A0FC48;
+T_1 ;
+    %fork t_3, S_00A0FCD0;
+    %jmp t_2;
+    .scope S_00A0FCD0;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exemplo0006 - Exercicio0001 - Ana Cristina Pereira Teixeira - 427385";
+    %vpi_call 2 34 "$display", "Test nand gate";
+    %vpi_call 2 35 "$display", "\012 ~(a & b) = s\012";
+    %delay 1, 0;
+    %set/v v00A0E8F0_0, 0, 1;
+    %set/v v00A0E948_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~(%b & %b) = %b", v00A0E8F0_0, v00A0E948_0, v00A0E9A0_0;
+    %delay 1, 0;
+    %set/v v00A0E8F0_0, 0, 1;
+    %set/v v00A0E948_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~(%b & %b) = %b", v00A0E8F0_0, v00A0E948_0, v00A0E9A0_0;
+    %delay 1, 0;
+    %set/v v00A0E8F0_0, 1, 1;
+    %set/v v00A0E948_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~(%b & %b) = %b", v00A0E8F0_0, v00A0E948_0, v00A0E9A0_0;
+    %delay 1, 0;
+    %set/v v00A0E8F0_0, 1, 1;
+    %set/v v00A0E948_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~(%b & %b) = %b", v00A0E8F0_0, v00A0E948_0, v00A0E9A0_0;
+    %end;
+    .scope S_00A0FC48;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\1-2012\arq\0_guias\guia_01\Exemplo0006.v";

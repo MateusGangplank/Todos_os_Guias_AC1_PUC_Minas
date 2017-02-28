@@ -1,0 +1,118 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00676AD8 .scope module, "teste" "teste" 2 29;
+ .timescale 0 0;
+v006A7370_0 .var "a", 0 0;
+v006A7520_0 .var "b", 0 0;
+v006A7578_0 .var "c", 0 0;
+v006A75D0_0 .var "d", 0 0;
+v006A7628_0 .net "s", 0 0, L_006A7F18; 1 drivers
+v006A7680_0 .var/i "w", 31 0;
+v006A76D8_0 .var/i "x", 31 0;
+v006A7730_0 .var/i "y", 31 0;
+v006A7788_0 .var/i "z", 31 0;
+S_00676B58 .scope module, "m" "m4" 2 36, 2 4, S_00676AD8;
+ .timescale 0 0;
+L_00674B20 .functor AND 1, L_00674AE8, L_006A7850, C4<1>, C4<1>;
+L_00674AE8 .functor NOT 1, v006A7370_0, C4<0>, C4<0>, C4<0>;
+L_006A7850 .functor NOT 1, v006A7520_0, C4<0>, C4<0>, C4<0>;
+L_006A7908 .functor AND 1, v006A7520_0, v006A75D0_0, C4<1>, C4<1>;
+L_006A7978 .functor AND 1, L_006A79B0, L_006A7A58, C4<1>, C4<1>;
+L_006A79B0 .functor NOT 1, v006A7578_0, C4<0>, C4<0>, C4<0>;
+L_006A7A58 .functor NOT 1, v006A75D0_0, C4<0>, C4<0>, C4<0>;
+L_006A7AD8 .functor AND 1, v006A7370_0, v006A7578_0, C4<1>, C4<1>;
+L_006A7B10 .functor XOR 1, v006A7578_0, v006A75D0_0, C4<0>, C4<0>;
+L_006A7940 .functor XOR 1, v006A7370_0, v006A7578_0, C4<0>, C4<0>;
+L_006A7818 .functor XOR 1, v006A7370_0, v006A7520_0, C4<0>, C4<0>;
+L_006A7A20 .functor XOR 1, v006A7520_0, v006A75D0_0, C4<0>, C4<0>;
+L_006A7CE8 .functor AND 1, L_00674B20, L_006A7B10, C4<1>, C4<1>;
+L_006A78D0 .functor AND 1, L_006A7908, L_006A7940, C4<1>, C4<1>;
+L_006A7E00 .functor AND 1, L_006A7978, L_006A7818, C4<1>, C4<1>;
+L_006A7EA8 .functor AND 1, L_006A7B10, L_006A7A20, C4<1>, C4<1>;
+L_006A7F18 .functor OR 1, L_006A7CE8, L_006A78D0, L_006A7E00, L_006A7EA8;
+v00676BD8_0 .net *"_s0", 0 0, L_00674AE8; 1 drivers
+v006A6AE8_0 .net *"_s2", 0 0, L_006A7850; 1 drivers
+v006A6B58_0 .net *"_s4", 0 0, L_006A79B0; 1 drivers
+v006A6BE0_0 .net *"_s6", 0 0, L_006A7A58; 1 drivers
+v006A6C50_0 .net "a", 0 0, v006A7370_0; 1 drivers
+v006A6CA8_0 .net "b", 0 0, v006A7520_0; 1 drivers
+v006A6D18_0 .net "c", 0 0, v006A7578_0; 1 drivers
+v006A6DB0_0 .net "d", 0 0, v006A75D0_0; 1 drivers
+v006A6E20_0 .alias "s", 0 0, v006A7628_0;
+v006A6E90_0 .net "t0", 0 0, L_00674B20; 1 drivers
+v006A6F00_0 .net "t1", 0 0, L_006A7908; 1 drivers
+v006A6F70_0 .net "t10", 0 0, L_006A7818; 1 drivers
+v006A6FE0_0 .net "t11", 0 0, L_006A7A20; 1 drivers
+v006A7050_0 .net "t2", 0 0, L_006A7978; 1 drivers
+v006A70C0_0 .net "t3", 0 0, L_006A7AD8; 1 drivers
+v006A7178_0 .net "t4", 0 0, L_006A7CE8; 1 drivers
+v006A71E8_0 .net "t5", 0 0, L_006A78D0; 1 drivers
+v006A72A8_0 .net "t6", 0 0, L_006A7E00; 1 drivers
+v006A7318_0 .net "t7", 0 0, L_006A7EA8; 1 drivers
+v006A73E0_0 .net "t8", 0 0, L_006A7B10; 1 drivers
+v006A7450_0 .net "t9", 0 0, L_006A7940; 1 drivers
+    .scope S_00676AD8;
+T_0 ;
+    %vpi_call 2 41 "$display", "Prova 1f - Matheus Felipe Silva Evangelista";
+    %vpi_call 2 42 "$display", "a b c d s";
+    %vpi_call 2 43 "$monitor", "%b %b %b %b %b", v006A7370_0, v006A7520_0, v006A7578_0, v006A75D0_0, v006A7628_0;
+    %set/v v006A76D8_0, 0, 32;
+T_0.0 ;
+    %load/v 8, v006A76D8_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/v 8, v006A76D8_0, 32;
+    %set/v v006A7370_0, 8, 1;
+    %set/v v006A7730_0, 0, 32;
+T_0.2 ;
+    %load/v 8, v006A7730_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_0.3, 5;
+    %load/v 8, v006A7730_0, 32;
+    %set/v v006A7520_0, 8, 1;
+    %set/v v006A7680_0, 0, 32;
+T_0.4 ;
+    %load/v 8, v006A7680_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_0.5, 5;
+    %load/v 8, v006A7680_0, 32;
+    %set/v v006A7578_0, 8, 1;
+    %set/v v006A7788_0, 0, 32;
+T_0.6 ;
+    %load/v 8, v006A7788_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_0.7, 5;
+    %delay 1, 0;
+    %load/v 8, v006A7788_0, 32;
+    %set/v v006A75D0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A7788_0, 32;
+    %set/v v006A7788_0, 8, 32;
+    %jmp T_0.6;
+T_0.7 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A7680_0, 32;
+    %set/v v006A7680_0, 8, 32;
+    %jmp T_0.4;
+T_0.5 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A7730_0, 32;
+    %set/v v006A7730_0, 8, 32;
+    %jmp T_0.2;
+T_0.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A76D8_0, 32;
+    %set/v v006A76D8_0, 8, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ARQ\417550\prova1-f.v";

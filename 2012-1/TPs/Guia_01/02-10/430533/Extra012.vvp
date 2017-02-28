@@ -1,0 +1,44 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A72AE8 .scope module, "testxorgate" "testxorgate" 2 14;
+ .timescale 0 0;
+v00A7FEF8_0 .var "a", 0 7;
+v00A7FF50_0 .var "b", 0 7;
+v00A7E030_0 .net "s", 0 7, L_00A7FFA8; 1 drivers
+S_00A738B8 .scope module, "XOR1" "xorgate" 2 18, 2 8, S_00A72AE8;
+ .timescale 0 0;
+L_00A7FFA8 .functor XOR 8, v00A7FEF8_0, v00A7FF50_0, C4<00000000>, C4<00000000>;
+v00A73940_0 .net "p", 0 7, v00A7FEF8_0; 1 drivers
+v00A73998_0 .net "q", 0 7, v00A7FF50_0; 1 drivers
+v00A7FEA0_0 .alias "s", 0 7, v00A7E030_0;
+S_00A72B70 .scope begin, "start" "start" 2 20, 2 20, S_00A72AE8;
+ .timescale 0 0;
+    .scope S_00A72AE8;
+T_0 ;
+    %fork t_1, S_00A72B70;
+    %jmp t_0;
+    .scope S_00A72B70;
+t_1 ;
+    %set/v v00A7FEF8_0, 1, 8;
+    %set/v v00A7FF50_0, 1, 8;
+    %end;
+    .scope S_00A72AE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00A72AE8;
+T_1 ;
+    %vpi_call 2 24 "$display", "Extra02 Roger Rubens Machado - 430533";
+    %vpi_call 2 25 "$display", "Test XOR gate";
+    %vpi_call 2 27 "$monitor", "%b ^ %b = %b", v00A7FEF8_0, v00A7FF50_0, v00A7E030_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\Extra012.v";

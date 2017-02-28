@@ -1,0 +1,96 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00999440 .scope module, "testcircuito" "testcircuito" 2 27;
+ .timescale 0 0;
+v009D3A48_0 .var "a", 0 0;
+v009D3AA0_0 .var "b", 0 0;
+v009D3AF8_0 .var "c", 0 0;
+v009D3B50_0 .net "s0", 0 0, L_009D4708; 1 drivers
+v009D3BA8_0 .net "s1", 0 0, L_009D4820; 1 drivers
+S_009994C0 .scope module, "CIRCUITO1" "circuito" 2 31, 2 16, S_00999440;
+ .timescale 0 0;
+L_009D4820 .functor OR 1, L_009D4660, L_009D4778, C4<0>, C4<0>;
+v009D3788_0 .net "a", 0 0, v009D3A48_0; 1 drivers
+v009D37E0_0 .net "b", 0 0, v009D3AA0_0; 1 drivers
+v009D3838_0 .net "c", 0 0, v009D3AF8_0; 1 drivers
+v009D3890_0 .alias "s0", 0 0, v009D3B50_0;
+v009D38E8_0 .alias "s1", 0 0, v009D3BA8_0;
+v009D3940_0 .net "s2", 0 0, L_009944A0; 1 drivers
+v009D3998_0 .net "s3", 0 0, L_009D4660; 1 drivers
+v009D39F0_0 .net "s4", 0 0, L_009D4778; 1 drivers
+S_009995C0 .scope module, "SUB1" "subcircuito" 2 21, 2 5, S_009994C0;
+ .timescale 0 0;
+L_009944A0 .functor XOR 1, v009D3A48_0, v009D3AA0_0, C4<0>, C4<0>;
+L_009D4628 .functor NOT 1, v009D3A48_0, C4<0>, C4<0>, C4<0>;
+L_009D4660 .functor AND 1, L_009D4628, v009D3AA0_0, C4<1>, C4<1>;
+v00993108_0 .alias "a", 0 0, v009D3788_0;
+v009D3628_0 .alias "b", 0 0, v009D37E0_0;
+v009D3680_0 .alias "s0", 0 0, v009D3940_0;
+v009D36D8_0 .alias "s1", 0 0, v009D3998_0;
+v009D3730_0 .net "s2", 0 0, L_009D4628; 1 drivers
+S_00999540 .scope module, "SUB2" "subcircuito" 2 22, 2 5, S_009994C0;
+ .timescale 0 0;
+L_009D4708 .functor XOR 1, L_009944A0, v009D3AF8_0, C4<0>, C4<0>;
+L_009D4740 .functor NOT 1, L_009944A0, C4<0>, C4<0>, C4<0>;
+L_009D4778 .functor AND 1, L_009D4740, v009D3AF8_0, C4<1>, C4<1>;
+v00A7E5C0_0 .alias "a", 0 0, v009D3940_0;
+v00A7E618_0 .alias "b", 0 0, v009D3838_0;
+v00993000_0 .alias "s0", 0 0, v009D3B50_0;
+v00993058_0 .alias "s1", 0 0, v009D39F0_0;
+v009930B0_0 .net "s2", 0 0, L_009D4740; 1 drivers
+    .scope S_00999440;
+T_0 ;
+    %vpi_call 2 34 "$display", "Exemplo 01 - Bruno Rafael Nicolletti - 380752";
+    %vpi_call 2 35 "$display", "Test Circuito Diferenca-Completa Com Meia-Diferenca Compacto";
+    %vpi_call 2 36 "$display", "\012a - b - c = s1 s0";
+    %set/v v009D3A48_0, 0, 1;
+    %set/v v009D3AA0_0, 0, 1;
+    %set/v v009D3AF8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 0, 1;
+    %set/v v009D3AA0_0, 0, 1;
+    %set/v v009D3AF8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 0, 1;
+    %set/v v009D3AA0_0, 1, 1;
+    %set/v v009D3AF8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 0, 1;
+    %set/v v009D3AA0_0, 1, 1;
+    %set/v v009D3AF8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 1, 1;
+    %set/v v009D3AA0_0, 0, 1;
+    %set/v v009D3AF8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 1, 1;
+    %set/v v009D3AA0_0, 0, 1;
+    %set/v v009D3AF8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 1, 1;
+    %set/v v009D3AA0_0, 1, 1;
+    %set/v v009D3AF8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %set/v v009D3A48_0, 1, 1;
+    %set/v v009D3AA0_0, 1, 1;
+    %set/v v009D3AF8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%b - %b - %b =  %b  %b", v009D3A48_0, v009D3AA0_0, v009D3AF8_0, v009D3BA8_0, v009D3B50_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Bruno\Ciencia_da_Computacao\2010-2\AC_1\Guias\Guia 4\Exemplo 03.v";

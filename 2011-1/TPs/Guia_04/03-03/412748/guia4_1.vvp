@@ -1,0 +1,76 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0068A3A0 .scope module, "Teste_soma" "Teste_soma" 2 17;
+ .timescale 0 0;
+v005C25C8_0 .var "a", 0 0;
+v005C2620_0 .var "b", 0 0;
+v005C2678_0 .net "s0", 0 0, L_005C3410; 1 drivers
+v005C26D0_0 .net "s1", 0 0, L_0068F638; 1 drivers
+S_0068A538 .scope module, "HA" "HalfAdder" 2 20, 2 4, S_0068A3A0;
+ .timescale 0 0;
+L_00682B00 .functor NOR 1, v005C25C8_0, v005C25C8_0, C4<0>, C4<0>;
+L_00682B70 .functor NOR 1, v005C2620_0, v005C2620_0, C4<0>, C4<0>;
+L_00682BE0 .functor NOR 1, L_00682B00, v005C2620_0, C4<0>, C4<0>;
+L_00682BA8 .functor NOR 1, L_00682B70, v005C25C8_0, C4<0>, C4<0>;
+L_00682B38 .functor NOR 1, L_00682BA8, L_00682BE0, C4<0>, C4<0>;
+L_0068F638 .functor NOR 1, L_00682B38, L_00682B38, C4<0>, C4<0>;
+L_005C3410 .functor NOR 1, L_00682B00, L_00682B70, C4<0>, C4<0>;
+v0068EF38_0 .net "a", 0 0, v005C25C8_0; 1 drivers
+v0068EF90_0 .net "b", 0 0, v005C2620_0; 1 drivers
+v0068EFE8_0 .net "q0", 0 0, L_00682B00; 1 drivers
+v00682AA8_0 .net "q1", 0 0, L_00682B70; 1 drivers
+v005C2410_0 .net "q2", 0 0, L_00682BE0; 1 drivers
+v005C2468_0 .net "q3", 0 0, L_00682BA8; 1 drivers
+v005C24C0_0 .net "q4", 0 0, L_00682B38; 1 drivers
+v005C2518_0 .alias "s0", 0 0, v005C2678_0;
+v005C2570_0 .alias "s1", 0 0, v005C26D0_0;
+S_0068A4B0 .scope begin, "start" "start" 2 21, 2 21, S_0068A3A0;
+ .timescale 0 0;
+S_0068A428 .scope begin, "main" "main" 2 25, 2 25, S_0068A3A0;
+ .timescale 0 0;
+    .scope S_0068A3A0;
+T_0 ;
+    %fork t_1, S_0068A4B0;
+    %jmp t_0;
+    .scope S_0068A4B0;
+t_1 ;
+    %set/v v005C25C8_0, 0, 1;
+    %set/v v005C2620_0, 0, 1;
+    %end;
+    .scope S_0068A3A0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0068A3A0;
+T_1 ;
+    %fork t_3, S_0068A428;
+    %jmp t_2;
+    .scope S_0068A428;
+t_3 ;
+    %vpi_call 2 26 "$display", "Nome: Jessica Luisa Betonico Andradde\011Matricula: 412748";
+    %vpi_call 2 27 "$display", "Operador de Meia-Soma ";
+    %vpi_call 2 28 "$display", " a | b | = | s0 | s1 |\012";
+    %vpi_call 2 29 "$monitor", " %b | %b | = | %2b | %2b |", v005C25C8_0, v005C2620_0, v005C2678_0, v005C26D0_0;
+    %delay 1, 0;
+    %set/v v005C25C8_0, 0, 1;
+    %set/v v005C2620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C25C8_0, 1, 1;
+    %set/v v005C2620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C25C8_0, 1, 1;
+    %set/v v005C2620_0, 1, 1;
+    %end;
+    .scope S_0068A3A0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\AC\guia4_1.v";

@@ -1,0 +1,80 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00339DA8 .scope module, "testdif" "testdif" 2 24;
+ .timescale 0 0;
+v005C2DF0_0 .var "a", 2 0;
+v005C2E48_0 .var "b", 2 0;
+v005C2EA0_0 .net "s", 0 0, L_005C3CA8; 1 drivers
+S_00339E30 .scope module, "teste" "dif" 2 30, 2 11, S_00339DA8;
+ .timescale 0 0;
+L_0033FF98 .functor XNOR 1, L_005C2EF8, L_005C2F50, C4<0>, C4<0>;
+L_0033F750 .functor XNOR 1, L_005C2FA8, L_005C3000, C4<0>, C4<0>;
+L_0033F7F8 .functor XNOR 1, L_005C3058, L_005C30B0, C4<0>, C4<0>;
+L_005C3CA8 .functor NAND 1, L_0033FF98, L_0033F750, L_0033F7F8, C4<1>;
+v0033FEE8_0 .alias "S", 0 0, v005C2EA0_0;
+v0033FF40_0 .net *"_s1", 0 0, L_005C2EF8; 1 drivers
+v00332F30_0 .net *"_s11", 0 0, L_005C30B0; 1 drivers
+v00332F88_0 .net *"_s3", 0 0, L_005C2F50; 1 drivers
+v00332FE0_0 .net *"_s5", 0 0, L_005C2FA8; 1 drivers
+v0033CD08_0 .net *"_s7", 0 0, L_005C3000; 1 drivers
+v0033CD60_0 .net *"_s9", 0 0, L_005C3058; 1 drivers
+v005C2C38_0 .net "a", 2 0, v005C2DF0_0; 1 drivers
+v005C2C90_0 .net "b", 2 0, v005C2E48_0; 1 drivers
+v005C2CE8_0 .net "w1", 0 0, L_0033FF98; 1 drivers
+v005C2D40_0 .net "w2", 0 0, L_0033F750; 1 drivers
+v005C2D98_0 .net "w3", 0 0, L_0033F7F8; 1 drivers
+L_005C2EF8 .part v005C2DF0_0, 0, 1;
+L_005C2F50 .part v005C2E48_0, 0, 1;
+L_005C2FA8 .part v005C2DF0_0, 1, 1;
+L_005C3000 .part v005C2E48_0, 1, 1;
+L_005C3058 .part v005C2DF0_0, 2, 1;
+L_005C30B0 .part v005C2E48_0, 2, 1;
+    .scope S_00339DA8;
+T_0 ;
+    %vpi_call 2 36 "$display", "Exemplo0024 - Yousef -441714";
+    %vpi_call 2 37 "$display", "Diferente";
+    %vpi_call 2 39 "$monitor", "a = %4b e Diferente \341 b = %4b ? 1- sim 0- n\343o \012 Resultado = %4b \012", v005C2DF0_0, v005C2E48_0, v005C2EA0_0;
+    %delay 1, 0;
+    %set/v v005C2DF0_0, 0, 3;
+    %set/v v005C2E48_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C2DF0_0, 8, 3;
+    %set/v v005C2E48_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C2DF0_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v005C2E48_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005C2DF0_0, 1, 3;
+    %set/v v005C2E48_0, 1, 3;
+    %delay 1, 0;
+    %set/v v005C2DF0_0, 1, 3;
+    %set/v v005C2E48_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 4, 3;
+    %set/v v005C2DF0_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v005C2E48_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C2DF0_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v005C2E48_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v005C2DF0_0, 8, 3;
+    %movi 8, 4, 3;
+    %set/v v005C2E48_0, 8, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Downloads\441714\Downloads\Nova pasta\Exemplo0024.v";

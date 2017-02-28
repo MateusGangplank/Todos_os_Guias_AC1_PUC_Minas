@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006999B8 .scope module, "test_compara" "test_compara" 2 23;
+ .timescale 0 0;
+v005AA968_0 .net "saida", 0 0, L_005AB940; 1 drivers
+v005AA9C0_0 .var "x", 2 0;
+v005AAA18_0 .var "y", 2 0;
+S_00699A40 .scope module, "C1" "compara" 2 30, 2 11, S_006999B8;
+ .timescale 0 0;
+L_00693A78 .functor XNOR 1, L_005AAA70, L_005AAAC8, C4<0>, C4<0>;
+L_005AF0F0 .functor XNOR 1, L_005AAB20, L_005AAB78, C4<0>, C4<0>;
+L_005AB898 .functor XNOR 1, L_005AABD0, L_005AAC28, C4<0>, C4<0>;
+L_005AB940 .functor AND 1, L_00693A78, L_005AF0F0, L_005AB898, C4<1>;
+v00693970_0 .net *"_s12", 0 0, L_005AABD0; 1 drivers
+v006939C8_0 .net *"_s14", 0 0, L_005AAC28; 1 drivers
+v00693A20_0 .net *"_s2", 0 0, L_005AAA70; 1 drivers
+v005D2ED8_0 .net *"_s4", 0 0, L_005AAAC8; 1 drivers
+v005D2F30_0 .net *"_s7", 0 0, L_005AAB20; 1 drivers
+v005D2F88_0 .net *"_s9", 0 0, L_005AAB78; 1 drivers
+v00694128_0 .net "a", 2 0, v005AA9C0_0; 1 drivers
+v00694180_0 .net "b", 2 0, v005AAA18_0; 1 drivers
+v006941D8_0 .net "s1", 0 0, L_00693A78; 1 drivers
+v005AA860_0 .net "s2", 0 0, L_005AF0F0; 1 drivers
+v005AA8B8_0 .net "s3", 0 0, L_005AB898; 1 drivers
+v005AA910_0 .alias "saida", 0 0, v005AA968_0;
+L_005AAA70 .part v005AA9C0_0, 0, 1;
+L_005AAAC8 .part v005AAA18_0, 0, 1;
+L_005AAB20 .part v005AA9C0_0, 1, 1;
+L_005AAB78 .part v005AAA18_0, 1, 1;
+L_005AABD0 .part v005AA9C0_0, 2, 1;
+L_005AAC28 .part v005AAA18_0, 2, 1;
+    .scope S_006999B8;
+T_0 ;
+    %vpi_call 2 34 "$display", "Exemplo0023 - Thais Mairink - 441710";
+    %vpi_call 2 35 "$display", "Compara Igualdade";
+    %delay 1, 0;
+    %set/v v005AA9C0_0, 0, 3;
+    %set/v v005AAA18_0, 0, 3;
+    %vpi_call 2 39 "$monitor", "%b + %b = %b", v005AA9C0_0, v005AAA18_0, v005AA968_0;
+    %delay 1, 0;
+    %set/v v005AA9C0_0, 0, 3;
+    %movi 8, 1, 3;
+    %set/v v005AAA18_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005AA9C0_0, 8, 3;
+    %set/v v005AAA18_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005AA9C0_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v005AAA18_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005AA9C0_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v005AAA18_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005AA9C0_0, 0, 3;
+    %set/v v005AAA18_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v005AA9C0_0, 8, 3;
+    %movi 8, 6, 3;
+    %set/v v005AAA18_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005AA9C0_0, 0, 3;
+    %set/v v005AAA18_0, 0, 3;
+    %delay 1, 0;
+    %set/v v005AA9C0_0, 0, 3;
+    %set/v v005AAA18_0, 0, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Thaís Mairink\Documents\thais\Arq1\Guia04\Exemplo0023.V";

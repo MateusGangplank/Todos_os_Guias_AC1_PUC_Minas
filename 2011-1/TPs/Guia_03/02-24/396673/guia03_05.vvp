@@ -1,0 +1,76 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0063F010 .scope module, "testmeiadiferenca" "testmeiadiferenca" 2 30;
+ .timescale 0 0;
+v006A2220_0 .var "a", 0 0;
+v006A2278_0 .var "b", 0 0;
+v006A22D0_0 .net "s0", 0 0, L_0063CF10; 1 drivers
+v006A2328_0 .net "s1", 0 0, L_0063CF80; 1 drivers
+S_00639FC8 .scope module, "MEIADIFERENCA1" "meiadiferenca" 2 34, 2 11, S_0063F010;
+ .timescale 0 0;
+L_00632BF0 .functor NOR 1, v006A2220_0, v006A2220_0, C4<0>, C4<0>;
+L_0063CED8 .functor NOR 1, v006A2278_0, v006A2278_0, C4<0>, C4<0>;
+L_0063CF48 .functor NOR 1, L_00632BF0, L_0063CED8, C4<0>, C4<0>;
+L_0063FE28 .functor NOR 1, v006A2220_0, v006A2278_0, C4<0>, C4<0>;
+L_0063CF10 .functor NOR 1, L_0063FE28, L_0063CF48, C4<0>, C4<0>;
+L_0063FFA0 .functor NOR 1, L_00632BF0, L_00632BF0, C4<0>, C4<0>;
+L_0063CF80 .functor NOR 1, L_0063FFA0, L_0063CED8, C4<0>, C4<0>;
+v00632AE8_0 .net "a", 0 0, v006A2220_0; 1 drivers
+v00632B40_0 .net "b", 0 0, v006A2278_0; 1 drivers
+v00632B98_0 .alias "s0", 0 0, v006A22D0_0;
+v006A2010_0 .alias "s1", 0 0, v006A2328_0;
+v006A2068_0 .net "s2", 0 0, L_00632BF0; 1 drivers
+v006A20C0_0 .net "s3", 0 0, L_0063CED8; 1 drivers
+v006A2118_0 .net "s4", 0 0, L_0063CF48; 1 drivers
+v006A2170_0 .net "s5", 0 0, L_0063FE28; 1 drivers
+v006A21C8_0 .net "s6", 0 0, L_0063FFA0; 1 drivers
+S_00639F40 .scope begin, "start" "start" 2 36, 2 36, S_0063F010;
+ .timescale 0 0;
+S_00639EB8 .scope begin, "main" "main" 2 41, 2 41, S_0063F010;
+ .timescale 0 0;
+    .scope S_0063F010;
+T_0 ;
+    %fork t_1, S_00639F40;
+    %jmp t_0;
+    .scope S_00639F40;
+t_1 ;
+    %set/v v006A2220_0, 0, 1;
+    %set/v v006A2278_0, 0, 1;
+    %end;
+    .scope S_0063F010;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0063F010;
+T_1 ;
+    %fork t_3, S_00639EB8;
+    %jmp t_2;
+    .scope S_00639EB8;
+t_3 ;
+    %vpi_call 2 42 "$display", "Guia 03_05 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 43 "$display", "Test Meia Diferenca NOR gate";
+    %vpi_call 2 44 "$display", "\012 a | b = s0 s1\012";
+    %vpi_call 2 45 "$monitor", " %b | %b = %b %b", v006A2220_0, v006A2278_0, v006A22D0_0, v006A2328_0;
+    %delay 1, 0;
+    %set/v v006A2220_0, 0, 1;
+    %set/v v006A2278_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2220_0, 1, 1;
+    %set/v v006A2278_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2220_0, 1, 1;
+    %set/v v006A2278_0, 1, 1;
+    %end;
+    .scope S_0063F010;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "I:\Ciência da Computação\AC I - 2\Guias\Guia03\guia03_05.v";

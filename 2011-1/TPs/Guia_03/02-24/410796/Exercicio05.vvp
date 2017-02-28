@@ -1,0 +1,90 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE590 .scope module, "test_meia_diferenca" "test_meia_diferenca" 2 72;
+ .timescale 0 0;
+v006A5CA8_0 .var "a", 0 0;
+v006A5D00_0 .var "b", 0 0;
+v006A5D58_0 .net "s0", 0 0, L_006A6028; 1 drivers
+v006A5DE8_0 .net "s1", 0 0, L_006A5C70; 1 drivers
+S_006754E8 .scope module, "MD1" "meia_diferenca" 2 76, 2 56, S_003EE590;
+ .timescale 0 0;
+v006A5AA0_0 .net "p", 0 0, v006A5CA8_0; 1 drivers
+v006A5AF8_0 .net "q", 0 0, v006A5D00_0; 1 drivers
+v006A5B50_0 .alias "s0", 0 0, v006A5D58_0;
+v006A5BC0_0 .alias "s1", 0 0, v006A5DE8_0;
+v006A5C18_0 .net "temp2", 0 0, L_006A60D0; 1 drivers
+S_006A5760 .scope module, "XOR1" "xor_nor_gate" 2 61, 2 39, S_006754E8;
+ .timescale 0 0;
+L_006A5E78 .functor NOR 1, v006A5CA8_0, v006A5D00_0, C4<0>, C4<0>;
+L_003EFD10 .functor NOR 1, v006A5CA8_0, v006A5D00_0, C4<0>, C4<0>;
+L_003EFD48 .functor NOR 1, v006A5CA8_0, v006A5D00_0, C4<0>, C4<0>;
+L_006A5F80 .functor NOR 1, L_006A5E78, L_003EFD10, C4<0>, C4<0>;
+L_006A6028 .functor NOR 1, L_006A5F80, L_003EFD48, C4<0>, C4<0>;
+v006A57E0_0 .alias "p", 0 0, v006A5AA0_0;
+v006A5838_0 .alias "q", 0 0, v006A5AF8_0;
+v006A5890_0 .alias "s", 0 0, v006A5D58_0;
+v006A58E8_0 .net "temp1", 0 0, L_006A5E78; 1 drivers
+v006A5940_0 .net "temp2", 0 0, L_003EFD10; 1 drivers
+v006A5998_0 .net "temp3", 0 0, L_003EFD48; 1 drivers
+v006A5A08_0 .net "temp4", 0 0, L_006A5F80; 1 drivers
+S_006A5618 .scope module, "NOT1" "not_nor_gate" 2 62, 2 12, S_006754E8;
+ .timescale 0 0;
+L_006A60D0 .functor NOR 1, v006A5CA8_0, v006A5CA8_0, C4<0>, C4<0>;
+v006A5698_0 .alias "p", 0 0, v006A5AA0_0;
+v006A5708_0 .alias "s", 0 0, v006A5C18_0;
+S_00675568 .scope module, "AND1" "and_nor_gate" 2 63, 2 24, S_006754E8;
+ .timescale 0 0;
+L_006A61D0 .functor NOR 1, v006A5D00_0, v006A5D00_0, C4<0>, C4<0>;
+L_006A62F8 .functor NOR 1, L_006A60D0, L_006A60D0, C4<0>, C4<0>;
+L_006A5C70 .functor NOR 1, L_006A61D0, L_006A62F8, C4<0>, C4<0>;
+v003ED9E8_0 .alias "p", 0 0, v006A5AF8_0;
+v006A5458_0 .alias "q", 0 0, v006A5C18_0;
+v006A54C8_0 .alias "s", 0 0, v006A5DE8_0;
+v006A5550_0 .net "temp1", 0 0, L_006A61D0; 1 drivers
+v006A55C0_0 .net "temp2", 0 0, L_006A62F8; 1 drivers
+S_00675468 .scope begin, "start" "start" 2 78, 2 78, S_003EE590;
+ .timescale 0 0;
+S_003ED968 .scope begin, "main" "main" 2 83, 2 83, S_003EE590;
+ .timescale 0 0;
+    .scope S_003EE590;
+T_0 ;
+    %fork t_1, S_00675468;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A5CA8_0, 0, 1;
+    %set/v v006A5D00_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EE590;
+T_1 ;
+    %fork t_3, S_003ED968;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 84 "$display", "Exercico 5 - GUIA 03\012Marco Antonio M. Belo - 0410796\012";
+    %vpi_call 2 85 "$display", "Meia Diferença";
+    %vpi_call 2 86 "$display", "\012a - b = s\012";
+    %vpi_call 2 87 "$monitor", "%b - %b = %b%b", v006A5D00_0, v006A5CA8_0, v006A5D58_0, v006A5DE8_0;
+    %delay 1, 0;
+    %set/v v006A5CA8_0, 0, 1;
+    %set/v v006A5D00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A5CA8_0, 1, 1;
+    %set/v v006A5D00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A5CA8_0, 1, 1;
+    %set/v v006A5D00_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Nova pasta\Exercicio05.vhdl";

@@ -1,0 +1,100 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_016A2038 .scope module, "test_f4" "test_f4" 2 18;
+ .timescale 0 0;
+L_01691FC8 .functor AND 1, v0080A478_0, v0080A4D0_0, C4<1>, C4<1>;
+L_01692038 .functor OR 1, v0080A478_0, v0080A4D0_0, C4<0>, C4<0>;
+L_01692118 .functor NAND 1, v0080A478_0, v0080A4D0_0, C4<1>, C4<1>;
+L_01692000 .functor NOR 1, v0080A478_0, v0080A4D0_0, C4<0>, C4<0>;
+v0080A2C0_0 .net *"_s1", 0 0, L_01691FC8; 1 drivers
+v0080A318_0 .net *"_s10", 0 0, L_01692000; 1 drivers
+v0080A370_0 .net *"_s4", 0 0, L_01692038; 1 drivers
+v0080A3C8_0 .net *"_s7", 0 0, L_01692118; 1 drivers
+v0080A420_0 .var "c", 0 0;
+v0080A478_0 .var "x", 0 0;
+v0080A4D0_0 .var "y", 0 0;
+RS_016A51B4/0/0 .resolv tri, L_0080A580, L_0080A5D8, L_0080A630, L_0080A688;
+RS_016A51B4/0/4 .resolv tri, L_0080A9A0, C4<zzzzzzzz>, C4<zzzzzzzz>, C4<zzzzzzzz>;
+RS_016A51B4 .resolv tri, RS_016A51B4/0/0, RS_016A51B4/0/4, C4<zzzzzzzz>, C4<zzzzzzzz>;
+v0080A528_0 .net8 "z", 7 0, RS_016A51B4; 5 drivers
+L_0080A580 .part/pv L_01691FC8, 7, 1, 8;
+L_0080A5D8 .part/pv L_01692038, 6, 1, 8;
+L_0080A630 .part/pv L_01692118, 5, 1, 8;
+L_0080A688 .part/pv L_01692000, 4, 1, 8;
+RS_016A510C .resolv tri, L_0080A6E0, L_0080A790, L_0080A840, L_0080A8F0;
+L_0080A9A0 .part/pv RS_016A510C, 0, 4, 8;
+L_0080A9F8 .part RS_016A51B4, 4, 4;
+S_016A21D0 .scope module, "f8a" "f8" 2 28, 2 10, S_016A2038;
+ .timescale 0 0;
+L_016920E0 .functor AND 1, L_0080A738, L_016921F8, C4<1>, C4<1>;
+L_016921F8 .functor NOT 1, v0080A420_0, C4<0>, C4<0>, C4<0>;
+L_016922D8 .functor AND 1, L_0080A7E8, L_016923B8, C4<1>, C4<1>;
+L_016923B8 .functor NOT 1, v0080A420_0, C4<0>, C4<0>, C4<0>;
+L_01692428 .functor AND 1, L_0080A898, v0080A420_0, C4<1>, C4<1>;
+L_016922A0 .functor AND 1, L_0080A948, v0080A420_0, C4<1>, C4<1>;
+v00809E48_0 .net *"_s1", 0 0, L_016920E0; 1 drivers
+v00809EA0_0 .net *"_s11", 0 0, L_0080A7E8; 1 drivers
+v00809EF8_0 .net *"_s12", 0 0, L_016923B8; 1 drivers
+v00809F50_0 .net *"_s15", 0 0, L_01692428; 1 drivers
+v00809FA8_0 .net *"_s18", 0 0, L_0080A898; 1 drivers
+v0080A000_0 .net *"_s20", 0 0, L_016922A0; 1 drivers
+v0080A058_0 .net *"_s23", 0 0, L_0080A948; 1 drivers
+v0080A0B0_0 .net *"_s4", 0 0, L_0080A738; 1 drivers
+v0080A108_0 .net *"_s5", 0 0, L_016921F8; 1 drivers
+v0080A160_0 .net *"_s8", 0 0, L_016922D8; 1 drivers
+v0080A1B8_0 .net "a", 3 0, L_0080A9F8; 1 drivers
+v0080A210_0 .net "e", 0 0, v0080A420_0; 1 drivers
+v0080A268_0 .net8 "s", 3 0, RS_016A510C; 4 drivers
+L_0080A6E0 .part/pv L_016920E0, 3, 1, 4;
+L_0080A738 .part L_0080A9F8, 3, 1;
+L_0080A790 .part/pv L_016922D8, 2, 1, 4;
+L_0080A7E8 .part L_0080A9F8, 2, 1;
+L_0080A840 .part/pv L_01692428, 1, 1, 4;
+L_0080A898 .part L_0080A9F8, 1, 1;
+L_0080A8F0 .part/pv L_016922A0, 0, 1, 4;
+L_0080A948 .part L_0080A9F8, 0, 1;
+S_016A2148 .scope begin, "start" "start" 2 30, 2 30, S_016A2038;
+ .timescale 0 0;
+    .scope S_016A2038;
+T_0 ;
+    %fork t_1, S_016A2148;
+    %jmp t_0;
+    .scope S_016A2148;
+t_1 ;
+    %vpi_call 2 31 "$display", "Exemplo0031 - Herbert Alves - 461971";
+    %vpi_call 2 32 "$display", "Test LU's module";
+    %set/v v0080A478_0, 0, 1;
+    %set/v v0080A4D0_0, 0, 1;
+    %set/v v0080A420_0, 0, 1;
+    %vpi_call 2 34 "$display", "\012 x, y (chave)= and - or - nand - nor\012";
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b, %b (%b)= %b - %b - %b - %b", v0080A478_0, v0080A4D0_0, v0080A420_0, &PV<v0080A528_0, 3, 1>, &PV<v0080A528_0, 2, 1>, &PV<v0080A528_0, 1, 1>, &PV<v0080A528_0, 0, 1>;
+    %delay 1, 0;
+    %set/v v0080A478_0, 0, 1;
+    %set/v v0080A4D0_0, 1, 1;
+    %set/v v0080A420_0, 0, 1;
+    %vpi_call 2 37 "$display", "%b, %b (%b)= %b - %b - %b - %b", v0080A478_0, v0080A4D0_0, v0080A420_0, &PV<v0080A528_0, 3, 1>, &PV<v0080A528_0, 2, 1>, &PV<v0080A528_0, 1, 1>, &PV<v0080A528_0, 0, 1>;
+    %delay 1, 0;
+    %set/v v0080A478_0, 1, 1;
+    %set/v v0080A4D0_0, 0, 1;
+    %set/v v0080A420_0, 1, 1;
+    %vpi_call 2 39 "$display", "%b, %b (%b)= %b - %b - %b - %b", v0080A478_0, v0080A4D0_0, v0080A420_0, &PV<v0080A528_0, 3, 1>, &PV<v0080A528_0, 2, 1>, &PV<v0080A528_0, 1, 1>, &PV<v0080A528_0, 0, 1>;
+    %delay 1, 0;
+    %set/v v0080A478_0, 1, 1;
+    %set/v v0080A4D0_0, 1, 1;
+    %set/v v0080A420_0, 1, 1;
+    %vpi_call 2 41 "$display", "%b, %b (%b)= %b - %b - %b - %b", v0080A478_0, v0080A4D0_0, v0080A420_0, &PV<v0080A528_0, 3, 1>, &PV<v0080A528_0, 2, 1>, &PV<v0080A528_0, 1, 1>, &PV<v0080A528_0, 0, 1>;
+    %end;
+    .scope S_016A2038;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

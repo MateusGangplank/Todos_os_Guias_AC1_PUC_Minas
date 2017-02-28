@@ -1,0 +1,47 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C28D8 .scope module, "Exercicio1003" "Exercicio1003" 2 28;
+ .timescale 0 0;
+v003CFE10_0 .net "q", 0 0, L_003CFF48; 1 drivers
+v0063EC10_0 .net "qbar", 0 0, L_003CE4F8; 1 drivers
+v0063EC68_0 .var "reset", 0 0;
+v0063ECC0_0 .var "set", 0 0;
+S_003C3C90 .scope module, "latch1" "Dlatch" 2 32, 2 14, S_003C28D8;
+ .timescale 0 0;
+L_003C2960 .functor NAND 1, v0063ECC0_0, v0063EC68_0, C4<1>, C4<1>;
+L_003CFEA0 .functor NAND 1, v0063EC68_0, L_003CFED8, C4<1>, C4<1>;
+L_003CFED8 .functor NOT 1, v0063ECC0_0, C4<0>, C4<0>, C4<0>;
+L_003CFF48 .functor NAND 1, L_003C2960, L_003CE4F8, C4<1>, C4<1>;
+L_003CE4F8 .functor NAND 1, L_003CFF48, L_003CFEA0, C4<1>, C4<1>;
+v003C3D18_0 .net *"_s0", 0 0, L_003CFED8; 1 drivers
+v003CEFA0_0 .alias "q", 0 0, v003CFE10_0;
+v003C3D70_0 .alias "qbar", 0 0, v0063EC10_0;
+v003CFCB0_0 .net "reset", 0 0, v0063EC68_0; 1 drivers
+v003CFD08_0 .net "set", 0 0, v0063ECC0_0; 1 drivers
+v003CFD60_0 .net "w1", 0 0, L_003C2960; 1 drivers
+v003CFDB8_0 .net "w2", 0 0, L_003CFEA0; 1 drivers
+    .scope S_003C28D8;
+T_0 ;
+    %vpi_call 2 34 "$display", "Luiz Felipe Fonseca - 405817";
+    %vpi_call 2 35 "$monitor", " q= %b, qbar= %b, set= %b, reset= %b", v003CFE10_0, v0063EC10_0, v0063ECC0_0, v0063EC68_0;
+    %set/v v0063ECC0_0, 0, 1;
+    %set/v v0063EC68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0063ECC0_0, 1, 1;
+    %set/v v0063EC68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063ECC0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0063ECC0_0, 1, 1;
+    %set/v v0063EC68_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\405817\Exercicio1003.v";

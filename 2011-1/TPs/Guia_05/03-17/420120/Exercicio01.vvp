@@ -1,0 +1,190 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0034AB78 .scope module, "testsomador4bits" "testsomador4bits" 2 43;
+ .timescale 0 0;
+v005CB570_0 .net "carry", 0 0, L_005A0B58; 1 drivers
+v005CB5C8_0 .var "e1", 3 0;
+v005CB620_0 .var "e2", 3 0;
+v005CB678_0 .var/i "i", 31 0;
+v005CB6D0_0 .var/i "j", 31 0;
+RS_005A5254 .resolv tri, L_005CB780, L_005CB888, L_005CB990, L_005CBA98;
+v005CB728_0 .net8 "saida", 3 0, RS_005A5254; 4 drivers
+S_0034AC88 .scope module, "Somador4bits" "metodoSomador4bits" 2 49, 2 28, S_0034AB78;
+ .timescale 0 0;
+v005CB308_0 .alias "carryout", 0 0, v005CB570_0;
+v005CB360_0 .net "carryout1", 0 0, L_00343D28; 1 drivers
+v005CB3B8_0 .net "carryout2", 0 0, L_005A0848; 1 drivers
+v005CB410_0 .net "carryout3", 0 0, L_005A0A08; 1 drivers
+v005CB468_0 .net "e1", 3 0, v005CB5C8_0; 1 drivers
+v005CB4C0_0 .net "e2", 3 0, v005CB620_0; 1 drivers
+v005CB518_0 .alias "saida", 3 0, v005CB728_0;
+L_005CB780 .part/pv L_0034E068, 0, 1, 4;
+L_005CB7D8 .part v005CB5C8_0, 0, 1;
+L_005CB830 .part v005CB620_0, 0, 1;
+L_005CB888 .part/pv L_005A0768, 1, 1, 4;
+L_005CB8E0 .part v005CB5C8_0, 1, 1;
+L_005CB938 .part v005CB620_0, 1, 1;
+L_005CB990 .part/pv L_005A0928, 2, 1, 4;
+L_005CB9E8 .part v005CB5C8_0, 2, 1;
+L_005CBA40 .part v005CB620_0, 2, 1;
+L_005CBA98 .part/pv L_005A0A78, 3, 1, 4;
+L_005CBAF0 .part v005CB5C8_0, 3, 1;
+L_005CBB48 .part v005CB620_0, 3, 1;
+S_00591770 .scope module, "MEIASOMA" "metodomeiasoma" 2 35, 2 5, S_0034AC88;
+ .timescale 0 0;
+L_0034E068 .functor XOR 1, L_005CB7D8, L_005CB830, C4<0>, C4<0>;
+L_00343D28 .functor AND 1, L_005CB7D8, L_005CB830, C4<1>, C4<1>;
+v005CB1A8_0 .alias "carry", 0 0, v005CB360_0;
+v005CB200_0 .net "e1", 0 0, L_005CB7D8; 1 drivers
+v005CB258_0 .net "e2", 0 0, L_005CB830; 1 drivers
+v005CB2B0_0 .net "saida", 0 0, L_0034E068; 1 drivers
+S_00591000 .scope module, "SOMACOMPLETA1" "metodosomacompleta" 2 36, 2 15, S_0034AC88;
+ .timescale 0 0;
+L_005A0848 .functor OR 1, L_005A07D8, L_005A06F8, C4<0>, C4<0>;
+v0034C230_0 .net "carry", 0 0, L_005A06F8; 1 drivers
+v0034C288_0 .net "carry2", 0 0, L_005A07D8; 1 drivers
+v0034C2E0_0 .alias "carryin", 0 0, v005CB360_0;
+v005CAFF0_0 .alias "carryout", 0 0, v005CB3B8_0;
+v005CB048_0 .net "e1", 0 0, L_005CB8E0; 1 drivers
+v005CB0A0_0 .net "e2", 0 0, L_005CB938; 1 drivers
+v005CB0F8_0 .net "saida", 0 0, L_005A0650; 1 drivers
+v005CB150_0 .net "soma", 0 0, L_005A0768; 1 drivers
+S_005916E8 .scope module, "MeiaSoma1" "metodomeiasoma" 2 20, 2 5, S_00591000;
+ .timescale 0 0;
+L_005A0650 .functor XOR 1, L_005CB8E0, L_005CB938, C4<0>, C4<0>;
+L_005A06F8 .functor AND 1, L_005CB8E0, L_005CB938, C4<1>, C4<1>;
+v0034C0D0_0 .alias "carry", 0 0, v0034C230_0;
+v0034C128_0 .alias "e1", 0 0, v005CB048_0;
+v0034C180_0 .alias "e2", 0 0, v005CB0A0_0;
+v0034C1D8_0 .alias "saida", 0 0, v005CB0F8_0;
+S_00591330 .scope module, "MeiaSoma2" "metodomeiasoma" 2 21, 2 5, S_00591000;
+ .timescale 0 0;
+L_005A0768 .functor XOR 1, L_005A0650, L_00343D28, C4<0>, C4<0>;
+L_005A07D8 .functor AND 1, L_005A0650, L_00343D28, C4<1>, C4<1>;
+v0034BF70_0 .alias "carry", 0 0, v0034C288_0;
+v0034BFC8_0 .alias "e1", 0 0, v005CB0F8_0;
+v0034C020_0 .alias "e2", 0 0, v005CB360_0;
+v0034C078_0 .alias "saida", 0 0, v005CB150_0;
+S_00591198 .scope module, "SOMACOMPLETA2" "metodosomacompleta" 2 37, 2 15, S_0034AC88;
+ .timescale 0 0;
+L_005A0A08 .functor OR 1, L_005A0998, L_005A08B8, C4<0>, C4<0>;
+v0034BCB0_0 .net "carry", 0 0, L_005A08B8; 1 drivers
+v0034BD08_0 .net "carry2", 0 0, L_005A0998; 1 drivers
+v0034BD60_0 .alias "carryin", 0 0, v005CB3B8_0;
+v0034BDB8_0 .alias "carryout", 0 0, v005CB410_0;
+v0034BE10_0 .net "e1", 0 0, L_005CB9E8; 1 drivers
+v0034BE68_0 .net "e2", 0 0, L_005CBA40; 1 drivers
+v0034BEC0_0 .net "saida", 0 0, L_005A06C0; 1 drivers
+v0034BF18_0 .net "soma", 0 0, L_005A0928; 1 drivers
+S_00591088 .scope module, "MeiaSoma1" "metodomeiasoma" 2 20, 2 5, S_00591198;
+ .timescale 0 0;
+L_005A06C0 .functor XOR 1, L_005CB9E8, L_005CBA40, C4<0>, C4<0>;
+L_005A08B8 .functor AND 1, L_005CB9E8, L_005CBA40, C4<1>, C4<1>;
+v0034BB50_0 .alias "carry", 0 0, v0034BCB0_0;
+v0034BBA8_0 .alias "e1", 0 0, v0034BE10_0;
+v0034BC00_0 .alias "e2", 0 0, v0034BE68_0;
+v0034BC58_0 .alias "saida", 0 0, v0034BEC0_0;
+S_00591110 .scope module, "MeiaSoma2" "metodomeiasoma" 2 21, 2 5, S_00591198;
+ .timescale 0 0;
+L_005A0928 .functor XOR 1, L_005A06C0, L_005A0848, C4<0>, C4<0>;
+L_005A0998 .functor AND 1, L_005A06C0, L_005A0848, C4<1>, C4<1>;
+v0034B9F0_0 .alias "carry", 0 0, v0034BD08_0;
+v0034BA48_0 .alias "e1", 0 0, v0034BEC0_0;
+v0034BAA0_0 .alias "e2", 0 0, v005CB3B8_0;
+v0034BAF8_0 .alias "saida", 0 0, v0034BF18_0;
+S_0034A9E0 .scope module, "SOMACOMPLETA3" "metodosomacompleta" 2 38, 2 15, S_0034AC88;
+ .timescale 0 0;
+L_005A0B58 .functor OR 1, L_005A0AE8, L_005A0688, C4<0>, C4<0>;
+v0034B730_0 .net "carry", 0 0, L_005A0688; 1 drivers
+v0034B788_0 .net "carry2", 0 0, L_005A0AE8; 1 drivers
+v0034B7E0_0 .alias "carryin", 0 0, v005CB410_0;
+v0034B838_0 .alias "carryout", 0 0, v005CB570_0;
+v0034B890_0 .net "e1", 0 0, L_005CBAF0; 1 drivers
+v0034B8E8_0 .net "e2", 0 0, L_005CBB48; 1 drivers
+v0034B940_0 .net "saida", 0 0, L_005A0618; 1 drivers
+v0034B998_0 .net "soma", 0 0, L_005A0A78; 1 drivers
+S_00591220 .scope module, "MeiaSoma1" "metodomeiasoma" 2 20, 2 5, S_0034A9E0;
+ .timescale 0 0;
+L_005A0618 .functor XOR 1, L_005CBAF0, L_005CBB48, C4<0>, C4<0>;
+L_005A0688 .functor AND 1, L_005CBAF0, L_005CBB48, C4<1>, C4<1>;
+v0034B5D0_0 .alias "carry", 0 0, v0034B730_0;
+v0034B628_0 .alias "e1", 0 0, v0034B890_0;
+v0034B680_0 .alias "e2", 0 0, v0034B8E8_0;
+v0034B6D8_0 .alias "saida", 0 0, v0034B940_0;
+S_005912A8 .scope module, "MeiaSoma2" "metodomeiasoma" 2 21, 2 5, S_0034A9E0;
+ .timescale 0 0;
+L_005A0A78 .functor XOR 1, L_005A0618, L_005A0A08, C4<0>, C4<0>;
+L_005A0AE8 .functor AND 1, L_005A0618, L_005A0A08, C4<1>, C4<1>;
+v0034B470_0 .alias "carry", 0 0, v0034B788_0;
+v0034B4C8_0 .alias "e1", 0 0, v0034B940_0;
+v0034B520_0 .alias "e2", 0 0, v005CB410_0;
+v0034B578_0 .alias "saida", 0 0, v0034B998_0;
+S_0034AA68 .scope begin, "start" "start" 2 51, 2 51, S_0034AB78;
+ .timescale 0 0;
+S_0034AAF0 .scope begin, "main" "main" 2 56, 2 56, S_0034AB78;
+ .timescale 0 0;
+    .scope S_0034AB78;
+T_0 ;
+    %fork t_1, S_0034AA68;
+    %jmp t_0;
+    .scope S_0034AA68;
+t_1 ;
+    %set/v v005CB5C8_0, 0, 4;
+    %set/v v005CB620_0, 0, 4;
+    %end;
+    .scope S_0034AB78;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0034AB78;
+T_1 ;
+    %fork t_3, S_0034AAF0;
+    %jmp t_2;
+    .scope S_0034AAF0;
+t_3 ;
+    %vpi_call 2 58 "$display", "Circuito Soma Completa com 4 bits ";
+    %delay 1, 0;
+    %vpi_call 2 59 "$display", " e1 + e2 = carry saida ";
+    %delay 1, 0;
+    %vpi_call 2 60 "$monitor", " %4b + %4b = %b %4b", v005CB5C8_0, v005CB620_0, v005CB570_0, v005CB728_0;
+    %set/v v005CB678_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v005CB678_0, 32;
+   %cmpi/s 8, 15, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v005CB678_0, 32;
+    %set/v v005CB5C8_0, 8, 4;
+    %set/v v005CB6D0_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v005CB6D0_0, 32;
+   %cmpi/s 8, 15, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.3, 5;
+    %delay 1, 0;
+    %load/v 8, v005CB6D0_0, 32;
+    %set/v v005CB620_0, 8, 4;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005CB6D0_0, 32;
+    %set/v v005CB6D0_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005CB678_0, 32;
+    %set/v v005CB678_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_0034AB78;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\ArQuitetura\Tps\guia5\Exercicio01.v";

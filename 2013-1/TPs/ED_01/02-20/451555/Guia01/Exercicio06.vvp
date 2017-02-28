@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0033E900 .scope module, "testnorgate" "testnorgate" 2 19;
+ .timescale 0 0;
+v0033FF88_0 .var "a", 0 0;
+v0033EDB0_0 .var "b", 0 0;
+v0033EE08_0 .net "s", 0 0, L_005CE458; 1 drivers
+S_00339800 .scope module, "XOR1" "xorgate" 2 24, 2 11, S_0033E900;
+ .timescale 0 0;
+L_00332EF0 .functor NOT 1, v0033FF88_0, C4<0>, C4<0>, C4<0>;
+L_0033EE98 .functor AND 1, L_00332EF0, v0033EDB0_0, C4<1>, C4<1>;
+L_0033EF40 .functor NOT 1, v0033EDB0_0, C4<0>, C4<0>, C4<0>;
+L_0033EF78 .functor AND 1, v0033FF88_0, L_0033EF40, C4<1>, C4<1>;
+L_005CE458 .functor OR 1, L_0033EE98, L_0033EF78, C4<0>, C4<0>;
+v00333AE0_0 .net *"_s0", 0 0, L_00332EF0; 1 drivers
+v00333B38_0 .net *"_s2", 0 0, L_0033EE98; 1 drivers
+v00333B90_0 .net *"_s4", 0 0, L_0033EF40; 1 drivers
+v00333BE8_0 .net *"_s6", 0 0, L_0033EF78; 1 drivers
+v0033FE80_0 .net "p", 0 0, v0033FF88_0; 1 drivers
+v0033FED8_0 .net "q", 0 0, v0033EDB0_0; 1 drivers
+v0033FF30_0 .alias "s", 0 0, v0033EE08_0;
+S_00332E68 .scope begin, "start" "start" 2 26, 2 26, S_0033E900;
+ .timescale 0 0;
+S_00332DE0 .scope begin, "main" "main" 2 30, 2 30, S_0033E900;
+ .timescale 0 0;
+    .scope S_0033E900;
+T_0 ;
+    %fork t_1, S_00332E68;
+    %jmp t_0;
+    .scope S_00332E68;
+t_1 ;
+    %set/v v0033FF88_0, 0, 1;
+    %set/v v0033EDB0_0, 0, 1;
+    %end;
+    .scope S_0033E900;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0033E900;
+T_1 ;
+    %fork t_3, S_00332DE0;
+    %jmp t_2;
+    .scope S_00332DE0;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exercicio06-Filipe Santos-451555";
+    %vpi_call 2 32 "$display", "Test xorgate";
+    %vpi_call 2 33 "$display", "\012 ((a&~b)|(a&~b)) \012";
+    %vpi_call 2 34 "$monitor", "%b^%b = %b", v0033FF88_0, v0033EDB0_0, v0033EE08_0;
+    %delay 1, 0;
+    %set/v v0033FF88_0, 0, 1;
+    %set/v v0033EDB0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0033FF88_0, 0, 1;
+    %set/v v0033EDB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0033FF88_0, 1, 1;
+    %set/v v0033EDB0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0033FF88_0, 1, 1;
+    %set/v v0033EDB0_0, 1, 1;
+    %end;
+    .scope S_0033E900;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Desktop\Filipe\CC Puc\Segundo Período\AC\Guia01\Exercicio06.V";

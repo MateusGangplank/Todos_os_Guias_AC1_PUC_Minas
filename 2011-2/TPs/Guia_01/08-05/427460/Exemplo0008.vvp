@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007E2E88 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v007E3480_0 .var "a", 0 0;
+v007EFE40_0 .var "b", 0 0;
+v007EFE98_0 .net "s", 0 0, L_01F7F118; 1 drivers
+S_007E9678 .scope module, "XNOR1" "xnorgate" 2 26, 2 11, S_007E2E88;
+ .timescale 0 0;
+L_01F7F070 .functor XOR 1, v007E3480_0, v007EFE40_0, C4<0>, C4<0>;
+L_01F7F118 .functor NOT 1, L_01F7F070, C4<0>, C4<0>, C4<0>;
+v007E2F98_0 .net *"_s0", 0 0, L_01F7F070; 1 drivers
+v007E3378_0 .net "p", 0 0, v007E3480_0; 1 drivers
+v007E33D0_0 .net "q", 0 0, v007EFE40_0; 1 drivers
+v007E3428_0 .alias "s", 0 0, v007EFE98_0;
+S_007E2F10 .scope begin, "start" "start" 2 29, 2 29, S_007E2E88;
+ .timescale 0 0;
+    .scope S_007E2E88;
+T_0 ;
+    %fork t_1, S_007E2F10;
+    %jmp t_0;
+    .scope S_007E2F10;
+t_1 ;
+    %set/v v007E3480_0, 0, 1;
+    %set/v v007EFE40_0, 0, 1;
+    %end;
+    .scope S_007E2E88;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007E2E88;
+T_1 ;
+    %vpi_call 2 36 "$display", "Exemplo 0008 - Rodrigo Arruda de Assis - 427460";
+    %vpi_call 2 37 "$display", "Test XNOR gate";
+    %vpi_call 2 38 "$display", "\012 (~(a^b) )= s\012";
+    %set/v v007E3480_0, 0, 1;
+    %set/v v007EFE40_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v007E3480_0, v007EFE40_0, v007EFE98_0;
+    %set/v v007E3480_0, 0, 1;
+    %set/v v007EFE40_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v007E3480_0, v007EFE40_0, v007EFE98_0;
+    %set/v v007E3480_0, 1, 1;
+    %set/v v007EFE40_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b = %b", v007E3480_0, v007EFE40_0, v007EFE98_0;
+    %set/v v007E3480_0, 1, 1;
+    %set/v v007EFE40_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "%b & %b = %b", v007E3480_0, v007EFE40_0, v007EFE98_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "I:\AC1\Exercicios\Guia01\Exemplo0008.v";

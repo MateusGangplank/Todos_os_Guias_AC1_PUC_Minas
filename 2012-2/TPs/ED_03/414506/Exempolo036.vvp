@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00326E28 .scope module, "test_f4" "test_f4" 2 27;
+ .timescale 0 0;
+v00322E90_0 .var "x", 0 0;
+v00322EE8_0 .var "y", 0 0;
+RS_003290F4 .resolv tri, L_00323048, L_003230F8, L_003231A8, C4<zzz>;
+v00322F40_0 .net8 "z", 2 0, RS_003290F4; 3 drivers
+S_00326EB0 .scope module, "modulo" "f4" 2 33, 2 9, S_00326E28;
+ .timescale 0 0;
+L_00A84978 .functor NOT 1, v00322E90_0, C4<0>, C4<0>, C4<0>;
+L_00328D20 .functor NOT 1, v00322EE8_0, C4<0>, C4<0>, C4<0>;
+L_00300698 .functor AND 1, L_003230A0, v00322EE8_0, C4<1>, C4<1>;
+L_00300740 .functor AND 1, v00322E90_0, L_00323150, C4<1>, C4<1>;
+L_0034A480 .functor OR 1, L_00323200, L_00323258, C4<0>, C4<0>;
+v00326B78_0 .net *"_s0", 0 0, L_00A84978; 1 drivers
+v00A84870_0 .net *"_s11", 0 0, L_00323150; 1 drivers
+v00A848C8_0 .net *"_s12", 0 0, L_0034A480; 1 drivers
+v00A84920_0 .net *"_s15", 0 0, L_00323200; 1 drivers
+v00A8FC70_0 .net *"_s17", 0 0, L_00323258; 1 drivers
+v00A8FCC8_0 .net *"_s2", 0 0, L_00328D20; 1 drivers
+v00A8FD20_0 .net *"_s4", 0 0, L_00300698; 1 drivers
+v00322C80_0 .net *"_s7", 0 0, L_003230A0; 1 drivers
+v00322CD8_0 .net *"_s8", 0 0, L_00300740; 1 drivers
+v00322D30_0 .net "entr01", 0 0, v00322E90_0; 1 drivers
+v00322D88_0 .net "entr02", 0 0, v00322EE8_0; 1 drivers
+v00322DE0_0 .alias "saida", 2 0, v00322F40_0;
+RS_0032910C .resolv tri, L_00322F98, L_00322FF0, C4<zzz>, C4<zzz>;
+v00322E38_0 .net8 "saida_not", 2 0, RS_0032910C; 2 drivers
+L_00322F98 .part/pv L_00A84978, 0, 1, 3;
+L_00322FF0 .part/pv L_00328D20, 1, 1, 3;
+L_00323048 .part/pv L_00300698, 0, 1, 3;
+L_003230A0 .part RS_0032910C, 0, 1;
+L_003230F8 .part/pv L_00300740, 1, 1, 3;
+L_00323150 .part RS_0032910C, 1, 1;
+L_003231A8 .part/pv L_0034A480, 2, 1, 3;
+L_00323200 .part RS_003290F4, 0, 1;
+L_00323258 .part RS_003290F4, 1, 1;
+    .scope S_00326E28;
+T_0 ;
+    %vpi_call 2 36 "$display", "Exemplo0031 - Fernando dos Santos Silva - 414506";
+    %vpi_call 2 37 "$display", "Test LU's module \012";
+    %delay 1, 0;
+    %set/v v00322E90_0, 0, 1;
+    %set/v v00322EE8_0, 0, 1;
+    %vpi_call 2 39 "$monitor", "%1b %1b  %1b", v00322E90_0, v00322EE8_0, &PV<v00322F40_0, 2, 1>;
+    %delay 1, 0;
+    %set/v v00322E90_0, 0, 1;
+    %set/v v00322EE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00322E90_0, 1, 1;
+    %set/v v00322EE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00322E90_0, 1, 1;
+    %set/v v00322EE8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsil\Desktop\Guia03\Exempolo036.v";

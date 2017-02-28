@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0099E430 .scope module, "testnandgate" "testnandgate" 2 15;
+ .timescale 0 0;
+v00993410_0 .var "a", 0 0;
+v00993468_0 .var "b", 0 0;
+v0099DEE8_0 .net "s", 0 0, L_0099DF78; 1 drivers
+S_00992E90 .scope module, "NAND1" "nandgate" 2 20, 2 9, S_0099E430;
+ .timescale 0 0;
+L_0099E540 .functor AND 1, v00993410_0, v00993468_0, C4<1>, C4<1>;
+L_0099DF78 .functor NOT 1, L_0099E540, C4<0>, C4<0>, C4<0>;
+v00992F18_0 .net *"_s0", 0 0, L_0099E540; 1 drivers
+v00992F70_0 .net "p", 0 0, v00993410_0; 1 drivers
+v00993360_0 .net "q", 0 0, v00993468_0; 1 drivers
+v009933B8_0 .alias "s", 0 0, v0099DEE8_0;
+S_0099E4B8 .scope begin, "start" "start" 2 22, 2 22, S_0099E430;
+ .timescale 0 0;
+    .scope S_0099E430;
+T_0 ;
+    %fork t_1, S_0099E4B8;
+    %jmp t_0;
+    .scope S_0099E4B8;
+t_1 ;
+    %set/v v00993410_0, 0, 1;
+    %set/v v00993468_0, 0, 1;
+    %end;
+    .scope S_0099E430;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0099E430;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exercicio0001 - Filipe Viana de Miranda - 446415";
+    %vpi_call 2 30 "$display", "Test NAND gate";
+    %vpi_call 2 31 "$display", "\012a ~& b = s\012";
+    %set/v v00993410_0, 0, 1;
+    %set/v v00993468_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "%b ~& %b = %b", v00993410_0, v00993468_0, v0099DEE8_0;
+    %set/v v00993410_0, 0, 1;
+    %set/v v00993468_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b ~& %b = %b", v00993410_0, v00993468_0, v0099DEE8_0;
+    %set/v v00993410_0, 1, 1;
+    %set/v v00993468_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b ~& %b = %b", v00993410_0, v00993468_0, v0099DEE8_0;
+    %set/v v00993410_0, 1, 1;
+    %set/v v00993468_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b ~& %b = %b", v00993410_0, v00993468_0, v0099DEE8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Downloads\Faculdade\2° Periodo\Arquitetura de Computadores I\Programas e Ferramentas\Icarus_Verilog_v0_95\bin\Exercicio0001.v";

@@ -1,0 +1,203 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005914C8 .scope module, "testSomadorCompleto4BitsComComp" "testSomadorCompleto4BitsComComp" 2 68;
+ .timescale 0 0;
+v005CEA80_0 .net "cout", 0 0, L_005D0188; 1 drivers
+v005CEAD8_0 .var/i "j", 31 0;
+v005CEB30_0 .var/i "k", 31 0;
+RS_005A53AC .resolv tri, L_005CED18, L_005CEE20, L_005CEF28, L_005CF030;
+v005CEB88_0 .net8 "s", 3 0, RS_005A53AC; 4 drivers
+v005CEC10_0 .net "s1", 0 0, L_005D0448; 1 drivers
+v005CEC68_0 .var "x", 3 0;
+v005CECC0_0 .var "y", 3 0;
+S_00591440 .scope module, "SC41" "SomadorCompleto4BitsComComp" 2 78, 2 48, S_005914C8;
+ .timescale 0 0;
+v005CE7C0_0 .net "a", 3 0, v005CEC68_0; 1 drivers
+v005CE818_0 .net "b", 3 0, v005CECC0_0; 1 drivers
+v005CE870_0 .alias "s", 3 0, v005CEB88_0;
+v005CE8C8_0 .alias "s1", 0 0, v005CEC10_0;
+v005CE920_0 .net "v0", 0 0, L_005A18D8; 1 drivers
+v005CE978_0 .net "v1", 0 0, L_005CFE08; 1 drivers
+v005CE9D0_0 .net "v2", 0 0, L_005CFFC8; 1 drivers
+v005CEA28_0 .alias "vout", 0 0, v005CEA80_0;
+L_005CED18 .part/pv L_005A18A0, 0, 1, 4;
+L_005CED70 .part v005CEC68_0, 0, 1;
+L_005CEDC8 .part v005CECC0_0, 0, 1;
+L_005CEE20 .part/pv L_005CFD28, 1, 1, 4;
+L_005CEE78 .part v005CEC68_0, 1, 1;
+L_005CEED0 .part v005CECC0_0, 1, 1;
+L_005CEF28 .part/pv L_005CFEE8, 2, 1, 4;
+L_005CEF80 .part v005CEC68_0, 2, 1;
+L_005CEFD8 .part v005CECC0_0, 2, 1;
+L_005CF030 .part/pv L_005D00A8, 3, 1, 4;
+L_005CF088 .part v005CEC68_0, 3, 1;
+L_005CF0E0 .part v005CECC0_0, 3, 1;
+S_00592210 .scope module, "MS1" "MS" 2 56, 2 11, S_00591440;
+ .timescale 0 0;
+L_005A18A0 .functor XOR 1, L_005CED70, L_005CEDC8, C4<0>, C4<0>;
+L_005A18D8 .functor AND 1, L_005CED70, L_005CEDC8, C4<1>, C4<1>;
+v005CE660_0 .alias "Cout", 0 0, v005CE920_0;
+v005CE6B8_0 .net "Soma", 0 0, L_005A18A0; 1 drivers
+v005CE710_0 .net "x", 0 0, L_005CED70; 1 drivers
+v005CE768_0 .net "y", 0 0, L_005CEDC8; 1 drivers
+S_005915D8 .scope module, "SC1" "SC" 2 57, 2 21, S_00591440;
+ .timescale 0 0;
+L_005CFE08 .functor OR 1, L_005CFD98, L_005CFCB8, C4<0>, C4<0>;
+v005CE3A0_0 .alias "Cin", 0 0, v005CE920_0;
+v005CE3F8_0 .alias "Cout1", 0 0, v005CE978_0;
+v005CE450_0 .net "Soma1", 0 0, L_005CFD28; 1 drivers
+v005CE4A8_0 .net "t1", 0 0, L_005CFCB8; 1 drivers
+v005CE500_0 .net "t2", 0 0, L_005CFC10; 1 drivers
+v005CE558_0 .net "t3", 0 0, L_005CFD98; 1 drivers
+v005CE5B0_0 .net "x1", 0 0, L_005CEE78; 1 drivers
+v005CE608_0 .net "y1", 0 0, L_005CEED0; 1 drivers
+S_00591DD0 .scope module, "MS1" "MS" 2 27, 2 11, S_005915D8;
+ .timescale 0 0;
+L_005CFC10 .functor XOR 1, L_005CEE78, L_005CEED0, C4<0>, C4<0>;
+L_005CFCB8 .functor AND 1, L_005CEE78, L_005CEED0, C4<1>, C4<1>;
+v005CE240_0 .alias "Cout", 0 0, v005CE4A8_0;
+v005CE298_0 .alias "Soma", 0 0, v005CE500_0;
+v005CE2F0_0 .alias "x", 0 0, v005CE5B0_0;
+v005CE348_0 .alias "y", 0 0, v005CE608_0;
+S_00591330 .scope module, "MS2" "MS" 2 28, 2 11, S_005915D8;
+ .timescale 0 0;
+L_005CFD28 .functor XOR 1, L_005A18D8, L_005CFC10, C4<0>, C4<0>;
+L_005CFD98 .functor AND 1, L_005A18D8, L_005CFC10, C4<1>, C4<1>;
+v005CE0E0_0 .alias "Cout", 0 0, v005CE558_0;
+v005CE138_0 .alias "Soma", 0 0, v005CE450_0;
+v005CE190_0 .alias "x", 0 0, v005CE920_0;
+v005CE1E8_0 .alias "y", 0 0, v005CE500_0;
+S_00591770 .scope module, "SC2" "SC" 2 58, 2 21, S_00591440;
+ .timescale 0 0;
+L_005CFFC8 .functor OR 1, L_005CFF58, L_005CFE78, C4<0>, C4<0>;
+v005CDE20_0 .alias "Cin", 0 0, v005CE978_0;
+v005CDE78_0 .alias "Cout1", 0 0, v005CE9D0_0;
+v005CDED0_0 .net "Soma1", 0 0, L_005CFEE8; 1 drivers
+v005CDF28_0 .net "t1", 0 0, L_005CFE78; 1 drivers
+v005CDF80_0 .net "t2", 0 0, L_005CFC80; 1 drivers
+v005CDFD8_0 .net "t3", 0 0, L_005CFF58; 1 drivers
+v005CE030_0 .net "x1", 0 0, L_005CEF80; 1 drivers
+v005CE088_0 .net "y1", 0 0, L_005CEFD8; 1 drivers
+S_00591660 .scope module, "MS1" "MS" 2 27, 2 11, S_00591770;
+ .timescale 0 0;
+L_005CFC80 .functor XOR 1, L_005CEF80, L_005CEFD8, C4<0>, C4<0>;
+L_005CFE78 .functor AND 1, L_005CEF80, L_005CEFD8, C4<1>, C4<1>;
+v005CDCC0_0 .alias "Cout", 0 0, v005CDF28_0;
+v005CDD18_0 .alias "Soma", 0 0, v005CDF80_0;
+v005CDD70_0 .alias "x", 0 0, v005CE030_0;
+v005CDDC8_0 .alias "y", 0 0, v005CE088_0;
+S_005916E8 .scope module, "MS2" "MS" 2 28, 2 11, S_00591770;
+ .timescale 0 0;
+L_005CFEE8 .functor XOR 1, L_005CFE08, L_005CFC80, C4<0>, C4<0>;
+L_005CFF58 .functor AND 1, L_005CFE08, L_005CFC80, C4<1>, C4<1>;
+v00594320_0 .alias "Cout", 0 0, v005CDFD8_0;
+v00594378_0 .alias "Soma", 0 0, v005CDED0_0;
+v005CDC10_0 .alias "x", 0 0, v005CE978_0;
+v005CDC68_0 .alias "y", 0 0, v005CDF80_0;
+S_00591908 .scope module, "SC3" "SC" 2 59, 2 21, S_00591440;
+ .timescale 0 0;
+L_005D0188 .functor OR 1, L_005D0118, L_005D0038, C4<0>, C4<0>;
+v00594060_0 .alias "Cin", 0 0, v005CE9D0_0;
+v005940B8_0 .alias "Cout1", 0 0, v005CEA80_0;
+v00594110_0 .net "Soma1", 0 0, L_005D00A8; 1 drivers
+v00594168_0 .net "t1", 0 0, L_005D0038; 1 drivers
+v005941C0_0 .net "t2", 0 0, L_005CFE40; 1 drivers
+v00594218_0 .net "t3", 0 0, L_005D0118; 1 drivers
+v00594270_0 .net "x1", 0 0, L_005CF088; 1 drivers
+v005942C8_0 .net "y1", 0 0, L_005CF0E0; 1 drivers
+S_005917F8 .scope module, "MS1" "MS" 2 27, 2 11, S_00591908;
+ .timescale 0 0;
+L_005CFE40 .functor XOR 1, L_005CF088, L_005CF0E0, C4<0>, C4<0>;
+L_005D0038 .functor AND 1, L_005CF088, L_005CF0E0, C4<1>, C4<1>;
+v00593F00_0 .alias "Cout", 0 0, v00594168_0;
+v00593F58_0 .alias "Soma", 0 0, v005941C0_0;
+v00593FB0_0 .alias "x", 0 0, v00594270_0;
+v00594008_0 .alias "y", 0 0, v005942C8_0;
+S_00591880 .scope module, "MS2" "MS" 2 28, 2 11, S_00591908;
+ .timescale 0 0;
+L_005D00A8 .functor XOR 1, L_005CFFC8, L_005CFE40, C4<0>, C4<0>;
+L_005D0118 .functor AND 1, L_005CFFC8, L_005CFE40, C4<1>, C4<1>;
+v00593DA0_0 .alias "Cout", 0 0, v00594218_0;
+v00593DF8_0 .alias "Soma", 0 0, v00594110_0;
+v00593E50_0 .alias "x", 0 0, v005CE9D0_0;
+v00593EA8_0 .alias "y", 0 0, v005941C0_0;
+S_005913B8 .scope module, "compLogico1" "compLogico" 2 60, 2 33, S_00591440;
+ .timescale 0 0;
+L_005CFC48 .functor XNOR 1, L_005CF138, L_005CF190, C4<0>, C4<0>;
+L_005D0230 .functor XNOR 1, L_005CF1E8, L_005CF240, C4<0>, C4<0>;
+L_005D02D8 .functor XNOR 1, L_005CF298, L_005CF2F0, C4<0>, C4<0>;
+L_005D0380 .functor XNOR 1, L_005CF348, L_005CF3A0, C4<0>, C4<0>;
+L_005D0448 .functor AND 1, L_005CFC48, L_005D0230, L_005D02D8, L_005D0380;
+v00593878_0 .net *"_s1", 0 0, L_005CF138; 1 drivers
+v005938D0_0 .net *"_s11", 0 0, L_005CF2F0; 1 drivers
+v00593928_0 .net *"_s13", 0 0, L_005CF348; 1 drivers
+v00593980_0 .net *"_s15", 0 0, L_005CF3A0; 1 drivers
+v005939D8_0 .net *"_s3", 0 0, L_005CF190; 1 drivers
+v00593A30_0 .net *"_s5", 0 0, L_005CF1E8; 1 drivers
+v00593A88_0 .net *"_s7", 0 0, L_005CF240; 1 drivers
+v00593AE0_0 .net *"_s9", 0 0, L_005CF298; 1 drivers
+v00593B38_0 .alias "a", 3 0, v005CE7C0_0;
+v00593B90_0 .alias "b", 3 0, v005CE818_0;
+v00593BE8_0 .alias "s", 0 0, v005CEC10_0;
+v00593C40_0 .net "t1", 0 0, L_005CFC48; 1 drivers
+v00593C98_0 .net "t2", 0 0, L_005D0230; 1 drivers
+v00593CF0_0 .net "t3", 0 0, L_005D02D8; 1 drivers
+v00593D48_0 .net "t4", 0 0, L_005D0380; 1 drivers
+L_005CF138 .part v005CEC68_0, 0, 1;
+L_005CF190 .part v005CECC0_0, 0, 1;
+L_005CF1E8 .part v005CEC68_0, 1, 1;
+L_005CF240 .part v005CECC0_0, 1, 1;
+L_005CF298 .part v005CEC68_0, 2, 1;
+L_005CF2F0 .part v005CECC0_0, 2, 1;
+L_005CF348 .part v005CEC68_0, 3, 1;
+L_005CF3A0 .part v005CECC0_0, 3, 1;
+    .scope S_005914C8;
+T_0 ;
+    %set/v v005CEC68_0, 0, 4;
+    %set/v v005CECC0_0, 0, 4;
+    %set/v v005CEAD8_0, 0, 32;
+    %end;
+    .thread T_0;
+    .scope S_005914C8;
+T_1 ;
+    %vpi_call 2 91 "$display", "\012guia06_01 - Ludmily Caldeira da Silva - 417290\012";
+    %vpi_call 2 92 "$display", "Test Somador Completo 4 bits com comparador logico\012";
+    %vpi_call 2 93 "$display", "\012       a      b      Cout   Soma   comparador\012";
+    %vpi_call 2 95 "$monitor", "     %4b    %4b     %b     %4b     %b", v005CEC68_0, v005CECC0_0, v005CEA80_0, v005CEB88_0, v005CEC10_0;
+    %set/v v005CEAD8_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v005CEAD8_0, 32;
+   %cmpi/s 8, 16, 32;
+    %jmp/0xz T_1.1, 5;
+    %delay 1, 0;
+    %load/v 8, v005CEAD8_0, 32;
+    %set/v v005CEC68_0, 8, 4;
+    %set/v v005CEB30_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v005CEB30_0, 32;
+   %cmpi/s 8, 16, 32;
+    %jmp/0xz T_1.3, 5;
+    %delay 1, 0;
+    %load/v 8, v005CEB30_0, 32;
+    %set/v v005CECC0_0, 8, 4;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005CEB30_0, 32;
+    %set/v v005CEB30_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005CEAD8_0, 32;
+    %set/v v005CEAD8_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\417290\ARQ1\guia06\guia06-01.v";

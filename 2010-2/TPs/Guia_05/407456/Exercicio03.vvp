@@ -1,0 +1,105 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E9C90 .scope module, "teste" "teste" 2 32;
+ .timescale 0 0;
+L_00661378 .functor AND 1, v006A0218_0, v006A02F8_0, C4<1>, C4<1>;
+L_006A0708 .functor AND 1, v006A0218_0, v006A0380_0, C4<1>, C4<1>;
+L_006A07B0 .functor AND 1, v006A0288_0, v006A02F8_0, C4<1>, C4<1>;
+L_006A0858 .functor AND 1, v006A0288_0, v006A0380_0, C4<1>, C4<1>;
+v006A0218_0 .var "a0", 0 0;
+v006A0288_0 .var "a1", 0 0;
+v006A02F8_0 .var "b0", 0 0;
+v006A0380_0 .var "b1", 0 0;
+v006A03F0_0 .net "c0", 0 0, L_006A0B58; 1 drivers
+v006A0448_0 .net "c1", 0 0, L_006A09A8; 1 drivers
+v006A04A0_0 .net "s0", 0 0, L_00661378; 1 drivers
+v006A0520_0 .net "s1", 0 0, L_006A0938; 1 drivers
+v006A0578_0 .net "s2", 0 0, L_006A0890; 1 drivers
+v006A0600_0 .net "s3", 0 0, L_006A0708; 1 drivers
+v006A0658_0 .net "s4", 0 0, L_006A07B0; 1 drivers
+v006A06B0_0 .net "s5", 0 0, L_006A0858; 1 drivers
+S_0069FFE8 .scope module, "HA1" "halfAdder" 2 41, 2 22, S_003E9C90;
+ .timescale 0 0;
+L_006A0938 .functor XOR 1, L_006A0708, L_006A07B0, C4<0>, C4<0>;
+L_006A09A8 .functor AND 1, L_006A0708, L_006A07B0, C4<1>, C4<1>;
+v006A0070_0 .alias "a", 0 0, v006A0600_0;
+v006A00E0_0 .alias "b", 0 0, v006A0658_0;
+v006A0150_0 .alias "c0", 0 0, v006A0448_0;
+v006A01C0_0 .alias "s0", 0 0, v006A0520_0;
+S_003E9D18 .scope module, "FA1" "fullAdder" 2 42, 2 9, S_003E9C90;
+ .timescale 0 0;
+L_006A07E8 .functor XOR 1, L_006A09A8, L_006A0858, C4<0>, C4<0>;
+L_003E6FB8 .functor AND 1, L_006A09A8, L_006A0858, C4<1>, C4<1>;
+L_006A0890 .functor XOR 1, L_006A07E8, C4<0>, C4<0>, C4<0>;
+L_006A0AE8 .functor AND 1, L_006A07E8, C4<0>, C4<1>, C4<1>;
+L_006A0B58 .functor OR 1, L_006A0AE8, L_003E6FB8, C4<0>, C4<0>;
+v003E9DA0_0 .alias "a", 0 0, v006A0448_0;
+v0069FCB0_0 .net "b", 0 0, C4<0>; 1 drivers
+v0069FD20_0 .alias "c", 0 0, v006A06B0_0;
+v0069FDA8_0 .alias "c0", 0 0, v006A03F0_0;
+v0069FE18_0 .net "c1", 0 0, L_003E6FB8; 1 drivers
+v0069FE70_0 .net "c2", 0 0, L_006A0AE8; 1 drivers
+v0069FEE0_0 .alias "s0", 0 0, v006A0578_0;
+v0069FF78_0 .net "s1", 0 0, L_006A07E8; 1 drivers
+    .scope S_003E9C90;
+T_0 ;
+    %vpi_call 2 46 "$display", "Multiplier Gate Test";
+    %vpi_call 2 47 "$display", "Exercicio 03";
+    %vpi_call 2 48 "$display", "\012 Nome: Washington Luis \012 Matricula: 407456 \012";
+    %vpi_call 2 49 "$display", "(ab x cd) = resultado, vaiUm\012";
+    %set/v v006A0288_0, 0, 1;
+    %set/v v006A0218_0, 0, 1;
+    %set/v v006A0380_0, 0, 1;
+    %set/v v006A02F8_0, 0, 1;
+    %vpi_call 2 52 "$monitor", "(%b%b x %b%b) = %b%b%b, %b", v006A0288_0, v006A0218_0, v006A0380_0, v006A02F8_0, v006A0578_0, v006A0520_0, v006A04A0_0, v006A03F0_0;
+    %delay 1, 0;
+    %set/v v006A0288_0, 0, 1;
+    %set/v v006A0218_0, 0, 1;
+    %set/v v006A0380_0, 0, 1;
+    %set/v v006A02F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 0, 1;
+    %set/v v006A0218_0, 1, 1;
+    %set/v v006A0380_0, 1, 1;
+    %set/v v006A02F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 1, 1;
+    %set/v v006A0218_0, 0, 1;
+    %set/v v006A0380_0, 0, 1;
+    %set/v v006A02F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 1, 1;
+    %set/v v006A0218_0, 1, 1;
+    %set/v v006A0380_0, 1, 1;
+    %set/v v006A02F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 0, 1;
+    %set/v v006A0218_0, 1, 1;
+    %set/v v006A0380_0, 0, 1;
+    %set/v v006A02F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 1, 1;
+    %set/v v006A0218_0, 0, 1;
+    %set/v v006A0380_0, 1, 1;
+    %set/v v006A02F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 1, 1;
+    %set/v v006A0218_0, 1, 1;
+    %set/v v006A0380_0, 1, 1;
+    %set/v v006A02F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A0288_0, 0, 1;
+    %set/v v006A0218_0, 1, 1;
+    %set/v v006A0380_0, 1, 1;
+    %set/v v006A02F8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Architecture\Guia05\Exercicio03.v";

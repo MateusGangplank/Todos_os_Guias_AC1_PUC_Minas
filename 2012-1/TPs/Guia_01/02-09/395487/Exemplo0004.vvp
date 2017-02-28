@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002CE698 .scope module, "testorgate" "testorgate" 2 19;
+ .timescale 0 0;
+v002C3460_0 .var "a", 0 0;
+v002CDEB0_0 .var "b", 0 0;
+v002CDF08_0 .net "s", 0 0, L_002C2FA0; 1 drivers
+S_002C2F18 .scope module, "OR1" "orgate" 2 24, 2 11, S_002CE698;
+ .timescale 0 0;
+L_002C2FA0 .functor OR 1, v002C3460_0, v002CDEB0_0, C4<0>, C4<0>;
+v002C3358_0 .net "p", 0 0, v002C3460_0; 1 drivers
+v002C33B0_0 .net "q", 0 0, v002CDEB0_0; 1 drivers
+v002C3408_0 .alias "s", 0 0, v002CDF08_0;
+S_002C2E90 .scope begin, "start" "start" 2 26, 2 26, S_002CE698;
+ .timescale 0 0;
+    .scope S_002CE698;
+T_0 ;
+    %fork t_1, S_002C2E90;
+    %jmp t_0;
+    .scope S_002C2E90;
+t_1 ;
+    %set/v v002C3460_0, 0, 1;
+    %set/v v002CDEB0_0, 0, 1;
+    %end;
+    .scope S_002CE698;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002CE698;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exemplo0004 - Alvaro Henrique de Araujo Rungue - 395487";
+    %vpi_call 2 36 "$display", "Test OR gate";
+    %vpi_call 2 37 "$display", "\012a & b = s\012";
+    %set/v v002C3460_0, 0, 1;
+    %set/v v002CDEB0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b = %b", v002C3460_0, v002CDEB0_0, v002CDF08_0;
+    %set/v v002C3460_0, 0, 1;
+    %set/v v002CDEB0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b & %b = %b", v002C3460_0, v002CDEB0_0, v002CDF08_0;
+    %set/v v002C3460_0, 1, 1;
+    %set/v v002CDEB0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b & %b = %b", v002C3460_0, v002CDEB0_0, v002CDF08_0;
+    %set/v v002C3460_0, 1, 1;
+    %set/v v002CDEB0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b & %b = %b", v002C3460_0, v002CDEB0_0, v002CDF08_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\Guia 01 - 395487\Exemplo0004.v";

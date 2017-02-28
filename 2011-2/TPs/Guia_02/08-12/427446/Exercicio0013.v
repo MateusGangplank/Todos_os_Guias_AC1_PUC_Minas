@@ -1,0 +1,25 @@
+//--------------------------------
+//Exercício0013 - Complemento de 2
+//Mateus Guilherme do Carmo Cruz
+//Matrícula: 427446
+//-----------------------------------
+
+module test_complements;
+	reg[5:0]a;
+	reg b;
+	reg c;
+	reg d;
+	reg e;
+	
+	initial begin
+		$display("Exercício0013 - Complemento de 2");
+		$display("Mateus Guilherme do Carmo Cruz - 427446");
+		$display("\n");
+		a = 6'b100111;
+		b = 'o54;
+		c = 13;
+		d = 'h1B;
+		e = 25 - 36;
+		// EXIBIR AS RESPOSTAS !
+	end
+endmodule

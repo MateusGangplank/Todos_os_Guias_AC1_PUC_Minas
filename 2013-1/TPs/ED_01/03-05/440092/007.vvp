@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0038E888 .scope module, "testxnorgate" "testxnorgate" 2 17;
+ .timescale 0 0;
+v0038FD40_0 .var "a", 0 0;
+v0038FD98_0 .var "b", 0 0;
+v0038FDF0_0 .net "s", 0 0, L_0038EDD8; 1 drivers
+S_003895E0 .scope module, "XNOR1" "xnorgate" 2 22, 2 9, S_0038E888;
+ .timescale 0 0;
+L_0038CDC8 .functor AND 1, v0038FD40_0, v0038FD98_0, C4<1>, C4<1>;
+L_0038FEB8 .functor NOT 1, v0038FD40_0, C4<0>, C4<0>, C4<0>;
+L_0038FEF0 .functor NOT 1, v0038FD98_0, C4<0>, C4<0>, C4<0>;
+L_0038FF28 .functor AND 1, L_0038FEB8, L_0038FEF0, C4<1>, C4<1>;
+L_0038EDD8 .functor OR 1, L_0038CDC8, L_0038FF28, C4<0>, C4<0>;
+v00382C30_0 .net *"_s0", 0 0, L_0038CDC8; 1 drivers
+v0038E910_0 .net *"_s2", 0 0, L_0038FEB8; 1 drivers
+v00383898_0 .net *"_s4", 0 0, L_0038FEF0; 1 drivers
+v003838F0_0 .net *"_s6", 0 0, L_0038FF28; 1 drivers
+v00383948_0 .net "p", 0 0, v0038FD40_0; 1 drivers
+v003839A0_0 .net "q", 0 0, v0038FD98_0; 1 drivers
+v0038FCE8_0 .alias "s", 0 0, v0038FDF0_0;
+S_00382BA8 .scope begin, "start" "start" 2 24, 2 24, S_0038E888;
+ .timescale 0 0;
+S_00382B20 .scope begin, "main" "main" 2 29, 2 29, S_0038E888;
+ .timescale 0 0;
+    .scope S_0038E888;
+T_0 ;
+    %fork t_1, S_00382BA8;
+    %jmp t_0;
+    .scope S_00382BA8;
+t_1 ;
+    %set/v v0038FD40_0, 0, 1;
+    %set/v v0038FD98_0, 0, 1;
+    %end;
+    .scope S_0038E888;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0038E888;
+T_1 ;
+    %fork t_3, S_00382B20;
+    %jmp t_2;
+    .scope S_00382B20;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exercio 007 - Ailton Gomes - 440092";
+    %vpi_call 2 31 "$display", "Test xnor gate";
+    %vpi_call 2 32 "$display", "\012 ((p & q)|((~p)&(~q))) = s\012";
+    %vpi_call 2 33 "$monitor", "%b ^ %b = %b", v0038FD40_0, v0038FD98_0, v0038FDF0_0;
+    %delay 1, 0;
+    %set/v v0038FD40_0, 0, 1;
+    %set/v v0038FD98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0038FD40_0, 1, 1;
+    %set/v v0038FD98_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0038FD40_0, 0, 1;
+    %set/v v0038FD98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0038FD40_0, 1, 1;
+    %set/v v0038FD98_0, 1, 1;
+    %end;
+    .scope S_0038E888;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Ailton\Desktop\AC-EDs\AC_L01\007.v";

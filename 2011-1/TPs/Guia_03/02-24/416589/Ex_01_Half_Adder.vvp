@@ -1,0 +1,62 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00673E08 .scope module, "testorgate" "testorgate" 2 24;
+ .timescale 0 0;
+v006A2100_0 .var "a", 0 0;
+v006A2158_0 .var "b", 0 0;
+v006A21B0_0 .net "s0", 0 0, L_00672920; 1 drivers
+v006A2208_0 .net "s1", 0 0, L_006A2298; 1 drivers
+S_00673F88 .scope module, "HA1" "halfadder" 2 29, 2 11, S_00673E08;
+ .timescale 0 0;
+L_00672920 .functor XOR 1, v006A2100_0, v006A2158_0, C4<0>, C4<0>;
+L_006A2298 .functor AND 1, v006A2100_0, v006A2158_0, C4<1>, C4<1>;
+v003EE008_0 .net "a", 0 0, v006A2100_0; 1 drivers
+v006A1F98_0 .net "b", 0 0, v006A2158_0; 1 drivers
+v006A2008_0 .alias "s0", 0 0, v006A21B0_0;
+v006A2090_0 .alias "s1", 0 0, v006A2208_0;
+S_00673F08 .scope begin, "start" "start" 2 31, 2 31, S_00673E08;
+ .timescale 0 0;
+S_00673E88 .scope begin, "main" "main" 2 35, 2 35, S_00673E08;
+ .timescale 0 0;
+    .scope S_00673E08;
+T_0 ;
+    %fork t_1, S_00673F08;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A2100_0, 0, 1;
+    %set/v v006A2158_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00673E08;
+T_1 ;
+    %fork t_3, S_00673E88;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 36 "$display", "Guia 03_01 - Alyson Deives - 416589";
+    %vpi_call 2 37 "$display", "HALF ADDER\012";
+    %vpi_call 2 38 "$display", "\012A + B = S\012";
+    %vpi_call 2 39 "$monitor", "%b + %b = %b%b", v006A2100_0, v006A2158_0, v006A2208_0, v006A21B0_0;
+    %delay 1, 0;
+    %set/v v006A2100_0, 0, 1;
+    %set/v v006A2158_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2100_0, 1, 1;
+    %set/v v006A2158_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2100_0, 1, 1;
+    %set/v v006A2158_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC-MG\2° Periodo\Arquitetura I\Workspace\Guia_03\Ex_01_Half_Adder.v";

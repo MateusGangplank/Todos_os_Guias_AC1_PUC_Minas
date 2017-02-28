@@ -1,0 +1,128 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00323E08 .scope module, "Exercicio0503" "Exercicio0503" 2 52;
+ .timescale 0 0;
+v0098AA08_0 .var "a0", 0 0;
+v0098AA60_0 .var "a1", 0 0;
+v0098AAB8_0 .var "b0", 0 0;
+v0098AB10_0 .var "b1", 0 0;
+v0098AB68_0 .net "m0", 0 0, C4<z>; 0 drivers
+v0098ABC0_0 .net "m1", 0 0, C4<z>; 0 drivers
+v0098AC18_0 .net "m2", 0 0, C4<z>; 0 drivers
+v0098AC70_0 .net "m3", 0 0, C4<z>; 0 drivers
+S_00323FA0 .scope module, "m_1" "multiple" 2 56, 2 35, S_00323E08;
+ .timescale 0 0;
+L_0098D4C0/d .functor AND 1, v0098AA60_0, v0098AB10_0, C4<1>, C4<1>;
+L_0098D4C0 .delay (1,1,1) L_0098D4C0/d;
+L_00984698/d .functor AND 1, v0098AA60_0, v0098AAB8_0, C4<1>, C4<1>;
+L_00984698 .delay (1,1,1) L_00984698/d;
+L_00984770/d .functor AND 1, v0098AA08_0, v0098AB10_0, C4<1>, C4<1>;
+L_00984770 .delay (1,1,1) L_00984770/d;
+L_00348020/d .functor AND 1, v0098AA08_0, v0098AAB8_0, C4<1>, C4<1>;
+L_00348020 .delay (1,1,1) L_00348020/d;
+v0098A538_0 .net "a0", 0 0, v0098AA08_0; 1 drivers
+v0098A590_0 .net "a1", 0 0, v0098AA60_0; 1 drivers
+v0098A5E8_0 .net "b0", 0 0, v0098AAB8_0; 1 drivers
+v0098A640_0 .net "b1", 0 0, v0098AB10_0; 1 drivers
+v0098A698_0 .net "cin", 0 0, C4<z>; 0 drivers
+v0098A6F0_0 .net "co", 0 0, L_00348138; 1 drivers
+v0098A748_0 .alias "m0", 0 0, v0098AB68_0;
+v0098A7A0_0 .alias "m1", 0 0, v0098ABC0_0;
+v0098A7F8_0 .alias "m2", 0 0, v0098AC18_0;
+v0098A850_0 .alias "m3", 0 0, v0098AC70_0;
+v0098A8A8_0 .net "mo", 0 0, L_00348020; 1 drivers
+RS_003250B4 .resolv tri, L_0098D4C0, L_00348058, C4<z>, C4<z>;
+v0098A900_0 .net8 "t1", 0 0, RS_003250B4; 2 drivers
+RS_00325024 .resolv tri, L_00984698, L_00348218, C4<z>, C4<z>;
+v0098A958_0 .net8 "t2", 0 0, RS_00325024; 2 drivers
+RS_0032500C .resolv tri, L_00984770, L_003482F8, C4<z>, C4<z>;
+v0098A9B0_0 .net8 "t3", 0 0, RS_0032500C; 2 drivers
+S_003240B0 .scope module, "fa_0" "full_adder" 2 45, 2 12, S_00323FA0;
+ .timescale 0 0;
+L_00348058/d .functor XOR 1, C4<z>, C4<z>, C4<z>, C4<0>;
+L_00348058 .delay (3,3,3) L_00348058/d;
+L_00348090/d .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_00348090 .delay (2,2,2) L_00348090/d;
+L_003480C8/d .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_003480C8 .delay (2,2,2) L_003480C8/d;
+L_00348100/d .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_00348100 .delay (2,2,2) L_00348100/d;
+L_00348138/d .functor OR 1, L_00348090, L_003480C8, L_00348100, C4<0>;
+L_00348138 .delay (2,3,2) L_00348138/d;
+v0098A278_0 .alias "a", 0 0, v0098AC18_0;
+v0098A2D0_0 .alias "b", 0 0, v0098AC70_0;
+v0098A328_0 .alias "cin", 0 0, v0098A698_0;
+v0098A380_0 .alias "co", 0 0, v0098A6F0_0;
+v0098A3D8_0 .alias "s", 0 0, v0098A900_0;
+v0098A430_0 .net "t1", 0 0, L_00348090; 1 drivers
+v0098A488_0 .net "t2", 0 0, L_003480C8; 1 drivers
+v0098A4E0_0 .net "t3", 0 0, L_00348100; 1 drivers
+S_00324028 .scope module, "fa_1" "full_adder" 2 46, 2 12, S_00323FA0;
+ .timescale 0 0;
+L_00348218/d .functor XOR 1, L_00348138, C4<z>, C4<z>, C4<0>;
+L_00348218 .delay (3,3,3) L_00348218/d;
+L_00348250/d .functor AND 1, L_00348138, C4<z>, C4<1>, C4<1>;
+L_00348250 .delay (2,2,2) L_00348250/d;
+L_00348288/d .functor AND 1, L_00348138, C4<z>, C4<1>, C4<1>;
+L_00348288 .delay (2,2,2) L_00348288/d;
+L_003482C0/d .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_003482C0 .delay (2,2,2) L_003482C0/d;
+L_003482F8/d .functor OR 1, L_00348250, L_00348288, L_003482C0, C4<0>;
+L_003482F8 .delay (2,3,2) L_003482F8/d;
+v00989FB8_0 .alias "a", 0 0, v0098A6F0_0;
+v0098A010_0 .alias "b", 0 0, v0098ABC0_0;
+v0098A068_0 .alias "cin", 0 0, v0098A698_0;
+v0098A0C0_0 .alias "co", 0 0, v0098A9B0_0;
+v0098A118_0 .alias "s", 0 0, v0098A958_0;
+v0098A170_0 .net "t1", 0 0, L_00348250; 1 drivers
+v0098A1C8_0 .net "t2", 0 0, L_00348288; 1 drivers
+v0098A220_0 .net "t3", 0 0, L_003482C0; 1 drivers
+S_00323F18 .scope begin, "start" "start" 2 60, 2 60, S_00323E08;
+ .timescale 0 0;
+S_00323E90 .scope module, "andgate" "andgate" 2 27;
+ .timescale 0 0;
+L_003483D8 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v0031F918_0 .net "p", 0 0, C4<z>; 0 drivers
+v0031F970_0 .net "q", 0 0, C4<z>; 0 drivers
+v0031F9C8_0 .net "s", 0 0, L_003483D8; 1 drivers
+    .scope S_00323E08;
+T_0 ;
+    %fork t_1, S_00323F18;
+    %jmp t_0;
+t_1 ;
+    %set/v v0098AA08_0, 0, 1;
+    %set/v v0098AA60_0, 0, 1;
+    %set/v v0098AB10_0, 0, 1;
+    %set/v v0098AAB8_0, 0, 1;
+    %vpi_call 2 62 "$display", "Guia 05_03 - Luiz Felipe Fonseca - 405817";
+    %vpi_call 2 63 "$display", "";
+    %vpi_call 2 64 "$display", "\012a0 & a1 & b1 & b0 = m0 m1 m2 m3";
+    %vpi_call 2 65 "$monitor", "%b | %b | %b | %b = %b", v0098AA08_0, v0098AA60_0, v0098AB10_0, v0098AAB8_0, v0098AB68_0, v0098ABC0_0, v0098AC18_0, v0098AC70_0;
+    %delay 1, 0;
+    %set/v v0098AA08_0, 0, 1;
+    %set/v v0098AA60_0, 0, 1;
+    %set/v v0098AB10_0, 0, 1;
+    %set/v v0098AAB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0098AA08_0, 1, 1;
+    %set/v v0098AA60_0, 0, 1;
+    %set/v v0098AB10_0, 1, 1;
+    %set/v v0098AAB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0098AA08_0, 1, 1;
+    %set/v v0098AA60_0, 1, 1;
+    %set/v v0098AB10_0, 1, 1;
+    %set/v v0098AAB8_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Felipe\Documents\2 Periodo\Arq.1\Listas\Guia05\Exercicio0503.v";

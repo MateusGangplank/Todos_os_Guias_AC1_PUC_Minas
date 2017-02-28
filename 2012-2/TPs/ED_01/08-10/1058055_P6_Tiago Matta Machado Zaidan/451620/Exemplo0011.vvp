@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002F2FE8 .scope module, "testxorgate" "testxorgate" 2 16;
+ .timescale 0 0;
+v002FD960_0 .var "a", 0 0;
+v002FFDE0_0 .var "b", 0 0;
+v002FFE38_0 .net "s", 0 0, L_002FFFA8; 1 drivers
+S_002F3D40 .scope module, "XOR1" "xorgate" 2 21, 2 9, S_002F2FE8;
+ .timescale 0 0;
+L_002FD9B8 .functor NOT 1, v002FD960_0, C4<0>, C4<0>, C4<0>;
+L_002F3E78 .functor AND 1, L_002FD9B8, v002FFDE0_0, C4<1>, C4<1>;
+L_002FFF00 .functor NOT 1, v002FFDE0_0, C4<0>, C4<0>, C4<0>;
+L_002FFF38 .functor AND 1, v002FD960_0, L_002FFF00, C4<1>, C4<1>;
+L_002FFFA8 .functor OR 1, L_002F3E78, L_002FFF38, C4<0>, C4<0>;
+v002F30F8_0 .net *"_s0", 0 0, L_002FD9B8; 1 drivers
+v002F3DC8_0 .net *"_s2", 0 0, L_002F3E78; 1 drivers
+v002F3E20_0 .net *"_s4", 0 0, L_002FFF00; 1 drivers
+v002FD800_0 .net *"_s6", 0 0, L_002FFF38; 1 drivers
+v002FD858_0 .net "a", 0 0, v002FD960_0; 1 drivers
+v002FD8B0_0 .net "b", 0 0, v002FFDE0_0; 1 drivers
+v002FD908_0 .alias "s", 0 0, v002FFE38_0;
+S_002F3070 .scope begin, "start" "start" 2 23, 2 23, S_002F2FE8;
+ .timescale 0 0;
+    .scope S_002F2FE8;
+T_0 ;
+    %fork t_1, S_002F3070;
+    %jmp t_0;
+    .scope S_002F3070;
+t_1 ;
+    %set/v v002FD960_0, 0, 1;
+    %set/v v002FFDE0_0, 0, 1;
+    %end;
+    .scope S_002F2FE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002F2FE8;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0011 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 31 "$display", "Test XOR";
+    %vpi_call 2 32 "$display", "\012 a\222.b + a.b\222 = s\012";
+    %set/v v002FD960_0, 0, 1;
+    %set/v v002FFDE0_0, 0, 1;
+    %vpi_call 2 35 "$monitor", " %b\222 . %b + %b . %b\222 = %b", v002FD960_0, v002FFDE0_0, v002FD960_0, v002FFDE0_0, v002FFE38_0;
+    %delay 1, 0;
+    %set/v v002FD960_0, 0, 1;
+    %set/v v002FFDE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002FD960_0, 1, 1;
+    %set/v v002FFDE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002FD960_0, 1, 1;
+    %set/v v002FFDE0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc 2 periodo\Arquitetura 1\Exercicios\Guia 01\Exemplo0011.v";

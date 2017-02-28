@@ -1,0 +1,90 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00718FC8 .scope module, "test_diferenca" "test_diferenca" 2 24;
+ .timescale 0 0;
+v005C2A78_0 .var "x", 2 0;
+v005C2AD0_0 .var "y", 2 0;
+v005C2B28_0 .net "z", 0 0, L_005C38B8; 1 drivers
+S_00719050 .scope module, "modulo" "diferenca" 2 31, 2 9, S_00718FC8;
+ .timescale 0 0;
+L_0071FB30 .functor XOR 1, L_005C2BD8, L_005C2C30, C4<0>, C4<0>;
+L_0071AFA8 .functor XOR 1, L_005C2CE0, L_005C2D38, C4<0>, C4<0>;
+L_0071B088 .functor XOR 1, L_005C2DE8, L_005C2E40, C4<0>, C4<0>;
+L_005C38B8 .functor OR 1, L_005C2E98, L_005C2EF0, L_005C2F48, C4<0>;
+v00712F38_0 .net *"_s0", 0 0, L_0071FB30; 1 drivers
+v00712F90_0 .net *"_s11", 0 0, L_005C2D38; 1 drivers
+v00712FE8_0 .net *"_s12", 0 0, L_0071B088; 1 drivers
+v0071CCE0_0 .net *"_s15", 0 0, L_005C2DE8; 1 drivers
+v0071CD38_0 .net *"_s17", 0 0, L_005C2E40; 1 drivers
+v0071CD90_0 .net *"_s19", 0 0, L_005C2E98; 1 drivers
+v0071CDE8_0 .net *"_s21", 0 0, L_005C2EF0; 1 drivers
+v0071FE00_0 .net *"_s23", 0 0, L_005C2F48; 1 drivers
+v0071FE58_0 .net *"_s3", 0 0, L_005C2BD8; 1 drivers
+v005C2810_0 .net *"_s5", 0 0, L_005C2C30; 1 drivers
+v005C2868_0 .net *"_s6", 0 0, L_0071AFA8; 1 drivers
+v005C28C0_0 .net *"_s9", 0 0, L_005C2CE0; 1 drivers
+v005C2918_0 .net "a", 2 0, v005C2A78_0; 1 drivers
+v005C2970_0 .net "b", 2 0, v005C2AD0_0; 1 drivers
+RS_00591D3C .resolv tri, L_005C2B80, L_005C2C88, L_005C2D90, C4<zzzz>;
+v005C29C8_0 .net8 "s", 3 0, RS_00591D3C; 3 drivers
+v005C2A20_0 .alias "saida", 0 0, v005C2B28_0;
+L_005C2B80 .part/pv L_0071FB30, 0, 1, 4;
+L_005C2BD8 .part v005C2A78_0, 0, 1;
+L_005C2C30 .part v005C2AD0_0, 0, 1;
+L_005C2C88 .part/pv L_0071AFA8, 1, 1, 4;
+L_005C2CE0 .part v005C2A78_0, 1, 1;
+L_005C2D38 .part v005C2AD0_0, 1, 1;
+L_005C2D90 .part/pv L_0071B088, 2, 1, 4;
+L_005C2DE8 .part v005C2A78_0, 2, 1;
+L_005C2E40 .part v005C2AD0_0, 2, 1;
+L_005C2E98 .part RS_00591D3C, 0, 1;
+L_005C2EF0 .part RS_00591D3C, 1, 1;
+L_005C2F48 .part RS_00591D3C, 2, 1;
+    .scope S_00718FC8;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exemplo0024 - Guia04 - Ana Cristina - 427385";
+    %vpi_call 2 36 "$display", "Test ALU's comparador para diferen\347a \012";
+    %vpi_call 2 38 "$display", "x =! y -->  saida \012";
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v005C2A78_0, 8, 3;
+    %movi 8, 2, 3;
+    %set/v v005C2AD0_0, 8, 3;
+    %vpi_call 2 40 "$monitor", "%3b =! %3b --> %3b", v005C2A78_0, v005C2AD0_0, v005C2B28_0;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v005C2A78_0, 8, 3;
+    %movi 8, 6, 3;
+    %set/v v005C2AD0_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005C2A78_0, 1, 3;
+    %set/v v005C2AD0_0, 1, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v005C2A78_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v005C2AD0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v005C2A78_0, 8, 3;
+    %movi 8, 5, 3;
+    %set/v v005C2AD0_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005C2A78_0, 0, 3;
+    %set/v v005C2AD0_0, 1, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v005C2A78_0, 8, 3;
+    %movi 8, 5, 3;
+    %set/v v005C2AD0_0, 8, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\2-2012\arq\guia04\427385\Exemplo0024.v";

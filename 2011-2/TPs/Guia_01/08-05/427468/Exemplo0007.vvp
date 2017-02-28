@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00362CE8 .scope module, "testnorgate" "testnorgate" 2 16;
+ .timescale 0 0;
+v0036FF28_0 .var "a", 0 0;
+v0036FF80_0 .var "b", 0 0;
+v0036E1D0_0 .net "s", 0 0, L_0036E260; 1 drivers
+S_00363268 .scope module, "NOR1" "norgate" 2 21, 2 9, S_00362CE8;
+ .timescale 0 0;
+L_00362DF8 .functor OR 1, v0036FF28_0, v0036FF80_0, C4<0>, C4<0>;
+L_0036E260 .functor NOT 1, L_00362DF8, C4<0>, C4<0>, C4<0>;
+v003632F0_0 .net *"_s0", 0 0, L_00362DF8; 1 drivers
+v0036FE20_0 .net "p", 0 0, v0036FF28_0; 1 drivers
+v0036FE78_0 .net "q", 0 0, v0036FF80_0; 1 drivers
+v0036FED0_0 .alias "s", 0 0, v0036E1D0_0;
+S_003631E0 .scope begin, "start" "start" 2 23, 2 23, S_00362CE8;
+ .timescale 0 0;
+S_00362D70 .scope begin, "main" "main" 2 28, 2 28, S_00362CE8;
+ .timescale 0 0;
+    .scope S_00362CE8;
+T_0 ;
+    %fork t_1, S_003631E0;
+    %jmp t_0;
+    .scope S_003631E0;
+t_1 ;
+    %set/v v0036FF28_0, 0, 1;
+    %set/v v0036FF80_0, 0, 1;
+    %end;
+    .scope S_00362CE8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00362CE8;
+T_1 ;
+    %fork t_3, S_00362D70;
+    %jmp t_2;
+    .scope S_00362D70;
+t_3 ;
+    %vpi_call 2 29 "$display", "Exemplo0007 - Ursula Rosa - 427468";
+    %vpi_call 2 30 "$display", "Test nor gate";
+    %vpi_call 2 31 "$display", "\012 a ~| b = s\012";
+    %vpi_call 2 32 "$monitor", "%b ~| %b = %b", v0036FF28_0, v0036FF80_0, v0036E1D0_0;
+    %delay 1, 0;
+    %set/v v0036FF28_0, 0, 1;
+    %set/v v0036FF80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0036FF28_0, 0, 1;
+    %set/v v0036FF80_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0036FF28_0, 1, 1;
+    %set/v v0036FF80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0036FF28_0, 1, 1;
+    %set/v v0036FF80_0, 1, 1;
+    %end;
+    .scope S_00362CE8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\guia01\Exemplo0007.v";

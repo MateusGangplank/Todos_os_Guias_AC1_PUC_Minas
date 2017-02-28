@@ -1,0 +1,55 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E8918 .scope module, "test_Comparator" "test_Comparator" 2 24;
+ .timescale 0 0;
+v005FAF30_0 .net "s", 0 0, L_005FB070; 1 drivers
+v005FAF88_0 .var "x", 5 0;
+v005FAFE0_0 .var "y", 5 0;
+S_003E89A0 .scope module, "modulo1" "Comparator" 2 30, 2 10, S_003E8918;
+ .timescale 0 0;
+L_003E6D10 .functor XNOR 6, v005FAF88_0, v005FAFE0_0, C4<000000>, C4<000000>;
+L_005FB070/0/0 .functor AND 1, L_005FB140, L_005FB208, L_005FB298, L_005FB328;
+L_005FB070/0/4 .functor AND 1, L_005FB380, L_005FB410, C4<1>, C4<1>;
+L_005FB070 .functor NAND 1, L_005FB070/0/0, L_005FB070/0/4, C4<1>, C4<1>;
+v003EB920_0 .net *"_s1", 0 0, L_005FB140; 1 drivers
+v005FAAE8_0 .net *"_s11", 0 0, L_005FB410; 1 drivers
+v005FAB58_0 .net *"_s3", 0 0, L_005FB208; 1 drivers
+v005FABE0_0 .net *"_s5", 0 0, L_005FB298; 1 drivers
+v005FAC50_0 .net *"_s7", 0 0, L_005FB328; 1 drivers
+v005FACA8_0 .net *"_s9", 0 0, L_005FB380; 1 drivers
+v005FAD18_0 .alias "s", 0 0, v005FAF30_0;
+v005FADB0_0 .net "w1", 5 0, L_003E6D10; 1 drivers
+v005FAE20_0 .net "x", 5 0, v005FAF88_0; 1 drivers
+v005FAEC0_0 .net "y", 5 0, v005FAFE0_0; 1 drivers
+L_005FB140 .part L_003E6D10, 0, 1;
+L_005FB208 .part L_003E6D10, 1, 1;
+L_005FB298 .part L_003E6D10, 2, 1;
+L_005FB328 .part L_003E6D10, 3, 1;
+L_005FB380 .part L_003E6D10, 4, 1;
+L_005FB410 .part L_003E6D10, 5, 1;
+    .scope S_003E8918;
+T_0 ;
+    %set/v v005FAF88_0, 0, 6;
+    %set/v v005FAFE0_0, 0, 6;
+    %end;
+    .thread T_0;
+    .scope S_003E8918;
+T_1 ;
+    %vpi_call 2 40 "$display", "Exemplo0021 - Mateus Augusto Moraes Ferreira - 435669";
+    %vpi_call 2 41 "$display", "Test ALU’s full subtractor";
+    %vpi_call 2 45 "$monitor", "x=%6b  y=%6b s=%1b Equals", v005FAF88_0, v005FAFE0_0, v005FAF30_0;
+    %delay 1, 0;
+    %set/v v005FAF88_0, 1, 6;
+    %set/v v005FAFE0_0, 0, 6;
+    %vpi_call 2 47 "$monitor", "x=%6b  y=%6b s=%1b Different", v005FAF88_0, v005FAFE0_0, v005FAF30_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\2011-2\Arquitetura\Guia04_435669\Exemplo0044.v";

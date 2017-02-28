@@ -1,0 +1,55 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xd2def0 .scope module, "testnandgate" "testnandgate" 2 21;
+ .timescale 0 0;
+v0xd40860_0 .var "a", 0 0;
+v0xd40930_0 .var "b", 0 0;
+v0xd409e0_0 .net "s", 0 0, L_0xd40bc0; 1 drivers
+S_0xd2e9b0 .scope module, "NAND1" "nandgate" 2 26, 2 11, S_0xd2def0;
+ .timescale 0 0;
+L_0xd40a90 .functor AND 1, v0xd40860_0, v0xd40930_0, C4<1>, C4<1>;
+L_0xd40bc0 .functor NOT 1, L_0xd40a90, C4<0>, C4<0>, C4<0>;
+v0xd0b190_0 .net *"_s0", 0 0, L_0xd40a90; 1 drivers
+v0xd40670_0 .net "p", 0 0, v0xd40860_0; 1 drivers
+v0xd40710_0 .net "q", 0 0, v0xd40930_0; 1 drivers
+v0xd407b0_0 .alias "s", 0 0, v0xd409e0_0;
+S_0xd2dfe0 .scope begin, "main" "main" 2 28, 2 28, S_0xd2def0;
+ .timescale 0 0;
+    .scope S_0xd2def0;
+T_0 ;
+    %fork t_1, S_0xd2dfe0;
+    %jmp t_0;
+    .scope S_0xd2dfe0;
+t_1 ;
+    %vpi_call 2 29 "$display", "test NAND:";
+    %vpi_call 2 30 "$display", "\012~(a & b) = s\012";
+    %set/v v0xd40860_0, 0, 1;
+    %set/v v0xd40930_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "~ (%b & %b = %b ) ", v0xd40860_0, v0xd40930_0, v0xd409e0_0;
+    %set/v v0xd40860_0, 0, 1;
+    %set/v v0xd40930_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "~ ( %b & %b = %b ) ", v0xd40860_0, v0xd40930_0, v0xd409e0_0;
+    %set/v v0xd40860_0, 1, 1;
+    %set/v v0xd40930_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "~ ( %b & %b = %b ) ", v0xd40860_0, v0xd40930_0, v0xd409e0_0;
+    %set/v v0xd40860_0, 1, 1;
+    %set/v v0xd40930_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "~ ( %b & %b = %b ) ", v0xd40860_0, v0xd40930_0, v0xd409e0_0;
+    %end;
+    .scope S_0xd2def0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio01.v";

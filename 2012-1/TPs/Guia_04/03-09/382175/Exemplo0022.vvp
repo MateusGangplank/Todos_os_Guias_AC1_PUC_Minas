@@ -1,0 +1,111 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A59048 .scope module, "test_subtrator" "test_subtrator" 2 22;
+ .timescale 0 0;
+v00A5B278_0 .net *"_s3", 2 0, C4<000>; 1 drivers
+v00A5B2D0_0 .net *"_s8", 2 0, C4<000>; 1 drivers
+v00A5B328_0 .net "s0", 3 0, L_00A5B4E0; 1 drivers
+v00A5B380_0 .net "s1", 3 0, L_00A5B538; 1 drivers
+v00A5B3D8_0 .var "x", 3 0;
+v00A5B430_0 .var "y", 3 0;
+v00A5B488_0 .var "z", 3 0;
+L_00A5B4E0 .concat [ 1 3 0 0], L_008E05F8, C4<000>;
+L_00A5B538 .concat [ 1 3 0 0], L_008E0710, C4<000>;
+L_00A5B590 .part v00A5B3D8_0, 0, 1;
+L_00A5B5E8 .part v00A5B430_0, 0, 1;
+L_00A5B640 .part v00A5B488_0, 0, 1;
+S_00A592F0 .scope module, "subCompleto" "subtrator" 2 30, 2 11, S_00A59048;
+ .timescale 0 0;
+L_00A5CEF8 .functor XOR 1, L_00A5B590, L_00A5B5E8, C4<0>, C4<0>;
+L_00A5CF30 .functor NOT 1, L_00A5B590, C4<0>, C4<0>, C4<0>;
+L_00A5CFA0 .functor OR 1, L_00A5CF30, L_00A5B5E8, C4<0>, C4<0>;
+L_00A52D08 .functor AND 1, L_00A5CF30, L_00A5B5E8, C4<1>, C4<1>;
+L_008E05F8 .functor XOR 1, L_00A5CEF8, L_00A5B640, C4<0>, C4<0>;
+L_008E0668 .functor AND 1, L_00A5CFA0, L_00A5B640, C4<1>, C4<1>;
+L_008E0710 .functor OR 1, L_008E0668, L_00A52D08, C4<0>, C4<0>;
+v00A5AF08_0 .net "a", 0 0, L_00A5B590; 1 drivers
+v00A5AF60_0 .net "andNAB", 0 0, L_00A52D08; 1 drivers
+v00A5AFB8_0 .net "andORC", 0 0, L_008E0668; 1 drivers
+v00A5B010_0 .net "b", 0 0, L_00A5B5E8; 1 drivers
+v00A5B068_0 .net "c", 0 0, L_00A5B640; 1 drivers
+v00A5B0C0_0 .net "n0", 0 0, L_00A5CF30; 1 drivers
+v00A5B118_0 .net "orNAB", 0 0, L_00A5CFA0; 1 drivers
+v00A5B170_0 .net "s0", 0 0, L_008E05F8; 1 drivers
+v00A5B1C8_0 .net "s1", 0 0, L_008E0710; 1 drivers
+v00A5B220_0 .net "xAB", 0 0, L_00A5CEF8; 1 drivers
+S_00A58FC0 .scope begin, "start" "start" 2 32, 2 32, S_00A59048;
+ .timescale 0 0;
+    .scope S_00A59048;
+T_0 ;
+    %fork t_1, S_00A58FC0;
+    %jmp t_0;
+    .scope S_00A58FC0;
+t_1 ;
+    %set/v v00A5B3D8_0, 0, 4;
+    %set/v v00A5B430_0, 0, 4;
+    %set/v v00A5B488_0, 0, 4;
+    %end;
+    .scope S_00A59048;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00A59048;
+T_1 ;
+    %vpi_call 2 40 "$display", "Exemplo0022 - Oswaldo Oliveira Paulino - 382175";
+    %vpi_call 2 41 "$display", "Test ALU's subtrator";
+    %vpi_call 2 42 "$monitor", "%b - %b - %b = %b %b", v00A5B3D8_0, v00A5B430_0, v00A5B488_0, v00A5B380_0, v00A5B328_0;
+    %delay 1, 0;
+    %set/v v00A5B3D8_0, 0, 4;
+    %set/v v00A5B430_0, 0, 4;
+    %set/v v00A5B488_0, 0, 4;
+    %delay 1, 0;
+    %set/v v00A5B3D8_0, 0, 4;
+    %set/v v00A5B430_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B488_0, 8, 4;
+    %delay 1, 0;
+    %set/v v00A5B3D8_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B430_0, 8, 4;
+    %set/v v00A5B488_0, 0, 4;
+    %delay 1, 0;
+    %set/v v00A5B3D8_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B430_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B488_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v00A5B3D8_0, 8, 4;
+    %set/v v00A5B430_0, 0, 4;
+    %set/v v00A5B488_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v00A5B3D8_0, 8, 4;
+    %set/v v00A5B430_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B488_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v00A5B3D8_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B430_0, 8, 4;
+    %set/v v00A5B488_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v00A5B3D8_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B430_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v00A5B488_0, 8, 4;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Oswaldo\Documents\Ciência da Computação - LABORATÓRIO\382175\AQR1\Guia 04\Exemplo0022.v";

@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00814A98 .scope module, "testbuffer" "testbuffer" 2 17;
+ .timescale 0 0;
+v00812E50_0 .var "a", 0 0;
+v00817198_0 .net "s", 0 0, L_0081EFA0; 1 drivers
+S_00812D70 .scope module, "banana" "buffer" 2 23, 2 10, S_00814A98;
+ .timescale 0 0;
+L_0081EFA0 .functor BUFZ 1, v00812E50_0, C4<0>, C4<0>, C4<0>;
+v008128B8_0 .net "p", 0 0, v00812E50_0; 1 drivers
+v00812DF8_0 .alias "s", 0 0, v00817198_0;
+S_00812830 .scope begin, "start" "start" 2 25, 2 25, S_00814A98;
+ .timescale 0 0;
+S_008127A8 .scope begin, "main" "main" 2 29, 2 29, S_00814A98;
+ .timescale 0 0;
+    .scope S_00814A98;
+T_0 ;
+    %fork t_1, S_00812830;
+    %jmp t_0;
+    .scope S_00812830;
+t_1 ;
+    %set/v v00812E50_0, 0, 1;
+    %end;
+    .scope S_00814A98;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00814A98;
+T_1 ;
+    %fork t_3, S_008127A8;
+    %jmp t_2;
+    .scope S_008127A8;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exemplo 001 - Debora Deslandes de Almeida Batista";
+    %vpi_call 2 32 "$display", "\012Matricula: 451549";
+    %vpi_call 2 33 "$display", "\012Teste buffer";
+    %vpi_call 2 34 "$display", "\012\011\011\011Time\011a = s";
+    %vpi_call 2 36 "$monitor", "\012\011%d\011%b = %b", $time, v00812E50_0, v00817198_0;
+    %delay 1, 0;
+    %set/v v00812E50_0, 1, 1;
+    %delay 2, 0;
+    %set/v v00812E50_0, 0, 1;
+    %end;
+    .scope S_00814A98;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Exemplo001.v";

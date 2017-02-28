@@ -1,0 +1,167 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EA6A0 .scope module, "circ" "circ" 2 74;
+ .timescale 0 0;
+v006049B0_0 .net "notsel", 3 0, L_00604D58; 1 drivers
+v00604A40_0 .net "s1", 3 0, L_00604790; 1 drivers
+v00604AD0_0 .net "s2", 3 0, L_005E2F88; 1 drivers
+v00604B60_0 .net "s3", 3 0, L_006057A0; 1 drivers
+v00604BF0_0 .net "s4", 3 0, L_006057F0; 1 drivers
+v00604C80_0 .net "s5", 3 0, L_00604C48; 1 drivers
+v00604CD8_0 .net "s6", 3 0, L_00605060; 1 drivers
+v00604D90_0 .net "s7", 3 0, L_003E6990; 1 drivers
+v00604E20_0 .net "s8", 3 0, L_00604BB8; 1 drivers
+v00604EE0_0 .net "s9", 3 0, L_00604A08; 1 drivers
+v00604F38_0 .var "sel", 3 0;
+v00605008_0 .net "sx", 3 0, L_006059D0; 1 drivers
+v00605098_0 .net "sy", 3 0, L_00604B28; 1 drivers
+v00605130_0 .var "x", 3 0;
+v00605188_0 .var "y", 3 0;
+S_00604820 .scope module, "XOR1" "xorgate" 2 82, 2 20, S_003EA6A0;
+ .timescale 0 0;
+L_00604790 .functor XOR 4, v00605130_0, v00605188_0, C4<0000>, C4<0000>;
+v006048A8_0 .net "p", 3 0, v00605130_0; 1 drivers
+v00604900_0 .net "q", 3 0, v00605188_0; 1 drivers
+v00604958_0 .alias "s", 3 0, v00604A40_0;
+S_00604658 .scope module, "XOR2" "xorgate" 2 83, 2 20, S_003EA6A0;
+ .timescale 0 0;
+L_005E2F88 .functor XOR 4, v00605130_0, v00605188_0, C4<0000>, C4<0000>;
+v006046E0_0 .alias "p", 3 0, v006048A8_0;
+v00604738_0 .alias "q", 3 0, v00604900_0;
+v006047C8_0 .alias "s", 3 0, v00604AD0_0;
+S_006044C8 .scope module, "XOR3" "xorgate" 2 84, 2 20, S_003EA6A0;
+ .timescale 0 0;
+L_006057A0 .functor XOR 4, v00605130_0, v00605188_0, C4<0000>, C4<0000>;
+v00604550_0 .alias "p", 3 0, v006048A8_0;
+v006045A8_0 .alias "q", 3 0, v00604900_0;
+v00604600_0 .alias "s", 3 0, v00604B60_0;
+S_00604308 .scope module, "XOR4" "xorgate" 2 85, 2 20, S_003EA6A0;
+ .timescale 0 0;
+L_006057F0 .functor XOR 4, v00605130_0, v00605188_0, C4<0000>, C4<0000>;
+v00604390_0 .alias "p", 3 0, v006048A8_0;
+v006043E8_0 .alias "q", 3 0, v00604900_0;
+v00604458_0 .alias "s", 3 0, v00604BF0_0;
+S_00604148 .scope module, "ORALL" "orgate" 2 86, 2 48, S_003EA6A0;
+ .timescale 0 0;
+L_006059D0 .functor OR 4, L_00604790, L_005E2F88, C4<0000>, C4<0000>;
+v006041D0_0 .alias "p", 3 0, v00604A40_0;
+v00604228_0 .alias "q", 3 0, v00604AD0_0;
+v00604298_0 .alias "s", 3 0, v00605008_0;
+S_00603F70 .scope module, "ORALL2" "orgate" 2 87, 2 48, S_003EA6A0;
+ .timescale 0 0;
+L_00604B28 .functor OR 4, L_006057A0, L_006057F0, C4<0000>, C4<0000>;
+v00603FF8_0 .alias "p", 3 0, v00604B60_0;
+v00604068_0 .alias "q", 3 0, v00604BF0_0;
+v006040D8_0 .alias "s", 3 0, v00605098_0;
+S_00603DE0 .scope module, "ORALL3" "orgate" 2 88, 2 48, S_003EA6A0;
+ .timescale 0 0;
+L_00604C48 .functor OR 4, L_006059D0, L_00604B28, C4<0000>, C4<0000>;
+v00603E68_0 .alias "p", 3 0, v00605008_0;
+v00603EC0_0 .alias "q", 3 0, v00605098_0;
+v00603F18_0 .alias "s", 3 0, v00604C80_0;
+S_00603CA8 .scope module, "NOT1" "notgate" 2 89, 2 66, S_003EA6A0;
+ .timescale 0 0;
+L_00605060 .functor NOT 4, L_00604C48, C4<0000>, C4<0000>, C4<0000>;
+v00603D30_0 .alias "p", 3 0, v00604C80_0;
+v00603D88_0 .alias "s", 3 0, v00604CD8_0;
+S_00603B18 .scope module, "AND1" "andgate" 2 90, 2 57, S_003EA6A0;
+ .timescale 0 0;
+L_003E6990 .functor AND 4, L_00605060, v00604F38_0, C4<1111>, C4<1111>;
+v00603BA0_0 .alias "p", 3 0, v00604CD8_0;
+v00603BF8_0 .net "q", 3 0, v00604F38_0; 1 drivers
+v00603C50_0 .alias "s", 3 0, v00604D90_0;
+S_006039E0 .scope module, "NOT2" "notgate" 2 91, 2 66, S_003EA6A0;
+ .timescale 0 0;
+L_00604D58 .functor NOT 4, v00604F38_0, C4<0000>, C4<0000>, C4<0000>;
+v00603A68_0 .alias "p", 3 0, v00603BF8_0;
+v00603AC0_0 .alias "s", 3 0, v006049B0_0;
+S_00603808 .scope module, "AND2" "andgate" 2 92, 2 57, S_003EA6A0;
+ .timescale 0 0;
+L_00604BB8 .functor AND 4, L_00604D58, L_00604C48, C4<1111>, C4<1111>;
+v00603890_0 .alias "p", 3 0, v006049B0_0;
+v00603900_0 .alias "q", 3 0, v00604C80_0;
+v00603970_0 .alias "s", 3 0, v00604E20_0;
+S_003EE330 .scope module, "OR" "orgate" 2 93, 2 48, S_003EA6A0;
+ .timescale 0 0;
+L_00604A08 .functor OR 4, L_003E6990, L_00604BB8, C4<0000>, C4<0000>;
+v003E9618_0 .alias "p", 3 0, v00604D90_0;
+v00603710_0 .alias "q", 3 0, v00604E20_0;
+v00603780_0 .alias "s", 3 0, v00604EE0_0;
+S_003EEC70 .scope begin, "start" "start" 2 96, 2 96, S_003EA6A0;
+ .timescale 0 0;
+S_003EA870 .scope module, "nandgate" "nandgate" 2 11;
+ .timescale 0 0;
+L_00604EA8 .functor AND 4, C4<zzzz>, C4<zzzz>, C4<1111>, C4<1111>;
+L_00604DE8 .functor NOT 4, L_00604EA8, C4<0000>, C4<0000>, C4<0000>;
+v00605248_0 .net *"_s0", 3 0, L_00604EA8; 1 drivers
+v006052A0_0 .net "p", 3 0, C4<zzzz>; 0 drivers
+v006052F8_0 .net "q", 3 0, C4<zzzz>; 0 drivers
+v00605350_0 .net "s", 3 0, L_00604DE8; 1 drivers
+S_003EC008 .scope module, "norgate" "norgate" 2 38;
+ .timescale 0 0;
+L_00605ED8 .functor OR 4, C4<zzzz>, C4<zzzz>, C4<0000>, C4<0000>;
+L_00605F20 .functor NOT 4, L_00605ED8, C4<0000>, C4<0000>, C4<0000>;
+v006053C0_0 .net *"_s0", 3 0, L_00605ED8; 1 drivers
+v00605430_0 .net "p", 3 0, C4<zzzz>; 0 drivers
+v006054A0_0 .net "q", 3 0, C4<zzzz>; 0 drivers
+v00605528_0 .net "s", 3 0, L_00605F20; 1 drivers
+S_003EF018 .scope module, "xnorgate" "xnorgate" 2 29;
+ .timescale 0 0;
+L_00605FA0 .functor XOR 4, C4<zzzz>, C4<zzzz>, C4<0000>, C4<0000>;
+L_00605FE8 .functor NOT 4, L_00605FA0, C4<0000>, C4<0000>, C4<0000>;
+v00605598_0 .net *"_s0", 3 0, L_00605FA0; 1 drivers
+v00605608_0 .net "p", 3 0, C4<zzzz>; 0 drivers
+v00605678_0 .net "q", 3 0, C4<zzzz>; 0 drivers
+v00605700_0 .net "s", 3 0, L_00605FE8; 1 drivers
+    .scope S_003EA6A0;
+T_0 ;
+    %fork t_1, S_003EEC70;
+    %jmp t_0;
+    .scope S_003EEC70;
+t_1 ;
+    %movi 8, 5, 4;
+    %set/v v00605130_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v00605188_0, 8, 4;
+    %set/v v00604F38_0, 0, 4;
+    %end;
+    .scope S_003EA6A0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EA6A0;
+T_1 ;
+    %vpi_call 2 101 "$display", "Extra01 - Wender Zacarias Xavier - 427472";
+    %vpi_call 2 102 "$display", "Test Circuito";
+    %vpi_call 2 103 "$display", "\012 *** Resultado ***  ";
+    %vpi_call 2 104 "$display", " Chave 0 = Diferente \012 Chave 1 = Igual ";
+    %vpi_call 2 105 "$monitor", "\012 Chave = %b \011X= 4%b  \011Y= %4b   Resultado= %4b", &PV<v00604F38_0, 0, 1>, v00605130_0, v00605188_0, v00604EE0_0;
+    %delay 1, 0;
+    %set/v v00605130_0, 1, 4;
+    %set/v v00605188_0, 1, 4;
+    %delay 1, 0;
+    %set/v v00604F38_0, 1, 4;
+    %delay 1, 0;
+    %movi 8, 13, 4;
+    %set/v v00605130_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00605188_0, 8, 4;
+    %delay 1, 0;
+    %set/v v00604F38_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 11, 4;
+    %set/v v00605130_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v00605188_0, 8, 4;
+    %set/v v00604F38_0, 1, 4;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Extra1.v";

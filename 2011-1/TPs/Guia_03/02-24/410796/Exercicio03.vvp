@@ -1,0 +1,68 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005D0C80 .scope module, "test_meia_diferenca" "test_meia_diferenca" 2 27;
+ .timescale 0 0;
+v005F96C8_0 .var "a", 0 0;
+v005F9720_0 .var "b", 0 0;
+v005F9778_0 .net "s0", 0 0, L_005F9928; 1 drivers
+v005F97D0_0 .net "s1", 0 0, L_003E6638; 1 drivers
+S_003E8610 .scope module, "MD1" "meia_diferenca" 2 31, 2 12, S_005D0C80;
+ .timescale 0 0;
+L_003E6638 .functor XOR 1, v005F96C8_0, v005F9720_0, C4<0>, C4<0>;
+L_005F98F0 .functor NOT 1, v005F9720_0, C4<0>, C4<0>, C4<0>;
+L_005F9928 .functor AND 1, L_005F98F0, v005F96C8_0, C4<1>, C4<1>;
+v003E6CD0_0 .net "p", 0 0, v005F96C8_0; 1 drivers
+v005F9508_0 .net "q", 0 0, v005F9720_0; 1 drivers
+v005F9578_0 .alias "s0", 0 0, v005F9778_0;
+v005F9600_0 .alias "s1", 0 0, v005F97D0_0;
+v005F9670_0 .net "temp1", 0 0, L_005F98F0; 1 drivers
+S_003E8588 .scope begin, "start" "start" 2 33, 2 33, S_005D0C80;
+ .timescale 0 0;
+S_003E8500 .scope begin, "main" "main" 2 38, 2 38, S_005D0C80;
+ .timescale 0 0;
+    .scope S_005D0C80;
+T_0 ;
+    %fork t_1, S_003E8588;
+    %jmp t_0;
+    .scope S_003E8588;
+t_1 ;
+    %set/v v005F96C8_0, 0, 1;
+    %set/v v005F9720_0, 0, 1;
+    %end;
+    .scope S_005D0C80;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005D0C80;
+T_1 ;
+    %fork t_3, S_003E8500;
+    %jmp t_2;
+    .scope S_003E8500;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exercico 3 - GUIA 03\012Marco Antonio M. Belo - 0410796\012";
+    %vpi_call 2 40 "$display", "Meia Diferença";
+    %vpi_call 2 41 "$display", "\012a - b = s\012";
+    %vpi_call 2 42 "$monitor", "%b - %b = %b%b", v005F9720_0, v005F96C8_0, v005F9778_0, v005F97D0_0;
+    %delay 1, 0;
+    %set/v v005F96C8_0, 0, 1;
+    %set/v v005F9720_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005F96C8_0, 1, 1;
+    %set/v v005F9720_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005F96C8_0, 1, 1;
+    %set/v v005F9720_0, 1, 1;
+    %end;
+    .scope S_005D0C80;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Faculdade\Arquitetura I\Exercicios\Guia03\Exercicio_05.V";

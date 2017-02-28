@@ -1,0 +1,87 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00711888 .scope module, "teste" "teste" 2 25;
+ .timescale 0 0;
+v00743170_0 .var "a", 0 0;
+v007431C8_0 .var "b", 0 0;
+v00743220_0 .var "chave", 0 0;
+v00743278_0 .net "s", 0 0, L_007460F0; 1 drivers
+S_00711998 .scope module, "test" "LU" 2 31, 2 11, S_00711888;
+ .timescale 0 0;
+L_005C4A30 .functor AND 1, v00743170_0, v007431C8_0, C4<1>, C4<1>;
+L_005C4AD8 .functor OR 1, v00743170_0, v007431C8_0, C4<0>, C4<0>;
+L_005C4B10 .functor NOT 1, v00743220_0, C4<0>, C4<0>, C4<0>;
+L_005CB588 .functor AND 1, L_005C4A30, L_005C4B10, C4<1>, C4<1>;
+L_00746080 .functor AND 1, L_005C4AD8, v00743220_0, C4<1>, C4<1>;
+L_007460F0 .functor OR 1, L_005CB588, L_00746080, C4<0>, C4<0>;
+v005C9A30_0 .net "a", 0 0, v00743170_0; 1 drivers
+v005CA190_0 .net "b", 0 0, v007431C8_0; 1 drivers
+v005C2BD0_0 .net "chave", 0 0, v00743220_0; 1 drivers
+v005C2C28_0 .net "notchave", 0 0, L_005C4B10; 1 drivers
+v005C2C80_0 .alias "s", 0 0, v00743278_0;
+v00743010_0 .net "tmp1", 0 0, L_005C4A30; 1 drivers
+v00743068_0 .net "tmp2", 0 0, L_005C4AD8; 1 drivers
+v007430C0_0 .net "tmp3", 0 0, L_005CB588; 1 drivers
+v00743118_0 .net "tmp4", 0 0, L_00746080; 1 drivers
+S_00711910 .scope begin, "main" "main" 2 34, 2 34, S_00711888;
+ .timescale 0 0;
+    .scope S_00711888;
+T_0 ;
+    %fork t_1, S_00711910;
+    %jmp t_0;
+    .scope S_00711910;
+t_1 ;
+    %vpi_call 2 36 "$display", "Exemplo0032 - Rafael Tadeu - 451609";
+    %vpi_call 2 37 "$display", "Test exercicio02's module";
+    %set/v v00743170_0, 0, 1;
+    %set/v v007431C8_0, 0, 1;
+    %set/v v00743220_0, 0, 1;
+    %vpi_call 2 40 "$display", "\012chave = 0 (operacao and) chave = 1 (operacao or)";
+    %delay 1, 0;
+    %vpi_call 2 42 "$monitor", "a = %b  b = %b chave = %b saida = %b", v00743170_0, v007431C8_0, v00743220_0, v00743278_0;
+    %delay 1, 0;
+    %set/v v00743170_0, 0, 1;
+    %set/v v007431C8_0, 0, 1;
+    %set/v v00743220_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 0, 1;
+    %set/v v007431C8_0, 0, 1;
+    %set/v v00743220_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 0, 1;
+    %set/v v007431C8_0, 1, 1;
+    %set/v v00743220_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 0, 1;
+    %set/v v007431C8_0, 1, 1;
+    %set/v v00743220_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 1, 1;
+    %set/v v007431C8_0, 0, 1;
+    %set/v v00743220_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 1, 1;
+    %set/v v007431C8_0, 0, 1;
+    %set/v v00743220_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 1, 1;
+    %set/v v007431C8_0, 1, 1;
+    %set/v v00743220_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00743170_0, 1, 1;
+    %set/v v007431C8_0, 1, 1;
+    %set/v v00743220_0, 1, 1;
+    %end;
+    .scope S_00711888;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Google Drive\Puc\Arquitetura\Guias\Guia 03\Exemplo.0032.v";

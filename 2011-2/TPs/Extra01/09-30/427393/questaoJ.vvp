@@ -1,0 +1,136 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B98EB0 .scope module, "Teste" "Teste" 2 26;
+ .timescale 0 0;
+v00B9B900_0 .var "a", 0 0;
+v00B9B958_0 .var "b", 0 0;
+v00B9B9B0_0 .var "c", 0 0;
+v00B9BA08_0 .var "d", 0 0;
+v00B9BA60_0 .net "s", 0 0, L_007A06F8; 1 drivers
+S_00B991E0 .scope module, "Teste" "questaoJ" 2 34, 2 7, S_00B98EB0;
+ .timescale 0 0;
+L_007A05A8 .functor NOT 1, v00B9B900_0, C4<0>, C4<0>, C4<0>;
+L_007A05E0 .functor NOT 1, v00B9B958_0, C4<0>, C4<0>, C4<0>;
+L_007A0650 .functor NOT 1, v00B9B9B0_0, C4<0>, C4<0>, C4<0>;
+L_007A06C0 .functor NOT 1, v00B9BA08_0, C4<0>, C4<0>, C4<0>;
+L_007A0730 .functor AND 1, v00B9B900_0, v00B9B958_0, L_007A0650, L_007A06C0;
+L_007A07D8 .functor AND 1, v00B9B900_0, L_007A05E0, L_007A0650, L_007A06C0;
+L_007A0810 .functor AND 1, v00B9B900_0, v00B9B958_0, L_007A0650, v00B9BA08_0;
+L_007A0768 .functor AND 1, v00B9B900_0, L_007A05E0, L_007A0650, v00B9BA08_0;
+L_007A06F8 .functor OR 1, L_007A0730, L_007A07D8, L_007A0810, L_007A0768;
+v00B9B488_0 .net "a", 0 0, v00B9B900_0; 1 drivers
+v00B9B4E0_0 .net "a1", 0 0, L_007A05A8; 1 drivers
+v00B9B538_0 .net "b", 0 0, v00B9B958_0; 1 drivers
+v00B9B590_0 .net "b1", 0 0, L_007A05E0; 1 drivers
+v00B9B5E8_0 .net "c", 0 0, v00B9B9B0_0; 1 drivers
+v00B9B640_0 .net "c1", 0 0, L_007A0650; 1 drivers
+v00B9B698_0 .net "d", 0 0, v00B9BA08_0; 1 drivers
+v00B9B6F0_0 .net "d1", 0 0, L_007A06C0; 1 drivers
+v00B9B748_0 .alias "s", 0 0, v00B9BA60_0;
+v00B9B7A0_0 .net "s2", 0 0, L_007A0730; 1 drivers
+v00B9B7F8_0 .net "s3", 0 0, L_007A07D8; 1 drivers
+v00B9B850_0 .net "s4", 0 0, L_007A0810; 1 drivers
+v00B9B8A8_0 .net "s5", 0 0, L_007A0768; 1 drivers
+    .scope S_00B98EB0;
+T_0 ;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00B98EB0;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "Camila Guedes Silveira - 427393 ";
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "Quest\343o J";
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", " a | b | c | d | s2 ";
+    %vpi_call 2 45 "$monitor", " %b | %b | %b | %b |  %b ", v00B9B900_0, v00B9B958_0, v00B9B9B0_0, v00B9BA08_0, v00B9BA60_0;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 0, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 0, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 0, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B9B900_0, 1, 1;
+    %set/v v00B9B958_0, 1, 1;
+    %set/v v00B9B9B0_0, 1, 1;
+    %set/v v00B9BA08_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Camila\Desktop\PUC_II\AC\Nova pasta\questaoJ.v";

@@ -1,0 +1,64 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006F94A8 .scope module, "testhalfSubtractornand" "testhalfSubtractornand" 2 35;
+ .timescale 0 0;
+v006FBEA8_0 .var "a", 0 0;
+v006FBF00_0 .var "b", 0 0;
+v006FBF58_0 .net "e1", 0 0, L_006524E8; 1 drivers
+v006FBFB0_0 .net "s", 0 0, L_00652408; 1 drivers
+S_006F9530 .scope module, "HF" "halfSubtractornand" 2 39, 2 8, S_006F94A8;
+ .timescale 0 0;
+L_006FB258 .functor NAND 1, v006FBEA8_0, v006FBEA8_0, C4<1>, C4<1>;
+L_006FB2C8 .functor NAND 1, v006FBF00_0, v006FBF00_0, C4<1>, C4<1>;
+L_006FD7D0 .functor NAND 1, L_006FB258, L_006FB2C8, C4<1>, C4<1>;
+L_006FD878 .functor NAND 1, v006FBEA8_0, v006FBF00_0, C4<1>, C4<1>;
+L_006FD798 .functor NAND 1, L_006FD878, L_006FD878, C4<1>, C4<1>;
+L_006FD8B0 .functor NAND 1, L_006FD7D0, L_006FD7D0, C4<1>, C4<1>;
+L_006F29E8 .functor NAND 1, L_006FD798, L_006FD798, C4<1>, C4<1>;
+L_006F2A58 .functor NAND 1, L_006FD8B0, L_006F29E8, C4<1>, C4<1>;
+L_00652398 .functor NAND 1, L_006F2A58, L_006F29E8, C4<1>, C4<1>;
+L_00652408 .functor NAND 1, L_00652398, L_00652398, C4<1>, C4<1>;
+L_006524B0 .functor NAND 1, L_006FB258, v006FBF00_0, C4<1>, C4<1>;
+L_006524E8 .functor NAND 1, L_006524B0, L_006524B0, C4<1>, C4<1>;
+v006FB9D8_0 .net "a", 0 0, v006FBEA8_0; 1 drivers
+v006FBA30_0 .net "b", 0 0, v006FBF00_0; 1 drivers
+v006FBA88_0 .alias "e1", 0 0, v006FBF58_0;
+v006FBAE0_0 .alias "s", 0 0, v006FBFB0_0;
+v006FBB38_0 .net "tem1", 0 0, L_006FB258; 1 drivers
+v006FBB90_0 .net "tem2", 0 0, L_006FB2C8; 1 drivers
+v006FBBE8_0 .net "tem3", 0 0, L_006FD7D0; 1 drivers
+v006FBC40_0 .net "tem4", 0 0, L_006FD878; 1 drivers
+v006FBC98_0 .net "tem5", 0 0, L_006FD8B0; 1 drivers
+v006FBCF0_0 .net "tem6", 0 0, L_006F29E8; 1 drivers
+v006FBD48_0 .net "tem7", 0 0, L_006F2A58; 1 drivers
+v006FBDA0_0 .net "tem8", 0 0, L_00652398; 1 drivers
+v006FBDF8_0 .net "x", 0 0, L_006FD798; 1 drivers
+v006FBE50_0 .net "y", 0 0, L_006524B0; 1 drivers
+    .scope S_006F94A8;
+T_0 ;
+    %vpi_call 2 42 "$display", "Guia 03 - Karen Alves Pereira - 407451";
+    %vpi_call 2 43 "$display", "Operador de meia-diferenca apenas com portas NAND";
+    %vpi_call 2 44 "$display", "\012a b s e1";
+    %vpi_call 2 45 "$monitor", "%b %b %b %b", v006FBEA8_0, v006FBF00_0, v006FBFB0_0, v006FBF58_0;
+    %set/v v006FBEA8_0, 0, 1;
+    %set/v v006FBF00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006FBEA8_0, 0, 1;
+    %set/v v006FBF00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006FBEA8_0, 1, 1;
+    %set/v v006FBF00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006FBEA8_0, 1, 1;
+    %set/v v006FBF00_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 03\Guia03_meiadiferencanand.v";

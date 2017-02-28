@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009CE7A8 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v009C32F8_0 .var "a", 0 0;
+v009CE118_0 .var "b", 0 0;
+v009CE170_0 .net "s", 0 0, L_009C2EA0; 1 drivers
+S_009C2E18 .scope module, "OR1" "orgate" 2 23, 2 10, S_009CE7A8;
+ .timescale 0 0;
+L_009C2EA0 .functor OR 1, v009C32F8_0, v009CE118_0, C4<0>, C4<0>;
+v009C31F0_0 .net "p", 0 0, v009C32F8_0; 1 drivers
+v009C3248_0 .net "q", 0 0, v009CE118_0; 1 drivers
+v009C32A0_0 .alias "s", 0 0, v009CE170_0;
+S_009C2D90 .scope begin, "start" "start" 2 25, 2 25, S_009CE7A8;
+ .timescale 0 0;
+    .scope S_009CE7A8;
+T_0 ;
+    %fork t_1, S_009C2D90;
+    %jmp t_0;
+    .scope S_009C2D90;
+t_1 ;
+    %set/v v009C32F8_0, 0, 1;
+    %set/v v009CE118_0, 0, 1;
+    %end;
+    .scope S_009CE7A8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_009CE7A8;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0004 - Wellington Santos Corr\352a - 472047";
+    %vpi_call 2 33 "$display", "Test OR gate";
+    %vpi_call 2 34 "$display", "\012a & b = s\012";
+    %set/v v009C32F8_0, 0, 1;
+    %set/v v009CE118_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v009C32F8_0, v009CE118_0, v009CE170_0;
+    %set/v v009C32F8_0, 0, 1;
+    %set/v v009CE118_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v009C32F8_0, v009CE118_0, v009CE170_0;
+    %set/v v009C32F8_0, 1, 1;
+    %set/v v009CE118_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v009C32F8_0, v009CE118_0, v009CE170_0;
+    %set/v v009C32F8_0, 1, 1;
+    %set/v v009CE118_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v009C32F8_0, v009CE118_0, v009CE170_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\RW\Documents\472047\Arquitetura 1\Guia 1\Exemplo0004.v";

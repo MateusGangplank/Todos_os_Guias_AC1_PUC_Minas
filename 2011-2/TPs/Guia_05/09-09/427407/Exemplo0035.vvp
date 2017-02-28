@@ -1,0 +1,72 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C290D8 .scope module, "test_comparator" "test_comparator" 2 30;
+ .timescale 0 0;
+v008E4BD8_0 .var "a", 0 0;
+v008E4C30_0 .var "b", 0 0;
+v008E4C88_0 .net "n1", 0 0, L_00C22FC8; 1 drivers
+v008E4CE0_0 .net "n2", 0 0, L_008E5B28; 1 drivers
+v008E4D38_0 .net "s0", 0 0, L_00C24540; 1 drivers
+v008E4D90_0 .net "s1", 0 0, L_00C23570; 1 drivers
+v008E4DE8_0 .net "s2", 0 0, L_008E5B60; 1 drivers
+S_00C29408 .scope module, "fox" "norGate" 2 38, 2 25, S_00C290D8;
+ .timescale 0 0;
+L_00C22FC8 .functor NOT 1, v008E4BD8_0, C4<0>, C4<0>, C4<0>;
+v008E4B28_0 .net "a", 0 0, v008E4BD8_0; 1 drivers
+v008E4B80_0 .alias "s2", 0 0, v008E4C88_0;
+S_00C29380 .scope module, "bilara" "andGate" 2 39, 2 13, S_00C290D8;
+ .timescale 0 0;
+L_00C24540 .functor AND 1, L_00C22FC8, v008E4C30_0, C4<1>, C4<1>;
+v00C23518_0 .alias "a", 0 0, v008E4C88_0;
+v00C24490_0 .net "b", 0 0, v008E4C30_0; 1 drivers
+v00C244E8_0 .alias "s0", 0 0, v008E4D38_0;
+S_00C292F8 .scope module, "bonanza" "xnorGate" 2 40, 2 19, S_00C290D8;
+ .timescale 0 0;
+L_00C24578 .functor XOR 1, v008E4BD8_0, v008E4C30_0, C4<0>, C4<0>;
+L_00C23570 .functor NOT 1, L_00C24578, C4<0>, C4<0>, C4<0>;
+v00C2CC38_0 .net *"_s0", 0 0, L_00C24578; 1 drivers
+v00C2CC90_0 .alias "a", 0 0, v008E4B28_0;
+v00C23468_0 .alias "b", 0 0, v00C24490_0;
+v00C234C0_0 .alias "s1", 0 0, v008E4D90_0;
+S_00C29270 .scope module, "quebec" "norGate" 2 41, 2 25, S_00C290D8;
+ .timescale 0 0;
+L_008E5B28 .functor NOT 1, v008E4C30_0, C4<0>, C4<0>, C4<0>;
+v00C2C5F0_0 .alias "a", 0 0, v00C24490_0;
+v00C2CBE0_0 .alias "s2", 0 0, v008E4CE0_0;
+S_00C291E8 .scope module, "domada" "andGate" 2 42, 2 13, S_00C290D8;
+ .timescale 0 0;
+L_008E5B60 .functor AND 1, v008E4BD8_0, L_008E5B28, C4<1>, C4<1>;
+v00C2B968_0 .alias "a", 0 0, v008E4B28_0;
+v00C2C540_0 .alias "b", 0 0, v008E4CE0_0;
+v00C2C598_0 .alias "s0", 0 0, v008E4DE8_0;
+    .scope S_00C290D8;
+T_0 ;
+    %vpi_call 2 46 "$display", "Exemplo0035 - Guilherme Terra - 427407";
+    %vpi_call 2 47 "$display", "Test ALU's comparator";
+    %set/v v008E4BD8_0, 0, 1;
+    %set/v v008E4C30_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "\012%b comparado com %b = %b(<) %b(=) %b(>)", v008E4BD8_0, v008E4C30_0, v008E4D38_0, v008E4D90_0, v008E4DE8_0;
+    %set/v v008E4BD8_0, 0, 1;
+    %set/v v008E4C30_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 53 "$display", "\012%b comparado com %b = %b(<) %b(=) %b(>)", v008E4BD8_0, v008E4C30_0, v008E4D38_0, v008E4D90_0, v008E4DE8_0;
+    %set/v v008E4BD8_0, 1, 1;
+    %set/v v008E4C30_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 56 "$display", "\012%b comparado com %b = %b(<) %b(=) %b(>)", v008E4BD8_0, v008E4C30_0, v008E4D38_0, v008E4D90_0, v008E4DE8_0;
+    %set/v v008E4BD8_0, 1, 1;
+    %set/v v008E4C30_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 59 "$display", "\012%b comparado com %b = %b(<) %b(=) %b(>)", v008E4BD8_0, v008E4C30_0, v008E4D38_0, v008E4D90_0, v008E4DE8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\CIÊNCIA_DA_COMPUTAÇÃO\2_Periodo\ARQ_I\Guias\Concluídas\Guia_05\Exemplo0035.v";

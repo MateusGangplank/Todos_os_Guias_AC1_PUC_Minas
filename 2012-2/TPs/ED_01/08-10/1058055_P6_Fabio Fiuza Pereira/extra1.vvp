@@ -1,0 +1,101 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006DA9A0 .scope module, "testbitgate" "testbitgate" 2 17;
+ .timescale 0 0;
+v01E43AD0_0 .net "a", 0 0, L_01E44B90; 1 drivers
+v01E43B28_0 .var "x", 7 0;
+S_006DAAB0 .scope module, "BIT1" "bitgate" 2 23, 2 9, S_006DA9A0;
+ .timescale 0 0;
+L_006D3100 .functor OR 1, L_01E43B80, L_01E43BD8, C4<0>, C4<0>;
+L_006DCC20 .functor OR 1, L_01E43C30, L_01E43C88, C4<0>, C4<0>;
+L_01E44880 .functor OR 1, L_006D3100, L_006DCC20, C4<0>, C4<0>;
+L_01E44928 .functor NOT 1, L_01E44880, C4<0>, C4<0>, C4<0>;
+L_01E44998 .functor OR 1, L_01E43CE0, L_01E43D38, C4<0>, C4<0>;
+L_01E44A40 .functor OR 1, L_01E43D90, L_01E43DE8, C4<0>, C4<0>;
+L_01E44AE8 .functor OR 1, L_01E44998, L_01E44A40, C4<0>, C4<0>;
+L_01E44B90 .functor OR 1, L_01E44928, L_01E44AE8, C4<0>, C4<0>;
+v006DCB70_0 .net *"_s1", 0 0, L_01E43B80; 1 drivers
+v006DCBC8_0 .net *"_s10", 0 0, L_006DCC20; 1 drivers
+v006DD9C0_0 .net *"_s12", 0 0, L_01E44880; 1 drivers
+v006DDA18_0 .net *"_s14", 0 0, L_01E44928; 1 drivers
+v006DDA70_0 .net *"_s17", 0 0, L_01E43CE0; 1 drivers
+v006D4EB0_0 .net *"_s19", 0 0, L_01E43D38; 1 drivers
+v006D4F08_0 .net *"_s20", 0 0, L_01E44998; 1 drivers
+v006D4F60_0 .net *"_s23", 0 0, L_01E43D90; 1 drivers
+v006D30A8_0 .net *"_s25", 0 0, L_01E43DE8; 1 drivers
+v01E43810_0 .net *"_s26", 0 0, L_01E44A40; 1 drivers
+v01E43868_0 .net *"_s28", 0 0, L_01E44AE8; 1 drivers
+v01E438C0_0 .net *"_s3", 0 0, L_01E43BD8; 1 drivers
+v01E43918_0 .net *"_s4", 0 0, L_006D3100; 1 drivers
+v01E43970_0 .net *"_s7", 0 0, L_01E43C30; 1 drivers
+v01E439C8_0 .net *"_s9", 0 0, L_01E43C88; 1 drivers
+v01E43A20_0 .alias "a", 0 0, v01E43AD0_0;
+v01E43A78_0 .net "x", 7 0, v01E43B28_0; 1 drivers
+L_01E43B80 .part v01E43B28_0, 0, 1;
+L_01E43BD8 .part v01E43B28_0, 1, 1;
+L_01E43C30 .part v01E43B28_0, 2, 1;
+L_01E43C88 .part v01E43B28_0, 3, 1;
+L_01E43CE0 .part v01E43B28_0, 4, 1;
+L_01E43D38 .part v01E43B28_0, 5, 1;
+L_01E43D90 .part v01E43B28_0, 6, 1;
+L_01E43DE8 .part v01E43B28_0, 7, 1;
+S_006DAA28 .scope begin, "start" "start" 2 25, 2 25, S_006DA9A0;
+ .timescale 0 0;
+    .scope S_006DA9A0;
+T_0 ;
+    %fork t_1, S_006DAA28;
+    %jmp t_0;
+    .scope S_006DAA28;
+t_1 ;
+    %movi 8, 4, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %end;
+    .scope S_006DA9A0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006DA9A0;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo16 - F\341bio Fiuza Pereira";
+    %vpi_call 2 33 "$display", "Test Bitgate";
+    %vpi_call 2 34 "$display", "\012a | b = s\012";
+    %vpi_call 2 36 "$monitor", "%b > 0 = %b", v01E43B28_0, v01E43AD0_0;
+    %delay 1, 0;
+    %set/v v01E43B28_0, 0, 8;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 32, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 128, 8;
+    %set/v v01E43B28_0, 8, 8;
+    %delay 1, 0;
+    %set/v v01E43B28_0, 1, 8;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "extra1.v";

@@ -1,0 +1,126 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0077B550 .scope module, "test_entradaZero" "test_entradaZero" 2 18;
+ .timescale 0 0;
+v006E3898_0 .var "a", 7 0;
+v006E38F0_0 .net "s", 0 0, L_0077F790; 1 drivers
+S_0077B6E8 .scope module, "Z" "entradaZero" 2 24, 2 11, S_0077B550;
+ .timescale 0 0;
+L_0077F2F8 .functor OR 1, L_006E3948, L_006E39A0, C4<0>, C4<0>;
+L_0077F330 .functor OR 1, L_0077F2F8, L_006E39F8, C4<0>, C4<0>;
+L_0077F448 .functor OR 1, L_0077F330, L_006E3A50, C4<0>, C4<0>;
+L_0077F4F0 .functor OR 1, L_0077F448, L_006E3AA8, C4<0>, C4<0>;
+L_0077F598 .functor OR 1, L_0077F4F0, L_006E3B00, C4<0>, C4<0>;
+L_0077F640 .functor OR 1, L_0077F598, L_006E3B58, C4<0>, C4<0>;
+L_0077F6E8 .functor OR 1, L_0077F640, L_006E3BB0, C4<0>, C4<0>;
+L_0077F790 .functor NOT 1, L_0077F6E8, C4<0>, C4<0>, C4<0>;
+v00773BE8_0 .net *"_s1", 0 0, L_006E3948; 1 drivers
+v00773C40_0 .net *"_s11", 0 0, L_006E3A50; 1 drivers
+v00773C98_0 .net *"_s12", 0 0, L_0077F448; 1 drivers
+v00774130_0 .net *"_s15", 0 0, L_006E3AA8; 1 drivers
+v00774188_0 .net *"_s16", 0 0, L_0077F4F0; 1 drivers
+v007741E0_0 .net *"_s19", 0 0, L_006E3B00; 1 drivers
+v00774238_0 .net *"_s20", 0 0, L_0077F598; 1 drivers
+v0077D630_0 .net *"_s23", 0 0, L_006E3B58; 1 drivers
+v006E3580_0 .net *"_s24", 0 0, L_0077F640; 1 drivers
+v006E35D8_0 .net *"_s27", 0 0, L_006E3BB0; 1 drivers
+v006E3630_0 .net *"_s28", 0 0, L_0077F6E8; 1 drivers
+v006E3688_0 .net *"_s3", 0 0, L_006E39A0; 1 drivers
+v006E36E0_0 .net *"_s4", 0 0, L_0077F2F8; 1 drivers
+v006E3738_0 .net *"_s7", 0 0, L_006E39F8; 1 drivers
+v006E3790_0 .net *"_s8", 0 0, L_0077F330; 1 drivers
+v006E37E8_0 .net "p", 7 0, v006E3898_0; 1 drivers
+v006E3840_0 .alias "s", 0 0, v006E38F0_0;
+L_006E3948 .part v006E3898_0, 0, 1;
+L_006E39A0 .part v006E3898_0, 1, 1;
+L_006E39F8 .part v006E3898_0, 2, 1;
+L_006E3A50 .part v006E3898_0, 3, 1;
+L_006E3AA8 .part v006E3898_0, 4, 1;
+L_006E3B00 .part v006E3898_0, 5, 1;
+L_006E3B58 .part v006E3898_0, 6, 1;
+L_006E3BB0 .part v006E3898_0, 7, 1;
+S_0077B660 .scope begin, "start" "start" 2 27, 2 27, S_0077B550;
+ .timescale 0 0;
+S_0077B5D8 .scope begin, "main" "main" 2 32, 2 32, S_0077B550;
+ .timescale 0 0;
+    .scope S_0077B550;
+T_0 ;
+    %fork t_1, S_0077B660;
+    %jmp t_0;
+    .scope S_0077B660;
+t_1 ;
+    %set/v v006E3898_0, 0, 8;
+    %end;
+    .scope S_0077B550;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0077B550;
+T_1 ;
+    %fork t_3, S_0077B5D8;
+    %jmp t_2;
+    .scope S_0077B5D8;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exercicio11 - Thais Mairink - 441710";
+    %vpi_call 2 34 "$display", "Test entrada zero";
+    %vpi_call 2 35 "$display", "\012a  =  s\012";
+    %delay 1, 0;
+    %vpi_call 2 36 "$monitor", "%b  =  %b", v006E3898_0, v006E38F0_0;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 3, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 5, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 6, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 7, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 9, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 10, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 11, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 12, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 13, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 14, 8;
+    %set/v v006E3898_0, 8, 8;
+    %delay 1, 0;
+    %set/v v006E3898_0, 1, 8;
+    %end;
+    .scope S_0077B550;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Arq1\exercicio11.V";

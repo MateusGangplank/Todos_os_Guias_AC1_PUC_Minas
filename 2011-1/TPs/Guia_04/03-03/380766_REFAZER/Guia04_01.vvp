@@ -1,0 +1,73 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00673178 .scope module, "testemeiasoma" "testemeiasoma" 2 31;
+ .timescale 0 0;
+v006A38B8_0 .var "a", 0 0;
+v006A3910_0 .var "b", 0 0;
+v006A3968_0 .net "s1", 0 0, C4<z>; 0 drivers
+v006A39C0_0 .net "s2", 0 0, L_006A3AA8; 1 drivers
+S_003EF5D0 .scope module, "MEIA" "meiasoma" 2 36, 2 11, S_00673178;
+ .timescale 0 0;
+L_00673D28 .functor NOR 1, v006A38B8_0, v006A38B8_0, C4<0>, C4<0>;
+L_006A3A38 .functor NOR 1, v006A3910_0, v006A3910_0, C4<0>, C4<0>;
+L_006A3AA8 .functor NOR 1, L_00673D28, L_006A3A38, C4<0>, C4<0>;
+L_006A3B88 .functor NOR 1, v006A38B8_0, v006A3910_0, C4<0>, C4<0>;
+L_006A3A70 .functor NOR 1, L_006A3B88, L_006A3B88, C4<0>, C4<0>;
+L_006A3C90 .functor NOR 1, L_006A3A70, L_006A3A70, C4<0>, C4<0>;
+L_006A3D00 .functor NOR 1, L_006A3AA8, L_006A3C90, C4<0>, C4<0>;
+v003EDFB0_0 .net "p", 0 0, v006A38B8_0; 1 drivers
+v006A34A0_0 .net "q", 0 0, v006A3910_0; 1 drivers
+v006A3510_0 .alias "s0", 0 0, v006A3968_0;
+v006A3598_0 .alias "s1", 0 0, v006A39C0_0;
+v006A3608_0 .net "s2", 0 0, L_006A3D00; 1 drivers
+v006A3660_0 .net "s3", 0 0, L_00673D28; 1 drivers
+v006A36D0_0 .net "s4", 0 0, L_006A3A38; 1 drivers
+v006A3768_0 .net "s5", 0 0, L_006A3B88; 1 drivers
+v006A37D8_0 .net "s6", 0 0, L_006A3A70; 1 drivers
+v006A3848_0 .net "s7", 0 0, L_006A3C90; 1 drivers
+S_003EF550 .scope begin, "start" "start" 2 38, 2 38, S_00673178;
+ .timescale 0 0;
+S_003EF4D0 .scope begin, "main" "main" 2 43, 2 43, S_00673178;
+ .timescale 0 0;
+    .scope S_00673178;
+T_0 ;
+    %fork t_1, S_003EF550;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A38B8_0, 0, 1;
+    %set/v v006A3910_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00673178;
+T_1 ;
+    %fork t_3, S_003EF4D0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 44 "$display", "Guia 04 - Guilherme Lucindo - 380766";
+    %vpi_call 2 45 "$display", "teste meio-somador";
+    %vpi_call 2 46 "$display", "\012 a + b = s\012";
+    %vpi_call 2 47 "$monitor", "%b + %b = %b %b", v006A38B8_0, v006A3910_0, v006A3968_0, v006A39C0_0;
+    %delay 1, 0;
+    %set/v v006A38B8_0, 0, 1;
+    %set/v v006A3910_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A38B8_0, 1, 1;
+    %set/v v006A3910_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A38B8_0, 1, 1;
+    %set/v v006A3910_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\AC\Guia 4\Guia04_01.vhdl";

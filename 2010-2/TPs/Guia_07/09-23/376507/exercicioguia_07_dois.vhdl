@@ -1,0 +1,195 @@
+//exercicioguia_07_dois
+//Nome:eneas
+//numero:376507
+//-------------------------------------------------------------------
+
+module xorgate (s2,a0,a1,b0,b1);
+
+output s2;
+
+input a0,a1,b0,b1;
+
+assign s2=(a0|a1|b0|b1);      // ISSO NAO E' XOR, E' OR.
+                              // TENTE USAR AS PORTAS PREDEFINIDAS
+
+endmodule//xorgate
+
+module primeiro;
+reg a0,a1,b0,b1;
+wire s2;
+
+//ALU de quatro bits com complemento de 1
+//module complementodeum ;
+//reg a0,a1,b0,b1;
+
+  xorgate xor1(s2,a0,a1,b0,b1);
+//usando o display
+
+ initial begin
+   $display ("primeiro");
+   $display ("xorgate");
+   //$display ("vaium");
+   $display ("\na |b=s2\n");
+   a0=0;a1=0;b0=0;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=0;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=0;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=0;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=1;c=0;d=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=1;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=1;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=0;a1=1;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=0;b0=0;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=0;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=0;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=0;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=1;b0=0;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=1;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=1;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+   a0=1;a1=1;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s2);
+end 
+endmodule//xorgate
+//------------------------------------------------------------------
+module xorgate2(s1,a0,a1,b0,b1);
+output s1;
+input a0,a1,b0,b1;
+assign s1=(a0|a1|b0|b1);
+endmodule//xorgate2
+
+module segundo;
+reg a0,a1,b0,b1;
+wire s1;
+//instacia xorgate2
+xorgate2 xor2(s1,a0,a1,b0,b1);
+//usando display
+   initial begin
+   $display ("segunda");
+   $display ("xorgate2");
+   //$display ("vaium");
+   $display ("\na |b=s2\n");
+   a0=0;a1=0;b0=0;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=0;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=0;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=0;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=1;c=0;d=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=1;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=1;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=0;a1=1;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=0;b0=0;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=0;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=0;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=0;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=1;b0=0;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=1;b0=0;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=1;b0=1;b1=0;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+   a0=1;a1=1;b0=1;b1=1;
+#1 $display ("%b |%b|%b|%b=%b",a0,a1,b0,b1,s1);
+ end
+ endmodule//xorgate2
+//------------------------------------------------------------------
+
+module andgate(s0,a0,a1,b0,b1);
+
+output s0;
+input a0,a1,b0,b1;
+assign s0=(a0&a1&b0&b1);
+endmodule//andmodule
+
+module terceiro;
+reg a0,a1,b0,b1;
+wire s0;
+//instanciado andgate
+andgate AND1(s0,a0,a1,b0,b1);
+//usando display
+
+initial begin
+   $display ("terceiro");
+   $display ("andgate");
+   //$display ("vaium");
+   $display ("\na &b=s2\n");
+   a0=0;a1=0;b0=0;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=0;b0=0;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=0;b0=1;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=0;b0=1;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=1;c=0;d=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=1;b0=0;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=1;b0=1;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=0;a1=1;b0=1;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=0;b0=0;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=0;b0=0;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=0;b0=1;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=0;b0=1;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=1;b0=0;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=1;b0=0;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=1;b0=1;b1=0;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+   a0=1;a1=1;b0=1;b1=1;
+#1 $display ("%b &%b&%b&%b=%b",a0,a1,b0,b1,s0);
+ end
+ endmodule//andgate
+ //-----------------------------------------------------
+ module segnand;
+ output s0;
+ input a0,a1,b0,b1;
+ assign s0= (a0,a1,b0,b1);
+ endmodule//segnand
+ 
+ module testandgate;
+ reg[4,0]a0;
+ reg[7:0]a1;
+ reg[8:0]b0;
+ reg[10:0]b1;
+ //testando andgate
+ initial begin
+   $display("exercicio_07_um");
+	$display("\complement+2");
+   $display("0=%d =4b",~1,(1-1),~1);
+   $display("1=%d=7b",~1,(1-1),~1);
+	$display("2=%d=8b",~0,(2-1)~0);
+   $display("3=%d=10b",~0,(2-1)~0);
+   endmodule//andgate
+

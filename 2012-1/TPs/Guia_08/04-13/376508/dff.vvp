@@ -1,0 +1,42 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B22EE0 .scope module, "dff" "dff" 2 7;
+ .timescale 0 0;
+v00B24978_0 .net "clear", 0 0, C4<z>; 0 drivers
+v00B2FCE8_0 .net "clk", 0 0, C4<z>; 0 drivers
+v00B2FD40_0 .net "d", 0 0, C4<z>; 0 drivers
+v00B2FD98_0 .var "q", 0 0;
+v00B2FDF0_0 .var "qnot", 0 0;
+E_00B50D68 .event posedge, v00B2FCE8_0;
+    .scope S_00B22EE0;
+T_0 ;
+    %wait E_00B50D68;
+    %load/v 8, v00B24978_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00B2FD98_0, 0, 0;
+    %load/v 8, v00B2FD98_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00B2FDF0_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v00B2FD40_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00B2FD98_0, 0, 8;
+    %load/v 8, v00B2FD98_0, 1;
+    %inv 8, 1;
+    %set/v v00B2FDF0_0, 8, 1;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\Guia08\dff.v";

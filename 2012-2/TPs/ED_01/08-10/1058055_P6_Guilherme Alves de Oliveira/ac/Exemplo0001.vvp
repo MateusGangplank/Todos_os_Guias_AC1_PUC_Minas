@@ -1,0 +1,55 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8d6ea38 .scope module, "testbuffer" "testbuffer" 2 16;
+ .timescale 0 0;
+v0x8d8fd48_0 .var "a", 0 0;
+v0x8d8fdc8_0 .net "s", 0 0, L_0x8d8fe38; 1 drivers
+S_0x8d6fd48 .scope module, "BF1" "buffer" 2 23, 2 9, S_0x8d6ea38;
+ .timescale 0 0;
+L_0x8d8fe38 .functor BUFZ 1, v0x8d8fd48_0, C4<0>, C4<0>, C4<0>;
+v0x8d92788_0 .net "p", 0 0, v0x8d8fd48_0; 1 drivers
+v0x8d8fce8_0 .alias "s", 0 0, v0x8d8fdc8_0;
+S_0x8d92708 .scope begin, "start" "start" 2 25, 2 25, S_0x8d6ea38;
+ .timescale 0 0;
+S_0x8d92688 .scope begin, "main" "main" 2 29, 2 29, S_0x8d6ea38;
+ .timescale 0 0;
+    .scope S_0x8d6ea38;
+T_0 ;
+    %fork t_1, S_0x8d92708;
+    %jmp t_0;
+    .scope S_0x8d92708;
+t_1 ;
+    %set/v v0x8d8fd48_0, 0, 1;
+    %end;
+    .scope S_0x8d6ea38;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8d6ea38;
+T_1 ;
+    %fork t_3, S_0x8d92688;
+    %jmp t_2;
+    .scope S_0x8d92688;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exemplo 0001 - xxx yyy zzz - 999999";
+    %vpi_call 2 32 "$display", "Test buffer:";
+    %vpi_call 2 33 "$display", "\011      time\011a = s";
+    %vpi_call 2 35 "$monitor", "%d\011%b = %b", $time, v0x8d8fd48_0, v0x8d8fdc8_0;
+    %delay 1, 0;
+    %set/v v0x8d8fd48_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x8d8fd48_0, 0, 1;
+    %end;
+    .scope S_0x8d6ea38;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/guilherme/Área de Trabalho/ac/Exemplo0001.v";

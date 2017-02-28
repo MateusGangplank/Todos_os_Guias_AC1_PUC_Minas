@@ -1,0 +1,96 @@
+module exercicio3 (a , b , c , d , e , s);
+
+input a , b, ,c , d , e;
+
+output s;
+
+wire w0 , w1 , w2 , w3 , w4 , w5 , w6 , w7 , w8 , na , nb , nc , nd , ne;
+
+not(na , a);
+not(nb , b);
+not(nc , c);
+not(nd , d);
+not(ne , e);
+and(w0 , a , nb , nc , d , ne);
+and(w1 , a , b , d , e);
+and(w2 , na, b , nc , nd);
+and(w3 , nb , nd , e);
+and(w4 , na , b , nc);
+and(w5 , b , c , d);
+and(w6 , na , nd , e);
+and(w7 , na , nb , nd);
+and(w8 , c , e);
+or (s , w0 , w1 , w2 , w3 , w4 , w5 , w6 , w7 , w8);
+
+endmodule
+
+
+
+
+
+
+module teste;
+
+output s;
+
+reg a , b, c , d , e;
+
+exercicio3 ex3 (s , a , b , c , d , e);
+
+
+
+initial begin
+
+a=0;b=0;c=0;d=0;e=0;
+
+end
+
+initial begin: start
+
+$display ("Augusto Ferreira Andrade do Carmo - Guia 8 - Exercicio 3 - 412727");
+$monitor ("%b %b %b %b %b   %b", a , b , c , d , e , s); 
+$display ("%b %b %b %b %b   %b", a , b , c , d , e , s); 
+
+#1 a=0;b=0;c=0;d=0;e=0;
+#1 a=0;b=0;c=0;d=0;e=1;
+#1 a=0;b=0;c=0;d=1;e=0;
+#1 a=0;b=0;c=0;d=1;e=1;
+#1 a=0;b=0;c=1;d=0;e=0;
+#1 a=0;b=0;c=1;d=0;e=1;
+#1 a=0;b=0;c=1;d=1;e=0;
+#1 a=0;b=0;c=1;d=1;e=1;
+#1 a=0;b=1;c=0;d=0;e=0;
+#1 a=0;b=1;c=0;d=0;e=1;
+#1 a=0;b=1;c=0;d=1;e=0;
+#1 a=0;b=1;c=0;d=1;e=1;
+#1 a=0;b=1;c=1;d=0;e=0;
+#1 a=0;b=1;c=1;d=0;e=1;
+#1 a=0;b=1;c=1;d=1;e=0;
+#1 a=0;b=1;c=1;d=1;e=1;
+#1 a=1;b=0;c=0;d=0;e=0;
+#1 a=1;b=0;c=0;d=0;e=1;
+#1 a=1;b=0;c=0;d=1;e=0;
+#1 a=1;b=0;c=0;d=1;e=1;
+#1 a=1;b=0;c=1;d=0;e=0;
+#1 a=1;b=0;c=1;d=0;e=1;
+#1 a=1;b=0;c=1;d=1;e=0;
+#1 a=1;b=0;c=1;d=1;e=1;
+#1 a=1;b=1;c=0;d=0;e=0;
+#1 a=1;b=1;c=0;d=0;e=1;
+#1 a=1;b=1;c=0;d=1;e=0;
+#1 a=1;b=1;c=0;d=1;e=1;
+#1 a=1;b=1;c=1;d=0;e=0;
+#1 a=1;b=1;c=1;d=0;e=1;
+#1 a=1;b=1;c=1;d=1;e=0;
+#1 a=1;b=1;c=1;d=1;e=1;
+
+
+
+end
+
+
+endmodule
+
+
+
+

@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x9427250 .scope module, "teste_f4" "teste_f4" 2 30;
+ .timescale 0 0;
+v0x94269a0_0 .var "chave", 0 0;
+v0x94269f0_0 .net "w", 0 0, L_0x9426e20; 1 drivers
+v0x9426a78_0 .var "x", 0 0;
+v0x9426ac8_0 .var "y", 0 0;
+v0x9426b38_0 .net "z", 0 0, L_0x9427118; 1 drivers
+S_0x94272d0 .scope module, "modulo" "f4" 2 37, 2 18, S_0x9427250;
+ .timescale 0 0;
+L_0x9426bc0 .functor OR 1, v0x9426a78_0, v0x9426ac8_0, C4<0>, C4<0>;
+L_0x9426ca0 .functor NOR 1, v0x9426a78_0, v0x9426ac8_0, C4<0>, C4<0>;
+L_0x9426ee0 .functor AND 1, v0x9426a78_0, v0x9426ac8_0, C4<1>, C4<1>;
+L_0x9426c68 .functor NAND 1, v0x9426a78_0, v0x9426ac8_0, C4<1>, C4<1>;
+v0x94265b0_0 .net "a", 0 0, v0x9426a78_0; 1 drivers
+v0x9426620_0 .net "alpha", 0 0, L_0x9426bc0; 1 drivers
+v0x9426690_0 .net "b", 0 0, v0x9426ac8_0; 1 drivers
+v0x94266e0_0 .net "beta", 0 0, L_0x9426ca0; 1 drivers
+v0x9426750_0 .net "chave", 0 0, v0x94269a0_0; 1 drivers
+v0x94267d8_0 .net "delta", 0 0, L_0x9426c68; 1 drivers
+v0x9426848_0 .net "gama", 0 0, L_0x9426ee0; 1 drivers
+v0x94268b8_0 .alias "s", 0 0, v0x94269f0_0;
+v0x9426930_0 .alias "w", 0 0, v0x9426b38_0;
+S_0x9426270 .scope module, "m" "multiplexador" 2 23, 2 7, S_0x94272d0;
+ .timescale 0 0;
+L_0x9426d10 .functor NOT 1, v0x94269a0_0, C4<0>, C4<0>, C4<0>;
+L_0x94267a0 .functor AND 1, L_0x9426ca0, v0x94269a0_0, C4<1>, C4<1>;
+L_0x9426db0 .functor AND 1, L_0x9426bc0, L_0x9426d10, C4<1>, C4<1>;
+L_0x9426e20 .functor OR 1, L_0x9426db0, L_0x94267a0, C4<0>, C4<0>;
+v0x94262f0_0 .alias "a", 0 0, v0x9426620_0;
+v0x9426360_0 .net "alpha", 0 0, L_0x9426db0; 1 drivers
+v0x94263c0_0 .alias "b", 0 0, v0x94266e0_0;
+v0x9426420_0 .net "beta", 0 0, L_0x94267a0; 1 drivers
+v0x9426470_0 .alias "chave", 0 0, v0x9426750_0;
+v0x94264e0_0 .alias "s", 0 0, v0x94269f0_0;
+v0x9426550_0 .net "tmp", 0 0, L_0x9426d10; 1 drivers
+S_0x9428de8 .scope module, "h" "multiplexador" 2 26, 2 7, S_0x94272d0;
+ .timescale 0 0;
+L_0x9427038 .functor NOT 1, v0x94269a0_0, C4<0>, C4<0>, C4<0>;
+L_0x9427070 .functor AND 1, L_0x9426c68, v0x94269a0_0, C4<1>, C4<1>;
+L_0x94270a8 .functor AND 1, L_0x9426ee0, L_0x9427038, C4<1>, C4<1>;
+L_0x9427118 .functor OR 1, L_0x94270a8, L_0x9427070, C4<0>, C4<0>;
+v0x9427350_0 .alias "a", 0 0, v0x9426848_0;
+v0x9426008_0 .net "alpha", 0 0, L_0x94270a8; 1 drivers
+v0x9426068_0 .alias "b", 0 0, v0x94267d8_0;
+v0x94260c8_0 .net "beta", 0 0, L_0x9427070; 1 drivers
+v0x9426130_0 .alias "chave", 0 0, v0x9426750_0;
+v0x9426190_0 .alias "s", 0 0, v0x9426b38_0;
+v0x9426210_0 .net "tmp", 0 0, L_0x9427038; 1 drivers
+    .scope S_0x9427250;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo0033 - Lucas Porto Lopes - 451408";
+    %vpi_call 2 41 "$display", "test LU's module";
+    %set/v v0x94269a0_0, 0, 1;
+    %set/v v0x9426a78_0, 0, 1;
+    %set/v v0x9426ac8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%3b %3b %3b", v0x9426a78_0, v0x9426ac8_0, v0x9426b38_0;
+    %vpi_call 2 49 "$display", "%3b %3b %3b", v0x9426a78_0, v0x9426ac8_0, v0x94269f0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/lucas/Dropbox/Arquitetura I/Guia03/Exemplo0033.v";

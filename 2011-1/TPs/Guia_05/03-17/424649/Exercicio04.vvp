@@ -1,0 +1,207 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006DB070 .scope module, "testsomador3bits" "testsomador3bits" 2 48;
+ .timescale 0 0;
+v0036C0B0_0 .net "carry", 0 0, L_0036D460; 1 drivers
+v0036C108_0 .var "e1", 2 0;
+v0036C160_0 .var "e2", 2 0;
+v0036C1B8_0 .var/i "i", 31 0;
+v0036C210_0 .var/i "j", 31 0;
+RS_003453F4 .resolv tri, L_0036C2C0, L_0036C3C8, L_0036C4D0, C4<zzz>;
+v0036C268_0 .net8 "soma", 2 0, RS_003453F4; 3 drivers
+S_006DB318 .scope module, "SOMACOMPLETA1" "metodosomacompleta3bits" 2 55, 2 35, S_006DB070;
+ .timescale 0 0;
+v0036BE70_0 .alias "carry", 0 0, v0036C0B0_0;
+v0036BEC8_0 .net "carry1", 0 0, L_00340510; 1 drivers
+v0036BF20_0 .net "carry2", 0 0, L_00340AF8; 1 drivers
+v0036BF78_0 .net "e1", 2 0, v0036C108_0; 1 drivers
+v0036C000_0 .net "e2", 2 0, v0036C160_0; 1 drivers
+v0036C058_0 .alias "soma", 2 0, v0036C268_0;
+L_0036C2C0 .part/pv L_006DE6D8, 0, 1, 3;
+L_0036C318 .part v0036C108_0, 0, 1;
+L_0036C370 .part v0036C160_0, 0, 1;
+L_0036C3C8 .part/pv L_003409A8, 1, 1, 3;
+L_0036C420 .part v0036C108_0, 1, 1;
+L_0036C478 .part v0036C160_0, 1, 1;
+L_0036C4D0 .part/pv L_0036D310, 2, 1, 3;
+L_0036C528 .part v0036C108_0, 2, 1;
+L_0036C580 .part v0036C160_0, 2, 1;
+S_006DB7E0 .scope module, "MEIASOMA1" "metodomeiasomanand" 2 42, 2 4, S_006DB318;
+ .timescale 0 0;
+L_006DF980 .functor NAND 1, L_0036C318, L_0036C370, C4<1>, C4<1>;
+L_006DF9B8 .functor NAND 1, L_006DF980, L_0036C318, C4<1>, C4<1>;
+L_006DE668 .functor NAND 1, L_006DF980, L_0036C370, C4<1>, C4<1>;
+L_006DE6D8 .functor NAND 1, L_006DF9B8, L_006DE668, C4<1>, C4<1>;
+L_003404D8 .functor NAND 1, L_0036C318, L_0036C370, C4<1>, C4<1>;
+L_00340510 .functor NAND 1, L_003404D8, L_003404D8, C4<1>, C4<1>;
+v0036BBB0_0 .alias "carry", 0 0, v0036BEC8_0;
+v0036BC08_0 .net "e1", 0 0, L_0036C318; 1 drivers
+v0036BC60_0 .net "e2", 0 0, L_0036C370; 1 drivers
+v0036BCB8_0 .net "soma", 0 0, L_006DE6D8; 1 drivers
+v0036BD10_0 .net "temp1", 0 0, L_006DF980; 1 drivers
+v0036BD68_0 .net "temp2", 0 0, L_006DF9B8; 1 drivers
+v0036BDC0_0 .net "temp3", 0 0, L_006DE668; 1 drivers
+v0036BE18_0 .net "temp4", 0 0, L_003404D8; 1 drivers
+S_006DAED8 .scope module, "SOMACOMPLETA1" "metodosomacompletanand" 2 43, 2 19, S_006DB318;
+ .timescale 0 0;
+L_00340B68 .functor NAND 1, L_003406D0, L_003406D0, C4<1>, C4<1>;
+L_00340698 .functor NAND 1, L_00340AC0, L_00340AC0, C4<1>, C4<1>;
+L_00340AF8 .functor NAND 1, L_00340B68, L_00340698, C4<1>, C4<1>;
+v0036B840_0 .alias "carry", 0 0, v0036BF20_0;
+v0036B898_0 .net "e1", 0 0, L_0036C420; 1 drivers
+v0036B8F0_0 .net "e2", 0 0, L_0036C478; 1 drivers
+v0036B948_0 .alias "e3", 0 0, v0036BEC8_0;
+v0036B9A0_0 .net "soma", 0 0, L_003409A8; 1 drivers
+v0036B9F8_0 .net "temp1", 0 0, L_003407B0; 1 drivers
+v0036BA50_0 .net "temp2", 0 0, L_003406D0; 1 drivers
+v0036BAA8_0 .net "temp3", 0 0, L_00340AC0; 1 drivers
+v0036BB00_0 .net "temp4", 0 0, L_00340B68; 1 drivers
+v0036BB58_0 .net "temp5", 0 0, L_00340698; 1 drivers
+S_006DB758 .scope module, "MEIASOMA1" "metodomeiasomanand" 2 25, 2 4, S_006DAED8;
+ .timescale 0 0;
+L_00340660 .functor NAND 1, L_0036C420, L_0036C478, C4<1>, C4<1>;
+L_00340708 .functor NAND 1, L_00340660, L_0036C420, C4<1>, C4<1>;
+L_00340778 .functor NAND 1, L_00340660, L_0036C478, C4<1>, C4<1>;
+L_003407B0 .functor NAND 1, L_00340708, L_00340778, C4<1>, C4<1>;
+L_00340858 .functor NAND 1, L_0036C420, L_0036C478, C4<1>, C4<1>;
+L_003406D0 .functor NAND 1, L_00340858, L_00340858, C4<1>, C4<1>;
+v0036B580_0 .alias "carry", 0 0, v0036BA50_0;
+v0036B5D8_0 .alias "e1", 0 0, v0036B898_0;
+v0036B630_0 .alias "e2", 0 0, v0036B8F0_0;
+v0036B688_0 .alias "soma", 0 0, v0036B9F8_0;
+v0036B6E0_0 .net "temp1", 0 0, L_00340660; 1 drivers
+v0036B738_0 .net "temp2", 0 0, L_00340708; 1 drivers
+v0036B790_0 .net "temp3", 0 0, L_00340778; 1 drivers
+v0036B7E8_0 .net "temp4", 0 0, L_00340858; 1 drivers
+S_006DB3A0 .scope module, "MEIASOMA2" "metodomeiasomanand" 2 26, 2 4, S_006DAED8;
+ .timescale 0 0;
+L_003408C8 .functor NAND 1, L_003407B0, L_00340510, C4<1>, C4<1>;
+L_00340900 .functor NAND 1, L_003408C8, L_003407B0, C4<1>, C4<1>;
+L_00340970 .functor NAND 1, L_003408C8, L_00340510, C4<1>, C4<1>;
+L_003409A8 .functor NAND 1, L_00340900, L_00340970, C4<1>, C4<1>;
+L_00340A88 .functor NAND 1, L_003407B0, L_00340510, C4<1>, C4<1>;
+L_00340AC0 .functor NAND 1, L_00340A88, L_00340A88, C4<1>, C4<1>;
+v0036B2C0_0 .alias "carry", 0 0, v0036BAA8_0;
+v0036B318_0 .alias "e1", 0 0, v0036B9F8_0;
+v0036B370_0 .alias "e2", 0 0, v0036BEC8_0;
+v0036B3C8_0 .alias "soma", 0 0, v0036B9A0_0;
+v0036B420_0 .net "temp1", 0 0, L_003408C8; 1 drivers
+v0036B478_0 .net "temp2", 0 0, L_00340900; 1 drivers
+v0036B4D0_0 .net "temp3", 0 0, L_00340970; 1 drivers
+v0036B528_0 .net "temp4", 0 0, L_00340A88; 1 drivers
+S_006DB290 .scope module, "SOMACOMPLETA2" "metodosomacompletanand" 2 44, 2 19, S_006DB318;
+ .timescale 0 0;
+L_0036D4D0 .functor NAND 1, L_0036D038, L_0036D038, C4<1>, C4<1>;
+L_0036D000 .functor NAND 1, L_0036D428, L_0036D428, C4<1>, C4<1>;
+L_0036D460 .functor NAND 1, L_0036D4D0, L_0036D000, C4<1>, C4<1>;
+v00332538_0 .alias "carry", 0 0, v0036C0B0_0;
+v00332590_0 .net "e1", 0 0, L_0036C528; 1 drivers
+v0036B000_0 .net "e2", 0 0, L_0036C580; 1 drivers
+v0036B058_0 .alias "e3", 0 0, v0036BF20_0;
+v0036B0B0_0 .net "soma", 0 0, L_0036D310; 1 drivers
+v0036B108_0 .net "temp1", 0 0, L_0036D118; 1 drivers
+v0036B160_0 .net "temp2", 0 0, L_0036D038; 1 drivers
+v0036B1B8_0 .net "temp3", 0 0, L_0036D428; 1 drivers
+v0036B210_0 .net "temp4", 0 0, L_0036D4D0; 1 drivers
+v0036B268_0 .net "temp5", 0 0, L_0036D000; 1 drivers
+S_006DB180 .scope module, "MEIASOMA1" "metodomeiasomanand" 2 25, 2 4, S_006DB290;
+ .timescale 0 0;
+L_00340C10 .functor NAND 1, L_0036C528, L_0036C580, C4<1>, C4<1>;
+L_0036D070 .functor NAND 1, L_00340C10, L_0036C528, C4<1>, C4<1>;
+L_0036D0E0 .functor NAND 1, L_00340C10, L_0036C580, C4<1>, C4<1>;
+L_0036D118 .functor NAND 1, L_0036D070, L_0036D0E0, C4<1>, C4<1>;
+L_0036D1C0 .functor NAND 1, L_0036C528, L_0036C580, C4<1>, C4<1>;
+L_0036D038 .functor NAND 1, L_0036D1C0, L_0036D1C0, C4<1>, C4<1>;
+v00332278_0 .alias "carry", 0 0, v0036B160_0;
+v003322D0_0 .alias "e1", 0 0, v00332590_0;
+v00332328_0 .alias "e2", 0 0, v0036B000_0;
+v00332380_0 .alias "soma", 0 0, v0036B108_0;
+v003323D8_0 .net "temp1", 0 0, L_00340C10; 1 drivers
+v00332430_0 .net "temp2", 0 0, L_0036D070; 1 drivers
+v00332488_0 .net "temp3", 0 0, L_0036D0E0; 1 drivers
+v003324E0_0 .net "temp4", 0 0, L_0036D1C0; 1 drivers
+S_006DB208 .scope module, "MEIASOMA2" "metodomeiasomanand" 2 26, 2 4, S_006DB290;
+ .timescale 0 0;
+L_0036D230 .functor NAND 1, L_0036D118, L_00340AF8, C4<1>, C4<1>;
+L_0036D268 .functor NAND 1, L_0036D230, L_0036D118, C4<1>, C4<1>;
+L_0036D2D8 .functor NAND 1, L_0036D230, L_00340AF8, C4<1>, C4<1>;
+L_0036D310 .functor NAND 1, L_0036D268, L_0036D2D8, C4<1>, C4<1>;
+L_0036D3F0 .functor NAND 1, L_0036D118, L_00340AF8, C4<1>, C4<1>;
+L_0036D428 .functor NAND 1, L_0036D3F0, L_0036D3F0, C4<1>, C4<1>;
+v00331FB8_0 .alias "carry", 0 0, v0036B1B8_0;
+v00332010_0 .alias "e1", 0 0, v0036B108_0;
+v00332068_0 .alias "e2", 0 0, v0036BF20_0;
+v003320C0_0 .alias "soma", 0 0, v0036B0B0_0;
+v00332118_0 .net "temp1", 0 0, L_0036D230; 1 drivers
+v00332170_0 .net "temp2", 0 0, L_0036D268; 1 drivers
+v003321C8_0 .net "temp3", 0 0, L_0036D2D8; 1 drivers
+v00332220_0 .net "temp4", 0 0, L_0036D3F0; 1 drivers
+S_006DAF60 .scope begin, "start" "start" 2 57, 2 57, S_006DB070;
+ .timescale 0 0;
+S_006DAFE8 .scope begin, "main" "main" 2 62, 2 62, S_006DB070;
+ .timescale 0 0;
+    .scope S_006DB070;
+T_0 ;
+    %fork t_1, S_006DAF60;
+    %jmp t_0;
+    .scope S_006DAF60;
+t_1 ;
+    %set/v v0036C108_0, 0, 3;
+    %set/v v0036C160_0, 0, 3;
+    %end;
+    .scope S_006DB070;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006DB070;
+T_1 ;
+    %fork t_3, S_006DAFE8;
+    %jmp t_2;
+    .scope S_006DAFE8;
+t_3 ;
+    %vpi_call 2 64 "$display", "Circuito Soma Completa com 3 bits ";
+    %delay 1, 0;
+    %vpi_call 2 65 "$display", " e1 +     e2 = carry  saida ";
+    %delay 1, 0;
+    %vpi_call 2 66 "$monitor", " %4b + %4b =   %b    %4b", v0036C108_0, v0036C160_0, v0036C0B0_0, v0036C268_0;
+    %set/v v0036C1B8_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v0036C1B8_0, 32;
+   %cmpi/s 8, 7, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v0036C1B8_0, 32;
+    %set/v v0036C108_0, 8, 3;
+    %set/v v0036C210_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v0036C210_0, 32;
+   %cmpi/s 8, 7, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.3, 5;
+    %delay 1, 0;
+    %load/v 8, v0036C210_0, 32;
+    %set/v v0036C160_0, 8, 3;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0036C210_0, 32;
+    %set/v v0036C210_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0036C1B8_0, 32;
+    %set/v v0036C1B8_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_006DB070;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\PUC\Arquitetura de computadores\guia5\Exercicio04.v";

@@ -1,0 +1,73 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002C8DA0 .scope module, "testnandgate" "testnandgate" 2 22;
+ .timescale 0 0;
+v002C2E60_0 .var "a", 0 0;
+v002C2EB8_0 .var "b", 0 0;
+v002C2F10_0 .net "s", 0 0, L_002C3340; 1 drivers
+v00332C00_0 .net "s1", 0 0, L_002CFB88; 1 drivers
+S_002C8F38 .scope module, "NAND1" "nandgate" 2 26, 2 7, S_002C8DA0;
+ .timescale 0 0;
+L_002C3308 .functor AND 1, v002C2E60_0, v002C2EB8_0, C4<1>, C4<1>;
+L_002C3340 .functor NOT 1, L_002C3308, C4<0>, C4<0>, C4<0>;
+v002C4358_0 .net *"_s0", 0 0, L_002C3308; 1 drivers
+v002C43B0_0 .net "p", 0 0, v002C2E60_0; 1 drivers
+v002C4408_0 .net "q", 0 0, v002C2EB8_0; 1 drivers
+v002C2E08_0 .alias "s", 0 0, v002C2F10_0;
+S_002C8EB0 .scope module, "MORGAN" "nandmorgan" 2 27, 2 13, S_002C8DA0;
+ .timescale 0 0;
+L_002C33E8 .functor NOT 1, v002C2E60_0, C4<0>, C4<0>, C4<0>;
+L_002C4460 .functor NOT 1, v002C2EB8_0, C4<0>, C4<0>, C4<0>;
+L_002CFB88 .functor OR 1, L_002C33E8, L_002C4460, C4<0>, C4<0>;
+v002CECB0_0 .net *"_s0", 0 0, L_002C33E8; 1 drivers
+v002CFB30_0 .net *"_s2", 0 0, L_002C4460; 1 drivers
+v002CCB68_0 .alias "p1", 0 0, v002C43B0_0;
+v002CCBC0_0 .alias "q1", 0 0, v002C4408_0;
+v002CCC18_0 .alias "s1", 0 0, v00332C00_0;
+S_002C8E28 .scope begin, "start" "start" 2 28, 2 28, S_002C8DA0;
+ .timescale 0 0;
+    .scope S_002C8DA0;
+T_0 ;
+    %fork t_1, S_002C8E28;
+    %jmp t_0;
+    .scope S_002C8E28;
+t_1 ;
+    %set/v v002C2E60_0, 0, 1;
+    %set/v v002C2EB8_0, 0, 1;
+    %end;
+    .scope S_002C8DA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002C8DA0;
+T_1 ;
+    %vpi_call 2 35 "$display", "teste nand e morgan de nand";
+    %vpi_call 2 36 "$display", " s=~(a.b)  e s1=~a+~b ";
+    %vpi_call 2 37 "$display", "\012a b  s  s1\012";
+    %set/v v002C2E60_0, 0, 1;
+    %set/v v002C2EB8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b %b  %b %b", v002C2E60_0, v002C2EB8_0, v002C2F10_0, v00332C00_0;
+    %set/v v002C2E60_0, 0, 1;
+    %set/v v002C2EB8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b %b  %b %b ", v002C2E60_0, v002C2EB8_0, v002C2F10_0, v00332C00_0;
+    %set/v v002C2E60_0, 1, 1;
+    %set/v v002C2EB8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b %b  %b %b ", v002C2E60_0, v002C2EB8_0, v002C2F10_0, v00332C00_0;
+    %set/v v002C2E60_0, 1, 1;
+    %set/v v002C2EB8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b %b  %b %b ", v002C2E60_0, v002C2EB8_0, v002C2F10_0, v00332C00_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\Guia01\Exercicio0004.v";

@@ -1,0 +1,69 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8982aa0 .scope module, "testorgate" "testorgate" 2 27;
+ .timescale 0 0;
+v0x89809f8_0 .var "a", 0 0;
+v0x8980a78_0 .var "b", 0 0;
+v0x8980ae8_0 .net "s", 0 0, L_0x8980d00; 1 drivers
+S_0x89608e8 .scope module, "OR1" "orgate" 2 31, 2 11, S_0x8982aa0;
+ .timescale 0 0;
+L_0x8980b58 .functor NAND 1, v0x89809f8_0, C4<1>, C4<1>, C4<1>;
+L_0x8980be8 .functor NAND 1, v0x8980a78_0, C4<1>, C4<1>, C4<1>;
+L_0x8980c58 .functor AND 1, L_0x8980b58, L_0x8980be8, C4<1>, C4<1>;
+L_0x8980d00 .functor NOT 1, L_0x8980c58, C4<0>, C4<0>, C4<0>;
+v0x8982ba0_0 .net *"_s0", 0 0, L_0x8980c58; 1 drivers
+v0x89807f0_0 .net "p", 0 0, v0x89809f8_0; 1 drivers
+v0x8980850_0 .net "q", 0 0, v0x8980a78_0; 1 drivers
+v0x89808b0_0 .alias "s", 0 0, v0x8980ae8_0;
+v0x8980918_0 .net "temp1", 0 0, L_0x8980b58; 1 drivers
+v0x8980978_0 .net "temp2", 0 0, L_0x8980be8; 1 drivers
+S_0x8960868 .scope begin, "start" "start" 2 33, 2 33, S_0x8982aa0;
+ .timescale 0 0;
+S_0x8982b20 .scope begin, "main" "main" 2 38, 2 38, S_0x8982aa0;
+ .timescale 0 0;
+    .scope S_0x8982aa0;
+T_0 ;
+    %fork t_1, S_0x8960868;
+    %jmp t_0;
+    .scope S_0x8960868;
+t_1 ;
+    %set/v v0x89809f8_0, 0, 1;
+    %set/v v0x8980a78_0, 0, 1;
+    %end;
+    .scope S_0x8982aa0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8982aa0;
+T_1 ;
+    %fork t_3, S_0x8982b20;
+    %jmp t_2;
+    .scope S_0x8982b20;
+t_3 ;
+    %vpi_call 2 39 "$display", "Guia 02 - Exercicio 01 - Paulo Ricardo Bastos de Souza - 405828";
+    %vpi_call 2 40 "$display", "Test or gate";
+    %vpi_call 2 41 "$display", "\012a | b= s\012";
+    %vpi_call 2 42 "$monitor", "%b | %b = %b", v0x89809f8_0, v0x8980a78_0, v0x8980ae8_0;
+    %delay 1, 0;
+    %set/v v0x89809f8_0, 0, 1;
+    %set/v v0x8980a78_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x89809f8_0, 1, 1;
+    %set/v v0x8980a78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x89809f8_0, 1, 1;
+    %set/v v0x8980a78_0, 1, 1;
+    %end;
+    .scope S_0x8982aa0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/paulo/Documentos/Faculdade/Arquitetura/Guia_02/exercicio_01.v";

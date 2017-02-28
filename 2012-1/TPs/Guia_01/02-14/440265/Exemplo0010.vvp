@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0030FF00 .scope module, "testNorGate" "testNorGate" 2 19;
+ .timescale 0 0;
+v00303118_0 .var "a", 0 0;
+v00303170_0 .var "b", 0 0;
+v003031C8_0 .net "s", 0 0, L_0030EC18; 1 drivers
+S_00302BB0 .scope module, "NOR1" "norGate" 2 25, 2 11, S_0030FF00;
+ .timescale 0 0;
+L_0030CE38 .functor NOT 1, v00303118_0, C4<0>, C4<0>, C4<0>;
+L_0030EBA8 .functor NOT 1, v00303170_0, C4<0>, C4<0>, C4<0>;
+L_0030EC18 .functor AND 1, L_0030CE38, L_0030EBA8, C4<1>, C4<1>;
+v0030E968_0 .net *"_s0", 0 0, L_0030CE38; 1 drivers
+v0030FF88_0 .net *"_s2", 0 0, L_0030EBA8; 1 drivers
+v00302C38_0 .net "p", 0 0, v00303118_0; 1 drivers
+v00302C90_0 .net "q", 0 0, v00303170_0; 1 drivers
+v003030C0_0 .alias "s", 0 0, v003031C8_0;
+S_0030E8E0 .scope begin, "start" "start" 2 27, 2 27, S_0030FF00;
+ .timescale 0 0;
+    .scope S_0030FF00;
+T_0 ;
+    %fork t_1, S_0030E8E0;
+    %jmp t_0;
+    .scope S_0030E8E0;
+t_1 ;
+    %set/v v00303118_0, 0, 1;
+    %set/v v00303170_0, 0, 1;
+    %end;
+    .scope S_0030FF00;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0030FF00;
+T_1 ;
+    %vpi_call 2 34 "$display", "Exemplo0010 - Sad - 440265";
+    %vpi_call 2 35 "$display", "Teste NOR gate com Morgan: ";
+    %vpi_call 2 36 "$display", "\012~a & ~b = s\012";
+    %vpi_call 2 38 "$monitor", "~%b & ~%b = %b", v00303118_0, v00303170_0, v003031C8_0;
+    %delay 1, 0;
+    %set/v v00303118_0, 0, 1;
+    %set/v v00303170_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00303118_0, 0, 1;
+    %set/v v00303170_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00303118_0, 1, 1;
+    %set/v v00303170_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00303118_0, 1, 1;
+    %set/v v00303170_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Alexandre\PUC\2_periodo\Arquitetura I\TPs\Guia001\Exemplo0010.v";

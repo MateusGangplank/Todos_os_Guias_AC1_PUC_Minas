@@ -1,0 +1,74 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00671F38 .scope module, "testMeiaDif" "testMeiaDif" 2 39;
+ .timescale 0 0;
+v006A55A8_0 .var "reg1", 0 0;
+v006A5600_0 .var "reg2", 0 0;
+v006A5658_0 .net "w1", 0 0, L_003EF440; 1 drivers
+v006A56B0_0 .net "w2", 0 0, L_006A5880; 1 drivers
+S_00675048 .scope module, "meiaDife" "meiaDif" 2 43, 2 6, S_00671F38;
+ .timescale 0 0;
+v006A53B8_0 .net "a", 0 0, v006A55A8_0; 1 drivers
+v006A5410_0 .net "b", 0 0, v006A5600_0; 1 drivers
+v006A5468_0 .alias "s0", 0 0, v006A5658_0;
+v006A54D8_0 .alias "s1", 0 0, v006A56B0_0;
+v006A5530_0 .net "w1", 0 0, L_006A5928; 1 drivers
+S_006A5110 .scope module, "XOR01" "XorNand" 2 10, 2 15, S_00675048;
+ .timescale 0 0;
+L_006A5740 .functor NAND 1, v006A55A8_0, v006A5600_0, C4<1>, C4<1>;
+L_003EF478 .functor NAND 1, L_006A5740, v006A55A8_0, C4<1>, C4<1>;
+L_006A5848 .functor NAND 1, L_006A5740, v006A5600_0, C4<1>, C4<1>;
+L_006A5880 .functor NAND 1, L_003EF478, L_006A5848, C4<1>, C4<1>;
+v006A5190_0 .alias "a", 0 0, v006A53B8_0;
+v006A51E8_0 .alias "b", 0 0, v006A5410_0;
+v006A5240_0 .alias "s0", 0 0, v006A56B0_0;
+v006A5298_0 .net "w1", 0 0, L_006A5740; 1 drivers
+v006A52F0_0 .net "w2", 0 0, L_003EF478; 1 drivers
+v006A5348_0 .net "w3", 0 0, L_006A5848; 1 drivers
+S_006A4FC8 .scope module, "NOT01" "NotNand" 2 11, 2 33, S_00675048;
+ .timescale 0 0;
+L_006A5928 .functor NAND 1, v006A55A8_0, v006A55A8_0, C4<1>, C4<1>;
+v006A5048_0 .alias "a", 0 0, v006A53B8_0;
+v006A50B8_0 .alias "s0", 0 0, v006A5530_0;
+S_006750C8 .scope module, "AND01" "AndNand" 2 12, 2 25, S_00675048;
+ .timescale 0 0;
+L_006A5978 .functor NAND 1, L_006A5928, v006A5600_0, C4<1>, C4<1>;
+L_003EF440 .functor NAND 1, L_006A5978, L_006A5978, C4<1>, C4<1>;
+v00675148_0 .alias "a", 0 0, v006A5530_0;
+v006A4E60_0 .alias "b", 0 0, v006A5410_0;
+v006A4ED0_0 .alias "s0", 0 0, v006A5658_0;
+v006A4F58_0 .net "w1", 0 0, L_006A5978; 1 drivers
+    .scope S_00671F38;
+T_0 ;
+    %set/v v006A55A8_0, 0, 1;
+    %set/v v006A5600_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00671F38;
+T_1 ;
+    %vpi_call 2 51 "$display", "Exercicio 03 - Marden Batista - 388613";
+    %vpi_call 2 52 "$display", "Exe03 - Meia Diferença com NAND\012";
+    %delay 1, 0;
+    %vpi_call 2 53 "$display", "  reg1 - reg2  = w1 w2";
+    %delay 1, 0;
+    %vpi_call 2 54 "$monitor", "  %d - %d =  %d   %d", v006A55A8_0, v006A5600_0, v006A5658_0, v006A56B0_0;
+    %delay 1, 0;
+    %set/v v006A55A8_0, 0, 1;
+    %set/v v006A5600_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A55A8_0, 1, 1;
+    %set/v v006A5600_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A55A8_0, 1, 1;
+    %set/v v006A5600_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Temp_Arq\Nova pasta\03.v";

@@ -1,0 +1,197 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067ECF8 .scope module, "guia10" "guia10" 2 43;
+ .timescale 0 0;
+v006B5F10_0 .var "clear1", 0 0;
+v006B5F68_0 .var "clear2", 0 0;
+v006B5FC0_0 .var "d1", 0 0;
+v006B6018_0 .var "d2", 0 0;
+v006B6070_0 .var "preset1", 0 0;
+v006B60C8_0 .var "preset2", 0 0;
+v006B6120_0 .net "q1", 0 0, L_006B65F0; 1 drivers
+v006B61A0_0 .net "q2", 0 0, L_006B6778; 1 drivers
+v006B61F8_0 .net "q3", 0 0, L_006B6970; 1 drivers
+v006B6250_0 .net "q4", 0 0, L_006B6B30; 1 drivers
+v006B62A8_0 .net "qnot1", 0 0, L_00680058; 1 drivers
+v006B6300_0 .net "qnot2", 0 0, L_006B6660; 1 drivers
+v006B6358_0 .net "qnot3", 0 0, L_006B6890; 1 drivers
+v006B63B0_0 .net "qnot4", 0 0, L_006B6A88; 1 drivers
+v006B6408_0 .var "r1", 0 0;
+v006B6460_0 .var "r2", 0 0;
+v006B64B8_0 .var "s1", 0 0;
+v006B6560_0 .var "s2", 0 0;
+S_006B5CB8 .scope module, "EX1" "exercicio01" 2 46, 2 6, S_0067ECF8;
+ .timescale 0 0;
+L_00680058 .functor NOR 1, v006B64B8_0, L_006B65F0, C4<0>, C4<0>;
+L_006B65F0 .functor NOR 1, v006B6408_0, L_00680058, C4<0>, C4<0>;
+v006B5D38_0 .alias "p", 0 0, v006B62A8_0;
+v006B5DA8_0 .alias "q", 0 0, v006B6120_0;
+v006B5E18_0 .net "r", 0 0, v006B6408_0; 1 drivers
+v006B5EA0_0 .net "s", 0 0, v006B64B8_0; 1 drivers
+S_0067F158 .scope module, "EX2" "exercicio02" 2 47, 2 14, S_0067ECF8;
+ .timescale 0 0;
+L_006B6660 .functor NAND 1, v006B6070_0, v006B6560_0, L_006B6778, C4<1>;
+L_006B6778 .functor NAND 1, v006B5F10_0, v006B6460_0, L_006B6660, C4<1>;
+v006B5A18_0 .net "cl", 0 0, v006B5F10_0; 1 drivers
+v006B5A88_0 .alias "p", 0 0, v006B6300_0;
+v006B5AF8_0 .net "pr", 0 0, v006B6070_0; 1 drivers
+v006B5B80_0 .alias "q", 0 0, v006B61A0_0;
+v006B5BF0_0 .net "r", 0 0, v006B6460_0; 1 drivers
+v006B5C48_0 .net "s", 0 0, v006B6560_0; 1 drivers
+S_0067F1F8 .scope module, "EX3" "exercicio03" 2 48, 2 22, S_0067ECF8;
+ .timescale 0 0;
+L_006B6820 .functor NOT 1, v006B5FC0_0, C4<0>, C4<0>, C4<0>;
+L_006B6890 .functor NAND 1, v006B60C8_0, v006B5FC0_0, L_006B6970, C4<1>;
+L_006B6970 .functor NAND 1, v006B5F68_0, L_006B6820, L_006B6890, C4<1>;
+v006B5778_0 .net "cl", 0 0, v006B5F68_0; 1 drivers
+v006B57E8_0 .net "d", 0 0, v006B5FC0_0; 1 drivers
+v006B5858_0 .net "nd", 0 0, L_006B6820; 1 drivers
+v006B58E0_0 .alias "p", 0 0, v006B6358_0;
+v006B5950_0 .net "pr", 0 0, v006B60C8_0; 1 drivers
+v006B59A8_0 .alias "q", 0 0, v006B61F8_0;
+S_0067EC58 .scope module, "EX5" "exercicio05" 2 49, 2 32, S_0067ECF8;
+ .timescale 0 0;
+L_006B6A18 .functor NOT 1, v006B6018_0, C4<0>, C4<0>, C4<0>;
+L_006B6A88 .functor NOR 1, v006B6018_0, L_006B6B30, C4<0>, C4<0>;
+L_006B6B30 .functor NOR 1, L_006B6A18, L_006B6A88, C4<0>, C4<0>;
+v0067E678_0 .net "d", 0 0, v006B6018_0; 1 drivers
+v006B5610_0 .net "nd", 0 0, L_006B6A18; 1 drivers
+v006B5680_0 .alias "p", 0 0, v006B63B0_0;
+v006B5708_0 .alias "q", 0 0, v006B6250_0;
+    .scope S_0067ECF8;
+T_0 ;
+    %set/v v006B6408_0, 0, 1;
+    %set/v v006B64B8_0, 0, 1;
+    %vpi_call 2 52 "$display", "Exercicio 1";
+    %vpi_call 2 53 "$monitor", "r = %b; s = %b: Q' = %b; Q = %b", v006B6408_0, v006B64B8_0, v006B62A8_0, v006B6120_0;
+    %delay 1, 0;
+    %set/v v006B6408_0, 1, 1;
+    %set/v v006B64B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6408_0, 0, 1;
+    %set/v v006B64B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6408_0, 0, 1;
+    %set/v v006B64B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B6408_0, 0, 1;
+    %set/v v006B64B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6408_0, 1, 1;
+    %set/v v006B64B8_0, 0, 1;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 0, 1;
+    %set/v v006B6070_0, 0, 1;
+    %vpi_call 2 60 "$display", "";
+    %vpi_call 2 61 "$display", "Exercicio 2";
+    %vpi_call 2 62 "$monitor", "r = %b; s = %b; CLR = %b; PR = %b: Q' = %b; Q = %b", v006B6460_0, v006B6560_0, v006B5F10_0, v006B6070_0, v006B6300_0, v006B61A0_0;
+    %delay 1, 0;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 0, 1;
+    %set/v v006B6070_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 0, 1;
+    %set/v v006B6070_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 1, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 1, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 1, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 1, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 1, 1;
+    %set/v v006B6560_0, 1, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 1, 1;
+    %set/v v006B6560_0, 0, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B6460_0, 0, 1;
+    %set/v v006B6560_0, 1, 1;
+    %set/v v006B5F10_0, 1, 1;
+    %set/v v006B6070_0, 1, 1;
+    %set/v v006B5FC0_0, 0, 1;
+    %set/v v006B5F68_0, 0, 1;
+    %set/v v006B60C8_0, 0, 1;
+    %vpi_call 2 74 "$display", "";
+    %vpi_call 2 75 "$display", "Exercicio 3";
+    %vpi_call 2 76 "$monitor", "d = %b; CLR = %b: PR = %b: Q' = %b; Q = %b", v006B5FC0_0, v006B5F68_0, v006B60C8_0, v006B6358_0, v006B61F8_0;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 1, 1;
+    %set/v v006B5F68_0, 0, 1;
+    %set/v v006B60C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 0, 1;
+    %set/v v006B5F68_0, 1, 1;
+    %set/v v006B60C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 1, 1;
+    %set/v v006B5F68_0, 1, 1;
+    %set/v v006B60C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 0, 1;
+    %set/v v006B5F68_0, 0, 1;
+    %set/v v006B60C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 1, 1;
+    %set/v v006B5F68_0, 0, 1;
+    %set/v v006B60C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 1, 1;
+    %set/v v006B5F68_0, 1, 1;
+    %set/v v006B60C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 0, 1;
+    %set/v v006B5F68_0, 1, 1;
+    %set/v v006B60C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 1, 1;
+    %set/v v006B5F68_0, 1, 1;
+    %set/v v006B60C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B5FC0_0, 0, 1;
+    %set/v v006B5F68_0, 1, 1;
+    %set/v v006B60C8_0, 1, 1;
+    %set/v v006B6018_0, 0, 1;
+    %vpi_call 2 87 "$display", "";
+    %vpi_call 2 88 "$display", "Exercicio 5";
+    %vpi_call 2 89 "$monitor", "d = %b: Q' = %b; Q = %b", v006B6018_0, v006B63B0_0, v006B6250_0;
+    %delay 1, 0;
+    %set/v v006B6018_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia10.V";

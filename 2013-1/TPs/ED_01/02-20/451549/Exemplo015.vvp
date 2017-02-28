@@ -1,0 +1,101 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00888628 .scope module, "orgate3" "orgate3" 2 17;
+ .timescale 0 0;
+L_00883A70 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_00889A40 .functor OR 1, L_00883A70, C4<z>, C4<0>, C4<0>;
+v00883968_0 .net *"_s0", 0 0, L_00883A70; 1 drivers
+v008839C0_0 .net "a", 0 0, C4<z>; 0 drivers
+v00883A18_0 .net "b", 0 0, C4<z>; 0 drivers
+v008827A8_0 .net "c", 0 0, C4<z>; 0 drivers
+v00882800_0 .net "s", 0 0, L_00889A40; 1 drivers
+S_00888D10 .scope module, "testorgate3" "testorgate3" 2 25;
+ .timescale 0 0;
+v00889990_0 .var "a", 0 0;
+v008899E8_0 .var "b", 0 0;
+v0088EE18_0 .var "c", 0 0;
+v0088ED68_0 .net "s", 0 0, L_0088A3A0; 1 drivers
+v0088EE70_0 .net "s1", 0 0, L_00889AB0; 1 drivers
+S_008885A0 .scope module, "banana" "orgate2" 2 30, 2 11, S_00888D10;
+ .timescale 0 0;
+L_00889AB0 .functor OR 1, v00889990_0, v008899E8_0, C4<0>, C4<0>;
+v00882F30_0 .net "e", 0 0, v00889990_0; 1 drivers
+v00882F88_0 .net "i", 0 0, v008899E8_0; 1 drivers
+v00889938_0 .alias "saida", 0 0, v0088EE70_0;
+S_00888EA8 .scope module, "maca" "orgate2" 2 31, 2 11, S_00888D10;
+ .timescale 0 0;
+L_0088A3A0 .functor OR 1, L_00889AB0, v0088EE18_0, C4<0>, C4<0>;
+v00882858_0 .alias "e", 0 0, v0088EE70_0;
+v00882E80_0 .net "i", 0 0, v0088EE18_0; 1 drivers
+v00882ED8_0 .alias "saida", 0 0, v0088ED68_0;
+S_00888C00 .scope begin, "start" "start" 2 33, 2 33, S_00888D10;
+ .timescale 0 0;
+S_00888E20 .scope begin, "main" "main" 2 39, 2 39, S_00888D10;
+ .timescale 0 0;
+    .scope S_00888D10;
+T_0 ;
+    %fork t_1, S_00888C00;
+    %jmp t_0;
+    .scope S_00888C00;
+t_1 ;
+    %set/v v00889990_0, 0, 1;
+    %set/v v008899E8_0, 0, 1;
+    %set/v v0088EE18_0, 0, 1;
+    %end;
+    .scope S_00888D10;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00888D10;
+T_1 ;
+    %fork t_3, S_00888E20;
+    %jmp t_2;
+    .scope S_00888E20;
+t_3 ;
+    %vpi_call 2 40 "$display", "\012Exemplo 0015 - Debora Deslandes de Almeida Batista";
+    %vpi_call 2 41 "$display", "\012Matricula : 451549";
+    %vpi_call 2 42 "$display", "\012Test OR gate";
+    %vpi_call 2 43 "$display", "\012((a|b)|c) = s";
+    %vpi_call 2 44 "$monitor", "\012((%b|%b)|%b) = %b", v00889990_0, v008899E8_0, v0088EE18_0, v0088ED68_0;
+    %delay 1, 0;
+    %set/v v00889990_0, 0, 1;
+    %set/v v008899E8_0, 0, 1;
+    %set/v v0088EE18_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00889990_0, 0, 1;
+    %set/v v008899E8_0, 1, 1;
+    %set/v v0088EE18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889990_0, 0, 1;
+    %set/v v008899E8_0, 1, 1;
+    %set/v v0088EE18_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00889990_0, 1, 1;
+    %set/v v008899E8_0, 0, 1;
+    %set/v v0088EE18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889990_0, 1, 1;
+    %set/v v008899E8_0, 0, 1;
+    %set/v v0088EE18_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00889990_0, 1, 1;
+    %set/v v008899E8_0, 1, 1;
+    %set/v v0088EE18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00889990_0, 1, 1;
+    %set/v v008899E8_0, 1, 1;
+    %set/v v0088EE18_0, 1, 1;
+    %end;
+    .scope S_00888D10;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Exemplo015.v";

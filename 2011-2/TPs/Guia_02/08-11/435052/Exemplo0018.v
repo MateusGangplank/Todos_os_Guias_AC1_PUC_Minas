@@ -1,0 +1,42 @@
+//---------
+//Exemplo0018 - COMPLEMENTO DE DOIS
+//Nome: Rafael Lopes Barbosa
+//Matricula:435052
+//-----------
+
+
+//------------------
+//test number system
+//------------------
+
+module test_base_06;
+//--------- definir dados
+reg[4:0]a;
+reg[4:0]b;
+reg[1:0]c;
+reg[2:0]d;
+reg[4:0]e;
+
+//----------- parte principal
+initial begin
+$display("Exemplo0018 - Rafael Lopes Barbosa - 435052");
+$display("Complemento de dois");
+
+a = -6'b100111;
+b = -6'o54;
+c = -4'd13;
+d = -5'h1b;
+e = (5'b25) - (-6'd36);
+
+$display("100111(2) = %b",a);
+$display("54(8) = %b",b);
+$display("13 = %b",c);
+$display("1B(16) = %b",d);
+$display("25 - 36 = %b",e);
+end
+
+
+
+endmodule//test_base
+
+// OBS.: EXPERIMENTE USAR PORTAS AO INVES DE OPERADORES ARITMETICOS.

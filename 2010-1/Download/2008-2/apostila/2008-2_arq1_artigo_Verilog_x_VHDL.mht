@@ -1,0 +1,1277 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: 
+Date: Wed, 17 Aug 2005 10:56:50 -0300
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01C5A31A.5EAA6670"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2180
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C5A31A.5EAA6670
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ece.msstate.edu/~reese/EE8993/verilog_vhdl.htm
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8">
+<META content=3D"MSHTML 6.00.2900.2722" name=3DGENERATOR></HEAD>
+<BODY text=3D#000000 vLink=3D#551a8b aLink=3D#ff0000 link=3D#0000ee =
+bgColor=3D#f0fff0>
+<H1 align=3Dcenter>VHDL &amp; Verilog Compared &amp; Contrasted<BR>Plus =
+Modeled=20
+Example Written in<BR>VHDL, Verilog and C</H1>
+<CENTER><B>Douglas J. Smith </B></CENTER>
+<CENTER><B>VeriBest Incorporated </B></CENTER>
+<CENTER><B>e-mail: djsmith@veribest.com</B></CENTER>
+<H3>Abstract</H3>
+<P>This tutorial is in two parts. The first part takes an unbiased view =
+of VHDL=20
+and Verilog by comparing their similarities and contrasting their =
+diffrences.=20
+The second part contains a worked example of a model that computes the =
+Greatest=20
+Common Divisor (GCD) of two numbers. The GCD is modeled at the =
+algorithmic level=20
+in VHDL, Verilog and for comparison purposes, C. It is then shown =
+modeled at the=20
+RTL in VHDL and Verilog.</P>
+<H3>1. Introduction</H3>
+<P>There are now two industry standard hardware description languages, =
+VHDL and=20
+Verilog. The complexity of ASIC and FPGA designs has meant an increase =
+in the=20
+number of specialist design consultants with specific tools and with =
+their own=20
+libraries of macro and mega cells written in either VHDL or Verilog. As =
+a=20
+result, it is important that designers know both VHDL and Verilog and =
+that EDA=20
+tools vendors provide tools that provide an environment allowing both =
+languages=20
+to be used in unison. For example, a designer might have a model of a =
+PCI bus=20
+interface written in VHDL, but wants to use it in a design with macros =
+written=20
+in Verilog.</P>
+<H3>2. Background</H3>
+<P>VHDL (Very high speed intgrated circuit Hardware Description =
+Language) became=20
+IEEE standard 1076 in 1987. It was updated in 1993 and is known today as =
+"IEEE=20
+standard 1076 1993". The Verilog hardware description language has been =
+used far=20
+longer than VHDL and has been used extensively since it was lauched by =
+Gateway=20
+in 1983. Cadence bought Gateway in 1989 and opened Verilog to the public =
+domain=20
+in 1990. It became IEEE standard 1364 in December 1995.</P>
+<P>There are two aspects to modeling hardware that any hardware =
+description=20
+language facilitates; true abstract behavior and hardware structure. =
+This means=20
+modeled hardware behavior is not prejudiced by structural or design =
+aspects of=20
+hardware intent and that hardware structure is capable of being modeled=20
+irrespective of the design's behavior.</P>
+<H3>3. VHDL/Verilog compared &amp; contrasted </H3>
+<P>This section compares and contrasts individual aspects of the two =
+languages;=20
+they are listed in alphabetical order.</P>
+<H4>Capability</H4>
+<P>Hardware structure can be modeled equally effectively in both VHDL =
+and=20
+Verilog. When modeling abstract hardware, the capability of VHDL can =
+sometimes=20
+only be achieved in Verilog when using the PLI. The choice of which to =
+use is=20
+not therefore based solely on technical capability but on:</P>
+<UL>
+  <LI>personal preferences=20
+  <LI>EDA tool availability=20
+  <LI>commercial, business and marketing issues </LI></UL>
+<P>The modeling constructs of VHDL and Verilog cover a slightly =
+different=20
+spectrum across the levels of behavioral abstraction; see Figure 1.</P>
+<P>
+<CENTER><IMG height=3D249=20
+src=3D"http://www.ece.msstate.edu/~reese/EE8993/verilog_vhdl_1.gif"=20
+width=3D281></CENTER>
+<P></P>
+<P>
+<CENTER>Figure 1. HDL modeling capability</CENTER>
+<P></P>
+<H4>Compilation</H4>
+<P><I>VHDL.</I> Multiple design-units (entity/architecture pairs), that =
+reside=20
+in the same system file, may be separately compiled if so desired. =
+However, it=20
+is good desi gn practice to keep each design unit in it's own system =
+file in=20
+which case separ ate compilation should not be an issue.</P>
+<P><I>Verilog.</I> The Verilog language is still rooted in it's native=20
+interpretative mode. Compilation is a means of speeding up simulation, =
+but has=20
+not changed the original nature of the language. As a result care must =
+be taken=20
+with both the compilation order of code written in a single file and the =
+
+compilation order of multiple files. Simulation results can change by =
+simply=20
+changing the order of compilation.</P>
+<H4>Data types</H4>
+<P><I>VHDL.</I> A multitude of language or user defined data types can =
+be used.=20
+This may m ean dedicated conversion functions are needed to convert =
+objects from=20
+one type to another. The choice of which data types to use should be =
+considered=20
+wisely, especially enumerated (abstract) data types. This will make =
+models=20
+easier to write, clearer to read and avoid unnecessary conversion =
+functions that=20
+can clutter the code. VHDL may be preferred because it allows a =
+multitude of=20
+language or user defined data types to be used. </P>
+<P><I>Verilog.</I> Compared to VHDL, Verilog data types a re very =
+simple, easy=20
+to use and very much geared towards modeling hardware struc ture as =
+opposed to=20
+abstract hardware modeling. Unlike VHDL, all data types used in a =
+Verilog model=20
+are defined by the Verilog language and not by the user. There are net =
+data=20
+types, for example wire, and a register dat a type called reg. A model =
+with a=20
+signal whose type is one of the net data types has a corresponding =
+electrical=20
+wire in the implied modeled circuit. Objects, that is signals, of type =
+reg hold=20
+their value over simulation delta cycles and should not be confused with =
+the=20
+modeling of a hardware register. Verilog may be preferred because of =
+it's=20
+simplicity.</P>
+<H4>Design reusability</H4>
+<P><I>VHDL.</I> Procedures and functions may be placed in a package so =
+that they=20
+are avail able to any design-unit that wishes to use them.</P>
+<P><I>Verilog.</I> There is no concept of packages in Verilog. Functions =
+and=20
+procedures used within a model must be defined in the module. To make =
+functions=20
+and procedures generally accessible from different module statements the =
+
+functions and procedures must be placed in a separate system file and =
+included=20
+using the `include compiler directive. </P>
+<H4>Easiest to Learn</H4>
+<P>Starting with zero knowledge of either language, Verilog is probably =
+the=20
+easiest to grasp and understand. This assumes the Verilog compiler =
+directive=20
+language for simulation and the PLI language is not included. If these =
+languages=20
+are inc luded they can be looked upon as two additional languages that =
+need to=20
+be learned. VHDL may seem less intuitive at first for two primary =
+reasons.=20
+First, it is very strongly typed; a feature that makes it robust and =
+powerful=20
+for the advanced user after a longer learning phase. Second, there are =
+many ways=20
+to model the sa me circuit, specially those with large hierarchical=20
+structures.</P>
+<H4>Forward and back annotation</H4>
+<P>A spin-off from Verilog is the Standard Delay Format (SDF). This is a =
+general=20
+purpose format used to define the timing delays in a circuit. The format =
+
+provides a bidirectional link between, chip layout tools, and either =
+synthesis=20
+or simulation tools, in order to provide more accurate timing =
+representations.=20
+The SDF format is now an industry standard in it's own right.</P>
+<H4>High level constructs</H4>
+<P><I>VHDL.</I> There are more constructs and features for high-level =
+modeling=20
+in VHDL than there are in Verilog. Abstract data types can be used along =
+with=20
+the followi ng statements:</P>
+<P>* package statements for model reuse,</P>
+<P>* configuration statements for configuring design structure,</P>
+<P>* generate statements for replicating structure,</P>
+<P>* generic statements for generic models that can be individually =
+characte=20
+rized, for example, bit width.</P>
+<P>All these language statements are useful in synth esizable =
+models.</P>
+<P><I>Verilog.</I> Except for being able to parameterize models by =
+overlo ading=20
+parameter constants, there is no equivalent to the high-level VHDL =
+modelin g=20
+statements in Verilog.</P>
+<H4>Language Extensions</H4>
+<P>The use of language extensions will make a model non standard and =
+most likely=20
+not portable across other design tools. However, sometimes they are =
+necessary in=20
+o rder to achieve the desired results.</P>
+<P><I>VHDL.</I> Has an attribute called 'foreign that allows =
+architectures and=20
+subprograms to be modeled in another language. </P>
+<P><I>Verilog.</I> The Programming Language Interface (PLI) is an =
+interface=20
+mechanism between Verilog models and Verilog software tools. For =
+example, a=20
+designer, or more likely, a Verilog tool vendor, can specify user =
+defined tasks=20
+or functions in the C programming language, and then call them from the =
+Verilog=20
+source description. Use of such tasks or functions make a Verilog model=20
+nonstandard and so may not be usable by other Verilog tools. Their use =
+is not=20
+recommended.</P>
+<H4>Libraries</H4>
+<P><I>VHDL.</I> A library is a store for compiled entities, =
+architectures,=20
+packages and configurations. Useful for managing multiple design =
+projects. </P>
+<P><I>Verilog.</I> There is no concept of a library in Verilog. This is =
+due to=20
+it's origins as an interpretive language.</P>
+<H4>Low Level Constructs</H4>
+<P><I>VHDL.</I> Simple two input logical operators are built into the =
+language,=20
+they are: NOT, AND, OR, NAND, NOR, XOR and XNOR. Any timing must be =
+separately=20
+specified using the after clause. Separate constructs defined under the =
+VITAL=20
+language must be used to define the cell primitives of ASIC and FPGA=20
+libraries.</P>
+<P><I>Verilog.</I> The Verilog language was originally developed with =
+gate level=20
+modeling in mind, and so has very good constructs for modeling at this =
+level and=20
+for modeling the cell primitives of ASIC and FPGA libraries. Examples =
+include=20
+User Defined Primitive s (UDP), truth tables and the specify block for=20
+specifying timing delays across a module.</P>
+<H4>Managing large designs</H4>
+<P><I>VHDL.</I> Configuration, generate, generic and package statements =
+all help=20
+manage large design structures.</P>
+<P><I>Verilog.</I> There are no statements in Verilog that help manage =
+large=20
+designs.</P>
+<H4>Operators</H4>
+<P>The majority of operators are the same between the two languages. =
+Verilog=20
+does have very useful unary reduction operators that are not in VHDL. A =
+loop=20
+statement can be used in VHDL to perform the same operation as a Verilog =
+unary=20
+reduction operator. VHDL has the mod operator that is not found in =
+Verilog.</P>
+<H4>Parameterizable models</H4>
+<P><I>VHDL.</I> A specific bit width model can be instantiated from a =
+generic=20
+n-bit model using the generic statement. The generic model will not =
+synthesize=20
+until it is instantiated and the value of the generic given. </P>
+<P><I>Verilog.</I> A specific width model can be instantiated from a =
+generic=20
+n-bit model using overloaded parameter values. The generic model must =
+have a=20
+default parameter value defined. This means two things. In the absence =
+of an=20
+overloaded value being specified, it will still synthesize, but will use =
+the=20
+specified default parameter value. Also, it does not need to be =
+instantiated=20
+with an overloaded parameter value specified, before it will =
+synthesize.</P>
+<H4>Procedures and tasks</H4>
+<P>VHDL allows concurrent procedure calls; Verilog does not allow =
+concurrent=20
+task calls.</P>
+<H4>Readability </H4>
+<P>This is more a matter of coding style and experience than language =
+feature.=20
+VHDL is a concise and verbose language; its roots are based on Ada. =
+Verilog is=20
+more like C because it's constructs are based approximately 50% on C and =
+50% on=20
+Ada. For this reason an existing C programmer may prefer Verilog over =
+VHDL.=20
+Although an existing programmer of both C and Ada may find the mix of =
+constructs=20
+somewh at confusing at first. Whatever HDL is used, when writing or =
+reading an=20
+HDL model to be synthesized it is important to think about hardware =
+intent.</P>
+<H4>Structural replication</H4>
+<P><I>VHDL.</I> The <B><I>generate </I></B>statement replicates a number =
+of=20
+instances of the same design-unit or some sub part of a design, and =
+connects it=20
+appropriately. </P>
+<P><I>Verilog.</I> There is no equivalent to the <B><I>generate=20
+</I></B>statement in Verilog.</P>
+<H4>Test harnesses</H4>
+<P>Designers typically spend about 50% of their time writing =
+synthesizable=20
+models and the other 50% writing a test harness to verify the =
+synthesizable=20
+models. Test harnesses are not restricted to the synthesizable subset =
+and so are=20
+free to use the full potential of the language. VHDL has generic and=20
+configuration statements that are useful in test harnesses, that are not =
+found=20
+in Verilog.</P>
+<H4>Verboseness</H4>
+<P><I>VHDL.</I> Because VHDL is a very strongly typed language models =
+must be=20
+coded precisely with defined and matching data types. This may be =
+considered an=20
+advantage or disadvantage. However, it does mean models are often more =
+verbose,=20
+and the code often longer, than it's Verilog equivalent. </P>
+<P><I>Verilog.</I> Signals representing objects of different bits widths =
+may be=20
+assigned to each other. The signal representing the smaller number of =
+bits is=20
+automatically padded out to that of the larger number of bits, and is=20
+independent of whether it is the assigned signal or not. Unused bits =
+will be=20
+automatically optimized away during the synthesis process. This has the=20
+advantage of not needing to model quite so explicitly as in VHDL, but =
+does mean=20
+unintended modeling errors will not be identified by an analyzer.</P>
+<H3>4. Greatest Common Divisor</H3>
+<P>Models of a greatest common divisor circuit is posed as problem and =
+solution=20
+exercise. A model written in C is included in addition to VHDL and =
+Verilog for=20
+comparison purposes.</P>
+<H4>4.1 Problem</H4>
+<P>The problem consists of three parts:</P>
+<P>a) Design three algorithmic level models of an algorithm that finds =
+the=20
+Greatest Common Divisor (GCD) of two numbers in the software programming =
+
+language, C, and the two hardware description languages, VHDL and =
+Verilog. Use=20
+common test data files to test the algorithm where practically possible. =
+Neither=20
+the VHDL nor Verilog models need contain timing. All three models should =
+
+automatically indicate a pass or fail condition.</P>
+<P>b) Model the GCD algorithm at the RTL level for synthesis in both =
+VHDL and=20
+Verilog. The model must be generic so that it can be instantiated with =
+different=20
+bit widths. A Load signal should indicate when input data is valid, and =
+a signal=20
+cal led Done, should be provided to signify when valid output data is =
+available.=20
+The generic model should be verified with 8-bit bus signals.</P>
+<P>c) Write VHDL and Verilog test harnesses for the two models that: 1) =
+use the=20
+same test data files used by the algorithmic level models, and 2), =
+instantiates=20
+both the RTL and synthesized gate level models so that they are =
+simulated and=20
+tested at the same time.</P>
+<H4>4.2 Solution</H4>
+<P>The solution is broken into three parts corresponding to those of the =
+
+problem. The solution parts use the following combined test and =
+reference data=20
+files.</P>
+<DD>file: gcd_test_data.txt=20
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+file: gcd_test_data_hex.txt=20
+<DD><TT>&nbsp;&nbsp;21 &nbsp;&nbsp;&nbsp;49 &nbsp;&nbsp;&nbsp;7=20
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp=
+;&nbsp;=20
+31&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Decimal=20
+&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;&nbsp;&nbsp; 49&nbsp;&nbsp;&nbsp; 7</TT> =
+
+<DD><TT>&nbsp;&nbsp;25&nbsp;&nbsp;&nbsp; 30&nbsp;&nbsp;&nbsp; 5=20
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19=20
+&nbsp;&nbsp;&nbsp;1E &nbsp;&nbsp;&nbsp;5 =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//=20
+Decimal &nbsp;&nbsp;&nbsp;&nbsp;25 =
+&nbsp;&nbsp;&nbsp;30&nbsp;&nbsp;&nbsp; 5</TT>=20
+
+<DD><TT>&nbsp;&nbsp;19 &nbsp;&nbsp;&nbsp;27&nbsp;&nbsp;&nbsp;=20
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+13&nbsp;&nbsp;&nbsp; 1B&nbsp;&nbsp;&nbsp; 1 =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//=20
+Decimal&nbsp;&nbsp;&nbsp;&nbsp; 19 &nbsp;&nbsp;&nbsp;27 =
+&nbsp;&nbsp;&nbsp;1</TT>=20
+
+<DD><TT>&nbsp;&nbsp;40=20
+&nbsp;&nbsp;&nbsp;40&nbsp;&nbsp;&nbsp;40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+28&nbsp;&nbsp;&nbsp; 28&nbsp;&nbsp; =
+28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//=20
+Decimal &nbsp;&nbsp;&nbsp;&nbsp;40 &nbsp;&nbsp;&nbsp;40 =
+&nbsp;&nbsp;40</TT>=20
+<DD><TT>&nbsp;250&nbsp;&nbsp; 190&nbsp;&nbsp;=20
+10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+FA&nbsp;&nbsp;&nbsp; 6E&nbsp;&nbsp;&nbsp; A =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//=20
+Decimal&nbsp;&nbsp;&nbsp; 250&nbsp;&nbsp;&nbsp;190 &nbsp;&nbsp;10 </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;5 &nbsp;&nbsp;250&nbsp;&nbsp;&nbsp; 5=20
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5=20
+&nbsp;&nbsp;&nbsp;FA&nbsp;&nbsp;&nbsp; 5 =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//=20
+Decimal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 =
+&nbsp;&nbsp;250&nbsp;&nbsp;&nbsp; 5</TT>=20
+
+<H4>4.2.1 Designing algorithmic level models in C, VHDL and Verilog</H4>
+<P>The algorithm used to find the greatest common divisor between two =
+numbers is=20
+shown in Figure 2.</P>
+<P>
+<CENTER><IMG=20
+src=3D"http://www.ece.msstate.edu/~reese/EE8993/verilog_vhdl_2.gif"></CEN=
+TER>
+<P></P>
+<P>
+<CENTER>Figure 2. GCD Algorithm</CENTER>
+<P></P>
+<P>It works by continually subtracting the smaller of the two numbers, A =
+or B,=20
+from the largest until such point the smallest number becomes equal to =
+zero. It=20
+does this by continually subtracting B from A while A is greater than B, =
+and=20
+then s wapping A and B around when A becomes less than B so that the new =
+value=20
+of B can once again be continually subtracted from A. This process =
+continues=20
+until B becomes zero.</P>
+<H4>C algorithmic model</H4>
+<P>The C model first declares integer values for the two inputs A and B, =
+the=20
+computed output of the algorithm Y, and the reference output Y_Ref. =
+Integer=20
+Y_Ref is the expected GCD result and used to compare with the computed =
+result=20
+from the algorithm. The integer Swap is also declared and used in the =
+algorithm=20
+to swap the two inputs A and B. A final integer, Passed, is used to =
+indicate a=20
+pass (1) or fail (0) condition.</P>
+<P>A file pointer (file_pointer) is defined in order to access the test =
+data=20
+file "gcd_test_data.txt". It is opened for read mode only. Integer =
+Passed is=20
+initiall y set to 1 and only set to 0 if the algorithm fails.</P>
+<P><I>Reading test data file. </I>The test data file contains three =
+numbers on=20
+each line corresponding to values of A, B and Y_Ref respectively. A =
+while loop=20
+is used to: 1) read each line of the test data file, 2) assign the three =
+values=20
+to A, B and Y_Ref respectively, 3) use A and B to compute the GCD output =
+Y, and=20
+4) compare Y with Y_Ref. This while loop continues while there is test =
+data in=20
+the test data file.</P>
+<P><I>Algorithm implementation.</I> The initial if statement is an extra =
+check=20
+that both A and B are not zero. The algorithm is then modeled using two =
+while=20
+statements. The first, outer-most, while statement checks to see if B =
+has=20
+reached zero; if it has the GCD has been found. The second, inner-most, =
+while=20
+statement checks to see if A is greater than or equal to B; if it is, it =
+
+continually subtracts A from B and puts the result back in A. When A =
+becomes=20
+less than B the inner most while loop completes, A and B are swapped =
+using Swap,=20
+and the outer most while statement rechecks B to see if it has reached =
+zero.</P>
+<P><I>Testing the result</I>. The algorithm is tested using an if =
+statement=20
+which tests to see if the computed result Y is the same as the expected =
+result=20
+Y_Ref. If they are different an error message is printed to the screen =
+and=20
+Passed assigned the value 0. Finally, when all tests have completed and =
+Passed=20
+is still equal to 1 a passed message is printed to the screen.</P>
+<DD><B>C algorithmic level model</B>=20
+<P></P>
+<DD><TT>#include &lt;stdio.h&gt;</TT>=20
+<DD><TT>main () </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;{</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;int A_in, B_in, A, B, Swap, Y, Y_Ref, =
+Passed;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;FILE *file_pointer;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;file_pointer =3D fopen("gcd_test_data.txt", =
+"r");</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;Passed =3D 1; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;while (!feof(file_pointer)) </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*---------=
+---------------------------*/=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Read =
+test data=20
+from file =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*---------=
+---------------------------*/=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fscanf=20
+(file_pointer, "%d %d %d\n", &amp;A_in, &amp;B_in, &amp;Y_Ref);</TT>=20
+<P></P>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*---------=
+-------------------------*/=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Model =
+GCD=20
+algorithm=20
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;*/=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*---------=
+-------------------------*/</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A =3D =
+A_in;=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B =3D =
+B_in;=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (A !=3D =
+0=20
+&amp;&amp; B !=3D 0) </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;{=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;while=20
+(B !=3D 0)</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;{</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;while=20
+(A &gt;=3D B) </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A=20
+=3D A - B;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;Swap=20
+=3D A;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;A=20
+=3D B; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;B=20
+=3D Swap;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;}</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;}=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;{=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;A=20
+=3D 0;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;}</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y =3D =
+A;</TT>=20
+<P></P>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*---------=
+---------------------*/=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Test =
+GCD=20
+algorithm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */ =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*---------=
+---------------------*/=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Y !=3D =
+Y_Ref)=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;{</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;printf=20
+("Error. A=3D%d B=3D%d Y=3D%d Y_Ref=3D %d\n", A_in, B_in, Y, =
+Y_Ref);</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;Passed=20
+=3D 0; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;}=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Passed =3D 1) =
+printf ("GCD=20
+algorithm test passed ok\n"); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;}</TT>=20
+<H4>VHDL algorithmic level model</H4>
+<P>The VHDL model follows exactly the same principle as defined for the =
+C model.=20
+When reading the integer values from the test date file they must be =
+read and=20
+assigned to a variable; they cannot be read and assigned to a signal. As =
+this is=20
+an algorithmic level model defined in a single entity it contains no =
+input or=20
+ouputs, nor does it contain any internal signals or associated timing. =
+All=20
+computations use variables; variables are read from the test data file, =
+the=20
+algorithm computes the result and variables are written to a results =
+file.</P>
+<DD><B>VHDL algorithmic level model</B>=20
+<P></P>
+<DD><TT>library STD; </TT>
+<DD><TT>use STD.TEXTIO.all; </TT>
+<DD><TT>entity GCD_ALG is </TT>
+<DD><TT>end entity GCD_ALG;</TT>=20
+<DD><TT>architecture ALGORITHM of GCD_ALG is</TT>=20
+<DD><TT>-------------------------------------------- </TT>
+<DD><TT>-- Declare test data file and results file </TT>
+<DD><TT>-------------------------------------------- </TT>
+<DD><TT>file TestDataFile: text open </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;read_mode is "gcd_ test_data.txt"; </TT>
+<DD><TT>file ResultsFile: text open write_mode is </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;"gcd_alg _test_results.txt";</TT>=20
+<DD><TT>begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;GCD: process </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable A_in, B_in, A, B, =
+Swap, Y,=20
+Y_Ref: integer range 0 to 65535; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable TestData: line; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable BufLine: line; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable Passed: bit :=3D =
+'1';</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while not =
+endfile(TestDataFile)=20
+loop</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------=
+--------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Read test data from file =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------=
+--------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readline(TestDataFile, =
+TestData);=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(TestData, A_in); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(TestData, B_in); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(TestData, Y_Ref); </TT>
+<P></P>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------=
+-------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Model GCD algorithm </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------=
+-------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A :=3D A_in; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B :=3D B_in; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (A /=3D 0 and B /=3D 0) =
+then </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (B =
+/=3D 0)=20
+loop </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;while=20
+(A &gt;=3D B) loop </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A=20
+:=3D A - B; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;end=20
+loop;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;Swap:=3D=20
+A; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;A=20
+:=3D B;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;B=20
+:=3D Swap;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end =
+loop;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A :=3D =
+0;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y :=3D A;</TT>=20
+<P></P>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------=
+----=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Test GCD algorithm </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------=
+----=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Y /=3D Y_Ref) then -- =
+has failed=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Passed =
+:=3D=20
+'0';</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne, st=20
+ring'("GCD Error: A=3D"));</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne,=20
+A_in);</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne,=20
+string'(" B=3D"));</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne,=20
+B_in);</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne,=20
+string'(" Y=3D"));</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne, Y);=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne,=20
+string'(" Y_Ref=3D"));</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufli=
+ne,=20
+Y_Ref);</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeline(R=
+esultsFile,=20
+Bufline); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;end loop; </TT>
+<DD><TT>&nbsp;&nbsp;if (Passed =3D '1') then -- has passed </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(Bufline, string' ("GCD =
+algorithm=20
+test has passed"));</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeline(ResultsFile, Bufline); =
+</TT>
+<DD><TT>&nbsp;&nbsp;end if;</TT>=20
+<DD><TT>&nbsp;end process;</TT>=20
+<DD><TT>end architecture ALGORITHM;</TT>=20
+<H4>Verilog algorithmic level model</H4>
+<P>The Verilog model also follows the same principle as defined above =
+for the C=20
+model. A major difference in this model is that Verilog cannot read =
+decimal=20
+integer values from a system file. Data read from a system file must be: =
+</P>
+<P>1) read using one of the two language define system tasks, $readmemh =
+or=20
+$readmemb and </P>
+<P>2) stored in a memory, which has specific width and depth. This =
+limits any=20
+read data to being in either hexadecimal or binary format. In this case =
+a=20
+separate test d ata file is used "gcd_test_data_hex.txt" which has the =
+test data=20
+specified in hexadecimal format.</P>
+<DD><B>Verilog algorithmic level model</B>=20
+<P></P>
+<DD><TT>module GCD_ALG; </TT>
+<DD><TT>parameter Width =3D 8; </TT>
+<DD><TT>reg [Width-1:0] A_in, B_in, A, B, Y, Y_Ref;</TT>=20
+<DD><TT>reg [Width-1:0] A_reg,B_reg,Swap;</TT>=20
+<DD><TT>parameter GCD_tests =3D 6; </TT>
+<DD><TT>integer N, M; </TT>
+<DD><TT>reg Passed, FailTime; </TT>
+<DD><TT>integer SimResults;</TT>=20
+<P></P>
+<DD><TT>// Declare memory array for test data </TT>
+<DD><TT>// ----------------------------------</TT>=20
+<DD><TT>reg [Width-1:1] AB_Y_Ref_Arr[1:GCD_tests*3];</TT>=20
+<P></P>
+<DD><TT>//---------------------------------- </TT>
+<DD><TT>// Model GCD algorithm </TT>
+<DD><TT>//---------------------------------- </TT>
+<DD><TT>always @(A or B) </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;begin: GCD </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A =3D A_in;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B =3D B_in;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (A !=3D 0 &amp;&amp; B !=3D 0) =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (B !=3D 0) </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (A =
+&gt;=3D B)=20
+begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;A=20
+=3D A - B; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;Swap=20
+=3D A; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;A=20
+=3D B; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;B=20
+=3D Swap; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A =3D 0;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y =3D A; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;end</TT>=20
+<P></P>
+<DD><TT>//------------------------------ </TT>
+<DD><TT>// Test GCD algorithm </TT>
+<DD><TT>//----------------------------- </TT>
+<DD><TT>initial begin </TT>
+<DD><TT>// Load contents of </TT>
+<DD><TT>// "gcd_test_data.txt" into array. </TT>
+<DD><TT>$readmemh("gcd_test_data_hex.txt", AB_Y_Ref_Arr);</TT>=20
+<DD><TT>// Open simulation results file </TT>
+<DD><TT>SimResults =3D $fopen("gcd.simres");</TT>=20
+<DD><TT>Passed =3D 1; </TT>
+<DD><TT>/ Set to 0 if fails </TT>
+<DD><TT>for (N=3D1; N&lt;=3DGCD_tests; N=3DN+1) begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;A_in =3D AB_Y_Ref_Arr[(N*3)+1];</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;B_in =3D AB_Y_Ref_Arr[(N*3)+2]; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;Y_Ref=3DAB_Y_Ref_Arr[(N*3)+3];</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;#TestPeriod </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;if (Y !=3D Y_Ref)=20
+begin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// has failed </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Passed =3D 0; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$fdisplay (SimResults, =
+" GCD=20
+Error: </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A=3D%=
+d B=3D%d=20
+Y=3D%d. Y should be %d", A_in, B_in, Y, Y_Ref);</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>end </TT>
+<DD><TT>if (Passed =3D=3D 1) // has passed </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;$fdisplay (SimResults, "GCD algorithm =
+test ha s=20
+passed"); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;$fclose (SimResults);</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;$finish; </TT>
+<DD><TT>end </TT>
+<DD><TT>endmodule</TT>=20
+<H4>4.2.2 Designing RTL hardware models in VHDL and Verilog</H4>
+<P>The models have additional inputs and outputs over and above that of =
+the=20
+algorithmic models. They are inputs Clock, Reset_N and Load, and the =
+output=20
+Done. When Load is at logic 1 it signifies input data is available on =
+inputs A=20
+and B, and are loaded into separate registers whose output signals are =
+called=20
+A_hold and B_ hold. The extra output signal, Done, switches to a logic 1 =
+to=20
+signify the greate st common divisor has been computed. It takes a =
+number of=20
+clock cycles to comput e the GCD and is dependent upon the values of A =
+and=20
+B.</P>
+<P>The models are broken down into three <B>process</B> (VHDL)/<B>always =
+
+</B>(Verilog) statements.</P>
+<P><I>First <B>process/always </I></B>statement LOAD_SWAP. Infers two =
+registers=20
+which operate as follows:</P>
+<P>1) When Reset_N is at a logic 0, A_hold and B_hold are set to =
+zero.</P>
+<P>2) When not 1) and Load is at logic 1, data on A and B is loaded into =
+A_hold=20
+and B_hold.</P>
+<P>3) When not 1) or 2) and A_hold is less than B_hold, values on A_hold =
+and=20
+B_hold are swapped, that is, A_hold and B_hold are loaded into B_hold =
+and A_hold=20
+respectively.</P>
+<P>4) When not 1), 2) or 3), A_hold is reloaded, that is, it keeps the =
+same=20
+value. The value of A_hold - B_hold, from the second =
+<B>process/always</B>=20
+statement, is loaded into B_hold.</P>
+<P><I>Second <B>process/always </I></B>statement SUBTRACT_TEST. The =
+first<B> if=20
+</B>statement tests to see if A_hold is greater than or equal to B_hold. =
+If it=20
+is, the subtraction, A_hold - B_hold, occurs and the result assigned to =
+A_New=20
+ready to be loaded into B_hold on the next rising edge of the clock =
+signal. If=20
+A_hold is less than B_hold, then subtraction cannot occur and A_New is =
+assigned=20
+the value B_hold so that a swap occurs after the next rising edge of the =
+clock=20
+signal. The second<B> if </B>statement checks to see if the value of =
+B_hold has=20
+reached zero. If it has, signal Done is set to logic 1 and the value of =
+A_ hold=20
+is passed to the output Y through an inferred multiplexer function.</P>
+<P>It is a requirement of the problem to synthesize the generic model =
+with 8-bit=20
+bus signals. This is easily achieved in Verilog model by setting the =
+default=20
+parameter value Width to 8. This means it does not need to be separately =
+
+instantiat ed before it can be synthesized and have the correct bit =
+width. This=20
+is not the case in VHDL, which uses a generic. The value of the generic =
+is only=20
+specified when the model is instantiated. Although the VHDL model will =
+be=20
+instantiated in the test harness, the test harness is not synthesized.=20
+Therefore, in order to synthesize an 8-bit GCD circuit a separate =
+synthesizable=20
+model must be used to instantiate the RTL level model which specifies =
+the=20
+generic, Width, to be 8. The simulation test harness does not need to =
+use this=20
+extra model as it too, will specify the generic, Width, to be 8.</P>
+<DD><B>VHDL RTL model</B>=20
+<P></P>
+<DD><TT>library IEEE; </TT>
+<DD><TT>use IEEE.STD_Logic_1164.all, IEEE.Numeric_STD.all;</TT>=20
+<DD><TT>entity GCD is </TT>
+<DD><TT>generic (Width: natural); </TT>
+<DD><TT>port (Clock,Reset,Load: in std_logic;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;A,B: &nbsp;&nbsp;in unsigned(Width-1 downto =
+0); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;Done: &nbsp;out std_logic;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;Y: &nbsp;&nbsp;&nbsp;&nbsp;out =
+unsigned(Width-1 downto=20
+0));</TT>=20
+<DD><TT>end entity GCD;</TT>=20
+<DD><TT>architecture RTL of GCD is </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;signal A_New,A_Hold,B_Hold: unsigned(Width-1 =
+downto=20
+0); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;signal A_lessthan_B: std_logic;</TT>=20
+<DD><TT>begin</TT>=20
+<DD><TT>---------------------------------------------------- </TT>
+<DD><TT>-- Load 2 input registers and ensure B_Hold &lt; A_Hold </TT>
+<DD><TT>--------------------------------------------------- </TT>
+<DD><TT>LOAD_SWAP: process (Clock) </TT>
+<DD><TT>begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;if rising_edge(Clock) then </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Reset =3D '0') then </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_Hold &lt;=3D (others =
+=3D&gt;=20
+'0'); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B_Hold &lt;=3D (others =
+=3D&gt;=20
+'0');</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elsif (Load =3D '1') then</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_Hold &lt;=3D A; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B_Hold &lt;=3D B; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (A_lessthan_B =3D '1') =
+then </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_Hold &lt;=3D B_Hold; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B_Hold &lt;=3D =
+A_New;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else A_Hold &lt;=3D A _New; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;end if; </TT>
+<DD><TT>end process LOAD_SWAP;</TT>=20
+<P></P>
+<DD><TT>SUBTRACT_TEST: process (A_Hold, B_Hold) </TT>
+<DD><TT>begin</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;-----------------------------------------------=
+--------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;-- Subtract B_Hold from A_Hold if A_Hold =
+&gt;=3D B_Hold=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;-----------------------------------------------=
+-------</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;if (A_Hold &gt;=3D B_Hold) then </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_lessthan_B &lt;=3D '0'; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_New &lt;=3D A_Hold - =
+B_Hold; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;else </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_lessthan_B &lt;=3D '1'; =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_New &lt;=3D A_Hold; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;end if;</TT>=20
+<P></P>
+<DD><TT>&nbsp;&nbsp;&nbsp;-----------------------------------------------=
+--=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;-- Greatest common divisor found if B_Hold =3D =
+0 </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;-----------------------------------------------=
+--=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;if (B_Hold =3D (others =3D&gt; '0')) then =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done &lt;=3D '1';</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y &lt;=3D A_Hold; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;else </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done &lt;=3D '0'; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y &lt;=3D (others =3D&gt; =
+'0'); </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;end if;</TT>=20
+<DD><TT>end process SUBTRACT_TEST; </TT>
+<DD><TT>end architecture RTL;</TT>=20
+<P></P>
+<DD><B>Verilog RTL model</B>=20
+<P></P>
+<DD><TT>module GCD (Clock, Reset, Load, A, B, Done, Y); </TT>
+<DD><TT>parameter Width =3D 8; </TT>
+<DD><TT>input Clock, Reset, Load; </TT>
+<DD><TT>input [Width-1:0] A, B; </TT>
+<DD><TT>output Done; </TT>
+<DD><TT>output [Width-1:0] Y;</TT>=20
+<DD><TT>reg A_lessthan_B, Done; </TT>
+<DD><TT>reg [Width-1:0] A_New, A_Hold, B_Hold, Y;</TT>=20
+<DD><TT>//----------------------------------------------------- </TT>
+<DD><TT>// Load 2 input registers and ensure B_Hold &lt; A_Hold </TT>
+<DD><TT>//----------------------------------------------------- </TT>
+<DD><TT>always @(posedge Clock)</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;begin: LOAD_SWAP </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Reset) begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;A_Hold=20
+=3D 0;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;B_Hold=20
+=3D 0; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (Load) begin =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;A_Hold=20
+=3D A; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;B_Hold=20
+=3D B;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (A_lessthan_B) =
+begin=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;A_Hold=20
+=3D B_Hold;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;B_Hold=20
+=3D A_New; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;A_Hold=20
+=3D A_New; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<P></P>
+<DD><TT>always @(A_Hold or B_Hold) </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;begin: SUBTRACT_TEST </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//---------------------------=
+-----------------------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Subtract B_Hold from =
+A_Hold if=20
+A_Hold &gt;=3D B_Hold </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//---------------------------=
+-----------------------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (A_Hold &gt;=3D B_Hold) =
+begin </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_lessthan_=
+ B =3D 0;=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_New =3D =
+A_Hold -=20
+B_Hold; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else begin</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_lessthan_=
+B =3D 1;=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A_New =3D=20
+A_Hold;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<P></P>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//---------------------------=
+-------------------</TT>=20
+
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Greatest common divisor =
+found if=20
+B_Hold =3D 0 </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//---------------------------=
+-------------------=20
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (B_Hold =3D=3D 0) begin =
+</TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done =3D =
+1; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y =3D =
+A_Hold;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else begin</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done =3D =
+0; </TT>
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y =3D =
+0;</TT>=20
+<DD><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end </TT>
+<DD><TT>end </TT>
+<DD><TT>endmodule</TT>=20
+<H3>5. Conclusions</H3>
+<P>The reasons for the importance of being able to model hardware in =
+both VHDL=20
+and Verilog has been discussed. VHDL and Verilog has been extensively =
+compared=20
+and contrasted in a neutral manner . A tutorial has been posed as a =
+problem and=20
+solution to demonstrate some language differences and indicated that =
+hardware=20
+modeled in one language can also be modeled in the other. Room did not =
+allow=20
+test harness models to be included in this tutorial paper, but is shown =
+in the=20
+book "HDL Chip Design" [1]. The choice of HDL is shown not to be based =
+on=20
+technical capability, but on: personal preferences, EDA tool =
+availability and=20
+commercial, business and marketing issues.</P>
+<P>REFERENCES: [1] HDL Chip Design, A Practical Guide for Designing,=20
+Synthesizing and Simulating ASICs and FPGAs using VHDL or Verilog by =
+Douglas J=20
+Smith, published by Doone Publications.</P></DD></TT></TT></BODY></HTML>
+
+------=_NextPart_000_0000_01C5A31A.5EAA6670
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.ece.msstate.edu/~reese/EE8993/verilog_vhdl_1.gif
+
+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
+QQEAADs=
+
+------=_NextPart_000_0000_01C5A31A.5EAA6670
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.ece.msstate.edu/~reese/EE8993/verilog_vhdl_2.gif
+
+R0lGODdh/QBoAYcAAP//////zP//mf//Zv//M///AP/M///MzP/Mmf/MZv/MM//MAP+Z//+ZzP+Z
+mf+ZZv+ZM/+ZAP9m//9mzP9mmf9mZv9mM/9mAP8z//8zzP8zmf8zZv8zM/8zAP8A//8AzP8Amf8A
+Zv8AM/8AAMz//8z/zMz/mcz/Zsz/M8z/AMzM/8zMzMzMmczMZszMM8zMAMyZ/8yZzMyZmcyZZsyZ
+M8yZAMxm/8xmzMxmmcxmZsxmM8xmAMwz/8wzzMwzmcwzZswzM8wzAMwA/8wAzMwAmcwAZswAM8wA
+AJn//5n/zJn/mZn/Zpn/M5n/AJnM/5nMzJnMmZnMZpnMM5nMAJmZ/5mZzJmZmZmZZpmZM5mZAJlm
+/5lmzJlmmZlmZplmM5lmAJkz/5kzzJkzmZkzZpkzM5kzAJkA/5kAzJkAmZkAZpkAM5kAAGb//2b/
+zGb/mWb/Zmb/M2b/AGbM/2bMzGbMmWbMZmbMM2bMAGaZ/2aZzGaZmWaZZmaZM2aZAGZm/2ZmzGZm
+mWZmZmZmM2ZmAGYz/2YzzGYzmWYzZmYzM2YzAGYA/2YAzGYAmWYAZmYAM2YAADP//zP/zDP/mTP/
+ZjP/MzP/ADPM/zPMzDPMmTPMZjPMMzPMADOZ/zOZzDOZmTOZZjOZMzOZADNm/zNmzDNmmTNmZjNm
+MzNmADMz/zMzzDMzmTMzZjMzMzMzADMA/zMAzDMAmTMAZjMAMzMAAAD//wD/zAD/mQD/ZgD/MwD/
+AADM/wDMzADMmQDMZgDMMwDMAACZ/wCZzACZmQCZZgCZMwCZAABm/wBmzABmmQBmZgBmMwBmAAAz
+/wAzzAAzmQAzZgAzMwAzAAAA/wAAzAAAmQAAZgAAM+4AAN0AALsAAKoAAIgAAHcAAFUAAEQAACIA
+ABEAAADuAADdAAC7AACqAACIAAB3AABVAABEAAAiAAARAAAA7gAA3QAAuwAAqgAAiAAAdwAAVQAA
+RAAAIgAAEe7u7t3d3bu7u6qqqoiIiHd3d1VVVURERCIiIhEREQAAACwAAAAA/QBoAQcI/QABCBxI
+sKDBgwgTKlzIsCHDfxAjSpxIsSJFhxgzatzIsaPHjyBDIoQoMiHJkihTqlzJsqXJfy4LnoxJs6bN
+mylh4hSoc6fPn0B39vQ5NKjRo0g7FiWatKnTpweXCoVKtapRqUytat0aE+tUrmDDhpQ6M2NZAGUj
+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
+HUg6JAgc3meBABAQADs=
+
+------=_NextPart_000_0000_01C5A31A.5EAA6670--

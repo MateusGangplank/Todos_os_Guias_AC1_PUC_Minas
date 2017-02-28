@@ -1,0 +1,97 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x2010f90 .scope module, "TESTE" "TESTE" 2 43;
+ .timescale 0 0;
+v0x202cac0_0 .var "chave0", 0 0;
+v0x202cb60_0 .var "chave1", 0 0;
+v0x202cc10_0 .var "chave2", 0 0;
+v0x202ccc0_0 .var "x", 0 0;
+v0x202cda0_0 .var "y", 0 0;
+v0x202ce50_0 .net "z", 0 0, L_0x202e340; 1 drivers
+S_0x2011080 .scope module, "portas" "F4" 2 56, 2 7, S_0x2010f90;
+ .timescale 0 0;
+L_0x202be20 .functor NOT 1, v0x202ccc0_0, C4<0>, C4<0>, C4<0>;
+L_0x202ced0 .functor NOT 1, v0x202cda0_0, C4<0>, C4<0>, C4<0>;
+L_0x202cf80 .functor OR 1, v0x202ccc0_0, v0x202cda0_0, C4<0>, C4<0>;
+L_0x202cfe0 .functor NOR 1, v0x202ccc0_0, v0x202cda0_0, C4<0>, C4<0>;
+L_0x202d1c0 .functor AND 1, v0x202ccc0_0, v0x202cda0_0, C4<1>, C4<1>;
+L_0x202d250 .functor NAND 1, v0x202ccc0_0, v0x202cda0_0, C4<1>, C4<1>;
+L_0x202d320 .functor XOR 1, v0x202ccc0_0, v0x202cda0_0, C4<0>, C4<0>;
+L_0x202d380 .functor XNOR 1, v0x202ccc0_0, v0x202cda0_0, C4<0>, C4<0>;
+L_0x202d070 .functor BUF 1, v0x202cac0_0, C4<0>, C4<0>, C4<0>;
+L_0x202d0d0 .functor NOT 1, v0x202cac0_0, C4<0>, C4<0>, C4<0>;
+L_0x202d630 .functor BUF 1, v0x202cb60_0, C4<0>, C4<0>, C4<0>;
+L_0x202d6c0 .functor NOT 1, v0x202cb60_0, C4<0>, C4<0>, C4<0>;
+L_0x202d130 .functor BUF 1, v0x202cc10_0, C4<0>, C4<0>, C4<0>;
+L_0x202d7a0 .functor NOT 1, v0x202cc10_0, C4<0>, C4<0>, C4<0>;
+L_0x202d880/0/0 .functor AND 1, L_0x202be20, L_0x202ced0, L_0x202d070, L_0x202d630;
+L_0x202d880/0/4 .functor AND 1, L_0x202d130, C4<1>, C4<1>, C4<1>;
+L_0x202d880 .functor AND 1, L_0x202d880/0/0, L_0x202d880/0/4, C4<1>, C4<1>;
+L_0x202daa0 .functor AND 1, L_0x202cf80, L_0x202d070, L_0x202d630, L_0x202d7a0;
+L_0x202dc30 .functor AND 1, L_0x202cfe0, L_0x202d070, L_0x202d6c0, L_0x202d130;
+L_0x202dd70 .functor AND 1, L_0x202d1c0, L_0x202d070, L_0x202d6c0, L_0x202d7a0;
+L_0x202dba0 .functor AND 1, L_0x202d250, L_0x202d0d0, L_0x202d630, L_0x202d130;
+L_0x202e080 .functor AND 1, L_0x202d320, L_0x202d0d0, L_0x202d630, L_0x202d7a0;
+L_0x202de20 .functor AND 1, L_0x202d380, L_0x202d0d0, L_0x202d6c0, L_0x202d130;
+L_0x202e340/0/0 .functor OR 1, L_0x202d880, L_0x202daa0, L_0x202dc30, L_0x202dd70;
+L_0x202e340/0/4 .functor OR 1, L_0x202dba0, L_0x202e080, L_0x202de20, C4<0>;
+L_0x202e340 .functor OR 1, L_0x202e340/0/0, L_0x202e340/0/4, C4<0>, C4<0>;
+v0x2011bc0_0 .net "c0", 0 0, L_0x202d070; 1 drivers
+v0x202b800_0 .net "c1", 0 0, L_0x202d0d0; 1 drivers
+v0x202b8a0_0 .net "c2", 0 0, L_0x202d630; 1 drivers
+v0x202b940_0 .net "c3", 0 0, L_0x202d6c0; 1 drivers
+v0x202b9f0_0 .net "c4", 0 0, L_0x202d130; 1 drivers
+v0x202ba90_0 .net "c5", 0 0, L_0x202d7a0; 1 drivers
+v0x202bb70_0 .net "chave0", 0 0, v0x202cac0_0; 1 drivers
+v0x202bc10_0 .net "chave1", 0 0, v0x202cb60_0; 1 drivers
+v0x202bd00_0 .net "chave2", 0 0, v0x202cc10_0; 1 drivers
+v0x202bda0_0 .alias "s", 0 0, v0x202ce50_0;
+v0x202bea0_0 .net "s0", 0 0, L_0x202be20; 1 drivers
+v0x202bf40_0 .net "s1", 0 0, L_0x202cf80; 1 drivers
+v0x202c050_0 .net "s10", 0 0, L_0x202dd70; 1 drivers
+v0x202c0f0_0 .net "s11", 0 0, L_0x202dba0; 1 drivers
+v0x202c210_0 .net "s12", 0 0, L_0x202e080; 1 drivers
+v0x202c2b0_0 .net "s13", 0 0, L_0x202de20; 1 drivers
+v0x202c170_0 .net "s14", 0 0, L_0x202ced0; 1 drivers
+v0x202c400_0 .net "s2", 0 0, L_0x202cfe0; 1 drivers
+v0x202c520_0 .net "s3", 0 0, L_0x202d1c0; 1 drivers
+v0x202c5a0_0 .net "s4", 0 0, L_0x202d250; 1 drivers
+v0x202c480_0 .net "s5", 0 0, L_0x202d320; 1 drivers
+v0x202c6d0_0 .net "s6", 0 0, L_0x202d380; 1 drivers
+v0x202c620_0 .net "s7", 0 0, L_0x202d880; 1 drivers
+v0x202c810_0 .net "s8", 0 0, L_0x202daa0; 1 drivers
+v0x202c770_0 .net "s9", 0 0, L_0x202dc30; 1 drivers
+v0x202c960_0 .net "x", 0 0, v0x202ccc0_0; 1 drivers
+v0x202c8b0_0 .net "y", 0 0, v0x202cda0_0; 1 drivers
+    .scope S_0x2010f90;
+T_0 ;
+    %set/v v0x202ccc0_0, 0, 1;
+    %set/v v0x202cda0_0, 0, 1;
+    %set/v v0x202cac0_0, 1, 1;
+    %set/v v0x202cb60_0, 1, 1;
+    %set/v v0x202cc10_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x2010f90;
+T_1 ;
+    %vpi_call 2 60 "$display", "Exercicio0035";
+    %vpi_call 2 61 "$display", " NOT - 111 \012 OR - 110 \012 NOR - 101 \012 AND - 100 \012 NAND - 011 \012 XOR - 010 \012 XNOR - 001\012\012";
+    %vpi_call 2 63 "$monitor", "x(%b) : y(%b) = %b       | Chave:%b%b%b", v0x202ccc0_0, v0x202cda0_0, v0x202ce50_0, v0x202cac0_0, v0x202cb60_0, v0x202cc10_0;
+    %delay 1, 0;
+    %set/v v0x202ccc0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x202ccc0_0, 0, 1;
+    %set/v v0x202cda0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x202ccc0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0035.v";

@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00852E08 .scope module, "testcomple" "testcomple" 2 15;
+ .timescale 0 0;
+v0085E8E8_0 .var "a", 7 0;
+v0085EBD8_0 .net "s", 7 0, L_0085EC30; 1 drivers
+S_00853388 .scope module, "ari1" "comple2" 2 20, 2 7, S_00852E08;
+ .timescale 0 0;
+L_0085DFF8 .functor NOT 8, v0085E8E8_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v00853410_0 .net *"_s0", 7 0, L_0085DFF8; 1 drivers
+v0085E7E0_0 .net *"_s2", 7 0, C4<00000001>; 1 drivers
+v0085E838_0 .net "r", 7 0, v0085E8E8_0; 1 drivers
+v0085E890_0 .alias "s", 7 0, v0085EBD8_0;
+L_0085EC30 .arith/sum 8, L_0085DFF8, C4<00000001>;
+S_00853300 .scope begin, "start" "start" 2 22, 2 22, S_00852E08;
+ .timescale 0 0;
+S_00852E90 .scope begin, "main" "main" 2 26, 2 26, S_00852E08;
+ .timescale 0 0;
+    .scope S_00852E08;
+T_0 ;
+    %fork t_1, S_00853300;
+    %jmp t_0;
+    .scope S_00853300;
+t_1 ;
+    %movi 8, 12, 8;
+    %set/v v0085E8E8_0, 8, 8;
+    %end;
+    .scope S_00852E08;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00852E08;
+T_1 ;
+    %fork t_3, S_00852E90;
+    %jmp t_2;
+    .scope S_00852E90;
+t_3 ;
+    %vpi_call 2 27 "$display", "Exerc0007 - Pedro Henrique Vilar Locatelli  - 427453";
+    %vpi_call 2 28 "$display", "Test comple2";
+    %vpi_call 2 29 "$monitor", "%b = %b", v0085E8E8_0, v0085EBD8_0;
+    %delay 1, 0;
+    %movi 8, 76, 8;
+    %set/v v0085E8E8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 44, 8;
+    %set/v v0085E8E8_0, 8, 8;
+    %end;
+    .scope S_00852E08;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Baste\Downloads\Arq1\Guia02\Exerc0007Guia02.v";

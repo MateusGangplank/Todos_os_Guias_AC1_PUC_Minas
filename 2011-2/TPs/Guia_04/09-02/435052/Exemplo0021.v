@@ -1,0 +1,70 @@
+// -------------------------
+// Exemplo0021 - FULL ADDER 
+// Nome: Rafael Lopes Barbosa
+// Matricula: 435052
+// ------------------------- 
+// ------------------------- 
+// full adder 
+// ------------------------- 
+module meiaSoma (output s,output s1, 
+input a, 
+input b); 
+// descrever por portas
+
+//xor(s,a,b);
+//and(s1,a,b);
+
+// EXPERIMENTAR ASSIM
+xor XOR1 (s,a,b);
+and AND1 (s1,a,b);
+
+endmodule // fullAdder
+ 
+// ------------------------- definir dados 
+module fullAdder(output s, output s1,
+						  input a, input b,
+						  input carryIn);
+//descrever por portas
+
+wire ha1[0:1]; 
+wire ha2[0:1];
+
+meiaSoma ms1(ha1[1],ha1[0],a,b);						  
+meiaSoma	ms2(ha2[1],ha2[0],ha1[1],carryIn);
+
+assign s = ha2[1];
+or (s1,ha1[0],ha2[0]);	      // VER EXEMPLO ACIMA
+
+endmodule // fullAdder			
+
+module test_fullAdder;
+//-------------------------------- definir dados
+
+reg [5:0] x;
+reg [5:0] y;
+wire [5:0] soma;
+wire carry;
+wire carry2;
+wire carry3;
+wire carry4;
+wire carry5;
+wire carry6;		  
+
+
+		meiaSoma soma0(soma[0],carry,x[0],y[0]);
+		fullAdder soma1(soma[1],carry2,x[1],y[1],carry);
+		fullAdder soma2(soma[2],carry3,x[2],y[2],carry2);
+		fullAdder soma3(soma[3],carry4,x[3],y[3],carry3);
+		fullAdder soma4(soma[4],carry5,x[4],y[4],carry4);
+		fullAdder soma5(soma[5],carry6,x[5],y[5],carry5);
+		
+// ------------------------- parte principal 
+initial begin 
+$display("Exemplo0021 - Rafael Lopes Barbosa - 435052"); 
+$display("Test ALU's full adder"); 
+x = 6'b00001;  y = 6'b00001;
+#1 $display("%b + %b = %b",x,y,soma);
+
+// projetar testes do somador complete 
+end 
+endmodule // test_fullAdder 

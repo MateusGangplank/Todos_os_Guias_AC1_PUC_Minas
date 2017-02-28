@@ -1,0 +1,61 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E74F8 .scope module, "testex03" "testex03" 2 14;
+ .timescale 0 0;
+L_00660C80 .functor NAND 1, v003E7580_0, v003E7580_0, C4<1>, C4<1>;
+L_0069AA60 .functor NAND 1, v0069A388_0, v0069A388_0, C4<1>, C4<1>;
+L_0069AAD0 .functor NAND 1, v003E7580_0, L_0069AA60, C4<1>, C4<1>;
+L_0069AB40 .functor NAND 1, L_00660C80, v0069A388_0, C4<1>, C4<1>;
+L_0069ABB0 .functor NAND 1, L_0069AAD0, L_0069AAD0, C4<1>, C4<1>;
+L_0069AC20 .functor NAND 1, L_0069AB40, L_0069AB40, C4<1>, C4<1>;
+L_0069AC90 .functor NAND 1, L_0069ABB0, L_0069AC20, C4<1>, C4<1>;
+L_0069AD38 .functor NAND 1, L_0069ABB0, L_0069AC90, C4<1>, C4<1>;
+L_0069ADA8 .functor NAND 1, L_0069AC20, L_0069AC90, C4<1>, C4<1>;
+L_0069ADE0 .functor NAND 1, L_0069ADA8, L_0069AD38, C4<1>, C4<1>;
+L_0069AE88 .functor NAND 1, L_0069AF28, v0069A388_0, C4<1>, C4<1>;
+L_0069AF28 .functor NAND 1, v003E7580_0, v003E7580_0, C4<1>, C4<1>;
+L_00661320 .functor NAND 1, L_0069AE88, L_0069AE88, C4<1>, C4<1>;
+v003E7580_0 .var "a", 0 0;
+v0069A388_0 .var "b", 0 0;
+v0069A3F8_0 .net "cOut", 0 0, L_00661320; 1 drivers
+v0069A480_0 .net "nOut", 0 0, L_0069AE88; 1 drivers
+v0069A4F0_0 .net "nand4", 0 0, L_0069ABB0; 1 drivers
+v0069A548_0 .net "nand5", 0 0, L_0069AC20; 1 drivers
+v0069A5B8_0 .net "notA", 0 0, L_00660C80; 1 drivers
+v0069A650_0 .net "notB", 0 0, L_0069AA60; 1 drivers
+v0069A6C0_0 .net "notC", 0 0, L_0069AF28; 1 drivers
+v0069A760_0 .net "s", 0 0, L_0069ADE0; 1 drivers
+v0069A7D0_0 .net "s0", 0 0, L_0069ADA8; 1 drivers
+v0069A840_0 .net "s1", 0 0, L_0069AD38; 1 drivers
+v0069A8B0_0 .net "s2", 0 0, L_0069AC90; 1 drivers
+v0069A920_0 .net "saANDnotB", 0 0, L_0069AAD0; 1 drivers
+v0069A990_0 .net "snotAANDb", 0 0, L_0069AB40; 1 drivers
+    .scope S_003E74F8;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exercicio 03 - Pedro Tronbin - 410473";
+    %vpi_call 2 36 "$display", "Half Subtractor Test.";
+    %vpi_call 2 37 "$display", "A  -  B  =  C  S";
+    %set/v v003E7580_0, 0, 1;
+    %set/v v0069A388_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$monitor", "%b  -  %b  =  %b  %b", v003E7580_0, v0069A388_0, v0069A3F8_0, v0069A760_0;
+    %delay 1, 0;
+    %set/v v003E7580_0, 0, 1;
+    %set/v v0069A388_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003E7580_0, 1, 1;
+    %set/v v0069A388_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003E7580_0, 1, 1;
+    %set/v v0069A388_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\Guia03\Guia0303.V";

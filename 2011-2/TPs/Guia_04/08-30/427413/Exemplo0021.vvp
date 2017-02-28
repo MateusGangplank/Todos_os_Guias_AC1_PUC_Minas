@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0037A970 .scope module, "test_fullAdder" "test_fullAdder" 2 36;
+ .timescale 0 0;
+v005CFE68_0 .net "carry", 0 0, C4<z>; 0 drivers
+v005CFEC0_0 .net "k", 5 0, L_00374B40; 1 drivers
+v005CFF18_0 .net "soma", 5 0, C4<zzzzzz>; 0 drivers
+v005CFF70_0 .net "t", 5 0, L_00372EA8; 1 drivers
+v005CFFC8_0 .net "w", 5 0, C4<zzzzzz>; 0 drivers
+v005D0020_0 .var "x", 5 0;
+v005D0078_0 .var "y", 5 0;
+v005D00D0_0 .net "z", 5 0, C4<zzzzzz>; 0 drivers
+S_0037ACA0 .scope module, "modulo" "f4" 2 48, 2 18, S_0037A970;
+ .timescale 0 0;
+L_0037CF98 .functor OR 6, v005D0020_0, v005D0078_0, C4<000000>, C4<000000>;
+v005CFCB0_0 .net *"_s0", 5 0, L_0037CF98; 1 drivers
+v005CFD08_0 .net "a", 5 0, v005D0020_0; 1 drivers
+v005CFD60_0 .net "b", 5 0, v005D0078_0; 1 drivers
+v005CFDB8_0 .alias "s", 5 0, v005D00D0_0;
+v005CFE10_0 .net "s1", 0 0, L_005D0128; 1 drivers
+L_005D0128 .part L_0037CF98, 0, 1;
+S_0037AC18 .scope module, "modulo2" "f3" 2 49, 2 24, S_0037A970;
+ .timescale 0 0;
+L_00374B40 .functor AND 6, v005D0020_0, v005D0078_0, C4<111111>, C4<111111>;
+v003747B0_0 .alias "a", 5 0, v005CFD08_0;
+v005CFC00_0 .alias "b", 5 0, v005CFD60_0;
+v005CFC58_0 .alias "s2", 5 0, v005CFEC0_0;
+S_0037AB90 .scope module, "modulo3" "f5" 2 50, 2 30, S_0037A970;
+ .timescale 0 0;
+L_00374808 .functor XOR 6, v005D0020_0, v005D0078_0, C4<000000>, C4<000000>;
+v00374AE8_0 .net *"_s0", 5 0, L_00374808; 1 drivers
+v00374478_0 .alias "a", 5 0, v005CFD08_0;
+v003744D0_0 .alias "b", 5 0, v005CFD60_0;
+v00374528_0 .alias "s2", 5 0, v005CFFC8_0;
+v00374758_0 .net "s3", 0 0, L_005D0180; 1 drivers
+L_005D0180 .part L_00374808, 0, 1;
+S_0037AA80 .scope module, "modulo4" "fullAdder" 2 51, 2 10, S_0037A970;
+ .timescale 0 0;
+L_00374878 .functor OR 6, v005D0020_0, C4<zzzzzz>, C4<000000>, C4<000000>;
+L_00372EA8 .functor OR 6, L_00374878, v005D0078_0, C4<000000>, C4<000000>;
+v0059E5D8_0 .net *"_s0", 5 0, L_00374878; 1 drivers
+v0037DBD0_0 .alias "a", 5 0, v005CFF18_0;
+v0037DC28_0 .alias "b", 5 0, v005CFD08_0;
+v0037DC80_0 .alias "c", 5 0, v005CFD60_0;
+v00374A38_0 .alias "carryIn", 0 0, v005CFE68_0;
+v00374A90_0 .alias "s", 5 0, v005CFF70_0;
+    .scope S_0037A970;
+T_0 ;
+    %vpi_call 2 57 "$display", "Exemplo0021 - Gustavo Jota Resende - 427413";
+    %vpi_call 2 58 "$display", "Test ALU's full adder";
+    %movi 8, 54, 6;
+    %set/v v005D0020_0, 8, 6;
+    %movi 8, 21, 6;
+    %set/v v005D0078_0, 8, 6;
+    %vpi_call 2 62 "$monitor", "%b (& ou |) %b com chave %b = %b", v005D0078_0, v005D0020_0, v005CFF18_0, v005CFF70_0, v005CFE68_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\jotar\Documents\Gustavo\PUC\Segundo Período\Arquitetura de Computadores 1\427413\Guia 04\Exemplo0021.v";

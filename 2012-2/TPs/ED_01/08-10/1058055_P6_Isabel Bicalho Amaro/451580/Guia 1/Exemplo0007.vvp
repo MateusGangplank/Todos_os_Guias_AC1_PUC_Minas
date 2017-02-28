@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C5FF50 .scope module, "testnorgate" "testnorgate" 2 19;
+ .timescale 0 0;
+v00C5EDC8_0 .var "a", 0 0;
+v00C5EE20_0 .var "b", 0 0;
+v00C5EE78_0 .net "s", 0 0, L_00C5EF08; 1 drivers
+S_00C53518 .scope module, "NOR1" "norgate" 2 28, 2 11, S_00C5FF50;
+ .timescale 0 0;
+L_00C5DA50 .functor OR 1, v00C5EDC8_0, v00C5EE20_0, C4<0>, C4<0>;
+L_00C5EF08 .functor NOT 1, L_00C5DA50, C4<0>, C4<0>, C4<0>;
+v00C53120_0 .net *"_s0", 0 0, L_00C5DA50; 1 drivers
+v00C535A0_0 .net "a", 0 0, v00C5EDC8_0; 1 drivers
+v00C535F8_0 .net "b", 0 0, v00C5EE20_0; 1 drivers
+v00C5ED70_0 .alias "s", 0 0, v00C5EE78_0;
+S_00C53098 .scope begin, "start" "start" 2 32, 2 32, S_00C5FF50;
+ .timescale 0 0;
+S_00C53010 .scope begin, "main" "main" 2 39, 2 39, S_00C5FF50;
+ .timescale 0 0;
+    .scope S_00C5FF50;
+T_0 ;
+    %fork t_1, S_00C53098;
+    %jmp t_0;
+    .scope S_00C53098;
+t_1 ;
+    %set/v v00C5EDC8_0, 0, 1;
+    %set/v v00C5EE20_0, 0, 1;
+    %end;
+    .scope S_00C5FF50;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00C5FF50;
+T_1 ;
+    %fork t_3, S_00C53010;
+    %jmp t_2;
+    .scope S_00C53010;
+t_3 ;
+    %vpi_call 2 40 "$display", "Exemplo0007 - Isabel Bicalho Amaro - 451580";
+    %vpi_call 2 41 "$display", "Test nor gate";
+    %vpi_call 2 42 "$display", "\012a  ~(a|b)  b  =  s\012";
+    %vpi_call 2 43 "$monitor", "%b  ~(a|b)  %b  =  %b", v00C5EDC8_0, v00C5EE20_0, v00C5EE78_0;
+    %delay 1, 0;
+    %set/v v00C5EDC8_0, 0, 1;
+    %set/v v00C5EE20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00C5EDC8_0, 0, 1;
+    %set/v v00C5EE20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00C5EDC8_0, 1, 1;
+    %set/v v00C5EE20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00C5EDC8_0, 1, 1;
+    %set/v v00C5EE20_0, 1, 1;
+    %end;
+    .scope S_00C5FF50;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Isabel\Documents\PUC\2º Período\Arquitetura de Computadores\Guias\Guia 1\Exemplo0007.v";

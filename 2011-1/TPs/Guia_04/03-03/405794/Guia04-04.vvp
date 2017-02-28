@@ -1,0 +1,58 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF840 .scope module, "testemeiaDiferencanor" "testemeiaDiferencanor" 2 38;
+ .timescale 0 0;
+v006A3C28_0 .var "a", 0 0;
+v006A3C80_0 .var "b", 0 0;
+v006A3CD8_0 .net "s0", 0 0, L_006A3DA8; 1 drivers
+v006A3D30_0 .net "s1", 0 0, L_006A3F30; 1 drivers
+S_003EF8C0 .scope module, "DIFERENCA" "meiaDiferencanor" 2 44, 2 14, S_003EF840;
+ .timescale 0 0;
+L_00673FB8 .functor NOR 1, v006A3C28_0, v006A3C80_0, C4<0>, C4<0>;
+L_006A3DE0 .functor NOR 1, L_00673FB8, v006A3C28_0, C4<0>, C4<0>;
+L_006A3E50 .functor NOR 1, L_00673FB8, v006A3C80_0, C4<0>, C4<0>;
+L_006A3E88 .functor NOR 1, L_006A3DE0, L_006A3E50, C4<0>, C4<0>;
+L_006A3F30 .functor NOR 1, L_006A3E88, L_006A3E88, C4<0>, C4<0>;
+L_006A3FD8 .functor NOR 1, v006A3C28_0, v006A3C28_0, C4<0>, C4<0>;
+L_00673DE8 .functor NOR 1, L_006A3FD8, L_006A3FD8, C4<0>, C4<0>;
+L_006A40B0 .functor NOR 1, v006A3C80_0, v006A3C80_0, C4<0>, C4<0>;
+L_006A3DA8 .functor NOR 1, L_00673DE8, L_006A40B0, C4<0>, C4<0>;
+v003EF940_0 .net "a", 0 0, v006A3C28_0; 1 drivers
+v006A37A0_0 .net "b", 0 0, v006A3C80_0; 1 drivers
+v006A3810_0 .alias "s0", 0 0, v006A3CD8_0;
+v006A3898_0 .alias "s1", 0 0, v006A3D30_0;
+v006A3908_0 .net "temp1", 0 0, L_00673FB8; 1 drivers
+v006A3960_0 .net "temp2", 0 0, L_006A3DE0; 1 drivers
+v006A39D0_0 .net "temp3", 0 0, L_006A3E50; 1 drivers
+v006A3A68_0 .net "temp4", 0 0, L_006A3E88; 1 drivers
+v006A3AD8_0 .net "temp5", 0 0, L_006A3FD8; 1 drivers
+v006A3B48_0 .net "temp6", 0 0, L_00673DE8; 1 drivers
+v006A3BB8_0 .net "temp7", 0 0, L_006A40B0; 1 drivers
+    .scope S_003EF840;
+T_0 ;
+    %vpi_call 2 48 "$display", "\012 Guia 04 - 04 - Caio Ragacci Pimentel - 405794 ";
+    %vpi_call 2 49 "$display", "\012 MEIA DIFERENÇA SOMENTE COM NORs";
+    %vpi_call 2 50 "$display", "\012 A - B = s0 s1 \012";
+    %set/v v006A3C28_0, 0, 1;
+    %set/v v006A3C80_0, 0, 1;
+    %vpi_call 2 53 "$monitor", " %b - %b = %b %b", v006A3C28_0, v006A3C80_0, v006A3CD8_0, v006A3D30_0;
+    %delay 1, 0;
+    %set/v v006A3C28_0, 0, 1;
+    %set/v v006A3C80_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3C28_0, 1, 1;
+    %set/v v006A3C80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3C28_0, 1, 1;
+    %set/v v006A3C80_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_04\405794\Guia04-04.v";

@@ -1,0 +1,70 @@
+Duvidas sobre o Exemplo0015:
+
+Considere a seguinte linha:
+
+$display("0= %d = %3b = %3b", ~1 , (1-1), ~1 );
+
+que produziu a seguinte saída:
+
+0= -2 =   0 = 10
+
+~1 foi exibido como -2 com %d. Porque?
+~1 foi exibido como 10 com %3b. Porque?
+
+Pra mim, ~1 é o complemento de 1 de 1, que é zero.
+
+A não ser que o 1 foi representado internamente como 01,
+cujo complemento de 1 é 10. Mas o bit extra é para o sinal?
+Se for o caso, considere a seguinte linha:
+
+$display("1= %d = %3b = %3b", ~0 , (2-1), ~0 );
+
+que exibiu:
+
+1= -1 =  01 =   1
+
+Nesse caso, ~0 foi exibido como 1 com %3b (sem o bit extra,
+contrário ao que foi observado no caso anterior). Mas com %d,
+foi exibido como -1, então a representação interna devia ser 11,
+e não 1 como observado com %3b.
+
+// Considerar o seguinte:
+// ~1    = ~01 = (10) = -2
+// (1-1) =   0 
+// ~1    = ~(01) = (10) (decimal)
+// comparar com ~(1'b1) (binario)
+ 
+Não apenas isso. Considere, as seguintes linhas:
+
+$display("1= %d = %3b = %3b", ~0 , (2-1), ~0 );
+cuja saida foi '1= -1 =  01 =   1'
+
+$display("2= %d = %3b = %3b", (1+1), (3-1), ~0+~0);
+cuja saida foi '2=  2 = 010 =  10'
+
+
+Nesse caso, 2-1 (que é 1) foi exibido como 01 com %3b.
+Mas ~0+~0 (que é 2) foi exibido como 10 com %3b.
+No primeiro caso, um bit extra foi acrescentado,
+mas no segundo caso não.
+
+Duvidas sobre o Exemplo0018:
+
+Considere as seguintes linhas:
+
+e = ~(7'd25 - 7'd36) + 1;
+$display("e = %b", e);
+
+cuja saída é:
+
+e = 0001011
+
+Que é correto, pois este é o complemento de 2 de [25 - 36]
+com 7 bits. Quando eu substituo o %b por %d, a saída é 11,
+que tmabém está correto. Mas quando substituo a primeira linha
+por:
+
+e = 7'd25 - 7'd36 // não estou mais obtendo o complemento de 2
+
+E tento exibir e com %d, a saída fica "e = 117" em vez de "e = -11".
+Porque?

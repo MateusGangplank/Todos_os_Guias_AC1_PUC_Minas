@@ -1,0 +1,53 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0034EA30 .scope module, "testxorgate" "testxorgate" 2 18;
+ .timescale 0 0;
+v00343AF8_0 .var "a", 0 0;
+v0034ED20_0 .var "b", 0 0;
+v0034ED78_0 .net "s", 0 0, L_0034EEE8; 1 drivers
+S_0034EAB8 .scope module, "XOR2" "xorgate" 2 23, 2 8, S_0034EA30;
+ .timescale 0 0;
+L_0034EB40 .functor NOT 1, v00343AF8_0, C4<0>, C4<0>, C4<0>;
+L_00342DB8 .functor AND 1, L_0034EB40, v0034ED20_0, C4<1>, C4<1>;
+L_0034EE40 .functor NOT 1, v0034ED20_0, C4<0>, C4<0>, C4<0>;
+L_0034EE78 .functor AND 1, v00343AF8_0, L_0034EE40, C4<1>, C4<1>;
+L_0034EEE8 .functor OR 1, L_00342DB8, L_0034EE78, C4<0>, C4<0>;
+v0034FF70_0 .net *"_s0", 0 0, L_0034EB40; 1 drivers
+v00342CB0_0 .net *"_s2", 0 0, L_00342DB8; 1 drivers
+v00342D08_0 .net *"_s4", 0 0, L_0034EE40; 1 drivers
+v00342D60_0 .net *"_s6", 0 0, L_0034EE78; 1 drivers
+v003439F0_0 .net "p", 0 0, v00343AF8_0; 1 drivers
+v00343A48_0 .net "q", 0 0, v0034ED20_0; 1 drivers
+v00343AA0_0 .alias "s", 0 0, v0034ED78_0;
+    .scope S_0034EA30;
+T_0 ;
+    %vpi_call 2 27 "$display", "Exemplo 01_04 - Paulo Henrique - 412765";
+    %vpi_call 2 28 "$display", "Teste XOR gate outro jeito";
+    %vpi_call 2 29 "$display", "\012(a ^ b) = s\012";
+    %set/v v00343AF8_0, 0, 1;
+    %set/v v0034ED20_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "(%b ^ %b) = %b", v00343AF8_0, v0034ED20_0, v0034ED78_0;
+    %set/v v00343AF8_0, 1, 1;
+    %set/v v0034ED20_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "(%b ^ %b) = %b", v00343AF8_0, v0034ED20_0, v0034ED78_0;
+    %set/v v00343AF8_0, 0, 1;
+    %set/v v0034ED20_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "(%b ^ %b) = %b", v00343AF8_0, v0034ED20_0, v0034ED78_0;
+    %set/v v00343AF8_0, 1, 1;
+    %set/v v0034ED20_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "(%b ^ %b) = %b", v00343AF8_0, v0034ED20_0, v0034ED78_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Facul\Icarus_Verilog\bin\tps\guia01_05.v";

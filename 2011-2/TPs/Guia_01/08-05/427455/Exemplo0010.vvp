@@ -1,0 +1,96 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00584508 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v00574270_0 .var "a", 0 0;
+v005742C8_0 .var "b", 0 0;
+v00593480_0 .var "c", 0 0;
+v005934D8_0 .net "s", 0 0, L_005BBDE0; 1 drivers
+S_00584618 .scope module, "OR1" "orgate" 2 23, 2 10, S_00584508;
+ .timescale 0 0;
+L_0074FD30 .functor NOT 1, v00574270_0, C4<0>, C4<0>, C4<0>;
+L_00574358 .functor NOT 1, v005742C8_0, C4<0>, C4<0>, C4<0>;
+L_005743C8 .functor AND 1, L_0074FD30, L_00574358, C4<1>, C4<1>;
+L_005BBCB0 .functor NOT 1, v00593480_0, C4<0>, C4<0>, C4<0>;
+L_005BBD38 .functor AND 1, L_005743C8, L_005BBCB0, C4<1>, C4<1>;
+L_005BBDE0 .functor NOT 1, L_005BBD38, C4<0>, C4<0>, C4<0>;
+v00598848_0 .net *"_s0", 0 0, L_0074FD30; 1 drivers
+v0074FC28_0 .net *"_s2", 0 0, L_00574358; 1 drivers
+v0074FC80_0 .net *"_s4", 0 0, L_005743C8; 1 drivers
+v0074FCD8_0 .net *"_s6", 0 0, L_005BBCB0; 1 drivers
+v007435B0_0 .net *"_s8", 0 0, L_005BBD38; 1 drivers
+v00743608_0 .net "p", 0 0, v00574270_0; 1 drivers
+v00743660_0 .net "q", 0 0, v005742C8_0; 1 drivers
+v007436B8_0 .net "r", 0 0, v00593480_0; 1 drivers
+v00574218_0 .alias "s", 0 0, v005934D8_0;
+S_00584590 .scope begin, "start" "start" 2 25, 2 25, S_00584508;
+ .timescale 0 0;
+    .scope S_00584508;
+T_0 ;
+    %fork t_1, S_00584590;
+    %jmp t_0;
+    .scope S_00584590;
+t_1 ;
+    %set/v v00574270_0, 0, 1;
+    %set/v v005742C8_0, 0, 1;
+    %set/v v00593480_0, 0, 1;
+    %end;
+    .scope S_00584508;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00584508;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0010 - Pedro Ballona - 427455";
+    %vpi_call 2 33 "$display", "Test OR gate";
+    %set/v v00574270_0, 0, 1;
+    %set/v v005742C8_0, 0, 1;
+    %set/v v00593480_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 0, 1;
+    %set/v v005742C8_0, 0, 1;
+    %set/v v00593480_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 0, 1;
+    %set/v v005742C8_0, 1, 1;
+    %set/v v00593480_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 0, 1;
+    %set/v v005742C8_0, 1, 1;
+    %set/v v00593480_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 1, 1;
+    %set/v v005742C8_0, 0, 1;
+    %set/v v00593480_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 1, 1;
+    %set/v v005742C8_0, 0, 1;
+    %set/v v00593480_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 1, 1;
+    %set/v v005742C8_0, 1, 1;
+    %set/v v00593480_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %set/v v00574270_0, 1, 1;
+    %set/v v005742C8_0, 1, 1;
+    %set/v v00593480_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b & %b & %b = %b", v00574270_0, v005742C8_0, v00593480_0, v005934D8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\New Pedro\escola\puc cc\2o period - 2S2011\ARQ1 - Arquitetura de computadores\exercicios\guia1\Exemplo0010.v";

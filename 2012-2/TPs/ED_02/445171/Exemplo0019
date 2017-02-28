@@ -1,0 +1,80 @@
+// ------------------------- 
+// Exemplo0019 - BASE 
+// Nome: Raphael Quintao
+// Matricula: 445171
+// ------------------------- 
+// ------------------------- 
+// test number system 
+// ------------------------- 
+
+module Ma (output [7:0]s, input [7:0]a);
+	assign s = ~a + 1;
+endmodule
+
+module Mb (output [6:0]s, input [6:0]a);
+	assign s = ~a + 1;
+endmodule
+
+module Mc (output [5:0]s, input [5:0]a);
+	assign s = ~a + 1;
+endmodule
+
+module Md (output [4:0]s, input [4:0]a);
+	assign s = ~a + 1;
+endmodule
+	
+module Me (output [7:0]s, input [7:0]a);
+	assign s = ~a + 1;
+endmodule
+
+module test_base_01; 
+// ------------------------- definir dados 
+	reg [7:0] a;
+	reg [6:0] b;
+	reg [5:0] c;
+	reg [4:0] d;
+	reg [7:0] e;    
+		
+	wire [7:0] sA;
+	wire [6:0] sB;
+	wire [5:0] sC;
+	wire [4:0] sD;
+	wire [7:0] sE;  
+	
+	Ma A(sA, a); 
+	Mb B(sB, b);
+	Mc C(sC, c);
+	Md D(sD, d);
+	Me E(sE, e);
+	
+initial begin: start
+	a = 6'b101011; 
+	b = 57;
+	c = 27;
+	d = 'hC;
+	e = 'o21;
+end
+	
+// ------------------------- parte principal 
+initial begin
+	$display("Exemplo0019 - Raphael Quintao - 445171"); 
+	$display("Test number system"); 
+	 
+	#1 
+	$display("\na)");
+	$display("%b = %b", a, sA);
+
+	$display("\nb)");
+	$display("%d = %b", b, sB);
+							
+	$display("\nc)");
+	$display("%d = %b", c, sC);
+	
+	$display("\nd)");
+	$display("%h = %b", d, sD);
+				
+	$display("\ne)");
+	$display("%b = %b", e, sE);	
+
+end 
+endmodule // test_base 

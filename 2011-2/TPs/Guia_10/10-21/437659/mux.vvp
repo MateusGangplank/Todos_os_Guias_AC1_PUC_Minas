@@ -1,0 +1,47 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003430A8 .scope module, "mux" "mux" 2 1;
+ .timescale 0 0;
+v00343130_0 .net "din_0", 0 0, C4<z>; 0 drivers
+v00344E20_0 .net "din_1", 0 0, C4<z>; 0 drivers
+v00344E78_0 .var "mux_out", 0 0;
+v00344ED0_0 .net "sel", 0 0, C4<z>; 0 drivers
+E_00349248 .event edge, v00344E20_0, v00343130_0, v00344ED0_0;
+S_00344D38 .scope begin, "MUX" "MUX" 2 15, 2 15, S_003430A8;
+ .timescale 0 0;
+    .scope S_003430A8;
+T_0 ;
+    %set/v v00344E78_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003430A8;
+T_1 ;
+    %wait E_00349248;
+    %fork t_1, S_00344D38;
+    %jmp t_0;
+    .scope S_00344D38;
+t_1 ;
+    %load/v 8, v00344ED0_0, 1;
+    %cmpi/u 8, 0, 1;
+    %jmp/0xz  T_1.0, 4;
+    %load/v 8, v00343130_0, 1;
+    %set/v v00344E78_0, 8, 1;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v00344E20_0, 1;
+    %set/v v00344E78_0, 8, 1;
+T_1.1 ;
+    %end;
+    .scope S_003430A8;
+t_0 %join;
+    %jmp T_1;
+    .thread T_1, $push;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\PenDrive\PUC\2periodo\AC\Guia10\mux.v";

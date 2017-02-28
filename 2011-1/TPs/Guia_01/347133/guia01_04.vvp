@@ -1,0 +1,54 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E6D20 .scope module, "testxorgate" "testxorgate" 2 24;
+ .timescale 0 0;
+v005F9DB0_0 .var "a", 0 0;
+v005F9E08_0 .var "b", 0 0;
+v005F9E60_0 .net "s", 0 0, L_003E6BD0; 1 drivers
+S_003E8CC0 .scope module, "XOR1" "xorgate" 2 28, 2 11, S_003E6D20;
+ .timescale 0 0;
+L_003E6BD0 .functor XOR 1, v005F9DB0_0, v005F9E08_0, C4<0>, C4<0>;
+v005D0D08_0 .net "a", 0 0, v005F9DB0_0; 1 drivers
+v005F9CB8_0 .net "b", 0 0, v005F9E08_0; 1 drivers
+v005F9D28_0 .alias "s", 0 0, v005F9E60_0;
+S_003E8C38 .scope begin, "main" "main" 2 31, 2 31, S_003E6D20;
+ .timescale 0 0;
+    .scope S_003E6D20;
+T_0 ;
+    %fork t_1, S_003E8C38;
+    %jmp t_0;
+    .scope S_003E8C38;
+t_1 ;
+    %vpi_call 2 32 "$display", "Guia 01_04(Extra) - Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 33 "$display", "Test XOR gate";
+    %vpi_call 2 34 "$display", "\012a ^ b = s\012";
+    %set/v v005F9DB0_0, 0, 1;
+    %set/v v005F9E08_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b ^ %b = %b", v005F9DB0_0, v005F9E08_0, v005F9E60_0;
+    %set/v v005F9DB0_0, 0, 1;
+    %set/v v005F9E08_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b ^ %b = %b", v005F9DB0_0, v005F9E08_0, v005F9E60_0;
+    %set/v v005F9DB0_0, 1, 1;
+    %set/v v005F9E08_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b ^ %b = %b", v005F9DB0_0, v005F9E08_0, v005F9E60_0;
+    %set/v v005F9DB0_0, 1, 1;
+    %set/v v005F9E08_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b ^ %b = %b", v005F9DB0_0, v005F9E08_0, v005F9E60_0;
+    %end;
+    .scope S_003E6D20;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\Guia01\guia01_04.v";

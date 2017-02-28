@@ -1,0 +1,59 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8c117f0 .scope module, "testnorgate" "testnorgate" 2 16;
+ .timescale 0 0;
+v0x8c0f200_0 .var "a", 0 0;
+v0x8c0f280_0 .var "b", 0 0;
+v0x8c0f2f0_0 .net "s", 0 0, L_0x8c0f428; 1 drivers
+S_0x8bef1d0 .scope module, "NOR1" "norgate" 2 23, 2 9, S_0x8c117f0;
+ .timescale 0 0;
+L_0x8c0f360 .functor OR 1, v0x8c0f200_0, v0x8c0f280_0, C4<0>, C4<0>;
+L_0x8c0f428 .functor NOT 1, L_0x8c0f360, C4<0>, C4<0>, C4<0>;
+v0x8c118f0_0 .net *"_s0", 0 0, L_0x8c0f360; 1 drivers
+v0x8c0f0d8_0 .net "a", 0 0, v0x8c0f200_0; 1 drivers
+v0x8c0f138_0 .net "b", 0 0, v0x8c0f280_0; 1 drivers
+v0x8c0f198_0 .alias "s", 0 0, v0x8c0f2f0_0;
+S_0x8c11870 .scope begin, "start" "start" 2 25, 2 25, S_0x8c117f0;
+ .timescale 0 0;
+    .scope S_0x8c117f0;
+T_0 ;
+    %fork t_1, S_0x8c11870;
+    %jmp t_0;
+    .scope S_0x8c11870;
+t_1 ;
+    %set/v v0x8c0f200_0, 0, 1;
+    %set/v v0x8c0f280_0, 0, 1;
+    %end;
+    .scope S_0x8c117f0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8c117f0;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exrcicio2 - Guilherme Alves - 450161";
+    %vpi_call 2 31 "$display", "Test NOR gate";
+    %vpi_call 2 32 "$display", "a  b = s";
+    %vpi_call 2 33 "$monitor", v0x8c0f200_0, "  ", v0x8c0f280_0, "   ", v0x8c0f2f0_0;
+    %delay 1, 0;
+    %set/v v0x8c0f200_0, 0, 1;
+    %set/v v0x8c0f280_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8c0f200_0, 0, 1;
+    %set/v v0x8c0f280_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8c0f200_0, 1, 1;
+    %set/v v0x8c0f280_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8c0f200_0, 1, 1;
+    %set/v v0x8c0f280_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/guilherme/Área de Trabalho/ac/exercicio2.v";

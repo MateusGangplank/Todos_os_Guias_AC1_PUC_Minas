@@ -1,0 +1,120 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00749468 .scope module, "testnorgate" "testnorgate" 2 24;
+ .timescale 0 0;
+v007C51A8_0 .var "a", 0 0;
+v007C5200_0 .var "b", 0 0;
+v007C5258_0 .var "c", 0 0;
+v007C52B0_0 .var "d", 0 0;
+v007C5308_0 .var "e", 0 0;
+v007C5360_0 .var "f", 0 0;
+v007C53B8_0 .var "g", 0 0;
+v007C5410_0 .var "h", 0 0;
+v007C5468_0 .net "s", 0 0, L_007C61E8; 1 drivers
+S_00749600 .scope module, "NOR1" "norgate" 2 29, 2 9, S_00749468;
+ .timescale 0 0;
+L_0074CD30 .functor OR 1, v007C51A8_0, v007C5200_0, C4<0>, C4<0>;
+L_0074CDD8 .functor OR 1, L_0074CD30, v007C5258_0, C4<0>, C4<0>;
+L_0074CE80 .functor OR 1, L_0074CDD8, v007C52B0_0, C4<0>, C4<0>;
+L_007C5FD8 .functor OR 1, L_0074CE80, v007C5308_0, C4<0>, C4<0>;
+L_007C6080 .functor OR 1, L_007C5FD8, v007C5360_0, C4<0>, C4<0>;
+L_007C6128 .functor OR 1, L_007C6080, v007C53B8_0, C4<0>, C4<0>;
+L_007C61E8 .functor OR 1, L_007C6128, v007C5410_0, C4<0>, C4<0>;
+v00742D20_0 .net *"_s0", 0 0, L_0074CD30; 1 drivers
+v00742D78_0 .net *"_s10", 0 0, L_007C6128; 1 drivers
+v00742DD0_0 .net *"_s2", 0 0, L_0074CDD8; 1 drivers
+v007449F8_0 .net *"_s4", 0 0, L_0074CE80; 1 drivers
+v00744A50_0 .net *"_s6", 0 0, L_007C5FD8; 1 drivers
+v00744AA8_0 .net *"_s8", 0 0, L_007C6080; 1 drivers
+v00744B00_0 .net "p", 0 0, v007C51A8_0; 1 drivers
+v0074CC28_0 .net "q", 0 0, v007C5200_0; 1 drivers
+v0074CC80_0 .net "r", 0 0, v007C5258_0; 1 drivers
+v0074CCD8_0 .alias "s", 0 0, v007C5468_0;
+v007C4FF0_0 .net "t", 0 0, v007C52B0_0; 1 drivers
+v007C5048_0 .net "u", 0 0, v007C5308_0; 1 drivers
+v007C50A0_0 .net "v", 0 0, v007C5360_0; 1 drivers
+v007C50F8_0 .net "x", 0 0, v007C53B8_0; 1 drivers
+v007C5150_0 .net "y", 0 0, v007C5410_0; 1 drivers
+S_00749578 .scope begin, "start" "start" 2 31, 2 31, S_00749468;
+ .timescale 0 0;
+S_007494F0 .scope begin, "main" "main" 2 42, 2 42, S_00749468;
+ .timescale 0 0;
+    .scope S_00749468;
+T_0 ;
+    %fork t_1, S_00749578;
+    %jmp t_0;
+    .scope S_00749578;
+t_1 ;
+    %set/v v007C51A8_0, 0, 1;
+    %set/v v007C5200_0, 0, 1;
+    %set/v v007C5258_0, 0, 1;
+    %set/v v007C52B0_0, 0, 1;
+    %set/v v007C5308_0, 0, 1;
+    %set/v v007C5360_0, 0, 1;
+    %set/v v007C53B8_0, 0, 1;
+    %set/v v007C5410_0, 0, 1;
+    %end;
+    .scope S_00749468;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00749468;
+T_1 ;
+    %fork t_3, S_007494F0;
+    %jmp t_2;
+    .scope S_007494F0;
+t_3 ;
+    %vpi_call 2 43 "$display", "Exercicio01-12 - Lucas Siqueira Chagas - 380783";
+    %vpi_call 2 44 "$display", "Testa se algum dos  bits de um byte \351 igual a 1.";
+    %vpi_call 2 45 "$display", "\012 (a | b | c | d | e | f | g | h ) = s\012";
+    %vpi_call 2 46 "$monitor", "(%b | %b | %b | %b | %b | %b | %b | %b ) = %b", v007C51A8_0, v007C5200_0, v007C5258_0, v007C52B0_0, v007C5308_0, v007C5360_0, v007C53B8_0, v007C5410_0, v007C5468_0;
+    %delay 1, 0;
+    %set/v v007C51A8_0, 0, 1;
+    %set/v v007C5200_0, 0, 1;
+    %set/v v007C5258_0, 0, 1;
+    %set/v v007C52B0_0, 0, 1;
+    %set/v v007C5308_0, 0, 1;
+    %set/v v007C5360_0, 0, 1;
+    %set/v v007C53B8_0, 0, 1;
+    %set/v v007C5410_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007C51A8_0, 1, 1;
+    %set/v v007C5200_0, 1, 1;
+    %set/v v007C5258_0, 1, 1;
+    %set/v v007C52B0_0, 1, 1;
+    %set/v v007C5308_0, 1, 1;
+    %set/v v007C5360_0, 1, 1;
+    %set/v v007C53B8_0, 1, 1;
+    %set/v v007C5410_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007C51A8_0, 1, 1;
+    %set/v v007C5200_0, 0, 1;
+    %set/v v007C5258_0, 0, 1;
+    %set/v v007C52B0_0, 0, 1;
+    %set/v v007C5308_0, 0, 1;
+    %set/v v007C5360_0, 0, 1;
+    %set/v v007C53B8_0, 0, 1;
+    %set/v v007C5410_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007C51A8_0, 0, 1;
+    %set/v v007C5200_0, 1, 1;
+    %set/v v007C5258_0, 1, 1;
+    %set/v v007C52B0_0, 1, 1;
+    %set/v v007C5308_0, 1, 1;
+    %set/v v007C5360_0, 1, 1;
+    %set/v v007C53B8_0, 1, 1;
+    %set/v v007C5410_0, 1, 1;
+    %end;
+    .scope S_00749468;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio12.v";

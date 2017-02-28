@@ -1,0 +1,59 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00609000 .scope module, "test" "test" 2 22;
+ .timescale 0 0;
+v0060B3F0_0 .var "chave", 0 0;
+v0060B448_0 .net "s0", 0 0, L_0060D310; 1 drivers
+v0060B4A0_0 .net "s1", 0 0, L_00784070; 1 drivers
+v0060B4F8_0 .var "x", 0 0;
+v0060B550_0 .var "y", 0 0;
+S_00609088 .scope module, "Teste" "f1" 2 25, 2 6, S_00609000;
+ .timescale 0 0;
+L_0060F4F0 .functor AND 1, v0060B4F8_0, v0060B550_0, C4<1>, C4<1>;
+L_0060CB60 .functor OR 1, v0060B4F8_0, v0060B550_0, C4<0>, C4<0>;
+L_0060CB98 .functor NAND 1, v0060B4F8_0, v0060B550_0, C4<1>, C4<1>;
+L_0060CBD0 .functor NOR 1, v0060B4F8_0, v0060B550_0, C4<0>, C4<0>;
+L_0060CC08 .functor NOT 1, v0060B3F0_0, C4<0>, C4<0>, C4<0>;
+L_0060EC60 .functor AND 1, L_0060F4F0, L_0060CC08, C4<1>, C4<1>;
+L_00783F38 .functor AND 1, L_0060CB60, L_0060CC08, C4<1>, C4<1>;
+L_00783FA8 .functor AND 1, L_0060CB98, v0060B3F0_0, C4<1>, C4<1>;
+L_0060D2A0 .functor AND 1, L_0060CBD0, v0060B3F0_0, C4<1>, C4<1>;
+L_0060D310 .functor OR 1, L_0060EC60, L_00783FA8, C4<0>, C4<0>;
+L_00784070 .functor OR 1, L_00783F38, L_0060D2A0, C4<0>, C4<0>;
+v0060AF20_0 .net "chave", 0 0, v0060B3F0_0; 1 drivers
+v0060AF78_0 .net "mtemp0", 0 0, L_0060EC60; 1 drivers
+v0060AFD0_0 .net "mtemp1", 0 0, L_00783F38; 1 drivers
+v0060B028_0 .net "mtemp2", 0 0, L_00783FA8; 1 drivers
+v0060B080_0 .net "mtemp3", 0 0, L_0060D2A0; 1 drivers
+v0060B0D8_0 .net "nchave", 0 0, L_0060CC08; 1 drivers
+v0060B130_0 .alias "s0", 0 0, v0060B448_0;
+v0060B188_0 .alias "s1", 0 0, v0060B4A0_0;
+v0060B1E0_0 .net "temp0", 0 0, L_0060F4F0; 1 drivers
+v0060B238_0 .net "temp1", 0 0, L_0060CB60; 1 drivers
+v0060B290_0 .net "temp2", 0 0, L_0060CB98; 1 drivers
+v0060B2E8_0 .net "temp3", 0 0, L_0060CBD0; 1 drivers
+v0060B340_0 .net "x", 0 0, v0060B4F8_0; 1 drivers
+v0060B398_0 .net "y", 0 0, v0060B550_0; 1 drivers
+    .scope S_00609000;
+T_0 ;
+    %vpi_call 2 27 "$display", "Exemplo0033 - Miguel Sousa - 463985";
+    %vpi_call 2 28 "$display", "Test LU's module";
+    %set/v v0060B4F8_0, 1, 1;
+    %set/v v0060B550_0, 0, 1;
+    %set/v v0060B3F0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "X AND Y & X OR Y =%3b &%3b", v0060B448_0, v0060B4A0_0;
+    %set/v v0060B3F0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "X NAND Y & X NOR Y =%3b &%3b", v0060B448_0, v0060B4A0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Zpessoais\(C)Materiais de Estudos\Puc\Arquitetura 01\WorkSpace\Exemplo033.v";

@@ -1,0 +1,69 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008A9CB0 .scope module, "TESTE" "TESTE" 2 31;
+ .timescale 0 0;
+v008AC6D0_0 .var "x", 0 0;
+v008AC728_0 .var "y", 0 0;
+v008AC780_0 .net "z", 0 0, L_00764F80; 1 drivers
+S_008A9DC0 .scope module, "portas" "F4" 2 41, 2 7, S_008A9CB0;
+ .timescale 0 0;
+L_008A9138 .functor OR 1, v008AC6D0_0, v008AC728_0, C4<0>, C4<0>;
+L_008AB9D0 .functor NOR 1, v008AC6D0_0, v008AC728_0, C4<0>, C4<0>;
+L_008ABA08 .functor XOR 1, v008AC6D0_0, v008AC728_0, C4<0>, C4<0>;
+L_008A9170 .functor XNOR 1, v008AC6D0_0, v008AC728_0, C4<0>, C4<0>;
+L_008A91A8 .functor BUF 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_008ABA40 .functor NOT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_008ABAB0 .functor BUF 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_008AD7C8 .functor NOT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_008AD838 .functor AND 1, L_008ABA40, L_008AD7C8, L_008A9138, C4<1>;
+L_00764DC0 .functor AND 1, L_008ABA40, L_008ABAB0, L_008AB9D0, C4<1>;
+L_00764E68 .functor AND 1, L_008A91A8, L_008AD7C8, L_008ABA08, C4<1>;
+L_00764F10 .functor AND 1, L_008A91A8, L_008ABAB0, L_008A9170, C4<1>;
+L_00764F80 .functor OR 1, L_008AD838, L_00764DC0, L_00764E68, L_00764F10;
+v008AC0F8_0 .net "a", 0 0, v008AC6D0_0; 1 drivers
+v008AC150_0 .net "b", 0 0, v008AC728_0; 1 drivers
+v008AC1A8_0 .net "c0", 0 0, L_008A91A8; 1 drivers
+v008AC200_0 .net "c1", 0 0, L_008ABA40; 1 drivers
+v008AC258_0 .net "c2", 0 0, L_008ABAB0; 1 drivers
+v008AC2B0_0 .net "c3", 0 0, L_008AD7C8; 1 drivers
+v008AC308_0 .net "chave0", 0 0, C4<0>; 1 drivers
+v008AC360_0 .net "chave1", 0 0, C4<0>; 1 drivers
+v008AC3B8_0 .alias "s", 0 0, v008AC780_0;
+v008AC410_0 .net "s0", 0 0, L_008A9138; 1 drivers
+v008AC468_0 .net "s1", 0 0, L_008AB9D0; 1 drivers
+v008AC4C0_0 .net "s2", 0 0, L_008ABA08; 1 drivers
+v008AC518_0 .net "s3", 0 0, L_008A9170; 1 drivers
+v008AC570_0 .net "s4", 0 0, L_008AD838; 1 drivers
+v008AC5C8_0 .net "s5", 0 0, L_00764DC0; 1 drivers
+v008AC620_0 .net "s6", 0 0, L_00764E68; 1 drivers
+v008AC678_0 .net "s7", 0 0, L_00764F10; 1 drivers
+    .scope S_008A9CB0;
+T_0 ;
+    %set/v v008AC6D0_0, 0, 1;
+    %set/v v008AC728_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_008A9CB0;
+T_1 ;
+    %vpi_call 2 45 "$display", "Exercicio0034 - Guilherme Diniz de Assumpcao - 462269";
+    %vpi_call 2 48 "$monitor", "X %b | Y %b = %b", v008AC6D0_0, v008AC728_0, v008AC780_0;
+    %delay 1, 0;
+    %set/v v008AC728_0, 0, 1;
+    %set/v v008AC6D0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008AC728_0, 1, 1;
+    %set/v v008AC6D0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008AC6D0_0, 1, 1;
+    %set/v v008AC728_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Downloads\Guia03\Guia03\Exercicio0034.v";

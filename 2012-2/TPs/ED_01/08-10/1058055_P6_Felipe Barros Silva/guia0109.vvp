@@ -1,0 +1,164 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002E9470 .scope module, "testeAnd" "testeAnd" 2 22;
+ .timescale 0 0;
+v0035C1A8_0 .var "a", 0 0;
+v0035C200_0 .var "a1", 0 0;
+v0035C258_0 .var "b", 0 0;
+v0035C2B0_0 .var "b1", 0 0;
+v0035C308_0 .var "c", 0 0;
+v0035C360_0 .var "c1", 0 0;
+v0035C3B8_0 .var "d", 0 0;
+v0035C410_0 .var "d1", 0 0;
+v0035C468_0 .net "s", 0 0, L_00333B80; 1 drivers
+v0035C4C0_0 .net "s1", 0 0, L_00333C60; 1 drivers
+v0035C518_0 .net "s2", 0 0, L_00333D08; 1 drivers
+v0035C570_0 .net "s3", 0 0, L_00333DB0; 1 drivers
+S_002E9718 .scope module, "and1" "portaAnd" 2 29, 2 9, S_002E9470;
+ .timescale 0 0;
+L_003339C0 .functor AND 1, v0035C1A8_0, v0035C258_0, C4<1>, C4<1>;
+L_00333AD8 .functor AND 1, L_003339C0, v0035C308_0, C4<1>, C4<1>;
+L_00333B80 .functor AND 1, L_00333AD8, v0035C3B8_0, C4<1>, C4<1>;
+v002E3CB0_0 .net *"_s0", 0 0, L_003339C0; 1 drivers
+v002E3D08_0 .net *"_s2", 0 0, L_00333AD8; 1 drivers
+v0035BFF0_0 .net "a", 0 0, v0035C1A8_0; 1 drivers
+v0035C048_0 .net "b", 0 0, v0035C258_0; 1 drivers
+v0035C0A0_0 .net "c", 0 0, v0035C308_0; 1 drivers
+v0035C0F8_0 .net "d", 0 0, v0035C3B8_0; 1 drivers
+v0035C150_0 .alias "s", 0 0, v0035C468_0;
+S_002E9690 .scope module, "and2" "portaAnd1" 2 30, 2 14, S_002E9470;
+ .timescale 0 0;
+L_00333C60 .functor AND 1, v0035C200_0, v0035C2B0_0, C4<1>, C4<1>;
+v00321C68_0 .net "a1", 0 0, v0035C200_0; 1 drivers
+v00321CC0_0 .net "b1", 0 0, v0035C2B0_0; 1 drivers
+v00321D18_0 .alias "s1", 0 0, v0035C4C0_0;
+S_002E9608 .scope module, "and3" "portaAnd1" 2 31, 2 14, S_002E9470;
+ .timescale 0 0;
+L_00333D08 .functor AND 1, v0035C360_0, v0035C410_0, C4<1>, C4<1>;
+v002E2E58_0 .net "a1", 0 0, v0035C360_0; 1 drivers
+v002E2EB0_0 .net "b1", 0 0, v0035C410_0; 1 drivers
+v002E2F08_0 .alias "s1", 0 0, v0035C518_0;
+S_002E9580 .scope module, "and4" "portaAnd1" 2 32, 2 14, S_002E9470;
+ .timescale 0 0;
+L_00333DB0 .functor AND 1, L_00333C60, L_00333D08, C4<1>, C4<1>;
+v002E4448_0 .alias "a1", 0 0, v0035C4C0_0;
+v002E44A0_0 .alias "b1", 0 0, v0035C518_0;
+v002E44F8_0 .alias "s1", 0 0, v0035C570_0;
+S_002E94F8 .scope begin, "start" "start" 2 36, 2 36, S_002E9470;
+ .timescale 0 0;
+    .scope S_002E9470;
+T_0 ;
+    %fork t_1, S_002E94F8;
+    %jmp t_0;
+    .scope S_002E94F8;
+t_1 ;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %end;
+    .scope S_002E9470;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002E9470;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "guia0109 - Felipe Barros - 376508";
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "tabela verdade de porta and com 4 entradas e outro modulo com 2 entradas se and";
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "a & b & c & d = s ";
+    %delay 1, 0;
+    %vpi_call 2 46 "$monitor", "%b   %b   %b   %b   %b", v0035C1A8_0, v0035C258_0, v0035C308_0, v0035C3B8_0, v0035C468_0;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 0, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 0, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 0, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C1A8_0, 1, 1;
+    %set/v v0035C258_0, 1, 1;
+    %set/v v0035C308_0, 1, 1;
+    %set/v v0035C3B8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\guia0101\guia0109.v";

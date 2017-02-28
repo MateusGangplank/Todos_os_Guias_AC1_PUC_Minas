@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E72A0 .scope module, "Exemplo0047" "Exemplo0047" 2 26;
+ .timescale 0 0;
+v005F84F0_0 .net "clock", 0 0, v005F8488_0; 1 drivers
+v005F8558_0 .net "p1", 0 0, v005F8320_0; 1 drivers
+v005F85B0_0 .net "p2", 0 0, v005F8390_0; 1 drivers
+S_005F8400 .scope module, "clk" "clock" 2 29, 3 5, S_003E72A0;
+ .timescale 0 0;
+v005F8488_0 .var "clk", 0 0;
+S_003E7328 .scope module, "pulse1" "pulse" 2 32, 2 7, S_003E72A0;
+ .timescale 0 0;
+v003E73B0_0 .alias "clock", 0 0, v005F84F0_0;
+v005F8320_0 .var "signal", 0 0;
+v005F8390_0 .var "signal1", 0 0;
+E_003E56E8 .event posedge, v003E73B0_0;
+E_003E5720 .event negedge, v003E73B0_0;
+    .scope S_005F8400;
+T_0 ;
+    %set/v v005F8488_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_005F8400;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v005F8488_0, 1;
+    %inv 8, 1;
+    %set/v v005F8488_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_003E7328;
+T_2 ;
+    %wait E_003E5720;
+    %set/v v005F8320_0, 1, 1;
+    %delay 5, 0;
+    %set/v v005F8320_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_003E7328;
+T_3 ;
+    %wait E_003E56E8;
+    %set/v v005F8390_0, 1, 1;
+    %delay 5, 0;
+    %set/v v005F8390_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_003E72A0;
+T_4 ;
+    %vpi_call 2 35 "$dumpfile", "Exemplo0047.vcd";
+    %vpi_call 2 36 "$dumpvars", 2'sb01, v005F84F0_0, v005F8558_0, v005F85B0_0;
+    %delay 120, 0;
+    %vpi_call 2 37 "$finish";
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Luhan\Meus documentos\Estudos\2º período\ARQ I\Guia 06\Exemplo0047.v";
+    "./clock.v";

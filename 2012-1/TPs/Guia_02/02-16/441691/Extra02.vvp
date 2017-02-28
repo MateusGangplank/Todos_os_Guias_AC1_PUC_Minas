@@ -1,0 +1,53 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006EFB70 .scope module, "testcomplento2" "testcomplento2" 2 12;
+ .timescale 0 0;
+v006E3468_0 .var "a", 7 0;
+v006EFD80_0 .net "s", 7 0, L_006EFE40; 1 drivers
+S_006E2F00 .scope module, "Comp2" "complemento2" 2 16, 2 9, S_006EFB70;
+ .timescale 0 0;
+L_006E2F88 .functor NOT 8, v006E3468_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v006EFBF8_0 .net *"_s0", 7 0, L_006E2F88; 1 drivers
+v006E3360_0 .net *"_s2", 7 0, C4<00000001>; 1 drivers
+v006E33B8_0 .net "p", 7 0, v006E3468_0; 1 drivers
+v006E3410_0 .alias "s", 7 0, v006EFD80_0;
+L_006EFE40 .arith/sum 8, L_006E2F88, C4<00000001>;
+S_006E2E78 .scope begin, "start" "start" 2 18, 2 18, S_006EFB70;
+ .timescale 0 0;
+    .scope S_006EFB70;
+T_0 ;
+    %fork t_1, S_006E2E78;
+    %jmp t_0;
+    .scope S_006E2E78;
+t_1 ;
+    %vpi_call 2 19 "$display", "Extra02 - Gabriel Luiz Marquezini Gon\347alves Vieira - 441691";
+    %vpi_call 2 20 "$display", "Test number system";
+    %set/v v006E3468_0, 0, 8;
+    %vpi_call 2 22 "$display", "\012Results";
+    %vpi_call 2 23 "$monitor", "C2 de %b = %b", v006E3468_0, v006EFD80_0;
+    %delay 1, 0;
+    %movi 8, 25, 8;
+    %set/v v006E3468_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 54, 8;
+    %set/v v006E3468_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 21, 8;
+    %set/v v006E3468_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 76, 8;
+    %set/v v006E3468_0, 8, 8;
+    %end;
+    .scope S_006EFB70;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Puc\2º\ARQ\Guia02\Extra02.v";

@@ -1,0 +1,54 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BC3228 .scope module, "teste_meia_diferenca" "teste_meia_diferenca" 2 30;
+ .timescale 0 0;
+v005C1E20_0 .var "a", 0 0;
+v005C1E78_0 .var "b", 0 0;
+v005C1ED0_0 .net "s0", 0 0, L_005C2C80; 1 drivers
+v005C1F28_0 .net "s1", 0 0, L_005C2E08; 1 drivers
+S_00BCB368 .scope module, "m1" "meia_diferenca" 2 35, 2 5, S_00BC3228;
+ .timescale 0 0;
+L_00BCFAC0 .functor NAND 1, v005C1E20_0, v005C1E78_0, C4<1>, C4<1>;
+L_00BCFB68 .functor NAND 1, v005C1E20_0, L_00BCFAC0, C4<1>, C4<1>;
+L_005C2C48 .functor NAND 1, L_00BCFAC0, v005C1E78_0, C4<1>, C4<1>;
+L_005C2C80 .functor NAND 1, L_00BCFB68, L_005C2C48, C4<1>, C4<1>;
+L_005C2D60 .functor NAND 1, v005C1E20_0, C4<1>, C4<1>, C4<1>;
+L_005C2D98 .functor NAND 1, L_005C2D60, v005C1E78_0, C4<1>, C4<1>;
+L_005C2E08 .functor NAND 1, L_005C2D98, C4<1>, C4<1>, C4<1>;
+v00BC32B0_0 .alias "s0", 0 0, v005C1ED0_0;
+v00BCFA10_0 .alias "s1", 0 0, v005C1F28_0;
+v00BCFA68_0 .net "t1", 0 0, L_00BCFAC0; 1 drivers
+v005C1C10_0 .net "t2", 0 0, L_00BCFB68; 1 drivers
+v005C1C68_0 .net "t3", 0 0, L_005C2C48; 1 drivers
+v005C1CC0_0 .net "t4", 0 0, L_005C2D60; 1 drivers
+v005C1D18_0 .net "t5", 0 0, L_005C2D98; 1 drivers
+v005C1D70_0 .net "x", 0 0, v005C1E20_0; 1 drivers
+v005C1DC8_0 .net "y", 0 0, v005C1E78_0; 1 drivers
+    .scope S_00BC3228;
+T_0 ;
+    %vpi_call 2 40 "$display", "\012 Guia 03-5";
+    %vpi_call 2 41 "$display", "\012 Meia diferen\377a com portas Nors";
+    %vpi_call 2 42 "$display", "\012 Vout  A - B =              ";
+    %vpi_call 2 43 "$monitor", "  %b ||%b - %b = %b", v005C1F28_0, v005C1E20_0, v005C1E78_0, v005C1ED0_0;
+    %set/v v005C1E20_0, 0, 1;
+    %set/v v005C1E78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C1E20_0, 0, 1;
+    %set/v v005C1E78_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C1E20_0, 1, 1;
+    %set/v v005C1E78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C1E20_0, 1, 1;
+    %set/v v005C1E78_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "L:\417550\Arquitetura\guia3\guia3_3.v";

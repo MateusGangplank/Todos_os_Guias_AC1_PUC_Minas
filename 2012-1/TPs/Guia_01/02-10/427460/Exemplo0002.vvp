@@ -1,0 +1,47 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003AEAF8 .scope module, "testnotgate" "testnotgate" 2 16;
+ .timescale 0 0;
+v003AEB80_0 .var "a", 0 0;
+v003A33C8_0 .net "s", 0 0, L_003A3420; 1 drivers
+S_003A3070 .scope module, "NOT1" "notgate" 2 23, 2 9, S_003AEAF8;
+ .timescale 0 0;
+L_003A3420 .functor NOT 1, v003AEB80_0, C4<0>, C4<0>, C4<0>;
+v003A30F8_0 .net "p", 0 0, v003AEB80_0; 1 drivers
+v003AE6A0_0 .alias "s", 0 0, v003A33C8_0;
+S_003A2FE8 .scope begin, "start" "start" 2 26, 2 26, S_003AEAF8;
+ .timescale 0 0;
+    .scope S_003AEAF8;
+T_0 ;
+    %fork t_1, S_003A2FE8;
+    %jmp t_0;
+    .scope S_003A2FE8;
+t_1 ;
+    %set/v v003AEB80_0, 0, 1;
+    %end;
+    .scope S_003AEAF8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003AEAF8;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0002 - Rodrigo Arruda de Assis - 427460";
+    %vpi_call 2 33 "$display", "Test NOT gate";
+    %vpi_call 2 34 "$display", "\012~a = s\012";
+    %set/v v003AEB80_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "~%b = %b", v003AEB80_0, v003A33C8_0;
+    %set/v v003AEB80_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "~%b = %b", v003AEB80_0, v003A33C8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\2012-2\AC 1\Exercicios AC\Exemplo0002.v";

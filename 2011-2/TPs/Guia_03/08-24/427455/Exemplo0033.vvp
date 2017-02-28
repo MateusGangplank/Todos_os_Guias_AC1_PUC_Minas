@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002D04F0 .scope module, "test_f4" "test_f4" 2 47;
+ .timescale 0 0;
+v0031A4C0_0 .var "a", 3 0;
+v0031A518_0 .net "j", 3 0, L_0031B1B0; 1 drivers
+v0031A570_0 .var "x", 3 0;
+v0031A5C8_0 .var "y", 3 0;
+v0031A620_0 .net "z", 3 0, L_0031B0D0; 1 drivers
+S_002D08A8 .scope module, "modulo" "AND_OR_NAND_NOR" 2 56, 2 10, S_002D04F0;
+ .timescale 0 0;
+L_002F4CC8 .functor OR 4, v0031A570_0, v0031A5C8_0, C4<0000>, C4<0000>;
+L_002F4D70 .functor AND 4, v0031A570_0, v0031A5C8_0, C4<1111>, C4<1111>;
+L_002D4308 .functor AND 4, v0031A570_0, v0031A5C8_0, C4<1111>, C4<1111>;
+L_002F4D00 .functor NOT 4, L_002D4308, C4<0000>, C4<0000>, C4<0000>;
+L_002D4340 .functor OR 4, v0031A570_0, v0031A5C8_0, C4<0000>, C4<0000>;
+L_002D4378 .functor NOT 4, L_002D4340, C4<0000>, C4<0000>, C4<0000>;
+L_002D43E8 .functor NOT 4, v0031A4C0_0, C4<0000>, C4<0000>, C4<0000>;
+L_00A2FD00 .functor AND 4, L_002F4D70, L_002D43E8, C4<1111>, C4<1111>;
+L_00A2FDA8 .functor NOT 4, v0031A4C0_0, C4<0000>, C4<0000>, C4<0000>;
+L_00A2FE10 .functor AND 4, L_002F4CC8, L_00A2FDA8, C4<1111>, C4<1111>;
+L_0031AFF0 .functor AND 4, L_002F4D00, v0031A4C0_0, C4<1111>, C4<1111>;
+L_0031B060 .functor AND 4, L_002D4378, v0031A4C0_0, C4<1111>, C4<1111>;
+L_0031B0D0 .functor OR 4, L_00A2FD00, L_0031AFF0, C4<0000>, C4<0000>;
+L_0031B1B0 .functor OR 4, L_00A2FE10, L_0031B060, C4<0000>, C4<0000>;
+v002D3090_0 .net *"_s12", 3 0, L_002D43E8; 1 drivers
+v002D30E8_0 .net *"_s16", 3 0, L_00A2FDA8; 1 drivers
+v002D3140_0 .net *"_s4", 3 0, L_002D4308; 1 drivers
+v00319FF0_0 .net *"_s8", 3 0, L_002D4340; 1 drivers
+v0031A048_0 .net "a", 3 0, v0031A570_0; 1 drivers
+v0031A0A0_0 .net "and1", 3 0, L_002F4D70; 1 drivers
+v0031A0F8_0 .net "and2", 3 0, L_00A2FD00; 1 drivers
+v0031A150_0 .net "and3", 3 0, L_00A2FE10; 1 drivers
+v0031A1A8_0 .net "and4", 3 0, L_0031AFF0; 1 drivers
+v0031A200_0 .net "and5", 3 0, L_0031B060; 1 drivers
+v0031A258_0 .net "b", 3 0, v0031A5C8_0; 1 drivers
+v0031A2B0_0 .net "e", 3 0, v0031A4C0_0; 1 drivers
+v0031A308_0 .net "nand1", 3 0, L_002F4D00; 1 drivers
+v0031A360_0 .net "nor1", 3 0, L_002D4378; 1 drivers
+v0031A3B8_0 .net "or1", 3 0, L_002F4CC8; 1 drivers
+v0031A410_0 .alias "s1", 3 0, v0031A620_0;
+v0031A468_0 .alias "s2", 3 0, v0031A518_0;
+    .scope S_002D04F0;
+T_0 ;
+    %vpi_call 2 61 "$display", "Exemplo0032 - Pedro Ballona - 427455";
+    %vpi_call 2 62 "$display", "Test LU's module";
+    %movi 8, 6, 4;
+    %set/v v0031A570_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v0031A5C8_0, 8, 4;
+    %set/v v0031A4C0_0, 1, 4;
+    %delay 1, 0;
+    %vpi_call 2 67 "$display", "%3b %3b %3b %3b %3b", v0031A570_0, v0031A5C8_0, v0031A4C0_0, v0031A620_0, v0031A518_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\New Pedro\escola\puc cc\2o period - 2S2011\ARQ1 - Arquitetura de computadores\exercicios\guia3\Exemplo0033.v";

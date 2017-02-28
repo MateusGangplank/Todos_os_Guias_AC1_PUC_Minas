@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C9350 .scope module, "test_fullComparador" "test_fullComparador" 2 31;
+ .timescale 0 0;
+v005CF6D8_0 .net "comp", 0 0, L_005D0518; 1 drivers
+v005CF730_0 .var "x", 2 0;
+v005CF788_0 .var "y", 2 0;
+S_003C92C8 .scope module, "f1" "fullComparador" 2 36, 2 18, S_003C9350;
+ .timescale 0 0;
+L_005D04E0 .functor AND 1, L_003C3378, L_003C2E40, C4<1>, C4<1>;
+L_005D0518 .functor AND 1, L_005D04E0, L_003CCCF8, C4<1>, C4<1>;
+v005CF470_0 .net "a", 2 0, v005CF730_0; 1 drivers
+v005CF4C8_0 .net "b", 2 0, v005CF788_0; 1 drivers
+v005CF520_0 .alias "s", 0 0, v005CF6D8_0;
+v005CF578_0 .net "w1", 0 0, L_003C3378; 1 drivers
+v005CF5D0_0 .net "w2", 0 0, L_003C2E40; 1 drivers
+v005CF628_0 .net "w3", 0 0, L_003CCCF8; 1 drivers
+v005CF680_0 .net "w4", 0 0, L_005D04E0; 1 drivers
+L_005CF7E0 .part v005CF730_0, 0, 1;
+L_005CF838 .part v005CF788_0, 0, 1;
+L_005CF890 .part v005CF730_0, 1, 1;
+L_005CF8E8 .part v005CF788_0, 1, 1;
+L_005CF940 .part v005CF730_0, 2, 1;
+L_005CF998 .part v005CF788_0, 2, 1;
+S_003C91B8 .scope module, "h0" "halfComparador" 2 20, 2 11, S_003C92C8;
+ .timescale 0 0;
+L_003C3378 .functor XOR 1, L_005CF7E0, L_005CF838, C4<0>, C4<0>;
+v003C3270_0 .net "a", 0 0, L_005CF7E0; 1 drivers
+v003C32C8_0 .net "b", 0 0, L_005CF838; 1 drivers
+v003C3320_0 .alias "s", 0 0, v005CF578_0;
+S_003C9460 .scope module, "h1" "halfComparador" 2 22, 2 11, S_003C92C8;
+ .timescale 0 0;
+L_003C2E40 .functor XOR 1, L_005CF890, L_005CF8E8, C4<0>, C4<0>;
+v003C4A20_0 .net "a", 0 0, L_005CF890; 1 drivers
+v003C4A78_0 .net "b", 0 0, L_005CF8E8; 1 drivers
+v003C4AD0_0 .alias "s", 0 0, v005CF5D0_0;
+S_003C9240 .scope module, "h2" "halfComparador" 2 24, 2 11, S_003C92C8;
+ .timescale 0 0;
+L_003CCCF8 .functor XOR 1, L_005CF940, L_005CF998, C4<0>, C4<0>;
+v003CFD00_0 .net "a", 0 0, L_005CF940; 1 drivers
+v003CFD58_0 .net "b", 0 0, L_005CF998; 1 drivers
+v003CFDB0_0 .alias "s", 0 0, v005CF628_0;
+    .scope S_003C9350;
+T_0 ;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "exemplo0024 - Andre Campolina - 381217";
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "Full Comparador";
+    %movi 8, 4, 3;
+    %set/v v005CF730_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v005CF788_0, 8, 3;
+    %delay 4, 0;
+    %vpi_call 2 46 "$display", "%3b %3b %b", v005CF730_0, v005CF788_0, v005CF6D8_0;
+    %movi 8, 3, 3;
+    %set/v v005CF730_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v005CF788_0, 8, 3;
+    %delay 4, 0;
+    %vpi_call 2 51 "$display", "%3b %3b %b", v005CF730_0, v005CF788_0, v005CF6D8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\André\Documents\PUC\Ciencia da Computação\2 Periodo\Arquitetura 1\Exercicios\Guia04\Exemplo0024.v";

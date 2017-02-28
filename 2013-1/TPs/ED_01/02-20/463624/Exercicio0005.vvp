@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00952CA0 .scope module, "exercicio0005" "exercicio0005" 2 15;
+ .timescale 0 0;
+v0095FE10_0 .var "a", 0 0;
+v0095FE68_0 .var "b", 0 0;
+v0095FEC0_0 .net "s", 0 0, L_0095FF88; 1 drivers
+S_00953248 .scope module, "nor1" "norGate" 2 20, 2 8, S_00952CA0;
+ .timescale 0 0;
+L_0095E610 .functor NOT 1, v0095FE10_0, C4<0>, C4<0>, C4<0>;
+L_0095FF18 .functor NOT 1, v0095FE68_0, C4<0>, C4<0>, C4<0>;
+L_0095FF88 .functor AND 1, L_0095E610, L_0095FF18, C4<1>, C4<1>;
+v009532D0_0 .net *"_s0", 0 0, L_0095E610; 1 drivers
+v0095E4B0_0 .net *"_s2", 0 0, L_0095FF18; 1 drivers
+v0095E508_0 .net "a", 0 0, v0095FE10_0; 1 drivers
+v0095E560_0 .net "b", 0 0, v0095FE68_0; 1 drivers
+v0095E5B8_0 .alias "s", 0 0, v0095FEC0_0;
+S_009531C0 .scope begin, "start" "start" 2 22, 2 22, S_00952CA0;
+ .timescale 0 0;
+S_00952D28 .scope begin, "main" "main" 2 28, 2 28, S_00952CA0;
+ .timescale 0 0;
+    .scope S_00952CA0;
+T_0 ;
+    %fork t_1, S_009531C0;
+    %jmp t_0;
+    .scope S_009531C0;
+t_1 ;
+    %set/v v0095FE10_0, 0, 1;
+    %set/v v0095FE68_0, 0, 1;
+    %end;
+    .scope S_00952CA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00952CA0;
+T_1 ;
+    %fork t_3, S_00952D28;
+    %jmp t_2;
+    .scope S_00952D28;
+t_3 ;
+    %vpi_call 2 29 "$display", "Exercicioo0004 - Mateus Cunha da Silva - 463624";
+    %vpi_call 2 30 "$display", "Tabela ";
+    %vpi_call 2 31 "$display", "\012 a ~& b = s\012";
+    %vpi_call 2 32 "$monitor", " %b ~| %b = %b ", v0095FE10_0, v0095FE68_0, v0095FEC0_0;
+    %delay 1, 0;
+    %set/v v0095FE10_0, 0, 1;
+    %set/v v0095FE68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0095FE10_0, 1, 1;
+    %set/v v0095FE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0095FE10_0, 1, 1;
+    %set/v v0095FE68_0, 1, 1;
+    %end;
+    .scope S_00952CA0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Mateus\Teste\Exercicio0005.v";

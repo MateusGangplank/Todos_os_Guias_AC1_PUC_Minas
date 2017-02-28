@@ -1,0 +1,79 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00919510 .scope module, "test_f5" "test_f5" 2 39;
+ .timescale 0 0;
+v00326308_0 .net "s0", 3 0, L_00300400; 1 drivers
+v00326360_0 .net "s1", 3 0, L_0091DC70; 1 drivers
+v003263B8_0 .net "s2", 3 0, L_00914960; 1 drivers
+v00326410_0 .net "s3", 3 0, L_0091F6F0; 1 drivers
+v00326468_0 .net "s4", 3 0, L_0091DB90; 1 drivers
+v003264C0_0 .net "s5", 3 0, L_00913B08; 1 drivers
+v00326518_0 .var "w", 3 0;
+v00326570_0 .var "x", 3 0;
+S_00919950 .scope module, "ana" "orGate" 2 49, 2 9, S_00919510;
+ .timescale 0 0;
+L_00913B08 .functor OR 4, v00326518_0, v00326570_0, C4<0000>, C4<0000>;
+v00326200_0 .alias "s5", 3 0, v003264C0_0;
+v00326258_0 .net "w", 3 0, v00326518_0; 1 drivers
+v003262B0_0 .net "x", 3 0, v00326570_0; 1 drivers
+S_009198C8 .scope module, "mari" "norGate" 2 50, 2 24, S_00919510;
+ .timescale 0 0;
+L_0091F6B8 .functor OR 4, v00326518_0, v00326570_0, C4<0000>, C4<0000>;
+L_0091F6F0 .functor NOT 4, L_0091F6B8, C4<0000>, C4<0000>, C4<0000>;
+v003260A0_0 .net *"_s0", 3 0, L_0091F6B8; 1 drivers
+v003260F8_0 .alias "s3", 3 0, v00326410_0;
+v00326150_0 .alias "w", 3 0, v00326258_0;
+v003261A8_0 .alias "x", 3 0, v003262B0_0;
+S_00919840 .scope module, "nathalia" "xorGate" 2 51, 2 14, S_00919510;
+ .timescale 0 0;
+L_00914960 .functor XOR 4, v00326518_0, v00326570_0, C4<0000>, C4<0000>;
+v00325F98_0 .alias "s2", 3 0, v003263B8_0;
+v00325FF0_0 .alias "w", 3 0, v00326258_0;
+v00326048_0 .alias "x", 3 0, v003262B0_0;
+S_009197B8 .scope module, "norberta" "xnorGate" 2 52, 2 19, S_00919510;
+ .timescale 0 0;
+L_00912D58 .functor XOR 4, v00326518_0, v00326570_0, C4<0000>, C4<0000>;
+L_0091DB90 .functor NOT 4, L_00912D58, C4<0000>, C4<0000>, C4<0000>;
+v0091F660_0 .net *"_s0", 3 0, L_00912D58; 1 drivers
+v00325E90_0 .alias "s4", 3 0, v00326468_0;
+v00325EE8_0 .alias "w", 3 0, v00326258_0;
+v00325F40_0 .alias "x", 3 0, v003262B0_0;
+S_009196A8 .scope module, "catarina" "nandGate" 2 53, 2 34, S_00919510;
+ .timescale 0 0;
+L_0091DC38 .functor AND 4, v00326518_0, v00326570_0, C4<1111>, C4<1111>;
+L_0091DC70 .functor NOT 4, L_0091DC38, C4<0000>, C4<0000>, C4<0000>;
+v00914580_0 .net *"_s0", 3 0, L_0091DC38; 1 drivers
+v009145D8_0 .alias "s1", 3 0, v00326360_0;
+v00914630_0 .alias "w", 3 0, v00326258_0;
+v0091F608_0 .alias "x", 3 0, v003262B0_0;
+S_00919598 .scope module, "olivia" "andGate" 2 54, 2 29, S_00919510;
+ .timescale 0 0;
+L_00300400 .functor AND 4, v00326518_0, v00326570_0, C4<1111>, C4<1111>;
+v00913A00_0 .alias "s0", 3 0, v00326308_0;
+v00913A58_0 .alias "w", 3 0, v00326258_0;
+v00913AB0_0 .alias "x", 3 0, v003262B0_0;
+    .scope S_00919510;
+T_0 ;
+    %vpi_call 2 57 "$display", "Exemplo0035 - Pedro Henrique Vilar Locatelli - 427453";
+    %vpi_call 2 58 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v00326518_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v00326570_0, 8, 4;
+    %vpi_call 2 61 "$display", "%b or %b  = %b", v00326518_0, v00326570_0, v003264C0_0;
+    %vpi_call 2 62 "$display", "%b nor %b  = %b", v00326518_0, v00326570_0, v00326410_0;
+    %vpi_call 2 63 "$display", "%b xor %b  = %b", v00326518_0, v00326570_0, v003263B8_0;
+    %vpi_call 2 64 "$display", "%b xnor %b  = %b", v00326518_0, v00326570_0, v00326468_0;
+    %vpi_call 2 65 "$display", "%b nand %b  = %b", v00326518_0, v00326570_0, v00326308_0;
+    %vpi_call 2 66 "$display", "%b and %b  = %b", v00326518_0, v00326570_0, v00326360_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Brock\pedLoc\Aulas\puccdc2\terrorVerilog\Guia03\Exemplo0035.v";

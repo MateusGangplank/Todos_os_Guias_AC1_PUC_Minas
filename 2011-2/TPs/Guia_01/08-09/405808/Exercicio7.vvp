@@ -1,0 +1,155 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0202B6F0 .scope module, "testnand8gate" "testnand8gate" 2 16;
+ .timescale 0 0;
+v02063F10_0 .var "a", 0 0;
+v02063F68_0 .var "b", 0 0;
+v02063FC0_0 .var "c", 0 0;
+v02064018_0 .var "d", 0 0;
+v02064070_0 .var "e", 0 0;
+v020640C8_0 .var "f", 0 0;
+v02064120_0 .var "g", 0 0;
+v02064178_0 .var "h", 0 0;
+v020641D0_0 .net "s", 0 0, L_0202E848; 1 drivers
+S_0202B7F0 .scope module, "NAND81" "nand8gate" 2 22, 2 10, S_0202B6F0;
+ .timescale 0 0;
+L_0202E490 .functor OR 1, v02063F10_0, v02063F68_0, C4<0>, C4<0>;
+L_0202E500 .functor OR 1, L_0202E490, v02063FC0_0, C4<0>, C4<0>;
+L_0202E5A8 .functor OR 1, L_0202E500, v02064018_0, C4<0>, C4<0>;
+L_0202E650 .functor OR 1, L_0202E5A8, v02064070_0, C4<0>, C4<0>;
+L_0202E6F8 .functor OR 1, L_0202E650, v020640C8_0, C4<0>, C4<0>;
+L_0202E7A0 .functor OR 1, L_0202E6F8, v02064120_0, C4<0>, C4<0>;
+L_0202E848 .functor OR 1, L_0202E7A0, v02064178_0, C4<0>, C4<0>;
+v0202E380_0 .net *"_s0", 0 0, L_0202E490; 1 drivers
+v0202E3D8_0 .net *"_s10", 0 0, L_0202E7A0; 1 drivers
+v02030EA0_0 .net *"_s2", 0 0, L_0202E500; 1 drivers
+v02030EF8_0 .net *"_s4", 0 0, L_0202E5A8; 1 drivers
+v02030F50_0 .net *"_s6", 0 0, L_0202E650; 1 drivers
+v0074FC70_0 .net *"_s8", 0 0, L_0202E6F8; 1 drivers
+v0074FCC8_0 .net "a", 0 0, v02063F10_0; 1 drivers
+v0074FD20_0 .net "b", 0 0, v02063F68_0; 1 drivers
+v0074EF90_0 .net "c", 0 0, v02063FC0_0; 1 drivers
+v0074EFE8_0 .net "d", 0 0, v02064018_0; 1 drivers
+v02063D58_0 .net "e", 0 0, v02064070_0; 1 drivers
+v02063DB0_0 .net "f", 0 0, v020640C8_0; 1 drivers
+v02063E08_0 .net "g", 0 0, v02064120_0; 1 drivers
+v02063E60_0 .net "h", 0 0, v02064178_0; 1 drivers
+v02063EB8_0 .alias "s", 0 0, v020641D0_0;
+S_0202B770 .scope begin, "setup" "setup" 2 24, 2 24, S_0202B6F0;
+ .timescale 0 0;
+    .scope S_0202B6F0;
+T_0 ;
+    %fork t_1, S_0202B770;
+    %jmp t_0;
+t_1 ;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 0, 1;
+    %set/v v02063FC0_0, 0, 1;
+    %set/v v02064018_0, 0, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 0, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0202B6F0;
+T_1 ;
+    %vpi_call 2 29 "$display", "Exerc\3777cio0007 - Jos\3777 Ferreira Reis Fonseca  - 405808";
+    %vpi_call 2 30 "$display", "Test NOR8 gate";
+    %vpi_call 2 31 "$display", "\012(a | b | c | d | e | f | g | h) = s\012";
+    %delay 1, 0;
+    %vpi_call 2 32 "$monitor", "%b | %b | %b | %b | %b | %b | %b | %b = %b", v02063F10_0, v02063F68_0, v02063FC0_0, v02064018_0, v02064070_0, v020640C8_0, v02064120_0, v02064178_0, v020641D0_0;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 0, 1;
+    %set/v v02063FC0_0, 0, 1;
+    %set/v v02064018_0, 0, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 0, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 1, 1;
+    %set/v v02063FC0_0, 0, 1;
+    %set/v v02064018_0, 0, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 0, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 0, 1;
+    %set/v v02063FC0_0, 0, 1;
+    %set/v v02064018_0, 1, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 0, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 1, 1;
+    %set/v v02063FC0_0, 1, 1;
+    %set/v v02064018_0, 0, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 1, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 1, 1;
+    %set/v v02063FC0_0, 1, 1;
+    %set/v v02064018_0, 0, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 1, 1;
+    %set/v v02064120_0, 1, 1;
+    %set/v v02064178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 0, 1;
+    %set/v v02063FC0_0, 0, 1;
+    %set/v v02064018_0, 1, 1;
+    %set/v v02064070_0, 0, 1;
+    %set/v v020640C8_0, 1, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 1, 1;
+    %set/v v02063FC0_0, 1, 1;
+    %set/v v02064018_0, 0, 1;
+    %set/v v02064070_0, 1, 1;
+    %set/v v020640C8_0, 1, 1;
+    %set/v v02064120_0, 0, 1;
+    %set/v v02064178_0, 1, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 0, 1;
+    %set/v v02063F68_0, 1, 1;
+    %set/v v02063FC0_0, 1, 1;
+    %set/v v02064018_0, 1, 1;
+    %set/v v02064070_0, 1, 1;
+    %set/v v020640C8_0, 0, 1;
+    %set/v v02064120_0, 1, 1;
+    %set/v v02064178_0, 1, 1;
+    %delay 1, 0;
+    %set/v v02063F10_0, 1, 1;
+    %set/v v02063F68_0, 1, 1;
+    %set/v v02063FC0_0, 1, 1;
+    %set/v v02064018_0, 1, 1;
+    %set/v v02064070_0, 1, 1;
+    %set/v v020640C8_0, 1, 1;
+    %set/v v02064120_0, 1, 1;
+    %set/v v02064178_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio7.v";

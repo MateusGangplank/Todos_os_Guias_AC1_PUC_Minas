@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0090EC10 .scope module, "testnorgate" "testnorgate" 2 16;
+ .timescale 0 0;
+v0090EFA0_0 .var "a", 0 0;
+v0090EFF8_0 .var "b", 0 0;
+v0090F050_0 .net "s", 0 0, L_0090FE30; 1 drivers
+S_00902B08 .scope module, "nor1" "norgate" 2 21, 2 8, S_0090EC10;
+ .timescale 0 0;
+L_0090CDA0 .functor NOT 1, v0090EFA0_0, C4<0>, C4<0>, C4<0>;
+L_0090F0A8 .functor NOT 1, v0090EFF8_0, C4<0>, C4<0>, C4<0>;
+L_0090FE30 .functor AND 1, L_0090CDA0, L_0090F0A8, C4<1>, C4<1>;
+v00902F90_0 .net *"_s0", 0 0, L_0090CDA0; 1 drivers
+v00902FE8_0 .net *"_s2", 0 0, L_0090F0A8; 1 drivers
+v00903040_0 .net "p", 0 0, v0090EFA0_0; 1 drivers
+v00903098_0 .net "q", 0 0, v0090EFF8_0; 1 drivers
+v0090EF48_0 .alias "s", 0 0, v0090F050_0;
+S_00902A80 .scope begin, "start" "start" 2 23, 2 23, S_0090EC10;
+ .timescale 0 0;
+    .scope S_0090EC10;
+T_0 ;
+    %fork t_1, S_00902A80;
+    %jmp t_0;
+    .scope S_00902A80;
+t_1 ;
+    %set/v v0090EFA0_0, 0, 1;
+    %set/v v0090EFF8_0, 0, 1;
+    %end;
+    .scope S_0090EC10;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0090EC10;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0003 - Pedro Henrique Lima Pinheiro - 451605";
+    %vpi_call 2 31 "$display", "Test NOR MORGAM gate";
+    %vpi_call 2 32 "$display", "\012 ~(a | b) = s\012";
+    %set/v v0090EFA0_0, 0, 1;
+    %set/v v0090EFF8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v0090EFA0_0, v0090EFF8_0, v0090F050_0;
+    %set/v v0090EFA0_0, 0, 1;
+    %set/v v0090EFF8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v0090EFA0_0, v0090EFF8_0, v0090F050_0;
+    %set/v v0090EFA0_0, 1, 1;
+    %set/v v0090EFF8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v0090EFA0_0, v0090EFF8_0, v0090F050_0;
+    %set/v v0090EFA0_0, 1, 1;
+    %set/v v0090EFF8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v0090EFA0_0, v0090EFF8_0, v0090F050_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Pedro Henrique\trabalhos\arquitetura\ED01\Exemplo0010.v";

@@ -1,0 +1,94 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00677758 .scope module, "testeLatch" "testeLatch" 2 31;
+ .timescale 0 0;
+v006A7C08_0 .var "cl", 0 0;
+v006A7C60_0 .var "d", 0 0;
+v006A7CB8_0 .var "en", 0 0;
+v006A7D10_0 .var "pr", 0 0;
+v006A7D68_0 .net "q", 0 0, L_006A7ED0; 1 drivers
+v006A7DC0_0 .net "q_bar", 0 0, L_006A7FE8; 1 drivers
+S_006777D8 .scope module, "L1" "latchD" 2 36, 2 14, S_00677758;
+ .timescale 0 0;
+L_006741E8 .functor NAND 1, v006A7C60_0, v006A7CB8_0, C4<1>, C4<1>;
+L_006A7E18 .functor NAND 1, L_006A7E50, v006A7CB8_0, C4<1>, C4<1>;
+L_006A7E50 .functor NOT 1, v006A7C60_0, C4<0>, C4<0>, C4<0>;
+L_006A7ED0 .functor NAND 1, L_006741E8, v006A7D10_0, L_006A7FE8, C4<1>;
+L_006A7FE8 .functor NAND 1, L_006A7E18, v006A7C08_0, L_006A7ED0, C4<1>;
+v00677858_0 .net *"_s0", 0 0, L_006A7E50; 1 drivers
+v006A7860_0 .net "aux1", 0 0, L_006741E8; 1 drivers
+v006A78D0_0 .net "aux2", 0 0, L_006A7E18; 1 drivers
+v006A7958_0 .net "cl", 0 0, v006A7C08_0; 1 drivers
+v006A79C8_0 .net "d", 0 0, v006A7C60_0; 1 drivers
+v006A7A20_0 .net "en", 0 0, v006A7CB8_0; 1 drivers
+v006A7A90_0 .net "pr", 0 0, v006A7D10_0; 1 drivers
+v006A7B28_0 .alias "q", 0 0, v006A7D68_0;
+v006A7B98_0 .alias "q_bar", 0 0, v006A7DC0_0;
+    .scope S_00677758;
+T_0 ;
+    %vpi_call 2 40 "$display", "Bruno Calil Nicoliello Moreira - 405790";
+    %vpi_call 2 41 "$display", "Guia 10 - Ex 05";
+    %vpi_call 2 42 "$display", "\012Latch D\012";
+    %vpi_call 2 43 "$display", "d   en   pr  cl =  q   q_bar";
+    %vpi_call 2 44 "$monitor", "%b   %b    %b   %b  =  %b   %b", v006A7C60_0, v006A7CB8_0, v006A7D10_0, v006A7C08_0, v006A7D68_0, v006A7DC0_0;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 0, 1;
+    %set/v v006A7D10_0, 0, 1;
+    %set/v v006A7C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 0, 1;
+    %set/v v006A7D10_0, 0, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 0, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 0, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 1, 1;
+    %set/v v006A7D10_0, 0, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 1, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 1, 1;
+    %set/v v006A7CB8_0, 1, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 1, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 0, 1;
+    %set/v v006A7CB8_0, 1, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7C60_0, 1, 1;
+    %set/v v006A7CB8_0, 1, 1;
+    %set/v v006A7D10_0, 1, 1;
+    %set/v v006A7C08_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\bruno405790\Ex05.v";

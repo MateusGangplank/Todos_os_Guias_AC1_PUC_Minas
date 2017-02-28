@@ -1,0 +1,132 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006898F0 .scope module, "teste" "teste" 2 58;
+ .timescale 0 0;
+v005D19F0_0 .net "clock", 0 0, v005D1998_0; 1 drivers
+v005D1A48_0 .var "d", 0 0;
+RS_0059F184 .resolv tri, L_005D1AF8, L_005D1BA8, L_005D1C58, L_005D1D08;
+v005D1AA0_0 .net8 "saida", 3 0, RS_0059F184; 4 drivers
+S_00689D30 .scope module, "clk" "clock" 2 62, 2 10, S_006898F0;
+ .timescale 0 0;
+v005D1998_0 .var "clk", 0 0;
+S_00689B10 .scope module, "LF1" "leftRegister" 2 63, 2 37, S_006898F0;
+ .timescale 0 0;
+L_00683720 .functor OR 1, v005D1A48_0, L_005D1B50, C4<0>, C4<0>;
+L_005D2470 .functor OR 1, v005D1A48_0, L_005D1C00, C4<0>, C4<0>;
+L_005D2518 .functor OR 1, v005D1A48_0, L_005D1CB0, C4<0>, C4<0>;
+v005D1628_0 .net *"_s11", 0 0, L_005D1CB0; 1 drivers
+v005D1680_0 .net *"_s3", 0 0, L_005D1B50; 1 drivers
+v005D16D8_0 .net *"_s7", 0 0, L_005D1C00; 1 drivers
+v005D1730_0 .alias "clk", 0 0, v005D19F0_0;
+v005D1788_0 .net "d", 0 0, v005D1A48_0; 1 drivers
+v005D17E0_0 .net "d1", 0 0, L_00683720; 1 drivers
+v005D1838_0 .net "d2", 0 0, L_005D2470; 1 drivers
+v005D1890_0 .net "d3", 0 0, L_005D2518; 1 drivers
+RS_0059F094 .resolv tri, v0068D990_0, v00684480_0, v005D1470_0, v005D15D0_0;
+v005D18E8_0 .net8 "nots", 0 0, RS_0059F094; 4 drivers
+v005D1940_0 .alias "s", 3 0, v005D1AA0_0;
+L_005D1AF8 .part/pv v005D1578_0, 0, 1, 4;
+L_005D1B50 .part RS_0059F184, 0, 1;
+L_005D1BA8 .part/pv v00683660_0, 1, 1, 4;
+L_005D1C00 .part RS_0059F184, 1, 1;
+L_005D1C58 .part/pv v00684428_0, 2, 1, 4;
+L_005D1CB0 .part RS_0059F184, 2, 1;
+L_005D1D08 .part/pv v0068BE00_0, 3, 1, 4;
+S_00689CA8 .scope module, "FF0" "dff" 2 41, 2 25, S_00689B10;
+ .timescale 0 0;
+v005D14C8_0 .alias "clk", 0 0, v005D19F0_0;
+v005D1520_0 .alias "d", 0 0, v005D1788_0;
+v005D1578_0 .var "q", 0 0;
+v005D15D0_0 .var "qnot", 0 0;
+S_00689C20 .scope module, "FF1" "dff" 2 44, 2 25, S_00689B10;
+ .timescale 0 0;
+v006844D8_0 .alias "clk", 0 0, v005D19F0_0;
+v00683608_0 .alias "d", 0 0, v005D17E0_0;
+v00683660_0 .var "q", 0 0;
+v005D1470_0 .var "qnot", 0 0;
+S_00689B98 .scope module, "FF2" "dff" 2 47, 2 25, S_00689B10;
+ .timescale 0 0;
+v0068D9E8_0 .alias "clk", 0 0, v005D19F0_0;
+v0068DA40_0 .alias "d", 0 0, v005D1838_0;
+v00684428_0 .var "q", 0 0;
+v00684480_0 .var "qnot", 0 0;
+S_006897E0 .scope module, "FF3" "dff" 2 50, 2 25, S_00689B10;
+ .timescale 0 0;
+v0068B198_0 .alias "clk", 0 0, v005D19F0_0;
+v0068BB80_0 .alias "d", 0 0, v005D1890_0;
+v0068BE00_0 .var "q", 0 0;
+v0068D990_0 .var "qnot", 0 0;
+E_0068E560 .event posedge, v0068B198_0;
+    .scope S_00689D30;
+T_0 ;
+    %set/v v005D1998_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00689D30;
+T_1 ;
+    %delay 5, 0;
+    %load/v 8, v005D1998_0, 1;
+    %inv 8, 1;
+    %set/v v005D1998_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00689CA8;
+T_2 ;
+    %wait E_0068E560;
+    %load/v 8, v005D1520_0, 1;
+    %set/v v005D1578_0, 8, 1;
+    %load/v 8, v005D1578_0, 1;
+    %inv 8, 1;
+    %set/v v005D15D0_0, 8, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_00689C20;
+T_3 ;
+    %wait E_0068E560;
+    %load/v 8, v00683608_0, 1;
+    %set/v v00683660_0, 8, 1;
+    %load/v 8, v00683660_0, 1;
+    %inv 8, 1;
+    %set/v v005D1470_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00689B98;
+T_4 ;
+    %wait E_0068E560;
+    %load/v 8, v0068DA40_0, 1;
+    %set/v v00684428_0, 8, 1;
+    %load/v 8, v00684428_0, 1;
+    %inv 8, 1;
+    %set/v v00684480_0, 8, 1;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_006897E0;
+T_5 ;
+    %wait E_0068E560;
+    %load/v 8, v0068BB80_0, 1;
+    %set/v v0068BE00_0, 8, 1;
+    %load/v 8, v0068BE00_0, 1;
+    %inv 8, 1;
+    %set/v v0068D990_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_006898F0;
+T_6 ;
+    %vpi_call 2 66 "$display", "D CLOCK SAIDA";
+    %set/v v005D1A48_0, 1, 1;
+    %vpi_call 2 68 "$monitor", "%1b    %1b    %3b", v005D1A48_0, v005D19F0_0, v005D1AA0_0;
+    %delay 23, 0;
+    %set/v v005D1A48_0, 0, 1;
+    %delay 120, 0;
+    %vpi_call 2 70 "$finish";
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Samuel\Documents\Faculdade\AC I\Guias\Guia08\Exercicio2.v";

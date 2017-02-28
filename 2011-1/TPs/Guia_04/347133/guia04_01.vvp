@@ -1,0 +1,74 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7F70 .scope module, "testemeiasoma" "testemeiasoma" 2 20;
+ .timescale 0 0;
+v005FA610_0 .var "a", 0 0;
+v005FA668_0 .var "b", 0 0;
+v005FA6C0_0 .net "s0", 0 0, L_005FA7C8; 1 drivers
+v005FA718_0 .net "s1", 0 0, L_005FA800; 1 drivers
+S_003E8108 .scope module, "MEIASOMA1" "meiasoma" 2 24, 2 5, S_003E7F70;
+ .timescale 0 0;
+L_003E6BD0 .functor NAND 1, v005FA610_0, v005FA668_0, C4<1>, C4<1>;
+L_005FA800 .functor NAND 1, L_003E6BD0, L_003E6BD0, C4<1>, C4<1>;
+L_005FA8A8 .functor NAND 1, v005FA610_0, v005FA668_0, C4<1>, C4<1>;
+L_005FA8E0 .functor NAND 1, v005FA610_0, L_005FA8A8, C4<1>, C4<1>;
+L_005FA918 .functor NAND 1, L_005FA8A8, v005FA668_0, C4<1>, C4<1>;
+L_005FA7C8 .functor NAND 1, L_005FA8E0, L_005FA918, C4<1>, C4<1>;
+v005D0A00_0 .net "a", 0 0, v005FA610_0; 1 drivers
+v005FA2D8_0 .net "b", 0 0, v005FA668_0; 1 drivers
+v005FA348_0 .alias "s0", 0 0, v005FA6C0_0;
+v005FA3D0_0 .alias "s1", 0 0, v005FA718_0;
+v005FA440_0 .net "s2", 0 0, L_003E6BD0; 1 drivers
+v005FA498_0 .net "s3", 0 0, L_005FA8A8; 1 drivers
+v005FA508_0 .net "s4", 0 0, L_005FA8E0; 1 drivers
+v005FA5A0_0 .net "s5", 0 0, L_005FA918; 1 drivers
+S_003E8080 .scope begin, "start" "start" 2 26, 2 26, S_003E7F70;
+ .timescale 0 0;
+S_003E7FF8 .scope begin, "main" "main" 2 31, 2 31, S_003E7F70;
+ .timescale 0 0;
+    .scope S_003E7F70;
+T_0 ;
+    %fork t_1, S_003E8080;
+    %jmp t_0;
+    .scope S_003E8080;
+t_1 ;
+    %set/v v005FA610_0, 0, 1;
+    %set/v v005FA668_0, 0, 1;
+    %end;
+    .scope S_003E7F70;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E7F70;
+T_1 ;
+    %fork t_3, S_003E7FF8;
+    %jmp t_2;
+    .scope S_003E7FF8;
+t_3 ;
+    %vpi_call 2 32 "$display", "Nome: Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 33 "$display", "Meia Soma com portas NAND.";
+    %vpi_call 2 34 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 35 "$monitor", " %b & %b = %b %b", v005FA610_0, v005FA668_0, v005FA6C0_0, v005FA718_0;
+    %delay 1, 0;
+    %set/v v005FA610_0, 0, 1;
+    %set/v v005FA668_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FA610_0, 1, 1;
+    %set/v v005FA668_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FA610_0, 1, 1;
+    %set/v v005FA668_0, 1, 1;
+    %end;
+    .scope S_003E7F70;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\Guia04\guia04_01.v";

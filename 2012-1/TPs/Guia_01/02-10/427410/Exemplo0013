@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003FFCA8 .scope module, "testand" "testand" 2 12;
+ .timescale 0 0;
+v003F3380_0 .var "a", 0 0;
+v003F33D8_0 .var "b", 0 0;
+v003F8ED8_0 .var "c", 0 0;
+v003F8F30_0 .net "s", 0 0, L_003F9030; 1 drivers
+S_003F2CF8 .scope module, "and1" "and3" 2 17, 2 6, S_003FFCA8;
+ .timescale 0 0;
+L_003F8F88 .functor AND 1, v003F3380_0, v003F33D8_0, C4<1>, C4<1>;
+L_003F9030 .functor AND 1, L_003F8F88, v003F8ED8_0, C4<1>, C4<1>;
+v003FFD30_0 .net *"_s0", 0 0, L_003F8F88; 1 drivers
+v003F2D80_0 .net "p", 0 0, v003F3380_0; 1 drivers
+v003F2DD8_0 .net "q", 0 0, v003F33D8_0; 1 drivers
+v003F32D0_0 .net "r", 0 0, v003F8ED8_0; 1 drivers
+v003F3328_0 .alias "s", 0 0, v003F8F30_0;
+    .scope S_003FFCA8;
+T_0 ;
+    %set/v v003F3380_0, 0, 1;
+    %set/v v003F33D8_0, 0, 1;
+    %set/v v003F8ED8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003FFCA8;
+T_1 ;
+    %vpi_call 2 26 "$display", "Teste AND3";
+    %vpi_call 2 27 "$display", "\012p & q & r = s\012";
+    %vpi_call 2 28 "$monitor", "  %b   %b %b %b", v003F8F30_0, v003F3380_0, v003F33D8_0, v003F8ED8_0;
+    %delay 1, 0;
+    %set/v v003F3380_0, 0, 1;
+    %set/v v003F33D8_0, 0, 1;
+    %set/v v003F8ED8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003F3380_0, 0, 1;
+    %set/v v003F33D8_0, 1, 1;
+    %set/v v003F8ED8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003F3380_0, 0, 1;
+    %set/v v003F33D8_0, 1, 1;
+    %set/v v003F8ED8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003F3380_0, 1, 1;
+    %set/v v003F33D8_0, 0, 1;
+    %set/v v003F8ED8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003F3380_0, 1, 1;
+    %set/v v003F33D8_0, 0, 1;
+    %set/v v003F8ED8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003F3380_0, 1, 1;
+    %set/v v003F33D8_0, 1, 1;
+    %set/v v003F8ED8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003F3380_0, 1, 1;
+    %set/v v003F33D8_0, 1, 1;
+    %set/v v003F8ED8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0013.v";

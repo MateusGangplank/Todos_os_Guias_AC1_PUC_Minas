@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003BE2B8 .scope module, "testnorgate" "testnorgate" 2 11;
+ .timescale 0 0;
+v003BFF68_0 .var "a", 0 0;
+v003BE518_0 .var "b", 0 0;
+v003BE570_0 .net "s", 0 0, L_003BE600; 1 drivers
+S_003B3180 .scope module, "NOR1" "norgate" 2 15, 2 7, S_003BE2B8;
+ .timescale 0 0;
+L_003B2DA8 .functor OR 1, v003BFF68_0, v003BE518_0, C4<0>, C4<0>;
+L_003BE600 .functor NOT 1, L_003B2DA8, C4<0>, C4<0>, C4<0>;
+v003B3208_0 .net *"_s0", 0 0, L_003B2DA8; 1 drivers
+v003B3260_0 .net "p", 0 0, v003BFF68_0; 1 drivers
+v003BFEB8_0 .net "q", 0 0, v003BE518_0; 1 drivers
+v003BFF10_0 .alias "s", 0 0, v003BE570_0;
+S_003B2D20 .scope begin, "start" "start" 2 17, 2 17, S_003BE2B8;
+ .timescale 0 0;
+S_003B2C98 .scope begin, "main" "main" 2 22, 2 22, S_003BE2B8;
+ .timescale 0 0;
+    .scope S_003BE2B8;
+T_0 ;
+    %fork t_1, S_003B2D20;
+    %jmp t_0;
+    .scope S_003B2D20;
+t_1 ;
+    %set/v v003BFF68_0, 0, 1;
+    %set/v v003BE518_0, 0, 1;
+    %end;
+    .scope S_003BE2B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003BE2B8;
+T_1 ;
+    %fork t_3, S_003B2C98;
+    %jmp t_2;
+    .scope S_003B2C98;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio02 - Julio Miranda Machado - 435666";
+    %vpi_call 2 24 "$display", "Test nor gate";
+    %vpi_call 2 25 "$display", "\012\011\011\011(~(a | b)) = s\012";
+    %delay 1, 0;
+    %set/v v003BFF68_0, 0, 1;
+    %set/v v003BE518_0, 0, 1;
+    %vpi_call 2 27 "$monitor", "%d\011(~(%b | %b) = %b", $time, v003BFF68_0, v003BE518_0, v003BE570_0;
+    %delay 1, 0;
+    %set/v v003BFF68_0, 0, 1;
+    %set/v v003BE518_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003BFF68_0, 1, 1;
+    %set/v v003BE518_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003BFF68_0, 1, 1;
+    %set/v v003BE518_0, 1, 1;
+    %end;
+    .scope S_003BE2B8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio0002.v";

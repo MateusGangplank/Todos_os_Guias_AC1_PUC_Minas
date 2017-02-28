@@ -1,0 +1,79 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E7AF0 .scope module, "testoperacoes" "testoperacoes" 2 17;
+ .timescale 0 0;
+v0063A818_0 .var "a", 7 0;
+v0063A870_0 .net "s", 7 0, L_0063AC08; 1 drivers
+S_005E7C00 .scope module, "OP1" "Operacoes" 2 22, 2 10, S_005E7AF0;
+ .timescale 0 0;
+L_0063A988 .functor NOT 9, L_0063A8C8, C4<000000000>, C4<000000000>, C4<000000000>;
+v005EB3C8_0 .net *"_s0", 8 0, L_0063A8C8; 1 drivers
+v0063A440_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v0063A4B0_0 .net *"_s11", 31 0, L_0063AA28; 1 drivers
+v0063A538_0 .net *"_s12", 31 0, L_0063AB40; 1 drivers
+v0063A5A8_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0063A600_0 .net *"_s4", 8 0, L_0063A988; 1 drivers
+v0063A670_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v0063A708_0 .net "a", 7 0, v0063A818_0; 1 drivers
+v0063A778_0 .alias "s", 7 0, v0063A870_0;
+L_0063A8C8 .concat [ 8 1 0 0], v0063A818_0, C4<0>;
+L_0063AA28 .concat [ 9 23 0 0], L_0063A988, C4<00000000000000000000000>;
+L_0063AB40 .arith/sum 32, L_0063AA28, C4<00000000000000000000000000000001>;
+L_0063AC08 .part L_0063AB40, 0, 8;
+S_005E7B78 .scope begin, "start" "start" 2 24, 2 24, S_005E7AF0;
+ .timescale 0 0;
+    .scope S_005E7AF0;
+T_0 ;
+    %fork t_1, S_005E7B78;
+    %jmp t_0;
+    .scope S_005E7B78;
+t_1 ;
+    %set/v v0063A818_0, 0, 8;
+    %end;
+    .scope S_005E7AF0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005E7AF0;
+T_1 ;
+    %vpi_call 2 28 "$display", "Exercicio07 - Djonatas Tulio Rodrigues Costa - 440954";
+    %vpi_call 2 29 "$display", "Test operacoes";
+    %vpi_call 2 31 "$display", "\012Complementar de 2\012";
+    %vpi_call 2 32 "$monitor", "a = %b = %b", v0063A818_0, v0063A870_0;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 32, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 128, 8;
+    %set/v v0063A818_0, 8, 8;
+    %delay 1, 0;
+    %set/v v0063A818_0, 1, 8;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\440954\guia_02\Exercicio07.v";

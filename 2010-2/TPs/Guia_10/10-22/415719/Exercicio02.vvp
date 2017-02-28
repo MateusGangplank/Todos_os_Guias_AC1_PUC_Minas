@@ -1,0 +1,44 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006735A0 .scope module, "test" "test" 2 21;
+ .timescale 0 0;
+v006A2010_0 .net "p1", 0 0, L_006A21A8; 1 drivers
+v006A2068_0 .net "q1", 0 0, L_006728A0; 1 drivers
+v006A20C0_0 .var "r1", 0 0;
+v006A2118_0 .var "s1", 0 0;
+S_00673A38 .scope module, "srlatch" "SRlatch" 2 22, 2 9, S_006735A0;
+ .timescale 0 0;
+L_006728A0 .functor NAND 1, v006A2118_0, L_006A21A8, C4<1>, C4<1>;
+L_006A21A8 .functor NAND 1, v006A20C0_0, L_006728A0, C4<1>, C4<1>;
+v00673AB8_0 .alias "q", 0 0, v006A2068_0;
+v006A1EA8_0 .alias "qn", 0 0, v006A2010_0;
+v006A1F18_0 .net "r", 0 0, v006A20C0_0; 1 drivers
+v006A1FA0_0 .net "s", 0 0, v006A2118_0; 1 drivers
+    .scope S_006735A0;
+T_0 ;
+    %vpi_call 2 29 "$display", "Exercicio 02";
+    %vpi_call 2 30 "$display", "Marcos Felipe Martins Silva - 415719";
+    %vpi_call 2 31 "$display", "\012Set b | Clear b | Q = b |Q = b\012";
+    %vpi_call 2 32 "$monitor", "Set %b | Clear %b | Q = %b |Q = %b", v006A2118_0, v006A20C0_0, v006A2068_0, v006A2010_0;
+    %set/v v006A2118_0, 0, 1;
+    %set/v v006A20C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2118_0, 1, 1;
+    %set/v v006A20C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A2118_0, 0, 1;
+    %set/v v006A20C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A2118_0, 1, 1;
+    %set/v v006A20C0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio02.v";

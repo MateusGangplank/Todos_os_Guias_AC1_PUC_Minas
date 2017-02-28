@@ -1,0 +1,73 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0034FED0 .scope module, "testnorgate" "testnorgate" 2 17;
+ .timescale 0 0;
+v00348D50_0 .var "a", 0 0;
+v00348DA8_0 .var "b", 0 0;
+v00348E00_0 .net "s", 0 0, L_0034CAC0; 1 drivers
+S_00342C50 .scope module, "NOR1" "norgate" 2 22, 2 10, S_0034FED0;
+ .timescale 0 0;
+L_00342CD8 .functor NOT 1, v00348D50_0, C4<0>, C4<0>, C4<0>;
+L_0034CA50 .functor NOT 1, v00348DA8_0, C4<0>, C4<0>, C4<0>;
+L_0034CAC0 .functor AND 1, L_00342CD8, L_0034CA50, C4<1>, C4<1>;
+v003430C0_0 .net *"_s0", 0 0, L_00342CD8; 1 drivers
+v00343118_0 .net *"_s2", 0 0, L_0034CA50; 1 drivers
+v00343170_0 .net "p", 0 0, v00348D50_0; 1 drivers
+v003431C8_0 .net "q", 0 0, v00348DA8_0; 1 drivers
+v00348CF8_0 .alias "s", 0 0, v00348E00_0;
+S_00342BC8 .scope begin, "start" "start" 2 24, 2 24, S_0034FED0;
+ .timescale 0 0;
+S_0034FF58 .scope begin, "main" "main" 2 30, 2 30, S_0034FED0;
+ .timescale 0 0;
+    .scope S_0034FED0;
+T_0 ;
+    %fork t_1, S_00342BC8;
+    %jmp t_0;
+    .scope S_00342BC8;
+t_1 ;
+    %set/v v00348D50_0, 0, 1;
+    %set/v v00348DA8_0, 0, 1;
+    %end;
+    .scope S_0034FED0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0034FED0;
+T_1 ;
+    %fork t_3, S_0034FF58;
+    %jmp t_2;
+    .scope S_0034FF58;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exerc\355cio 0005 - Breno Macena - 462017";
+    %vpi_call 2 32 "$display", "Test NOR gate:";
+    %vpi_call 2 33 "$display", "\012~a & ~b = s\012";
+    %set/v v00348D50_0, 0, 1;
+    %set/v v00348DA8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~%b & ~%b = %b", v00348D50_0, v00348DA8_0, v00348E00_0;
+    %set/v v00348D50_0, 0, 1;
+    %set/v v00348DA8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~%b & ~%b = %b", v00348D50_0, v00348DA8_0, v00348E00_0;
+    %set/v v00348D50_0, 1, 1;
+    %set/v v00348DA8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~%b & ~%b = %b", v00348D50_0, v00348DA8_0, v00348E00_0;
+    %set/v v00348D50_0, 1, 1;
+    %set/v v00348DA8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~%b & ~%b = %b", v00348D50_0, v00348DA8_0, v00348E00_0;
+    %end;
+    .scope S_0034FED0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\BRENO\Desktop\Guia01\Exercicio0005.v";

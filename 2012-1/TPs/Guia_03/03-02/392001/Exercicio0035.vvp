@@ -1,0 +1,89 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A19790 .scope module, "test_f4" "test_f4" 2 57;
+ .timescale 0 0;
+v008EEF38_0 .var "c", 0 0;
+v008EEF90_0 .var "c2", 0 0;
+v008EEFE8_0 .var "c3", 0 0;
+v008EC460_0 .net "s", 0 0, L_008ED818; 1 drivers
+v008EC4B8_0 .var "x", 0 0;
+v008EC510_0 .var "y", 0 0;
+S_00A19818 .scope module, "modulo" "f4" 2 66, 2 9, S_00A19790;
+ .timescale 0 0;
+L_00A14C40 .functor AND 1, L_008ED770, L_008ED7A8, L_008ED7E0, L_008ED498;
+L_00A1F8B8 .functor AND 1, L_008ED770, L_008ED7A8, v008EEFE8_0, L_008ED540;
+L_00A1F998 .functor AND 1, L_008ED770, v008EEF90_0, L_008ED7E0, L_008ED5E8;
+L_00A12CB0 .functor AND 1, L_008ED770, v008EEF90_0, v008EEFE8_0, L_008ED508;
+L_00A1F8F0 .functor AND 1, v008EEF38_0, L_008ED7A8, L_008ED7E0, C4<z>;
+L_00A12D20 .functor AND 1, v008EEF38_0, L_008ED7A8, v008EEFE8_0, L_008ED690;
+L_008ED460 .functor AND 1, v008EEF38_0, v008EEF90_0, L_008ED7E0, L_008ED700;
+L_008ED498 .functor NOT 1, v008EC4B8_0, C4<0>, C4<0>, C4<0>;
+L_008ED540 .functor OR 1, v008EC4B8_0, v008EC510_0, C4<0>, C4<0>;
+L_008ED5E8 .functor NOR 1, v008EC4B8_0, v008EC510_0, C4<0>, C4<0>;
+L_008ED508 .functor AND 1, v008EC4B8_0, v008EC510_0, C4<1>, C4<1>;
+L_008ED5B0 .functor NAND 1, v008EC4B8_0, v008EC510_0, C4<1>, C4<1>;
+L_008ED690 .functor XOR 1, v008EC4B8_0, v008EC510_0, C4<0>, C4<0>;
+L_008ED700 .functor XNOR 1, v008EC4B8_0, v008EC510_0, C4<0>, C4<0>;
+L_008ED770 .functor NOT 1, v008EEF38_0, C4<0>, C4<0>, C4<0>;
+L_008ED7A8 .functor NOT 1, v008EEF90_0, C4<0>, C4<0>, C4<0>;
+L_008ED7E0 .functor NOT 1, v008EEFE8_0, C4<0>, C4<0>, C4<0>;
+L_008ED818/0/0 .functor OR 1, L_00A14C40, L_00A1F8B8, L_00A1F998, L_00A12CB0;
+L_008ED818/0/4 .functor OR 1, L_00A1F8F0, L_00A12D20, L_008ED460, C4<0>;
+L_008ED818 .functor OR 1, L_008ED818/0/0, L_008ED818/0/4, C4<0>, C4<0>;
+v008EE6F8_0 .net "a", 0 0, v008EC4B8_0; 1 drivers
+v008EE750_0 .net "b", 0 0, v008EC510_0; 1 drivers
+v008EE7A8_0 .net "chave", 0 0, v008EEF38_0; 1 drivers
+v008EE800_0 .net "chave2", 0 0, v008EEF90_0; 1 drivers
+v008EE858_0 .net "chave3", 0 0, v008EEFE8_0; 1 drivers
+v008EE8B0_0 .alias "s", 0 0, v008EC460_0;
+v008EE908_0 .net "s_and1p", 0 0, L_008ED508; 1 drivers
+v008EE960_0 .net "s_and2", 0 0, L_00A14C40; 1 drivers
+v008EE9B8_0 .net "s_and3", 0 0, L_00A1F8B8; 1 drivers
+v008EEA10_0 .net "s_and4", 0 0, L_00A1F998; 1 drivers
+v008EEA68_0 .net "s_and5", 0 0, L_00A12CB0; 1 drivers
+v008EEAC0_0 .net "s_and6", 0 0, L_00A1F8F0; 1 drivers
+v008EEB18_0 .net "s_and7", 0 0, L_00A12D20; 1 drivers
+v008EEB70_0 .net "s_and8", 0 0, L_008ED460; 1 drivers
+v008EEBC8_0 .net "s_nand1", 0 0, C4<z>; 0 drivers
+v008EEC20_0 .net "s_nand1p", 0 0, L_008ED5B0; 1 drivers
+v008EEC78_0 .net "s_nor1", 0 0, L_008ED5E8; 1 drivers
+v008EECD0_0 .net "s_not1p", 0 0, L_008ED498; 1 drivers
+v008EED28_0 .net "s_not2", 0 0, L_008ED770; 1 drivers
+v008EED80_0 .net "s_not3", 0 0, L_008ED7A8; 1 drivers
+v008EEDD8_0 .net "s_not4", 0 0, L_008ED7E0; 1 drivers
+v008EEE30_0 .net "s_or1", 0 0, L_008ED540; 1 drivers
+v008EEE88_0 .net "s_xnor1", 0 0, L_008ED700; 1 drivers
+v008EEEE0_0 .net "s_xor1", 0 0, L_008ED690; 1 drivers
+    .scope S_00A19790;
+T_0 ;
+    %vpi_call 2 69 "$display", "Exemplo0033 - Flavio A A Motta - 392001";
+    %vpi_call 2 70 "$display", "Test LU's module";
+    %delay 1, 0;
+    %set/v v008EC4B8_0, 0, 1;
+    %set/v v008EC510_0, 1, 1;
+    %set/v v008EEF38_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 75 "$monitor", "%4b %4b %4b", v008EC4B8_0, v008EC510_0, v008EC460_0, v008EEF38_0;
+    %delay 1, 0;
+    %set/v v008EC4B8_0, 0, 1;
+    %set/v v008EC510_0, 0, 1;
+    %set/v v008EEF38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008EC4B8_0, 1, 1;
+    %set/v v008EC510_0, 0, 1;
+    %set/v v008EEF38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008EC4B8_0, 1, 1;
+    %set/v v008EC510_0, 0, 1;
+    %set/v v008EEF38_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Marcos\Downloads\Programacao\Programas\AC\Exercicio0035.v";

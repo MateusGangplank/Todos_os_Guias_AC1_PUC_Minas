@@ -1,0 +1,30 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00C23260 .scope module, "dff" "dff" 2 1;
+ .timescale 0 0;
+v00C24A18_0 .net "clk", 0 0, C4<z>; 0 drivers
+v00C24F00_0 .net "d", 0 0, C4<z>; 0 drivers
+v00C24F58_0 .var "q", 0 0;
+v00C24FB0_0 .var "qnot", 0 0;
+E_00C29480 .event posedge, v00C24A18_0;
+    .scope S_00C23260;
+T_0 ;
+    %wait E_00C29480;
+    %load/v 8, v00C24F00_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00C24F58_0, 0, 8;
+    %load/v 8, v00C24F58_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00C24FB0_0, 0, 8;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\José F. R. Fonseca\Dropbox\MySoftwares\@ACI-Guias\Guias A Fazer\Guia08\dff.v";

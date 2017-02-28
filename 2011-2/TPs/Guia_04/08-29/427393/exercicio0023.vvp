@@ -1,0 +1,39 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009E36A0 .scope module, "test_comparadorI" "test_comparadorI" 2 18;
+ .timescale 0 0;
+v009E2DA8_0 .net "r", 5 0, L_009EE050; 1 drivers
+v009EDF30_0 .var "x", 5 0;
+v009EDF88_0 .var "y", 5 0;
+S_009E3728 .scope module, "modulo" "comparadorI" 2 26, 2 11, S_009E36A0;
+ .timescale 0 0;
+L_009E37B0 .functor XOR 6, v009EDF30_0, v009EDF88_0, C4<000000>, C4<000000>;
+L_009EE050 .functor NOT 6, L_009E37B0, C4<000000>, C4<000000>, C4<000000>;
+v009E2CA0_0 .net *"_s0", 5 0, L_009E37B0; 1 drivers
+v009EFF80_0 .net "a", 5 0, v009EDF30_0; 1 drivers
+v009E2CF8_0 .net "b", 5 0, v009EDF88_0; 1 drivers
+v009E2D50_0 .alias "s", 5 0, v009E2DA8_0;
+    .scope S_009E36A0;
+T_0 ;
+    %vpi_call 2 30 "$display", "Exemplo0021 - Camila Guedes Silveira - 427393";
+    %vpi_call 2 31 "$display", "Teste Comparador de Igualdade";
+    %set/v v009EDF30_0, 0, 6;
+    %set/v v009EDF88_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b  %b = %b", v009EDF30_0, v009EDF88_0, v009E2DA8_0;
+    %movi 8, 1, 6;
+    %set/v v009EDF30_0, 8, 6;
+    %set/v v009EDF88_0, 0, 6;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b  %b = %b", v009EDF30_0, v009EDF88_0, v009E2DA8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Camila\Desktop\PUC_II\AC\Guia04\exercicio0023.v";

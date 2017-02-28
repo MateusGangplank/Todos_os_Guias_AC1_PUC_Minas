@@ -1,0 +1,155 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE488 .scope module, "testexercicio04" "testexercicio04" 2 35;
+ .timescale 0 0;
+v00603C50_0 .var "a", 0 0;
+v00603CA8_0 .var "b", 0 0;
+v00603D00_0 .var "c", 0 0;
+v00603D58_0 .var "d", 0 0;
+v00603DB0_0 .net "s", 0 0, L_00604158; 1 drivers
+S_003EE620 .scope module, "EX04" "exercicio04" 2 41, 2 11, S_003EE488;
+ .timescale 0 0;
+L_003E6BC8 .functor NAND 1, v00603D00_0, v00603D00_0, C4<1>, C4<1>;
+L_00603E08 .functor NAND 1, v00603C50_0, v00603D00_0, v00603D58_0, C4<1>;
+L_00603E78 .functor NAND 1, L_00603E08, L_00603E08, C4<1>, C4<1>;
+L_00603EE8 .functor NAND 1, v00603C50_0, v00603C50_0, C4<1>, C4<1>;
+L_00603E40 .functor NAND 1, L_00603EE8, v00603D00_0, C4<1>, C4<1>;
+L_00603F58 .functor NAND 1, L_00603E40, L_00603E40, C4<1>, C4<1>;
+L_00603FC8 .functor NAND 1, v00603CA8_0, v00603D58_0, C4<1>, C4<1>;
+L_00604040 .functor NAND 1, L_00603FC8, L_00603FC8, C4<1>, C4<1>;
+L_006040B0 .functor NAND 1, v00603CA8_0, v00603D00_0, C4<1>, C4<1>;
+L_006040E8 .functor NAND 1, L_006040B0, L_006040B0, C4<1>, C4<1>;
+L_00604158 .functor NAND 1, L_00603E78, L_00603F58, L_00604040, L_006040E8;
+v003EE6A8_0 .net "a", 0 0, v00603C50_0; 1 drivers
+v006035D8_0 .net "b", 0 0, v00603CA8_0; 1 drivers
+v00603648_0 .net "c", 0 0, v00603D00_0; 1 drivers
+v006036D0_0 .net "d", 0 0, v00603D58_0; 1 drivers
+v00603740_0 .alias "s", 0 0, v00603DB0_0;
+v00603798_0 .net "temp1", 0 0, L_003E6BC8; 1 drivers
+v00603808_0 .net "temp10", 0 0, L_00603E78; 1 drivers
+v006038A0_0 .net "temp2", 0 0, L_00603E08; 1 drivers
+v00603910_0 .net "temp3", 0 0, L_00603EE8; 1 drivers
+v006039B0_0 .net "temp4", 0 0, L_00603E40; 1 drivers
+v00603A20_0 .net "temp5", 0 0, L_00603F58; 1 drivers
+v00603A90_0 .net "temp6", 0 0, L_00603FC8; 1 drivers
+v00603B00_0 .net "temp7", 0 0, L_00604040; 1 drivers
+v00603B70_0 .net "temp8", 0 0, L_006040B0; 1 drivers
+v00603BE0_0 .net "temp9", 0 0, L_006040E8; 1 drivers
+S_003EE598 .scope begin, "start" "start" 2 46, 2 46, S_003EE488;
+ .timescale 0 0;
+S_003EE510 .scope begin, "main" "main" 2 52, 2 52, S_003EE488;
+ .timescale 0 0;
+    .scope S_003EE488;
+T_0 ;
+    %fork t_1, S_003EE598;
+    %jmp t_0;
+    .scope S_003EE598;
+t_1 ;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 0, 1;
+    %end;
+    .scope S_003EE488;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EE488;
+T_1 ;
+    %fork t_3, S_003EE510;
+    %jmp t_2;
+    .scope S_003EE510;
+t_3 ;
+    %vpi_call 2 54 "$display", " LUIZ MARQUES DE OLIVEIRA";
+    %vpi_call 2 55 "$display", " GUIA 08 - EXERCICIO 04";
+    %vpi_call 2 56 "$display", " a |  b |  c |  d  =  s ";
+    %vpi_call 2 57 "$monitor", " %b  | %b  | %b |  %b  =   %b ", v00603C50_0, v00603CA8_0, v00603D00_0, v00603D58_0, v00603DB0_0;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 0, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 0, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 0, 1;
+    %set/v v00603D58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00603C50_0, 1, 1;
+    %set/v v00603CA8_0, 1, 1;
+    %set/v v00603D00_0, 1, 1;
+    %set/v v00603D58_0, 1, 1;
+    %end;
+    .scope S_003EE488;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Nova pasta\guia08_04.v";

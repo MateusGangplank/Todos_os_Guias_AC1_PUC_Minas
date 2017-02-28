@@ -1,0 +1,176 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067DC30 .scope module, "testediferenca3bits" "testediferenca3bits" 2 32;
+ .timescale 0 0;
+v006AEB58_0 .var "a0", 0 0;
+v006AEBE8_0 .var "a1", 0 0;
+v006AEC40_0 .var "b0", 0 0;
+v006AECD0_0 .var "b1", 0 0;
+v006AED28_0 .net "s0", 0 0, L_006AEEC8; 1 drivers
+v006AEDB8_0 .net "s1", 0 0, L_006AF0D0; 1 drivers
+v006AEE10_0 .net "s2", 0 0, L_006AF288; 1 drivers
+S_0067DDB0 .scope module, "DIF" "diferenca3bits" 2 35, 2 24, S_0067DC30;
+ .timescale 0 0;
+v006AE7C8_0 .net "a0", 0 0, v006AEB58_0; 1 drivers
+v006AE820_0 .net "a1", 0 0, v006AEBE8_0; 1 drivers
+v006AE8B0_0 .net "b0", 0 0, v006AEC40_0; 1 drivers
+v006AE908_0 .net "b1", 0 0, v006AECD0_0; 1 drivers
+v006AE998_0 .net "q1", 0 0, L_006AEBB0; 1 drivers
+v006AE9F0_0 .alias "s0", 0 0, v006AED28_0;
+v006AEA48_0 .alias "s1", 0 0, v006AEDB8_0;
+v006AEB00_0 .alias "s2", 0 0, v006AEE10_0;
+S_006AE590 .scope module, "MD" "meiadif" 2 28, 2 6, S_0067DDB0;
+ .timescale 0 0;
+L_006AEEC8 .functor XOR 1, v006AEB58_0, v006AEC40_0, C4<0>, C4<0>;
+L_006AEF00 .functor NOT 1, v006AEB58_0, C4<0>, C4<0>, C4<0>;
+L_006AEBB0 .functor AND 1, L_006AEF00, v006AEC40_0, C4<1>, C4<1>;
+v006AE610_0 .alias "a", 0 0, v006AE7C8_0;
+v006AE668_0 .alias "b", 0 0, v006AE8B0_0;
+v006AE6C0_0 .net "q1", 0 0, L_006AEF00; 1 drivers
+v006AE718_0 .alias "s0", 0 0, v006AED28_0;
+v006AE770_0 .alias "s1", 0 0, v006AE998_0;
+S_0067DE30 .scope module, "DF" "diferenca" 2 29, 2 15, S_0067DDB0;
+ .timescale 0 0;
+L_006AF288 .functor OR 1, L_006AF028, L_0067A370, C4<0>, C4<0>;
+v006AE2D0_0 .alias "a", 0 0, v006AE998_0;
+v006AE328_0 .alias "b", 0 0, v006AE820_0;
+v006AE380_0 .alias "c", 0 0, v006AE908_0;
+v006AE3D8_0 .net "q1", 0 0, L_006AEC98; 1 drivers
+v006AE430_0 .net "q2", 0 0, L_006AF028; 1 drivers
+v006AE488_0 .net "q3", 0 0, L_0067A370; 1 drivers
+v006AE4E0_0 .alias "s0", 0 0, v006AEDB8_0;
+v006AE538_0 .alias "s1", 0 0, v006AEE10_0;
+S_006AE038 .scope module, "M1" "meiadif" 2 19, 2 6, S_0067DE30;
+ .timescale 0 0;
+L_006AEC98 .functor XOR 1, L_006AEBB0, v006AEBE8_0, C4<0>, C4<0>;
+L_006AE878 .functor NOT 1, L_006AEBB0, C4<0>, C4<0>, C4<0>;
+L_006AF028 .functor AND 1, L_006AE878, v006AEBE8_0, C4<1>, C4<1>;
+v006AE0B8_0 .alias "a", 0 0, v006AE998_0;
+v006AE128_0 .alias "b", 0 0, v006AE820_0;
+v006AE198_0 .net "q1", 0 0, L_006AE878; 1 drivers
+v006AE220_0 .alias "s0", 0 0, v006AE3D8_0;
+v006AE278_0 .alias "s1", 0 0, v006AE430_0;
+S_0067DEB0 .scope module, "M2" "meiadif" 2 20, 2 6, S_0067DE30;
+ .timescale 0 0;
+L_006AF0D0 .functor XOR 1, L_006AEC98, v006AECD0_0, C4<0>, C4<0>;
+L_006AE960 .functor NOT 1, L_006AEC98, C4<0>, C4<0>, C4<0>;
+L_0067A370 .functor AND 1, L_006AE960, v006AECD0_0, C4<1>, C4<1>;
+v0067DF30_0 .alias "a", 0 0, v006AE3D8_0;
+v006ADE78_0 .alias "b", 0 0, v006AE908_0;
+v006ADEE8_0 .net "q1", 0 0, L_006AE960; 1 drivers
+v006ADF70_0 .alias "s0", 0 0, v006AEDB8_0;
+v006ADFE0_0 .alias "s1", 0 0, v006AE488_0;
+S_0067DD30 .scope begin, "start" "start" 2 36, 2 36, S_0067DC30;
+ .timescale 0 0;
+S_0067DCB0 .scope begin, "main" "main" 2 39, 2 39, S_0067DC30;
+ .timescale 0 0;
+    .scope S_0067DC30;
+T_0 ;
+    %fork t_1, S_0067DD30;
+    %jmp t_0;
+t_1 ;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0067DC30;
+T_1 ;
+    %fork t_3, S_0067DCB0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 40 "$display", "Jessica Daniela - 407450";
+    %vpi_call 2 41 "$display", "Exercicio 02 - Operador diferenca 3 bits";
+    %vpi_call 2 42 "$display", "\012 | a1 | a0 | - | b1 | b0 | = | s2 | s1 | s0 |\012";
+    %vpi_call 2 43 "$monitor", "   | %b | %b | - | %b | %b | = | %b | %b | %b |", v006AEBE8_0, v006AEB58_0, v006AECD0_0, v006AEC40_0, v006AEE10_0, v006AEDB8_0, v006AED28_0;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 0, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 0, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 0, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AEBE8_0, 1, 1;
+    %set/v v006AEB58_0, 1, 1;
+    %set/v v006AECD0_0, 1, 1;
+    %set/v v006AEC40_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio02.v";

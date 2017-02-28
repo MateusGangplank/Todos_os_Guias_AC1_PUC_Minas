@@ -1,0 +1,138 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00678C18 .scope module, "testesoma" "testesoma" 2 64;
+ .timescale 0 0;
+v006A9FB0_0 .var "a0", 0 0;
+v006AA040_0 .var "a1", 0 0;
+v006AA098_0 .var "b0", 0 0;
+v006AA128_0 .var "b1", 0 0;
+v006AA180_0 .net "s0", 0 0, L_006AA008; 1 drivers
+v006AA210_0 .net "s1", 0 0, L_006AA9D0; 1 drivers
+v006AA268_0 .net "s2", 0 0, L_006AAB48; 1 drivers
+S_00678D98 .scope module, "SOMA1" "soma" 2 69, 2 48, S_00678C18;
+ .timescale 0 0;
+v006A9C58_0 .net "a0", 0 0, v006A9FB0_0; 1 drivers
+v006A9CB0_0 .net "a1", 0 0, v006AA040_0; 1 drivers
+v006A9D08_0 .net "b0", 0 0, v006AA098_0; 1 drivers
+v006A9D60_0 .net "b1", 0 0, v006AA128_0; 1 drivers
+v006A9DF0_0 .alias "s0", 0 0, v006AA180_0;
+v006A9E48_0 .alias "s1", 0 0, v006AA210_0;
+v006A9ED8_0 .alias "s2", 0 0, v006AA268_0;
+v006A9F58_0 .net "w1", 0 0, L_006AA540; 1 drivers
+S_006A98B8 .scope module, "MS1" "meiasoma" 2 54, 2 11, S_00678D98;
+ .timescale 0 0;
+L_006AA320 .functor NAND 1, v006A9FB0_0, v006AA098_0, C4<1>, C4<1>;
+L_006AA358 .functor NAND 1, v006AA098_0, L_006AA320, C4<1>, C4<1>;
+L_006AA3F8 .functor NAND 1, v006A9FB0_0, L_006AA320, C4<1>, C4<1>;
+L_006AA008 .functor NAND 1, L_006AA3F8, L_006AA358, C4<1>, C4<1>;
+L_006AA508 .functor NAND 1, v006A9FB0_0, v006AA098_0, C4<1>, C4<1>;
+L_006AA540 .functor NAND 1, L_006AA508, L_006AA508, C4<1>, C4<1>;
+v006A9938_0 .alias "a", 0 0, v006A9C58_0;
+v006A9990_0 .alias "b", 0 0, v006A9D08_0;
+v006A99E8_0 .alias "s0", 0 0, v006AA180_0;
+v006A9A58_0 .alias "s1", 0 0, v006A9F58_0;
+v006A9AB0_0 .net "w1", 0 0, L_006AA320; 1 drivers
+v006A9B08_0 .net "w2", 0 0, L_006AA358; 1 drivers
+v006A9B78_0 .net "w3", 0 0, L_006AA3F8; 1 drivers
+v006A9BE8_0 .net "w4", 0 0, L_006AA508; 1 drivers
+S_00678E18 .scope module, "SC1" "somaCompleta" 2 55, 2 30, S_00678D98;
+ .timescale 0 0;
+L_006AABB8 .functor NAND 1, L_006AA818, L_006AA818, C4<1>, C4<1>;
+L_006AA850 .functor NAND 1, L_006AAB10, L_006AAB10, C4<1>, C4<1>;
+L_006AAB48 .functor NAND 1, L_006AABB8, L_006AA850, C4<1>, C4<1>;
+v006A9520_0 .alias "a", 0 0, v006A9CB0_0;
+v006A9578_0 .alias "b", 0 0, v006A9D60_0;
+v006A95D0_0 .alias "s0", 0 0, v006AA210_0;
+v006A9628_0 .alias "s1", 0 0, v006AA268_0;
+v006A9680_0 .alias "vaium", 0 0, v006A9F58_0;
+v006A96D8_0 .net "w1", 0 0, L_006AA720; 1 drivers
+v006A9730_0 .net "w2", 0 0, L_006AA818; 1 drivers
+v006A97B0_0 .net "w3", 0 0, L_006AAB10; 1 drivers
+v006A9808_0 .net "w4", 0 0, L_006AABB8; 1 drivers
+v006A9860_0 .net "w5", 0 0, L_006AA850; 1 drivers
+S_006A9128 .scope module, "MS1" "meiasoma" 2 36, 2 11, S_00678E18;
+ .timescale 0 0;
+L_006AA5E0 .functor NAND 1, v006AA040_0, v006AA128_0, C4<1>, C4<1>;
+L_006A9DB8 .functor NAND 1, v006AA128_0, L_006AA5E0, C4<1>, C4<1>;
+L_006AA6E8 .functor NAND 1, v006AA040_0, L_006AA5E0, C4<1>, C4<1>;
+L_006AA720 .functor NAND 1, L_006AA6E8, L_006A9DB8, C4<1>, C4<1>;
+L_006AA7C8 .functor NAND 1, v006AA040_0, v006AA128_0, C4<1>, C4<1>;
+L_006AA818 .functor NAND 1, L_006AA7C8, L_006AA7C8, C4<1>, C4<1>;
+v006A91A8_0 .alias "a", 0 0, v006A9CB0_0;
+v006A9218_0 .alias "b", 0 0, v006A9D60_0;
+v006A9288_0 .alias "s0", 0 0, v006A96D8_0;
+v006A92F8_0 .alias "s1", 0 0, v006A9730_0;
+v006A9350_0 .net "w1", 0 0, L_006AA5E0; 1 drivers
+v006A93A8_0 .net "w2", 0 0, L_006A9DB8; 1 drivers
+v006A9418_0 .net "w3", 0 0, L_006AA6E8; 1 drivers
+v006A94B0_0 .net "w4", 0 0, L_006AA7C8; 1 drivers
+S_00678E98 .scope module, "MS2" "meiasoma" 2 37, 2 11, S_00678E18;
+ .timescale 0 0;
+L_006AA8C0 .functor NAND 1, L_006AA720, L_006AA540, C4<1>, C4<1>;
+L_00676B70 .functor NAND 1, L_006AA540, L_006AA8C0, C4<1>, C4<1>;
+L_006AA998 .functor NAND 1, L_006AA720, L_006AA8C0, C4<1>, C4<1>;
+L_006AA9D0 .functor NAND 1, L_006AA998, L_00676B70, C4<1>, C4<1>;
+L_006AAAC0 .functor NAND 1, L_006AA720, L_006AA540, C4<1>, C4<1>;
+L_006AAB10 .functor NAND 1, L_006AAAC0, L_006AAAC0, C4<1>, C4<1>;
+v00678F18_0 .alias "a", 0 0, v006A96D8_0;
+v006A8E18_0 .alias "b", 0 0, v006A9F58_0;
+v006A8E88_0 .alias "s0", 0 0, v006AA210_0;
+v006A8F10_0 .alias "s1", 0 0, v006A97B0_0;
+v006A8F80_0 .net "w1", 0 0, L_006AA8C0; 1 drivers
+v006A8FD8_0 .net "w2", 0 0, L_00676B70; 1 drivers
+v006A9048_0 .net "w3", 0 0, L_006AA998; 1 drivers
+v006A90B8_0 .net "w4", 0 0, L_006AAAC0; 1 drivers
+S_00678D18 .scope begin, "start" "start" 2 71, 2 71, S_00678C18;
+ .timescale 0 0;
+S_00678C98 .scope begin, "main" "main" 2 78, 2 78, S_00678C18;
+ .timescale 0 0;
+    .scope S_00678C18;
+T_0 ;
+    %fork t_1, S_00678D18;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A9FB0_0, 0, 1;
+    %set/v v006AA040_0, 0, 1;
+    %set/v v006AA098_0, 0, 1;
+    %set/v v006AA128_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00678C18;
+T_1 ;
+    %fork t_3, S_00678C98;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 80 "$display", "Exercicio 04-02 - Julio Cezar Taveira Araujo - 380776";
+    %vpi_call 2 81 "$display", "Test SomaCompleta 2 bits com NANDs";
+    %vpi_call 2 82 "$display", "aaa + bbb = ssss\012";
+    %vpi_call 2 83 "$monitor", "%b%b + %b%b = %b%b%b", v006AA040_0, v006A9FB0_0, v006AA128_0, v006AA098_0, v006AA268_0, v006AA210_0, v006AA180_0;
+    %delay 1, 0;
+    %set/v v006A9FB0_0, 0, 1;
+    %set/v v006AA040_0, 1, 1;
+    %set/v v006AA098_0, 0, 1;
+    %set/v v006AA128_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A9FB0_0, 0, 1;
+    %set/v v006AA040_0, 1, 1;
+    %set/v v006AA098_0, 1, 1;
+    %set/v v006AA128_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A9FB0_0, 1, 1;
+    %set/v v006AA040_0, 1, 1;
+    %set/v v006AA098_0, 1, 1;
+    %set/v v006AA128_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\380776\Ex0504.v";

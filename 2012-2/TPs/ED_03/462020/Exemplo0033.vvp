@@ -1,0 +1,101 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C9520 .scope module, "test_lu2" "test_lu2" 2 29;
+ .timescale 0 0;
+v003CB590_0 .var "select", 0 0;
+v003CB5E8_0 .net "w", 0 0, L_005D7000; 1 drivers
+v003CB640_0 .var "x", 0 0;
+v003CB698_0 .var "y", 0 0;
+v003CB6F0_0 .net "z", 0 0, L_005D6E78; 1 drivers
+S_003C95A8 .scope module, "modulo" "lu2" 2 35, 2 9, S_003C9520;
+ .timescale 0 0;
+L_003CD630 .functor AND 1, v003CB640_0, v003CB698_0, C4<1>, C4<1>;
+L_005D6CB8 .functor OR 1, v003CB640_0, v003CB698_0, C4<0>, C4<0>;
+L_005D6D28 .functor NAND 1, v003CB640_0, v003CB698_0, C4<1>, C4<1>;
+L_005D6C80 .functor NOR 1, v003CB640_0, v003CB698_0, C4<0>, C4<0>;
+v003CB278_0 .net "a", 0 0, v003CB640_0; 1 drivers
+v003CB2D0_0 .net "b", 0 0, v003CB698_0; 1 drivers
+v003CB328_0 .alias "p", 0 0, v003CB5E8_0;
+v003CB380_0 .alias "s", 0 0, v003CB6F0_0;
+v003CB3D8_0 .net "s1", 0 0, L_003CD630; 1 drivers
+v003CB430_0 .net "s2", 0 0, L_005D6CB8; 1 drivers
+v003CB488_0 .net "s3", 0 0, L_005D6D28; 1 drivers
+v003CB4E0_0 .net "s4", 0 0, L_005D6C80; 1 drivers
+v003CB538_0 .net "selecao", 0 0, v003CB590_0; 1 drivers
+S_003C96B8 .scope module, "Mx1" "mux" 2 17, 2 21, S_003C95A8;
+ .timescale 0 0;
+L_005D6D98 .functor NOT 1, v003CB590_0, C4<0>, C4<0>, C4<0>;
+L_005D6DD0 .functor AND 1, L_005D6D28, v003CB590_0, C4<1>, C4<1>;
+L_005D6E08 .functor AND 1, L_003CD630, L_005D6D98, C4<1>, C4<1>;
+L_005D6E78 .functor OR 1, L_005D6DD0, L_005D6E08, C4<0>, C4<0>;
+v003CB010_0 .alias "a", 0 0, v003CB488_0;
+v003CB068_0 .alias "b", 0 0, v003CB3D8_0;
+v003CB0C0_0 .alias "s", 0 0, v003CB6F0_0;
+v003CB118_0 .net "s3", 0 0, L_005D6DD0; 1 drivers
+v003CB170_0 .net "s4", 0 0, L_005D6E08; 1 drivers
+v003CB1C8_0 .alias "selecao", 0 0, v003CB538_0;
+v003CB220_0 .net "selecao2", 0 0, L_005D6D98; 1 drivers
+S_003C9630 .scope module, "Mx2" "mux" 2 18, 2 21, S_003C95A8;
+ .timescale 0 0;
+L_005D6F20 .functor NOT 1, v003CB590_0, C4<0>, C4<0>, C4<0>;
+L_005D6F58 .functor AND 1, L_005D6C80, v003CB590_0, C4<1>, C4<1>;
+L_005D6F90 .functor AND 1, L_005D6CB8, L_005D6F20, C4<1>, C4<1>;
+L_005D7000 .functor OR 1, L_005D6F58, L_005D6F90, C4<0>, C4<0>;
+v003CADA8_0 .alias "a", 0 0, v003CB4E0_0;
+v003CAE00_0 .alias "b", 0 0, v003CB430_0;
+v003CAE58_0 .alias "s", 0 0, v003CB5E8_0;
+v003CAEB0_0 .net "s3", 0 0, L_005D6F58; 1 drivers
+v003CAF08_0 .net "s4", 0 0, L_005D6F90; 1 drivers
+v003CAF60_0 .alias "selecao", 0 0, v003CB538_0;
+v003CAFB8_0 .net "selecao2", 0 0, L_005D6F20; 1 drivers
+    .scope S_003C9520;
+T_0 ;
+    %vpi_call 2 38 "$display", "Exemplo0033 - Willian Antonio dos Santos - 462020";
+    %vpi_call 2 39 "$display", "Test lu2 module";
+    %set/v v003CB640_0, 0, 1;
+    %set/v v003CB698_0, 0, 1;
+    %set/v v003CB590_0, 0, 1;
+    %vpi_call 2 41 "$monitor", "Entradas: %b %b | Selecao: %b => Saidas: %b - %b", v003CB640_0, v003CB698_0, v003CB590_0, v003CB6F0_0, v003CB5E8_0;
+    %delay 1, 0;
+    %set/v v003CB640_0, 0, 1;
+    %set/v v003CB698_0, 1, 1;
+    %set/v v003CB590_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CB640_0, 1, 1;
+    %set/v v003CB698_0, 0, 1;
+    %set/v v003CB590_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CB640_0, 1, 1;
+    %set/v v003CB698_0, 1, 1;
+    %set/v v003CB590_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "-------------------------------------------";
+    %delay 1, 0;
+    %set/v v003CB640_0, 0, 1;
+    %set/v v003CB698_0, 0, 1;
+    %set/v v003CB590_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CB640_0, 0, 1;
+    %set/v v003CB698_0, 1, 1;
+    %set/v v003CB590_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CB640_0, 1, 1;
+    %set/v v003CB698_0, 0, 1;
+    %set/v v003CB590_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CB640_0, 1, 1;
+    %set/v v003CB698_0, 1, 1;
+    %set/v v003CB590_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "-------------------------------------------";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

@@ -1,0 +1,106 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8cf0bc0 .scope module, "teste" "teste" 2 24;
+ .timescale 0 0;
+v0x8d0b680_0 .var "a", 0 0;
+v0x8d0b6d0_0 .var "chave", 1 0;
+v0x8d0b740_0 .net "s", 0 0, L_0x8d0c000; 1 drivers
+S_0x8cdf9e8 .scope module, "teste" "LU" 2 29, 2 5, S_0x8cf0bc0;
+ .timescale 0 0;
+L_0x8d0b2e0 .functor XNOR 1, v0x8d0b680_0, C4<0>, C4<0>, C4<0>;
+L_0x8d0b808 .functor XOR 1, v0x8d0b680_0, C4<0>, C4<0>, C4<0>;
+L_0x8d0b840 .functor NOR 1, v0x8d0b680_0, C4<0>, C4<0>, C4<0>;
+L_0x8d0b7d0 .functor OR 1, v0x8d0b680_0, C4<0>, C4<0>, C4<0>;
+L_0x8d0b920 .functor NOT 1, L_0x8d0b998, C4<0>, C4<0>, C4<0>;
+L_0x8d0ba58 .functor NOT 1, L_0x8d0bab0, C4<0>, C4<0>, C4<0>;
+L_0x8d0bb38 .functor AND 1, L_0x8d0b920, L_0x8d0ba58, L_0x8d0b2e0, C4<1>;
+L_0x8d0bc18 .functor AND 1, L_0x8d0b920, L_0x8d0bc88, L_0x8d0b808, C4<1>;
+L_0x8d0ba20 .functor AND 1, L_0x8d0bdc8, L_0x8d0ba58, L_0x8d0b840, C4<1>;
+L_0x8d0be68 .functor AND 1, L_0x8d0bef0, L_0x8d0bf78, L_0x8d0b7d0, C4<1>;
+L_0x8d0c000 .functor OR 1, L_0x8d0bb38, L_0x8d0bc18, L_0x8d0ba20, L_0x8d0be68;
+v0x8cf0cc0_0 .net *"_s1", 0 0, L_0x8d0b998; 1 drivers
+v0x8d0ae50_0 .net *"_s11", 0 0, L_0x8d0bf78; 1 drivers
+v0x8d0aeb0_0 .net *"_s3", 0 0, L_0x8d0bab0; 1 drivers
+v0x8d0af10_0 .net *"_s5", 0 0, L_0x8d0bc88; 1 drivers
+v0x8d0af78_0 .net *"_s7", 0 0, L_0x8d0bdc8; 1 drivers
+v0x8d0afd8_0 .net *"_s9", 0 0, L_0x8d0bef0; 1 drivers
+v0x8d0b058_0 .net "a", 0 0, v0x8d0b680_0; 1 drivers
+v0x8d0b0b8_0 .net "chave", 1 0, v0x8d0b6d0_0; 1 drivers
+v0x8d0b140_0 .net "notchave0", 0 0, L_0x8d0b920; 1 drivers
+v0x8d0b1a0_0 .net "notchave1", 0 0, L_0x8d0ba58; 1 drivers
+v0x8d0b230_0 .alias "s", 0 0, v0x8d0b740_0;
+v0x8d0b290_0 .net "s0", 0 0, L_0x8d0b2e0; 1 drivers
+v0x8d0b328_0 .net "s1", 0 0, L_0x8d0b808; 1 drivers
+v0x8d0b388_0 .net "s2", 0 0, L_0x8d0b840; 1 drivers
+v0x8d0b428_0 .net "s3", 0 0, L_0x8d0b7d0; 1 drivers
+v0x8d0b488_0 .net "tmp0", 0 0, L_0x8d0bb38; 1 drivers
+v0x8d0b530_0 .net "tmp1", 0 0, L_0x8d0bc18; 1 drivers
+v0x8d0b590_0 .net "tmp2", 0 0, L_0x8d0ba20; 1 drivers
+v0x8d0b630_0 .net "tmp3", 0 0, L_0x8d0be68; 1 drivers
+L_0x8d0b998 .part v0x8d0b6d0_0, 0, 1;
+L_0x8d0bab0 .part v0x8d0b6d0_0, 1, 1;
+L_0x8d0bc88 .part v0x8d0b6d0_0, 0, 1;
+L_0x8d0bdc8 .part v0x8d0b6d0_0, 0, 1;
+L_0x8d0bef0 .part v0x8d0b6d0_0, 0, 1;
+L_0x8d0bf78 .part v0x8d0b6d0_0, 1, 1;
+S_0x8cf0c40 .scope begin, "main" "main" 2 31, 2 31, S_0x8cf0bc0;
+ .timescale 0 0;
+    .scope S_0x8cf0bc0;
+T_0 ;
+    %fork t_1, S_0x8cf0c40;
+    %jmp t_0;
+    .scope S_0x8cf0c40;
+t_1 ;
+    %vpi_call 2 33 "$display", "Exemplo 0034 - Ana Carolina - 449517";
+    %vpi_call 2 34 "$display", "\012ULA test";
+    %set/v v0x8d0b680_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x8d0b6d0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x8d0b6d0_0, 0, 1;
+    %vpi_call 2 39 "$display", "chave 00 - XNOR , chave 01 - XOR , chave 10 - NOR , chave 11 - OR";
+    %delay 1, 0;
+    %vpi_call 2 40 "$monitor", " entrada = %b saida = %b chave = %b", v0x8d0b680_0, v0x8d0b740_0, v0x8d0b6d0_0;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 1, 1;
+    %delay 1, 0;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x8d0b6d0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x8d0b6d0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 1, 1;
+    %delay 1, 0;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x8d0b6d0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x8d0b6d0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 1, 1;
+    %delay 1, 0;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x8d0b6d0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x8d0b6d0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8d0b680_0, 1, 1;
+    %end;
+    .scope S_0x8cf0bc0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/14B2-A77F/Arquitetura I - 2013/Eds Arquitetura I/ED 03 -/Exemplo0034.v";

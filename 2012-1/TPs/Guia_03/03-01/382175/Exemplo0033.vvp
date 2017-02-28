@@ -1,0 +1,113 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007E9400 .scope module, "test_f4" "test_f4" 2 27;
+ .timescale 0 0;
+v007EB7A0_0 .var "a", 0 0;
+v007EB7F8_0 .var "b", 0 0;
+v007EB850_0 .var "ch", 0 0;
+v007EB8A8_0 .net "s0", 0 0, L_00830840; 1 drivers
+v007EB900_0 .net "s1", 0 0, L_008308B0; 1 drivers
+S_007E9510 .scope module, "CIRC03" "Q03" 2 33, 2 11, S_007E9400;
+ .timescale 0 0;
+L_00834130 .functor AND 1, v007EB7A0_0, v007EB7F8_0, C4<1>, C4<1>;
+L_007ED680 .functor NAND 1, v007EB7A0_0, v007EB7F8_0, C4<1>, C4<1>;
+L_007ED6B8 .functor OR 1, v007EB7A0_0, v007EB7F8_0, C4<0>, C4<0>;
+L_007ED648 .functor NOR 1, v007EB7A0_0, v007EB7F8_0, C4<0>, C4<0>;
+L_00834168 .functor NOT 1, v007EB850_0, C4<0>, C4<0>, C4<0>;
+L_007ED728 .functor NOT 1, v007EB850_0, C4<0>, C4<0>, C4<0>;
+L_007ED760 .functor AND 1, L_00834130, L_00834168, C4<1>, C4<1>;
+L_008306B8 .functor AND 1, L_007ED680, v007EB850_0, C4<1>, C4<1>;
+L_00830728 .functor AND 1, L_007ED6B8, L_007ED728, C4<1>, C4<1>;
+L_008307D0 .functor AND 1, L_007ED648, v007EB850_0, C4<1>, C4<1>;
+L_00830840 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_008308B0 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+v007EB118_0 .net "AND01", 0 0, L_007ED760; 1 drivers
+v007EB170_0 .net "AND02", 0 0, L_008306B8; 1 drivers
+v007EB1C8_0 .net "AND03", 0 0, L_00830728; 1 drivers
+v007EB220_0 .net "AND04", 0 0, L_008307D0; 1 drivers
+v007EB278_0 .net "AND1", 0 0, C4<z>; 0 drivers
+v007EB2D0_0 .net "AND2", 0 0, C4<z>; 0 drivers
+v007EB328_0 .net "AND3", 0 0, C4<z>; 0 drivers
+v007EB380_0 .net "AND4", 0 0, C4<z>; 0 drivers
+v007EB3D8_0 .net "ANDab", 0 0, L_00834130; 1 drivers
+v007EB430_0 .net "CH", 0 0, v007EB850_0; 1 drivers
+v007EB488_0 .net "NANDab", 0 0, L_007ED680; 1 drivers
+v007EB4E0_0 .net "NORab", 0 0, L_007ED648; 1 drivers
+v007EB538_0 .net "ORab", 0 0, L_007ED6B8; 1 drivers
+v007EB590_0 .net "a", 0 0, v007EB7A0_0; 1 drivers
+v007EB5E8_0 .net "b", 0 0, v007EB7F8_0; 1 drivers
+v007EB640_0 .net "n0", 0 0, L_00834168; 1 drivers
+v007EB698_0 .net "n1", 0 0, L_007ED728; 1 drivers
+v007EB6F0_0 .alias "s0", 0 0, v007EB8A8_0;
+v007EB748_0 .alias "s1", 0 0, v007EB900_0;
+S_007E9488 .scope begin, "start" "start" 2 35, 2 35, S_007E9400;
+ .timescale 0 0;
+    .scope S_007E9400;
+T_0 ;
+    %fork t_1, S_007E9488;
+    %jmp t_0;
+    .scope S_007E9488;
+t_1 ;
+    %set/v v007EB7A0_0, 0, 1;
+    %set/v v007EB7F8_0, 0, 1;
+    %set/v v007EB850_0, 0, 1;
+    %end;
+    .scope S_007E9400;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007E9400;
+T_1 ;
+    %vpi_call 2 42 "$display", "Exemplo0033 - Oswaldo Oliveira Paulino - 382175";
+    %vpi_call 2 43 "$display", "Test LU's module";
+    %vpi_call 2 44 "$monitor", "%b %b = %b %b", v007EB7A0_0, v007EB7F8_0, v007EB8A8_0, v007EB900_0;
+    %vpi_call 2 45 "$display", "Valor da chave 0";
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 0, 1;
+    %set/v v007EB7F8_0, 0, 1;
+    %set/v v007EB850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 0, 1;
+    %set/v v007EB7F8_0, 1, 1;
+    %set/v v007EB850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 1, 1;
+    %set/v v007EB7F8_0, 0, 1;
+    %set/v v007EB850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 1, 1;
+    %set/v v007EB7F8_0, 1, 1;
+    %set/v v007EB850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 0, 1;
+    %set/v v007EB7F8_0, 0, 1;
+    %set/v v007EB850_0, 1, 1;
+    %vpi_call 2 58 "$display", "\012Valor da chave 1";
+    %vpi_call 2 59 "$monitor", "%b %b = %b %b", v007EB7A0_0, v007EB7F8_0, v007EB8A8_0, v007EB900_0;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 0, 1;
+    %set/v v007EB7F8_0, 0, 1;
+    %set/v v007EB850_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 0, 1;
+    %set/v v007EB7F8_0, 1, 1;
+    %set/v v007EB850_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 1, 1;
+    %set/v v007EB7F8_0, 0, 1;
+    %set/v v007EB850_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007EB7A0_0, 1, 1;
+    %set/v v007EB7F8_0, 1, 1;
+    %set/v v007EB850_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Oswaldo\Documents\Ciência da Computação - LABORATÓRIO\382175\AQR1\Guia03\Exemplo0033.v";

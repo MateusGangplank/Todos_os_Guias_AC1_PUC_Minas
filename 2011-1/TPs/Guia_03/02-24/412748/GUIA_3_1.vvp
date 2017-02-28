@@ -1,0 +1,62 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00698F40 .scope module, "HalfAdder" "HalfAdder" 2 12;
+ .timescale 0 0;
+L_00693F08 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_00693F40 .functor AND 1, L_00693FB0, C4<z>, C4<1>, C4<1>;
+L_00693FB0 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_00692AD0 .functor AND 1, C4<z>, L_00692B08, C4<1>, C4<1>;
+L_00692B08 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_00692B78 .functor OR 1, L_00693F40, L_00692AD0, C4<0>, C4<0>;
+v0069AEB0_0 .net *"_s0", 0 0, L_00693FB0; 1 drivers
+v0069AF08_0 .net *"_s2", 0 0, L_00692B08; 1 drivers
+v0069AF60_0 .net "p", 0 0, C4<z>; 0 drivers
+v0069AFB8_0 .net "q", 0 0, C4<z>; 0 drivers
+v0069B010_0 .net "s", 0 0, L_00692B78; 1 drivers
+v0069B068_0 .net "s0", 0 0, L_00693F08; 1 drivers
+v0069B0C0_0 .net "temp1", 0 0, L_00693F40; 1 drivers
+v0069B118_0 .net "temp2", 0 0, L_00692AD0; 1 drivers
+S_00698FC8 .scope module, "testandomsoma" "testandomsoma" 2 31;
+ .timescale 0 0;
+L_005C3048 .functor AND 1, v0069B220_0, v0069B278_0, C4<1>, C4<1>;
+L_005C3080 .functor AND 1, L_005C30F0, v0069B278_0, C4<1>, C4<1>;
+L_005C30F0 .functor NOT 1, v0069B220_0, C4<0>, C4<0>, C4<0>;
+L_005C3198 .functor AND 1, v0069B220_0, L_005C31D0, C4<1>, C4<1>;
+L_005C31D0 .functor NOT 1, v0069B278_0, C4<0>, C4<0>, C4<0>;
+L_005C3240 .functor OR 1, L_005C3080, L_005C3198, C4<0>, C4<0>;
+v0069B170_0 .net *"_s0", 0 0, L_005C30F0; 1 drivers
+v0069B1C8_0 .net *"_s2", 0 0, L_005C31D0; 1 drivers
+v0069B220_0 .var "a", 0 0;
+v0069B278_0 .var "b", 0 0;
+v0069B2D0_0 .net "s", 0 0, L_005C3240; 1 drivers
+v0069B328_0 .net "s0", 0 0, L_005C3048; 1 drivers
+v0069B380_0 .net "tmp1", 0 0, L_005C3080; 1 drivers
+v0069B3D8_0 .net "tmp2", 0 0, L_005C3198; 1 drivers
+    .scope S_00698FC8;
+T_0 ;
+    %vpi_call 2 46 "$display", " Guia_03_1 - Jessica Luisa Betonico Andrade -  412748";
+    %vpi_call 2 47 "$display", "\012Test Meia Soma";
+    %vpi_call 2 48 "$display", "\012 a \011b \011s0 \011s \012";
+    %vpi_call 2 49 "$monitor", "  %b   +\011 %b \011 %b \011  %b", v0069B220_0, v0069B278_0, v0069B328_0, v0069B2D0_0;
+    %set/v v0069B220_0, 0, 1;
+    %set/v v0069B278_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069B220_0, 0, 1;
+    %set/v v0069B278_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069B220_0, 1, 1;
+    %set/v v0069B278_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069B220_0, 1, 1;
+    %set/v v0069B278_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\trabalhos\ARQUITETURA DE COMPUTADORES\GUIA 03\GUIA_3_1.V";

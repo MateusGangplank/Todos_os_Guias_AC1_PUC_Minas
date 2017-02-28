@@ -1,0 +1,91 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00803028 .scope module, "test_AU" "test_AU" 2 20;
+ .timescale 0 0;
+v00835218_0 .var "ch", 0 0;
+v00835270_0 .net "w", 0 0, L_00837FE0; 1 drivers
+v008352C8_0 .var "x", 0 0;
+v00835320_0 .var "y", 0 0;
+v00835378_0 .net "z", 0 0, L_008380C0; 1 drivers
+S_00803138 .scope module, "modulo" "AU" 2 28, 2 7, S_00803028;
+ .timescale 0 0;
+L_007C2E60 .functor NOT 1, v00835218_0, C4<0>, C4<0>, C4<0>;
+L_007C2ED0 .functor NOT 1, v008352C8_0, C4<0>, C4<0>, C4<0>;
+L_007C4C60 .functor NOT 1, v00835320_0, C4<0>, C4<0>, C4<0>;
+L_007C4CD0 .functor AND 1, L_007C2ED0, v00835320_0, C4<1>, C4<1>;
+L_007C4D40 .functor AND 1, v008352C8_0, L_007C4C60, C4<1>, C4<1>;
+L_00837FE0 .functor AND 1, L_007C4CD0, L_007C2E60, C4<1>, C4<1>;
+L_008380C0 .functor AND 1, L_007C4D40, v00835218_0, C4<1>, C4<1>;
+v007CC940_0 .net "a", 0 0, v008352C8_0; 1 drivers
+v007C2DB0_0 .net "and1", 0 0, L_007C4CD0; 1 drivers
+v007C2E08_0 .net "and2", 0 0, L_007C4D40; 1 drivers
+v00834FB0_0 .net "b", 0 0, v00835320_0; 1 drivers
+v00835008_0 .net "ch", 0 0, v00835218_0; 1 drivers
+v00835060_0 .net "notA", 0 0, L_007C2ED0; 1 drivers
+v008350B8_0 .net "notB", 0 0, L_007C4C60; 1 drivers
+v00835110_0 .net "notCH", 0 0, L_007C2E60; 1 drivers
+v00835168_0 .alias "sMA", 0 0, v00835378_0;
+v008351C0_0 .alias "sME", 0 0, v00835270_0;
+S_008030B0 .scope begin, "start" "start" 2 30, 2 30, S_00803028;
+ .timescale 0 0;
+    .scope S_00803028;
+T_0 ;
+    %fork t_1, S_008030B0;
+    %jmp t_0;
+    .scope S_008030B0;
+t_1 ;
+    %set/v v008352C8_0, 0, 1;
+    %set/v v00835320_0, 0, 1;
+    %set/v v00835218_0, 0, 1;
+    %end;
+    .scope S_00803028;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00803028;
+T_1 ;
+    %vpi_call 2 38 "$display", "Exemplo0037 - Oswaldo Oliveira Paulino - 382175";
+    %vpi_call 2 39 "$display", "Test LU's module";
+    %vpi_call 2 40 "$display", "---------------- CHAVE = 0 --------------------";
+    %vpi_call 2 41 "$monitor", "a = %b b = %b sME = %b", v008352C8_0, v00835320_0, v00835270_0;
+    %delay 1, 0;
+    %set/v v008352C8_0, 0, 1;
+    %set/v v00835320_0, 1, 1;
+    %set/v v00835218_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008352C8_0, 1, 1;
+    %set/v v00835320_0, 0, 1;
+    %set/v v00835218_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008352C8_0, 1, 1;
+    %set/v v00835320_0, 1, 1;
+    %set/v v00835218_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "---------------- CHAVE = 1 --------------------";
+    %vpi_call 2 50 "$monitor", "a = %b b = %b sMA = %b", v008352C8_0, v00835320_0, v00835378_0;
+    %set/v v008352C8_0, 0, 1;
+    %set/v v00835320_0, 0, 1;
+    %set/v v00835218_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008352C8_0, 0, 1;
+    %set/v v00835320_0, 1, 1;
+    %set/v v00835218_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008352C8_0, 1, 1;
+    %set/v v00835320_0, 0, 1;
+    %set/v v00835218_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008352C8_0, 1, 1;
+    %set/v v00835320_0, 1, 1;
+    %set/v v00835218_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Oswaldo\Documents\Ciência da Computação - LABORATÓRIO\382175\ARQ1_2012_2\382175_Guia 03\Exemplo0037.v";

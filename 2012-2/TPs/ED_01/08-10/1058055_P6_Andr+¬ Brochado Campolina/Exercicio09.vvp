@@ -1,0 +1,109 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007494E8 .scope module, "testaand" "testaand" 2 30;
+ .timescale 0 0;
+v007C1668_0 .var "p", 0 3;
+v007C16C0_0 .net "s", 0 0, L_0074EDB0; 1 drivers
+S_00749350 .scope module, "AND4" "andentradas" 2 34, 2 19, S_007494E8;
+ .timescale 0 0;
+v00743328_0 .net "a", 0 0, L_0074EC60; 1 drivers
+v0078E278_0 .net "b", 0 0, L_0074ED40; 1 drivers
+v0078E2D0_0 .net "p", 0 3, v007C1668_0; 1 drivers
+v0078E328_0 .alias "s", 0 0, v007C16C0_0;
+L_007C1718 .part v007C1668_0, 3, 1;
+L_007C1770 .part v007C1668_0, 2, 1;
+L_007C17C8 .part v007C1668_0, 1, 1;
+L_007C1820 .part v007C1668_0, 0, 1;
+S_007495F8 .scope module, "AND1" "andgate" 2 21, 2 11, S_00749350;
+ .timescale 0 0;
+L_0074EC60 .functor AND 1, L_007C1718, L_007C1770, C4<1>, C4<1>;
+v00743220_0 .net "p", 0 0, L_007C1718; 1 drivers
+v00743278_0 .net "q", 0 0, L_007C1770; 1 drivers
+v007432D0_0 .alias "s", 0 0, v00743328_0;
+S_00749460 .scope module, "AND2" "andgate" 2 22, 2 11, S_00749350;
+ .timescale 0 0;
+L_0074ED40 .functor AND 1, L_007C17C8, L_007C1820, C4<1>, C4<1>;
+v00742D60_0 .net "p", 0 0, L_007C17C8; 1 drivers
+v00742DB8_0 .net "q", 0 0, L_007C1820; 1 drivers
+v00742E10_0 .alias "s", 0 0, v0078E278_0;
+S_007492C8 .scope module, "AND3" "andgate" 2 23, 2 11, S_00749350;
+ .timescale 0 0;
+L_0074EDB0 .functor AND 1, L_0074EC60, L_0074ED40, C4<1>, C4<1>;
+v0074D340_0 .alias "p", 0 0, v00743328_0;
+v0074D398_0 .alias "q", 0 0, v0078E278_0;
+v0074D3F0_0 .alias "s", 0 0, v007C16C0_0;
+S_007493D8 .scope begin, "start" "start" 2 36, 2 36, S_007494E8;
+ .timescale 0 0;
+    .scope S_007494E8;
+T_0 ;
+    %fork t_1, S_007493D8;
+    %jmp t_0;
+    .scope S_007493D8;
+t_1 ;
+    %set/v v007C1668_0, 0, 4;
+    %end;
+    .scope S_007494E8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007494E8;
+T_1 ;
+    %vpi_call 2 41 "$display", "Exercicio09 - Andre Campolina - 381217";
+    %vpi_call 2 42 "$display", "Tabela Verdade porta AND 4 entradas";
+    %vpi_call 2 43 "$display", "\012a b c d\011s\012";
+    %vpi_call 2 44 "$monitor", "%b \011%b", v007C1668_0, v007C16C0_0;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 4, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 6, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 7, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 8, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 9, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 11, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 12, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 13, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 14, 4;
+    %set/v v007C1668_0, 8, 4;
+    %delay 1, 0;
+    %set/v v007C1668_0, 1, 4;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\André\Documents\PUC\Ciencia da Computação\2 Periodo\Arquitetura 1\Exercicios\Guia01\Exercicio09.v";

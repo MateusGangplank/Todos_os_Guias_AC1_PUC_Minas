@@ -1,0 +1,49 @@
+// ---------------------
+//	Programação em Verilog
+//
+// PUC - MG
+// Nome: Tiago Menegaz de Melo Garcia
+// Matricula: 405844
+//
+//	Guia11	Implemento3
+//	Implementar uma máquina de estados finitos capaz de reconhecer a sequencia 1001
+//
+// ---------------------
+
+`include "sequencia1001_mealy.v"
+
+module sequencia1001_implemento1;
+	reg clock, reset, valor;
+	wire w1;
+
+ sequencia101_mealy S1001 ( w1, valor, clock, reset );
+
+initial begin
+	$display ( "Arquitetura de Computadores - Guia 11" );
+	$display ( "Implemento 03 - Reconhecer a sequencia 1001" );
+	$display ( "Tiago Menegaz de Melo Garcia		405844" );
+	$display ( "Tempo		Valor   Encontrou" );
+   clock = 1;
+   reset = 0;
+   valor = 0;
+
+	#5   reset = 1;
+	#10  valor = 1;
+	#10  valor = 0;
+	#10  valor = 1;
+	#20  valor = 0;
+	#10  valor = 1;
+	#10  valor = 1;
+	#10  valor = 0;
+	#10  valor = 1;
+	#30 $finish;
+
+end // initial
+
+always #5 clock = ~clock;
+always @( posedge clock )
+
+begin
+	$display ( "%4d  %4b  %4b %5b", $time, valor, w1, m2 );
+  end //
+endmodule // sequencia101

@@ -1,0 +1,151 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003A92A8 .scope module, "Teste" "Teste" 2 22;
+ .timescale 0 0;
+v003AB9F8_0 .var "a", 0 0;
+v003ABA50_0 .var "b", 0 0;
+v003ABAA8_0 .var "c", 0 0;
+v003ABB00_0 .var "d", 0 0;
+v003ABB58_0 .net "s", 0 0, L_00631B48; 1 drivers
+S_003A9440 .scope module, "test" "simplificada" 2 25, 2 5, S_003A92A8;
+ .timescale 0 0;
+L_006318E0 .functor NOT 1, v003AB9F8_0, C4<0>, C4<0>, C4<0>;
+L_00631950 .functor NOT 1, v003ABA50_0, C4<0>, C4<0>, C4<0>;
+L_006319C0 .functor NOT 1, v003ABAA8_0, C4<0>, C4<0>, C4<0>;
+L_00631A30 .functor NOT 1, v003ABB00_0, C4<0>, C4<0>, C4<0>;
+L_00631AA0 .functor AND 1, L_006318E0, L_00631950, L_00631A30, C4<1>;
+L_00631B80 .functor AND 1, v003AB9F8_0, L_00631950, L_006319C0, C4<1>;
+L_00631BF0 .functor AND 1, v003AB9F8_0, L_00631A30, v003ABB00_0, C4<1>;
+L_00631918 .functor AND 1, v003AB9F8_0, L_006319C0, v003ABB00_0, C4<1>;
+L_00631A68 .functor AND 1, L_006318E0, L_006319C0, L_00631A30, C4<1>;
+L_00631B48/0/0 .functor OR 1, L_00631AA0, L_00631B80, L_00631BF0, L_00631918;
+L_00631B48/0/4 .functor OR 1, L_00631A68, C4<0>, C4<0>, C4<0>;
+L_00631B48 .functor OR 1, L_00631B48/0/0, L_00631B48/0/4, C4<0>, C4<0>;
+v003AB528_0 .net "a", 0 0, v003AB9F8_0; 1 drivers
+v003AB580_0 .net "b", 0 0, v003ABA50_0; 1 drivers
+v003AB5D8_0 .net "c", 0 0, v003ABAA8_0; 1 drivers
+v003AB630_0 .net "d", 0 0, v003ABB00_0; 1 drivers
+v003AB688_0 .net "q0", 0 0, L_006318E0; 1 drivers
+v003AB6E0_0 .net "q1", 0 0, L_00631950; 1 drivers
+v003AB738_0 .net "q2", 0 0, L_006319C0; 1 drivers
+v003AB790_0 .net "q3", 0 0, L_00631A30; 1 drivers
+v003AB7E8_0 .net "q4", 0 0, L_00631AA0; 1 drivers
+v003AB840_0 .net "q5", 0 0, L_00631B80; 1 drivers
+v003AB898_0 .net "q6", 0 0, L_00631BF0; 1 drivers
+v003AB8F0_0 .net "q7", 0 0, L_00631918; 1 drivers
+v003AB948_0 .net "q8", 0 0, L_00631A68; 1 drivers
+v003AB9A0_0 .alias "s", 0 0, v003ABB58_0;
+S_003A93B8 .scope begin, "start" "start" 2 26, 2 26, S_003A92A8;
+ .timescale 0 0;
+S_003A9330 .scope begin, "main" "main" 2 30, 2 30, S_003A92A8;
+ .timescale 0 0;
+    .scope S_003A92A8;
+T_0 ;
+    %fork t_1, S_003A93B8;
+    %jmp t_0;
+t_1 ;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003A92A8;
+T_1 ;
+    %fork t_3, S_003A9330;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 31 "$display", "Nome: Jonathan Felipe Xavier \011Matricula:415704";
+    %vpi_call 2 32 "$display", "Circuito simplificado";
+    %vpi_call 2 33 "$display", "\012 a | b | c | d | = | s |";
+    %vpi_call 2 34 "$monitor", " %b | %b | %b | %b | = | %2b |", v003AB9F8_0, v003ABA50_0, v003ABAA8_0, v003ABB00_0, v003ABB58_0;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 0, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 0, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 0, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003AB9F8_0, 1, 1;
+    %set/v v003ABA50_0, 1, 1;
+    %set/v v003ABAA8_0, 1, 1;
+    %set/v v003ABB00_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\PUC\2º Semestre\Arquitetura I\Tps\Guia07\Exercicio02.v";

@@ -1,0 +1,119 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B69480 .scope module, "test_f4" "test_f4" 2 28;
+ .timescale 0 0;
+v009AFD30_0 .var "c", 0 0;
+v009AFD88_0 .var "x", 3 0;
+v009AFDE0_0 .var "y", 3 0;
+v009AFE38_0 .net "z", 0 0, L_009B0B10; 1 drivers
+S_00B69508 .scope module, "modulo" "f4" 2 34, 2 9, S_00B69480;
+ .timescale 0 0;
+L_009D7FA0 .functor XNOR 1, L_009AFEE8, L_009AFF40, C4<0>, C4<0>;
+L_009B0758 .functor XNOR 1, L_009AFFF0, L_009B0048, C4<0>, C4<0>;
+L_009B0838 .functor XNOR 1, L_009B00F8, L_009B0150, C4<0>, C4<0>;
+L_009B0918 .functor XNOR 1, L_009B0200, L_009B0258, C4<0>, C4<0>;
+L_009B09C0 .functor AND 1, L_009B02B0, L_009B0308, L_009B0360, L_009B03B8;
+L_009B0B10 .functor XOR 1, v009AFD30_0, L_009B09C0, C4<0>, C4<0>;
+v00B6CF28_0 .net *"_s0", 0 0, L_009D7FA0; 1 drivers
+v009D7F48_0 .net *"_s11", 0 0, L_009B0048; 1 drivers
+v00B6CF80_0 .net *"_s12", 0 0, L_009B0838; 1 drivers
+v00B6CFD8_0 .net *"_s15", 0 0, L_009B00F8; 1 drivers
+v00B62FD0_0 .net *"_s17", 0 0, L_009B0150; 1 drivers
+v009AF758_0 .net *"_s18", 0 0, L_009B0918; 1 drivers
+v009AF7B0_0 .net *"_s21", 0 0, L_009B0200; 1 drivers
+v009AF808_0 .net *"_s23", 0 0, L_009B0258; 1 drivers
+v009AF860_0 .net *"_s25", 0 0, L_009B02B0; 1 drivers
+v009AF8B8_0 .net *"_s27", 0 0, L_009B0308; 1 drivers
+v009AF910_0 .net *"_s29", 0 0, L_009B0360; 1 drivers
+v009AF968_0 .net *"_s3", 0 0, L_009AFEE8; 1 drivers
+v009AF9C0_0 .net *"_s31", 0 0, L_009B03B8; 1 drivers
+v009AFA18_0 .net *"_s5", 0 0, L_009AFF40; 1 drivers
+v009AFA70_0 .net *"_s6", 0 0, L_009B0758; 1 drivers
+v009AFAC8_0 .net *"_s9", 0 0, L_009AFFF0; 1 drivers
+v009AFB20_0 .net "a", 3 0, v009AFD88_0; 1 drivers
+v009AFB78_0 .net "b", 3 0, v009AFDE0_0; 1 drivers
+v009AFBD0_0 .net "c", 0 0, v009AFD30_0; 1 drivers
+RS_009B4D04 .resolv tri, L_009AFE90, L_009AFF98, L_009B00A0, L_009B01A8;
+v009AFC28_0 .net8 "fioXNOR", 3 0, RS_009B4D04; 4 drivers
+v009AFC80_0 .alias "s", 0 0, v009AFE38_0;
+v009AFCD8_0 .net "sand", 0 0, L_009B09C0; 1 drivers
+L_009AFE90 .part/pv L_009D7FA0, 0, 1, 4;
+L_009AFEE8 .part v009AFD88_0, 0, 1;
+L_009AFF40 .part v009AFDE0_0, 0, 1;
+L_009AFF98 .part/pv L_009B0758, 1, 1, 4;
+L_009AFFF0 .part v009AFD88_0, 1, 1;
+L_009B0048 .part v009AFDE0_0, 1, 1;
+L_009B00A0 .part/pv L_009B0838, 2, 1, 4;
+L_009B00F8 .part v009AFD88_0, 2, 1;
+L_009B0150 .part v009AFDE0_0, 2, 1;
+L_009B01A8 .part/pv L_009B0918, 3, 1, 4;
+L_009B0200 .part v009AFD88_0, 3, 1;
+L_009B0258 .part v009AFDE0_0, 3, 1;
+L_009B02B0 .part RS_009B4D04, 0, 1;
+L_009B0308 .part RS_009B4D04, 1, 1;
+L_009B0360 .part RS_009B4D04, 2, 1;
+L_009B03B8 .part RS_009B4D04, 3, 1;
+    .scope S_00B69480;
+T_0 ;
+    %vpi_call 2 37 "$display", "Exemplo0036 - Jose Ferreira Reis Fonseca - 405808";
+    %vpi_call 2 38 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v009AFD88_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v009AFDE0_0, 8, 4;
+    %set/v v009AFD30_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$monitor", "%3b %3b option: %1b == %3b", v009AFD88_0, v009AFDE0_0, v009AFD30_0, v009AFE38_0;
+    %delay 1, 0;
+    %set/v v009AFD30_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v009AFD88_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v009AFDE0_0, 8, 4;
+    %set/v v009AFD30_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v009AFD88_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v009AFDE0_0, 8, 4;
+    %set/v v009AFD30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009AFD88_0, 1, 4;
+    %set/v v009AFDE0_0, 1, 4;
+    %set/v v009AFD30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009AFD88_0, 1, 4;
+    %set/v v009AFDE0_0, 1, 4;
+    %set/v v009AFD30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009AFD88_0, 0, 4;
+    %set/v v009AFDE0_0, 0, 4;
+    %set/v v009AFD30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009AFD88_0, 0, 4;
+    %set/v v009AFDE0_0, 0, 4;
+    %set/v v009AFD30_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v009AFD88_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v009AFDE0_0, 8, 4;
+    %set/v v009AFD30_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v009AFD88_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v009AFDE0_0, 8, 4;
+    %set/v v009AFD30_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\José F. R. Fonseca\Documents\Profissionais\Ativos\PUC\Semestre IV\ACI\Guias\Guia03\exemplo0036.v";

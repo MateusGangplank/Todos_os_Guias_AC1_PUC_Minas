@@ -1,0 +1,44 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009D3CE8 .scope module, "testeLatch" "testeLatch" 2 24;
+ .timescale 0 0;
+v009DFF58_0 .net "q", 0 0, L_009DE190; 1 drivers
+v009DE018_0 .net "q_bar", 0 0, L_009DFFB0; 1 drivers
+v009DE070_0 .var "r", 0 0;
+v009DE0C8_0 .var "s", 0 0;
+S_009D2A00 .scope module, "L1" "latchSRNor" 2 29, 2 12, S_009D3CE8;
+ .timescale 0 0;
+L_009DFFB0 .functor NOR 1, v009DE0C8_0, L_009DE190, C4<0>, C4<0>;
+L_009DE190 .functor NOR 1, v009DE070_0, L_009DFFB0, C4<0>, C4<0>;
+v009D2A88_0 .alias "q", 0 0, v009DFF58_0;
+v009D2AE0_0 .alias "q_bar", 0 0, v009DE018_0;
+v009DFEA8_0 .net "r", 0 0, v009DE070_0; 1 drivers
+v009DFF00_0 .net "s", 0 0, v009DE0C8_0; 1 drivers
+    .scope S_009D3CE8;
+T_0 ;
+    %vpi_call 2 33 "$display", "Guia 10 - Gustavo Guimaraes - 405804";
+    %vpi_call 2 34 "$display", "\012Latch SR NOR\012";
+    %vpi_call 2 35 "$display", "s  r  =  q   q_bar";
+    %vpi_call 2 36 "$monitor", "%b  %b  =  %b   %b", v009DE0C8_0, v009DE070_0, v009DFF58_0, v009DE018_0;
+    %set/v v009DE0C8_0, 0, 1;
+    %set/v v009DE070_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009DE0C8_0, 0, 1;
+    %set/v v009DE070_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009DE0C8_0, 1, 1;
+    %set/v v009DE070_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009DE0C8_0, 1, 1;
+    %set/v v009DE070_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gustavo\PUC\AC1\405804\Guia10 - 405804\LatchSRNor.v";

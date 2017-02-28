@@ -1,0 +1,58 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_02024C98 .scope module, "testc2gate" "testc2gate" 2 22;
+ .timescale 0 0;
+v02058DF8_0 .var "a", 7 0;
+v02058E50_0 .net "s", 8 0, L_02059108; 1 drivers
+S_003BEF90 .scope module, "C2" "c2gate" 2 28, 2 14, S_02024C98;
+ .timescale 0 0;
+L_02058FA0 .functor NOT 10, L_02058EA8, C4<0000000000>, C4<0000000000>, C4<0000000000>;
+v003BF010_0 .net *"_s0", 9 0, L_02058EA8; 1 drivers
+v003BF068_0 .net *"_s10", 21 0, C4<0000000000000000000000>; 1 drivers
+v003BF468_0 .net *"_s11", 31 0, L_02059058; 1 drivers
+v003BF4C0_0 .net *"_s12", 31 0, L_020590B0; 1 drivers
+v003BF518_0 .net *"_s3", 1 0, C4<00>; 1 drivers
+v003BF570_0 .net *"_s4", 9 0, L_02058FA0; 1 drivers
+v02058CF0_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v02058D48_0 .net "p", 7 0, v02058DF8_0; 1 drivers
+v02058DA0_0 .alias "s", 8 0, v02058E50_0;
+L_02058EA8 .concat [ 8 2 0 0], v02058DF8_0, C4<00>;
+L_02059058 .concat [ 10 22 0 0], L_02058FA0, C4<0000000000000000000000>;
+L_020590B0 .arith/sum 32, L_02059058, C4<00000000000000000000000000000001>;
+L_02059108 .part L_020590B0, 0, 9;
+    .scope S_02024C98;
+T_0 ;
+    %vpi_call 2 32 "$display", "Extra02 - Wender Zacarias Xavier - 427472";
+    %vpi_call 2 33 "$display", "Test Complemento de 2";
+    %movi 8, 247, 8;
+    %set/v v02058DF8_0, 8, 8;
+    %vpi_call 2 36 "$display", "\012 Resultados \012";
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "a =  C2[%b(2)] = %b(2)", v02058DF8_0, v02058E50_0;
+    %movi 8, 34, 8;
+    %set/v v02058DF8_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "b = C2[%b(2)] = %b(2)", v02058DF8_0, v02058E50_0;
+    %movi 8, 208, 8;
+    %set/v v02058DF8_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "c = C2[%b(2)] = %b(2)", v02058DF8_0, v02058E50_0;
+    %movi 8, 54, 8;
+    %set/v v02058DF8_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "d = C2[%b(2)] = %b(2)", v02058DF8_0, v02058E50_0;
+    %movi 8, 203, 8;
+    %set/v v02058DF8_0, 8, 8;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "e = C2[%b(2)] = %b(2)", v02058DF8_0, v02058E50_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Extra02.v";

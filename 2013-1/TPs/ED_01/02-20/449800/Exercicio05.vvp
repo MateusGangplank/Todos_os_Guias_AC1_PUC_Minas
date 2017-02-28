@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00032DE0 .scope module, "testnorgate" "testnorgate" 2 17;
+ .timescale 0 0;
+v0003E310_0 .var "a", 0 0;
+v0003E368_0 .var "b", 0 0;
+v0003E3C0_0 .net "s", 0 0, L_0003C7E8; 1 drivers
+S_00033318 .scope module, "NOR1" "norgate" 2 22, 2 11, S_00032DE0;
+ .timescale 0 0;
+L_00032EF0 .functor NOT 1, v0003E310_0, C4<0>, C4<0>, C4<0>;
+L_0003E450 .functor NOT 1, v0003E368_0, C4<0>, C4<0>, C4<0>;
+L_0003C7E8 .functor AND 1, L_00032EF0, L_0003E450, C4<1>, C4<1>;
+v000333A0_0 .net *"_s0", 0 0, L_00032EF0; 1 drivers
+v0003FE80_0 .net *"_s2", 0 0, L_0003E450; 1 drivers
+v0003FED8_0 .net "p", 0 0, v0003E310_0; 1 drivers
+v0003FF30_0 .net "q", 0 0, v0003E368_0; 1 drivers
+v0003FF88_0 .alias "s", 0 0, v0003E3C0_0;
+S_00033290 .scope begin, "start" "start" 2 24, 2 24, S_00032DE0;
+ .timescale 0 0;
+S_00032E68 .scope begin, "main" "main" 2 28, 2 28, S_00032DE0;
+ .timescale 0 0;
+    .scope S_00032DE0;
+T_0 ;
+    %fork t_1, S_00033290;
+    %jmp t_0;
+    .scope S_00033290;
+t_1 ;
+    %set/v v0003E310_0, 0, 1;
+    %set/v v0003E368_0, 0, 1;
+    %end;
+    .scope S_00032DE0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00032DE0;
+T_1 ;
+    %fork t_3, S_00032E68;
+    %jmp t_2;
+    .scope S_00032E68;
+t_3 ;
+    %vpi_call 2 29 "$display", "Exercicio05-Filipe Santos-451555";
+    %vpi_call 2 30 "$display", "Test NOR gate";
+    %vpi_call 2 31 "$display", "\012 ~(a|b)=s \012";
+    %vpi_call 2 32 "$monitor", "%b~|%b = %b", v0003E310_0, v0003E368_0, v0003E3C0_0;
+    %delay 1, 0;
+    %set/v v0003E310_0, 0, 1;
+    %set/v v0003E368_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0003E310_0, 0, 1;
+    %set/v v0003E368_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0003E310_0, 1, 1;
+    %set/v v0003E368_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0003E310_0, 1, 1;
+    %set/v v0003E368_0, 1, 1;
+    %end;
+    .scope S_00032DE0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Desktop\Filipe\CC Puc\Segundo Período\AC\Guia01\Exercicio05.V";

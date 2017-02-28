@@ -1,0 +1,53 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE9E0 .scope module, "testexercicio02" "testexercicio02" 2 29;
+ .timescale 0 0;
+v006A3730_0 .var "a", 0 0;
+v006A3788_0 .var "b", 0 0;
+v006A37E0_0 .net "s", 0 0, L_006A3B58; 1 drivers
+v006A3838_0 .net "v1", 0 0, L_006A3AE8; 1 drivers
+S_003EF518 .scope module, "meia" "exercicio02" 2 35, 2 5, S_003EE9E0;
+ .timescale 0 0;
+L_00673960 .functor NAND 1, v006A3730_0, C4<1>, C4<1>, C4<1>;
+L_006A38C0 .functor NAND 1, v006A3788_0, C4<1>, C4<1>, C4<1>;
+L_006A3940 .functor NAND 1, v006A3730_0, v006A3788_0, C4<1>, C4<1>;
+L_006A3978 .functor NAND 1, L_00673960, L_006A38C0, C4<1>, C4<1>;
+L_006A3A40 .functor NAND 1, L_006A3978, L_006A3940, C4<1>, C4<1>;
+L_006A3AE8 .functor NAND 1, L_006A3940, C4<1>, C4<1>, C4<1>;
+L_006A3B58 .functor NAND 1, L_006A3A40, C4<1>, C4<1>, C4<1>;
+v00673BA0_0 .net "a", 0 0, v006A3730_0; 1 drivers
+v00673B48_0 .net "b", 0 0, v006A3788_0; 1 drivers
+v006A33F8_0 .alias "s", 0 0, v006A37E0_0;
+v006A3480_0 .net "t1", 0 0, L_00673960; 1 drivers
+v006A34F0_0 .net "t2", 0 0, L_006A38C0; 1 drivers
+v006A3548_0 .net "t3", 0 0, L_006A3940; 1 drivers
+v006A35B8_0 .net "t4", 0 0, L_006A3978; 1 drivers
+v006A3650_0 .net "t5", 0 0, L_006A3A40; 1 drivers
+v006A36C0_0 .alias "v1", 0 0, v006A3838_0;
+    .scope S_003EE9E0;
+T_0 ;
+    %vpi_call 2 39 "$display", "Exercicio 02";
+    %vpi_call 2 41 "$display", "Meia soma usando apenas portas NAND / modelo tradicional: AND, OR, NOT, AND, s0 e s1";
+    %vpi_call 2 43 "$monitor", "%b  %b  s=%b v1=%b", v006A3730_0, v006A3788_0, v006A37E0_0, v006A3838_0;
+    %set/v v006A3730_0, 0, 1;
+    %set/v v006A3788_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3730_0, 0, 1;
+    %set/v v006A3788_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3730_0, 1, 1;
+    %set/v v006A3788_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3730_0, 1, 1;
+    %set/v v006A3788_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\Arquitetura de computadores\Exercicios\424649_guia03\Exercicio 02.v";

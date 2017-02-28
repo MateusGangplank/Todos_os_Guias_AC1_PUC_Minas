@@ -1,0 +1,128 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00679668 .scope module, "teste" "teste" 2 42;
+ .timescale 0 0;
+v006AA4B0_0 .var "a", 0 0;
+v006AA508_0 .var "b", 0 0;
+v006AA598_0 .var "c", 0 0;
+v006AA5F0_0 .var "d", 0 0;
+v006AA680_0 .net "s0", 0 0, L_006AAA28; 1 drivers
+v006AA6D8_0 .net "s1", 0 0, L_006AABE0; 1 drivers
+v006AA768_0 .net "s2", 0 0, L_006767D8; 1 drivers
+S_006796E8 .scope module, "Dif3" "Bits" 2 47, 2 31, S_00679668;
+ .timescale 0 0;
+v006AA158_0 .net "e1", 0 0, v006AA4B0_0; 1 drivers
+v006AA1B0_0 .net "e2", 0 0, v006AA508_0; 1 drivers
+v006AA208_0 .net "e3", 0 0, v006AA598_0; 1 drivers
+v006AA298_0 .net "e4", 0 0, v006AA5F0_0; 1 drivers
+v006AA2F0_0 .alias "s0", 0 0, v006AA768_0;
+v006AA348_0 .alias "s1", 0 0, v006AA6D8_0;
+v006AA3A0_0 .alias "s2", 0 0, v006AA680_0;
+v006AA458_0 .net "w1", 0 0, L_006AA820; 1 drivers
+S_006A9F20 .scope module, "Dif1" "Exer2" 2 36, 2 9, S_006796E8;
+ .timescale 0 0;
+L_006AA820 .functor XOR 1, v006AA508_0, v006AA5F0_0, C4<0>, C4<0>;
+L_006767D8 .functor AND 1, L_006AA648, v006AA5F0_0, C4<1>, C4<1>;
+L_006AA648 .functor NOT 1, v006AA508_0, C4<0>, C4<0>, C4<0>;
+v006A9FA0_0 .net *"_s0", 0 0, L_006AA648; 1 drivers
+v006A9FF8_0 .alias "e1", 0 0, v006AA1B0_0;
+v006AA050_0 .alias "e2", 0 0, v006AA298_0;
+v006AA0A8_0 .alias "s0", 0 0, v006AA458_0;
+v006AA100_0 .alias "s1", 0 0, v006AA768_0;
+S_00679768 .scope module, "Dif2" "diferenca" 2 37, 2 18, S_006796E8;
+ .timescale 0 0;
+L_006AABE0 .functor OR 1, L_006AA260, L_006766A0, C4<0>, C4<0>;
+v006A9C60_0 .alias "e1", 0 0, v006AA208_0;
+v006A9CB8_0 .alias "e2", 0 0, v006AA458_0;
+v006A9D10_0 .alias "e3", 0 0, v006AA158_0;
+v006A9D68_0 .alias "s0", 0 0, v006AA680_0;
+v006A9DC0_0 .alias "s1", 0 0, v006AA6D8_0;
+v006A9E18_0 .net "w1", 0 0, L_006AA560; 1 drivers
+v006A9E70_0 .net "w2", 0 0, L_006AA260; 1 drivers
+v006A9EC8_0 .net "w3", 0 0, L_006766A0; 1 drivers
+S_006A99C8 .scope module, "Md1" "Exer2" 2 23, 2 9, S_00679768;
+ .timescale 0 0;
+L_006AA560 .functor XOR 1, v006AA598_0, L_006AA820, C4<0>, C4<0>;
+L_006AA260 .functor AND 1, L_006AA9A8, L_006AA820, C4<1>, C4<1>;
+L_006AA9A8 .functor NOT 1, v006AA598_0, C4<0>, C4<0>, C4<0>;
+v006A9A48_0 .net *"_s0", 0 0, L_006AA9A8; 1 drivers
+v006A9AB8_0 .alias "e1", 0 0, v006AA208_0;
+v006A9B28_0 .alias "e2", 0 0, v006AA458_0;
+v006A9BB0_0 .alias "s0", 0 0, v006A9E18_0;
+v006A9C08_0 .alias "s1", 0 0, v006A9E70_0;
+S_006797E8 .scope module, "Md2" "Exer2" 2 24, 2 9, S_00679768;
+ .timescale 0 0;
+L_006AAA28 .functor XOR 1, v006AA4B0_0, L_006AA560, C4<0>, C4<0>;
+L_006766A0 .functor AND 1, L_006AA420, L_006AA560, C4<1>, C4<1>;
+L_006AA420 .functor NOT 1, v006AA4B0_0, C4<0>, C4<0>, C4<0>;
+v00679868_0 .net *"_s0", 0 0, L_006AA420; 1 drivers
+v006A9808_0 .alias "e1", 0 0, v006AA158_0;
+v006A9878_0 .alias "e2", 0 0, v006A9E18_0;
+v006A9900_0 .alias "s0", 0 0, v006AA680_0;
+v006A9970_0 .alias "s1", 0 0, v006A9EC8_0;
+    .scope S_00679668;
+T_0 ;
+    %vpi_call 2 50 "$display", "Igor Rodrigues de Oliveira - 380771";
+    %vpi_call 2 51 "$display", "Exercicio 02";
+    %vpi_call 2 52 "$display", "AC - 2010";
+    %vpi_call 2 53 "$display", "a  b  c  d  s2 s1 s0";
+    %vpi_call 2 54 "$monitor", "%b  %b  %b  %b  %b  %b  %b", v006AA4B0_0, v006AA508_0, v006AA598_0, v006AA5F0_0, v006AA768_0, v006AA6D8_0, v006AA680_0;
+    %set/v v006AA4B0_0, 0, 1;
+    %set/v v006AA508_0, 0, 1;
+    %set/v v006AA598_0, 0, 1;
+    %set/v v006AA5F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA598_0, 1, 1;
+    %set/v v006AA5F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA598_0, 1, 1;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA508_0, 1, 1;
+    %set/v v006AA598_0, 0, 1;
+    %set/v v006AA5F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA598_0, 1, 1;
+    %set/v v006AA5F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA4B0_0, 1, 1;
+    %set/v v006AA508_0, 0, 1;
+    %set/v v006AA598_0, 0, 1;
+    %set/v v006AA5F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 0, 1;
+    %set/v v006AA598_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA508_0, 1, 1;
+    %set/v v006AA598_0, 0, 1;
+    %set/v v006AA5F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 0, 1;
+    %set/v v006AA598_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AA5F0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 72 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\380771\Exer05_02.V";

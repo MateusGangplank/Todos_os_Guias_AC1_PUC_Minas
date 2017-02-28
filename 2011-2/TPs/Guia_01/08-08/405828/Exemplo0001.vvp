@@ -1,0 +1,55 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x949b638 .scope module, "testbuffer" "testbuffer" 2 20;
+ .timescale 0 0;
+v0x9498e20_0 .var "a", 0 0;
+v0x9498ea0_0 .net "s", 0 0, L_0x9498f10; 1 drivers
+S_0x9478e58 .scope module, "BF1" "buffer" 2 27, 2 11, S_0x949b638;
+ .timescale 0 0;
+L_0x9498f10 .functor BUFZ 1, v0x9498e20_0, C4<0>, C4<0>, C4<0>;
+v0x949b738_0 .net "p", 0 0, v0x9498e20_0; 1 drivers
+v0x9498dc0_0 .alias "s", 0 0, v0x9498ea0_0;
+S_0x9478dd8 .scope begin, "start" "start" 2 29, 2 29, S_0x949b638;
+ .timescale 0 0;
+S_0x949b6b8 .scope begin, "main" "main" 2 33, 2 33, S_0x949b638;
+ .timescale 0 0;
+    .scope S_0x949b638;
+T_0 ;
+    %fork t_1, S_0x9478dd8;
+    %jmp t_0;
+    .scope S_0x9478dd8;
+t_1 ;
+    %set/v v0x9498e20_0, 0, 1;
+    %end;
+    .scope S_0x949b638;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x949b638;
+T_1 ;
+    %fork t_3, S_0x949b6b8;
+    %jmp t_2;
+    .scope S_0x949b6b8;
+t_3 ;
+    %vpi_call 2 35 "$display", "Exemplo 0001 - Paulo Ricardo B. Souza - 405828";
+    %vpi_call 2 36 "$display", "Test buffer:";
+    %vpi_call 2 37 "$display", "\011 \011time\011a = s";
+    %vpi_call 2 39 "$monitor", "%d\011%b = %b", $time, v0x9498e20_0, v0x9498ea0_0;
+    %delay 1, 0;
+    %set/v v0x9498e20_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0x9498e20_0, 0, 1;
+    %end;
+    .scope S_0x949b638;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/paulo/Documentos/Faculdade/Arquitetura/2011-2/Exemplo0001.v";

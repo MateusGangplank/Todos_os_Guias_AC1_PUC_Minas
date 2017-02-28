@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A59220 .scope module, "TESTE" "TESTE" 2 30;
+ .timescale 0 0;
+v00A5BC08_0 .var "x", 0 0;
+v00A5BC60_0 .var "y", 0 0;
+v00A5BCB8_0 .net "z", 0 0, L_005C42F0; 1 drivers
+v00A5BD10_0 .net "z1", 0 0, L_005C43D0; 1 drivers
+S_00A59198 .scope module, "portas" "F2" 2 40, 2 7, S_00A59220;
+ .timescale 0 0;
+L_00A5CD10 .functor AND 1, v00A5BC08_0, v00A5BC60_0, C4<1>, C4<1>;
+L_00A5D5C0 .functor OR 1, v00A5BC08_0, v00A5BC60_0, C4<0>, C4<0>;
+L_00A5D5F8 .functor NAND 1, v00A5BC08_0, v00A5BC60_0, C4<1>, C4<1>;
+L_00A5D588 .functor NOR 1, v00A5BC08_0, v00A5BC60_0, C4<0>, C4<0>;
+L_00A5CD48 .functor NOT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_00A5D630 .functor BUF 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_00A5D6A0 .functor AND 1, L_00A5CD10, L_00A5CD48, C4<1>, C4<1>;
+L_00A52C80 .functor AND 1, L_00A5D5C0, L_00A5CD48, C4<1>, C4<1>;
+L_005C41D8 .functor AND 1, L_00A5D5F8, L_00A5D630, C4<1>, C4<1>;
+L_005C4280 .functor AND 1, L_00A5D588, L_00A5D630, C4<1>, C4<1>;
+L_005C42F0 .functor OR 1, L_00A5D6A0, L_005C41D8, C4<0>, C4<0>;
+L_005C43D0 .functor OR 1, L_00A52C80, L_005C4280, C4<0>, C4<0>;
+v00A5B6E0_0 .net "a", 0 0, v00A5BC08_0; 1 drivers
+v00A5B738_0 .net "b", 0 0, v00A5BC60_0; 1 drivers
+v00A5B790_0 .net "c0", 0 0, L_00A5D630; 1 drivers
+v00A5B7E8_0 .net "c1", 0 0, L_00A5CD48; 1 drivers
+v00A5B840_0 .net "chave", 0 0, C4<0>; 1 drivers
+v00A5B898_0 .alias "s", 0 0, v00A5BCB8_0;
+v00A5B8F0_0 .net "s0", 0 0, L_00A5CD10; 1 drivers
+v00A5B948_0 .net "s1", 0 0, L_00A5D5C0; 1 drivers
+v00A5B9A0_0 .net "s2", 0 0, L_00A5D5F8; 1 drivers
+v00A5B9F8_0 .net "s3", 0 0, L_00A5D588; 1 drivers
+v00A5BA50_0 .net "s4", 0 0, L_00A5D6A0; 1 drivers
+v00A5BAA8_0 .net "s5", 0 0, L_00A52C80; 1 drivers
+v00A5BB00_0 .net "s6", 0 0, L_005C41D8; 1 drivers
+v00A5BB58_0 .net "s7", 0 0, L_005C4280; 1 drivers
+v00A5BBB0_0 .alias "ss", 0 0, v00A5BD10_0;
+    .scope S_00A59220;
+T_0 ;
+    %set/v v00A5BC08_0, 0, 1;
+    %set/v v00A5BC60_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00A59220;
+T_1 ;
+    %vpi_call 2 44 "$display", "Exercicio0033 - \315talo Guimar\343es Otoni - 451581";
+    %vpi_call 2 46 "$monitor", "x | y = %b     x & y = %b", v00A5BD10_0, v00A5BCB8_0;
+    %delay 1, 0;
+    %set/v v00A5BC60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A5BC08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00A5BC60_0, 0, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\PUC\Guia03 - Rafael\Exercicio0033.v";

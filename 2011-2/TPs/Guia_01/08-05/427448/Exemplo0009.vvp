@@ -1,0 +1,98 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008B1488 .scope module, "testandgate" "testandgate" 2 17;
+ .timescale 0 0;
+v009D9C30_0 .var "a", 0 0;
+v009D3C88_0 .var "b", 0 0;
+v008E4C10_0 .var "c", 0 0;
+v008E4C68_0 .net "s", 0 0, L_008E5CF0; 1 drivers
+S_008B1620 .scope module, "AND1" "andgate" 2 24, 2 10, S_008B1488;
+ .timescale 0 0;
+L_009D2FA0 .functor NOT 1, v009D9C30_0, C4<0>, C4<0>, C4<0>;
+L_009D3D18 .functor NOT 1, v009D3C88_0, C4<0>, C4<0>, C4<0>;
+L_009D3D88 .functor OR 1, L_009D2FA0, L_009D3D18, C4<0>, C4<0>;
+L_009DCA40 .functor NOT 1, v008E4C10_0, C4<0>, C4<0>, C4<0>;
+L_008E5C48 .functor OR 1, L_009D3D88, L_009DCA40, C4<0>, C4<0>;
+L_008E5CF0 .functor NOT 1, L_008E5C48, C4<0>, C4<0>, C4<0>;
+v009D8F98_0 .net *"_s0", 0 0, L_009D2FA0; 1 drivers
+v009D9E58_0 .net *"_s2", 0 0, L_009D3D18; 1 drivers
+v009D9EB0_0 .net *"_s4", 0 0, L_009D3D88; 1 drivers
+v009D2E98_0 .net *"_s6", 0 0, L_009DCA40; 1 drivers
+v009D2EF0_0 .net *"_s8", 0 0, L_008E5C48; 1 drivers
+v009D2F48_0 .net "p", 0 0, v009D9C30_0; 1 drivers
+v009D9B28_0 .net "q", 0 0, v009D3C88_0; 1 drivers
+v009D9B80_0 .net "r", 0 0, v008E4C10_0; 1 drivers
+v009D9BD8_0 .alias "s", 0 0, v008E4C68_0;
+S_008B1598 .scope begin, "start" "start" 2 27, 2 27, S_008B1488;
+ .timescale 0 0;
+S_008B1510 .scope begin, "main" "main" 2 32, 2 32, S_008B1488;
+ .timescale 0 0;
+    .scope S_008B1488;
+T_0 ;
+    %fork t_1, S_008B1598;
+    %jmp t_0;
+    .scope S_008B1598;
+t_1 ;
+    %set/v v009D9C30_0, 0, 1;
+    %set/v v009D3C88_0, 0, 1;
+    %set/v v008E4C10_0, 0, 1;
+    %end;
+    .scope S_008B1488;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008B1488;
+T_1 ;
+    %fork t_3, S_008B1510;
+    %jmp t_2;
+    .scope S_008B1510;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exemplo 0009 - Michelle da Costa Silva - 427448";
+    %vpi_call 2 34 "$display", "\012Tabela-verdade AND gate com 3 entradas";
+    %vpi_call 2 35 "$display", "\012a b c s\012";
+    %vpi_call 2 36 "$monitor", "%b %b %b %b", v009D9C30_0, v009D3C88_0, v008E4C10_0, v008E4C68_0;
+    %set/v v009D9C30_0, 0, 1;
+    %set/v v009D3C88_0, 0, 1;
+    %set/v v008E4C10_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 0, 1;
+    %set/v v009D3C88_0, 0, 1;
+    %set/v v008E4C10_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 0, 1;
+    %set/v v009D3C88_0, 1, 1;
+    %set/v v008E4C10_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 0, 1;
+    %set/v v009D3C88_0, 1, 1;
+    %set/v v008E4C10_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 1, 1;
+    %set/v v009D3C88_0, 0, 1;
+    %set/v v008E4C10_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 1, 1;
+    %set/v v009D3C88_0, 0, 1;
+    %set/v v008E4C10_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 1, 1;
+    %set/v v009D3C88_0, 1, 1;
+    %set/v v008E4C10_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009D9C30_0, 1, 1;
+    %set/v v009D3C88_0, 1, 1;
+    %set/v v008E4C10_0, 1, 1;
+    %end;
+    .scope S_008B1488;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Segundo Periodo\ACI\427448\guia01\Exemplo0009.v";

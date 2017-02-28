@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006EE1D0 .scope module, "testnorgate" "testnorgate" 2 17;
+ .timescale 0 0;
+v006EFC88_0 .var "a", 0 0;
+v006EFCE0_0 .var "b", 0 0;
+v006EFD38_0 .net "s", 0 0, L_006EFE00; 1 drivers
+S_006E2C58 .scope module, "NOR1" "norgate" 2 22, 2 9, S_006EE1D0;
+ .timescale 0 0;
+L_006E2CE0 .functor OR 1, v006EFC88_0, v006EFCE0_0, C4<0>, C4<0>;
+L_006EFE00 .functor NOT 1, L_006E2CE0, C4<0>, C4<0>, C4<0>;
+v006E30A8_0 .net *"_s0", 0 0, L_006E2CE0; 1 drivers
+v006E3100_0 .net "p", 0 0, v006EFC88_0; 1 drivers
+v006E3158_0 .net "q", 0 0, v006EFCE0_0; 1 drivers
+v006E31B0_0 .alias "s", 0 0, v006EFD38_0;
+S_006E2BD0 .scope begin, "start" "start" 2 24, 2 24, S_006EE1D0;
+ .timescale 0 0;
+S_006EE258 .scope begin, "main" "main" 2 29, 2 29, S_006EE1D0;
+ .timescale 0 0;
+    .scope S_006EE1D0;
+T_0 ;
+    %fork t_1, S_006E2BD0;
+    %jmp t_0;
+    .scope S_006E2BD0;
+t_1 ;
+    %set/v v006EFC88_0, 0, 1;
+    %set/v v006EFCE0_0, 0, 1;
+    %end;
+    .scope S_006EE1D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006EE1D0;
+T_1 ;
+    %fork t_3, S_006EE258;
+    %jmp t_2;
+    .scope S_006EE258;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exemplo0007 - Rafael Tadeu - 451609";
+    %vpi_call 2 31 "$display", "Test NOR gate";
+    %vpi_call 2 32 "$display", "\012 a ~| b = s\012";
+    %vpi_call 2 33 "$monitor", "%b ~| %b = %b", v006EFC88_0, v006EFCE0_0, v006EFD38_0;
+    %delay 1, 0;
+    %set/v v006EFC88_0, 0, 1;
+    %set/v v006EFCE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EFC88_0, 0, 1;
+    %set/v v006EFCE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EFC88_0, 1, 1;
+    %set/v v006EFCE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EFC88_0, 1, 1;
+    %set/v v006EFCE0_0, 1, 1;
+    %end;
+    .scope S_006EE1D0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Rafael\Google Drive\Puc\Arquitetura\Guias\Guia 01\Exemplo0007.v";

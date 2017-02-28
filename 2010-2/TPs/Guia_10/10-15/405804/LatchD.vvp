@@ -1,0 +1,93 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0069A888 .scope module, "testeLatches" "testeLatches" 2 29;
+ .timescale 0 0;
+v006EC8B8_0 .var "cl", 0 0;
+v006EC910_0 .var "d", 0 0;
+v006EC968_0 .var "en", 0 0;
+v006EC9C0_0 .var "pr", 0 0;
+v006ECA18_0 .net "q", 0 0, L_006EFDB0; 1 drivers
+v006ECA70_0 .net "q_bar", 0 0, L_00715028; 1 drivers
+S_0069A910 .scope module, "L3" "latchD" 2 34, 2 13, S_0069A888;
+ .timescale 0 0;
+L_00693530 .functor NAND 1, v006EC910_0, v006EC968_0, C4<1>, C4<1>;
+L_00694818 .functor NAND 1, L_006EFD40, v006EC968_0, C4<1>, C4<1>;
+L_006EFD40 .functor NOT 1, v006EC910_0, C4<0>, C4<0>, C4<0>;
+L_006EFDB0 .functor NAND 1, L_00693530, v006EC9C0_0, L_00715028, C4<1>;
+L_00715028 .functor NAND 1, L_00694818, v006EC8B8_0, L_006EFDB0, C4<1>;
+v006F1EE0_0 .net *"_s0", 0 0, L_006EFD40; 1 drivers
+v00714F48_0 .net "aux1", 0 0, L_00693530; 1 drivers
+v006929F8_0 .net "aux2", 0 0, L_00694818; 1 drivers
+v00692A50_0 .net "cl", 0 0, v006EC8B8_0; 1 drivers
+v00692AA8_0 .net "d", 0 0, v006EC910_0; 1 drivers
+v00694710_0 .net "en", 0 0, v006EC968_0; 1 drivers
+v00694768_0 .net "pr", 0 0, v006EC9C0_0; 1 drivers
+v006947C0_0 .alias "q", 0 0, v006ECA18_0;
+v006EC860_0 .alias "q_bar", 0 0, v006ECA70_0;
+    .scope S_0069A888;
+T_0 ;
+    %vpi_call 2 38 "$display", "Guia 10 - Gustavo Guimaraes - 405804";
+    %vpi_call 2 39 "$display", "\012Latch D\012";
+    %vpi_call 2 40 "$display", "d   en   pr  cl =  q   q_bar";
+    %vpi_call 2 41 "$monitor", "%b   %b    %b   %b  =  %b   %b", v006EC910_0, v006EC968_0, v006EC9C0_0, v006EC8B8_0, v006ECA18_0, v006ECA70_0;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 0, 1;
+    %set/v v006EC9C0_0, 0, 1;
+    %set/v v006EC8B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 0, 1;
+    %set/v v006EC9C0_0, 0, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 0, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 0, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 1, 1;
+    %set/v v006EC9C0_0, 0, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 1, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 1, 1;
+    %set/v v006EC968_0, 1, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 1, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 0, 1;
+    %set/v v006EC968_0, 1, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006EC910_0, 1, 1;
+    %set/v v006EC968_0, 1, 1;
+    %set/v v006EC9C0_0, 1, 1;
+    %set/v v006EC8B8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gustavo\PUC\AC1\405804\Guia10 - 405804\LatchD.v";

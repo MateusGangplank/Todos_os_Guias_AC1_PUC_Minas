@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0088E4D0 .scope module, "testnxorgate" "testnxorgate" 2 17;
+ .timescale 0 0;
+v0088FF28_0 .var "a", 0 0;
+v0088FF80_0 .var "b", 0 0;
+v0088E770_0 .net "s", 0 0, L_0088E8A8; 1 drivers
+S_008839A8 .scope module, "NXOR1" "nxorgate" 2 22, 2 9, S_0088E4D0;
+ .timescale 0 0;
+L_00883AE0 .functor AND 1, v0088FF28_0, v0088FF80_0, C4<1>, C4<1>;
+L_0088E558 .functor NOT 1, v0088FF28_0, C4<0>, C4<0>, C4<0>;
+L_0088E7C8 .functor NOT 1, v0088FF80_0, C4<0>, C4<0>, C4<0>;
+L_0088E800 .functor AND 1, L_0088E558, L_0088E7C8, C4<1>, C4<1>;
+L_0088E8A8 .functor OR 1, L_00883AE0, L_0088E800, C4<0>, C4<0>;
+v00883A30_0 .net *"_s0", 0 0, L_00883AE0; 1 drivers
+v00883A88_0 .net *"_s2", 0 0, L_0088E558; 1 drivers
+v0088FD70_0 .net *"_s4", 0 0, L_0088E7C8; 1 drivers
+v0088FDC8_0 .net *"_s6", 0 0, L_0088E800; 1 drivers
+v0088FE20_0 .net "p", 0 0, v0088FF28_0; 1 drivers
+v0088FE78_0 .net "q", 0 0, v0088FF80_0; 1 drivers
+v0088FED0_0 .alias "s", 0 0, v0088E770_0;
+S_00882CE8 .scope begin, "start" "start" 2 24, 2 24, S_0088E4D0;
+ .timescale 0 0;
+S_00882C60 .scope begin, "main" "main" 2 29, 2 29, S_0088E4D0;
+ .timescale 0 0;
+    .scope S_0088E4D0;
+T_0 ;
+    %fork t_1, S_00882CE8;
+    %jmp t_0;
+    .scope S_00882CE8;
+t_1 ;
+    %set/v v0088FF28_0, 0, 1;
+    %set/v v0088FF80_0, 0, 1;
+    %end;
+    .scope S_0088E4D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0088E4D0;
+T_1 ;
+    %fork t_3, S_00882C60;
+    %jmp t_2;
+    .scope S_00882C60;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exercicio0007 - Gabriel Luiz M. G. Vieira - 441691";
+    %vpi_call 2 31 "$display", "Test nxor gate";
+    %vpi_call 2 32 "$display", "\012 (a&b)|(~a&~b) = s\012";
+    %vpi_call 2 33 "$monitor", "~(%b ^ %b) = %b", v0088FF28_0, v0088FF80_0, v0088E770_0;
+    %delay 1, 0;
+    %set/v v0088FF28_0, 0, 1;
+    %set/v v0088FF80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0088FF28_0, 0, 1;
+    %set/v v0088FF80_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0088FF28_0, 1, 1;
+    %set/v v0088FF80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0088FF28_0, 1, 1;
+    %set/v v0088FF80_0, 1, 1;
+    %end;
+    .scope S_0088E4D0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Gabriel\PUC\2º\ARQ1\Guia01\Exercicio0007.v";

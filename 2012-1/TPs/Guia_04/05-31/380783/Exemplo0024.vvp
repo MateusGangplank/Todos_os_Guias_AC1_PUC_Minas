@@ -1,0 +1,80 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00669240 .scope module, "teste_Igualdade" "teste_Igualdade" 2 24;
+ .timescale 0 0;
+v005CE940_0 .net "igualdadeFinal", 0 0, L_005CF9C0; 1 drivers
+v005CE998_0 .var "x", 3 0;
+v005CE9F0_0 .var "y", 3 0;
+S_006692C8 .scope module, "h1" "Igualdade" 2 31, 2 10, S_00669240;
+ .timescale 0 0;
+L_0066D040 .functor XOR 1, L_005CEA48, L_005CEAA0, C4<0>, C4<0>;
+L_00662D88 .functor XOR 1, L_005CEAF8, L_005CEB50, C4<0>, C4<0>;
+L_00662E30 .functor XOR 1, L_005CEBA8, L_005CEC00, C4<0>, C4<0>;
+L_00662D50 .functor XOR 1, L_005CEC58, L_005CECB0, C4<0>, C4<0>;
+L_005CF870 .functor NOR 1, L_0066D040, L_00662D88, C4<0>, C4<0>;
+L_005CF918 .functor NOR 1, L_005CF870, L_00662E30, C4<0>, C4<0>;
+L_005CF9C0 .functor NOR 1, L_005CF918, L_00662D50, C4<0>, C4<0>;
+v0066CF98_0 .net *"_s12", 0 0, L_005CEBA8; 1 drivers
+v0066CE68_0 .net *"_s14", 0 0, L_005CEC00; 1 drivers
+v0066CEC0_0 .net *"_s17", 0 0, L_005CEC58; 1 drivers
+v005CE470_0 .net *"_s19", 0 0, L_005CECB0; 1 drivers
+v005CE4C8_0 .net *"_s2", 0 0, L_005CEA48; 1 drivers
+v005CE520_0 .net *"_s4", 0 0, L_005CEAA0; 1 drivers
+v005CE578_0 .net *"_s7", 0 0, L_005CEAF8; 1 drivers
+v005CE5D0_0 .net *"_s9", 0 0, L_005CEB50; 1 drivers
+v005CE628_0 .net "a", 3 0, v005CE998_0; 1 drivers
+v005CE680_0 .net "b", 3 0, v005CE9F0_0; 1 drivers
+v005CE6D8_0 .net "igualdade1", 0 0, L_0066D040; 1 drivers
+v005CE730_0 .net "igualdade2", 0 0, L_00662D88; 1 drivers
+v005CE788_0 .net "igualdade3", 0 0, L_00662E30; 1 drivers
+v005CE7E0_0 .net "igualdade4", 0 0, L_00662D50; 1 drivers
+v005CE838_0 .alias "s", 0 0, v005CE940_0;
+v005CE890_0 .net "s3", 0 0, L_005CF918; 1 drivers
+v005CE8E8_0 .net "s4", 0 0, L_005CF870; 1 drivers
+L_005CEA48 .part v005CE998_0, 0, 1;
+L_005CEAA0 .part v005CE9F0_0, 0, 1;
+L_005CEAF8 .part v005CE998_0, 1, 1;
+L_005CEB50 .part v005CE9F0_0, 1, 1;
+L_005CEBA8 .part v005CE998_0, 2, 1;
+L_005CEC00 .part v005CE9F0_0, 2, 1;
+L_005CEC58 .part v005CE998_0, 3, 1;
+L_005CECB0 .part v005CE9F0_0, 3, 1;
+    .scope S_00669240;
+T_0 ;
+    %vpi_call 2 36 "$display", "Exemplo0024 - Lucas Siqueira Chagas - 380783";
+    %vpi_call 2 37 "$display", "Test ALU\222s Diferenca";
+    %movi 8, 7, 4;
+    %set/v v005CE998_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005CE9F0_0, 8, 4;
+    %delay 1, 0;
+    %load/v 8, v005CE940_0, 1;
+    %inv 8, 1;
+    %vpi_call 2 42 "$display", "%6b e %6b = %1b", v005CE998_0, v005CE9F0_0, T<8,1,u>;
+    %delay 1, 0;
+    %movi 8, 11, 4;
+    %set/v v005CE998_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v005CE9F0_0, 8, 4;
+    %load/v 8, v005CE940_0, 1;
+    %inv 8, 1;
+    %vpi_call 2 45 "$display", "%6b e %6b = %1b", v005CE998_0, v005CE9F0_0, T<8,1,u>;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v005CE998_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v005CE9F0_0, 8, 4;
+    %load/v 8, v005CE940_0, 1;
+    %inv 8, 1;
+    %vpi_call 2 48 "$display", "%6b e %6b = %1b", v005CE998_0, v005CE9F0_0, T<8,1,u>;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0024.v";

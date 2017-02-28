@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007171B8 .scope module, "test_circuit_difference" "test_circuit_difference" 2 23;
+ .timescale 0 0;
+v0073A460_0 .var "x", 3 0;
+v0073A4B8_0 .var "y", 3 0;
+RS_0071918C/0/0 .resolv tri, L_0073A568, L_0073A670, L_0073A778, L_0073A880;
+RS_0071918C/0/4 .resolv tri, L_0073A988, C4<zzzzz>, C4<zzzzz>, C4<zzzzz>;
+RS_0071918C .resolv tri, RS_0071918C/0/0, RS_0071918C/0/4, C4<zzzzz>, C4<zzzzz>;
+v0073A510_0 .net8 "z", 4 0, RS_0071918C; 5 drivers
+S_007172C8 .scope module, "difference" "circuit_difference" 2 29, 2 8, S_007171B8;
+ .timescale 0 0;
+L_0065FEF0 .functor XNOR 1, L_0073A5C0, L_0073A618, C4<0>, C4<0>;
+L_006F2C20 .functor XNOR 1, L_0073A6C8, L_0073A720, C4<0>, C4<0>;
+L_00654AD0 .functor XNOR 1, L_0073A7D0, L_0073A828, C4<0>, C4<0>;
+L_00713920 .functor XNOR 1, L_0073A8D8, L_0073A930, C4<0>, C4<0>;
+L_00713A38 .functor AND 1, L_0073A9E0, L_0073AA38, L_0073AA90, L_0073AAE8;
+v006549C8_0 .net *"_s0", 0 0, L_0065FEF0; 1 drivers
+v006F43B0_0 .net *"_s11", 0 0, L_0073A720; 1 drivers
+v006F4408_0 .net *"_s12", 0 0, L_00654AD0; 1 drivers
+v00654A20_0 .net *"_s15", 0 0, L_0073A7D0; 1 drivers
+v00654A78_0 .net *"_s17", 0 0, L_0073A828; 1 drivers
+v0065FDE8_0 .net *"_s18", 0 0, L_00713920; 1 drivers
+v0065FE40_0 .net *"_s21", 0 0, L_0073A8D8; 1 drivers
+v00739FE8_0 .net *"_s23", 0 0, L_0073A930; 1 drivers
+v0073A040_0 .net *"_s24", 0 0, L_00713A38; 1 drivers
+v0073A098_0 .net *"_s27", 0 0, L_0073A9E0; 1 drivers
+v0073A0F0_0 .net *"_s29", 0 0, L_0073AA38; 1 drivers
+v0073A148_0 .net *"_s3", 0 0, L_0073A5C0; 1 drivers
+v0073A1A0_0 .net *"_s31", 0 0, L_0073AA90; 1 drivers
+v0073A1F8_0 .net *"_s33", 0 0, L_0073AAE8; 1 drivers
+v0073A250_0 .net *"_s5", 0 0, L_0073A618; 1 drivers
+v0073A2A8_0 .net *"_s6", 0 0, L_006F2C20; 1 drivers
+v0073A300_0 .net *"_s9", 0 0, L_0073A6C8; 1 drivers
+v0073A358_0 .net "a", 3 0, v0073A460_0; 1 drivers
+v0073A3B0_0 .net "b", 3 0, v0073A4B8_0; 1 drivers
+v0073A408_0 .alias "s", 4 0, v0073A510_0;
+L_0073A568 .part/pv L_0065FEF0, 0, 1, 5;
+L_0073A5C0 .part v0073A460_0, 0, 1;
+L_0073A618 .part v0073A4B8_0, 0, 1;
+L_0073A670 .part/pv L_006F2C20, 1, 1, 5;
+L_0073A6C8 .part v0073A460_0, 1, 1;
+L_0073A720 .part v0073A4B8_0, 1, 1;
+L_0073A778 .part/pv L_00654AD0, 2, 1, 5;
+L_0073A7D0 .part v0073A460_0, 2, 1;
+L_0073A828 .part v0073A4B8_0, 2, 1;
+L_0073A880 .part/pv L_00713920, 3, 1, 5;
+L_0073A8D8 .part v0073A460_0, 3, 1;
+L_0073A930 .part v0073A4B8_0, 3, 1;
+L_0073A988 .part/pv L_00713A38, 4, 1, 5;
+L_0073A9E0 .part RS_0071918C, 0, 1;
+L_0073AA38 .part RS_0071918C, 1, 1;
+L_0073AA90 .part RS_0071918C, 2, 1;
+L_0073AAE8 .part RS_0071918C, 3, 1;
+S_00717240 .scope begin, "main" "main" 2 31, 2 31, S_007171B8;
+ .timescale 0 0;
+    .scope S_007171B8;
+T_0 ;
+    %fork t_1, S_00717240;
+    %jmp t_0;
+    .scope S_00717240;
+t_1 ;
+    %vpi_call 2 33 "$display", "Exemplo0024 - Fernando Silva - 414506";
+    %vpi_call 2 34 "$display", "Test ALU's difference";
+    %vpi_call 2 35 "$display", "0 = difference ";
+    %movi 8, 5, 4;
+    %set/v v0073A460_0, 8, 4;
+    %movi 8, 9, 4;
+    %set/v v0073A4B8_0, 8, 4;
+    %vpi_call 2 37 "$monitor", "%3b  %3b  %1b", v0073A460_0, v0073A4B8_0, &PV<v0073A510_0, 4, 1>;
+    %delay 1, 0;
+    %set/v v0073A460_0, 1, 4;
+    %set/v v0073A4B8_0, 1, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v0073A460_0, 8, 4;
+    %movi 8, 8, 4;
+    %set/v v0073A4B8_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 6, 4;
+    %set/v v0073A460_0, 8, 4;
+    %movi 8, 6, 4;
+    %set/v v0073A4B8_0, 8, 4;
+    %end;
+    .scope S_007171B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsilv\Desktop\exemplo24.v";

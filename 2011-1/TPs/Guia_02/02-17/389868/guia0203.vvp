@@ -1,0 +1,55 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672048 .scope module, "testnotgate" "testnotgate" 2 39;
+ .timescale 0 0;
+v006A16F0_0 .var "a", 0 0;
+v006A1748_0 .net "s", 0 0, L_00672418; 1 drivers
+S_006734A0 .scope module, "NOT1" "notgate" 2 43, 2 25, S_00672048;
+ .timescale 0 0;
+v006A1640_0 .net "p", 0 0, v006A16F0_0; 1 drivers
+v006A1698_0 .alias "s0", 0 0, v006A1748_0;
+S_00673520 .scope module, "NAND1" "nandgate" 2 29, 2 12, S_006734A0;
+ .timescale 0 0;
+L_006A17A0 .functor AND 1, v006A16F0_0, v006A16F0_0, C4<1>, C4<1>;
+L_00672418 .functor NOT 1, L_006A17A0, C4<0>, C4<0>, C4<0>;
+v006735A0_0 .net *"_s0", 0 0, L_006A17A0; 1 drivers
+v006A1548_0 .alias "p", 0 0, v006A1640_0;
+v006A15B8_0 .alias "s", 0 0, v006A1748_0;
+S_00673420 .scope begin, "start" "start" 2 45, 2 45, S_00672048;
+ .timescale 0 0;
+S_006733A0 .scope begin, "main" "main" 2 50, 2 50, S_00672048;
+ .timescale 0 0;
+    .scope S_00672048;
+T_0 ;
+    %fork t_1, S_00673420;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A16F0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00672048;
+T_1 ;
+    %fork t_3, S_006733A0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 51 "$display", "Felipe Pacifico -- 389868 -- guia0203";
+    %vpi_call 2 52 "$display", "\012Test NOT gate";
+    %vpi_call 2 53 "$display", "\012~a = s\012";
+    %vpi_call 2 54 "$monitor", "~%b = %b", v006A16F0_0, v006A1748_0;
+    %delay 1, 0;
+    %set/v v006A16F0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_02\389868\guia0203.vhdl";

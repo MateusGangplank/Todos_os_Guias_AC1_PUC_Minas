@@ -1,0 +1,79 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00036338 .scope module, "primparte" "primparte" 2 10;
+ .timescale 0 0;
+v0069C048_0 .var "p", 0 0;
+v0069C0A0_0 .var "q", 0 0;
+v0069C0F8_0 .net "s1", 0 0, L_006613E0; 1 drivers
+S_00038F30 .scope module, "nor1" "norgate" 2 13, 2 5, S_00036338;
+ .timescale 0 0;
+L_006613E0 .functor OR 1, v0069C0A0_0, v0069C048_0, C4<0>, C4<0>;
+v00038FB8_0 .net "p", 0 0, v0069C048_0; 1 drivers
+v0069BF50_0 .net "q", 0 0, v0069C0A0_0; 1 drivers
+v0069BFC0_0 .alias "s1", 0 0, v0069C0F8_0;
+S_00038EA8 .scope module, "segparte" "segparte" 2 36;
+ .timescale 0 0;
+v0069C380_0 .var "p", 0 0;
+v0069C3D8_0 .var "q", 0 0;
+v0069C430_0 .net "s2", 0 0, L_0069C5D8; 1 drivers
+S_0069C150 .scope module, "nor2" "norgate_2" 2 39, 2 30, S_00038EA8;
+ .timescale 0 0;
+L_0069C530 .functor OR 1, v0069C3D8_0, v0069C380_0, C4<0>, C4<0>;
+L_0069C5D8 .functor NOT 1, L_0069C530, C4<0>, C4<0>, C4<0>;
+v0069C1D8_0 .net *"_s0", 0 0, L_0069C530; 1 drivers
+v0069C230_0 .net "p", 0 0, v0069C380_0; 1 drivers
+v0069C288_0 .net "q", 0 0, v0069C3D8_0; 1 drivers
+v0069C310_0 .alias "s2", 0 0, v0069C430_0;
+    .scope S_00036338;
+T_0 ;
+    %vpi_call 2 15 "$display", "primparte";
+    %vpi_call 2 16 "$display", "norgate";
+    %vpi_call 2 17 "$display", "\012a |b=s1\012";
+    %set/v v0069C0A0_0, 0, 1;
+    %set/v v0069C048_0, 0, 1;
+    %vpi_call 2 19 "$display", "%b|%b=%b", v0069C0A0_0, v0069C048_0, v0069C0F8_0;
+    %set/v v0069C0A0_0, 0, 1;
+    %set/v v0069C048_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 21 "$display", "%b|%b=%b", v0069C0A0_0, v0069C048_0, v0069C0F8_0;
+    %set/v v0069C0A0_0, 1, 1;
+    %set/v v0069C048_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 23 "$display", "%b|%b=%b", v0069C0A0_0, v0069C048_0, v0069C0F8_0;
+    %set/v v0069C0A0_0, 1, 1;
+    %set/v v0069C048_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 25 "$display", "%b|%b=%b", v0069C0A0_0, v0069C048_0, v0069C0F8_0;
+    %end;
+    .thread T_0;
+    .scope S_00038EA8;
+T_1 ;
+    %vpi_call 2 42 "$display", "segparte";
+    %vpi_call 2 43 "$display", "norgate_2";
+    %vpi_call 2 44 "$display", "\012a |b=s2\012";
+    %set/v v0069C3D8_0, 0, 1;
+    %set/v v0069C380_0, 0, 1;
+    %vpi_call 2 46 "$display", "%b|%b=%b", v0069C3D8_0, v0069C380_0, v0069C430_0;
+    %set/v v0069C3D8_0, 0, 1;
+    %set/v v0069C380_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%b|%b=%b", v0069C3D8_0, v0069C380_0, v0069C430_0;
+    %set/v v0069C3D8_0, 1, 1;
+    %set/v v0069C380_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "%b|%b=%b", v0069C3D8_0, v0069C380_0, v0069C430_0;
+    %set/v v0069C3D8_0, 1, 1;
+    %set/v v0069C380_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%b|%b=%b", v0069C3D8_0, v0069C380_0, v0069C430_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\documentos\DOCUMENTOS ENÉAS\diciplinas2010\dicip.2010.seg.sem\arquitetura de comp\guia10\exercicioguia_10_um.v";

@@ -1,0 +1,110 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E9450 .scope module, "testfullsubtractor" "testfullsubtractor" 2 41;
+ .timescale 0 0;
+v0071D080_0 .var "a", 0 0;
+v0071D0D8_0 .var "b", 0 0;
+v0071D130_0 .var "c", 0 0;
+v0071D188_0 .net "s0", 0 0, L_00745018; 1 drivers
+v0071D1E0_0 .net "s1", 0 0, L_00745130; 1 drivers
+S_003E95E8 .scope module, "fullsubtractor1" "fullsubtractor" 2 45, 2 26, S_003E9450;
+ .timescale 0 0;
+L_00745130 .functor OR 1, L_003E2D40, L_00745088, C4<0>, C4<0>;
+v0071CDC0_0 .net "a", 0 0, v0071D080_0; 1 drivers
+v0071CE18_0 .net "b", 0 0, v0071D0D8_0; 1 drivers
+v0071CE70_0 .net "c", 0 0, v0071D130_0; 1 drivers
+v0071CEC8_0 .net "q0", 0 0, L_003E2E20; 1 drivers
+v0071CF20_0 .net "q1", 0 0, L_003E2D40; 1 drivers
+v0071CF78_0 .net "q2", 0 0, L_00745088; 1 drivers
+v0071CFD0_0 .alias "s0", 0 0, v0071D188_0;
+v0071D028_0 .alias "s1", 0 0, v0071D1E0_0;
+S_003E96F8 .scope module, "MD1" "halfsubtractor" 2 31, 2 11, S_003E95E8;
+ .timescale 0 0;
+L_003E2E20 .functor XOR 1, v0071D080_0, v0071D0D8_0, C4<0>, C4<0>;
+L_003E2E58 .functor NOT 1, v0071D080_0, C4<0>, C4<0>, C4<0>;
+L_003E2D40 .functor AND 1, L_003E2E58, v0071D0D8_0, C4<1>, C4<1>;
+v003ED650_0 .alias "a", 0 0, v0071CDC0_0;
+v0071CC60_0 .alias "b", 0 0, v0071CE18_0;
+v0071CCB8_0 .net "q0", 0 0, L_003E2E58; 1 drivers
+v0071CD10_0 .alias "s0", 0 0, v0071CEC8_0;
+v0071CD68_0 .alias "s1", 0 0, v0071CF20_0;
+S_003E9670 .scope module, "MD2" "halfsubtractor" 2 32, 2 11, S_003E95E8;
+ .timescale 0 0;
+L_00745018 .functor XOR 1, v0071D130_0, L_003E2E20, C4<0>, C4<0>;
+L_00745050 .functor NOT 1, v0071D130_0, C4<0>, C4<0>, C4<0>;
+L_00745088 .functor AND 1, L_00745050, L_003E2E20, C4<1>, C4<1>;
+v00721EB0_0 .alias "a", 0 0, v0071CE70_0;
+v00742F18_0 .alias "b", 0 0, v0071CEC8_0;
+v00742F70_0 .net "q0", 0 0, L_00745050; 1 drivers
+v003ED5A0_0 .alias "s0", 0 0, v0071D188_0;
+v003ED5F8_0 .alias "s1", 0 0, v0071CF78_0;
+S_003E9560 .scope begin, "start" "start" 2 47, 2 47, S_003E9450;
+ .timescale 0 0;
+S_003E94D8 .scope begin, "main" "main" 2 52, 2 52, S_003E9450;
+ .timescale 0 0;
+    .scope S_003E9450;
+T_0 ;
+    %fork t_1, S_003E9560;
+    %jmp t_0;
+    .scope S_003E9560;
+t_1 ;
+    %set/v v0071D080_0, 0, 1;
+    %set/v v0071D0D8_0, 0, 1;
+    %set/v v0071D130_0, 0, 1;
+    %end;
+    .scope S_003E9450;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E9450;
+T_1 ;
+    %fork t_3, S_003E94D8;
+    %jmp t_2;
+    .scope S_003E94D8;
+t_3 ;
+    %vpi_call 2 53 "$display", "Guia 04_02 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 54 "$display", "Fulladder usando Half-Adders.";
+    %vpi_call 2 55 "$display", "\012c a b = s0 s1\012";
+    %vpi_call 2 56 "$monitor", " %b %b %b = %b %b", v0071D130_0, v0071D080_0, v0071D0D8_0, v0071D188_0, v0071D1E0_0;
+    %delay 1, 0;
+    %set/v v0071D080_0, 0, 1;
+    %set/v v0071D0D8_0, 1, 1;
+    %set/v v0071D130_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071D080_0, 1, 1;
+    %set/v v0071D0D8_0, 0, 1;
+    %set/v v0071D130_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071D080_0, 1, 1;
+    %set/v v0071D0D8_0, 1, 1;
+    %set/v v0071D130_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0071D080_0, 0, 1;
+    %set/v v0071D0D8_0, 0, 1;
+    %set/v v0071D130_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0071D080_0, 0, 1;
+    %set/v v0071D0D8_0, 1, 1;
+    %set/v v0071D130_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0071D080_0, 1, 1;
+    %set/v v0071D0D8_0, 0, 1;
+    %set/v v0071D130_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0071D080_0, 1, 1;
+    %set/v v0071D0D8_0, 1, 1;
+    %set/v v0071D130_0, 1, 1;
+    %end;
+    .scope S_003E9450;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\AULA\2011\AC I\Guia04\Guia04_03.v";

@@ -1,0 +1,65 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0082A710 .scope module, "circuito" "circuito" 2 11;
+ .timescale 0 0;
+L_0082FEA8 .functor OR 1, L_00742DC8, L_00742E20, C4<0>, C4<0>;
+L_0082CB30 .functor XOR 1, L_00742ED0, L_00742F28, C4<0>, C4<0>;
+L_0082FF88 .functor XOR 1, L_00742FD8, L_00743030, C4<0>, C4<0>;
+L_007440E8 .functor BUF 1, L_007430E0, C4<0>, C4<0>, C4<0>;
+v00822E80_0 .net *"_s0", 0 0, L_0082FEA8; 1 drivers
+v00822ED8_0 .net *"_s11", 0 0, L_00742F28; 1 drivers
+v00822F30_0 .net *"_s12", 0 0, L_0082FF88; 1 drivers
+v00822F88_0 .net *"_s15", 0 0, L_00742FD8; 1 drivers
+v0082F740_0 .net *"_s17", 0 0, L_00743030; 1 drivers
+v0082F798_0 .net *"_s18", 0 0, L_007440E8; 1 drivers
+v0082F7F0_0 .net *"_s21", 0 0, L_007430E0; 1 drivers
+v0082F848_0 .net *"_s3", 0 0, L_00742DC8; 1 drivers
+v0082FE50_0 .net *"_s5", 0 0, L_00742E20; 1 drivers
+v00742C10_0 .net *"_s6", 0 0, L_0082CB30; 1 drivers
+v00742C68_0 .net *"_s9", 0 0, L_00742ED0; 1 drivers
+RS_007114F4 .resolv tri, L_00742D70, L_00742E78, L_00742F80, L_00743088;
+v00742CC0_0 .net8 "s", 3 0, RS_007114F4; 4 drivers
+v00742D18_0 .var "x", 2 0;
+L_00742D70 .part/pv L_0082FEA8, 0, 1, 4;
+L_00742DC8 .part v00742D18_0, 0, 1;
+L_00742E20 .part v00742D18_0, 1, 1;
+L_00742E78 .part/pv L_0082CB30, 1, 1, 4;
+L_00742ED0 .part v00742D18_0, 0, 1;
+L_00742F28 .part v00742D18_0, 1, 1;
+L_00742F80 .part/pv L_0082FF88, 2, 1, 4;
+L_00742FD8 .part v00742D18_0, 2, 1;
+L_00743030 .part RS_007114F4, 0, 1;
+L_00743088 .part/pv L_007440E8, 3, 1, 4;
+L_007430E0 .part v00742D18_0, 0, 1;
+    .scope S_0082A710;
+T_0 ;
+    %movi 8, 5, 3;
+    %set/v v00742D18_0, 8, 3;
+    %end;
+    .thread T_0;
+    .scope S_0082A710;
+T_1 ;
+    %vpi_call 2 32 "$display", "Exemplo 0025";
+    %vpi_call 2 33 "$display", "Autor: Rodolfo Herman - 451612";
+    %vpi_call 2 34 "$display", "Test ALU's complemento 2";
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "\012X = %b\011 Complemento2 = %b%b%b", v00742D18_0, &PV<v00742CC0_0, 2, 1>, &PV<v00742CC0_0, 1, 1>, &PV<v00742CC0_0, 3, 1>;
+    %movi 8, 3, 3;
+    %set/v v00742D18_0, 8, 3;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "\012X = %b\011 Complemento2 = %b%b%b", v00742D18_0, &PV<v00742CC0_0, 2, 1>, &PV<v00742CC0_0, 1, 1>, &PV<v00742CC0_0, 3, 1>;
+    %movi 8, 2, 3;
+    %set/v v00742D18_0, 8, 3;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "\012X = %b\011 Complemento2 = %b%b%b", v00742D18_0, &PV<v00742CC0_0, 2, 1>, &PV<v00742CC0_0, 1, 1>, &PV<v00742CC0_0, 3, 1>;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0025.v";

@@ -1,0 +1,54 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003CE330 .scope module, "testador" "testador" 2 19;
+ .timescale 0 0;
+v003CFE38_0 .var "a", 0 0;
+v003CFE90_0 .var "b", 0 0;
+v003CFEE8_0 .net "s", 0 0, L_003CE6D0; 1 drivers
+S_003CE3B8 .scope module, "XNOR2" "pxnor" 2 26, 2 10, S_003CE330;
+ .timescale 0 0;
+L_003C2D88 .functor AND 1, v003CFE38_0, v003CFE90_0, C4<1>, C4<1>;
+L_003CFFB0 .functor NOT 1, v003CFE38_0, C4<0>, C4<0>, C4<0>;
+L_003CE5F0 .functor NOT 1, v003CFE90_0, C4<0>, C4<0>, C4<0>;
+L_003CE628 .functor AND 1, L_003CFFB0, L_003CE5F0, C4<1>, C4<1>;
+L_003CE6D0 .functor OR 1, L_003C2D88, L_003CE628, C4<0>, C4<0>;
+v003C2C80_0 .net *"_s0", 0 0, L_003C2D88; 1 drivers
+v003C2CD8_0 .net *"_s2", 0 0, L_003CFFB0; 1 drivers
+v003C2D30_0 .net *"_s4", 0 0, L_003CE5F0; 1 drivers
+v003C39C8_0 .net *"_s6", 0 0, L_003CE628; 1 drivers
+v003C3A20_0 .net "p", 0 0, v003CFE38_0; 1 drivers
+v003C3A78_0 .net "q", 0 0, v003CFE90_0; 1 drivers
+v003C3AD0_0 .alias "s", 0 0, v003CFEE8_0;
+    .scope S_003CE330;
+T_0 ;
+    %set/v v003CFE38_0, 0, 1;
+    %set/v v003CFE90_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003CE330;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exercicio 007";
+    %vpi_call 2 40 "$display", "Autor: Rodolfo Herman";
+    %vpi_call 2 41 "$display", "Testar porta XNOR";
+    %vpi_call 2 42 "$display", "( ab + a'b') \011= s \012";
+    %vpi_call 2 43 "$monitor", "( %b  &  %b ) \011= %b", v003CFE38_0, v003CFE90_0, v003CFEE8_0;
+    %delay 1, 0;
+    %set/v v003CFE38_0, 0, 1;
+    %set/v v003CFE90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFE38_0, 1, 1;
+    %set/v v003CFE90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CFE38_0, 1, 1;
+    %set/v v003CFE90_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio007.v";

@@ -1,0 +1,46 @@
+// ---------------------------
+// -- test clock generator (8) 
+// --------------------------- 
+
+// ------------------------- 
+// Exemplo0048
+// Nome: Lucas Siqueira Chagas	
+// Matricula: 380783
+// ----
+
+`include "exemplo0041_2.v" 
+
+module pulse ( signal, signal1, clock ); 
+
+input clock; 
+output signal, signal1; 
+reg signal, signal1; 
+
+always @ ( negedge clock ) 
+begin 
+signal = 1'b1; 
+#5 signal = 1'b0; 
+end 
+
+always @ ( posedge clock ) 
+begin 
+signal1 = 1'b1; 
+#5 signal1 = 1'b0;
+end
+endmodule // pulse 
+
+module Exemplo0048; 
+
+wire clock; 
+clock clk ( clock ); 
+reg p; 
+wire p1, p2; 
+pulse pulse1 ( p1, p2, clock ); 
+
+initial begin 
+$dumpfile ( "Exemplo0048.vcd" ); 
+$dumpvars ( 1, clock, p1, p2 ); 
+#120 $finish; 
+
+end 
+endmodule // Exemplo0048

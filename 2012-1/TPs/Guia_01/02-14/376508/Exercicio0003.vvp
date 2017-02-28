@@ -1,0 +1,61 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0039DF68 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v00393308_0 .var "a", 0 0;
+v00393360_0 .var "b", 0 0;
+v003933B8_0 .net "s", 0 0, L_0039F648; 1 drivers
+S_00392E90 .scope module, "XNOR1" "xnorgate" 2 24, 2 7, S_0039DF68;
+ .timescale 0 0;
+L_00393410 .functor XOR 1, v00393308_0, v00393360_0, C4<0>, C4<0>;
+L_0039F648 .functor NOT 1, L_00393410, C4<0>, C4<0>, C4<0>;
+v00392F18_0 .net *"_s0", 0 0, L_00393410; 1 drivers
+v0039DFF0_0 .net "p", 0 0, v00393308_0; 1 drivers
+v0039FF08_0 .net "q", 0 0, v00393360_0; 1 drivers
+v0039FF60_0 .alias "s", 0 0, v003933B8_0;
+S_00392E08 .scope begin, "start" "start" 2 26, 2 26, S_0039DF68;
+ .timescale 0 0;
+    .scope S_0039DF68;
+T_0 ;
+    %fork t_1, S_00392E08;
+    %jmp t_0;
+    .scope S_00392E08;
+t_1 ;
+    %set/v v00393308_0, 0, 1;
+    %set/v v00393360_0, 0, 1;
+    %end;
+    .scope S_0039DF68;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0039DF68;
+T_1 ;
+    %vpi_call 2 35 "$display", "test xnorgate";
+    %vpi_call 2 36 "$display", "\012a  b = s\012";
+    %set/v v00393308_0, 0, 1;
+    %set/v v00393360_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b  %b = %b", v00393308_0, v00393360_0, v003933B8_0;
+    %set/v v00393308_0, 0, 1;
+    %set/v v00393360_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b  %b = %b", v00393308_0, v00393360_0, v003933B8_0;
+    %set/v v00393308_0, 1, 1;
+    %set/v v00393360_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", " %b  %b =  %b", v00393308_0, v00393360_0, v003933B8_0;
+    %set/v v00393308_0, 1, 1;
+    %set/v v00393360_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", " %b  %b  = %b", v00393308_0, v00393360_0, v003933B8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\Guia01\Exercicio0003.v";

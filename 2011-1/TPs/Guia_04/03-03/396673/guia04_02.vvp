@@ -1,0 +1,106 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006B9200 .scope module, "testsomacompleta" "testsomacompleta" 2 41;
+ .timescale 0 0;
+v005A0268_0 .var "a", 0 0;
+v005A02C0_0 .var "b", 0 0;
+v005A0318_0 .net "s0", 0 0, L_005C6000; 1 drivers
+v005A0370_0 .net "s1", 0 0, L_005C60A8; 1 drivers
+v005A03C8_0 .var "v", 0 0;
+S_006B9398 .scope module, "SOMACOMPLETA1" "somacompleta" 2 45, 2 25, S_006B9200;
+ .timescale 0 0;
+L_005C60A8 .functor OR 1, L_006B2C00, L_005C6038, C4<0>, C4<0>;
+v006B3E40_0 .net "a", 0 0, v005A0268_0; 1 drivers
+v005A0000_0 .net "b", 0 0, v005A02C0_0; 1 drivers
+v005A0058_0 .net "q0", 0 0, L_006B2BC8; 1 drivers
+v005A00B0_0 .net "q1", 0 0, L_006B2C00; 1 drivers
+v005A0108_0 .net "q2", 0 0, L_005C6038; 1 drivers
+v005A0160_0 .alias "s0", 0 0, v005A0318_0;
+v005A01B8_0 .alias "s1", 0 0, v005A0370_0;
+v005A0210_0 .net "v", 0 0, v005A03C8_0; 1 drivers
+S_006B94A8 .scope module, "MS1" "meiasoma" 2 31, 2 11, S_006B9398;
+ .timescale 0 0;
+L_006B2BC8 .functor XOR 1, v005A0268_0, v005A02C0_0, C4<0>, C4<0>;
+L_006B2C00 .functor AND 1, v005A0268_0, v005A02C0_0, C4<1>, C4<1>;
+v006BD460_0 .alias "a", 0 0, v006B3E40_0;
+v006B3D38_0 .alias "b", 0 0, v005A0000_0;
+v006B3D90_0 .alias "s0", 0 0, v005A0058_0;
+v006B3DE8_0 .alias "s1", 0 0, v005A00B0_0;
+S_006B9420 .scope module, "MS2" "meiasoma" 2 32, 2 11, S_006B9398;
+ .timescale 0 0;
+L_005C6000 .functor XOR 1, L_006B2BC8, v005A03C8_0, C4<0>, C4<0>;
+L_005C6038 .functor AND 1, L_006B2BC8, v005A03C8_0, C4<1>, C4<1>;
+v005A4F28_0 .alias "a", 0 0, v005A0058_0;
+v005C5F90_0 .alias "b", 0 0, v005A0210_0;
+v006BD3B0_0 .alias "s0", 0 0, v005A0318_0;
+v006BD408_0 .alias "s1", 0 0, v005A0108_0;
+S_006B9310 .scope begin, "start" "start" 2 47, 2 47, S_006B9200;
+ .timescale 0 0;
+S_006B9288 .scope begin, "main" "main" 2 52, 2 52, S_006B9200;
+ .timescale 0 0;
+    .scope S_006B9200;
+T_0 ;
+    %fork t_1, S_006B9310;
+    %jmp t_0;
+    .scope S_006B9310;
+t_1 ;
+    %set/v v005A0268_0, 0, 1;
+    %set/v v005A02C0_0, 0, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %end;
+    .scope S_006B9200;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006B9200;
+T_1 ;
+    %fork t_3, S_006B9288;
+    %jmp t_2;
+    .scope S_006B9288;
+t_3 ;
+    %vpi_call 2 53 "$display", "Guia 04_02 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 54 "$display", "Operador Soma-Completa usando dois circuitos Meia-Soma.";
+    %vpi_call 2 55 "$display", "\012v a b = s0 s1\012";
+    %vpi_call 2 56 "$monitor", " %b %b %b = %b %b", v005A03C8_0, v005A0268_0, v005A02C0_0, v005A0318_0, v005A0370_0;
+    %delay 1, 0;
+    %set/v v005A0268_0, 0, 1;
+    %set/v v005A02C0_0, 1, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0268_0, 1, 1;
+    %set/v v005A02C0_0, 0, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0268_0, 1, 1;
+    %set/v v005A02C0_0, 1, 1;
+    %set/v v005A03C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005A0268_0, 0, 1;
+    %set/v v005A02C0_0, 0, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A0268_0, 0, 1;
+    %set/v v005A02C0_0, 1, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A0268_0, 1, 1;
+    %set/v v005A02C0_0, 0, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005A0268_0, 1, 1;
+    %set/v v005A02C0_0, 1, 1;
+    %set/v v005A03C8_0, 1, 1;
+    %end;
+    .scope S_006B9200;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Ciência da Computação\AC I - 2\Guias\Guia04\guia04_02.v";

@@ -1,0 +1,124 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A99C40 .scope module, "andgate" "andgate" 2 22;
+ .timescale 0 0;
+L_00A9D008 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v00A9C3C0_0 .net "a", 0 0, C4<z>; 0 drivers
+v00A9C418_0 .net "b", 0 0, C4<z>; 0 drivers
+v00A9C470_0 .net "s", 0 0, L_00A9D008; 1 drivers
+S_00A99BB8 .scope module, "notgate" "notgate" 2 28;
+ .timescale 0 0;
+L_00A9D040 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+v00A9CF58_0 .net "a", 0 0, C4<z>; 0 drivers
+v00A9CFB0_0 .net "s", 0 0, L_00A9D040; 1 drivers
+S_00A99A20 .scope module, "orgate" "orgate" 2 40;
+ .timescale 0 0;
+L_00A9D6C0 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+v00906000_0 .net "a", 0 0, C4<z>; 0 drivers
+v00906058_0 .net "b", 0 0, C4<z>; 0 drivers
+v009060B0_0 .net "s", 0 0, L_00A9D6C0; 1 drivers
+S_00A99998 .scope module, "test_comp" "test_comp" 2 46;
+ .timescale 0 0;
+RS_008E5244 .resolv tri, L_009069A0, L_00906AA8, L_00906BB0, L_00906CB8;
+v00906790_0 .net8 "eq", 3 0, RS_008E5244; 4 drivers
+v009067E8_0 .var "x", 3 0;
+v00906840_0 .var "y", 3 0;
+S_00A9A190 .scope module, "COMP1" "comparaIgualdade" 2 52, 2 7, S_00A99998;
+ .timescale 0 0;
+v00906688_0 .net "a", 3 0, v009067E8_0; 1 drivers
+v009066E0_0 .net "b", 3 0, v00906840_0; 1 drivers
+v00906738_0 .alias "s", 3 0, v00906790_0;
+L_009069A0 .part/pv L_00A9D730, 0, 1, 4;
+L_009069F8 .part v009067E8_0, 0, 1;
+L_00906A50 .part v00906840_0, 0, 1;
+L_00906AA8 .part/pv L_009070A8, 1, 1, 4;
+L_00906B00 .part v009067E8_0, 1, 1;
+L_00906B58 .part v00906840_0, 1, 1;
+L_00906BB0 .part/pv L_009071F8, 2, 1, 4;
+L_00906C08 .part v009067E8_0, 2, 1;
+L_00906C60 .part v00906840_0, 2, 1;
+L_00906CB8 .part/pv L_00907310, 3, 1, 4;
+L_00906D10 .part v009067E8_0, 3, 1;
+L_00906D68 .part v00906840_0, 3, 1;
+S_00A99E60 .scope module, "XNOR1" "xnorgate" 2 9, 2 16, S_00A9A190;
+ .timescale 0 0;
+L_00A9D6F8 .functor XOR 1, L_009069F8, L_00906A50, C4<0>, C4<0>;
+L_00A9D730 .functor NOT 1, L_00A9D6F8, C4<0>, C4<0>, C4<0>;
+v00906528_0 .net *"_s0", 0 0, L_00A9D6F8; 1 drivers
+v00906580_0 .net "a", 0 0, L_009069F8; 1 drivers
+v009065D8_0 .net "b", 0 0, L_00906A50; 1 drivers
+v00906630_0 .net "s", 0 0, L_00A9D730; 1 drivers
+S_00A99EE8 .scope module, "XNOR2" "xnorgate" 2 10, 2 16, S_00A9A190;
+ .timescale 0 0;
+L_00907070 .functor XOR 1, L_00906B00, L_00906B58, C4<0>, C4<0>;
+L_009070A8 .functor NOT 1, L_00907070, C4<0>, C4<0>, C4<0>;
+v009063C8_0 .net *"_s0", 0 0, L_00907070; 1 drivers
+v00906420_0 .net "a", 0 0, L_00906B00; 1 drivers
+v00906478_0 .net "b", 0 0, L_00906B58; 1 drivers
+v009064D0_0 .net "s", 0 0, L_009070A8; 1 drivers
+S_00A99F70 .scope module, "XNOR3" "xnorgate" 2 11, 2 16, S_00A9A190;
+ .timescale 0 0;
+L_009071C0 .functor XOR 1, L_00906C08, L_00906C60, C4<0>, C4<0>;
+L_009071F8 .functor NOT 1, L_009071C0, C4<0>, C4<0>, C4<0>;
+v00906268_0 .net *"_s0", 0 0, L_009071C0; 1 drivers
+v009062C0_0 .net "a", 0 0, L_00906C08; 1 drivers
+v00906318_0 .net "b", 0 0, L_00906C60; 1 drivers
+v00906370_0 .net "s", 0 0, L_009071F8; 1 drivers
+S_00A9A108 .scope module, "XNOR4" "xnorgate" 2 12, 2 16, S_00A9A190;
+ .timescale 0 0;
+L_00907038 .functor XOR 1, L_00906D10, L_00906D68, C4<0>, C4<0>;
+L_00907310 .functor NOT 1, L_00907038, C4<0>, C4<0>, C4<0>;
+v00906108_0 .net *"_s0", 0 0, L_00907038; 1 drivers
+v00906160_0 .net "a", 0 0, L_00906D10; 1 drivers
+v009061B8_0 .net "b", 0 0, L_00906D68; 1 drivers
+v00906210_0 .net "s", 0 0, L_00907310; 1 drivers
+S_00A9A218 .scope module, "xorgate" "xorgate" 2 34;
+ .timescale 0 0;
+L_009073F0 .functor XOR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+v00906898_0 .net "a", 0 0, C4<z>; 0 drivers
+v009068F0_0 .net "b", 0 0, C4<z>; 0 drivers
+v00906948_0 .net "s", 0 0, L_009073F0; 1 drivers
+    .scope S_00A99998;
+T_0 ;
+    %vpi_call 2 57 "$display", "Exemplo0023 - Gustavo Barbosa - 427410";
+    %vpi_call 2 58 "$display", "Test ALU\222s comparador igualdade";
+    %delay 1, 0;
+    %set/v v009067E8_0, 0, 4;
+    %set/v v00906840_0, 0, 4;
+    %vpi_call 2 61 "$monitor", "%4b %4b = %4b", v009067E8_0, v00906840_0, v00906790_0;
+    %delay 1, 0;
+    %movi 8, 6, 4;
+    %set/v v009067E8_0, 8, 4;
+    %movi 8, 4, 4;
+    %set/v v00906840_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 7, 4;
+    %set/v v009067E8_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v00906840_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v009067E8_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v00906840_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v009067E8_0, 8, 4;
+    %movi 8, 4, 4;
+    %set/v v00906840_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 4, 4;
+    %set/v v009067E8_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v00906840_0, 8, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0023.v";

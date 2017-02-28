@@ -1,0 +1,52 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E74D0 .scope module, "test_f4" "test_f4" 2 24;
+ .timescale 0 0;
+v005FB918_0 .var "w", 3 0;
+v005FB970_0 .var "x", 3 0;
+v005FB9C8_0 .var "y", 3 0;
+v005FBA20_0 .net "z1", 3 0, L_003E6CC8; 1 drivers
+v005FBA78_0 .net "z2", 3 0, L_005FBCC8; 1 drivers
+v005FBB10_0 .net "z3", 3 0, L_005FBD38; 1 drivers
+v005FBB88_0 .net "z4", 3 0, L_005FBE18; 1 drivers
+v005FBBE0_0 .net "zFim", 3 0, L_005FBEC0; 1 drivers
+S_005D0DD8 .scope module, "modulo" "f4" 2 35, 2 10, S_003E74D0;
+ .timescale 0 0;
+L_003E6CC8 .functor AND 4, v005FB970_0, v005FB9C8_0, C4<1111>, C4<1111>;
+L_005FBCC8 .functor OR 4, v005FB970_0, v005FB9C8_0, C4<0000>, C4<0000>;
+L_005FBD38 .functor AND 4, L_003E6CC8, v005FB918_0, C4<1111>, C4<1111>;
+L_005FBDE0 .functor NOT 4, v005FB918_0, C4<0000>, C4<0000>, C4<0000>;
+L_005FBE18 .functor AND 4, L_005FBCC8, L_005FBDE0, C4<1111>, C4<1111>;
+L_005FBEC0 .functor OR 4, L_005FBD38, L_005FBE18, C4<0000>, C4<0000>;
+v003E7878_0 .net *"_s6", 3 0, L_005FBDE0; 1 drivers
+v005FB568_0 .net "a", 3 0, v005FB970_0; 1 drivers
+v005FB5D8_0 .net "b", 3 0, v005FB9C8_0; 1 drivers
+v005FB660_0 .net "c", 3 0, v005FB918_0; 1 drivers
+v005FB6D0_0 .alias "s1", 3 0, v005FBA20_0;
+v005FB728_0 .alias "s2", 3 0, v005FBA78_0;
+v005FB798_0 .alias "s3", 3 0, v005FBB10_0;
+v005FB808_0 .alias "s4", 3 0, v005FBB88_0;
+v005FB878_0 .alias "sFim", 3 0, v005FBBE0_0;
+    .scope S_003E74D0;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo0032 - Felipe Ferreira Andrade do Carmo - 427402";
+    %vpi_call 2 41 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005FB970_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005FB9C8_0, 8, 4;
+    %set/v v005FB918_0, 0, 4;
+    %vpi_call 2 46 "$display", "\012  a \011  b \011 Chave\011  Resultado";
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%3b    %3b      %3b    %3b", v005FB970_0, v005FB9C8_0, v005FB918_0, v005FBBE0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Conteudo\2 semestre\ARQ I\Guia 3\1-Exemplo0032.v";

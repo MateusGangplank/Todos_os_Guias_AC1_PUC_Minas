@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0072E6E8 .scope module, "testandgate" "testandgate" 2 16;
+ .timescale 0 0;
+v007232C8_0 .var "a", 0 0;
+v00723320_0 .var "b", 0 0;
+v00723378_0 .net "s", 0 0, L_0072FFA8; 1 drivers
+S_00722E28 .scope module, "AND1" "andgate" 2 21, 2 8, S_0072E6E8;
+ .timescale 0 0;
+L_0072FFA8 .functor AND 1, v007232C8_0, v00723320_0, C4<1>, C4<1>;
+v0072E770_0 .net "p", 0 0, v007232C8_0; 1 drivers
+v0072FF50_0 .net "q", 0 0, v00723320_0; 1 drivers
+v00723270_0 .alias "s", 0 0, v00723378_0;
+S_00722DA0 .scope begin, "start" "start" 2 23, 2 23, S_0072E6E8;
+ .timescale 0 0;
+    .scope S_0072E6E8;
+T_0 ;
+    %fork t_1, S_00722DA0;
+    %jmp t_0;
+    .scope S_00722DA0;
+t_1 ;
+    %set/v v007232C8_0, 0, 1;
+    %set/v v00723320_0, 0, 1;
+    %end;
+    .scope S_0072E6E8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0072E6E8;
+T_1 ;
+    %vpi_call 2 28 "$display", "Exemplo0003 - Gustavo Jota Resende - 427413";
+    %vpi_call 2 29 "$display", "Test AND gate";
+    %vpi_call 2 30 "$display", "\012a & b = s\012";
+    %set/v v007232C8_0, 0, 1;
+    %set/v v00723320_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "%b & %b = %b", v007232C8_0, v00723320_0, v00723378_0;
+    %set/v v007232C8_0, 0, 1;
+    %set/v v00723320_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v007232C8_0, v00723320_0, v00723378_0;
+    %set/v v007232C8_0, 1, 1;
+    %set/v v00723320_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v007232C8_0, v00723320_0, v00723378_0;
+    %set/v v007232C8_0, 1, 1;
+    %set/v v00723320_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v007232C8_0, v00723320_0, v00723378_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\jotar\Documents\Gustavo\PUC\Segundo Período\Arquitetura de Computadores 1\427413\Exemplo0003.v";

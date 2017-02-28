@@ -1,0 +1,314 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xa073010 .scope module, "teste" "teste" 2 36;
+ .timescale 0 0;
+v0xa0becb0_0 .var "a", 0 0;
+v0xa0bed10_0 .var "b", 0 0;
+v0xa0bed80_0 .var "c1", 0 0;
+v0xa0bedf0_0 .var "c2", 0 0;
+v0xa0bee60_0 .var "c3", 0 0;
+v0xa0beed0_0 .net "s", 0 0, L_0xa0c02a8; 1 drivers
+S_0xa0718f8 .scope module, "exercicio" "ex35" 2 41, 2 6, S_0xa073010;
+ .timescale 0 0;
+L_0xa0be7e8 .functor NOT 1, v0xa0becb0_0, C4<0>, C4<0>, C4<0>;
+L_0xa0befb8 .functor NOT 1, v0xa0bed10_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf028 .functor OR 1, v0xa0becb0_0, v0xa0bed10_0, C4<0>, C4<0>;
+L_0xa0bf060 .functor NOR 1, v0xa0becb0_0, v0xa0bed10_0, C4<0>, C4<0>;
+L_0xa0beff0 .functor AND 1, v0xa0becb0_0, v0xa0bed10_0, C4<1>, C4<1>;
+L_0xa0bef80 .functor NAND 1, v0xa0becb0_0, v0xa0bed10_0, C4<1>, C4<1>;
+L_0xa0bf1e8 .functor XOR 1, v0xa0becb0_0, v0xa0bed10_0, C4<0>, C4<0>;
+L_0xa0bf240 .functor XNOR 1, v0xa0becb0_0, v0xa0bed10_0, C4<0>, C4<0>;
+L_0xa0bf0b8 .functor AND 1, L_0xa0be7e8, L_0xa0bf428, L_0xa0bf4d0, L_0xa0bf578;
+L_0xa0bf428 .functor NOT 1, v0xa0bed80_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf4d0 .functor NOT 1, v0xa0bedf0_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf578 .functor NOT 1, v0xa0bee60_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf658 .functor AND 1, L_0xa0bf028, L_0xa0bf6c8, L_0xa0bf620, v0xa0bee60_0;
+L_0xa0bf6c8 .functor NOT 1, v0xa0bed80_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf620 .functor NOT 1, v0xa0bedf0_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf770 .functor AND 1, L_0xa0bf060, L_0xa0bf540, v0xa0bedf0_0, L_0xa0bf498;
+L_0xa0bf540 .functor NOT 1, v0xa0bed80_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf498 .functor NOT 1, v0xa0bee60_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf5e8 .functor AND 1, L_0xa0beff0, L_0xa0bfa58, v0xa0bedf0_0, v0xa0bee60_0;
+L_0xa0bfa58 .functor NOT 1, v0xa0bed80_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bf9d0 .functor AND 1, L_0xa0bef80, v0xa0bed80_0, L_0xa0bfb58, L_0xa0bfac8;
+L_0xa0bfb58 .functor NOT 1, v0xa0bedf0_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bfac8 .functor NOT 1, v0xa0bee60_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bfc60 .functor AND 1, L_0xa0bf1e8, v0xa0bed80_0, L_0xa0bfbc8, v0xa0bee60_0;
+L_0xa0bfbc8 .functor NOT 1, v0xa0bedf0_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bfd70 .functor AND 1, L_0xa0bf240, v0xa0bed80_0, v0xa0bedf0_0, L_0xa0bf8c8;
+L_0xa0bf8c8 .functor NOT 1, v0xa0bee60_0, C4<0>, C4<0>, C4<0>;
+L_0xa0bfcd0 .functor AND 1, L_0xa0befb8, v0xa0bed80_0, v0xa0bedf0_0, v0xa0bee60_0;
+L_0xa0bff70/0/0 .functor OR 1, L_0xa0bf0b8, L_0xa0bf658, L_0xa0bf770, L_0xa0bf5e8;
+L_0xa0bff70/0/4 .functor OR 1, L_0xa0bf9d0, L_0xa0bfc60, L_0xa0bfd70, L_0xa0bfcd0;
+L_0xa0bff70 .functor OR 1, L_0xa0bff70/0/0, L_0xa0bff70/0/4, C4<0>, C4<0>;
+L_0xa0c02a8 .functor BUFZ 1, L_0xa0bff70, C4<0>, C4<0>, C4<0>;
+v0xa0a06e0_0 .net *"_s10", 0 0, L_0xa0bf428; 1 drivers
+v0xa0be358_0 .net *"_s12", 0 0, L_0xa0bf4d0; 1 drivers
+v0xa0be3b8_0 .net *"_s14", 0 0, L_0xa0bf578; 1 drivers
+v0xa0be418_0 .net *"_s18", 0 0, L_0xa0bf6c8; 1 drivers
+v0xa0be480_0 .net *"_s20", 0 0, L_0xa0bf620; 1 drivers
+v0xa0be4e0_0 .net *"_s24", 0 0, L_0xa0bf540; 1 drivers
+v0xa0be560_0 .net *"_s26", 0 0, L_0xa0bf498; 1 drivers
+v0xa0be5c0_0 .net *"_s30", 0 0, L_0xa0bfa58; 1 drivers
+v0xa0be648_0 .net *"_s34", 0 0, L_0xa0bfb58; 1 drivers
+v0xa0be6a8_0 .net *"_s36", 0 0, L_0xa0bfac8; 1 drivers
+v0xa0be738_0 .net *"_s40", 0 0, L_0xa0bfbc8; 1 drivers
+v0xa0be798_0 .net *"_s44", 0 0, L_0xa0bf8c8; 1 drivers
+v0xa0be830_0 .net "a", 0 0, v0xa0becb0_0; 1 drivers
+v0xa0be890_0 .net "b", 0 0, v0xa0bed10_0; 1 drivers
+v0xa0be930_0 .net "c1", 0 0, v0xa0bed80_0; 1 drivers
+v0xa0be990_0 .net "c2", 0 0, v0xa0bedf0_0; 1 drivers
+v0xa0bea38_0 .net "c3", 0 0, v0xa0bee60_0; 1 drivers
+v0xa0bea98_0 .alias "s", 0 0, v0xa0beed0_0;
+v0xa0beb38 .array "temp", 16 0;
+v0xa0beb38_0 .net v0xa0beb38 0, 0 0, L_0xa0be7e8; 1 drivers
+v0xa0beb38_1 .net v0xa0beb38 1, 0 0, L_0xa0befb8; 1 drivers
+v0xa0beb38_2 .net v0xa0beb38 2, 0 0, L_0xa0bf028; 1 drivers
+v0xa0beb38_3 .net v0xa0beb38 3, 0 0, L_0xa0bf060; 1 drivers
+v0xa0beb38_4 .net v0xa0beb38 4, 0 0, L_0xa0beff0; 1 drivers
+v0xa0beb38_5 .net v0xa0beb38 5, 0 0, L_0xa0bef80; 1 drivers
+v0xa0beb38_6 .net v0xa0beb38 6, 0 0, L_0xa0bf1e8; 1 drivers
+v0xa0beb38_7 .net v0xa0beb38 7, 0 0, L_0xa0bf240; 1 drivers
+v0xa0beb38_8 .net v0xa0beb38 8, 0 0, L_0xa0bf0b8; 1 drivers
+v0xa0beb38_9 .net v0xa0beb38 9, 0 0, L_0xa0bf658; 1 drivers
+v0xa0beb38_10 .net v0xa0beb38 10, 0 0, L_0xa0bf770; 1 drivers
+v0xa0beb38_11 .net v0xa0beb38 11, 0 0, L_0xa0bf5e8; 1 drivers
+v0xa0beb38_12 .net v0xa0beb38 12, 0 0, L_0xa0bf9d0; 1 drivers
+v0xa0beb38_13 .net v0xa0beb38 13, 0 0, L_0xa0bfc60; 1 drivers
+v0xa0beb38_14 .net v0xa0beb38 14, 0 0, L_0xa0bfd70; 1 drivers
+v0xa0beb38_15 .net v0xa0beb38 15, 0 0, L_0xa0bfcd0; 1 drivers
+v0xa0beb38_16 .net v0xa0beb38 16, 0 0, L_0xa0bff70; 1 drivers
+S_0xa071ab8 .scope begin, "start" "start" 2 43, 2 43, S_0xa073010;
+ .timescale 0 0;
+S_0xa073840 .scope begin, "main" "main" 2 48, 2 48, S_0xa073010;
+ .timescale 0 0;
+    .scope S_0xa073010;
+T_0 ;
+    %fork t_1, S_0xa071ab8;
+    %jmp t_0;
+    .scope S_0xa071ab8;
+t_1 ;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %end;
+    .scope S_0xa073010;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0xa073010;
+T_1 ;
+    %fork t_3, S_0xa073840;
+    %jmp t_2;
+    .scope S_0xa073840;
+t_3 ;
+    %vpi_call 2 49 "$display", "Exemplo0035 - Adamo Ludwig - 473319";
+    %vpi_call 2 51 "$monitor", "%b %b %b %b %b s:%b", v0xa0becb0_0, v0xa0bed10_0, v0xa0bed80_0, v0xa0bedf0_0, v0xa0bee60_0, v0xa0beed0_0;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 0, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 0, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 0, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 0, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0xa0becb0_0, 1, 1;
+    %set/v v0xa0bed10_0, 1, 1;
+    %set/v v0xa0bed80_0, 1, 1;
+    %set/v v0xa0bedf0_0, 1, 1;
+    %set/v v0xa0bee60_0, 1, 1;
+    %end;
+    .scope S_0xa073010;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0035.v";

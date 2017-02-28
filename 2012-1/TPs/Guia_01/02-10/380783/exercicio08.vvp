@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C2D20 .scope module, "testandgate" "testandgate" 2 19;
+ .timescale 0 0;
+v003C9668_0 .var "a", 0 0;
+v003C96C0_0 .var "b", 0 0;
+v003CCCE8_0 .var "c", 0 0;
+v003CCD40_0 .net "s", 0 0, L_003CCD98; 1 drivers
+S_003C32E8 .scope module, "AND1" "andgate" 2 24, 2 9, S_003C2D20;
+ .timescale 0 0;
+L_003C9718 .functor AND 1, v003C9668_0, v003C96C0_0, C4<1>, C4<1>;
+L_003CCD98 .functor AND 1, L_003C9718, v003CCCE8_0, C4<1>, C4<1>;
+v003C3370_0 .net *"_s0", 0 0, L_003C9718; 1 drivers
+v003C33C8_0 .net "p", 0 0, v003C9668_0; 1 drivers
+v003C9560_0 .net "q", 0 0, v003C96C0_0; 1 drivers
+v003C95B8_0 .net "r", 0 0, v003CCCE8_0; 1 drivers
+v003C9610_0 .alias "s", 0 0, v003CCD40_0;
+S_003C2DA8 .scope begin, "start" "start" 2 26, 2 26, S_003C2D20;
+ .timescale 0 0;
+    .scope S_003C2D20;
+T_0 ;
+    %fork t_1, S_003C2DA8;
+    %jmp t_0;
+    .scope S_003C2DA8;
+t_1 ;
+    %set/v v003C9668_0, 0, 1;
+    %set/v v003C96C0_0, 0, 1;
+    %set/v v003CCCE8_0, 0, 1;
+    %end;
+    .scope S_003C2D20;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003C2D20;
+T_1 ;
+    %vpi_call 2 33 "$display", "Exercicio01-08 - Lucas Siqueira Chagas - 380783";
+    %vpi_call 2 34 "$display", "Test AND gate com 3 portas";
+    %vpi_call 2 35 "$display", "\012a & b & c = s\012";
+    %vpi_call 2 36 "$monitor", "(%b & %b & %b ) = %b", v003C9668_0, v003C96C0_0, v003CCCE8_0, v003CCD40_0;
+    %delay 1, 0;
+    %set/v v003C9668_0, 0, 1;
+    %set/v v003C96C0_0, 0, 1;
+    %set/v v003CCCE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 0, 1;
+    %set/v v003C96C0_0, 0, 1;
+    %set/v v003CCCE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 0, 1;
+    %set/v v003C96C0_0, 1, 1;
+    %set/v v003CCCE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 0, 1;
+    %set/v v003C96C0_0, 1, 1;
+    %set/v v003CCCE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 1, 1;
+    %set/v v003C96C0_0, 0, 1;
+    %set/v v003CCCE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 1, 1;
+    %set/v v003C96C0_0, 0, 1;
+    %set/v v003CCCE8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 1, 1;
+    %set/v v003C96C0_0, 1, 1;
+    %set/v v003CCCE8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003C9668_0, 1, 1;
+    %set/v v003C96C0_0, 1, 1;
+    %set/v v003CCCE8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio08.v";

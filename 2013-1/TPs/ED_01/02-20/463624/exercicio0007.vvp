@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008F2CA0 .scope module, "exercicio" "exercicio" 2 15;
+ .timescale 0 0;
+v008FEA20_0 .var "a", 0 0;
+v008FEA78_0 .var "b", 0 0;
+v008FEAD0_0 .net "s", 0 0, L_008FFC68; 1 drivers
+S_008F3AA0 .scope module, "xnor1" "xnorGate" 2 20, 2 8, S_008F2CA0;
+ .timescale 0 0;
+L_008FCF68 .functor AND 1, v008FEA20_0, v008FEA78_0, C4<1>, C4<1>;
+L_008FEB98 .functor NOT 1, v008FEA20_0, C4<0>, C4<0>, C4<0>;
+L_008FEBD0 .functor NOT 1, v008FEA78_0, C4<0>, C4<0>, C4<0>;
+L_008FEC08 .functor AND 1, L_008FEB98, L_008FEBD0, C4<1>, C4<1>;
+L_008FFC68 .functor OR 1, L_008FCF68, L_008FEC08, C4<0>, C4<0>;
+v008F2DB0_0 .net *"_s0", 0 0, L_008FCF68; 1 drivers
+v008F3B28_0 .net *"_s2", 0 0, L_008FEB98; 1 drivers
+v008FE6B8_0 .net *"_s4", 0 0, L_008FEBD0; 1 drivers
+v008FE710_0 .net *"_s6", 0 0, L_008FEC08; 1 drivers
+v008FE768_0 .net "a", 0 0, v008FEA20_0; 1 drivers
+v008FE7C0_0 .net "b", 0 0, v008FEA78_0; 1 drivers
+v008FE9C8_0 .alias "s", 0 0, v008FEAD0_0;
+S_008F3A18 .scope begin, "start" "start" 2 22, 2 22, S_008F2CA0;
+ .timescale 0 0;
+S_008F2D28 .scope begin, "main" "main" 2 28, 2 28, S_008F2CA0;
+ .timescale 0 0;
+    .scope S_008F2CA0;
+T_0 ;
+    %fork t_1, S_008F3A18;
+    %jmp t_0;
+    .scope S_008F3A18;
+t_1 ;
+    %set/v v008FEA20_0, 0, 1;
+    %set/v v008FEA78_0, 0, 1;
+    %end;
+    .scope S_008F2CA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008F2CA0;
+T_1 ;
+    %fork t_3, S_008F2D28;
+    %jmp t_2;
+    .scope S_008F2D28;
+t_3 ;
+    %vpi_call 2 29 "$display", "Exercicioo0007 - Mateus Cunha da Silva - 463624";
+    %vpi_call 2 30 "$display", "Tabela ";
+    %vpi_call 2 31 "$display", "\012 a ^ b = s\012";
+    %vpi_call 2 32 "$monitor", " %b ^ %b = %b ", v008FEA20_0, v008FEA78_0, v008FEAD0_0;
+    %delay 1, 0;
+    %set/v v008FEA20_0, 0, 1;
+    %set/v v008FEA78_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008FEA20_0, 1, 1;
+    %set/v v008FEA78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008FEA20_0, 1, 1;
+    %set/v v008FEA78_0, 1, 1;
+    %end;
+    .scope S_008F2CA0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Mateus\Teste\exercicio0007.v";

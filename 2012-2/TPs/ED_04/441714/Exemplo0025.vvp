@@ -1,0 +1,84 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006C9270 .scope module, "testC2" "testC2" 2 38;
+ .timescale 0 0;
+v005C44E0_0 .var "a", 2 0;
+RS_00591D24 .resolv tri, L_005C4640, L_005C46F0, L_005C47A0, L_005C47F8;
+v005C4538_0 .net8 "s", 3 0, RS_00591D24; 4 drivers
+S_006C91E8 .scope module, "teste" "C2" 2 44, 2 26, S_006C9270;
+ .timescale 0 0;
+v005C4380_0 .alias "S", 3 0, v005C4538_0;
+v005C43D8_0 .net "a", 2 0, v005C44E0_0; 1 drivers
+v005C4430_0 .net "s1", 0 0, L_006C38E0; 1 drivers
+v005C4488_0 .net "s2", 0 0, L_005C5010; 1 drivers
+L_005C4640 .part/pv L_006C2FC0, 0, 1, 4;
+L_005C4698 .part v005C44E0_0, 0, 1;
+L_005C46F0 .part/pv L_006C4D20, 1, 1, 4;
+L_005C4748 .part v005C44E0_0, 1, 1;
+L_005C47A0 .part/pv L_005C50B8, 2, 1, 4;
+L_005C47F8 .part/pv L_005C50F0, 3, 1, 4;
+L_005C4850 .part v005C44E0_0, 2, 1;
+S_006C9380 .scope module, "soma1" "somamais" 2 30, 2 10, S_006C91E8;
+ .timescale 0 0;
+L_006C2FC0 .functor XOR 1, L_005C4698, L_005C4590, C4<0>, C4<0>;
+L_006C38E0 .functor AND 1, L_005C4698, L_005C45E8, C4<1>, C4<1>;
+v005C4118_0 .net/s *"_s0", 1 0, C4<01>; 1 drivers
+v005C4170_0 .net *"_s3", 0 0, L_005C4590; 1 drivers
+v005C41C8_0 .net/s *"_s4", 1 0, C4<01>; 1 drivers
+v005C4220_0 .net *"_s7", 0 0, L_005C45E8; 1 drivers
+v005C4278_0 .net "a", 0 0, L_005C4698; 1 drivers
+v005C42D0_0 .net "s1", 0 0, L_006C2FC0; 1 drivers
+v005C4328_0 .alias "s2", 0 0, v005C4430_0;
+L_005C4590 .part C4<01>, 0, 1;
+L_005C45E8 .part C4<01>, 0, 1;
+S_006C9408 .scope module, "soma2" "soma" 2 31, 2 18, S_006C91E8;
+ .timescale 0 0;
+L_006C4D20 .functor XOR 1, L_005C4748, L_006C38E0, C4<0>, C4<0>;
+L_005C5010 .functor AND 1, L_005C4748, L_006C38E0, C4<1>, C4<1>;
+v006C2F30_0 .net "a", 0 0, L_005C4748; 1 drivers
+v005C4010_0 .alias "b", 0 0, v005C4430_0;
+v005C4068_0 .net "s1", 0 0, L_006C4D20; 1 drivers
+v005C40C0_0 .alias "s2", 0 0, v005C4488_0;
+S_006C9160 .scope module, "soma3" "soma" 2 32, 2 18, S_006C91E8;
+ .timescale 0 0;
+L_005C50B8 .functor XOR 1, L_005C4850, L_005C5010, C4<0>, C4<0>;
+L_005C50F0 .functor AND 1, L_005C4850, L_005C5010, C4<1>, C4<1>;
+v006CF080_0 .net "a", 0 0, L_005C4850; 1 drivers
+v006CD3A0_0 .alias "b", 0 0, v005C4488_0;
+v006CD3F8_0 .net "s1", 0 0, L_005C50B8; 1 drivers
+v006CD450_0 .net "s2", 0 0, L_005C50F0; 1 drivers
+    .scope S_006C9270;
+T_0 ;
+    %vpi_call 2 50 "$display", "Exemplo0025 - Yousef -441714";
+    %vpi_call 2 51 "$display", "C2";
+    %vpi_call 2 53 "$monitor", "a = %3b  C2 de a = %4b\012", v005C44E0_0, v005C4538_0;
+    %delay 1, 0;
+    %set/v v005C44E0_0, 0, 3;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v005C44E0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v005C44E0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 4, 3;
+    %set/v v005C44E0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v005C44E0_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 6, 3;
+    %set/v v005C44E0_0, 8, 3;
+    %delay 1, 0;
+    %set/v v005C44E0_0, 1, 3;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Downloads\441714\Downloads\Nova pasta\Exe,mplo0025.v";

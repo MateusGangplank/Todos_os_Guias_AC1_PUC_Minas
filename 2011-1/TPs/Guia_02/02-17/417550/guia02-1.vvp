@@ -1,0 +1,46 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672538 .scope module, "testeOr_cnand" "testeOr_cnand" 2 19;
+ .timescale 0 0;
+v006A1C70_0 .var "a", 0 0;
+v006A1CC8_0 .var "b", 0 0;
+v006A1D20_0 .net "s", 0 0, L_006A1F30; 1 drivers
+S_00673A50 .scope module, "or1" "or_cnand" 2 24, 2 5, S_00672538;
+ .timescale 0 0;
+L_006A1D78 .functor NAND 1, v006A1C70_0, C4<1>, C4<1>, C4<1>;
+L_006A1E08 .functor NAND 1, v006A1CC8_0, C4<1>, C4<1>, C4<1>;
+L_006A1E88 .functor AND 1, L_006A1D78, L_006A1E08, C4<1>, C4<1>;
+L_006A1F30 .functor NOT 1, L_006A1E88, C4<0>, C4<0>, C4<0>;
+v00673AD0_0 .net *"_s0", 0 0, L_006A1E88; 1 drivers
+v006A1A40_0 .alias "s", 0 0, v006A1D20_0;
+v006A1AB0_0 .net "t1", 0 0, L_006A1D78; 1 drivers
+v006A1B38_0 .net "t2", 0 0, L_006A1E08; 1 drivers
+v006A1BA8_0 .net "x", 0 0, v006A1C70_0; 1 drivers
+v006A1C00_0 .net "y", 0 0, v006A1CC8_0; 1 drivers
+    .scope S_00672538;
+T_0 ;
+    %vpi_call 2 30 "$display", "\012 Guia 02-1";
+    %vpi_call 2 31 "$display", "\012 Teste Or com Nands";
+    %vpi_call 2 32 "$monitor", "%b | %b = %b", v006A1C70_0, v006A1CC8_0, v006A1D20_0;
+    %set/v v006A1C70_0, 0, 1;
+    %set/v v006A1CC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A1C70_0, 0, 1;
+    %set/v v006A1CC8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A1C70_0, 1, 1;
+    %set/v v006A1CC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A1C70_0, 1, 1;
+    %set/v v006A1CC8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\417550\Arquitetura\guia02-1.v";

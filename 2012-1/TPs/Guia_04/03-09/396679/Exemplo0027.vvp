@@ -1,0 +1,79 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009B9270 .scope module, "test_seletor" "test_seletor" 2 53;
+ .timescale 0 0;
+v0090D258_0 .var "chave", 3 0;
+v0090D2B0_0 .net "r", 3 0, L_0090E060; 1 drivers
+v0090D308_0 .var "x", 3 0;
+v0090D360_0 .var "y", 3 0;
+S_009B91E8 .scope module, "modulo" "seletor" 2 62, 2 35, S_009B9270;
+ .timescale 0 0;
+L_009B2C30 .functor NOT 4, v0090D258_0, C4<0000>, C4<0000>, C4<0000>;
+L_008EB4A0 .functor AND 4, L_009B4598, L_009B2C30, C4<1111>, C4<1111>;
+L_0090E028 .functor AND 4, L_009B2BC0, v0090D258_0, C4<1111>, C4<1111>;
+L_0090E060 .functor OR 4, L_008EB4A0, L_0090E028, C4<0000>, C4<0000>;
+v009B3968_0 .net *"_s0", 3 0, L_009B2C30; 1 drivers
+v009B39C0_0 .net "a", 3 0, v0090D308_0; 1 drivers
+v0090CFF0_0 .net "a1", 3 0, L_008EB4A0; 1 drivers
+v0090D048_0 .net "a2", 3 0, L_0090E028; 1 drivers
+v0090D0A0_0 .net "b", 3 0, v0090D360_0; 1 drivers
+v0090D0F8_0 .net "chave", 3 0, v0090D258_0; 1 drivers
+v0090D150_0 .alias "s", 3 0, v0090D2B0_0;
+v0090D1A8_0 .net "s1", 3 0, L_009B4598; 1 drivers
+v0090D200_0 .net "s2", 3 0, L_009B2BC0; 1 drivers
+S_009B90D8 .scope module, "comparador1" "compI" 2 43, 2 23, S_009B91E8;
+ .timescale 0 0;
+L_009B2B50 .functor XOR 4, v0090D308_0, v0090D360_0, C4<0000>, C4<0000>;
+L_009B4598 .functor NOT 4, L_009B2B50, C4<0000>, C4<0000>, C4<0000>;
+v009B4490_0 .net *"_s0", 3 0, L_009B2B50; 1 drivers
+v009B44E8_0 .alias "a", 3 0, v009B39C0_0;
+v009B4540_0 .alias "b", 3 0, v0090D0A0_0;
+v009B3910_0 .alias "s", 3 0, v0090D1A8_0;
+S_009B9050 .scope module, "comparador2" "compD" 2 44, 2 11, S_009B91E8;
+ .timescale 0 0;
+L_009B2BC0 .functor XOR 4, v0090D308_0, v0090D360_0, C4<0000>, C4<0000>;
+v009BDA60_0 .alias "a", 3 0, v009B39C0_0;
+v009BDAB8_0 .alias "b", 3 0, v0090D0A0_0;
+v009BDB10_0 .alias "s", 3 0, v0090D200_0;
+    .scope S_009B9270;
+T_0 ;
+    %vpi_call 2 66 "$display", "Exemplo0027 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 67 "$display", "Teste Comparador de Diferen\377a ou Igualdade";
+    %set/v v0090D308_0, 0, 4;
+    %set/v v0090D360_0, 0, 4;
+    %set/v v0090D258_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 72 "$display", "%b  %b = %b // Chave = %b", v0090D308_0, v0090D360_0, v0090D2B0_0, v0090D258_0;
+    %set/v v0090D258_0, 1, 4;
+    %delay 1, 0;
+    %vpi_call 2 74 "$display", "%b  %b = %b // Chave = %b", v0090D308_0, v0090D360_0, v0090D2B0_0, v0090D258_0;
+    %movi 8, 1, 4;
+    %set/v v0090D308_0, 8, 4;
+    %set/v v0090D360_0, 0, 4;
+    %set/v v0090D258_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 82 "$display", "%b  %b = %b // Chave = %b", v0090D308_0, v0090D360_0, v0090D2B0_0, v0090D258_0;
+    %set/v v0090D258_0, 1, 4;
+    %delay 1, 0;
+    %vpi_call 2 84 "$display", "%b  %b = %b // Chave = %b", v0090D308_0, v0090D360_0, v0090D2B0_0, v0090D258_0;
+    %movi 8, 5, 4;
+    %set/v v0090D308_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v0090D360_0, 8, 4;
+    %set/v v0090D258_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 90 "$display", "%b  %b = %b // Chave = %b", v0090D308_0, v0090D360_0, v0090D2B0_0, v0090D258_0;
+    %set/v v0090D258_0, 1, 4;
+    %delay 1, 0;
+    %vpi_call 2 92 "$display", "%b  %b = %b // Chave = %b", v0090D308_0, v0090D360_0, v0090D2B0_0, v0090D258_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 04\Exemplo0027.v";

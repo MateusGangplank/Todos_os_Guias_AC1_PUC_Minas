@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00699090 .scope module, "test_f4" "test_f4" 2 24;
+ .timescale 0 0;
+v0069B580_0 .net "k", 0 0, L_005D2D30; 1 drivers
+v0069B5D8_0 .var "x", 2 0;
+v0069B630_0 .net "z", 0 0, L_0069FEC0; 1 drivers
+L_0069B688 .part v0069B5D8_0, 0, 1;
+L_0069B6E0 .part v0069B5D8_0, 1, 1;
+L_0069B738 .part v0069B5D8_0, 2, 1;
+S_00699008 .scope module, "modulo" "f4" 2 29, 2 9, S_00699090;
+ .timescale 0 0;
+L_0069D608 .functor AND 1, L_0069B688, L_0069B6E0, C4<1>, C4<1>;
+L_0069D640 .functor AND 1, L_005D2E10, L_00692DC8, C4<1>, C4<1>;
+L_0069D678 .functor AND 1, L_00692E00, L_0069B738, C4<1>, C4<1>;
+L_0069D6B0 .functor AND 1, L_005D2E80, L_00692DC8, C4<1>, C4<1>;
+L_00692D20 .functor AND 1, L_0069D608, L_0069B738, C4<1>, C4<1>;
+L_00692DC8 .functor NOT 1, L_0069B738, C4<0>, C4<0>, C4<0>;
+L_00692E00 .functor OR 1, L_0069B688, L_0069B6E0, C4<0>, C4<0>;
+L_0069FEC0 .functor OR 1, L_0069D640, L_0069D678, C4<0>, C4<0>;
+L_005D2D30 .functor OR 1, L_0069D6B0, L_00692D20, C4<0>, C4<0>;
+L_005D2E10 .functor NOR 1, L_0069B688, L_0069B6E0, C4<0>, C4<0>;
+L_005D2E80 .functor NAND 1, L_0069B688, L_0069B6E0, C4<1>, C4<1>;
+v0069B0B0_0 .net "a", 0 0, L_0069B688; 1 drivers
+v0069B108_0 .net "b", 0 0, L_0069B6E0; 1 drivers
+v0069B160_0 .net "c", 0 0, L_0069B738; 1 drivers
+v0069B1B8_0 .net "nc", 0 0, L_00692DC8; 1 drivers
+v0069B210_0 .alias "s", 0 0, v0069B630_0;
+v0069B268_0 .alias "s1", 0 0, v0069B580_0;
+v0069B2C0_0 .net "s2", 0 0, L_005D2E10; 1 drivers
+v0069B318_0 .net "s3", 0 0, L_00692E00; 1 drivers
+v0069B370_0 .net "s4", 0 0, L_005D2E80; 1 drivers
+v0069B3C8_0 .net "s5", 0 0, L_0069D608; 1 drivers
+v0069B420_0 .net "s6", 0 0, L_0069D640; 1 drivers
+v0069B478_0 .net "s7", 0 0, L_0069D678; 1 drivers
+v0069B4D0_0 .net "s8", 0 0, L_0069D6B0; 1 drivers
+v0069B528_0 .net "s9", 0 0, L_00692D20; 1 drivers
+    .scope S_00699090;
+T_0 ;
+    %vpi_call 2 32 "$display", "Exemplo0032 - Gabriel Carlos Damasceno Arriel - 451557";
+    %vpi_call 2 33 "$display", "Test LU's module";
+    %set/v v0069B5D8_0, 0, 3;
+    %delay 1, 0;
+    %vpi_call 2 36 "$monitor", "entradas : %3b %3b | Selecao: %3b | Saida: %3b , %3b", &PV<v0069B5D8_0, 0, 1>, &PV<v0069B5D8_0, 1, 1>, &PV<v0069B5D8_0, 2, 1>, v0069B630_0, v0069B580_0;
+    %movi 8, 7, 4;
+T_0.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_0.1, 5;
+    %add 8, 1, 4;
+    %delay 1, 0;
+    %load/v 12, v0069B5D8_0, 3;
+    %mov 15, 0, 29;
+    %addi 12, 1, 32;
+    %set/v v0069B5D8_0, 12, 3;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gabriel\Desktop\Arquiterura de Computadores I\Guia03-Gabriel Carlos Damasceno Arriel\Exemplo0033.v";

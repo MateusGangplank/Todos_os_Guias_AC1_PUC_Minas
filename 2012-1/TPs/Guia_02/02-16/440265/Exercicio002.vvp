@@ -1,0 +1,113 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006A9BF0 .scope module, "test_operacoes_01" "test_operacoes_01" 2 29;
+ .timescale 0 0;
+v0059FA20_0 .var "a", 5 0;
+v0059FA78_0 .var "b", 4 0;
+v0059FAD0_0 .var "c", 4 0;
+v0059FB28_0 .var "d", 4 0;
+v0059FB80_0 .var "e", 10 0;
+v0059FBD8_0 .var "f", 7 0;
+v0059FC30_0 .var "g", 8 0;
+v0059FC88_0 .var "h", 8 0;
+v0059FCE0_0 .var "i", 4 0;
+v0059FD38_0 .var "j", 4 0;
+v0059FD90_0 .var "k", 6 0;
+v0059FDE8_0 .net "s1", 6 0, L_005C9C10; 1 drivers
+v0059FE40_0 .net "s2", 5 0, L_005C9D18; 1 drivers
+v0059FE98_0 .net "s3", 10 0, L_005C9DC8; 1 drivers
+v0059FEF0_0 .net "s4", 8 0, L_005C9E20; 1 drivers
+v0059FF48_0 .net "s5", 9 0, L_005C9F28; 1 drivers
+S_006AA140 .scope module, "soma" "letraA" 2 54, 2 6, S_006A9BF0;
+ .timescale 0 0;
+v0059F7B8_0 .net *"_s0", 6 0, L_0059FFA0; 1 drivers
+v0059F810_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0059F868_0 .net *"_s4", 6 0, L_0059FFF8; 1 drivers
+v0059F8C0_0 .net *"_s7", 1 0, C4<00>; 1 drivers
+v0059F918_0 .net "a", 5 0, v0059FA20_0; 1 drivers
+v0059F970_0 .net "b", 4 0, v0059FA78_0; 1 drivers
+v0059F9C8_0 .alias "s", 6 0, v0059FDE8_0;
+L_0059FFA0 .concat [ 6 1 0 0], v0059FA20_0, C4<0>;
+L_0059FFF8 .concat [ 5 2 0 0], v0059FA78_0, C4<00>;
+L_005C9C10 .arith/sum 7, L_0059FFA0, L_0059FFF8;
+S_006AA0B8 .scope module, "mult" "letraB" 2 55, 2 10, S_006A9BF0;
+ .timescale 0 0;
+v0059F550_0 .net *"_s0", 5 0, L_005C9C68; 1 drivers
+v0059F5A8_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0059F600_0 .net *"_s4", 5 0, L_005C9CC0; 1 drivers
+v0059F658_0 .net *"_s7", 0 0, C4<0>; 1 drivers
+v0059F6B0_0 .net "a", 4 0, v0059FAD0_0; 1 drivers
+v0059F708_0 .net "b", 4 0, v0059FB28_0; 1 drivers
+v0059F760_0 .alias "s", 5 0, v0059FE40_0;
+L_005C9C68 .concat [ 5 1 0 0], v0059FAD0_0, C4<0>;
+L_005C9CC0 .concat [ 5 1 0 0], v0059FB28_0, C4<0>;
+L_005C9D18 .arith/sum 6, L_005C9C68, L_005C9CC0;
+S_006AA030 .scope module, "divs" "letraC" 2 56, 2 14, S_006A9BF0;
+ .timescale 0 0;
+v0059F398_0 .net *"_s0", 10 0, L_005C9D70; 1 drivers
+v0059F3F0_0 .net *"_s3", 2 0, C4<000>; 1 drivers
+v0059F448_0 .net "a", 10 0, v0059FB80_0; 1 drivers
+v0059F4A0_0 .net "b", 7 0, v0059FBD8_0; 1 drivers
+v0059F4F8_0 .alias "s", 10 0, v0059FE98_0;
+L_005C9D70 .concat [ 8 3 0 0], v0059FBD8_0, C4<000>;
+L_005C9DC8 .arith/div 11, v0059FB80_0, L_005C9D70;
+S_006A9E10 .scope module, "subt" "letraD" 2 57, 2 18, S_006A9BF0;
+ .timescale 0 0;
+v0059F290_0 .net "a", 8 0, v0059FC30_0; 1 drivers
+v0059F2E8_0 .net "b", 8 0, v0059FC88_0; 1 drivers
+v0059F340_0 .alias "s", 8 0, v0059FEF0_0;
+L_005C9E20 .arith/sub 9, v0059FC30_0, v0059FC88_0;
+S_006A9D88 .scope module, "expr" "letraE" 2 58, 2 22, S_006A9BF0;
+ .timescale 0 0;
+v006AE4C8_0 .net *"_s1", 9 0, L_005C9E78; 1 drivers
+v0059F080_0 .net *"_s2", 9 0, L_005C9ED0; 1 drivers
+v0059F0D8_0 .net *"_s5", 2 0, C4<000>; 1 drivers
+v0059F130_0 .net "a", 4 0, v0059FCE0_0; 1 drivers
+v0059F188_0 .net "b", 4 0, v0059FD38_0; 1 drivers
+v0059F1E0_0 .net "c", 6 0, v0059FD90_0; 1 drivers
+v0059F238_0 .alias "s", 9 0, v0059FF48_0;
+L_005C9E78 .arith/mult 10, v0059FCE0_0, v0059FD38_0;
+L_005C9ED0 .concat [ 7 3 0 0], v0059FD90_0, C4<000>;
+L_005C9F28 .arith/sum 10, L_005C9E78, L_005C9ED0;
+    .scope S_006A9BF0;
+T_0 ;
+    %vpi_call 2 62 "$display", "Exemplo001 - Sad - 440265";
+    %vpi_call 2 63 "$display", "Test number system";
+    %movi 8, 42, 6;
+    %set/v v0059FA20_0, 8, 6;
+    %movi 8, 26, 5;
+    %set/v v0059FA78_0, 8, 5;
+    %vpi_call 2 67 "$display", "a) %b + %b = %b", v0059FA20_0, v0059FA78_0, v0059FDE8_0;
+    %movi 8, 26, 5;
+    %set/v v0059FAD0_0, 8, 5;
+    %movi 8, 21, 5;
+    %set/v v0059FB28_0, 8, 5;
+    %vpi_call 2 71 "$display", "b) %b + %o = %b", v0059FAD0_0, v0059FB28_0, v0059FE40_0;
+    %movi 8, 668, 11;
+    %set/v v0059FB80_0, 8, 11;
+    %movi 8, 43, 8;
+    %set/v v0059FBD8_0, 8, 8;
+    %vpi_call 2 75 "$display", "c) %o / %h = %b", v0059FB80_0, v0059FBD8_0, v0059FE98_0;
+    %movi 8, 458, 9;
+    %set/v v0059FC30_0, 8, 9;
+    %movi 8, 369, 9;
+    %set/v v0059FC88_0, 8, 9;
+    %vpi_call 2 79 "$display", "d) %h - %b = %b", v0059FC30_0, v0059FC88_0, v0059FEF0_0;
+    %movi 8, 25, 5;
+    %set/v v0059FCE0_0, 8, 5;
+    %movi 13, 25, 5;
+    %set/v v0059FD38_0, 13, 5;
+    %movi 13, 122, 7;
+    %set/v v0059FD90_0, 13, 7;
+    %vpi_call 2 84 "$display", "e) %d * %o + (%h) = %b", v0059FCE0_0, v0059FD38_0, v0059FD90_0, v0059FF48_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Alexandre\PUC\2_periodo\Arquitetura I\TPs\Guia002\Exercicio002.v";

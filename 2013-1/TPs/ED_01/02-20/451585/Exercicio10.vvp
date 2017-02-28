@@ -1,0 +1,78 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x26de890 .scope module, "testorgate" "testorgate" 2 32;
+ .timescale 0 0;
+v0x2716be0_0 .var "a", 0 0;
+v0x2716cb0_0 .var "b", 0 0;
+v0x2716d80_0 .var "c", 0 0;
+v0x2716e00_0 .net "s", 0 0, L_0x2716f60; 1 drivers
+S_0x2700fe0 .scope module, "OR1" "orgate3in" 2 37, 2 20, S_0x26de890;
+ .timescale 0 0;
+L_0x2716f60 .functor OR 1, L_0x2716eb0, v0x2716d80_0, C4<0>, C4<0>;
+v0x2716880_0 .net "p", 0 0, v0x2716be0_0; 1 drivers
+v0x2716950_0 .net "q", 0 0, v0x2716cb0_0; 1 drivers
+v0x2716a00_0 .net "r", 0 0, v0x2716d80_0; 1 drivers
+v0x2716a80_0 .alias "s", 0 0, v0x2716e00_0;
+v0x2716b30_0 .net "x", 0 0, L_0x2716eb0; 1 drivers
+S_0x27019b0 .scope module, "OR1" "orgate2in" 2 23, 2 11, S_0x2700fe0;
+ .timescale 0 0;
+L_0x2716eb0 .functor OR 1, v0x2716be0_0, v0x2716cb0_0, C4<0>, C4<0>;
+v0x2701aa0_0 .alias "p", 0 0, v0x2716880_0;
+v0x2716740_0 .alias "q", 0 0, v0x2716950_0;
+v0x27167e0_0 .alias "s", 0 0, v0x2716b30_0;
+S_0x2700ef0 .scope begin, "main" "main" 2 39, 2 39, S_0x26de890;
+ .timescale 0 0;
+    .scope S_0x26de890;
+T_0 ;
+    %fork t_1, S_0x2700ef0;
+    %jmp t_0;
+    .scope S_0x2700ef0;
+t_1 ;
+    %vpi_call 2 40 "$display", "test or:";
+    %vpi_call 2 41 "$display", "\012 ( (p | q) | r = s \012";
+    %vpi_call 2 42 "$monitor", " (%b | %b) | %b = %b", v0x2716be0_0, v0x2716cb0_0, v0x2716d80_0, v0x2716e00_0;
+    %set/v v0x2716be0_0, 0, 1;
+    %set/v v0x2716cb0_0, 0, 1;
+    %set/v v0x2716d80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 0, 1;
+    %set/v v0x2716cb0_0, 0, 1;
+    %set/v v0x2716d80_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 0, 1;
+    %set/v v0x2716cb0_0, 1, 1;
+    %set/v v0x2716d80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 0, 1;
+    %set/v v0x2716cb0_0, 1, 1;
+    %set/v v0x2716d80_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 1, 1;
+    %set/v v0x2716cb0_0, 0, 1;
+    %set/v v0x2716d80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 1, 1;
+    %set/v v0x2716cb0_0, 0, 1;
+    %set/v v0x2716d80_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 1, 1;
+    %set/v v0x2716cb0_0, 1, 1;
+    %set/v v0x2716d80_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x2716be0_0, 1, 1;
+    %set/v v0x2716cb0_0, 1, 1;
+    %set/v v0x2716d80_0, 1, 1;
+    %end;
+    .scope S_0x26de890;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio10.v";

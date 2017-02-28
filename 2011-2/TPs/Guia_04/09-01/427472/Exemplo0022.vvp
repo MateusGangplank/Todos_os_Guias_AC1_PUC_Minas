@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E22D8 .scope module, "test_fullSubt" "test_fullSubt" 2 29;
+ .timescale 0 0;
+v005DECF8_0 .var "carryIn", 5 0;
+v005DED50_0 .net "carryOut", 5 0, L_005DF1B0; 1 drivers
+v005DEDA8_0 .net "subt", 5 0, L_005DF140; 1 drivers
+v005DEE00_0 .var "x", 5 0;
+v005DEE58_0 .var "y", 5 0;
+S_005E2360 .scope module, "ERROR" "fullSubt" 2 40, 2 7, S_005E22D8;
+ .timescale 0 0;
+L_003E6D18 .functor XOR 6, v005DEE00_0, v005DEE58_0, C4<000000>, C4<000000>;
+L_005DEF80 .functor NOT 6, L_003E6D18, C4<000000>, C4<000000>, C4<000000>;
+L_005DEFF0 .functor AND 6, v005DEE00_0, v005DEE58_0, C4<111111>, C4<111111>;
+L_005DF028 .functor NOT 6, L_005DEFF0, C4<000000>, C4<000000>, C4<000000>;
+L_005DF098 .functor AND 6, L_005DEF80, v005DECF8_0, C4<111111>, C4<111111>;
+L_005DF140 .functor XOR 6, L_003E6D18, v005DECF8_0, C4<000000>, C4<000000>;
+L_005DF1B0 .functor OR 6, L_005DF098, L_005DF028, C4<000000>, C4<000000>;
+v005E0A60_0 .net "a", 5 0, v005DEE00_0; 1 drivers
+v005DE8B0_0 .net "b", 5 0, v005DEE58_0; 1 drivers
+v005DE920_0 .net "carryIn", 5 0, v005DECF8_0; 1 drivers
+v005DE9A8_0 .alias "carryOut", 5 0, v005DED50_0;
+v005DEA18_0 .net "not1", 5 0, L_005DEF80; 1 drivers
+v005DEA70_0 .net "not2", 5 0, L_005DF028; 1 drivers
+v005DEAE0_0 .alias "s", 5 0, v005DEDA8_0;
+v005DEB78_0 .net "sand1", 5 0, L_005DEFF0; 1 drivers
+v005DEBE8_0 .net "sand2", 5 0, L_005DF098; 1 drivers
+v005DEC88_0 .net "sxor1", 5 0, L_003E6D18; 1 drivers
+    .scope S_005E22D8;
+T_0 ;
+    %set/v v005DEE00_0, 0, 6;
+    %set/v v005DEE58_0, 1, 6;
+    %set/v v005DECF8_0, 0, 6;
+    %vpi_call 2 46 "$display", "Exemplo0021 - Wender Zacarias Xavier - 427472";
+    %vpi_call 2 47 "$display", "Test Full Subtrator";
+    %vpi_call 2 48 "$display", "\012 *** Resultado ***  ";
+    %vpi_call 2 49 "$monitor", "x = %b \011 y = %b \011carryIn = %b\011Sub = %b\011 carryOut = %b", v005DEE00_0, v005DEE58_0, v005DECF8_0, v005DEDA8_0, v005DED50_0;
+    %delay 1, 0;
+    %movi 8, 15, 6;
+    %set/v v005DEE00_0, 8, 6;
+    %movi 8, 59, 6;
+    %set/v v005DEE58_0, 8, 6;
+    %delay 1, 0;
+    %movi 8, 2, 6;
+    %set/v v005DECF8_0, 8, 6;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Exemplo0022.v";

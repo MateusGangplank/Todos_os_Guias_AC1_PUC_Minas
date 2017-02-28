@@ -1,0 +1,162 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00676118 .scope module, "testDC" "testDC" 2 71;
+ .timescale 0 0;
+v006ABC38_0 .var "a", 0 0;
+v006ABCF8_0 .var "b", 0 0;
+RS_0067A90C .resolv tri, L_006AC388, L_006AC4F8, L_006ABBA8, C4<z>;
+v006ABDB8_0 .net8 "s", 0 0, RS_0067A90C; 3 drivers
+v006ABE10_0 .net "s0", 0 0, C4<z>; 0 drivers
+v006ABE68_0 .var "v1", 0 0;
+S_006711A8 .scope module, "DC" "operadorDC" 2 75, 2 59, S_00676118;
+ .timescale 0 0;
+v006AB8B0_0 .net "a", 0 0, v006ABC38_0; 1 drivers
+v006AB908_0 .net "b", 0 0, v006ABCF8_0; 1 drivers
+v006AB960_0 .alias "s", 0 0, v006ABDB8_0;
+v006ABA20_0 .alias "s0", 0 0, v006ABE10_0;
+RS_0067A99C .resolv tri, L_006ABF60, L_006AB878, C4<z>, C4<z>;
+v006ABA78_0 .net8 "s1", 0 0, RS_0067A99C; 2 drivers
+v006ABAD0_0 .net "s2", 0 0, C4<z>; 0 drivers
+v006ABB28_0 .net "s3", 0 0, C4<z>; 0 drivers
+v006ABBE0_0 .net "v1", 0 0, v006ABE68_0; 1 drivers
+S_006AB008 .scope module, "MD1" "operadorMD" 2 65, 2 47, S_006711A8;
+ .timescale 0 0;
+v006AB670_0 .alias "a", 0 0, v006AB8B0_0;
+v006AB6C8_0 .alias "b", 0 0, v006AB908_0;
+v006AB758_0 .alias "s", 0 0, v006ABA78_0;
+v006AB7C8_0 .alias "s0", 0 0, v006ABAD0_0;
+v006AB820_0 .net "s1", 0 0, L_006AC008; 1 drivers
+S_006AB3E0 .scope module, "XOR1" "xorgate" 2 52, 2 5, S_006AB008;
+ .timescale 0 0;
+L_006AAE70 .functor NAND 1, v006ABC38_0, v006ABCF8_0, C4<1>, C4<1>;
+L_006AB720 .functor NAND 1, v006ABC38_0, L_006AAE70, C4<1>, C4<1>;
+L_006ABF28 .functor NAND 1, v006ABCF8_0, L_006AAE70, C4<1>, C4<1>;
+L_006ABF60 .functor NAND 1, L_006AB720, L_006ABF28, C4<1>, C4<1>;
+v006AB460_0 .alias "a", 0 0, v006AB8B0_0;
+v006AB4B8_0 .alias "b", 0 0, v006AB908_0;
+v006AB510_0 .alias "s", 0 0, v006ABA78_0;
+v006AB568_0 .net "s1", 0 0, L_006AB720; 1 drivers
+v006AB5C0_0 .net "s2", 0 0, L_006ABF28; 1 drivers
+v006AB618_0 .net "s3", 0 0, L_006AAE70; 1 drivers
+S_006AB298 .scope module, "NOT1" "notgate" 2 53, 2 38, S_006AB008;
+ .timescale 0 0;
+L_006AC008 .functor NAND 1, v006ABC38_0, v006ABC38_0, C4<1>, C4<1>;
+v006AB318_0 .alias "a", 0 0, v006AB8B0_0;
+v006AB388_0 .alias "s", 0 0, v006AB820_0;
+S_006AB088 .scope module, "AND1" "andgate" 2 54, 2 17, S_006AB008;
+ .timescale 0 0;
+L_006AC120 .functor NAND 1, L_006AC008, v006ABCF8_0, C4<1>, C4<1>;
+L_006AB878 .functor NAND 1, L_006AC120, L_006AC120, C4<1>, C4<1>;
+v006AB108_0 .alias "a", 0 0, v006AB820_0;
+v006AB160_0 .alias "b", 0 0, v006AB908_0;
+v006AB1B8_0 .alias "s", 0 0, v006ABA78_0;
+v006AB228_0 .net "s1", 0 0, L_006AC120; 1 drivers
+S_006AA740 .scope module, "MD2" "operadorMD" 2 66, 2 47, S_006711A8;
+ .timescale 0 0;
+v006AADC0_0 .alias "a", 0 0, v006ABA78_0;
+v006AAE18_0 .alias "b", 0 0, v006ABBE0_0;
+v006AAEA8_0 .alias "s", 0 0, v006ABDB8_0;
+v006AAF18_0 .alias "s0", 0 0, v006ABB28_0;
+v006AAF70_0 .net "s1", 0 0, L_006AC448; 1 drivers
+S_006AAB30 .scope module, "XOR1" "xorgate" 2 52, 2 5, S_006AA740;
+ .timescale 0 0;
+L_006AC280 .functor NAND 1, RS_0067A99C, v006ABE68_0, C4<1>, C4<1>;
+L_006AC2E0 .functor NAND 1, RS_0067A99C, L_006AC280, C4<1>, C4<1>;
+L_006AC350 .functor NAND 1, v006ABE68_0, L_006AC280, C4<1>, C4<1>;
+L_006AC388 .functor NAND 1, L_006AC2E0, L_006AC350, C4<1>, C4<1>;
+v006AABB0_0 .alias "a", 0 0, v006ABA78_0;
+v006AAC08_0 .alias "b", 0 0, v006ABBE0_0;
+v006AAC60_0 .alias "s", 0 0, v006ABDB8_0;
+v006AACB8_0 .net "s1", 0 0, L_006AC2E0; 1 drivers
+v006AAD10_0 .net "s2", 0 0, L_006AC350; 1 drivers
+v006AAD68_0 .net "s3", 0 0, L_006AC280; 1 drivers
+S_006AA9E8 .scope module, "NOT1" "notgate" 2 53, 2 38, S_006AA740;
+ .timescale 0 0;
+L_006AC448 .functor NAND 1, RS_0067A99C, RS_0067A99C, C4<1>, C4<1>;
+v006AAA68_0 .alias "a", 0 0, v006ABA78_0;
+v006AAAD8_0 .alias "s", 0 0, v006AAF70_0;
+S_006AA7C0 .scope module, "AND1" "andgate" 2 54, 2 17, S_006AA740;
+ .timescale 0 0;
+L_006AC498 .functor NAND 1, L_006AC448, v006ABE68_0, C4<1>, C4<1>;
+L_006AC4F8 .functor NAND 1, L_006AC498, L_006AC498, C4<1>, C4<1>;
+v006AA840_0 .alias "a", 0 0, v006AAF70_0;
+v006AA8B0_0 .alias "b", 0 0, v006ABBE0_0;
+v006AA920_0 .alias "s", 0 0, v006ABDB8_0;
+v006AA990_0 .net "s1", 0 0, L_006AC498; 1 drivers
+S_00671228 .scope module, "OR1" "orgate" 2 67, 2 27, S_006711A8;
+ .timescale 0 0;
+L_006AC568 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006787C8 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006ABBA8 .functor NAND 1, L_006AC568, L_006787C8, C4<1>, C4<1>;
+v00673688_0 .alias "a", 0 0, v006ABAD0_0;
+v006AA580_0 .alias "b", 0 0, v006ABB28_0;
+v006AA5F0_0 .alias "s", 0 0, v006ABDB8_0;
+v006AA678_0 .net "s1", 0 0, L_006AC568; 1 drivers
+v006AA6E8_0 .net "s2", 0 0, L_006787C8; 1 drivers
+S_003ECAB8 .scope begin, "start" "start" 2 77, 2 77, S_00676118;
+ .timescale 0 0;
+S_00676E98 .scope begin, "main" "main" 2 83, 2 83, S_00676118;
+ .timescale 0 0;
+    .scope S_00676118;
+T_0 ;
+    %fork t_1, S_003ECAB8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABCF8_0, 0, 1;
+    %set/v v006ABE68_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00676118;
+T_1 ;
+    %fork t_3, S_00676E98;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 85 "$display", "Operador Diferenca Completa - Modelo Compacto ";
+    %delay 1, 0;
+    %vpi_call 2 86 "$display", "a - b - v1 = s  s0";
+    %delay 1, 0;
+    %vpi_call 2 87 "$monitor", "%b - %b - %b  = %d  %d", v006ABC38_0, v006ABCF8_0, v006ABE68_0, v006ABE10_0, v006ABDB8_0;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABCF8_0, 0, 1;
+    %set/v v006ABE68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABCF8_0, 1, 1;
+    %set/v v006ABE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABCF8_0, 1, 1;
+    %set/v v006ABE68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABCF8_0, 0, 1;
+    %set/v v006ABE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABCF8_0, 0, 1;
+    %set/v v006ABE68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABCF8_0, 1, 1;
+    %set/v v006ABE68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABCF8_0, 1, 1;
+    %set/v v006ABE68_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Arq. I\Guia04\420141\exercicio05.v";

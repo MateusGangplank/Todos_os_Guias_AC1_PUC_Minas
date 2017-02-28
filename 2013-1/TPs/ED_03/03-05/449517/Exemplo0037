@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000368C8 .scope module, "teste" "teste" 2 19;
+ .timescale 0 0;
+v0063A8A0_0 .var "a", 0 0;
+v0063A8F8_0 .var "b", 0 0;
+v0063A950_0 .net "s0", 0 0, L_00036778; 1 drivers
+v0063A9A8_0 .net "s1", 0 0, L_0063AB40; 1 drivers
+v0063AA00_0 .net "s2", 0 0, L_0063AA98; 1 drivers
+S_000369D8 .scope module, "TESTE" "Comparador" 2 25, 2 6, S_000368C8;
+ .timescale 0 0;
+L_00036778 .functor XNOR 1, v0063A8A0_0, v0063A8F8_0, C4<0>, C4<0>;
+L_0063AB08 .functor NOT 1, v0063A8F8_0, C4<0>, C4<0>, C4<0>;
+L_0063AB40 .functor AND 1, L_0063AB08, v0063A8A0_0, C4<1>, C4<1>;
+L_0063ABE8 .functor NOT 1, v0063A8A0_0, C4<0>, C4<0>, C4<0>;
+L_0063AA98 .functor AND 1, L_0063ABE8, v0063A8F8_0, C4<1>, C4<1>;
+v000353A0_0 .net "a", 0 0, v0063A8A0_0; 1 drivers
+v0063A5D8_0 .net "b", 0 0, v0063A8F8_0; 1 drivers
+v0063A648_0 .net "nota", 0 0, L_0063ABE8; 1 drivers
+v0063A6D0_0 .net "notb", 0 0, L_0063AB08; 1 drivers
+v0063A740_0 .alias "s0", 0 0, v0063A950_0;
+v0063A798_0 .alias "s1", 0 0, v0063A9A8_0;
+v0063A808_0 .alias "s2", 0 0, v0063AA00_0;
+S_00036950 .scope begin, "main" "main" 2 28, 2 28, S_000368C8;
+ .timescale 0 0;
+    .scope S_000368C8;
+T_0 ;
+    %fork t_1, S_00036950;
+    %jmp t_0;
+    .scope S_00036950;
+t_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0036 - Ana Carolina - 449517";
+    %vpi_call 2 31 "$display", "\012Comaparador test maior, menor e igual";
+    %set/v v0063A8A0_0, 0, 1;
+    %set/v v0063A8F8_0, 0, 1;
+    %vpi_call 2 34 "$display", " 100 - bits são iguais , 001 - segundo maior , 010 - primeiro maior ";
+    %delay 1, 0;
+    %vpi_call 2 36 "$monitor", " entradas  %b %b saida = %b %b %b", v0063A8A0_0, v0063A8F8_0, v0063A950_0, v0063A9A8_0, v0063AA00_0;
+    %delay 1, 0;
+    %set/v v0063A8A0_0, 0, 1;
+    %set/v v0063A8F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0063A8A0_0, 1, 1;
+    %set/v v0063A8F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0063A8A0_0, 1, 1;
+    %set/v v0063A8F8_0, 1, 1;
+    %end;
+    .scope S_000368C8;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0037.v";

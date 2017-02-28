@@ -1,0 +1,100 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B38B88 .scope module, "andgate" "andgate" 2 14;
+ .timescale 0 0;
+L_00B33C90 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_00B32F98 .functor AND 1, L_00B33C90, C4<z>, C4<1>, C4<1>;
+v00B39780_0 .net *"_s0", 0 0, L_00B33C90; 1 drivers
+v00B397D8_0 .net "a", 0 0, C4<z>; 0 drivers
+v00B39830_0 .net "b", 0 0, C4<z>; 0 drivers
+v00B33B88_0 .net "c", 0 0, C4<z>; 0 drivers
+v00B33BE0_0 .net "s", 0 0, L_00B32F98; 1 drivers
+S_00B38A78 .scope module, "testeandgate" "testeandgate" 2 20;
+ .timescale 0 0;
+v00B32EE8_0 .var "a", 0 0;
+v00B32F40_0 .var "b", 0 0;
+v00B3E660_0 .var "c", 0 0;
+v00B3E7C0_0 .net "s", 0 0, L_00B3EC88; 1 drivers
+v00B3E8C8_0 .net "s1", 0 0, L_00B3A230; 1 drivers
+S_00B38C10 .scope module, "AND1" "and2gate" 2 24, 2 11, S_00B38A78;
+ .timescale 0 0;
+L_00B3A230 .functor AND 1, v00B32EE8_0, v00B32F40_0, C4<1>, C4<1>;
+v00B32858_0 .net "q", 0 0, v00B32EE8_0; 1 drivers
+v00B328B0_0 .alias "saida", 0 0, v00B3E8C8_0;
+v00B32E90_0 .net "w", 0 0, v00B32F40_0; 1 drivers
+S_00B387D0 .scope module, "AND2" "and2gate" 2 25, 2 11, S_00B38A78;
+ .timescale 0 0;
+L_00B3EC88 .functor AND 1, L_00B3A230, v00B3E660_0, C4<1>, C4<1>;
+v00B33C38_0 .alias "q", 0 0, v00B3E8C8_0;
+v00B327A8_0 .alias "saida", 0 0, v00B3E7C0_0;
+v00B32800_0 .net "w", 0 0, v00B3E660_0; 1 drivers
+S_00B388E0 .scope begin, "start" "start" 2 26, 2 26, S_00B38A78;
+ .timescale 0 0;
+S_00B38748 .scope begin, "main" "main" 2 31, 2 31, S_00B38A78;
+ .timescale 0 0;
+    .scope S_00B38A78;
+T_0 ;
+    %fork t_1, S_00B388E0;
+    %jmp t_0;
+    .scope S_00B388E0;
+t_1 ;
+    %set/v v00B32EE8_0, 0, 1;
+    %set/v v00B32F40_0, 0, 1;
+    %set/v v00B3E660_0, 0, 1;
+    %end;
+    .scope S_00B38A78;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00B38A78;
+T_1 ;
+    %fork t_3, S_00B38748;
+    %jmp t_2;
+    .scope S_00B38748;
+t_3 ;
+    %vpi_call 2 32 "$display", "Exemplo0014 - Mateus Lima Batista - 451410";
+    %vpi_call 2 33 "$display", "Test AND gate";
+    %vpi_call 2 34 "$display", "\012a&b&c = s\012";
+    %vpi_call 2 35 "$monitor", "%b&%b&%b  = %b", v00B32EE8_0, v00B32F40_0, v00B3E660_0, v00B3E7C0_0;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 0, 1;
+    %set/v v00B32F40_0, 0, 1;
+    %set/v v00B3E660_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 0, 1;
+    %set/v v00B32F40_0, 1, 1;
+    %set/v v00B3E660_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 0, 1;
+    %set/v v00B32F40_0, 1, 1;
+    %set/v v00B3E660_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 1, 1;
+    %set/v v00B32F40_0, 0, 1;
+    %set/v v00B3E660_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 1, 1;
+    %set/v v00B32F40_0, 0, 1;
+    %set/v v00B3E660_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 1, 1;
+    %set/v v00B32F40_0, 1, 1;
+    %set/v v00B3E660_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00B32EE8_0, 1, 1;
+    %set/v v00B32F40_0, 1, 1;
+    %set/v v00B3E660_0, 1, 1;
+    %end;
+    .scope S_00B38A78;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Mozão\Exemplo0014.v";

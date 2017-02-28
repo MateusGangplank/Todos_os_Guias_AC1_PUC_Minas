@@ -1,0 +1,155 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00359668 .scope module, "test_LU" "test_LU" 2 24;
+ .timescale 0 0;
+v0035C5C8_0 .var "c1", 0 0;
+v0035C620_0 .var "c2", 0 0;
+v0035C678_0 .net "w", 0 0, L_00771858; 1 drivers
+v0035C6D0_0 .var "x", 0 0;
+v0035C728_0 .var "y", 0 0;
+v0035C780_0 .net "z", 0 0, L_00771740; 1 drivers
+S_00359778 .scope module, "modulo" "LU" 2 32, 2 9, S_00359668;
+ .timescale 0 0;
+L_007713F8 .functor NOT 1, v0035C5C8_0, C4<0>, C4<0>, C4<0>;
+L_00771430 .functor NOT 1, v0035C620_0, C4<0>, C4<0>, C4<0>;
+L_007714A0 .functor XOR 1, v0035C6D0_0, v0035C728_0, C4<0>, C4<0>;
+L_00771548 .functor XNOR 1, v0035C6D0_0, v0035C728_0, C4<0>, C4<0>;
+L_00771580 .functor NOR 1, v0035C6D0_0, v0035C728_0, C4<0>, C4<0>;
+L_00771510 .functor AND 1, L_007714A0, v0035C5C8_0, L_00771430, C4<1>;
+L_007715F0 .functor AND 1, L_00771548, v0035C5C8_0, v0035C620_0, C4<1>;
+L_007713C0 .functor AND 1, L_00771468, L_007713F8, L_00771430, C4<1>;
+L_00771698 .functor AND 1, L_00771580, L_007713F8, v0035C620_0, C4<1>;
+L_00771468 .functor OR 1, v0035C6D0_0, v0035C728_0, C4<0>, C4<0>;
+L_00771740 .functor OR 1, L_00771510, L_007715F0, C4<0>, C4<0>;
+L_00771858 .functor OR 1, L_007713C0, L_00771698, C4<0>, C4<0>;
+v0035C048_0 .net "a", 0 0, v0035C6D0_0; 1 drivers
+v0035C0A0_0 .net "and1", 0 0, L_00771510; 1 drivers
+v0035C0F8_0 .net "and2", 0 0, L_007715F0; 1 drivers
+v0035C150_0 .net "and3", 0 0, L_007713C0; 1 drivers
+v0035C1A8_0 .net "and4", 0 0, L_00771698; 1 drivers
+v0035C200_0 .net "b", 0 0, v0035C728_0; 1 drivers
+v0035C258_0 .net "c1", 0 0, v0035C5C8_0; 1 drivers
+v0035C2B0_0 .net "c2", 0 0, v0035C620_0; 1 drivers
+v0035C308_0 .net "norAB", 0 0, L_00771580; 1 drivers
+v0035C360_0 .net "notC1", 0 0, L_007713F8; 1 drivers
+v0035C3B8_0 .net "notC2", 0 0, L_00771430; 1 drivers
+v0035C410_0 .net "orAB", 0 0, L_00771468; 1 drivers
+v0035C468_0 .alias "sON", 0 0, v0035C678_0;
+v0035C4C0_0 .alias "sXX", 0 0, v0035C780_0;
+v0035C518_0 .net "xnorAB", 0 0, L_00771548; 1 drivers
+v0035C570_0 .net "xorAB", 0 0, L_007714A0; 1 drivers
+S_003596F0 .scope begin, "start" "start" 2 33, 2 33, S_00359668;
+ .timescale 0 0;
+    .scope S_00359668;
+T_0 ;
+    %fork t_1, S_003596F0;
+    %jmp t_0;
+    .scope S_003596F0;
+t_1 ;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 0, 1;
+    %end;
+    .scope S_00359668;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00359668;
+T_1 ;
+    %vpi_call 2 40 "$display", "Exemplo0034 - Gabriel Carlos Damasceno Arriel - 451557";
+    %vpi_call 2 41 "$display", "Test LU's module";
+    %vpi_call 2 42 "$display", "\012Valor da Selecao = 00";
+    %vpi_call 2 43 "$monitor", "Entradas : a = %b b = %b Selecao: OR = %b", v0035C6D0_0, v0035C728_0, v0035C678_0;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "\012Valor da Selecao = 01";
+    %vpi_call 2 52 "$monitor", "Entradas : a = %b b = %b Selecao: NOR = %b", v0035C6D0_0, v0035C728_0, v0035C678_0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 0, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 61 "$display", "\012Valor da Selecao = 10";
+    %vpi_call 2 62 "$monitor", "Entradas : a = %b b = %b Selecao: XOR = %b", v0035C6D0_0, v0035C728_0, v0035C780_0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 71 "$display", "\012Valor da Selecao = 11";
+    %vpi_call 2 72 "$monitor", "Entradas : a = %b b = %b Selecao: XNOR = %b", v0035C6D0_0, v0035C728_0, v0035C780_0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 0, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 0, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0035C6D0_0, 1, 1;
+    %set/v v0035C728_0, 1, 1;
+    %set/v v0035C5C8_0, 1, 1;
+    %set/v v0035C620_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gabriel\Desktop\Arquiterura de Computadores I\Guia03-Gabriel Carlos Damasceno Arriel\Exemplo0034.v";

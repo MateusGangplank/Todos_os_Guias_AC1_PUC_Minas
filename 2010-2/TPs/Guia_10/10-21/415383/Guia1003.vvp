@@ -1,0 +1,127 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002E9660 .scope module, "testlatch" "testlatch" 2 22;
+ .timescale 0 0;
+v00359E20_0 .var "cl", 0 0;
+v00359E78_0 .var "d", 0 0;
+v00359ED0_0 .var "enable", 0 0;
+v00359F28_0 .var "pr", 0 0;
+v00359F80_0 .net "q", 0 0, L_00333C20; 1 drivers
+v00359FD8_0 .net "qn", 0 0, L_00333C90; 1 drivers
+S_002E9770 .scope module, "D" "latchd" 2 25, 2 7, S_002E9660;
+ .timescale 0 0;
+L_003338D8 .functor NOT 1, v00359E78_0, C4<0>, C4<0>, C4<0>;
+L_00333980 .functor NAND 1, v00359E78_0, v00359ED0_0, C4<1>, C4<1>;
+L_003339F0 .functor NAND 1, L_003338D8, v00359ED0_0, C4<1>, C4<1>;
+L_00333A60 .functor NAND 1, v00359F28_0, L_00333B08, L_00333980, C4<1>;
+L_00333B08 .functor NAND 1, v00359E20_0, L_00333A60, L_003339F0, C4<1>;
+L_00333C20 .functor BUFZ 1, L_00333B08, C4<0>, C4<0>, C4<0>;
+L_00333C90 .functor BUFZ 1, L_00333A60, C4<0>, C4<0>, C4<0>;
+v002ED098_0 .net "clear", 0 0, v00359E20_0; 1 drivers
+v002ED0F0_0 .net "d", 0 0, v00359E78_0; 1 drivers
+v002ED148_0 .net "d_enable", 0 0, L_00333980; 1 drivers
+v002E2AA8_0 .net "dnot_enable", 0 0, L_003339F0; 1 drivers
+v002E2B00_0 .net "enable", 0 0, v00359ED0_0; 1 drivers
+v00359C10_0 .net "nand1", 0 0, L_00333A60; 1 drivers
+v00359C68_0 .net "nand2", 0 0, L_00333B08; 1 drivers
+v00359CC0_0 .net "notd", 0 0, L_003338D8; 1 drivers
+v00359D18_0 .net "preset", 0 0, v00359F28_0; 1 drivers
+v00359D70_0 .alias "q", 0 0, v00359F80_0;
+v00359DC8_0 .alias "qn", 0 0, v00359FD8_0;
+    .scope S_002E9660;
+T_0 ;
+    %vpi_call 2 27 "$display", "Exercicio 02 - Lucas Teixeira Santos - 415383";
+    %vpi_call 2 28 "$display", "Teste Latch D com Preset e Clear";
+    %vpi_call 2 29 "$display", "D  EN  PR  CL  =  Q  Q'";
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$monitor", "%b  %b   %b   %b   =  %b  %b", v00359E78_0, v00359ED0_0, v00359F28_0, v00359E20_0, v00359F80_0, v00359FD8_0;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 0, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 0, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 0, 1;
+    %set/v v00359E20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00359E78_0, 1, 1;
+    %set/v v00359ED0_0, 1, 1;
+    %set/v v00359F28_0, 1, 1;
+    %set/v v00359E20_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Lucas\Documents\PUC\2\ARQ\Aulas\Guia10\Guia1003.V";

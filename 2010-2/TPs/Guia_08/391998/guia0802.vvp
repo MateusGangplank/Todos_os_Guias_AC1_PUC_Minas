@@ -1,0 +1,152 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067B4D0 .scope module, "testeCircuito" "testeCircuito" 2 24;
+ .timescale 0 0;
+v006ABC38_0 .var "a", 0 0;
+v006ABC90_0 .var "b", 0 0;
+v006ABCE8_0 .var "c", 0 0;
+v006ABD40_0 .var "d", 0 0;
+v006ABD98_0 .net "s0", 0 0, L_006ABF70; 1 drivers
+S_0067B650 .scope module, "C1" "circuito" 2 29, 2 4, S_0067B4D0;
+ .timescale 0 0;
+L_006ABA98 .functor NOT 1, v006ABC38_0, C4<0>, C4<0>, C4<0>;
+L_006ABE38 .functor NOT 1, v006ABC90_0, C4<0>, C4<0>, C4<0>;
+L_006ABEB8 .functor NOT 1, v006ABCE8_0, C4<0>, C4<0>, C4<0>;
+L_006ABF38 .functor NOT 1, v006ABD40_0, C4<0>, C4<0>, C4<0>;
+L_006ABFA8 .functor AND 1, L_006ABA98, L_006ABE38, L_006ABF38, C4<1>;
+L_006AC088 .functor AND 1, L_006ABA98, L_006ABEB8, L_006ABF38, C4<1>;
+L_006AC0F8 .functor AND 1, L_006ABE38, L_006ABEB8, L_006ABF38, C4<1>;
+L_006AC050 .functor AND 1, v006ABC38_0, L_006ABE38, v006ABD40_0, C4<1>;
+L_006AC018 .functor AND 1, v006ABC38_0, L_006ABEB8, v006ABD40_0, C4<1>;
+L_006ABF70/0/0 .functor OR 1, L_006ABFA8, L_006AC088, L_006AC0F8, L_006AC050;
+L_006ABF70/0/4 .functor OR 1, L_006AC018, C4<0>, C4<0>, C4<0>;
+L_006ABF70 .functor OR 1, L_006ABF70/0/0, L_006ABF70/0/4, C4<0>, C4<0>;
+v0067B6D0_0 .net "a", 0 0, v006ABC38_0; 1 drivers
+v006AB628_0 .net "b", 0 0, v006ABC90_0; 1 drivers
+v006AB698_0 .net "c", 0 0, v006ABCE8_0; 1 drivers
+v006AB720_0 .net "d", 0 0, v006ABD40_0; 1 drivers
+v006AB790_0 .net "r1", 0 0, L_006ABA98; 1 drivers
+v006AB7E8_0 .net "r2", 0 0, L_006ABE38; 1 drivers
+v006AB858_0 .net "r3", 0 0, L_006ABEB8; 1 drivers
+v006AB8F0_0 .net "r4", 0 0, L_006ABF38; 1 drivers
+v006AB960_0 .alias "s0", 0 0, v006ABD98_0;
+v006AB9D0_0 .net "s1", 0 0, L_006ABFA8; 1 drivers
+v006ABA40_0 .net "s2", 0 0, L_006AC088; 1 drivers
+v006ABAE8_0 .net "s3", 0 0, L_006AC0F8; 1 drivers
+v006ABB58_0 .net "s4", 0 0, L_006AC050; 1 drivers
+v006ABBC8_0 .net "s5", 0 0, L_006AC018; 1 drivers
+S_0067B5D0 .scope begin, "start" "start" 2 31, 2 31, S_0067B4D0;
+ .timescale 0 0;
+S_0067B550 .scope begin, "main" "main" 2 36, 2 36, S_0067B4D0;
+ .timescale 0 0;
+    .scope S_0067B4D0;
+T_0 ;
+    %fork t_1, S_0067B5D0;
+    %jmp t_0;
+t_1 ;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0067B4D0;
+T_1 ;
+    %fork t_3, S_0067B550;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 38 "$display", "Andre Sulivam 391998";
+    %vpi_call 2 39 "$display", "Guia 08 Ex:02";
+    %vpi_call 2 40 "$display", "\012     Circuito 02\012";
+    %vpi_call 2 41 "$display", "\012a b c d = s0\012";
+    %vpi_call 2 42 "$monitor", "%b %b %b %b = %b", v006ABC38_0, v006ABC90_0, v006ABCE8_0, v006ABD40_0, v006ABD98_0;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 0, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 0, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 0, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006ABC38_0, 1, 1;
+    %set/v v006ABC90_0, 1, 1;
+    %set/v v006ABCE8_0, 1, 1;
+    %set/v v006ABD40_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\391998\GUIA 08\guia0802.v";

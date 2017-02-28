@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006CE5A0 .scope module, "testxnorgate" "testxnorgate" 2 18;
+ .timescale 0 0;
+v006CEB20_0 .var "a", 0 0;
+v006CEB78_0 .var "b", 0 0;
+v006CEBD0_0 .net "s", 0 0, L_006CFE00; 1 drivers
+S_006C3270 .scope module, "XNOR1" "xnorgate" 2 23, 2 11, S_006CE5A0;
+ .timescale 0 0;
+L_006C33A8 .functor XOR 1, v006CEB20_0, v006CEB78_0, C4<0>, C4<0>;
+L_006CFE00 .functor NOT 1, L_006C33A8, C4<0>, C4<0>, C4<0>;
+v006C32F8_0 .net *"_s0", 0 0, L_006C33A8; 1 drivers
+v006C3350_0 .net "p", 0 0, v006CEB20_0; 1 drivers
+v006CEA70_0 .net "q", 0 0, v006CEB78_0; 1 drivers
+v006CEAC8_0 .alias "s", 0 0, v006CEBD0_0;
+S_006C2E68 .scope begin, "start" "start" 2 25, 2 25, S_006CE5A0;
+ .timescale 0 0;
+S_006C2DE0 .scope begin, "main" "main" 2 29, 2 29, S_006CE5A0;
+ .timescale 0 0;
+    .scope S_006CE5A0;
+T_0 ;
+    %fork t_1, S_006C2E68;
+    %jmp t_0;
+    .scope S_006C2E68;
+t_1 ;
+    %set/v v006CEB20_0, 0, 1;
+    %set/v v006CEB78_0, 0, 1;
+    %end;
+    .scope S_006CE5A0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006CE5A0;
+T_1 ;
+    %fork t_3, S_006C2DE0;
+    %jmp t_2;
+    .scope S_006C2DE0;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exercicio03-Filipe Santos-451555";
+    %vpi_call 2 31 "$display", "Test xnorgate";
+    %vpi_call 2 32 "$display", "\012 a ~^ b = s \012";
+    %vpi_call 2 33 "$monitor", "%b~^%b=%b", v006CEB20_0, v006CEB78_0, v006CEBD0_0;
+    %delay 1, 0;
+    %set/v v006CEB20_0, 0, 1;
+    %set/v v006CEB78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006CEB20_0, 0, 1;
+    %set/v v006CEB78_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006CEB20_0, 1, 1;
+    %set/v v006CEB78_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006CEB20_0, 1, 1;
+    %set/v v006CEB78_0, 1, 1;
+    %end;
+    .scope S_006CE5A0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Filipe\Desktop\Filipe\CC Puc\Segundo Período\AC\Guia01\Exercicio03.V";

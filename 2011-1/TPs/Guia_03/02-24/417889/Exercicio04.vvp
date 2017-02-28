@@ -1,0 +1,83 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0003B108 .scope module, "testeExercicio04" "testeExercicio04" 2 34;
+ .timescale 0 0;
+v005FD340_0 .var "a", 0 0;
+v005FD398_0 .var "b", 0 0;
+v005FD3F0_0 .net "cout", 0 0, L_005FD100; 1 drivers
+v005FD448_0 .net "s", 0 0, L_005FD308; 1 drivers
+S_005E3990 .scope module, "HALFADDER" "Exercicio04" 2 38, 2 1, S_0003B108;
+ .timescale 0 0;
+v005FD050_0 .net "a", 0 0, v005FD340_0; 1 drivers
+v005FD0A8_0 .net "b", 0 0, v005FD398_0; 1 drivers
+v005FD138_0 .alias "cout", 0 0, v005FD3F0_0;
+v005FD1C8_0 .alias "s", 0 0, v005FD448_0;
+v005FD220_0 .net "t1", 0 0, L_005FD6D0; 1 drivers
+v005FD2B0_0 .net "t2", 0 0, L_005FD740; 1 drivers
+S_005DFDF8 .scope module, "AND1" "AndNor" 2 5, 2 11, S_005E3990;
+ .timescale 0 0;
+L_005FD4D8 .functor NOR 1, v005FD340_0, v005FD340_0, C4<0>, C4<0>;
+L_00036AC8 .functor NOR 1, v005FD398_0, v005FD398_0, C4<0>, C4<0>;
+L_005FD100 .functor NOR 1, L_005FD4D8, L_00036AC8, C4<0>, C4<0>;
+v005DFE80_0 .alias "a", 0 0, v005FD050_0;
+v005DFED8_0 .alias "b", 0 0, v005FD0A8_0;
+v005DFF30_0 .alias "s", 0 0, v005FD3F0_0;
+v005DFF88_0 .net "t1", 0 0, L_005FD4D8; 1 drivers
+v005FCFF8_0 .net "t2", 0 0, L_00036AC8; 1 drivers
+S_005DFBE0 .scope module, "OR1" "OrNor" 2 6, 2 20, S_005E3990;
+ .timescale 0 0;
+L_005FD680 .functor NOR 1, v005FD340_0, v005FD398_0, C4<0>, C4<0>;
+L_005FD6D0 .functor NOR 1, L_005FD680, L_005FD680, C4<0>, C4<0>;
+v005DFC68_0 .alias "a", 0 0, v005FD050_0;
+v005DFCC0_0 .alias "b", 0 0, v005FD0A8_0;
+v005DFD30_0 .alias "s", 0 0, v005FD220_0;
+v005DFDA0_0 .net "t1", 0 0, L_005FD680; 1 drivers
+S_005DFA90 .scope module, "NOT1" "NotNor" 2 7, 2 28, S_005E3990;
+ .timescale 0 0;
+L_005FD740 .functor NOR 1, L_005FD100, L_005FD100, C4<0>, C4<0>;
+v005DFB18_0 .alias "a", 0 0, v005FD3F0_0;
+v005DFB88_0 .alias "s", 0 0, v005FD2B0_0;
+S_005E3A18 .scope module, "AND2" "AndNor" 2 8, 2 11, S_005E3990;
+ .timescale 0 0;
+L_005FD790 .functor NOR 1, L_005FD6D0, L_005FD6D0, C4<0>, C4<0>;
+L_005FD278 .functor NOR 1, L_005FD740, L_005FD740, C4<0>, C4<0>;
+L_005FD308 .functor NOR 1, L_005FD790, L_005FD278, C4<0>, C4<0>;
+v005E1DC0_0 .alias "a", 0 0, v005FD220_0;
+v005DF8D0_0 .alias "b", 0 0, v005FD2B0_0;
+v005DF940_0 .alias "s", 0 0, v005FD448_0;
+v005DF9C8_0 .net "t1", 0 0, L_005FD790; 1 drivers
+v005DFA38_0 .net "t2", 0 0, L_005FD278; 1 drivers
+    .scope S_0003B108;
+T_0 ;
+    %set/v v005FD340_0, 0, 1;
+    %set/v v005FD398_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0003B108;
+T_1 ;
+    %vpi_call 2 47 "$display", "Exercicio 04 - Douglas Borges - 417889";
+    %vpi_call 2 48 "$display", "Circuito Meio-Somador com portas NOR\012";
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "  a + b = Cout Soma";
+    %delay 1, 0;
+    %vpi_call 2 51 "$monitor", "  %d + %d =  %d    %d", v005FD340_0, v005FD398_0, v005FD3F0_0, v005FD448_0;
+    %delay 1, 0;
+    %set/v v005FD340_0, 0, 1;
+    %set/v v005FD398_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FD340_0, 1, 1;
+    %set/v v005FD398_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FD340_0, 1, 1;
+    %set/v v005FD398_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Douglas Borges\Meus documentos\Documentos\PUC\Arquitetura de Computadores\Verilog\Eclipse\Guia03\Exercicio04.v";

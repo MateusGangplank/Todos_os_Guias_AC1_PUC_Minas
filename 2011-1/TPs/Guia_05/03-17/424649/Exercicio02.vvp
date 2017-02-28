@@ -1,0 +1,169 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005E4748 .scope module, "testsubtrator4bits" "testsubtrator4bits" 2 44;
+ .timescale 0 0;
+RS_005E5214 .resolv tri, L_005DF438, L_005DF540, L_005DF648, C4<zzz>;
+v005DF228_0 .net8 "diferenca", 2 0, RS_005E5214; 3 drivers
+v005DF280_0 .var "e1", 2 0;
+v005DF2D8_0 .var "e2", 2 0;
+v005DF330_0 .var/i "i", 31 0;
+v005DF388_0 .var/i "j", 31 0;
+v005DF3E0_0 .net "sinal", 0 0, L_005E0690; 1 drivers
+S_005E49F0 .scope module, "DiferencaCompleta" "metodoDiferencacompleta4bits" 2 50, 2 30, S_005E4748;
+ .timescale 0 0;
+v0073BD30_0 .alias "diferenca", 2 0, v005DF228_0;
+v005DF070_0 .net "e1", 2 0, v005DF280_0; 1 drivers
+v005DF0C8_0 .net "e2", 2 0, v005DF2D8_0; 1 drivers
+v005DF120_0 .alias "sinal", 0 0, v005DF3E0_0;
+v005DF178_0 .net "sinal1", 0 0, L_00732B20; 1 drivers
+v005DF1D0_0 .net "sinal2", 0 0, L_005E03F0; 1 drivers
+L_005DF438 .part/pv L_0073EF98, 0, 1, 3;
+L_005DF490 .part v005DF280_0, 0, 1;
+L_005DF4E8 .part v005DF2D8_0, 0, 1;
+L_005DF540 .part/pv L_005E02A0, 1, 1, 3;
+L_005DF598 .part v005DF280_0, 1, 1;
+L_005DF5F0 .part v005DF2D8_0, 1, 1;
+L_005DF648 .part/pv L_005E0540, 2, 1, 3;
+L_005DF6A0 .part v005DF280_0, 2, 1;
+L_005DF6F8 .part v005DF2D8_0, 2, 1;
+S_005E4EB8 .scope module, "MEIADIFERENCA" "metodomeiadiferenca" 2 37, 2 5, S_005E49F0;
+ .timescale 0 0;
+L_0073EF98 .functor XOR 1, L_005DF490, L_005DF4E8, C4<0>, C4<0>;
+L_0073EFD0 .functor NOT 1, L_005DF490, C4<0>, C4<0>, C4<0>;
+L_00732B20 .functor AND 1, L_0073EFD0, L_005DF4E8, C4<1>, C4<1>;
+v0073BB78_0 .net "diferenca", 0 0, L_0073EF98; 1 drivers
+v0073BBD0_0 .net "e1", 0 0, L_005DF490; 1 drivers
+v0073BC28_0 .net "e2", 0 0, L_005DF4E8; 1 drivers
+v0073BC80_0 .alias "sinal", 0 0, v005DF178_0;
+v0073BCD8_0 .net "temp1", 0 0, L_0073EFD0; 1 drivers
+S_005E45B0 .scope module, "DIFERENCACOMPLETA1" "metododiferencacompleta" 2 38, 2 17, S_005E49F0;
+ .timescale 0 0;
+L_005E03F0 .functor OR 1, L_005E01F8, L_005E0348, C4<0>, C4<0>;
+v0073B8B8_0 .net "diferenca", 0 0, L_005E02A0; 1 drivers
+v0073B910_0 .net "e1", 0 0, L_005DF598; 1 drivers
+v0073B968_0 .net "e2", 0 0, L_005DF5F0; 1 drivers
+v0073B9C0_0 .alias "e3", 0 0, v005DF178_0;
+v0073BA18_0 .alias "sinal", 0 0, v005DF1D0_0;
+v0073BA70_0 .net "temp1", 0 0, L_005E0118; 1 drivers
+v0073BAC8_0 .net "temp2", 0 0, L_005E01F8; 1 drivers
+v0073BB20_0 .net "temp3", 0 0, L_005E0348; 1 drivers
+S_005E4E30 .scope module, "MeiaDiferenca1" "metodomeiadiferenca" 2 22, 2 5, S_005E45B0;
+ .timescale 0 0;
+L_005E0118 .functor XOR 1, L_005DF598, L_005DF5F0, C4<0>, C4<0>;
+L_005E01C0 .functor NOT 1, L_005DF598, C4<0>, C4<0>, C4<0>;
+L_005E01F8 .functor AND 1, L_005E01C0, L_005DF5F0, C4<1>, C4<1>;
+v0073B700_0 .alias "diferenca", 0 0, v0073BA70_0;
+v0073B758_0 .alias "e1", 0 0, v0073B910_0;
+v0073B7B0_0 .alias "e2", 0 0, v0073B968_0;
+v0073B808_0 .alias "sinal", 0 0, v0073BAC8_0;
+v0073B860_0 .net "temp1", 0 0, L_005E01C0; 1 drivers
+S_005E4A78 .scope module, "MeiaDiferenca2" "metodomeiadiferenca" 2 23, 2 5, S_005E45B0;
+ .timescale 0 0;
+L_005E02A0 .functor XOR 1, L_00732B20, L_005E0118, C4<0>, C4<0>;
+L_005E0310 .functor NOT 1, L_00732B20, C4<0>, C4<0>, C4<0>;
+L_005E0348 .functor AND 1, L_005E0310, L_005E0118, C4<1>, C4<1>;
+v0073B548_0 .alias "diferenca", 0 0, v0073B8B8_0;
+v0073B5A0_0 .alias "e1", 0 0, v005DF178_0;
+v0073B5F8_0 .alias "e2", 0 0, v0073BA70_0;
+v0073B650_0 .alias "sinal", 0 0, v0073BB20_0;
+v0073B6A8_0 .net "temp1", 0 0, L_005E0310; 1 drivers
+S_005E4968 .scope module, "DIFERENCACOMPLETA2" "metododiferencacompleta" 2 39, 2 17, S_005E49F0;
+ .timescale 0 0;
+L_005E0690 .functor OR 1, L_005E0498, L_005E05E8, C4<0>, C4<0>;
+v0073B288_0 .net "diferenca", 0 0, L_005E0540; 1 drivers
+v0073B2E0_0 .net "e1", 0 0, L_005DF6A0; 1 drivers
+v0073B338_0 .net "e2", 0 0, L_005DF6F8; 1 drivers
+v0073B390_0 .alias "e3", 0 0, v005DF1D0_0;
+v0073B3E8_0 .alias "sinal", 0 0, v005DF3E0_0;
+v0073B440_0 .net "temp1", 0 0, L_005E0188; 1 drivers
+v0073B498_0 .net "temp2", 0 0, L_005E0498; 1 drivers
+v0073B4F0_0 .net "temp3", 0 0, L_005E05E8; 1 drivers
+S_005E4858 .scope module, "MeiaDiferenca1" "metodomeiadiferenca" 2 22, 2 5, S_005E4968;
+ .timescale 0 0;
+L_005E0188 .functor XOR 1, L_005DF6A0, L_005DF6F8, C4<0>, C4<0>;
+L_005E0460 .functor NOT 1, L_005DF6A0, C4<0>, C4<0>, C4<0>;
+L_005E0498 .functor AND 1, L_005E0460, L_005DF6F8, C4<1>, C4<1>;
+v0073B0D0_0 .alias "diferenca", 0 0, v0073B440_0;
+v0073B128_0 .alias "e1", 0 0, v0073B2E0_0;
+v0073B180_0 .alias "e2", 0 0, v0073B338_0;
+v0073B1D8_0 .alias "sinal", 0 0, v0073B498_0;
+v0073B230_0 .net "temp1", 0 0, L_005E0460; 1 drivers
+S_005E48E0 .scope module, "MeiaDiferenca2" "metodomeiadiferenca" 2 23, 2 5, S_005E4968;
+ .timescale 0 0;
+L_005E0540 .functor XOR 1, L_005E03F0, L_005E0188, C4<0>, C4<0>;
+L_005E05B0 .functor NOT 1, L_005E03F0, C4<0>, C4<0>, C4<0>;
+L_005E05E8 .functor AND 1, L_005E05B0, L_005E0188, C4<1>, C4<1>;
+v0073AF18_0 .alias "diferenca", 0 0, v0073B288_0;
+v0073AF70_0 .alias "e1", 0 0, v005DF1D0_0;
+v0073AFC8_0 .alias "e2", 0 0, v0073B440_0;
+v0073B020_0 .alias "sinal", 0 0, v0073B4F0_0;
+v0073B078_0 .net "temp1", 0 0, L_005E05B0; 1 drivers
+S_005E4638 .scope begin, "start" "start" 2 52, 2 52, S_005E4748;
+ .timescale 0 0;
+S_005E46C0 .scope begin, "main" "main" 2 57, 2 57, S_005E4748;
+ .timescale 0 0;
+    .scope S_005E4748;
+T_0 ;
+    %fork t_1, S_005E4638;
+    %jmp t_0;
+    .scope S_005E4638;
+t_1 ;
+    %set/v v005DF280_0, 0, 3;
+    %set/v v005DF2D8_0, 0, 3;
+    %end;
+    .scope S_005E4748;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005E4748;
+T_1 ;
+    %fork t_3, S_005E46C0;
+    %jmp t_2;
+    .scope S_005E46C0;
+t_3 ;
+    %vpi_call 2 59 "$display", "Circuito Diferenca Completa com 3 bits ";
+    %delay 1, 0;
+    %vpi_call 2 60 "$display", " e1 - e2 = sinal  diferenca ";
+    %delay 1, 0;
+    %vpi_call 2 61 "$monitor", " %4b - %4b = %b  %4b", v005DF280_0, v005DF2D8_0, v005DF3E0_0, v005DF228_0;
+    %set/v v005DF330_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v005DF330_0, 32;
+   %cmpi/s 8, 7, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v005DF330_0, 32;
+    %set/v v005DF280_0, 8, 3;
+    %set/v v005DF388_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v005DF388_0, 32;
+   %cmpi/s 8, 7, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.3, 5;
+    %delay 1, 0;
+    %load/v 8, v005DF388_0, 32;
+    %set/v v005DF2D8_0, 8, 3;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005DF388_0, 32;
+    %set/v v005DF388_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005DF330_0, 32;
+    %set/v v005DF330_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_005E4748;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\PUC\Arquitetura de computadores\guia5\Exercicio02.v";

@@ -1,0 +1,159 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007FA7D0 .scope module, "test_LU" "test_LU" 2 24;
+ .timescale 0 0;
+v0083E048_0 .var "m1", 0 0;
+v0083E0A0_0 .var "m2", 0 0;
+v0083E0F8_0 .net "w", 0 0, L_008528C0; 1 drivers
+v0083E150_0 .var "x", 0 0;
+v0083E1A8_0 .var "y", 0 0;
+v0083E200_0 .net "z", 0 0, L_008524D0; 1 drivers
+S_007FA8E0 .scope module, "modulo" "LU" 2 33, 2 7, S_007FA7D0;
+ .timescale 0 0;
+L_00852460 .functor NOT 1, v0083E048_0, C4<0>, C4<0>, C4<0>;
+L_00852498 .functor NOT 1, v0083E0A0_0, C4<0>, C4<0>, C4<0>;
+L_00852508 .functor XOR 1, v0083E150_0, v0083E1A8_0, C4<0>, C4<0>;
+L_008525B0 .functor XNOR 1, v0083E150_0, v0083E1A8_0, C4<0>, C4<0>;
+L_008525E8 .functor OR 1, v0083E150_0, v0083E1A8_0, C4<0>, C4<0>;
+L_00852578 .functor NOR 1, v0083E150_0, v0083E1A8_0, C4<0>, C4<0>;
+L_00852540 .functor AND 1, L_00852508, v0083E048_0, L_00852498, C4<1>;
+L_00852690 .functor AND 1, L_008525B0, v0083E048_0, v0083E0A0_0, C4<1>;
+L_00852428 .functor AND 1, L_008525E8, L_00852460, L_00852498, C4<1>;
+L_00852770 .functor AND 1, L_00852578, L_00852460, v0083E0A0_0, C4<1>;
+L_008524D0 .functor OR 1, L_00852540, L_00852690, C4<0>, C4<0>;
+L_008528C0 .functor OR 1, L_00852428, L_00852770, C4<0>, C4<0>;
+v0083DAC8_0 .net "a", 0 0, v0083E150_0; 1 drivers
+v0083DB20_0 .net "and1", 0 0, L_00852540; 1 drivers
+v0083DB78_0 .net "and2", 0 0, L_00852690; 1 drivers
+v0083DBD0_0 .net "and3", 0 0, L_00852428; 1 drivers
+v0083DC28_0 .net "and4", 0 0, L_00852770; 1 drivers
+v0083DC80_0 .net "b", 0 0, v0083E1A8_0; 1 drivers
+v0083DCD8_0 .net "m1", 0 0, v0083E048_0; 1 drivers
+v0083DD30_0 .net "m2", 0 0, v0083E0A0_0; 1 drivers
+v0083DD88_0 .net "norAB", 0 0, L_00852578; 1 drivers
+v0083DDE0_0 .net "notM1", 0 0, L_00852460; 1 drivers
+v0083DE38_0 .net "notM2", 0 0, L_00852498; 1 drivers
+v0083DE90_0 .net "orAB", 0 0, L_008525E8; 1 drivers
+v0083DEE8_0 .alias "sON", 0 0, v0083E0F8_0;
+v0083DF40_0 .alias "sXX", 0 0, v0083E200_0;
+v0083DF98_0 .net "xnorAB", 0 0, L_008525B0; 1 drivers
+v0083DFF0_0 .net "xorAB", 0 0, L_00852508; 1 drivers
+S_007FA858 .scope begin, "start" "start" 2 35, 2 35, S_007FA7D0;
+ .timescale 0 0;
+    .scope S_007FA7D0;
+T_0 ;
+    %fork t_1, S_007FA858;
+    %jmp t_0;
+    .scope S_007FA858;
+t_1 ;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %end;
+    .scope S_007FA7D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007FA7D0;
+T_1 ;
+    %vpi_call 2 44 "$display", "Exemplo0034 - Mateus Lara Carvalho - 441700";
+    %vpi_call 2 45 "$display", "Test LU's module";
+    %vpi_call 2 46 "$display", "--- CHAVE = 00 ---";
+    %vpi_call 2 47 "$monitor", "a = %b b = %b sOR = %b", v0083E150_0, v0083E1A8_0, v0083E0F8_0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 56 "$display", "--- CHAVE = 01 ---";
+    %vpi_call 2 57 "$monitor", "a = %b b = %b sNOR = %b", v0083E150_0, v0083E1A8_0, v0083E0F8_0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 0, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 66 "$display", "--- CHAVE = 10 ---";
+    %vpi_call 2 67 "$monitor", "a = %b b = %b sXOR = %b", v0083E150_0, v0083E1A8_0, v0083E200_0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 76 "$display", "--- CHAVE = 11 ---";
+    %vpi_call 2 77 "$monitor", "a = %b b = %b sXNOR = %b", v0083E150_0, v0083E1A8_0, v0083E200_0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 0, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 0, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0083E150_0, 1, 1;
+    %set/v v0083E1A8_0, 1, 1;
+    %set/v v0083E048_0, 1, 1;
+    %set/v v0083E0A0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Mateus\Desktop\Mateus\Ciência da Computação\2013-1\Arquitetura\Trabalhos\ED 03\Exemplo0034.v";

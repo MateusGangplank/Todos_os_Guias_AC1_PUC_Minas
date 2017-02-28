@@ -1,0 +1,96 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0079A158 .scope module, "test_f4" "test_f4" 2 37;
+ .timescale 0 0;
+v0079C410_0 .net "r", 0 0, L_007EC908; 1 drivers
+v0079C468_0 .net "s", 0 0, L_00794C88; 1 drivers
+v0079C4C0_0 .var "x", 0 0;
+v0079C518_0 .var "y", 0 0;
+v0079C570_0 .var "z", 0 0;
+S_0079A1E0 .scope module, "modulo1" "BOX2" 2 41, 2 26, S_0079A158;
+ .timescale 0 0;
+L_0079CE20 .functor NAND 1, v0079C4C0_0, v0079C518_0, C4<1>, C4<1>;
+L_0079F3F8 .functor AND 1, v0079C4C0_0, v0079C518_0, C4<1>, C4<1>;
+L_0079F468 .functor NOR 1, v0079C4C0_0, v0079C518_0, C4<0>, C4<0>;
+L_0079F3C0 .functor OR 1, v0079C4C0_0, v0079C518_0, C4<0>, C4<0>;
+v0079C0F8_0 .net "CH", 0 0, v0079C570_0; 1 drivers
+v0079C150_0 .net "a", 0 0, v0079C4C0_0; 1 drivers
+v0079C1A8_0 .net "b", 0 0, v0079C518_0; 1 drivers
+v0079C200_0 .net "e1", 0 0, L_0079CE20; 1 drivers
+v0079C258_0 .net "e2", 0 0, L_0079F3F8; 1 drivers
+v0079C2B0_0 .net "e3", 0 0, L_0079F468; 1 drivers
+v0079C308_0 .net "e4", 0 0, L_0079F3C0; 1 drivers
+v0079C360_0 .alias "s", 0 0, v0079C468_0;
+v0079C3B8_0 .alias "s0", 0 0, v0079C410_0;
+S_0079A268 .scope module, "selec" "BOX1" 2 34, 2 9, S_0079A1E0;
+ .timescale 0 0;
+L_0079CE90 .functor AND 1, L_0079CE20, v0079C570_0, C4<1>, C4<1>;
+L_00794C18 .functor NOT 1, v0079C570_0, C4<0>, C4<0>, C4<0>;
+RS_007F1E7C .resolv tri, L_00794C18, L_007EC898, C4<z>, C4<z>;
+L_0079CDE8 .functor AND 1, L_0079F3F8, RS_007F1E7C, C4<1>, C4<1>;
+L_00794C88 .functor OR 1, L_0079CE90, L_0079CDE8, C4<0>, C4<0>;
+L_007EC860 .functor AND 1, L_0079F468, v0079C570_0, C4<1>, C4<1>;
+L_007EC898 .functor NOT 1, v0079C570_0, C4<0>, C4<0>, C4<0>;
+L_007EC8D0 .functor AND 1, L_0079F3C0, RS_007F1E7C, C4<1>, C4<1>;
+L_007EC908 .functor OR 1, L_007EC860, L_007EC8D0, C4<0>, C4<0>;
+v0079BCD8_0 .alias "c1", 0 0, v0079C0F8_0;
+v0079BD30_0 .alias "e1", 0 0, v0079C200_0;
+v0079BD88_0 .alias "e2", 0 0, v0079C258_0;
+v0079BDE0_0 .alias "e3", 0 0, v0079C2B0_0;
+v0079BE38_0 .alias "e4", 0 0, v0079C308_0;
+v0079BE90_0 .net8 "notc1", 0 0, RS_007F1E7C; 2 drivers
+v0079BEE8_0 .alias "s1", 0 0, v0079C468_0;
+v0079BF40_0 .alias "s2", 0 0, v0079C410_0;
+v0079BF98_0 .net "temp1", 0 0, L_0079CE90; 1 drivers
+v0079BFF0_0 .net "temp2", 0 0, L_0079CDE8; 1 drivers
+v0079C048_0 .net "temp3", 0 0, L_007EC860; 1 drivers
+v0079C0A0_0 .net "temp4", 0 0, L_007EC8D0; 1 drivers
+    .scope S_0079A158;
+T_0 ;
+    %vpi_call 2 44 "$display", "Exemplo0033 - Lucas Cardoso - 441694";
+    %vpi_call 2 45 "$display", "Test LU's module";
+    %set/v v0079C4C0_0, 0, 1;
+    %set/v v0079C518_0, 0, 1;
+    %set/v v0079C570_0, 0, 1;
+    %vpi_call 2 48 "$display", "\012a b CH s";
+    %delay 1, 0;
+    %vpi_call 2 49 "$monitor", "%b %b %b  %b", v0079C4C0_0, v0079C518_0, v0079C570_0, v0079C468_0;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 0, 1;
+    %set/v v0079C518_0, 1, 1;
+    %set/v v0079C570_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 1, 1;
+    %set/v v0079C518_0, 0, 1;
+    %set/v v0079C570_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 1, 1;
+    %set/v v0079C518_0, 1, 1;
+    %set/v v0079C570_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 0, 1;
+    %set/v v0079C518_0, 0, 1;
+    %set/v v0079C570_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 0, 1;
+    %set/v v0079C518_0, 1, 1;
+    %set/v v0079C570_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 1, 1;
+    %set/v v0079C518_0, 0, 1;
+    %set/v v0079C570_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0079C4C0_0, 1, 1;
+    %set/v v0079C518_0, 1, 1;
+    %set/v v0079C570_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Lucas\Puc\441694\AC1\Guia03\Exemplo0033.v";

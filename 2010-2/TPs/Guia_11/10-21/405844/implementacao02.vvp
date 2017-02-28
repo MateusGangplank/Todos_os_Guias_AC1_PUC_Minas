@@ -1,0 +1,52 @@
+// ---------------------
+//	Programação em Verilog
+//
+// PUC - MG
+// Nome: Tiago Menegaz de Melo Garcia
+// Matricula: 405844
+//
+//	Guia11	Implemento2
+//	Implementar uma máquina de estados finitos capaz de reconhecer a sequencia 0101
+//
+// ---------------------
+
+`include "sequencia0101_moore.v"
+
+module sequencia0101_implemento;
+	reg clock, reset, valor;
+	wire w1;
+
+	sequencia0101_moore S0101 ( w1, valor, clock, reset );
+
+initial begin
+   $display ( "Tempo     Valor   Moore" );
+
+	clock = 1;
+	reset = 0;
+	valor = 0;
+	
+	#5 reset = 1;
+	#10 x = 1;
+	#10 x = 0;
+	#10 x = 0;
+	#20 x = 0;
+	#10 x = 1;
+	#10 x = 0;
+	#10 x = 1;
+	#10 x = 1;
+
+  #30 $finish;
+ end // initial
+
+ always
+  #5 clk = ~clk;
+
+ always @( posedge clock )
+  begin
+	$display ( "Arquitetura de Computadores - Guia 11" );
+	$display ( "Implemento 02 - Reconhecer a sequencia 0101" );
+	$display ( "Tiago Menegaz de Melo Garcia		405844" );
+	$display ( "Tempo		Valor   Encontrou" );
+   $display ( "%4d  %4b  %5b", $time, valor, w1 );
+  end //
+endmodule //

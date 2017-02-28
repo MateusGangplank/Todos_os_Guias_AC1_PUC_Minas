@@ -1,0 +1,67 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E4A00 .scope module, "testorgate" "testorgate" 2 25;
+ .timescale 0 0;
+v00699AF8_0 .var "a", 0 0;
+v00699B50_0 .var "b", 0 0;
+v00699BA8_0 .net "s", 0 0, L_00699CB0; 1 drivers
+v00699C00_0 .net "temp1", 0 0, L_00661320; 1 drivers
+v00699C58_0 .net "temp2", 0 0, L_00660650; 1 drivers
+S_006998F8 .scope module, "NAND1" "orgate" 2 29, 2 13, S_003E4A00;
+ .timescale 0 0;
+L_00699CE8 .functor AND 1, v00699AF8_0, v00699AF8_0, C4<1>, C4<1>;
+L_00661320 .functor NOT 1, L_00699CE8, C4<0>, C4<0>, C4<0>;
+v00699980_0 .net *"_s0", 0 0, L_00699CE8; 1 drivers
+v006999D8_0 .net "a", 0 0, v00699AF8_0; 1 drivers
+v00699A30_0 .alias "b", 0 0, v006999D8_0;
+v00699AA0_0 .alias "s", 0 0, v00699C00_0;
+S_006996C8 .scope module, "NAND2" "orgate" 2 30, 2 13, S_003E4A00;
+ .timescale 0 0;
+L_00699DC0 .functor AND 1, v00699B50_0, v00699B50_0, C4<1>, C4<1>;
+L_00660650 .functor NOT 1, L_00699DC0, C4<0>, C4<0>, C4<0>;
+v00699750_0 .net *"_s0", 0 0, L_00699DC0; 1 drivers
+v006997C0_0 .net "a", 0 0, v00699B50_0; 1 drivers
+v00699830_0 .alias "b", 0 0, v006997C0_0;
+v006998A0_0 .alias "s", 0 0, v00699C58_0;
+S_006602B0 .scope module, "NAND3" "orgate" 2 31, 2 13, S_003E4A00;
+ .timescale 0 0;
+L_00699E98 .functor AND 1, L_00661320, L_00660650, C4<1>, C4<1>;
+L_00699CB0 .functor NOT 1, L_00699E98, C4<0>, C4<0>, C4<0>;
+v003E6690_0 .net *"_s0", 0 0, L_00699E98; 1 drivers
+v00699560_0 .alias "a", 0 0, v00699C00_0;
+v006995D0_0 .alias "b", 0 0, v00699C58_0;
+v00699658_0 .alias "s", 0 0, v00699BA8_0;
+    .scope S_003E4A00;
+T_0 ;
+    %set/v v00699AF8_0, 0, 1;
+    %set/v v00699B50_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003E4A00;
+T_1 ;
+    %vpi_call 2 41 "$display", "Guia-02 - Pedro Tronbin - 410473";
+    %vpi_call 2 42 "$display", "Test OR gate";
+    %vpi_call 2 43 "$monitor", "%b | %b = %b ", v00699AF8_0, v00699B50_0, v00699BA8_0;
+    %delay 1, 0;
+    %set/v v00699AF8_0, 0, 1;
+    %set/v v00699B50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00699AF8_0, 0, 1;
+    %set/v v00699B50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00699AF8_0, 1, 1;
+    %set/v v00699B50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00699AF8_0, 1, 1;
+    %set/v v00699B50_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\guia_02\testorgate.V";

@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007FEBF8 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v007FF5E8_0 .var "a", 0 0;
+v007FF640_0 .var "b", 0 0;
+v007FF698_0 .net "s", 0 0, L_007FFD98; 1 drivers
+S_007F3060 .scope module, "NAND1" "nandgate" 2 22, 2 9, S_007FEBF8;
+ .timescale 0 0;
+L_007F30E8 .functor NOT 1, v007FF5E8_0, C4<0>, C4<0>, C4<0>;
+L_007FF728 .functor NOT 1, v007FF640_0, C4<0>, C4<0>, C4<0>;
+L_007FFD98 .functor OR 1, L_007F30E8, L_007FF728, C4<0>, C4<0>;
+v007F34C0_0 .net *"_s0", 0 0, L_007F30E8; 1 drivers
+v007F3518_0 .net *"_s2", 0 0, L_007FF728; 1 drivers
+v007F3570_0 .net "p", 0 0, v007FF5E8_0; 1 drivers
+v007F35C8_0 .net "q", 0 0, v007FF640_0; 1 drivers
+v007FF590_0 .alias "s", 0 0, v007FF698_0;
+S_007F2FD8 .scope begin, "start" "start" 2 24, 2 24, S_007FEBF8;
+ .timescale 0 0;
+S_007FEC80 .scope begin, "main" "main" 2 29, 2 29, S_007FEBF8;
+ .timescale 0 0;
+    .scope S_007FEBF8;
+T_0 ;
+    %fork t_1, S_007F2FD8;
+    %jmp t_0;
+    .scope S_007F2FD8;
+t_1 ;
+    %set/v v007FF5E8_0, 0, 1;
+    %set/v v007FF640_0, 0, 1;
+    %end;
+    .scope S_007FEBF8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007FEBF8;
+T_1 ;
+    %fork t_3, S_007FEC80;
+    %jmp t_2;
+    .scope S_007FEC80;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exemplo0009 - Herbert Alves - 461971";
+    %vpi_call 2 31 "$display", "Test nand gate";
+    %vpi_call 2 32 "$display", "\012 ~a | ~b = s\012";
+    %vpi_call 2 33 "$monitor", "~%b | ~%b) = %b", v007FF5E8_0, v007FF640_0, v007FF698_0;
+    %delay 1, 0;
+    %set/v v007FF5E8_0, 0, 1;
+    %set/v v007FF640_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007FF5E8_0, 1, 1;
+    %set/v v007FF640_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007FF5E8_0, 1, 1;
+    %set/v v007FF640_0, 1, 1;
+    %end;
+    .scope S_007FEBF8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0009.v";

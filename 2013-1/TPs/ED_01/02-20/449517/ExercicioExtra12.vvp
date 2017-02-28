@@ -1,0 +1,123 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000396B8 .scope module, "testum" "testum" 2 19;
+ .timescale 0 0;
+v0063C688_0 .var "a", 7 0;
+v0063C6E0_0 .net "s", 0 0, L_0063CF00; 1 drivers
+S_00039850 .scope module, "UM" "um" 2 26, 2 11, S_000396B8;
+ .timescale 0 0;
+L_0063C7E8 .functor OR 1, L_0063C738, L_0063C790, C4<0>, C4<0>;
+L_00036780 .functor OR 1, L_0063C7E8, L_0063C890, C4<0>, C4<0>;
+L_0063CA18 .functor OR 1, L_00036780, L_0063C9C0, C4<0>, C4<0>;
+L_0063CB18 .functor OR 1, L_0063CA18, L_0063CAC0, C4<0>, C4<0>;
+L_0063CC38 .functor OR 1, L_0063CB18, L_0063CBE0, C4<0>, C4<0>;
+L_0063CE00 .functor OR 1, L_0063CC38, L_0063CCE0, C4<0>, C4<0>;
+L_0063CF00 .functor OR 1, L_0063CE00, L_0063CEA8, C4<0>, C4<0>;
+v00037B98_0 .net *"_s1", 0 0, L_0063C738; 1 drivers
+v0063BFA0_0 .net *"_s11", 0 0, L_0063C9C0; 1 drivers
+v0063C010_0 .net *"_s12", 0 0, L_0063CA18; 1 drivers
+v0063C098_0 .net *"_s15", 0 0, L_0063CAC0; 1 drivers
+v0063C108_0 .net *"_s16", 0 0, L_0063CB18; 1 drivers
+v0063C160_0 .net *"_s19", 0 0, L_0063CBE0; 1 drivers
+v0063C1D0_0 .net *"_s20", 0 0, L_0063CC38; 1 drivers
+v0063C268_0 .net *"_s23", 0 0, L_0063CCE0; 1 drivers
+v0063C2D8_0 .net *"_s24", 0 0, L_0063CE00; 1 drivers
+v0063C378_0 .net *"_s27", 0 0, L_0063CEA8; 1 drivers
+v0063C3E8_0 .net *"_s3", 0 0, L_0063C790; 1 drivers
+v0063C458_0 .net *"_s4", 0 0, L_0063C7E8; 1 drivers
+v0063C4C8_0 .net *"_s7", 0 0, L_0063C890; 1 drivers
+v0063C538_0 .net *"_s8", 0 0, L_00036780; 1 drivers
+v0063C5A8_0 .net "q", 7 0, v0063C688_0; 1 drivers
+v0063C618_0 .alias "s", 0 0, v0063C6E0_0;
+L_0063C738 .part v0063C688_0, 0, 1;
+L_0063C790 .part v0063C688_0, 1, 1;
+L_0063C890 .part v0063C688_0, 2, 1;
+L_0063C9C0 .part v0063C688_0, 3, 1;
+L_0063CAC0 .part v0063C688_0, 4, 1;
+L_0063CBE0 .part v0063C688_0, 5, 1;
+L_0063CCE0 .part v0063C688_0, 6, 1;
+L_0063CEA8 .part v0063C688_0, 7, 1;
+S_000397C8 .scope begin, "start" "start" 2 28, 2 28, S_000396B8;
+ .timescale 0 0;
+S_00039740 .scope begin, "main" "main" 2 33, 2 33, S_000396B8;
+ .timescale 0 0;
+    .scope S_000396B8;
+T_0 ;
+    %fork t_1, S_000397C8;
+    %jmp t_0;
+    .scope S_000397C8;
+t_1 ;
+    %set/v v0063C688_0, 0, 8;
+    %end;
+    .scope S_000396B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_000396B8;
+T_1 ;
+    %fork t_3, S_00039740;
+    %jmp t_2;
+    .scope S_00039740;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exercicio 12 - Ana Carolina - 449517";
+    %vpi_call 2 35 "$display", "Test Zero";
+    %vpi_call 2 36 "$display", "\012p  =  s\012";
+    %vpi_call 2 38 "$monitor", "%b  =  %b", v0063C688_0, v0063C6E0_0;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 3, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 5, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 6, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 7, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 9, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 10, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 11, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 12, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 13, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 14, 8;
+    %set/v v0063C688_0, 8, 8;
+    %delay 1, 0;
+    %set/v v0063C688_0, 1, 8;
+    %end;
+    .scope S_000396B8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "I:\Arquitetura I - 2013\Eds Arquitetura I\ED-01\ExercicioExtra12.v";

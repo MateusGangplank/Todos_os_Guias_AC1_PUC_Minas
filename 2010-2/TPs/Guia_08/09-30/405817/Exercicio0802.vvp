@@ -1,0 +1,133 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00649520 .scope module, "Exercicio0802" "Exercicio0802" 2 33;
+ .timescale 0 0;
+v0064BDC8_0 .var "a", 0 0;
+v0064BE20_0 .var "b", 0 0;
+v0064BE78_0 .var "c", 0 0;
+v0064BED0_0 .var "d", 0 0;
+v0064BF28_0 .net "s", 0 0, L_00680D88; 1 drivers
+S_006495A8 .scope module, "circuito02" "circuito" 2 37, 2 11, S_00649520;
+ .timescale 0 0;
+L_00680C38 .functor NOT 1, v0064BDC8_0, C4<0>, C4<0>, C4<0>;
+L_00680C70 .functor NOT 1, v0064BE20_0, C4<0>, C4<0>, C4<0>;
+L_00680CE0 .functor NOT 1, v0064BE78_0, C4<0>, C4<0>, C4<0>;
+L_00680D50 .functor NOT 1, v0064BED0_0, C4<0>, C4<0>, C4<0>;
+L_00680DC0 .functor AND 1, v0064BDC8_0, L_00680C70, L_00680CE0, C4<1>;
+L_00680E68 .functor AND 1, L_00680C38, L_00680C70, L_00680D50, C4<1>;
+L_00680F10 .functor AND 1, L_00680C38, L_00680CE0, L_00680D50, C4<1>;
+L_00680F48 .functor AND 1, v0064BDC8_0, L_00680C70, v0064BED0_0, C4<1>;
+L_00680DF8 .functor AND 1, v0064BDC8_0, L_00680CE0, v0064BED0_0, C4<1>;
+L_00680D88/0/0 .functor OR 1, L_00680DC0, L_00680E68, L_00680F10, L_00680F48;
+L_00680D88/0/4 .functor OR 1, L_00680DF8, C4<0>, C4<0>, C4<0>;
+L_00680D88 .functor OR 1, L_00680D88/0/0, L_00680D88/0/4, C4<0>, C4<0>;
+v0064B8F8_0 .net "a", 0 0, v0064BDC8_0; 1 drivers
+v0064B950_0 .net "b", 0 0, v0064BE20_0; 1 drivers
+v0064B9A8_0 .net "c", 0 0, v0064BE78_0; 1 drivers
+v0064BA00_0 .net "d", 0 0, v0064BED0_0; 1 drivers
+v0064BA58_0 .alias "s", 0 0, v0064BF28_0;
+v0064BAB0_0 .net "w0", 0 0, L_00680C38; 1 drivers
+v0064BB08_0 .net "w1", 0 0, L_00680C70; 1 drivers
+v0064BB60_0 .net "w2", 0 0, L_00680CE0; 1 drivers
+v0064BBB8_0 .net "w3", 0 0, L_00680D50; 1 drivers
+v0064BC10_0 .net "w4", 0 0, L_00680DC0; 1 drivers
+v0064BC68_0 .net "w5", 0 0, L_00680E68; 1 drivers
+v0064BCC0_0 .net "w6", 0 0, L_00680F10; 1 drivers
+v0064BD18_0 .net "w7", 0 0, L_00680F48; 1 drivers
+v0064BD70_0 .net "w8", 0 0, L_00680DF8; 1 drivers
+    .scope S_00649520;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exercicio0802";
+    %vpi_call 2 42 "$display", "Luiz Felipe Fonseca - 405817";
+    %vpi_call 2 43 "$display", "\012a  b  c  d  =  s\012";
+    %vpi_call 2 44 "$monitor", "%b  %b  %b  %b  =  %b", v0064BDC8_0, v0064BE20_0, v0064BE78_0, v0064BED0_0, v0064BF28_0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 0, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 0, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 0, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064BDC8_0, 1, 1;
+    %set/v v0064BE20_0, 1, 1;
+    %set/v v0064BE78_0, 1, 1;
+    %set/v v0064BED0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\405817\Exercicio0802.v";

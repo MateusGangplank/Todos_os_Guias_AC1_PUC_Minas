@@ -1,0 +1,49 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006727C0 .scope module, "testenand" "testenand" 2 21;
+ .timescale 0 0;
+v006A25C0_0 .var "a", 0 0;
+v006A2618_0 .var "b", 0 0;
+v006A2670_0 .net "s", 0 0, L_006A28C0; 1 drivers
+S_003EE300 .scope module, "nand1" "exercicioNAND" 2 27, 2 4, S_006727C0;
+ .timescale 0 0;
+L_006A26C8 .functor NOR 1, v006A25C0_0, C4<0>, C4<0>, C4<0>;
+L_006A2738 .functor NOR 1, v006A2618_0, C4<0>, C4<0>, C4<0>;
+L_006A27A8 .functor OR 1, L_006A26C8, L_006A2738, C4<0>, C4<0>;
+L_006A2850 .functor NOT 1, L_006A27A8, C4<0>, C4<0>, C4<0>;
+L_006A28C0 .functor NOT 1, L_006A2850, C4<0>, C4<0>, C4<0>;
+v003EE380_0 .net *"_s0", 0 0, L_006A27A8; 1 drivers
+v006A22F8_0 .net *"_s2", 0 0, L_006A2850; 1 drivers
+v006A2368_0 .net "a", 0 0, v006A25C0_0; 1 drivers
+v006A23F0_0 .net "b", 0 0, v006A2618_0; 1 drivers
+v006A2460_0 .alias "s", 0 0, v006A2670_0;
+v006A24B8_0 .net "t1", 0 0, L_006A26C8; 1 drivers
+v006A2528_0 .net "t2", 0 0, L_006A2738; 1 drivers
+    .scope S_006727C0;
+T_0 ;
+    %vpi_call 2 30 "$display", "Exercicio 05\012";
+    %vpi_call 2 31 "$display", "NAND usando apenas NOR\012";
+    %vpi_call 2 32 "$display", "\012~(a & b) = s\012";
+    %vpi_call 2 33 "$monitor", "~(%b & %b) = %b", v006A25C0_0, v006A2618_0, v006A2670_0;
+    %set/v v006A25C0_0, 0, 1;
+    %set/v v006A2618_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A25C0_0, 0, 1;
+    %set/v v006A2618_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A25C0_0, 1, 1;
+    %set/v v006A2618_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A25C0_0, 1, 1;
+    %set/v v006A2618_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\Arquitetura de computadores\Exercicios\424649_ guia02\Exercicio 05.v";

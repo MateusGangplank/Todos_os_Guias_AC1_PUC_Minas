@@ -1,0 +1,148 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008AA838 .scope module, "test_f4" "test_f4" 2 35;
+ .timescale 0 0;
+v0076E360_0 .var "chave", 0 0;
+v0076E3B8_0 .var "chave2", 0 0;
+v0076E410_0 .net "saida", 0 0, L_00782BE8; 1 drivers
+v0076E468_0 .var "x", 0 0;
+v0076E4C0_0 .var "y", 0 0;
+S_008AA8C0 .scope module, "modulo22" "Chaveado" 2 40, 2 10, S_008AA838;
+ .timescale 0 0;
+L_007825C8 .functor AND 1, v0076E468_0, v0076E4C0_0, C4<1>, C4<1>;
+L_00782638 .functor NAND 1, v0076E468_0, v0076E4C0_0, C4<1>, C4<1>;
+L_00782670 .functor OR 1, v0076E468_0, v0076E4C0_0, C4<0>, C4<0>;
+L_00782600 .functor NOR 1, v0076E468_0, v0076E4C0_0, C4<0>, C4<0>;
+L_00782590 .functor AND 1, L_007825C8, L_007826E0, C4<1>, C4<1>;
+L_007826E0 .functor NOT 1, v0076E360_0, C4<0>, C4<0>, C4<0>;
+L_00782788 .functor AND 1, L_00782638, v0076E360_0, C4<1>, C4<1>;
+L_007827F8 .functor AND 1, L_00782670, L_00782868, C4<1>, C4<1>;
+L_00782868 .functor NOT 1, v0076E360_0, C4<0>, C4<0>, C4<0>;
+L_00782750 .functor AND 1, v0076E360_0, L_00782600, C4<1>, C4<1>;
+L_00782910 .functor OR 1, L_00782590, L_00782788, C4<0>, C4<0>;
+L_007829F0 .functor OR 1, L_007827F8, L_00782750, C4<0>, C4<0>;
+L_007829B8 .functor AND 1, L_00782910, L_00782A98, C4<1>, C4<1>;
+L_00782A98 .functor NOT 1, v0076E3B8_0, C4<0>, C4<0>, C4<0>;
+L_00782B78 .functor AND 1, L_007829F0, v0076E3B8_0, C4<1>, C4<1>;
+L_00782BE8 .functor OR 1, L_007829B8, L_00782B78, C4<0>, C4<0>;
+v0076DC80_0 .net *"_s0", 0 0, L_007826E0; 1 drivers
+v0076DCD8_0 .net *"_s2", 0 0, L_00782868; 1 drivers
+v0076DD30_0 .net *"_s4", 0 0, L_00782A98; 1 drivers
+v0076DD88_0 .net "a", 0 0, v0076E468_0; 1 drivers
+v0076DDE0_0 .net "b", 0 0, v0076E4C0_0; 1 drivers
+v0076DE38_0 .net "ch", 0 0, v0076E360_0; 1 drivers
+v0076DE90_0 .net "ch2", 0 0, v0076E3B8_0; 1 drivers
+v0076DEE8_0 .alias "s1", 0 0, v0076E410_0;
+v0076DF40_0 .net "w1", 0 0, L_007825C8; 1 drivers
+v0076DF98_0 .net "w10", 0 0, L_007829F0; 1 drivers
+v0076DFF0_0 .net "w11", 0 0, L_007829B8; 1 drivers
+v0076E048_0 .net "w12", 0 0, L_00782B78; 1 drivers
+v0076E0A0_0 .net "w2", 0 0, L_00782638; 1 drivers
+v0076E0F8_0 .net "w3", 0 0, L_00782670; 1 drivers
+v0076E150_0 .net "w4", 0 0, L_00782600; 1 drivers
+v0076E1A8_0 .net "w5", 0 0, L_00782590; 1 drivers
+v0076E200_0 .net "w6", 0 0, L_00782788; 1 drivers
+v0076E258_0 .net "w7", 0 0, L_007827F8; 1 drivers
+v0076E2B0_0 .net "w8", 0 0, L_00782750; 1 drivers
+v0076E308_0 .net "w9", 0 0, L_00782910; 1 drivers
+    .scope S_008AA838;
+T_0 ;
+    %vpi_call 2 45 "$display", "Exemplo0032 - Fabio Fiuza Pereira - 406087";
+    %vpi_call 2 46 "$display", "Test LU's module";
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %vpi_call 2 50 "$monitor", "A = %1b B = %1b Chave = %1b Chave2 = %1b  Saida = %1b", v0076E468_0, v0076E4C0_0, v0076E360_0, v0076E3B8_0, v0076E410_0;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 0, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 0, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 0, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0076E468_0, 1, 1;
+    %set/v v0076E4C0_0, 1, 1;
+    %set/v v0076E360_0, 1, 1;
+    %set/v v0076E3B8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fiuza\Desktop\AC\andamento\guia03\Exercicio0034.v";

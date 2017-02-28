@@ -1,0 +1,110 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E69A8 .scope module, "test" "test" 2 41;
+ .timescale 0 0;
+v005FD930_0 .var "a", 0 0;
+v005FD9C0_0 .var "b", 0 0;
+v005FDA50_0 .var "c", 0 0;
+v005FDAE0_0 .net "s0", 0 0, L_005FDDF8; 1 drivers
+v005FDB38_0 .net "s1", 0 0, L_005FDC70; 1 drivers
+S_003E6B40 .scope module, "D1" "diferenca" 2 45, 2 26, S_003E69A8;
+ .timescale 0 0;
+L_005FDDF8 .functor XOR 1, L_005FDD20, L_005FD988, C4<0>, C4<0>;
+v005FD648_0 .net "p", 0 0, v005FD930_0; 1 drivers
+v005FD6A0_0 .net "q", 0 0, v005FD9C0_0; 1 drivers
+v005FD6F8_0 .net "s", 0 0, v005FDA50_0; 1 drivers
+v005FD750_0 .alias "s0", 0 0, v005FDB38_0;
+v005FD7A8_0 .alias "s1", 0 0, v005FDAE0_0;
+v005FD800_0 .net "temp1", 0 0, L_005FDBC8; 1 drivers
+v005FD858_0 .net "temp2", 0 0, L_005FD988; 1 drivers
+v005FD8D8_0 .net "temp3", 0 0, L_005FDD20; 1 drivers
+S_005FD3C0 .scope module, "D1" "meia_diferenca" 2 31, 2 11, S_003E6B40;
+ .timescale 0 0;
+L_005FDBC8 .functor XOR 1, v005FD930_0, v005FD9C0_0, C4<0>, C4<0>;
+L_005FDC00 .functor NOT 1, v005FD930_0, C4<0>, C4<0>, C4<0>;
+L_005FD988 .functor AND 1, v005FD9C0_0, L_005FDC00, C4<1>, C4<1>;
+v005FD448_0 .alias "p", 0 0, v005FD648_0;
+v005FD4B8_0 .alias "q", 0 0, v005FD6A0_0;
+v005FD528_0 .alias "s0", 0 0, v005FD800_0;
+v005FD598_0 .alias "s1", 0 0, v005FD858_0;
+v005FD5F0_0 .net "temp1", 0 0, L_005FDC00; 1 drivers
+S_003E6BC8 .scope module, "D2" "meia_diferenca" 2 32, 2 11, S_003E6B40;
+ .timescale 0 0;
+L_005FDC70 .functor XOR 1, L_005FDBC8, v005FDA50_0, C4<0>, C4<0>;
+L_003E67D0 .functor NOT 1, L_005FDBC8, C4<0>, C4<0>, C4<0>;
+L_005FDD20 .functor AND 1, v005FDA50_0, L_003E67D0, C4<1>, C4<1>;
+v005E1C98_0 .alias "p", 0 0, v005FD800_0;
+v005FD200_0 .alias "q", 0 0, v005FD6F8_0;
+v005FD270_0 .alias "s0", 0 0, v005FDB38_0;
+v005FD2F8_0 .alias "s1", 0 0, v005FD8D8_0;
+v005FD368_0 .net "temp1", 0 0, L_003E67D0; 1 drivers
+S_003E6AB8 .scope begin, "start" "start" 2 47, 2 47, S_003E69A8;
+ .timescale 0 0;
+S_003E6A30 .scope begin, "main" "main" 2 52, 2 52, S_003E69A8;
+ .timescale 0 0;
+    .scope S_003E69A8;
+T_0 ;
+    %fork t_1, S_003E6AB8;
+    %jmp t_0;
+    .scope S_003E6AB8;
+t_1 ;
+    %set/v v005FD930_0, 0, 1;
+    %set/v v005FD9C0_0, 0, 1;
+    %set/v v005FDA50_0, 0, 1;
+    %end;
+    .scope S_003E69A8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E69A8;
+T_1 ;
+    %fork t_3, S_003E6A30;
+    %jmp t_2;
+    .scope S_003E6A30;
+t_3 ;
+    %vpi_call 2 53 "$display", "Exercico 3 - GUIA 04\012Marco Antonio M. Belo - 410796\012";
+    %vpi_call 2 54 "$display", "Half Adder";
+    %vpi_call 2 55 "$display", "\012a - b - c = s\012";
+    %vpi_call 2 56 "$monitor", "%b - %b - %b = %b%b", v005FD930_0, v005FD9C0_0, v005FDA50_0, v005FDAE0_0, v005FDB38_0;
+    %delay 1, 0;
+    %set/v v005FD930_0, 0, 1;
+    %set/v v005FD9C0_0, 0, 1;
+    %set/v v005FDA50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FD930_0, 0, 1;
+    %set/v v005FD9C0_0, 1, 1;
+    %set/v v005FDA50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FD930_0, 0, 1;
+    %set/v v005FD9C0_0, 1, 1;
+    %set/v v005FDA50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FD930_0, 1, 1;
+    %set/v v005FD9C0_0, 0, 1;
+    %set/v v005FDA50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FD930_0, 1, 1;
+    %set/v v005FD9C0_0, 0, 1;
+    %set/v v005FDA50_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FD930_0, 1, 1;
+    %set/v v005FD9C0_0, 1, 1;
+    %set/v v005FDA50_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FD930_0, 1, 1;
+    %set/v v005FD9C0_0, 1, 1;
+    %set/v v005FDA50_0, 1, 1;
+    %end;
+    .scope S_003E69A8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Faculdade\Arquitetura I\Exercicios\Guia 04\Exercicio 03\Exerc03.v";

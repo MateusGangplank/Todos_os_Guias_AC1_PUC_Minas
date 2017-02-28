@@ -1,0 +1,91 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0036A960 .scope module, "alu2" "alu2" 2 5;
+ .timescale 0 0;
+L_00363208 .functor XOR 1, L_0036D558, L_0036D5B0, C4<0>, C4<0>;
+L_01B04338 .functor NOR 1, L_01B030F8, L_01B03150, L_01B031A8, L_01B03200;
+v0036D0E0_0 .net *"_s1", 0 0, L_0036D558; 1 drivers
+v0036D138_0 .net *"_s25", 0 0, L_01B030F8; 1 drivers
+v0036D190_0 .net *"_s27", 0 0, L_01B03150; 1 drivers
+v0036D1E8_0 .net *"_s29", 0 0, L_01B031A8; 1 drivers
+v0036D240_0 .net *"_s3", 0 0, L_0036D5B0; 1 drivers
+v0036D298_0 .net *"_s31", 0 0, L_01B03200; 1 drivers
+v0036D2F0_0 .net "a", 3 0, C4<zzzz>; 0 drivers
+v0036D348_0 .net "b", 3 0, C4<zzzz>; 0 drivers
+v0036D3A0_0 .net "eqzero", 0 0, L_01B04338; 1 drivers
+RS_01AD1704 .resolv tri, L_01B02D88, L_01B02E90, L_01B02F98, L_01B02FF0;
+v0036D3F8_0 .net8 "s", 3 0, RS_01AD1704; 4 drivers
+v0036D450_0 .net "w1", 0 0, L_003632F0; 1 drivers
+v0036D4A8_0 .net "w2", 0 0, L_01B03FB8; 1 drivers
+v0036D500_0 .net "x1", 0 0, L_00363208; 1 drivers
+L_0036D558 .part C4<zzzz>, 3, 1;
+L_0036D5B0 .part C4<zzzz>, 3, 1;
+L_01B02D88 .part/pv L_01B02C60, 0, 1, 4;
+L_01B02DE0 .part C4<zzzz>, 0, 1;
+L_01B02E38 .part C4<zzzz>, 0, 1;
+L_01B02E90 .part/pv L_01B03F80, 1, 1, 4;
+L_01B02EE8 .part C4<zzzz>, 1, 1;
+L_01B02F40 .part C4<zzzz>, 1, 1;
+L_01B02F98 .part/pv L_01B04220, 2, 1, 4;
+L_01B02FF0 .part/pv L_01B04258, 3, 1, 4;
+L_01B03048 .part C4<zzzz>, 2, 1;
+L_01B030A0 .part C4<zzzz>, 2, 1;
+L_01B030F8 .part RS_01AD1704, 0, 1;
+L_01B03150 .part RS_01AD1704, 1, 1;
+L_01B031A8 .part RS_01AD1704, 2, 1;
+L_01B03200 .part RS_01AD1704, 3, 1;
+S_0036AD18 .scope module, "fa1" "fa" 2 11, 3 3, S_0036A960;
+ .timescale 0 0;
+L_00364670 .functor AND 1, L_01B02DE0, L_01B02E38, C4<1>, C4<1>;
+L_003646A8 .functor XOR 1, L_01B02DE0, L_01B02E38, C4<0>, C4<0>;
+L_00364750 .functor AND 1, L_00363208, L_003646A8, C4<1>, C4<1>;
+L_01B02C60 .functor XOR 1, L_00363208, L_003646A8, C4<0>, C4<0>;
+L_003632F0 .functor OR 1, L_00364670, L_00364750, C4<0>, C4<0>;
+v0036CE20_0 .net "a", 0 0, L_01B02DE0; 1 drivers
+v0036CE78_0 .net "b", 0 0, L_01B02E38; 1 drivers
+v0036CED0_0 .alias "carryin", 0 0, v0036D500_0;
+v0036CF28_0 .alias "carryout", 0 0, v0036D450_0;
+v0036CF80_0 .net "s", 0 0, L_01B02C60; 1 drivers
+v0036CFD8_0 .net "w1", 0 0, L_00364670; 1 drivers
+v0036D030_0 .net "w2", 0 0, L_003646A8; 1 drivers
+v0036D088_0 .net "w3", 0 0, L_00364750; 1 drivers
+S_0036ADA0 .scope module, "fa2" "fa" 2 12, 3 3, S_0036A960;
+ .timescale 0 0;
+L_01B03E18 .functor AND 1, L_01B02EE8, L_01B02F40, C4<1>, C4<1>;
+L_01B03E68 .functor XOR 1, L_01B02EE8, L_01B02F40, C4<0>, C4<0>;
+L_01B03F10 .functor AND 1, L_003632F0, L_01B03E68, C4<1>, C4<1>;
+L_01B03F80 .functor XOR 1, L_003632F0, L_01B03E68, C4<0>, C4<0>;
+L_01B03FB8 .functor OR 1, L_01B03E18, L_01B03F10, C4<0>, C4<0>;
+v0036CB60_0 .net "a", 0 0, L_01B02EE8; 1 drivers
+v0036CBB8_0 .net "b", 0 0, L_01B02F40; 1 drivers
+v0036CC10_0 .alias "carryin", 0 0, v0036D450_0;
+v0036CC68_0 .alias "carryout", 0 0, v0036D4A8_0;
+v0036CCC0_0 .net "s", 0 0, L_01B03F80; 1 drivers
+v0036CD18_0 .net "w1", 0 0, L_01B03E18; 1 drivers
+v0036CD70_0 .net "w2", 0 0, L_01B03E68; 1 drivers
+v0036CDC8_0 .net "w3", 0 0, L_01B03F10; 1 drivers
+S_0036A8D8 .scope module, "fa3" "fa" 2 13, 3 3, S_0036A960;
+ .timescale 0 0;
+L_01B040D0 .functor AND 1, L_01B03048, L_01B030A0, C4<1>, C4<1>;
+L_01B04108 .functor XOR 1, L_01B03048, L_01B030A0, C4<0>, C4<0>;
+L_01B041B0 .functor AND 1, L_01B03FB8, L_01B04108, C4<1>, C4<1>;
+L_01B04220 .functor XOR 1, L_01B03FB8, L_01B04108, C4<0>, C4<0>;
+L_01B04258 .functor OR 1, L_01B040D0, L_01B041B0, C4<0>, C4<0>;
+v0036C8A0_0 .net "a", 0 0, L_01B03048; 1 drivers
+v0036C8F8_0 .net "b", 0 0, L_01B030A0; 1 drivers
+v0036C950_0 .alias "carryin", 0 0, v0036D4A8_0;
+v0036C9A8_0 .net "carryout", 0 0, L_01B04258; 1 drivers
+v0036CA00_0 .net "s", 0 0, L_01B04220; 1 drivers
+v0036CA58_0 .net "w1", 0 0, L_01B040D0; 1 drivers
+v0036CAB0_0 .net "w2", 0 0, L_01B04108; 1 drivers
+v0036CB08_0 .net "w3", 0 0, L_01B041B0; 1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "0502.v";
+    "./fa.v";

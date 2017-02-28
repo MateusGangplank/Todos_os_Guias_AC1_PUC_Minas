@@ -1,0 +1,153 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8798cc8 .scope module, "test" "test" 2 55;
+ .timescale 0 0;
+v0x87b6b18_0 .var "a", 0 0;
+v0x87b6b78_0 .var "b", 0 0;
+v0x87b6be8_0 .var "c", 0 0;
+v0x87b6c58_0 .var "d", 0 0;
+v0x87b6cc8_0 .net "s0", 0 0, L_0x87b6d58; 1 drivers
+S_0x87889c0 .scope module, "C1" "circuit" 2 59, 2 32, S_0x8798cc8;
+ .timescale 0 0;
+L_0x87b6970 .functor NOT 1, v0x87b6c58_0, C4<0>, C4<0>, C4<0>;
+L_0x87b6d90 .functor NOT 1, v0x87b6b78_0, C4<0>, C4<0>, C4<0>;
+L_0x87b6e00 .functor NOT 1, v0x87b6b18_0, C4<0>, C4<0>, C4<0>;
+L_0x87b6e70 .functor NOT 1, v0x87b6be8_0, C4<0>, C4<0>, C4<0>;
+L_0x87b6ef8 .functor AND 1, L_0x87b6d90, L_0x87b6e70, L_0x87b6970, C4<1>;
+L_0x87b6ff0 .functor AND 1, L_0x87b6e70, L_0x87b6e00, L_0x87b6970, C4<1>;
+L_0x87b7078 .functor AND 1, L_0x87b6e00, L_0x87b6d90, L_0x87b6970, C4<1>;
+L_0x87b6fb8 .functor AND 1, v0x87b6b18_0, L_0x87b6d90, L_0x87b6e70, C4<1>;
+L_0x87b6f80 .functor AND 1, v0x87b6b18_0, L_0x87b6e70, v0x87b6c58_0, C4<1>;
+L_0x87b6e38 .functor AND 1, v0x87b6b18_0, L_0x87b6d90, v0x87b6c58_0, C4<1>;
+L_0x87b6d58/0/0 .functor OR 1, L_0x87b6ef8, L_0x87b6ff0, L_0x87b7078, L_0x87b6fb8;
+L_0x87b6d58/0/4 .functor OR 1, L_0x87b6f80, L_0x87b6e38, C4<0>, C4<0>;
+L_0x87b6d58 .functor OR 1, L_0x87b6d58/0/0, L_0x87b6d58/0/4, C4<0>, C4<0>;
+v0x8788a40_0 .net "a", 0 0, v0x87b6b18_0; 1 drivers
+v0x87b64e0_0 .net "a1", 0 0, L_0x87b6ef8; 1 drivers
+v0x87b6540_0 .net "a2", 0 0, L_0x87b6ff0; 1 drivers
+v0x87b65a0_0 .net "a3", 0 0, L_0x87b7078; 1 drivers
+v0x87b6608_0 .net "a4", 0 0, L_0x87b6fb8; 1 drivers
+v0x87b6668_0 .net "a5", 0 0, L_0x87b6f80; 1 drivers
+v0x87b66e8_0 .net "a6", 0 0, L_0x87b6e38; 1 drivers
+v0x87b6748_0 .net "b", 0 0, v0x87b6b78_0; 1 drivers
+v0x87b67d0_0 .net "c", 0 0, v0x87b6be8_0; 1 drivers
+v0x87b6830_0 .net "d", 0 0, v0x87b6c58_0; 1 drivers
+v0x87b68c0_0 .net "na", 0 0, L_0x87b6e00; 1 drivers
+v0x87b6920_0 .net "nb", 0 0, L_0x87b6d90; 1 drivers
+v0x87b69b8_0 .net "nc", 0 0, L_0x87b6e70; 1 drivers
+v0x87b6a18_0 .net "nd", 0 0, L_0x87b6970; 1 drivers
+v0x87b6ab8_0 .alias "s0", 0 0, v0x87b6cc8_0;
+S_0x8788940 .scope begin, "start" "start" 2 61, 2 61, S_0x8798cc8;
+ .timescale 0 0;
+S_0x87888c0 .scope begin, "main" "main" 2 66, 2 66, S_0x8798cc8;
+ .timescale 0 0;
+    .scope S_0x8798cc8;
+T_0 ;
+    %fork t_1, S_0x8788940;
+    %jmp t_0;
+t_1 ;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8798cc8;
+T_1 ;
+    %fork t_3, S_0x87888c0;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 67 "$display", "Guia_08_02 - Alan Diniz Nogueira Machado - 405782";
+    %vpi_call 2 68 "$display", "Test circuito min( 0, 2, 4, 8, 9, 11, 13 )";
+    %vpi_call 2 69 "$display", "\012| a | b | c | d | S |\012";
+    %vpi_call 2 70 "$monitor", "| %b | %b | %b | %b | %b |", v0x87b6b18_0, v0x87b6b78_0, v0x87b6be8_0, v0x87b6c58_0, v0x87b6cc8_0;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 0, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 0, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 0, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x87b6b18_0, 1, 1;
+    %set/v v0x87b6b78_0, 1, 1;
+    %set/v v0x87b6be8_0, 1, 1;
+    %set/v v0x87b6c58_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/ALAN/PUC/AC I/Guia_08/G8E2.v";

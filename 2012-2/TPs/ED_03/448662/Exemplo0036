@@ -1,0 +1,140 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006796E0 .scope module, "test_f4" "test_f4" 2 43;
+ .timescale 0 0;
+v005919A0_0 .var "chave", 0 0;
+v005919F8_0 .var "x", 1 0;
+v00591A50_0 .var "y", 1 0;
+RS_005A51D4 .resolv tri, L_00591B00, L_00591C08, C4<zz>, C4<zz>;
+v00591AA8_0 .net8 "z", 1 0, RS_005A51D4; 2 drivers
+S_006797F0 .scope module, "modulo" "f4" 2 52, 2 32, S_006796E0;
+ .timescale 0 0;
+v00591840_0 .net "a", 1 0, v005919F8_0; 1 drivers
+v00591898_0 .net "b", 1 0, v00591A50_0; 1 drivers
+v005918F0_0 .net "chave", 0 0, v005919A0_0; 1 drivers
+v00591948_0 .alias "s", 1 0, v00591AA8_0;
+L_00591B00 .part/pv L_005CA038, 0, 1, 2;
+L_00591B58 .part v005919F8_0, 0, 1;
+L_00591BB0 .part v00591A50_0, 0, 1;
+L_00591C08 .part/pv L_005CA460, 1, 1, 2;
+L_00591C60 .part v005919F8_0, 1, 1;
+L_00591CB8 .part v00591A50_0, 1, 1;
+S_00679878 .scope module, "l1" "lu06" 2 35, 2 11, S_006797F0;
+ .timescale 0 0;
+L_0067D600 .functor XNOR 1, L_00591B58, L_00591BB0, C4<0>, C4<0>;
+L_0067D638 .functor XOR 1, L_00591B58, L_00591BB0, C4<0>, C4<0>;
+L_0067D6E0 .functor NOT 1, v005919A0_0, C4<0>, C4<0>, C4<0>;
+L_0067B2F8 .functor BUF 1, v005919A0_0, C4<0>, C4<0>, C4<0>;
+L_0067D718 .functor AND 1, L_0067D600, L_0067D6E0, C4<1>, C4<1>;
+L_00672D48 .functor AND 1, L_0067D638, L_0067B2F8, C4<1>, C4<1>;
+L_005CA038 .functor OR 1, L_0067D718, L_00672D48, C4<0>, C4<0>;
+v005914D0_0 .net "a", 0 0, L_00591B58; 1 drivers
+v00591528_0 .net "b", 0 0, L_00591BB0; 1 drivers
+v00591580_0 .net "c0", 0 0, L_0067D6E0; 1 drivers
+v005915D8_0 .net "c1", 0 0, L_0067B2F8; 1 drivers
+v00591630_0 .alias "chave", 0 0, v005918F0_0;
+v00591688_0 .net "d0", 0 0, L_0067D718; 1 drivers
+v005916E0_0 .net "d1", 0 0, L_00672D48; 1 drivers
+v00591738_0 .net "s0", 0 0, L_0067D600; 1 drivers
+v00591790_0 .net "s1", 0 0, L_0067D638; 1 drivers
+v005917E8_0 .net "saida", 0 0, L_005CA038; 1 drivers
+S_00679548 .scope module, "l2" "lu06" 2 36, 2 11, S_006797F0;
+ .timescale 0 0;
+L_005CA1C0 .functor XNOR 1, L_00591C60, L_00591CB8, C4<0>, C4<0>;
+L_005CA1F8 .functor XOR 1, L_00591C60, L_00591CB8, C4<0>, C4<0>;
+L_005CA2A0 .functor NOT 1, v005919A0_0, C4<0>, C4<0>, C4<0>;
+L_005CA2D8 .functor BUF 1, v005919A0_0, C4<0>, C4<0>, C4<0>;
+L_005CA310 .functor AND 1, L_005CA1C0, L_005CA2A0, C4<1>, C4<1>;
+L_005CA3B8 .functor AND 1, L_005CA1F8, L_005CA2D8, C4<1>, C4<1>;
+L_005CA460 .functor OR 1, L_005CA310, L_005CA3B8, C4<0>, C4<0>;
+v00591160_0 .net "a", 0 0, L_00591C60; 1 drivers
+v005911B8_0 .net "b", 0 0, L_00591CB8; 1 drivers
+v00591210_0 .net "c0", 0 0, L_005CA2A0; 1 drivers
+v00591268_0 .net "c1", 0 0, L_005CA2D8; 1 drivers
+v005912C0_0 .alias "chave", 0 0, v005918F0_0;
+v00591318_0 .net "d0", 0 0, L_005CA310; 1 drivers
+v00591370_0 .net "d1", 0 0, L_005CA3B8; 1 drivers
+v005913C8_0 .net "s0", 0 0, L_005CA1C0; 1 drivers
+v00591420_0 .net "s1", 0 0, L_005CA1F8; 1 drivers
+v00591478_0 .net "saida", 0 0, L_005CA460; 1 drivers
+S_006795D0 .scope begin, "start" "start" 2 55, 2 55, S_006796E0;
+ .timescale 0 0;
+S_00679658 .scope begin, "main" "main" 2 61, 2 61, S_006796E0;
+ .timescale 0 0;
+    .scope S_006796E0;
+T_0 ;
+    %fork t_1, S_006795D0;
+    %jmp t_0;
+    .scope S_006795D0;
+t_1 ;
+    %set/v v005919F8_0, 0, 2;
+    %movi 8, 1, 2;
+    %set/v v00591A50_0, 8, 2;
+    %set/v v005919A0_0, 0, 1;
+    %end;
+    .scope S_006796E0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006796E0;
+T_1 ;
+    %fork t_3, S_00679658;
+    %jmp t_2;
+    .scope S_00679658;
+t_3 ;
+    %vpi_call 2 62 "$display", "Exemplo0036 - Josemar Alves Caetano - 448662";
+    %vpi_call 2 63 "$display", "Test LU's module";
+    %delay 1, 0;
+    %vpi_call 2 67 "$display", "\012Teste da igualdade:\012";
+    %vpi_call 2 68 "$display", "%b = %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %movi 8, 1, 2;
+    %set/v v005919F8_0, 8, 2;
+    %movi 8, 2, 2;
+    %set/v v00591A50_0, 8, 2;
+    %delay 1, 0;
+    %vpi_call 2 71 "$display", "%b = %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %movi 8, 2, 2;
+    %set/v v005919F8_0, 8, 2;
+    %set/v v00591A50_0, 1, 2;
+    %delay 1, 0;
+    %vpi_call 2 74 "$display", "%b = %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %set/v v005919F8_0, 1, 2;
+    %set/v v00591A50_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 77 "$display", "%b = %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %set/v v005919F8_0, 0, 2;
+    %movi 8, 1, 2;
+    %set/v v00591A50_0, 8, 2;
+    %set/v v005919A0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 81 "$display", "\012Teste da diferen\347a:\012";
+    %vpi_call 2 82 "$display", "%b != %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %movi 8, 1, 2;
+    %set/v v005919F8_0, 8, 2;
+    %movi 8, 2, 2;
+    %set/v v00591A50_0, 8, 2;
+    %delay 1, 0;
+    %vpi_call 2 85 "$display", "%b != %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %movi 8, 2, 2;
+    %set/v v005919F8_0, 8, 2;
+    %set/v v00591A50_0, 1, 2;
+    %delay 1, 0;
+    %vpi_call 2 88 "$display", "%b != %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %set/v v005919F8_0, 1, 2;
+    %set/v v00591A50_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 91 "$display", "%b != %b? Resp.: %b", v005919F8_0, v00591A50_0, v00591AA8_0;
+    %end;
+    .scope S_006796E0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0036.v";

@@ -1,0 +1,58 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E78E8 .scope module, "testnorgate" "testnorgate" 2 20;
+ .timescale 0 0;
+v005F8B30_0 .var "a", 0 0;
+v005F8B88_0 .var "b", 0 0;
+v005F8BE0_0 .net "s", 0 0, L_005F8CA8; 1 drivers
+S_003E79F8 .scope module, "NOR1" "norgate" 2 28, 2 11, S_003E78E8;
+ .timescale 0 0;
+L_003E6638 .functor OR 1, v005F8B30_0, v005F8B88_0, C4<0>, C4<0>;
+L_005F8CA8 .functor NOT 1, L_003E6638, C4<0>, C4<0>, C4<0>;
+v005D0D70_0 .net *"_s0", 0 0, L_003E6638; 1 drivers
+v005F89C8_0 .net "p", 0 0, v005F8B30_0; 1 drivers
+v005F8A38_0 .net "q", 0 0, v005F8B88_0; 1 drivers
+v005F8AC0_0 .alias "s", 0 0, v005F8BE0_0;
+S_003E7970 .scope begin, "start" "start" 2 31, 2 31, S_003E78E8;
+ .timescale 0 0;
+    .scope S_003E78E8;
+T_0 ;
+    %fork t_1, S_003E7970;
+    %jmp t_0;
+    .scope S_003E7970;
+t_1 ;
+    %set/v v005F8B30_0, 0, 1;
+    %set/v v005F8B88_0, 0, 1;
+    %end;
+    .scope S_003E78E8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E78E8;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exercicio02 - Luhan Mairinck - 999999";
+    %vpi_call 2 40 "$display", "NOR gate";
+    %vpi_call 2 41 "$display", "\012a & b = s\012";
+    %set/v v005F8B30_0, 0, 1;
+    %set/v v005F8B88_0, 0, 1;
+    %vpi_call 2 44 "$monitor", "%b & %b = %b", v005F8B30_0, v005F8B88_0, v005F8BE0_0;
+    %delay 1, 0;
+    %set/v v005F8B30_0, 0, 1;
+    %set/v v005F8B88_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005F8B30_0, 1, 1;
+    %set/v v005F8B88_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005F8B30_0, 1, 1;
+    %set/v v005F8B88_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Luhan\Meus documentos\Estudos\2º período\ARQ I\Guia 01\Exercicio02.v";

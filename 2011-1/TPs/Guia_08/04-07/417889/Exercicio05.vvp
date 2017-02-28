@@ -1,0 +1,170 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006736B8 .scope module, "testeExercicio05" "testeExercicio05" 2 48;
+ .timescale 0 0;
+v006AC2A8_0 .var "a", 0 0;
+v006AC368_0 .var "b", 0 0;
+v006AC3C0_0 .var "c", 0 0;
+v006AC450_0 .var "d", 0 0;
+v006AC4A8_0 .var/i "i", 31 0;
+v006AC500_0 .var/i "j", 31 0;
+v006AC558_0 .var/i "k", 31 0;
+v006AC5B0_0 .var/i "l", 31 0;
+v006AC608_0 .var/i "linha", 31 0;
+v006AC660_0 .net "s", 0 0, L_006AC270; 1 drivers
+S_00673738 .scope module, "CIRCUITO" "Exercicio05" 2 53, 2 1, S_006736B8;
+ .timescale 0 0;
+v006ABC90_0 .net "a", 0 0, v006AC2A8_0; 1 drivers
+v006ABCF8_0 .net "b", 0 0, v006AC368_0; 1 drivers
+v006ABD50_0 .net "c", 0 0, v006AC3C0_0; 1 drivers
+v006ABDA8_0 .net "d", 0 0, v006AC450_0; 1 drivers
+v006ABE00_0 .net "na", 0 0, L_006AC6F0; 1 drivers
+v006ABE90_0 .net "nb", 0 0, L_006AC728; 1 drivers
+v006ABF20_0 .net "nc", 0 0, L_00678DC0; 1 drivers
+v006ABFD8_0 .net "nd", 0 0, L_006AC418; 1 drivers
+v006AC068_0 .alias "s", 0 0, v006AC660_0;
+v006AC0C0_0 .net "t1", 0 0, L_006AC030; 1 drivers
+v006AC150_0 .net "t2", 0 0, L_006ACBE0; 1 drivers
+v006AC218_0 .net "t3", 0 0, L_006ABFA0; 1 drivers
+S_006ABB60 .scope module, "NOT1" "notNor" 2 5, 2 15, S_00673738;
+ .timescale 0 0;
+L_006AC6F0 .functor NOR 1, v006AC2A8_0, v006AC2A8_0, C4<0>, C4<0>;
+v006ABBE0_0 .alias "a", 0 0, v006ABC90_0;
+v006ABC38_0 .alias "s", 0 0, v006ABE00_0;
+S_006ABA30 .scope module, "NOT2" "notNor" 2 6, 2 15, S_00673738;
+ .timescale 0 0;
+L_006AC728 .functor NOR 1, v006AC368_0, v006AC368_0, C4<0>, C4<0>;
+v006ABAB0_0 .alias "a", 0 0, v006ABCF8_0;
+v006ABB08_0 .alias "s", 0 0, v006ABE90_0;
+S_006AB900 .scope module, "NOT3" "notNor" 2 7, 2 15, S_00673738;
+ .timescale 0 0;
+L_00678DC0 .functor NOR 1, v006AC3C0_0, v006AC3C0_0, C4<0>, C4<0>;
+v006AB980_0 .alias "a", 0 0, v006ABD50_0;
+v006AB9D8_0 .alias "s", 0 0, v006ABF20_0;
+S_006AB7D0 .scope module, "NOT4" "notNor" 2 8, 2 15, S_00673738;
+ .timescale 0 0;
+L_006AC418 .functor NOR 1, v006AC450_0, v006AC450_0, C4<0>, C4<0>;
+v006AB850_0 .alias "a", 0 0, v006ABDA8_0;
+v006AB8A8_0 .alias "s", 0 0, v006ABFD8_0;
+S_006AB550 .scope module, "AND1" "andNor" 2 9, 2 21, S_00673738;
+ .timescale 0 0;
+L_00678D88 .functor NOR 1, L_006AC6F0, L_006AC6F0, C4<0>, C4<0>;
+L_006ABE58 .functor NOR 1, L_006AC418, L_006AC418, C4<0>, C4<0>;
+L_006AC030 .functor NOR 1, L_00678D88, L_006ABE58, C4<0>, C4<0>;
+v006AB5D0_0 .alias "a", 0 0, v006ABE00_0;
+v006AB640_0 .alias "b", 0 0, v006ABFD8_0;
+v006AB6B0_0 .alias "s", 0 0, v006AC0C0_0;
+v006AB720_0 .net "t1", 0 0, L_00678D88; 1 drivers
+v006AB778_0 .net "t2", 0 0, L_006ABE58; 1 drivers
+S_006AB300 .scope module, "AND2" "andNor" 2 10, 2 21, S_00673738;
+ .timescale 0 0;
+L_006ACA90 .functor NOR 1, v006AC2A8_0, v006AC2A8_0, C4<0>, C4<0>;
+L_006ACBA8 .functor NOR 1, v006AC450_0, v006AC450_0, C4<0>, C4<0>;
+L_006ACBE0 .functor NOR 1, L_006ACA90, L_006ACBA8, C4<0>, C4<0>;
+v006AB380_0 .alias "a", 0 0, v006ABC90_0;
+v006AB3D8_0 .alias "b", 0 0, v006ABDA8_0;
+v006AB430_0 .alias "s", 0 0, v006AC150_0;
+v006AB4A0_0 .net "t1", 0 0, L_006ACA90; 1 drivers
+v006AB4F8_0 .net "t2", 0 0, L_006ACBA8; 1 drivers
+S_006AAF78 .scope module, "AND3" "andNor3b" 2 11, 2 30, S_00673738;
+ .timescale 0 0;
+L_006ACCA0 .functor NOR 1, v006AC2A8_0, v006AC2A8_0, C4<0>, C4<0>;
+L_006ACCF0 .functor NOR 1, L_006AC728, L_006AC728, C4<0>, C4<0>;
+L_006ABEE8 .functor NOR 1, L_00678DC0, L_00678DC0, C4<0>, C4<0>;
+L_006ABFA0 .functor NOR 1, L_006ACCA0, L_006ACCF0, L_006ABEE8, C4<0>;
+v006AAFF8_0 .alias "a", 0 0, v006ABC90_0;
+v006AB068_0 .alias "b", 0 0, v006ABE90_0;
+v006AB0D8_0 .alias "c", 0 0, v006ABF20_0;
+v006AB160_0 .alias "s", 0 0, v006AC218_0;
+v006AB1B8_0 .net "t1", 0 0, L_006ACCA0; 1 drivers
+v006AB210_0 .net "t2", 0 0, L_006ACCF0; 1 drivers
+v006AB268_0 .net "t3", 0 0, L_006ABEE8; 1 drivers
+S_00672D90 .scope module, "OR1" "orNor3b" 2 12, 2 40, S_00673738;
+ .timescale 0 0;
+L_006ACE50 .functor NOR 1, L_006AC030, L_006ACBE0, L_006ABFA0, C4<0>;
+L_006AC270 .functor NOR 1, L_006ACE50, L_006ACE50, C4<0>, C4<0>;
+v00672E10_0 .alias "a", 0 0, v006AC0C0_0;
+v006AADB8_0 .alias "b", 0 0, v006AC150_0;
+v006AAE28_0 .alias "c", 0 0, v006AC218_0;
+v006AAEB0_0 .alias "s", 0 0, v006AC660_0;
+v006AAF20_0 .net "temp", 0 0, L_006ACE50; 1 drivers
+    .scope S_006736B8;
+T_0 ;
+    %set/v v006AC2A8_0, 0, 1;
+    %set/v v006AC368_0, 0, 1;
+    %set/v v006AC3C0_0, 0, 1;
+    %set/v v006AC450_0, 0, 1;
+    %set/v v006AC608_0, 1, 32;
+    %end;
+    .thread T_0;
+    .scope S_006736B8;
+T_1 ;
+    %vpi_call 2 64 "$display", "Exercicio 05 - Douglas Borges - 417889\012";
+    %delay 1, 0;
+    %vpi_call 2 66 "$display", "   a b c d  S";
+    %set/v v006AC4A8_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v006AC4A8_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v006AC4A8_0, 32;
+    %set/v v006AC2A8_0, 8, 1;
+    %set/v v006AC500_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v006AC500_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.3, 5;
+    %load/v 8, v006AC500_0, 32;
+    %set/v v006AC368_0, 8, 1;
+    %set/v v006AC558_0, 0, 32;
+T_1.4 ;
+    %load/v 8, v006AC558_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.5, 5;
+    %load/v 8, v006AC558_0, 32;
+    %set/v v006AC3C0_0, 8, 1;
+    %set/v v006AC5B0_0, 0, 32;
+T_1.6 ;
+    %load/v 8, v006AC5B0_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.7, 5;
+    %delay 1, 0;
+    %load/v 8, v006AC5B0_0, 32;
+    %set/v v006AC450_0, 8, 1;
+    %load/v 8, v006AC608_0, 32;
+    %mov 40, 39, 1;
+   %addi 8, 1, 33;
+    %set/v v006AC608_0, 8, 32;
+    %delay 1, 0;
+    %vpi_call 2 76 "$display", "%2d %b %b %b %b  %b", v006AC608_0, v006AC2A8_0, v006AC368_0, v006AC3C0_0, v006AC450_0, v006AC660_0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006AC5B0_0, 32;
+    %set/v v006AC5B0_0, 8, 32;
+    %jmp T_1.6;
+T_1.7 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006AC558_0, 32;
+    %set/v v006AC558_0, 8, 32;
+    %jmp T_1.4;
+T_1.5 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006AC500_0, 32;
+    %set/v v006AC500_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006AC4A8_0, 32;
+    %set/v v006AC4A8_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Documentos\PUC\Arquitetura de Computadores\Verilog\Eclipse\Guia08\Exercicio05.v";

@@ -1,0 +1,46 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E64C0 .scope module, "testexorgate" "testexorgate" 2 19;
+ .timescale 0 0;
+v00699670_0 .var "p", 0 0;
+v006996C8_0 .var "q", 0 0;
+v00699720_0 .net "s", 0 0, L_00661408; 1 drivers
+S_003E6548 .scope module, "XOR1" "xorgate" 2 23, 2 9, S_003E64C0;
+ .timescale 0 0;
+L_00661408 .functor XOR 1, v00699670_0, v006996C8_0, C4<0>, C4<0>;
+v003E65D0_0 .net "p", 0 0, v00699670_0; 1 drivers
+v00699578_0 .net "q", 0 0, v006996C8_0; 1 drivers
+v006995E8_0 .alias "s", 0 0, v00699720_0;
+    .scope S_003E64C0;
+T_0 ;
+    %vpi_call 2 26 "$display", "Guia 01 - Exercicio 04";
+    %vpi_call 2 27 "$display", "Bruno Cesar Lopes Silva - 415985";
+    %vpi_call 2 28 "$display", "Teste Xor Gate";
+    %vpi_call 2 29 "$display", "\012(p ^ q) = s\012";
+    %set/v v00699670_0, 0, 1;
+    %set/v v006996C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "(%b ^ %b) = %b", v00699670_0, v006996C8_0, v00699720_0;
+    %set/v v00699670_0, 0, 1;
+    %set/v v006996C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "(%b ^ %b) = %b", v00699670_0, v006996C8_0, v00699720_0;
+    %set/v v00699670_0, 1, 1;
+    %set/v v006996C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "(%b ^ %b) = %b", v00699670_0, v006996C8_0, v00699720_0;
+    %set/v v00699670_0, 1, 1;
+    %set/v v006996C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "(%b ^ %b) = %b", v00699670_0, v006996C8_0, v00699720_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Bruno\Desktop\Arquitetura de Computadores (2)\Guias\Guia 01\Exercicio 04.v";

@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003FE7E0 .scope module, "testandgate" "testandgate" 2 20;
+ .timescale 0 0;
+v003F32F8_0 .var "a", 0 0;
+v003FE110_0 .var "b", 0 0;
+v003FE168_0 .net "s", 0 0, L_003F2EA0; 1 drivers
+S_003F2E18 .scope module, "AND1" "andgate" 2 26, 2 11, S_003FE7E0;
+ .timescale 0 0;
+L_003F2EA0 .functor AND 1, v003F32F8_0, v003FE110_0, C4<1>, C4<1>;
+v003F31F0_0 .net "p", 0 0, v003F32F8_0; 1 drivers
+v003F3248_0 .net "q", 0 0, v003FE110_0; 1 drivers
+v003F32A0_0 .alias "s", 0 0, v003FE168_0;
+S_003F2D90 .scope begin, "start" "start" 2 28, 2 28, S_003FE7E0;
+ .timescale 0 0;
+    .scope S_003FE7E0;
+T_0 ;
+    %fork t_1, S_003F2D90;
+    %jmp t_0;
+    .scope S_003F2D90;
+t_1 ;
+    %set/v v003F32F8_0, 0, 1;
+    %set/v v003FE110_0, 0, 1;
+    %end;
+    .scope S_003FE7E0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003FE7E0;
+T_1 ;
+    %vpi_call 2 36 "$display", "Exemplo0003 - Wellington Santos Corr\352a - 472047";
+    %vpi_call 2 37 "$display", "Test AND gate";
+    %vpi_call 2 38 "$display", "\012a & b = s\012";
+    %set/v v003F32F8_0, 0, 1;
+    %set/v v003FE110_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v003F32F8_0, v003FE110_0, v003FE168_0;
+    %set/v v003F32F8_0, 0, 1;
+    %set/v v003FE110_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v003F32F8_0, v003FE110_0, v003FE168_0;
+    %set/v v003F32F8_0, 1, 1;
+    %set/v v003FE110_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b = %b", v003F32F8_0, v003FE110_0, v003FE168_0;
+    %set/v v003F32F8_0, 1, 1;
+    %set/v v003FE110_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "%b & %b = %b", v003F32F8_0, v003FE110_0, v003FE168_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\RW\Documents\472047\Arquitetura 1\Guia 1\Exemplo0003.v";

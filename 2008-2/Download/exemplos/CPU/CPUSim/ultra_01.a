@@ -1,0 +1,37 @@
+; --------------------------------------
+; This program operates integers,
+; calculates the product between them 
+; and outputs the result
+; OBS.: PC and MA must begin with 0010
+; --------------------------------------
+
+HALT: 
+K0:     jump HALT       ; no more operations
+K1:     jump START      ; program begin    
+M2:     .data 2 0	;
+M3:	.data 2 3	; data1 = (03)
+M4:     .data 2 2	; data2 = (02)
+M5:	.data 2 0	; result
+M6:	.data 2 0	;
+M7:	.data 2 0	;
+M8:	.data 2 0	;
+M9:	.data 2 0	;
+	
+START:
+REP01:	load  M5	; AC <- M5
+        add   M3	; AC <- AC + M3
+	store M5 	; M5 <- AC
+
+	load  M4	; AC <- M4
+        dec     	; AC <- AC - 1
+	store M4 	; M4 <- AC
+
+TST01:  jumpZ ENDR01    ; if (AC != 0)
+        jump  REP01	;  repeat from start
+ENDR01:	load  M5 	; AC  <- M5
+	out 		; OUT <- AC
+	halt  		; stop running
+
+
+
+

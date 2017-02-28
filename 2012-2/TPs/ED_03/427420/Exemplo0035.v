@@ -1,0 +1,88 @@
+// -------------------------
+// Exemplo0035 - LU selecionavel
+// Nome: Jenifer Henrique
+// Matricula: 427420
+// -------------------------
+// -------------------------
+// LU
+// -------------------------
+   module LU (output [1:0]s, input a, input b, input [2:0] key);
+
+   wire [7:0] c;
+   wire [1:0] d;
+   wire bufferEnable;
+   wire e, f, g;
+
+
+   // descrever por portas
+   or OR1(c[0], a, b);
+   nor NOR1(c[1], a, b);
+   and AND1(c[2], a, b);
+   nand NAND1(c[3], a, b);
+   xor XOR1(c[4], a, b);
+   xnor XNOR1(c[5], a, b);
+   
+   MUX8TO1 MUX1(e, key, c) ;
+   and AND2(f, ~key[0], ~key[1]);
+   and AND3(g, f, ~key[2]);
+   
+   buf buffer(a, g);
+
+
+   endmodule // LU
+   
+   module MUX8TO1( output s, input [2:0] sel, input [7:0] a);
+   reg s;
+   always@(a,sel)
+   begin
+   case(sel)                                // USAR PORTAS !!!
+   3'd0:s=a[0];
+   3'd1:s=a[1];
+   3'd2:s=a[2];
+   3'd3:s=a[3];
+   3'd4:s=a[4];
+   3'd5:s=a[5];
+   3'd6:s=a[6];
+   3'd7:s=a[7];
+   default:; // indicates null
+   endcase
+   end
+   endmodule
+
+   module orgate4 ( output s, input [3:0] p);
+          wire y, z;
+          or OR1 (y, p[0], p[1]);
+          or OR2 (z, p[2], p[3]);
+
+          assign s = y | z;
+   endmodule // orgate
+
+   module test_LU;
+// ------------------------- definir dados
+   reg x, y;
+   reg [2:0] key;
+   wire [1:0] z;
+
+   LU modulo (z, x, y, key);
+
+// ------------------------- parte principal
+   initial begin
+   $display("Exemplo0035 - Jenifer Henrique - 427420");
+   $display("Test LU's module");
+   $display("\n A | B | Key | Resultado");
+   $monitor("%1b    %1b    %1b       %2b ",x,y,key,z);
+
+       //projetar testes do modulo
+          x = 1'b0;   y = 1'b0;   key = 3'b000;
+       #1 x = 1'b0;   y = 1'b1;   key = 3'b001;
+       #1 x = 1'b1;   y = 1'b0;   key = 3'b010
+
+
+       #1 x = 1'b0;   y = 1'b0;   key = 3'b100;
+       #1 x = 1'b0;   y = 1'b1;   key = 3'b101;
+       #1 x = 1'b1;   y = 1'b0;   key = 3'b001;
+       #1 x = 1'b1;   y = 1'b1;   key = 3'b000;
+       
+
+   end
+endmodule // test_f4

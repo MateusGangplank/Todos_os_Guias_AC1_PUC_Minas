@@ -1,0 +1,165 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002E0E80 .scope module, "testorgate" "testorgate" 2 17;
+ .timescale 0 0;
+v003311B8_0 .var "a", 0 0;
+v00331210_0 .var "b", 0 0;
+v00331268_0 .var "c", 0 0;
+v003312C0_0 .var "d", 0 0;
+v00331318_0 .var "e", 0 0;
+v00331370_0 .var "f", 0 0;
+v003313C8_0 .var "g", 0 0;
+v00331420_0 .var "h", 0 0;
+v00331478_0 .net "s", 0 0, L_003038A0; 1 drivers
+S_002E1018 .scope module, "OR1" "orgate" 2 22, 2 13, S_002E0E80;
+ .timescale 0 0;
+L_002E39E0 .functor OR 1, v003311B8_0, v00331210_0, C4<0>, C4<0>;
+L_002E3A88 .functor OR 1, L_002E39E0, v00331268_0, C4<0>, C4<0>;
+L_002F4F48 .functor OR 1, L_002E3A88, v003312C0_0, C4<0>, C4<0>;
+L_003036A8 .functor OR 1, L_002F4F48, v00331318_0, C4<0>, C4<0>;
+L_00303750 .functor OR 1, L_003036A8, v00331370_0, C4<0>, C4<0>;
+L_003037F8 .functor OR 1, L_00303750, v003313C8_0, C4<0>, C4<0>;
+L_003038A0 .functor OR 1, L_003037F8, v00331420_0, C4<0>, C4<0>;
+v002C4538_0 .net *"_s0", 0 0, L_002E39E0; 1 drivers
+v002C4590_0 .net *"_s10", 0 0, L_003037F8; 1 drivers
+v002C45E8_0 .net *"_s2", 0 0, L_002E3A88; 1 drivers
+v002CFC88_0 .net *"_s4", 0 0, L_002F4F48; 1 drivers
+v002CFCE0_0 .net *"_s6", 0 0, L_003036A8; 1 drivers
+v002CFD38_0 .net *"_s8", 0 0, L_00303750; 1 drivers
+v002CFD90_0 .net "a", 0 0, v003311B8_0; 1 drivers
+v002E38D8_0 .net "b", 0 0, v00331210_0; 1 drivers
+v002E3930_0 .net "c", 0 0, v00331268_0; 1 drivers
+v002E3988_0 .net "d", 0 0, v003312C0_0; 1 drivers
+v00331000_0 .net "e", 0 0, v00331318_0; 1 drivers
+v00331058_0 .net "f", 0 0, v00331370_0; 1 drivers
+v003310B0_0 .net "g", 0 0, v003313C8_0; 1 drivers
+v00331108_0 .net "h", 0 0, v00331420_0; 1 drivers
+v00331160_0 .alias "s", 0 0, v00331478_0;
+S_002E0F90 .scope begin, "start" "start" 2 24, 2 24, S_002E0E80;
+ .timescale 0 0;
+S_002E0F08 .scope begin, "main" "main" 2 28, 2 28, S_002E0E80;
+ .timescale 0 0;
+    .scope S_002E0E80;
+T_0 ;
+    %fork t_1, S_002E0F90;
+    %jmp t_0;
+    .scope S_002E0F90;
+t_1 ;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %end;
+    .scope S_002E0E80;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002E0E80;
+T_1 ;
+    %fork t_3, S_002E0F08;
+    %jmp t_2;
+    .scope S_002E0F08;
+t_3 ;
+    %vpi_call 2 29 "$display", "Exercicio04 -  Milton teles da silva - 2751";
+    %vpi_call 2 30 "$display", "Test circuito2 gate";
+    %vpi_call 2 31 "$display", "\012a b c d e f g h = s\012";
+    %vpi_call 2 32 "$monitor", "%b %b %b %b %b %b %b %b = %b", v003311B8_0, v00331210_0, v00331268_0, v003312C0_0, v00331318_0, v00331370_0, v003313C8_0, v00331420_0, v00331478_0;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 1, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 1, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 1, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 1, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 1, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 0, 1;
+    %set/v v00331210_0, 1, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003311B8_0, 1, 1;
+    %set/v v00331210_0, 0, 1;
+    %set/v v00331268_0, 0, 1;
+    %set/v v003312C0_0, 0, 1;
+    %set/v v00331318_0, 0, 1;
+    %set/v v00331370_0, 0, 1;
+    %set/v v003313C8_0, 0, 1;
+    %set/v v00331420_0, 0, 1;
+    %end;
+    .scope S_002E0E80;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\COMPUTAÇAO  2011 2º SEMESTRE\A. C.  I\Milton teles 2751\extra_02.v";

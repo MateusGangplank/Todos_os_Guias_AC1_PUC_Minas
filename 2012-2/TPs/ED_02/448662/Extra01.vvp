@@ -1,0 +1,54 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00922B00 .scope module, "test_complemento_1" "test_complemento_1" 2 18;
+ .timescale 0 0;
+v0092DF60_0 .var "a", 3 0;
+v0092DFB8_0 .net "s", 3 0, L_00922C10; 1 drivers
+S_00923030 .scope module, "C1" "complemento_1" 2 25, 2 11, S_00922B00;
+ .timescale 0 0;
+L_00922C10 .functor NOT 4, v0092DF60_0, C4<0000>, C4<0000>, C4<0000>;
+v009230B8_0 .net "p", 3 0, v0092DF60_0; 1 drivers
+v0092DF08_0 .alias "s", 3 0, v0092DFB8_0;
+S_00922FA8 .scope begin, "start" "start" 2 28, 2 28, S_00922B00;
+ .timescale 0 0;
+S_00922B88 .scope begin, "main" "main" 2 33, 2 33, S_00922B00;
+ .timescale 0 0;
+    .scope S_00922B00;
+T_0 ;
+    %fork t_1, S_00922FA8;
+    %jmp t_0;
+    .scope S_00922FA8;
+t_1 ;
+    %movi 8, 10, 4;
+    %set/v v0092DF60_0, 8, 4;
+    %end;
+    .scope S_00922B00;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00922B00;
+T_1 ;
+    %fork t_3, S_00922B88;
+    %jmp t_2;
+    .scope S_00922B88;
+t_3 ;
+    %vpi_call 2 34 "$display", "Extra01 - Josemar Alves Caetano - 448662";
+    %vpi_call 2 35 "$display", "Teste de complemento de 1.\012";
+    %vpi_call 2 37 "$monitor", "\011%b em complemento de 1 \351: %b", v0092DF60_0, v0092DFB8_0;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v0092DF60_0, 8, 4;
+    %end;
+    .scope S_00922B00;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC\3º Período\Exercícios resolvidos (AC II)\Guia 02\Extra01.v";

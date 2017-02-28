@@ -1,0 +1,101 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009291F0 .scope module, "test_igualdade" "test_igualdade" 2 28;
+ .timescale 0 0;
+v008840A0_0 .net "s", 0 0, L_00884E20; 1 drivers
+v008840F8_0 .var "x", 3 0;
+v00884150_0 .var "y", 3 0;
+S_00929278 .scope module, "modulo" "igualdade" 2 38, 2 11, S_009291F0;
+ .timescale 0 0;
+L_00922FA0 .functor XNOR 1, L_00884200, L_00884258, C4<0>, C4<0>;
+L_0092FE80 .functor XNOR 1, L_00884308, L_00884360, C4<0>, C4<0>;
+L_00884C98 .functor XNOR 1, L_00884410, L_00884468, C4<0>, C4<0>;
+L_00884D78 .functor XNOR 1, L_00884518, L_00884570, C4<0>, C4<0>;
+L_00884E20 .functor AND 1, L_008845C8, L_00884620, L_00884678, L_008846D0;
+v008518F8_0 .net *"_s0", 0 0, L_00922FA0; 1 drivers
+v00851950_0 .net *"_s11", 0 0, L_00884360; 1 drivers
+v00922E98_0 .net *"_s12", 0 0, L_00884C98; 1 drivers
+v00922EF0_0 .net *"_s15", 0 0, L_00884410; 1 drivers
+v00922F48_0 .net *"_s17", 0 0, L_00884468; 1 drivers
+v0092CC88_0 .net *"_s18", 0 0, L_00884D78; 1 drivers
+v0092CCE0_0 .net *"_s21", 0 0, L_00884518; 1 drivers
+v00883C28_0 .net *"_s23", 0 0, L_00884570; 1 drivers
+v00883C80_0 .net *"_s25", 0 0, L_008845C8; 1 drivers
+v00883CD8_0 .net *"_s27", 0 0, L_00884620; 1 drivers
+v00883D30_0 .net *"_s29", 0 0, L_00884678; 1 drivers
+v00883D88_0 .net *"_s3", 0 0, L_00884200; 1 drivers
+v00883DE0_0 .net *"_s31", 0 0, L_008846D0; 1 drivers
+v00883E38_0 .net *"_s5", 0 0, L_00884258; 1 drivers
+v00883E90_0 .net *"_s6", 0 0, L_0092FE80; 1 drivers
+v00883EE8_0 .net *"_s9", 0 0, L_00884308; 1 drivers
+v00883F40_0 .net "entrada1", 3 0, v008840F8_0; 1 drivers
+v00883F98_0 .net "entrada2", 3 0, v00884150_0; 1 drivers
+RS_008531B4 .resolv tri, L_008841A8, L_008842B0, L_008843B8, L_008844C0;
+v00883FF0_0 .net8 "s", 3 0, RS_008531B4; 4 drivers
+v00884048_0 .alias "saida", 0 0, v008840A0_0;
+L_008841A8 .part/pv L_00922FA0, 0, 1, 4;
+L_00884200 .part v008840F8_0, 0, 1;
+L_00884258 .part v00884150_0, 0, 1;
+L_008842B0 .part/pv L_0092FE80, 1, 1, 4;
+L_00884308 .part v008840F8_0, 1, 1;
+L_00884360 .part v00884150_0, 1, 1;
+L_008843B8 .part/pv L_00884C98, 2, 1, 4;
+L_00884410 .part v008840F8_0, 2, 1;
+L_00884468 .part v00884150_0, 2, 1;
+L_008844C0 .part/pv L_00884D78, 3, 1, 4;
+L_00884518 .part v008840F8_0, 3, 1;
+L_00884570 .part v00884150_0, 3, 1;
+L_008845C8 .part RS_008531B4, 0, 1;
+L_00884620 .part RS_008531B4, 1, 1;
+L_00884678 .part RS_008531B4, 2, 1;
+L_008846D0 .part RS_008531B4, 3, 1;
+    .scope S_009291F0;
+T_0 ;
+    %vpi_call 2 43 "$display", "Exemplo0023 - Michelle da Costa Silva - 427448";
+    %vpi_call 2 44 "$display", "Test ALU's comparador de igualdade \012";
+    %vpi_call 2 45 "$display", "x == y --->  saida \012";
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v008840F8_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v00884150_0, 8, 4;
+    %vpi_call 2 48 "$monitor", "%4b == %4b ---> %4b", v008840F8_0, v00884150_0, v008840A0_0;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v008840F8_0, 8, 4;
+    %movi 8, 12, 4;
+    %set/v v00884150_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 14, 4;
+    %set/v v008840F8_0, 8, 4;
+    %movi 8, 14, 4;
+    %set/v v00884150_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 4, 4;
+    %set/v v008840F8_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v00884150_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v008840F8_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v00884150_0, 8, 4;
+    %delay 1, 0;
+    %set/v v008840F8_0, 0, 4;
+    %set/v v00884150_0, 1, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v008840F8_0, 8, 4;
+    %movi 8, 10, 4;
+    %set/v v00884150_0, 8, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Terceiro Periodo\AC1\427448\Guia4\Exemplo0023.v";

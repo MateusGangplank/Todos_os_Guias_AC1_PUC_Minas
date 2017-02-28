@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009A2BB0 .scope module, "nome" "nome" 2 19;
+ .timescale 0 0;
+v009ACC40_0 .var "a", 0 0;
+v009ACC98_0 .var "b", 0 0;
+v009ACCF0_0 .var "c", 0 0;
+v009ACD48_0 .net "s", 0 0, L_009ACDA0; 1 drivers
+S_009A3178 .scope module, "AND1" "andGate" 2 25, 2 11, S_009A2BB0;
+ .timescale 0 0;
+L_009AA528 .functor AND 1, v009ACC40_0, v009ACC98_0, C4<1>, C4<1>;
+L_009ACDA0 .functor AND 1, L_009AA528, v009ACCF0_0, C4<1>, C4<1>;
+v009A3200_0 .net *"_s0", 0 0, L_009AA528; 1 drivers
+v009A3258_0 .net "p", 0 0, v009ACC40_0; 1 drivers
+v009ACB38_0 .net "q", 0 0, v009ACC98_0; 1 drivers
+v009ACB90_0 .alias "s", 0 0, v009ACD48_0;
+v009ACBE8_0 .net "t", 0 0, v009ACCF0_0; 1 drivers
+S_009A2C38 .scope begin, "start" "start" 2 28, 2 28, S_009A2BB0;
+ .timescale 0 0;
+    .scope S_009A2BB0;
+T_0 ;
+    %fork t_1, S_009A2C38;
+    %jmp t_0;
+    .scope S_009A2C38;
+t_1 ;
+    %set/v v009ACC40_0, 0, 1;
+    %set/v v009ACC98_0, 0, 1;
+    %set/v v009ACCF0_0, 0, 1;
+    %end;
+    .scope S_009A2BB0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_009A2BB0;
+T_1 ;
+    %vpi_call 2 36 "$display", "Exemplo0013 - Sad - 440265";
+    %vpi_call 2 37 "$display", "Teste AND gate com 3 entradas";
+    %vpi_call 2 38 "$display", "\012a & b & c = s\012";
+    %vpi_call 2 39 "$monitor", "%b & %b & %b = %b", v009ACC40_0, v009ACC98_0, v009ACCF0_0, v009ACD48_0;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 0, 1;
+    %set/v v009ACC98_0, 0, 1;
+    %set/v v009ACCF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 0, 1;
+    %set/v v009ACC98_0, 0, 1;
+    %set/v v009ACCF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 0, 1;
+    %set/v v009ACC98_0, 1, 1;
+    %set/v v009ACCF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 0, 1;
+    %set/v v009ACC98_0, 1, 1;
+    %set/v v009ACCF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 1, 1;
+    %set/v v009ACC98_0, 0, 1;
+    %set/v v009ACCF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 1, 1;
+    %set/v v009ACC98_0, 0, 1;
+    %set/v v009ACCF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 1, 1;
+    %set/v v009ACC98_0, 1, 1;
+    %set/v v009ACCF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009ACC40_0, 1, 1;
+    %set/v v009ACC98_0, 1, 1;
+    %set/v v009ACCF0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Alexandre\PUC\2_periodo\Arquitetura I\TPs\Guia001\Exemplo0013.v";

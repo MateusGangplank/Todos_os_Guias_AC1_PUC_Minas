@@ -1,0 +1,54 @@
+module Exercicio01(s, a, b, c);
+	output s;
+	input a, b, c;
+	assign s = ~ (a & b & c);
+endmodule
+
+module testeExercicio01;
+	reg a, b, c;
+	wire r, s, t, w;
+                                        // TENTE USAR DEFINICOES DE MODULOS
+	Exercicio01 NAND1 (r, a, a, a);
+	Exercicio01 NAND2 (s, b, b, b);
+	Exercicio01 NAND3 (t, c, c, c);
+	Exercicio01 NAND4 (w, r, s, t);
+
+	initial begin
+		a = 0;
+		b = 0;
+		c = 0;
+	end
+
+	initial begin
+
+		$display("Exercicio 01 - Douglas Borges - 417889");
+		$display("Tabela verdade da porta OR com 3 entradas utilizando portas NAND\n");
+
+		#1 $display(" a | b | c  =  s  =>  ~( ~(a&a&a) & ~(b&b&b) & ~(c&c&c) ) = s");
+		#1 $monitor(" %b   %b   %b     %b             %b          %b          %b        %b", a, b, c, w, r, s, t, w);
+		#1 a = 0; b = 0; c = 1;
+		#1 a = 0; b = 1; c = 0;
+		#1 a = 0; b = 1; c = 1;
+		#1 a = 1; b = 0; c = 0;
+		#1 a = 1; b = 0; c = 1;
+		#1 a = 1; b = 1; c = 0;
+		#1 a = 1; b = 1; c = 1;
+
+	end
+
+/*
+Exercicio 01 - Douglas Borges - 417889
+Tabela verdade da porta OR com 3 entradas utilizando portas NAND
+
+ a | b | c  =  s  =>  ~( ~(a&a&a) & ~(b&b&b) & ~(c&c&c) ) = s
+ 0   0   0     0             1          1          1        0
+ 0   0   1     1             1          1          0        1
+ 0   1   0     1             1          0          1        1
+ 0   1   1     1             1          0          0        1
+ 1   0   0     1             0          1          1        1
+ 1   0   1     1             0          1          0        1
+ 1   1   0     1             0          0          1        1
+ 1   1   1     1             0          0          0        1
+*/
+
+endmodule

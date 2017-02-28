@@ -1,0 +1,73 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003BE8F0 .scope module, "testnorgate" "testnorgate" 2 20;
+ .timescale 0 0;
+v003BCA60_0 .var "a", 0 0;
+v003BCAB8_0 .var "b", 0 0;
+v003BCB10_0 .net "s", 0 0, L_003BEC28; 1 drivers
+S_003B2EA8 .scope module, "NOR1" "norgate" 2 28, 2 11, S_003BE8F0;
+ .timescale 0 0;
+L_003B2F30 .functor NOT 1, v003BCA60_0, C4<0>, C4<0>, C4<0>;
+L_003BCBA0 .functor NOT 1, v003BCAB8_0, C4<0>, C4<0>, C4<0>;
+L_003BEC28 .functor AND 1, L_003B2F30, L_003BCBA0, C4<1>, C4<1>;
+v003B3330_0 .net *"_s0", 0 0, L_003B2F30; 1 drivers
+v003B3388_0 .net *"_s2", 0 0, L_003BCBA0; 1 drivers
+v003B33E0_0 .net "p", 0 0, v003BCA60_0; 1 drivers
+v003B3438_0 .net "q", 0 0, v003BCAB8_0; 1 drivers
+v003BCA08_0 .alias "s", 0 0, v003BCB10_0;
+S_003B2E20 .scope begin, "start" "start" 2 31, 2 31, S_003BE8F0;
+ .timescale 0 0;
+S_003BE978 .scope begin, "main" "main" 2 37, 2 37, S_003BE8F0;
+ .timescale 0 0;
+    .scope S_003BE8F0;
+T_0 ;
+    %fork t_1, S_003B2E20;
+    %jmp t_0;
+    .scope S_003B2E20;
+t_1 ;
+    %set/v v003BCA60_0, 0, 1;
+    %set/v v003BCAB8_0, 0, 1;
+    %end;
+    .scope S_003BE8F0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003BE8F0;
+T_1 ;
+    %fork t_3, S_003BE978;
+    %jmp t_2;
+    .scope S_003BE978;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exemplo0010 - Thais Pedrosa Gomes - 451616";
+    %vpi_call 2 40 "$display", "Test NOR gate.";
+    %vpi_call 2 41 "$display", "\012(~a & ~b)) = s\012";
+    %set/v v003BCA60_0, 0, 1;
+    %set/v v003BCAB8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "~( %b | %b )= %b", v003BCA60_0, v003BCAB8_0, v003BCB10_0;
+    %set/v v003BCA60_0, 0, 1;
+    %set/v v003BCAB8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "~( %b | %b )= %b", v003BCA60_0, v003BCAB8_0, v003BCB10_0;
+    %set/v v003BCA60_0, 1, 1;
+    %set/v v003BCAB8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "~( %b | %b )= %b", v003BCA60_0, v003BCAB8_0, v003BCB10_0;
+    %set/v v003BCA60_0, 1, 1;
+    %set/v v003BCAB8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "~( %b | %b )= %b", v003BCA60_0, v003BCAB8_0, v003BCB10_0;
+    %end;
+    .scope S_003BE8F0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Caique Ferraz\Documents\Thais\Exemplo0010.v";

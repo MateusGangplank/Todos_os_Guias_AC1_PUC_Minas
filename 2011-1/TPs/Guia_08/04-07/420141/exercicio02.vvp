@@ -1,0 +1,152 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EA278 .scope module, "testQM" "testQM" 2 22;
+ .timescale 0 0;
+v00602CB0_0 .var "a", 0 0;
+v00602D08_0 .var "b", 0 0;
+v00602D60_0 .var "c", 0 0;
+v00602DB8_0 .var "d", 0 0;
+v00602E10_0 .net "s", 0 0, L_00603198; 1 drivers
+S_003EA410 .scope module, "QM" "simplQM" 2 26, 2 4, S_003EA278;
+ .timescale 0 0;
+L_003E6B90 .functor NOT 1, v00602D08_0, C4<0>, C4<0>, C4<0>;
+L_00602EA0 .functor NOT 1, v00602DB8_0, C4<0>, C4<0>, C4<0>;
+L_00602F20 .functor AND 1, L_003E6B90, L_00602EA0, C4<1>, C4<1>;
+L_00602FC8 .functor AND 1, v00602CB0_0, v00602DB8_0, C4<1>, C4<1>;
+L_00603040 .functor AND 1, v00602CB0_0, v00602D08_0, v00602DB8_0, C4<1>;
+L_00602EE8 .functor NOT 1, v00602D08_0, C4<0>, C4<0>, C4<0>;
+L_00602E68 .functor NOT 1, v00602D60_0, C4<0>, C4<0>, C4<0>;
+L_006030C0 .functor AND 1, v00602CB0_0, L_00602EE8, L_00602E68, C4<1>;
+L_00603198 .functor OR 1, L_00602F20, L_00602FC8, L_00603040, L_006030C0;
+v003EA498_0 .net "a", 0 0, v00602CB0_0; 1 drivers
+v00602718_0 .net "b", 0 0, v00602D08_0; 1 drivers
+v00602788_0 .net "c", 0 0, v00602D60_0; 1 drivers
+v00602810_0 .net "d", 0 0, v00602DB8_0; 1 drivers
+v00602880_0 .alias "s", 0 0, v00602E10_0;
+v006028D8_0 .net "s1", 0 0, L_003E6B90; 1 drivers
+v00602948_0 .net "s2", 0 0, L_00602EA0; 1 drivers
+v006029E0_0 .net "s3", 0 0, L_00602F20; 1 drivers
+v00602A50_0 .net "s4", 0 0, L_00602FC8; 1 drivers
+v00602AF0_0 .net "s5", 0 0, L_00603040; 1 drivers
+v00602B60_0 .net "s6", 0 0, L_00602EE8; 1 drivers
+v00602BD0_0 .net "s7", 0 0, L_00602E68; 1 drivers
+v00602C40_0 .net "s8", 0 0, L_006030C0; 1 drivers
+S_003EA388 .scope begin, "start" "start" 2 28, 2 28, S_003EA278;
+ .timescale 0 0;
+S_003EA300 .scope begin, "main" "main" 2 32, 2 32, S_003EA278;
+ .timescale 0 0;
+    .scope S_003EA278;
+T_0 ;
+    %fork t_1, S_003EA388;
+    %jmp t_0;
+    .scope S_003EA388;
+t_1 ;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %end;
+    .scope S_003EA278;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EA278;
+T_1 ;
+    %fork t_3, S_003EA300;
+    %jmp t_2;
+    .scope S_003EA300;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", " Exercicio 02 - Guia08 ";
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", " a   b   c   d  =   s ";
+    %vpi_call 2 35 "$monitor", " %b   %b   %b   %b  =   %b ", v00602CB0_0, v00602D08_0, v00602D60_0, v00602DB8_0, v00602E10_0;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 0, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 0, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 0, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00602CB0_0, 1, 1;
+    %set/v v00602D08_0, 1, 1;
+    %set/v v00602D60_0, 1, 1;
+    %set/v v00602DB8_0, 1, 1;
+    %end;
+    .scope S_003EA278;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Arq. I\Guia08\exercicio02.v";

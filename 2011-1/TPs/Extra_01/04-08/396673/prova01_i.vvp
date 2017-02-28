@@ -1,0 +1,127 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E95F8 .scope module, "testes1algebra" "testes1algebra" 2 35;
+ .timescale 0 0;
+v00601F18_0 .var "a", 0 0;
+v00601F70_0 .var "b", 0 0;
+v00601FC8_0 .var "c", 0 0;
+v00602020_0 .var "d", 0 0;
+v00602078_0 .net "s1", 0 0, L_006020D0; 1 drivers
+S_003E9680 .scope module, "Teste" "s1algebra" 2 40, 2 12, S_003E95F8;
+ .timescale 0 0;
+L_003E6BB8 .functor XOR 1, v00601F18_0, v00601FC8_0, C4<0>, C4<0>;
+L_00602140 .functor XOR 1, v00601F70_0, v00601FC8_0, C4<0>, C4<0>;
+L_006021B0 .functor XOR 1, v00601F18_0, v00601F70_0, C4<0>, C4<0>;
+L_006021E8 .functor XOR 1, v00601F70_0, v00602020_0, C4<0>, C4<0>;
+L_00602220 .functor AND 1, L_003E6BB8, v00602020_0, C4<1>, C4<1>;
+L_00602290 .functor AND 1, L_00602140, v00602020_0, C4<1>, C4<1>;
+L_00602178 .functor AND 1, L_006021B0, v00601FC8_0, C4<1>, C4<1>;
+L_00602108 .functor AND 1, L_006021E8, v00601F18_0, C4<1>, C4<1>;
+L_006020D0 .functor OR 1, L_00602220, L_00602290, L_00602178, L_00602108;
+v003E9708_0 .net "a", 0 0, v00601F18_0; 1 drivers
+v00601980_0 .net "b", 0 0, v00601F70_0; 1 drivers
+v006019F0_0 .net "c", 0 0, v00601FC8_0; 1 drivers
+v00601A78_0 .net "d", 0 0, v00602020_0; 1 drivers
+v00601AE8_0 .alias "s1", 0 0, v00602078_0;
+v00601B40_0 .net "t1", 0 0, L_003E6BB8; 1 drivers
+v00601BB0_0 .net "t2", 0 0, L_00602140; 1 drivers
+v00601C48_0 .net "t3", 0 0, L_006021B0; 1 drivers
+v00601CB8_0 .net "t4", 0 0, L_006021E8; 1 drivers
+v00601D58_0 .net "t5", 0 0, L_00602220; 1 drivers
+v00601DC8_0 .net "t6", 0 0, L_00602290; 1 drivers
+v00601E38_0 .net "t7", 0 0, L_00602178; 1 drivers
+v00601EA8_0 .net "t8", 0 0, L_00602108; 1 drivers
+    .scope S_003E95F8;
+T_0 ;
+    %vpi_call 2 43 "$display", "\012a  b   c   d  s1\012";
+    %vpi_call 2 44 "$monitor", "%b  %b   %b   %b  %b", v00601F18_0, v00601F70_0, v00601FC8_0, v00602020_0, v00602078_0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 0, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 0, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 0, 1;
+    %set/v v00602020_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00601F18_0, 1, 1;
+    %set/v v00601F70_0, 1, 1;
+    %set/v v00601FC8_0, 1, 1;
+    %set/v v00602020_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Ciência da Computação\AC I - 2\Guias\Nova pasta\prova01_i.v";

@@ -1,0 +1,160 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0067D8C0 .scope module, "testmultiplicador" "testmultiplicador" 2 49;
+ .timescale 0 0;
+v006AE520_0 .var "a0", 0 0;
+v006AE578_0 .var "a1", 0 0;
+v006AE5D0_0 .var "b0", 0 0;
+v006AE628_0 .var "b1", 0 0;
+v006AE680_0 .net "s0", 0 0, L_006AE888; 1 drivers
+v006AE6D8_0 .net "s1", 0 0, L_006AEA48; 1 drivers
+v006AE768_0 .net "s2", 0 0, L_006AEAF0; 1 drivers
+v006AE7F8_0 .net "s3", 0 0, L_006AEF80; 1 drivers
+S_0067D940 .scope module, "M1" "multiplicador" 2 54, 2 30, S_0067D8C0;
+ .timescale 0 0;
+L_006AE888 .functor AND 1, v006AE5D0_0, v006AE520_0, C4<1>, C4<1>;
+L_006AE968 .functor AND 1, v006AE5D0_0, v006AE578_0, C4<1>, C4<1>;
+L_006AEA10 .functor AND 1, v006AE628_0, v006AE520_0, C4<1>, C4<1>;
+L_006AEAB8 .functor AND 1, v006AE628_0, v006AE578_0, C4<1>, C4<1>;
+v006AE078_0 .net "a0", 0 0, v006AE520_0; 1 drivers
+v006AE0D0_0 .net "a1", 0 0, v006AE578_0; 1 drivers
+v006AE140_0 .net "b0", 0 0, v006AE5D0_0; 1 drivers
+v006AE1C8_0 .net "b1", 0 0, v006AE628_0; 1 drivers
+v006AE238_0 .alias "e0", 0 0, v006AE680_0;
+v006AE290_0 .alias "e1", 0 0, v006AE6D8_0;
+v006AE2E8_0 .alias "e2", 0 0, v006AE768_0;
+v006AE368_0 .alias "e3", 0 0, v006AE7F8_0;
+v006AE3C0_0 .net "s2", 0 0, L_006AE968; 1 drivers
+v006AE418_0 .net "s3", 0 0, L_006AEA10; 1 drivers
+v006AE470_0 .net "s4", 0 0, L_006AEAB8; 1 drivers
+v006AE4C8_0 .net "s5", 0 0, L_006AECD0; 1 drivers
+S_006ADC60 .scope module, "HA1" "halfadder" 2 40, 2 12, S_0067D940;
+ .timescale 0 0;
+L_006AEB28 .functor NOT 1, L_006AE968, C4<0>, C4<0>, C4<0>;
+L_006AEB70 .functor NOT 1, L_006AEA10, C4<0>, C4<0>, C4<0>;
+L_006AEBB8 .functor AND 1, L_006AE968, L_006AEB70, C4<1>, C4<1>;
+L_006AEBF0 .functor AND 1, L_006AEB28, L_006AEA10, C4<1>, C4<1>;
+L_006AEA48 .functor OR 1, L_006AEBB8, L_006AEBF0, C4<0>, C4<0>;
+L_006AECD0 .functor AND 1, L_006AE968, L_006AEA10, C4<1>, C4<1>;
+v006ADCE0_0 .alias "a", 0 0, v006AE3C0_0;
+v006ADD50_0 .alias "b", 0 0, v006AE418_0;
+v006ADDC0_0 .net "s", 0 0, L_006AEB28; 1 drivers
+v006ADE48_0 .net "s0", 0 0, L_006AEB70; 1 drivers
+v006ADEB8_0 .net "s1", 0 0, L_006AEBB8; 1 drivers
+v006ADF10_0 .net "s2", 0 0, L_006AEBF0; 1 drivers
+v006ADF80_0 .alias "s3", 0 0, v006AE6D8_0;
+v006AE020_0 .alias "s4", 0 0, v006AE4C8_0;
+S_0067D9C0 .scope module, "HA2" "halfadder" 2 41, 2 12, S_0067D940;
+ .timescale 0 0;
+L_006AED08 .functor NOT 1, L_006AECD0, C4<0>, C4<0>, C4<0>;
+L_0067A4D0 .functor NOT 1, L_006AEAB8, C4<0>, C4<0>, C4<0>;
+L_006AEDC8 .functor AND 1, L_006AECD0, L_0067A4D0, C4<1>, C4<1>;
+L_006AEE38 .functor AND 1, L_006AED08, L_006AEAB8, C4<1>, C4<1>;
+L_006AEAF0 .functor OR 1, L_006AEDC8, L_006AEE38, C4<0>, C4<0>;
+L_006AEF80 .functor AND 1, L_006AECD0, L_006AEAB8, C4<1>, C4<1>;
+v0067DA40_0 .alias "a", 0 0, v006AE4C8_0;
+v006AD950_0 .alias "b", 0 0, v006AE470_0;
+v006AD9C0_0 .net "s", 0 0, L_006AED08; 1 drivers
+v006ADA48_0 .net "s0", 0 0, L_0067A4D0; 1 drivers
+v006ADAB8_0 .net "s1", 0 0, L_006AEDC8; 1 drivers
+v006ADB10_0 .net "s2", 0 0, L_006AEE38; 1 drivers
+v006ADB80_0 .alias "s3", 0 0, v006AE768_0;
+v006ADBF0_0 .alias "s4", 0 0, v006AE7F8_0;
+    .scope S_0067D8C0;
+T_0 ;
+    %vpi_call 2 58 "$display", "Bruno Santiago Pinheiro";
+    %vpi_call 2 59 "$display", "Matricula: 405792";
+    %vpi_call 2 60 "$display", "Circuito de multiplicaçao com 2 numeros de 2 bits cada.";
+    %vpi_call 2 61 "$display";
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 0, 1;
+    %vpi_call 2 63 "$monitor", " %b%b * %b%b = %b%b%b%b", v006AE578_0, v006AE520_0, v006AE628_0, v006AE5D0_0, v006AE7F8_0, v006AE768_0, v006AE6D8_0, v006AE680_0;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 0, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 0, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 0, 1;
+    %set/v v006AE628_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006AE520_0, 1, 1;
+    %set/v v006AE578_0, 1, 1;
+    %set/v v006AE5D0_0, 1, 1;
+    %set/v v006AE628_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "multiplicador.v";

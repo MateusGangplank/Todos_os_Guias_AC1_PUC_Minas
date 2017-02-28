@@ -1,0 +1,69 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00D2EAB0 .scope module, "testnandgate" "testnandgate" 2 18;
+ .timescale 0 0;
+v00D2FDE0_0 .var "a", 0 0;
+v00D2FE38_0 .var "b", 0 0;
+v00D2FE90_0 .net "s", 0 0, L_00D2FF58; 1 drivers
+S_00D23190 .scope module, "NAND1" "nandgate" 2 23, 2 11, S_00D2EAB0;
+ .timescale 0 0;
+L_00D232C8 .functor AND 1, v00D2FDE0_0, v00D2FE38_0, C4<1>, C4<1>;
+L_00D2FF58 .functor NOT 1, L_00D232C8, C4<0>, C4<0>, C4<0>;
+v00D22DA0_0 .net *"_s0", 0 0, L_00D232C8; 1 drivers
+v00D2EB38_0 .net "p", 0 0, v00D2FDE0_0; 1 drivers
+v00D23218_0 .net "q", 0 0, v00D2FE38_0; 1 drivers
+v00D23270_0 .alias "s", 0 0, v00D2FE90_0;
+S_00D22D18 .scope begin, "start" "start" 2 26, 2 26, S_00D2EAB0;
+ .timescale 0 0;
+S_00D22C90 .scope begin, "main" "main" 2 32, 2 32, S_00D2EAB0;
+ .timescale 0 0;
+    .scope S_00D2EAB0;
+T_0 ;
+    %fork t_1, S_00D22D18;
+    %jmp t_0;
+    .scope S_00D22D18;
+t_1 ;
+    %set/v v00D2FDE0_0, 0, 1;
+    %set/v v00D2FE38_0, 0, 1;
+    %end;
+    .scope S_00D2EAB0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00D2EAB0;
+T_1 ;
+    %fork t_3, S_00D22C90;
+    %jmp t_2;
+    .scope S_00D22C90;
+t_3 ;
+    %vpi_call 2 33 "$display", "Exercicio0001 - Marcio Enio G Dutra Junior - 441698";
+    %vpi_call 2 34 "$display", "Test nand gate";
+    %vpi_call 2 35 "$display", "\012~(a & b)  =  s\012";
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "~(%b & %b)  =  %b", v00D2FDE0_0, v00D2FE38_0, v00D2FE90_0;
+    %set/v v00D2FDE0_0, 0, 1;
+    %set/v v00D2FE38_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "~(%b & %b)  =  %b", v00D2FDE0_0, v00D2FE38_0, v00D2FE90_0;
+    %set/v v00D2FDE0_0, 1, 1;
+    %set/v v00D2FE38_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "~(%b & %b)  =  %b", v00D2FDE0_0, v00D2FE38_0, v00D2FE90_0;
+    %set/v v00D2FDE0_0, 1, 1;
+    %set/v v00D2FE38_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "~(%b & %b)  =  %b", v00D2FDE0_0, v00D2FE38_0, v00D2FE90_0;
+    %end;
+    .scope S_00D2EAB0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\PUC Minas\2012\2º Semestre\ARQUITETURA I\Guia 01\Exercicio0001.v";

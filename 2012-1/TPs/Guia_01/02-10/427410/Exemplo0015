@@ -1,0 +1,77 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008A4038 .scope module, "testeor" "testeor" 2 12;
+ .timescale 0 0;
+v008AC850_0 .var "a", 0 0;
+v008AC8A8_0 .var "b", 0 0;
+v008AC900_0 .var "c", 0 0;
+v008AC958_0 .net "s", 0 0, L_008AC9E8; 1 drivers
+S_008A2D80 .scope module, "or1" "or3" 2 17, 2 5, S_008A4038;
+ .timescale 0 0;
+L_008A2E08 .functor OR 1, v008AC850_0, v008AC8A8_0, C4<0>, C4<0>;
+L_008AC9E8 .functor OR 1, L_008A2E08, v008AC900_0, C4<0>, C4<0>;
+v008AFC38_0 .net "p", 0 0, v008AC850_0; 1 drivers
+v008AFC90_0 .net "q", 0 0, v008AC8A8_0; 1 drivers
+v008AFCE8_0 .net "r", 0 0, v008AC900_0; 1 drivers
+v008AFD40_0 .alias "s", 0 0, v008AC958_0;
+v008AFD98_0 .net "w1", 0 0, L_008A2E08; 1 drivers
+S_008A2CF8 .scope begin, "start" "start" 2 19, 2 19, S_008A4038;
+ .timescale 0 0;
+    .scope S_008A4038;
+T_0 ;
+    %fork t_1, S_008A2CF8;
+    %jmp t_0;
+    .scope S_008A2CF8;
+t_1 ;
+    %set/v v008AC850_0, 0, 1;
+    %set/v v008AC8A8_0, 0, 1;
+    %set/v v008AC900_0, 0, 1;
+    %end;
+    .scope S_008A4038;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008A4038;
+T_1 ;
+    %vpi_call 2 25 "$display", "Teste OR3";
+    %vpi_call 2 26 "$display", "\012p || q || r = s\012";
+    %vpi_call 2 27 "$monitor", "  %b   %b %b %b", v008AC958_0, v008AC850_0, v008AC8A8_0, v008AC900_0;
+    %delay 1, 0;
+    %set/v v008AC850_0, 0, 1;
+    %set/v v008AC8A8_0, 0, 1;
+    %set/v v008AC900_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008AC850_0, 0, 1;
+    %set/v v008AC8A8_0, 1, 1;
+    %set/v v008AC900_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008AC850_0, 0, 1;
+    %set/v v008AC8A8_0, 1, 1;
+    %set/v v008AC900_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008AC850_0, 1, 1;
+    %set/v v008AC8A8_0, 0, 1;
+    %set/v v008AC900_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008AC850_0, 1, 1;
+    %set/v v008AC8A8_0, 0, 1;
+    %set/v v008AC900_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008AC850_0, 1, 1;
+    %set/v v008AC8A8_0, 1, 1;
+    %set/v v008AC900_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008AC850_0, 1, 1;
+    %set/v v008AC8A8_0, 1, 1;
+    %set/v v008AC900_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0015.v";

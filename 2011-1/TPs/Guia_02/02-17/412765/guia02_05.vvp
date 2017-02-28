@@ -1,0 +1,92 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003A9180 .scope module, "NANDgatetest" "NANDgatetest" 2 19;
+ .timescale 0 0;
+v005CEED8_0 .var "a", 0 0;
+v005CEF30_0 .var "b", 0 0;
+v005CEF88_0 .net "s", 0 0, L_005CFE68; 1 drivers
+v005CEFE0_0 .net "s1", 0 0, L_003A3300; 1 drivers
+v005CF038_0 .net "s2", 0 0, L_003ACCB8; 1 drivers
+v005CF090_0 .net "s3", 0 0, L_003ACCF0; 1 drivers
+S_003A95C0 .scope module, "NOR1" "NANDgate" 2 25, 2 8, S_003A9180;
+ .timescale 0 0;
+L_003ACD60 .functor OR 1, v005CEED8_0, v005CEED8_0, C4<0>, C4<0>;
+L_003A3300 .functor NOT 1, L_003ACD60, C4<0>, C4<0>, C4<0>;
+v005CED78_0 .net *"_s0", 0 0, L_003ACD60; 1 drivers
+v005CEDD0_0 .net "p", 0 0, v005CEED8_0; 1 drivers
+v005CEE28_0 .alias "q", 0 0, v005CEDD0_0;
+v005CEE80_0 .alias "s", 0 0, v005CEFE0_0;
+S_003A9538 .scope module, "NOR2" "NANDgate" 2 26, 2 8, S_003A9180;
+ .timescale 0 0;
+L_003ACE38 .functor OR 1, v005CEF30_0, v005CEF30_0, C4<0>, C4<0>;
+L_003ACCB8 .functor NOT 1, L_003ACE38, C4<0>, C4<0>, C4<0>;
+v003ACC60_0 .net *"_s0", 0 0, L_003ACE38; 1 drivers
+v005CEC70_0 .net "p", 0 0, v005CEF30_0; 1 drivers
+v005CECC8_0 .alias "q", 0 0, v005CEC70_0;
+v005CED20_0 .alias "s", 0 0, v005CF038_0;
+S_003A94B0 .scope module, "NOR3" "NANDgate" 2 27, 2 8, S_003A9180;
+ .timescale 0 0;
+L_005CFCF8 .functor OR 1, L_003A3300, L_003ACCB8, C4<0>, C4<0>;
+L_003ACCF0 .functor NOT 1, L_005CFCF8, C4<0>, C4<0>, C4<0>;
+v003A2DD0_0 .net *"_s0", 0 0, L_005CFCF8; 1 drivers
+v003A31C0_0 .alias "p", 0 0, v005CEFE0_0;
+v003A3218_0 .alias "q", 0 0, v005CF038_0;
+v003A3270_0 .alias "s", 0 0, v005CF090_0;
+S_003A9428 .scope module, "NOR4" "NANDgate" 2 28, 2 8, S_003A9180;
+ .timescale 0 0;
+L_003ACD28 .functor OR 1, L_003ACCF0, L_003ACCF0, C4<0>, C4<0>;
+L_005CFE68 .functor NOT 1, L_003ACD28, C4<0>, C4<0>, C4<0>;
+v003A2CC8_0 .net *"_s0", 0 0, L_003ACD28; 1 drivers
+v003AFF78_0 .alias "p", 0 0, v005CF090_0;
+v003A2D20_0 .alias "q", 0 0, v005CF090_0;
+v003A2D78_0 .alias "s", 0 0, v005CEF88_0;
+S_003A93A0 .scope begin, "start" "start" 2 30, 2 30, S_003A9180;
+ .timescale 0 0;
+S_003A9290 .scope begin, "main" "main" 2 37, 2 37, S_003A9180;
+ .timescale 0 0;
+    .scope S_003A9180;
+T_0 ;
+    %fork t_1, S_003A93A0;
+    %jmp t_0;
+    .scope S_003A93A0;
+t_1 ;
+    %set/v v005CEED8_0, 0, 1;
+    %set/v v005CEF30_0, 0, 1;
+    %end;
+    .scope S_003A9180;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003A9180;
+T_1 ;
+    %fork t_3, S_003A9290;
+    %jmp t_2;
+    .scope S_003A9290;
+t_3 ;
+    %vpi_call 2 39 "$display", "\012Guia 02 - exercicio 05 - Paulo Henrique - 412765";
+    %vpi_call 2 40 "$display", "\012Teste NAND gate";
+    %vpi_call 2 41 "$display", "\012~(a & b) = s";
+    %vpi_call 2 42 "$monitor", "~(%b & %b) = %b", v005CEED8_0, v005CEF30_0, v005CEF88_0;
+    %delay 1, 0;
+    %set/v v005CEED8_0, 0, 1;
+    %set/v v005CEF30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005CEED8_0, 1, 1;
+    %set/v v005CEF30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005CEED8_0, 1, 1;
+    %set/v v005CEF30_0, 1, 1;
+    %end;
+    .scope S_003A9180;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Sergio\Desktop\guia02_05.v";

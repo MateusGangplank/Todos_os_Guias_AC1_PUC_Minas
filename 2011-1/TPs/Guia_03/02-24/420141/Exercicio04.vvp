@@ -1,0 +1,77 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF5F8 .scope module, "testMS" "testMS" 2 23;
+ .timescale 0 0;
+v006A3B10_0 .var "a", 0 0;
+v006A3B68_0 .var "b", 0 0;
+v006A3BC0_0 .net "s0", 0 0, L_006A4090; 1 drivers
+v006A3C18_0 .net "s1", 0 0, L_006A3D00; 1 drivers
+S_003EF778 .scope module, "MS" "operadorMS" 2 27, 2 5, S_003EF5F8;
+ .timescale 0 0;
+L_006A3C70 .functor NOR 1, v006A3B10_0, v006A3B68_0, C4<0>, C4<0>;
+L_006A3D38 .functor NOR 1, L_006A3C70, L_006A3C70, C4<0>, C4<0>;
+L_006A3DA8 .functor NOR 1, L_006A3D38, L_006A3D38, C4<0>, C4<0>;
+L_006A3E18 .functor NOR 1, v006A3B10_0, v006A3B10_0, C4<0>, C4<0>;
+L_006A3CC8 .functor NOR 1, v006A3B68_0, v006A3B68_0, C4<0>, C4<0>;
+L_006A3D00 .functor NOR 1, L_006A3E18, L_006A3CC8, C4<0>, C4<0>;
+L_006A3FE8 .functor NOR 1, L_006A3D00, C4<0>, C4<0>, C4<0>;
+L_006A4020 .functor NOR 1, L_006A3FE8, L_006A3FE8, C4<0>, C4<0>;
+L_006A4090 .functor NOR 1, L_006A3DA8, L_006A4020, C4<0>, C4<0>;
+v003EF7F8_0 .net "a", 0 0, v006A3B10_0; 1 drivers
+v006A3650_0 .net "b", 0 0, v006A3B68_0; 1 drivers
+v006A36C0_0 .alias "s0", 0 0, v006A3BC0_0;
+v006A3748_0 .alias "s1", 0 0, v006A3C18_0;
+v006A37B8_0 .net "s2", 0 0, L_006A3C70; 1 drivers
+v006A3810_0 .net "s3", 0 0, L_006A3D38; 1 drivers
+v006A3880_0 .net "s4", 0 0, L_006A3DA8; 1 drivers
+v006A3918_0 .net "s5", 0 0, L_006A3E18; 1 drivers
+v006A3988_0 .net "s6", 0 0, L_006A3CC8; 1 drivers
+v006A39F8_0 .net "s7", 0 0, L_006A3FE8; 1 drivers
+v006A3A68_0 .net "s8", 0 0, L_006A4020; 1 drivers
+S_003EF6F8 .scope begin, "start" "start" 2 29, 2 29, S_003EF5F8;
+ .timescale 0 0;
+S_003EF678 .scope begin, "main" "main" 2 34, 2 34, S_003EF5F8;
+ .timescale 0 0;
+    .scope S_003EF5F8;
+T_0 ;
+    %fork t_1, S_003EF6F8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A3B10_0, 0, 1;
+    %set/v v006A3B68_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EF5F8;
+T_1 ;
+    %fork t_3, S_003EF678;
+    %jmp t_2;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", " Modelo Tradicional ";
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", " a + b = s0s1 ";
+    %vpi_call 2 38 "$monitor", " %b + %b = %b %b ", v006A3B10_0, v006A3B68_0, v006A3BC0_0, v006A3C18_0;
+    %delay 1, 0;
+    %set/v v006A3B10_0, 0, 1;
+    %set/v v006A3B68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3B10_0, 1, 1;
+    %set/v v006A3B68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3B10_0, 1, 1;
+    %set/v v006A3B68_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\420141\Exercicio04.v";

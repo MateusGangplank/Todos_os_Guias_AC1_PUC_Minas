@@ -1,0 +1,52 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006EFEF0 .scope module, "testador" "testador" 2 19;
+ .timescale 0 0;
+v006E31D0_0 .var "a", 0 0;
+v006E3228_0 .var "b", 0 0;
+v006E3280_0 .net "s", 0 0, L_006EE8A0; 1 drivers
+S_006E2C80 .scope module, "NAND1" "pnand" 2 26, 2 10, S_006EFEF0;
+ .timescale 0 0;
+L_006EE7F8 .functor AND 1, v006E31D0_0, v006E3228_0, C4<1>, C4<1>;
+L_006EE8A0 .functor NOT 1, L_006EE7F8, C4<0>, C4<0>, C4<0>;
+v006EFF78_0 .net *"_s0", 0 0, L_006EE7F8; 1 drivers
+v006E2D08_0 .net "p", 0 0, v006E31D0_0; 1 drivers
+v006E2D60_0 .net "q", 0 0, v006E3228_0; 1 drivers
+v006E3178_0 .alias "s", 0 0, v006E3280_0;
+    .scope S_006EFEF0;
+T_0 ;
+    %set/v v006E31D0_0, 0, 1;
+    %set/v v006E3228_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_006EFEF0;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exercicio 001";
+    %vpi_call 2 40 "$display", "Autor: Rodolfo Herman";
+    %vpi_call 2 41 "$display", "Testar porta NAND";
+    %vpi_call 2 42 "$display", "~(a & b) = s \012";
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~(%b & %b) = %b", v006E31D0_0, v006E3228_0, v006E3280_0;
+    %set/v v006E31D0_0, 0, 1;
+    %set/v v006E3228_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~(%b & %b) = %b", v006E31D0_0, v006E3228_0, v006E3280_0;
+    %set/v v006E31D0_0, 1, 1;
+    %set/v v006E3228_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "~(%b & %b) = %b", v006E31D0_0, v006E3228_0, v006E3280_0;
+    %set/v v006E31D0_0, 1, 1;
+    %set/v v006E3228_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "~(%b & %b) = %b", v006E31D0_0, v006E3228_0, v006E3280_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio001.v";

@@ -1,0 +1,91 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007C9408 .scope module, "Or" "Or" 2 30;
+ .timescale 0 0;
+v007CC4B0_0 .net "a", 0 0, C4<z>; 0 drivers
+v007CCC08_0 .net "b", 0 0, C4<z>; 0 drivers
+v007CCC60_0 .var "s", 0 0;
+E_007CF390 .event edge, v007CCC08_0, v007CC4B0_0;
+S_007C9490 .scope module, "fliflop" "fliflop" 2 12;
+ .timescale 0 0;
+v007CCCB8_0 .net "a", 0 0, C4<z>; 0 drivers
+v007CD220_0 .net "clear", 0 0, C4<z>; 0 drivers
+v007CD278_0 .net "clk", 0 0, C4<z>; 0 drivers
+v007CD2D0_0 .var "not01", 0 0;
+v007C2F90_0 .net "preset", 0 0, C4<z>; 0 drivers
+v007C2FE8_0 .var "s", 0 0;
+E_007CF370 .event posedge, v007CD278_0;
+S_007C9518 .scope module, "test_fliflop03" "test_fliflop03" 2 53;
+ .timescale 0 0;
+L_007CCD10 .functor OR 1, v007CBC40_0, C4<z>, C4<0>, C4<0>;
+v007C3040_0 .net "a", 0 0, C4<z>; 0 drivers
+v007C43E8_0 .net "b", 0 0, C4<z>; 0 drivers
+v007C4440_0 .net "c", 0 0, C4<z>; 0 drivers
+v007C4498_0 .var "clk", 0 0;
+v007CBBE8_0 .net "d", 0 0, C4<z>; 0 drivers
+v007CBC40_0 .var "data", 0 0;
+v00841870_0 .net "e", 0 0, C4<z>; 0 drivers
+v008418C8_0 .net "s", 0 0, L_007CCD10; 1 drivers
+    .scope S_007C9408;
+T_0 ;
+    %wait E_007CF390;
+    %load/v 8, v007CC4B0_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v007CC4B0_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007CCC60_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v007CCC08_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %load/v 8, v007CCC08_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007CCC60_0, 0, 8;
+    %jmp T_0.3;
+T_0.2 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007CCC60_0, 0, 0;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_007C9490;
+T_1 ;
+    %wait E_007CF370;
+    %load/v 8, v007CCCB8_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007C2FE8_0, 0, 8;
+    %load/v 8, v007C2FE8_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v007CD2D0_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_007C9518;
+T_2 ;
+    %vpi_call 2 68 "$display", "Flip-Flop - Lorena Danielle Gon\347alves Bento - 435049";
+    %set/v v007CBC40_0, 0, 1;
+    %set/v v007C4498_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 70 "$display", "\012%b %b %b %b %b", v007C3040_0, v007C43E8_0, v007C4440_0, v007CBBE8_0, v00841870_0;
+    %set/v v007CBC40_0, 1, 1;
+    %set/v v007C4498_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 72 "$display", "\012%b %b %b %b %b", v007C3040_0, v007C43E8_0, v007C4440_0, v007CBBE8_0, v00841870_0;
+    %set/v v007CBC40_0, 0, 1;
+    %set/v v007C4498_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 74 "$display", "\012%b %b %b %b %b", v007C3040_0, v007C43E8_0, v007C4440_0, v007CBBE8_0, v00841870_0;
+    %set/v v007CBC40_0, 0, 1;
+    %set/v v007C4498_0, 0, 1;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "flipflop04.v";

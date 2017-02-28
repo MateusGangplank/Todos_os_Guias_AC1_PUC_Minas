@@ -1,0 +1,27 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672308 .scope module, "clock" "clock" 2 5;
+ .timescale 0 0;
+v00672388_0 .var "clk", 0 0;
+    .scope S_00672308;
+T_0 ;
+    %set/v v00672388_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00672308;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00672388_0, 1;
+    %inv 8, 1;
+    %set/v v00672388_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "clock.v";

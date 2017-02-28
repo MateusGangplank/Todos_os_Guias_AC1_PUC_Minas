@@ -1,0 +1,34 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00792DE0 .scope module, "testnotnand" "testnotnand" 2 22;
+ .timescale 0 0;
+v00792A80_0 .net "s", 0 0, L_00799E88; 1 drivers
+v00799DF8_0 .var "x", 0 0;
+S_00792E68 .scope module, "NOTN1" "notnand" 2 26, 2 10, S_00792DE0;
+ .timescale 0 0;
+L_00792EF0 .functor AND 1, v00799DF8_0, v00799DF8_0, C4<1>, C4<1>;
+L_00799E88 .functor NOT 1, L_00792EF0, C4<0>, C4<0>, C4<0>;
+v00792978_0 .net *"_s0", 0 0, L_00792EF0; 1 drivers
+v007929D0_0 .alias "s", 0 0, v00792A80_0;
+v00792A28_0 .net "x", 0 0, v00799DF8_0; 1 drivers
+    .scope S_00792DE0;
+T_0 ;
+    %vpi_call 2 29 "$display", "Guia 02 - Karen Alves Pereira - 407451";
+    %vpi_call 2 30 "$display", "Tabela-verdade da porta NOT construida atraves de portas NAND.";
+    %vpi_call 2 31 "$display", "Teste NOTNAND.";
+    %vpi_call 2 32 "$display", "\012~(~x) = s\012";
+    %vpi_call 2 33 "$monitor", "~(%b) = %b", v00799DF8_0, v00792A80_0;
+    %set/v v00799DF8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00799DF8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 02\Guia02_notnand.v";

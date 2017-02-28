@@ -1,0 +1,69 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006CE368 .scope module, "testexnorgate" "testexnorgate" 2 11;
+ .timescale 0 0;
+v006CC958_0 .var "a", 0 0;
+v006CC9B0_0 .var "b", 0 0;
+v006CCA08_0 .net "s", 0 0, L_006CCBD0; 1 drivers
+S_006C8D70 .scope module, "XNOR1" "xnorgate" 2 16, 2 5, S_006CE368;
+ .timescale 0 0;
+L_006CE938 .functor NOT 1, v006CC958_0, C4<0>, C4<0>, C4<0>;
+L_006CCB28 .functor AND 1, v006CC958_0, L_006CCA60, C4<1>, C4<1>;
+L_006CCB98 .functor NOT 1, v006CC9B0_0, C4<0>, C4<0>, C4<0>;
+L_006CCBD0 .functor AND 1, L_006CCB28, L_006CCB98, C4<1>, C4<1>;
+v006C2D10_0 .net *"_s0", 0 0, L_006CE938; 1 drivers
+v006CFEF8_0 .net *"_s2", 0 0, L_006CCA60; 1 drivers
+v006CFF50_0 .net *"_s4", 0 0, L_006CCB28; 1 drivers
+v006C3968_0 .net *"_s6", 0 0, L_006CCB98; 1 drivers
+v006C39C0_0 .net "p", 0 0, v006CC958_0; 1 drivers
+v006C3A18_0 .net "q", 0 0, v006CC9B0_0; 1 drivers
+v006C3A70_0 .alias "s", 0 0, v006CCA08_0;
+L_006CCA60 .arith/sum 1, v006CC9B0_0, L_006CE938;
+S_006C2C88 .scope begin, "start" "start" 2 18, 2 18, S_006CE368;
+ .timescale 0 0;
+S_006C2C00 .scope begin, "main" "main" 2 25, 2 25, S_006CE368;
+ .timescale 0 0;
+    .scope S_006CE368;
+T_0 ;
+    %fork t_1, S_006C2C88;
+    %jmp t_0;
+    .scope S_006C2C88;
+t_1 ;
+    %set/v v006CC958_0, 0, 1;
+    %set/v v006CC9B0_0, 0, 1;
+    %end;
+    .scope S_006CE368;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006CE368;
+T_1 ;
+    %fork t_3, S_006C2C00;
+    %jmp t_2;
+    .scope S_006C2C00;
+t_3 ;
+    %vpi_call 2 27 "$display", "Exemplo0008 - \315talo Guimar\343es Otoni - 451581";
+    %vpi_call 2 28 "$monitor", "%b %b = %b", v006CC958_0, v006CC9B0_0, v006CCA08_0;
+    %delay 1, 0;
+    %set/v v006CC958_0, 0, 1;
+    %set/v v006CC9B0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006CC958_0, 1, 1;
+    %set/v v006CC9B0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006CC958_0, 1, 1;
+    %set/v v006CC9B0_0, 1, 1;
+    %end;
+    .scope S_006CE368;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Ítalo\Dropbox\PUC\2° Periodo\AC\Exemplo0012.v";

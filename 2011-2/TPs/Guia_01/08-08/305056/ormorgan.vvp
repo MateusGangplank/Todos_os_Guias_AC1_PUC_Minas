@@ -1,0 +1,103 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00682490 .scope module, "norgate" "norgate" 2 22;
+ .timescale 0 0;
+v0069D760_0 .var "a", 0 0;
+v0069D7D8_0 .var "b", 0 0;
+v0069D850_0 .var "c", 0 0;
+v0069D8C8_0 .net "n1", 0 0, L_0069DB18; 1 drivers
+v0069D920_0 .net "n2", 0 0, L_0069DB88; 1 drivers
+v0069D978_0 .net "n3", 0 0, L_0069DBF8; 1 drivers
+v0069DA08_0 .net "s1", 0 0, L_00661490; 1 drivers
+v0069DAC0_0 .net "s2", 0 0, L_0069D9D0; 1 drivers
+S_0069D608 .scope module, "NOT1" "notgate" 2 26, 2 15, S_00682490;
+ .timescale 0 0;
+L_0069DB18 .functor NOT 1, v0069D760_0, C4<0>, C4<0>, C4<0>;
+v0069D690_0 .net "p", 0 0, v0069D760_0; 1 drivers
+v0069D6E8_0 .alias "s", 0 0, v0069D8C8_0;
+S_0069D4D0 .scope module, "NOT2" "notgate" 2 27, 2 15, S_00682490;
+ .timescale 0 0;
+L_0069DB88 .functor NOT 1, v0069D7D8_0, C4<0>, C4<0>, C4<0>;
+v0069D558_0 .net "p", 0 0, v0069D7D8_0; 1 drivers
+v0069D5B0_0 .alias "s", 0 0, v0069D920_0;
+S_0069D398 .scope module, "NOT3" "notgate" 2 28, 2 15, S_00682490;
+ .timescale 0 0;
+L_0069DBF8 .functor NOT 1, v0069D850_0, C4<0>, C4<0>, C4<0>;
+v0069D420_0 .net "p", 0 0, v0069D850_0; 1 drivers
+v0069D478_0 .alias "s", 0 0, v0069D978_0;
+S_0069D0E0 .scope module, "AND1" "andgate" 2 29, 2 8, S_00682490;
+ .timescale 0 0;
+L_0069DC78 .functor AND 1, L_0069DB18, L_0069DB88, C4<1>, C4<1>;
+L_00661490 .functor AND 1, L_0069DC78, L_0069DBF8, C4<1>, C4<1>;
+v0069D168_0 .net *"_s0", 0 0, L_0069DC78; 1 drivers
+v0069D1D8_0 .alias "a", 0 0, v0069D8C8_0;
+v0069D248_0 .alias "b", 0 0, v0069D920_0;
+v0069D2D0_0 .alias "c", 0 0, v0069D978_0;
+v0069D340_0 .alias "s", 0 0, v0069DA08_0;
+S_006829C8 .scope module, "NOT4" "notgate" 2 30, 2 15, S_00682490;
+ .timescale 0 0;
+L_0069D9D0 .functor NOT 1, L_00661490, C4<0>, C4<0>, C4<0>;
+v00682F78_0 .alias "p", 0 0, v0069DA08_0;
+v00682F20_0 .alias "s", 0 0, v0069DAC0_0;
+S_00682848 .scope begin, "start" "start" 2 32, 2 32, S_00682490;
+ .timescale 0 0;
+    .scope S_00682490;
+T_0 ;
+    %fork t_1, S_00682848;
+    %jmp t_0;
+t_1 ;
+    %set/v v0069D760_0, 0, 1;
+    %set/v v0069D7D8_0, 0, 1;
+    %set/v v0069D850_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00682490;
+T_1 ;
+    %vpi_call 2 37 "$display", "NORGATE 3 entradas por De Morgan - Rama Alvim Sales Schiavo -  305056";
+    %vpi_call 2 38 "$display", "\012 ~( ~a & ~b & ~c ) = s\012";
+    %vpi_call 2 39 "$monitor", "%b & %b & %b = %b", v0069D760_0, v0069D7D8_0, v0069D850_0, v0069DAC0_0;
+    %delay 1, 0;
+    %set/v v0069D760_0, 0, 1;
+    %set/v v0069D7D8_0, 0, 1;
+    %set/v v0069D850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 0, 1;
+    %set/v v0069D7D8_0, 0, 1;
+    %set/v v0069D850_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 0, 1;
+    %set/v v0069D7D8_0, 1, 1;
+    %set/v v0069D850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 0, 1;
+    %set/v v0069D7D8_0, 1, 1;
+    %set/v v0069D850_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 1, 1;
+    %set/v v0069D7D8_0, 0, 1;
+    %set/v v0069D850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 1, 1;
+    %set/v v0069D7D8_0, 0, 1;
+    %set/v v0069D850_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 1, 1;
+    %set/v v0069D7D8_0, 1, 1;
+    %set/v v0069D850_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069D760_0, 1, 1;
+    %set/v v0069D7D8_0, 1, 1;
+    %set/v v0069D850_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrator\My Documents\ormorgan.v";

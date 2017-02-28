@@ -1,0 +1,76 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00339188 .scope module, "test_f4" "test_f4" 2 30;
+ .timescale 0 0;
+v005B0B30_0 .var "chave", 0 0;
+v005B0B88_0 .var "x", 0 0;
+v005B0BE0_0 .var "y", 0 0;
+v005AC470_0 .net "z", 0 0, L_005AD588; 1 drivers
+v005AC4C8_0 .net "z2", 0 0, L_005AD668; 1 drivers
+S_00339210 .scope module, "modulo" "f4" 2 37, 2 9, S_00339188;
+ .timescale 0 0;
+L_005B0280 .functor XOR 1, v005B0B88_0, v005B0BE0_0, C4<0>, C4<0>;
+L_005D4EF0 .functor XNOR 1, v005B0B88_0, v005B0BE0_0, C4<0>, C4<0>;
+L_005D4F28 .functor OR 1, v005B0B88_0, v005B0BE0_0, C4<0>, C4<0>;
+L_005D4EB8 .functor NOR 1, v005B0B88_0, v005B0BE0_0, C4<0>, C4<0>;
+L_005B02B8 .functor NOT 1, v005B0B30_0, C4<0>, C4<0>, C4<0>;
+L_005D4F98 .functor AND 1, L_005B0280, v005B0B30_0, C4<1>, C4<1>;
+L_0033D500 .functor AND 1, L_005D4EF0, v005B0B30_0, C4<1>, C4<1>;
+L_005AD470 .functor AND 1, L_005D4F28, L_005B02B8, C4<1>, C4<1>;
+L_005AD518 .functor AND 1, L_005D4EB8, L_005B02B8, C4<1>, C4<1>;
+L_005AD588 .functor OR 1, L_005D4F98, L_005AD470, C4<0>, C4<0>;
+L_005AD668 .functor OR 1, L_0033D500, L_005AD518, C4<0>, C4<0>;
+v005B0660_0 .net "a", 0 0, v005B0B88_0; 1 drivers
+v005B06B8_0 .net "b", 0 0, v005B0BE0_0; 1 drivers
+v005B0710_0 .net "chave", 0 0, v005B0B30_0; 1 drivers
+v005B0768_0 .net "nchave", 0 0, L_005B02B8; 1 drivers
+v005B07C0_0 .alias "s", 0 0, v005AC470_0;
+v005B0818_0 .alias "s2", 0 0, v005AC4C8_0;
+v005B0870_0 .net "temp1", 0 0, L_005B0280; 1 drivers
+v005B08C8_0 .net "temp2", 0 0, L_005D4EF0; 1 drivers
+v005B0920_0 .net "temp3", 0 0, L_005D4F28; 1 drivers
+v005B0978_0 .net "temp4", 0 0, L_005D4EB8; 1 drivers
+v005B09D0_0 .net "temp5", 0 0, L_005D4F98; 1 drivers
+v005B0A28_0 .net "temp6", 0 0, L_0033D500; 1 drivers
+v005B0A80_0 .net "temp7", 0 0, L_005AD470; 1 drivers
+v005B0AD8_0 .net "temp8", 0 0, L_005AD518; 1 drivers
+    .scope S_00339188;
+T_0 ;
+    %set/v v005B0B88_0, 0, 1;
+    %set/v v005B0BE0_0, 0, 1;
+    %set/v v005B0B30_0, 0, 1;
+    %vpi_call 2 43 "$display", "Sendo Chave: 0 - XOR/XNOR \011 1 - OR/NOR";
+    %vpi_call 2 44 "$monitor", "Chave: (%b) \011 %b %b \011 XOR/OR: %b \011 XNOR/NOR: %b", v005B0B30_0, v005B0B88_0, v005B0BE0_0, v005AC470_0, v005AC4C8_0;
+    %delay 1, 0;
+    %set/v v005B0B88_0, 0, 1;
+    %set/v v005B0BE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005B0B88_0, 1, 1;
+    %set/v v005B0BE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B0B88_0, 1, 1;
+    %set/v v005B0BE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005B0B30_0, 1, 1;
+    %set/v v005B0B88_0, 0, 1;
+    %set/v v005B0BE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B0B88_0, 0, 1;
+    %set/v v005B0BE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005B0B88_0, 1, 1;
+    %set/v v005B0BE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B0B88_0, 1, 1;
+    %set/v v005B0BE0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Matheus\PUC\AC\Guia03-451601\exemplo0034.v";

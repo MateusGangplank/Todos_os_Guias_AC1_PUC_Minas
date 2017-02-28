@@ -1,0 +1,126 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x830bb50 .scope module, "test_f4" "test_f4" 2 21;
+ .timescale 0 0;
+v0x834a890_0 .var "a", 0 0;
+v0x834a8e0_0 .var "b", 0 0;
+v0x834a930_0 .var "c", 0 0;
+v0x834a9a0_0 .net "s1", 0 0, L_0x834aec0; 1 drivers
+v0x834aa10_0 .net "s2", 0 0, L_0x834b230; 1 drivers
+S_0x831eef0 .scope module, "modulo" "f4" 2 29, 2 12, S_0x830bb50;
+ .timescale 0 0;
+L_0x834a398 .functor NOT 1, v0x834a890_0, C4<0>, C4<0>, C4<0>;
+L_0x834aad8 .functor NOT 1, v0x834a8e0_0, C4<0>, C4<0>, C4<0>;
+L_0x834ab48 .functor AND 1, L_0x834a398, L_0x834aad8, C4<1>, C4<1>;
+L_0x834abf0 .functor AND 1, L_0x834ab48, v0x834a930_0, C4<1>, C4<1>;
+L_0x834ac98 .functor NOT 1, v0x834a930_0, C4<0>, C4<0>, C4<0>;
+L_0x834acd0 .functor AND 1, v0x834a8e0_0, L_0x834ac98, C4<1>, C4<1>;
+L_0x834ad40 .functor OR 1, L_0x834abf0, L_0x834acd0, C4<0>, C4<0>;
+L_0x834ade8 .functor NOT 1, v0x834a930_0, C4<0>, C4<0>, C4<0>;
+L_0x834ac60 .functor AND 1, v0x834a890_0, L_0x834ade8, C4<1>, C4<1>;
+L_0x834aec0 .functor OR 1, L_0x834ad40, L_0x834ac60, C4<0>, C4<0>;
+L_0x834afa0 .functor NOT 1, v0x834a890_0, C4<0>, C4<0>, C4<0>;
+L_0x834aaa0 .functor AND 1, L_0x834afa0, v0x834a930_0, C4<1>, C4<1>;
+L_0x834b0b0 .functor NOT 1, v0x834a8e0_0, C4<0>, C4<0>, C4<0>;
+L_0x834ab10 .functor AND 1, L_0x834b0b0, v0x834a930_0, C4<1>, C4<1>;
+L_0x834b078 .functor OR 1, L_0x834aaa0, L_0x834ab10, C4<0>, C4<0>;
+L_0x834b1f8 .functor AND 1, v0x834a890_0, v0x834a8e0_0, C4<1>, C4<1>;
+L_0x834b278 .functor NOT 1, v0x834a930_0, C4<0>, C4<0>, C4<0>;
+L_0x834b2b0 .functor AND 1, L_0x834b1f8, L_0x834b278, C4<1>, C4<1>;
+L_0x834b230 .functor OR 1, L_0x834b078, L_0x834b2b0, C4<0>, C4<0>;
+v0x832f078_0 .net *"_s0", 0 0, L_0x834a398; 1 drivers
+v0x8349f08_0 .net *"_s10", 0 0, L_0x834acd0; 1 drivers
+v0x8349f68_0 .net *"_s12", 0 0, L_0x834ad40; 1 drivers
+v0x8349fc8_0 .net *"_s14", 0 0, L_0x834ade8; 1 drivers
+v0x834a030_0 .net *"_s16", 0 0, L_0x834ac60; 1 drivers
+v0x834a090_0 .net *"_s2", 0 0, L_0x834aad8; 1 drivers
+v0x834a110_0 .net *"_s20", 0 0, L_0x834afa0; 1 drivers
+v0x834a170_0 .net *"_s22", 0 0, L_0x834aaa0; 1 drivers
+v0x834a1f8_0 .net *"_s24", 0 0, L_0x834b0b0; 1 drivers
+v0x834a258_0 .net *"_s26", 0 0, L_0x834ab10; 1 drivers
+v0x834a2e8_0 .net *"_s28", 0 0, L_0x834b078; 1 drivers
+v0x834a348_0 .net *"_s30", 0 0, L_0x834b1f8; 1 drivers
+v0x834a3e0_0 .net *"_s32", 0 0, L_0x834b278; 1 drivers
+v0x834a440_0 .net *"_s34", 0 0, L_0x834b2b0; 1 drivers
+v0x834a4e0_0 .net *"_s4", 0 0, L_0x834ab48; 1 drivers
+v0x834a540_0 .net *"_s6", 0 0, L_0x834abf0; 1 drivers
+v0x834a5e8_0 .net *"_s8", 0 0, L_0x834ac98; 1 drivers
+v0x834a648_0 .net "chave", 0 0, v0x834a930_0; 1 drivers
+v0x834a6e8_0 .alias "p", 0 0, v0x834aa10_0;
+v0x834a738_0 .alias "s", 0 0, v0x834a9a0_0;
+v0x834a698_0 .net "x", 0 0, v0x834a890_0; 1 drivers
+v0x834a7e0_0 .net "y", 0 0, v0x834a8e0_0; 1 drivers
+S_0x832eff8 .scope begin, "start" "start" 2 32, 2 32, S_0x830bb50;
+ .timescale 0 0;
+S_0x832ef78 .scope begin, "main" "main" 2 38, 2 38, S_0x830bb50;
+ .timescale 0 0;
+    .scope S_0x830bb50;
+T_0 ;
+    %fork t_1, S_0x832eff8;
+    %jmp t_0;
+    .scope S_0x832eff8;
+t_1 ;
+    %set/v v0x834a890_0, 0, 1;
+    %set/v v0x834a8e0_0, 0, 1;
+    %set/v v0x834a930_0, 0, 1;
+    %end;
+    .scope S_0x830bb50;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x830bb50;
+T_1 ;
+    %fork t_3, S_0x832ef78;
+    %jmp t_2;
+    .scope S_0x832ef78;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exemplo0033 - Davidson Francis - 466499";
+    %vpi_call 2 40 "$display", "Test LU's module";
+    %vpi_call 2 42 "$display", "a  b  chave  saida1  saida2";
+    %vpi_call 2 43 "$monitor", "%b  %b  %b      %b   %b", v0x834a890_0, v0x834a8e0_0, v0x834a930_0, v0x834a9a0_0, v0x834aa10_0;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 0, 1;
+    %set/v v0x834a8e0_0, 0, 1;
+    %set/v v0x834a930_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 0, 1;
+    %set/v v0x834a8e0_0, 0, 1;
+    %set/v v0x834a930_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 0, 1;
+    %set/v v0x834a8e0_0, 1, 1;
+    %set/v v0x834a930_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 0, 1;
+    %set/v v0x834a8e0_0, 1, 1;
+    %set/v v0x834a930_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 1, 1;
+    %set/v v0x834a8e0_0, 0, 1;
+    %set/v v0x834a930_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 1, 1;
+    %set/v v0x834a8e0_0, 0, 1;
+    %set/v v0x834a930_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 1, 1;
+    %set/v v0x834a8e0_0, 1, 1;
+    %set/v v0x834a930_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x834a890_0, 1, 1;
+    %set/v v0x834a8e0_0, 1, 1;
+    %set/v v0x834a930_0, 1, 1;
+    %end;
+    .scope S_0x830bb50;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/arquivos/puc/2PERIODO/ARQUITETURA DE COMPUTADORES I - 3806.1.00/proj_verilog/466499_ED03/Exemplo0033.v";

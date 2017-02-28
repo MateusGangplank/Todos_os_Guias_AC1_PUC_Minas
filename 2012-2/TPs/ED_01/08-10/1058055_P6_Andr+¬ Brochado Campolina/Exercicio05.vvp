@@ -1,0 +1,56 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00ADE250 .scope module, "testnor" "testnor" 2 19;
+ .timescale 0 0;
+v00AD3320_0 .var "a", 0 0;
+v00AD3378_0 .var "b", 0 0;
+v00ADE460_0 .net "s", 0 0, L_00ADE560; 1 drivers
+S_00AD2DE8 .scope module, "NOR1" "norgate" 2 23, 2 11, S_00ADE250;
+ .timescale 0 0;
+L_00AD2E70 .functor NOT 1, v00AD3320_0, C4<0>, C4<0>, C4<0>;
+L_00ADE4F0 .functor NOT 1, v00AD3378_0, C4<0>, C4<0>, C4<0>;
+L_00ADE560 .functor AND 1, L_00AD2E70, L_00ADE4F0, C4<1>, C4<1>;
+v00ADE2D8_0 .net *"_s0", 0 0, L_00AD2E70; 1 drivers
+v00ADFF38_0 .net *"_s2", 0 0, L_00ADE4F0; 1 drivers
+v00ADFF90_0 .net "p", 0 0, v00AD3320_0; 1 drivers
+v00AD3270_0 .net "q", 0 0, v00AD3378_0; 1 drivers
+v00AD32C8_0 .alias "s", 0 0, v00ADE460_0;
+S_00AD2D60 .scope begin, "start" "start" 2 25, 2 25, S_00ADE250;
+ .timescale 0 0;
+    .scope S_00ADE250;
+T_0 ;
+    %fork t_1, S_00AD2D60;
+    %jmp t_0;
+    .scope S_00AD2D60;
+t_1 ;
+    %set/v v00AD3320_0, 0, 1;
+    %set/v v00AD3378_0, 0, 1;
+    %end;
+    .scope S_00ADE250;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00ADE250;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exercicio05 - Andre Campolina - 381217";
+    %vpi_call 2 31 "$display", "Tabela Verdade porta NOR de morgan";
+    %vpi_call 2 32 "$display", "\012a b\011s\012";
+    %vpi_call 2 33 "$monitor", "%b %b\011%b", v00AD3320_0, v00AD3378_0, v00ADE460_0;
+    %delay 1, 0;
+    %set/v v00AD3378_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00AD3320_0, 1, 1;
+    %set/v v00AD3378_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00AD3378_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\André\Documents\PUC\Ciencia da Computação\2 Periodo\Arquitetura 1\Exercicios\Guia01\Exercicio05.v";

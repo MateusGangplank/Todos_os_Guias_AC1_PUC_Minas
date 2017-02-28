@@ -1,0 +1,56 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00AA8FC0 .scope module, "tesnandnor" "tesnandnor" 2 26;
+ .timescale 0 0;
+v009AF0C8_0 .net "s", 0 0, L_009B0118; 1 drivers
+v009AF120_0 .var "x", 0 0;
+v009AF178_0 .var "y", 0 0;
+S_00AA9158 .scope module, "NAND1" "nandnor" 2 30, 2 10, S_00AA8FC0;
+ .timescale 0 0;
+L_00AAF550 .functor OR 1, v009AF120_0, v009AF120_0, C4<0>, C4<0>;
+L_00AAB5F0 .functor NOT 1, L_00AAF550, C4<0>, C4<0>, C4<0>;
+L_00AAB660 .functor OR 1, v009AF178_0, v009AF178_0, C4<0>, C4<0>;
+L_00AAB6D0 .functor NOT 1, L_00AAB660, C4<0>, C4<0>, C4<0>;
+L_00AA3D70 .functor OR 1, L_00AAB5F0, L_00AAB6D0, C4<0>, C4<0>;
+L_00AA3E18 .functor NOT 1, L_00AA3D70, C4<0>, C4<0>, C4<0>;
+L_009B00A8 .functor OR 1, L_00AA3E18, L_00AA3E18, C4<0>, C4<0>;
+L_009B0118 .functor NOT 1, L_009B00A8, C4<0>, C4<0>, C4<0>;
+v00AAE4D8_0 .net *"_s0", 0 0, L_00AAF550; 1 drivers
+v00AAE2D8_0 .net *"_s12", 0 0, L_009B00A8; 1 drivers
+v00AACF38_0 .net *"_s4", 0 0, L_00AAB660; 1 drivers
+v00AACF90_0 .net *"_s8", 0 0, L_00AA3D70; 1 drivers
+v00AAF4A0_0 .alias "s", 0 0, v009AF0C8_0;
+v00AAF4F8_0 .net "tem1", 0 0, L_00AAB5F0; 1 drivers
+v00AA2978_0 .net "tem2", 0 0, L_00AAB6D0; 1 drivers
+v00AA29D0_0 .net "tem3", 0 0, L_00AA3E18; 1 drivers
+v00AA2A28_0 .net "x", 0 0, v009AF120_0; 1 drivers
+v009AF070_0 .net "y", 0 0, v009AF178_0; 1 drivers
+    .scope S_00AA8FC0;
+T_0 ;
+    %vpi_call 2 33 "$display", "Guia 02 - Karen Alves Pereira - 407451";
+    %vpi_call 2 34 "$display", "Tabela-verdade da porta NAND construida atraves de portas NOR.";
+    %vpi_call 2 35 "$display", "Teste NANDNOR.";
+    %vpi_call 2 36 "$display", "\012~(x | y) = s\012";
+    %vpi_call 2 37 "$monitor", "  ~(%b | %b) = %b ", v009AF120_0, v009AF178_0, v009AF0C8_0;
+    %set/v v009AF120_0, 0, 1;
+    %set/v v009AF178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009AF120_0, 0, 1;
+    %set/v v009AF178_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009AF120_0, 1, 1;
+    %set/v v009AF178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009AF120_0, 1, 1;
+    %set/v v009AF178_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 02\Guia02_nandnor.v";

@@ -1,0 +1,146 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0081ACF8 .scope module, "test" "test" 2 57;
+ .timescale 0 0;
+v00767160_0 .var "firstCarry", 0 0;
+v007671B8_0 .net "nextCarry", 0 0, L_0073CAB0; 1 drivers
+v00767210_0 .net "resposta", 0 0, L_0073C5E0; 1 drivers
+RS_0074228C .resolv tri, L_00767370, L_00767478, L_00767580, C4<zzz>;
+v00767268_0 .net8 "s", 2 0, RS_0074228C; 3 drivers
+v007672C0_0 .var "x", 2 0;
+v00767318_0 .var "y", 2 0;
+S_0081ABE8 .scope module, "modulo" "Questao4" 2 66, 2 33, S_0081ACF8;
+ .timescale 0 0;
+L_0073C5E0 .functor OR 1, L_00767688, L_007676E0, L_00767738, C4<0>;
+v0081C7C8_0 .net *"_s19", 0 0, L_00767688; 1 drivers
+v0081C820_0 .net *"_s21", 0 0, L_007676E0; 1 drivers
+v0081C878_0 .net *"_s23", 0 0, L_00767738; 1 drivers
+v0081C8D0_0 .net "a", 0 0, L_0073C458; 1 drivers
+v0081C928_0 .net "b", 0 0, L_0073C7D8; 1 drivers
+v0081C980_0 .net "firstCarry", 0 0, v00767160_0; 1 drivers
+v0081C9D8_0 .alias "nextCarry", 0 0, v007671B8_0;
+v00767000_0 .alias "resposta", 0 0, v00767210_0;
+v00767058_0 .alias "s", 2 0, v00767268_0;
+v007670B0_0 .net "x", 2 0, v007672C0_0; 1 drivers
+v00767108_0 .net "y", 2 0, v00767318_0; 1 drivers
+L_00767370 .part/pv L_0073C340, 0, 1, 3;
+L_007673C8 .part v007672C0_0, 0, 1;
+L_00767420 .part v00767318_0, 0, 1;
+L_00767478 .part/pv L_0073C6C0, 1, 1, 3;
+L_007674D0 .part v007672C0_0, 1, 1;
+L_00767528 .part v00767318_0, 1, 1;
+L_00767580 .part/pv L_0073C998, 2, 1, 3;
+L_007675D8 .part v007672C0_0, 2, 1;
+L_00767630 .part v00767318_0, 2, 1;
+L_00767688 .part RS_0074228C, 0, 1;
+L_007676E0 .part RS_0074228C, 1, 1;
+L_00767738 .part RS_0074228C, 2, 1;
+S_0081AE90 .scope module, "gate1" "fullAdder" 2 43, 2 11, S_0081ABE8;
+ .timescale 0 0;
+L_0081FCB0 .functor NOT 1, L_00767420, C4<0>, C4<0>, C4<0>;
+L_0081CC88 .functor XOR 1, L_007673C8, L_0081FCB0, C4<0>, C4<0>;
+L_0073C340 .functor XOR 1, L_0081CC88, v00767160_0, C4<0>, C4<0>;
+L_0073C3B0 .functor AND 1, L_007673C8, L_0081FCB0, C4<1>, C4<1>;
+L_0073C420 .functor AND 1, L_0081CC88, v00767160_0, C4<1>, C4<1>;
+L_0073C458 .functor OR 1, L_0073C3B0, L_0073C420, C4<0>, C4<0>;
+v0081C458_0 .alias "firstCarry", 0 0, v0081C980_0;
+v0081C4B0_0 .alias "nextCarry", 0 0, v0081C8D0_0;
+v0081C508_0 .net "ny", 0 0, L_0081FCB0; 1 drivers
+v0081C560_0 .alias "resposta", 0 0, v00767210_0;
+v0081C5B8_0 .net "s", 0 0, L_0073C340; 1 drivers
+v0081C610_0 .net "s1", 0 0, L_0081CC88; 1 drivers
+v0081C668_0 .net "s2", 0 0, L_0073C3B0; 1 drivers
+v0081C6C0_0 .net "s3", 0 0, L_0073C420; 1 drivers
+v0081C718_0 .net "x", 0 0, L_007673C8; 1 drivers
+v0081C770_0 .net "y", 0 0, L_00767420; 1 drivers
+S_0081AF18 .scope module, "gate2" "fullAdder" 2 45, 2 11, S_0081ABE8;
+ .timescale 0 0;
+L_0073C618 .functor NOT 1, L_00767528, C4<0>, C4<0>, C4<0>;
+L_0073C650 .functor XOR 1, L_007674D0, L_0073C618, C4<0>, C4<0>;
+L_0073C6C0 .functor XOR 1, L_0073C650, L_0073C458, C4<0>, C4<0>;
+L_0073C730 .functor AND 1, L_007674D0, L_0073C618, C4<1>, C4<1>;
+L_0073C7A0 .functor AND 1, L_0073C650, L_0073C458, C4<1>, C4<1>;
+L_0073C7D8 .functor OR 1, L_0073C730, L_0073C7A0, C4<0>, C4<0>;
+v0081C0E8_0 .alias "firstCarry", 0 0, v0081C8D0_0;
+v0081C140_0 .alias "nextCarry", 0 0, v0081C928_0;
+v0081C198_0 .net "ny", 0 0, L_0073C618; 1 drivers
+v0081C1F0_0 .alias "resposta", 0 0, v00767210_0;
+v0081C248_0 .net "s", 0 0, L_0073C6C0; 1 drivers
+v0081C2A0_0 .net "s1", 0 0, L_0073C650; 1 drivers
+v0081C2F8_0 .net "s2", 0 0, L_0073C730; 1 drivers
+v0081C350_0 .net "s3", 0 0, L_0073C7A0; 1 drivers
+v0081C3A8_0 .net "x", 0 0, L_007674D0; 1 drivers
+v0081C400_0 .net "y", 0 0, L_00767528; 1 drivers
+S_0081AFA0 .scope module, "gate3" "fullAdder" 2 47, 2 11, S_0081ABE8;
+ .timescale 0 0;
+L_0073C8F0 .functor NOT 1, L_00767630, C4<0>, C4<0>, C4<0>;
+L_0073C928 .functor XOR 1, L_007675D8, L_0073C8F0, C4<0>, C4<0>;
+L_0073C998 .functor XOR 1, L_0073C928, L_0073C7D8, C4<0>, C4<0>;
+L_0073CA08 .functor AND 1, L_007675D8, L_0073C8F0, C4<1>, C4<1>;
+L_0073CA78 .functor AND 1, L_0073C928, L_0073C7D8, C4<1>, C4<1>;
+L_0073CAB0 .functor OR 1, L_0073CA08, L_0073CA78, C4<0>, C4<0>;
+v0081BD78_0 .alias "firstCarry", 0 0, v0081C928_0;
+v0081BDD0_0 .alias "nextCarry", 0 0, v007671B8_0;
+v0081BE28_0 .net "ny", 0 0, L_0073C8F0; 1 drivers
+v0081BE80_0 .alias "resposta", 0 0, v00767210_0;
+v0081BED8_0 .net "s", 0 0, L_0073C998; 1 drivers
+v0081BF30_0 .net "s1", 0 0, L_0073C928; 1 drivers
+v0081BF88_0 .net "s2", 0 0, L_0073CA08; 1 drivers
+v0081BFE0_0 .net "s3", 0 0, L_0073CA78; 1 drivers
+v0081C038_0 .net "x", 0 0, L_007675D8; 1 drivers
+v0081C090_0 .net "y", 0 0, L_00767630; 1 drivers
+S_0081AC70 .scope begin, "start" "start" 2 72, 2 72, S_0081ACF8;
+ .timescale 0 0;
+    .scope S_0081ACF8;
+T_0 ;
+    %fork t_1, S_0081AC70;
+    %jmp t_0;
+    .scope S_0081AC70;
+t_1 ;
+    %vpi_call 2 75 "$display", "Exemplo0024 - Isabel Bicalho Amaro - 451580";
+    %vpi_call 2 76 "$display", "Test ALU's full adder\012";
+    %vpi_call 2 77 "$display", "1 - Sao diferentes.";
+    %vpi_call 2 78 "$display", "0 - Sao iguais.";
+    %delay 1, 0;
+    %set/v v007672C0_0, 0, 3;
+    %set/v v00767318_0, 0, 3;
+    %set/v v00767160_0, 1, 1;
+    %vpi_call 2 84 "$monitor", "x = %3b  y = %3b  Resposta = %3b", v007672C0_0, v00767318_0, v00767210_0;
+    %delay 1, 0;
+    %movi 8, 2, 3;
+    %set/v v007672C0_0, 8, 3;
+    %movi 8, 2, 3;
+    %set/v v00767318_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 4, 3;
+    %set/v v007672C0_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v00767318_0, 8, 3;
+    %delay 1, 0;
+    %set/v v007672C0_0, 1, 3;
+    %movi 8, 2, 3;
+    %set/v v00767318_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 3, 3;
+    %set/v v007672C0_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v00767318_0, 8, 3;
+    %delay 1, 0;
+    %movi 8, 5, 3;
+    %set/v v007672C0_0, 8, 3;
+    %movi 8, 5, 3;
+    %set/v v00767318_0, 8, 3;
+    %end;
+    .scope S_0081ACF8;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\2º Periodo\Arquitetura de Computadores\Guias\Guia 4\Guia0024.v";

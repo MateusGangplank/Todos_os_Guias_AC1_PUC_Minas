@@ -1,0 +1,64 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00572500 .scope module, "testef4" "testef4" 2 16;
+ .timescale 0 0;
+v005B82F8_0 .net "sa", 3 0, L_00585708; 1 drivers
+v005B8350_0 .net "sb", 3 0, L_005B9160; 1 drivers
+v005B83A8_0 .var "x", 3 0;
+v005B8400_0 .var "y", 3 0;
+v005B8458_0 .var "z", 3 0;
+S_00572588 .scope module, "modulo" "f4" 2 24, 2 11, S_00572500;
+ .timescale 0 0;
+L_00570050 .functor OR 4, v005B83A8_0, v005B8400_0, C4<0000>, C4<0000>;
+L_005700F8 .functor AND 4, L_00570050, v005B8458_0, C4<1111>, C4<1111>;
+L_00585660 .functor XOR 4, v005B83A8_0, v005B8400_0, C4<0000>, C4<0000>;
+L_00585698 .functor AND 4, L_00585660, v005B8458_0, C4<1111>, C4<1111>;
+L_00585708 .functor OR 4, L_005700F8, L_00585698, C4<0000>, C4<0000>;
+L_005B8E48 .functor OR 4, v005B83A8_0, v005B8400_0, C4<0000>, C4<0000>;
+L_00570088 .functor NOT 4, L_005B8E48, C4<0000>, C4<0000>, C4<0000>;
+L_005B8F50 .functor NOT 4, v005B8458_0, C4<0000>, C4<0000>, C4<0000>;
+L_00570168 .functor AND 4, L_00570088, L_005B8F50, C4<1111>, C4<1111>;
+L_005B8FD8 .functor XOR 4, v005B83A8_0, v005B8400_0, C4<0000>, C4<0000>;
+L_005B9010 .functor NOT 4, L_005B8FD8, C4<0000>, C4<0000>, C4<0000>;
+L_005B9080 .functor NOT 4, v005B8458_0, C4<0000>, C4<0000>, C4<0000>;
+L_005B90B8 .functor AND 4, L_005B9010, L_005B9080, C4<1111>, C4<1111>;
+L_005B9160 .functor OR 4, L_00570168, L_005B90B8, C4<0000>, C4<0000>;
+v006C3AA8_0 .net *"_s0", 3 0, L_00570050; 1 drivers
+v006C3B00_0 .net *"_s10", 3 0, L_005B8E48; 1 drivers
+v006C3B58_0 .net *"_s12", 3 0, L_00570088; 1 drivers
+v005B7E28_0 .net *"_s14", 3 0, L_005B8F50; 1 drivers
+v005B7E80_0 .net *"_s16", 3 0, L_00570168; 1 drivers
+v005B7ED8_0 .net *"_s18", 3 0, L_005B8FD8; 1 drivers
+v005B7F30_0 .net *"_s2", 3 0, L_005700F8; 1 drivers
+v005B7F88_0 .net *"_s20", 3 0, L_005B9010; 1 drivers
+v005B7FE0_0 .net *"_s22", 3 0, L_005B9080; 1 drivers
+v005B8038_0 .net *"_s24", 3 0, L_005B90B8; 1 drivers
+v005B8090_0 .net *"_s4", 3 0, L_00585660; 1 drivers
+v005B80E8_0 .net *"_s6", 3 0, L_00585698; 1 drivers
+v005B8140_0 .net "a", 3 0, v005B83A8_0; 1 drivers
+v005B8198_0 .net "b", 3 0, v005B8400_0; 1 drivers
+v005B81F0_0 .net "c", 3 0, v005B8458_0; 1 drivers
+v005B8248_0 .alias "s0", 3 0, v005B82F8_0;
+v005B82A0_0 .alias "s1", 3 0, v005B8350_0;
+    .scope S_00572500;
+T_0 ;
+    %vpi_call 2 29 "$display", "Exemplo0034 -Milton costa teles da silva - 002751";
+    %vpi_call 2 30 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005B83A8_0, 8, 4;
+    %movi 8, 7, 4;
+    %set/v v005B8400_0, 8, 4;
+    %set/v v005B8458_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "\012%3b  %3b %3b= %3b", v005B83A8_0, v005B8400_0, v005B8458_0, v005B82F8_0, v005B8350_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\computação 1°semestre 2012\AC I\guia-03 0027541\Exemplo0034.v";

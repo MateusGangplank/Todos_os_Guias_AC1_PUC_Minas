@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000376B8 .scope module, "testnandgate" "testnandgate" 2 19;
+ .timescale 0 0;
+v0063A148_0 .var "a", 0 0;
+v0063A1A0_0 .var "b", 0 0;
+v0063A1F8_0 .net "s", 0 0, L_0063A318; 1 drivers
+S_000377C8 .scope module, "NAND1" "nandgate" 2 25, 2 10, S_000376B8;
+ .timescale 0 0;
+L_000366C8 .functor NOT 1, v0063A148_0, C4<0>, C4<0>, C4<0>;
+L_0063A2A8 .functor NOT 1, v0063A1A0_0, C4<0>, C4<0>, C4<0>;
+L_0063A318 .functor OR 1, L_000366C8, L_0063A2A8, C4<0>, C4<0>;
+v0003ACD8_0 .net *"_s0", 0 0, L_000366C8; 1 drivers
+v00639F88_0 .net *"_s2", 0 0, L_0063A2A8; 1 drivers
+v00639FF8_0 .net "a", 0 0, v0063A148_0; 1 drivers
+v0063A080_0 .net "b", 0 0, v0063A1A0_0; 1 drivers
+v0063A0F0_0 .alias "s", 0 0, v0063A1F8_0;
+S_00037740 .scope begin, "start" "start" 2 27, 2 27, S_000376B8;
+ .timescale 0 0;
+    .scope S_000376B8;
+T_0 ;
+    %fork t_1, S_00037740;
+    %jmp t_0;
+    .scope S_00037740;
+t_1 ;
+    %set/v v0063A148_0, 0, 1;
+    %set/v v0063A1A0_0, 0, 1;
+    %end;
+    .scope S_000376B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_000376B8;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exemplo0009 - Douglas Henrique Silva Correa - 466503";
+    %vpi_call 2 36 "$display", "Test NAND gate";
+    %vpi_call 2 37 "$display", "\012~a | ~b = s\012";
+    %set/v v0063A148_0, 0, 1;
+    %set/v v0063A1A0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~%b | ~%b = %b", v0063A148_0, v0063A1A0_0, v0063A1F8_0;
+    %set/v v0063A148_0, 0, 1;
+    %set/v v0063A1A0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~%b | ~%b = %b", v0063A148_0, v0063A1A0_0, v0063A1F8_0;
+    %set/v v0063A148_0, 1, 1;
+    %set/v v0063A1A0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "~%b | ~%b = %b", v0063A148_0, v0063A1A0_0, v0063A1F8_0;
+    %set/v v0063A148_0, 1, 1;
+    %set/v v0063A1A0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "~%b | ~%b = %b", v0063A148_0, v0063A1A0_0, v0063A1F8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\†Douglas†\Desktop\Nova pasta\Exemplo0009.v";

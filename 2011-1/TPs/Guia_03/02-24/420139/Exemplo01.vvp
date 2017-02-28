@@ -1,0 +1,93 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF000 .scope module, "meioSomador" "meioSomador" 2 48;
+ .timescale 0 0;
+v006A51C0_0 .var "e1", 0 0;
+v006A5218_0 .var "e2", 0 0;
+v006A5270_0 .net "s1", 0 0, L_006A5130; 1 drivers
+v006A5300_0 .net "s2", 0 0, L_006A50A0; 1 drivers
+v006A5390_0 .net "s3", 0 0, L_006A52C8; 1 drivers
+v006A5420_0 .net "sResp0", 0 0, L_006A5688; 1 drivers
+v006A5478_0 .net "sResp1", 0 0, L_006A5898; 1 drivers
+S_006A4FC8 .scope module, "and1" "andgate" 2 52, 2 21, S_003EF000;
+ .timescale 0 0;
+L_006A5688 .functor AND 1, v006A51C0_0, v006A5218_0, C4<1>, C4<1>;
+v006A5048_0 .net "e1", 0 0, v006A51C0_0; 1 drivers
+v006A50D8_0 .net "e2", 0 0, v006A5218_0; 1 drivers
+v006A5168_0 .alias "s1", 0 0, v006A5420_0;
+S_006A4E20 .scope module, "and2" "andgate" 2 55, 2 21, S_003EF000;
+ .timescale 0 0;
+L_006A5130 .functor AND 1, v006A51C0_0, v006A5218_0, C4<1>, C4<1>;
+v006A4EA0_0 .alias "e1", 0 0, v006A5048_0;
+v006A4EF8_0 .alias "e2", 0 0, v006A50D8_0;
+v006A4F50_0 .alias "s1", 0 0, v006A5270_0;
+S_006A4CF0 .scope module, "not1" "notgate" 2 56, 2 11, S_003EF000;
+ .timescale 0 0;
+L_006A50A0 .functor NOT 1, L_006A5130, C4<0>, C4<0>, C4<0>;
+v006A4D70_0 .alias "e1", 0 0, v006A5270_0;
+v006A4DC8_0 .alias "s1", 0 0, v006A5300_0;
+S_006A4B20 .scope module, "or1" "orgate" 2 57, 2 31, S_003EF000;
+ .timescale 0 0;
+L_006A52C8 .functor OR 1, v006A51C0_0, v006A5218_0, C4<0>, C4<0>;
+v006A4BA0_0 .alias "e1", 0 0, v006A5048_0;
+v006A4C10_0 .alias "e2", 0 0, v006A50D8_0;
+v006A4C80_0 .alias "s1", 0 0, v006A5390_0;
+S_00674CA8 .scope module, "and3" "andgate" 2 58, 2 21, S_003EF000;
+ .timescale 0 0;
+L_006A5898 .functor AND 1, L_006A50A0, L_006A52C8, C4<1>, C4<1>;
+v003ED508_0 .alias "e1", 0 0, v006A5300_0;
+v006A4A28_0 .alias "e2", 0 0, v006A5390_0;
+v006A4A98_0 .alias "s1", 0 0, v006A5478_0;
+S_003EF560 .scope begin, "start" "start" 2 60, 2 60, S_003EF000;
+ .timescale 0 0;
+S_003EF360 .scope begin, "main" "main" 2 65, 2 65, S_003EF000;
+ .timescale 0 0;
+S_003EF1B0 .scope module, "norgate" "norgate" 2 41;
+ .timescale 0 0;
+L_006A53E8 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_006A5358 .functor NOT 1, L_006A53E8, C4<0>, C4<0>, C4<0>;
+v006A54F8_0 .net *"_s0", 0 0, L_006A53E8; 1 drivers
+v006A5550_0 .net "e1", 0 0, C4<z>; 0 drivers
+v006A55A8_0 .net "e2", 0 0, C4<z>; 0 drivers
+v006A5618_0 .net "s1", 0 0, L_006A5358; 1 drivers
+    .scope S_003EF000;
+T_0 ;
+    %fork t_1, S_003EF560;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A51C0_0, 0, 1;
+    %set/v v006A5218_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EF000;
+T_1 ;
+    %fork t_3, S_003EF360;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 67 "$display", "Guia 03 - Exemplo 01";
+    %vpi_call 2 68 "$display", "Meio Somador";
+    %vpi_call 2 69 "$monitor", "(%b + %b) = %b %b", v006A51C0_0, v006A5218_0, v006A5420_0, v006A5478_0;
+    %delay 1, 0;
+    %set/v v006A51C0_0, 0, 1;
+    %set/v v006A5218_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A51C0_0, 1, 1;
+    %set/v v006A5218_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A51C0_0, 1, 1;
+    %set/v v006A5218_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Rafael\PUC-Minas\2º Periodo\ARQ I\Trabalhos\Guia_03\Exemplo01.v";

@@ -1,0 +1,96 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00339A18 .scope module, "test_f4" "test_f4" 2 49;
+ .timescale 0 0;
+v0075CF00_0 .net "k", 3 0, C4<zzzz>; 0 drivers
+v0075CF58_0 .net "l", 3 0, L_00787000; 1 drivers
+v0075CFB0_0 .net "m", 3 0, L_007870A8; 1 drivers
+v0075D008_0 .net "n", 3 0, L_00787188; 1 drivers
+v0075D060_0 .net "o", 3 0, L_00787230; 1 drivers
+v0075D0B8_0 .net "p", 3 0, L_007872A0; 1 drivers
+v0075D110_0 .var "x", 3 0;
+v0075D168_0 .var "y", 3 0;
+v0075D1C0_0 .net "z", 3 0, L_0033F8C8; 1 drivers
+S_00339EE0 .scope module, "modulo" "f4" 2 61, 2 15, S_00339A18;
+ .timescale 0 0;
+L_0033F8C8 .functor XOR 4, v0075D110_0, v0075D168_0, C4<0000>, C4<0000>;
+v0075CDF8_0 .net "a", 3 0, v0075D110_0; 1 drivers
+v0075CE50_0 .net "b", 3 0, v0075D168_0; 1 drivers
+v0075CEA8_0 .alias "s", 3 0, v0075D1C0_0;
+S_00339E58 .scope module, "modulo2" "f3" 2 62, 2 21, S_00339A18;
+ .timescale 0 0;
+L_0033F900 .functor XOR 4, v0075D110_0, v0075D168_0, C4<0000>, C4<0000>;
+L_0033F938 .functor NOT 4, L_0033F900, C4<0000>, C4<0000>, C4<0000>;
+v0075CBE8_0 .net *"_s0", 3 0, L_0033F900; 1 drivers
+v0075CC40_0 .net *"_s2", 3 0, L_0033F938; 1 drivers
+v0075CC98_0 .alias "a", 3 0, v0075CDF8_0;
+v0075CCF0_0 .alias "b", 3 0, v0075CE50_0;
+v0075CD48_0 .net "s1", 0 0, L_0075D218; 1 drivers
+v0075CDA0_0 .alias "s2", 3 0, v0075CF00_0;
+L_0075D218 .part L_0033F938, 0, 1;
+S_00339DD0 .scope module, "modulo3" "f5" 2 63, 2 10, S_00339A18;
+ .timescale 0 0;
+L_00787000 .functor AND 4, L_0033F8C8, C4<zzzz>, C4<1111>, C4<1111>;
+v0075CAE0_0 .alias "a", 3 0, v0075D1C0_0;
+v0075CB38_0 .alias "b", 3 0, v0075CF00_0;
+v0075CB90_0 .alias "s3", 3 0, v0075CF58_0;
+S_00339D48 .scope module, "modulo4" "f6" 2 64, 2 27, S_00339A18;
+ .timescale 0 0;
+L_00787070 .functor AND 4, v0075D110_0, v0075D168_0, C4<1111>, C4<1111>;
+L_007870A8 .functor NOT 4, L_00787070, C4<0000>, C4<0000>, C4<0000>;
+v0075C980_0 .net *"_s0", 3 0, L_00787070; 1 drivers
+v0075C9D8_0 .alias "a", 3 0, v0075CDF8_0;
+v0075CA30_0 .alias "b", 3 0, v0075CE50_0;
+v0075CA88_0 .alias "s3", 3 0, v0075CFB0_0;
+S_00339CC0 .scope module, "modulo5" "f7" 2 65, 2 33, S_00339A18;
+ .timescale 0 0;
+L_00787150 .functor OR 4, v0075D110_0, v0075D168_0, C4<0000>, C4<0000>;
+L_00787188 .functor NOT 4, L_00787150, C4<0000>, C4<0000>, C4<0000>;
+v0033F818_0 .net *"_s0", 3 0, L_00787150; 1 drivers
+v0033F870_0 .alias "a", 3 0, v0075CDF8_0;
+v0075C8D0_0 .alias "b", 3 0, v0075CE50_0;
+v0075C928_0 .alias "s3", 3 0, v0075D008_0;
+S_00339BB0 .scope module, "modulo6" "f8" 2 66, 2 39, S_00339A18;
+ .timescale 0 0;
+L_00787230 .functor OR 4, v0075D110_0, v0075D168_0, C4<0000>, C4<0000>;
+v0033FDC0_0 .alias "a", 3 0, v0075CDF8_0;
+v0033FE18_0 .alias "b", 3 0, v0075CE50_0;
+v0033FE70_0 .alias "s3", 3 0, v0075D060_0;
+S_00339AA0 .scope module, "modulo7" "f9" 2 67, 2 45, S_00339A18;
+ .timescale 0 0;
+L_007872A0 .functor NOT 4, v0075D110_0, C4<0000>, C4<0000>, C4<0000>;
+v00761560_0 .alias "a", 3 0, v0075CDF8_0;
+v0074E508_0 .alias "s3", 3 0, v0075D0B8_0;
+    .scope S_00339A18;
+T_0 ;
+    %vpi_call 2 70 "$display", "Exemplo0034 - Gustavo Jota Resende - 427413";
+    %vpi_call 2 71 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v0075D110_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0075D168_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 75 "$display", " XNOR %b & %b = %b", v0075D110_0, v0075D168_0, v0075CF00_0;
+    %delay 1, 0;
+    %vpi_call 2 76 "$display", " XOR %b | %b = %b", v0075D110_0, v0075D168_0, v0075D1C0_0;
+    %delay 1, 0;
+    %vpi_call 2 77 "$display", " AND %b | %b = %b", v0075D110_0, v0075D168_0, v0075CF58_0;
+    %delay 1, 0;
+    %vpi_call 2 78 "$display", " NAND %b | %b = %b", v0075D110_0, v0075D168_0, v0075CFB0_0;
+    %delay 1, 0;
+    %vpi_call 2 79 "$display", " NOR %b | %b = %b", v0075D110_0, v0075D168_0, v0075D008_0;
+    %delay 1, 0;
+    %vpi_call 2 80 "$display", " OR %b | %b = %b", v0075D110_0, v0075D168_0, v0075D060_0;
+    %delay 1, 0;
+    %vpi_call 2 81 "$display", " NOT %b | %b = %b", v0075D110_0, v0075D0B8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\jotar\Documents\Gustavo\PUC\Segundo Período\Arquitetura de Computadores 1\427413\Guia 03.2\Exemplo0035.v";

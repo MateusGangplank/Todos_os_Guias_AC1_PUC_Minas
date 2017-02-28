@@ -1,0 +1,67 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BD9430 .scope module, "test_f4" "test_f4" 2 25;
+ .timescale 0 0;
+v00BDB5C8_0 .var "w", 0 0;
+v00BDB620_0 .var "x", 1 0;
+v00BDB678_0 .var "y", 1 0;
+v00BDB6D0_0 .net "z", 0 0, L_005EAA48; 1 drivers
+S_00BD94B8 .scope module, "modulo" "f4" 2 31, 2 9, S_00BD9430;
+ .timescale 0 0;
+L_00BDFED0 .functor XOR 1, L_00BDB728, v00BDB5C8_0, C4<0>, C4<0>;
+L_00BDFFB0 .functor XOR 1, L_00BDB780, L_00BDD458, C4<0>, C4<0>;
+L_00BDD458 .functor NOT 1, v00BDB5C8_0, C4<0>, C4<0>, C4<0>;
+L_00BDD4C8 .functor XOR 1, L_00BDB7D8, v00BDB5C8_0, C4<0>, C4<0>;
+L_00BDD500 .functor XOR 1, L_00BDB830, L_00BD2EA8, C4<0>, C4<0>;
+L_00BD2EA8 .functor NOT 1, v00BDB5C8_0, C4<0>, C4<0>, C4<0>;
+L_00BD2F18 .functor AND 1, L_00BDFED0, L_00BDFFB0, C4<1>, C4<1>;
+L_005EA9A0 .functor AND 1, L_00BDD4C8, L_00BDD500, C4<1>, C4<1>;
+L_005EAA48 .functor AND 1, L_00BD2F18, L_005EAAF0, C4<1>, C4<1>;
+L_005EAAF0 .functor NOT 1, L_005EA9A0, C4<0>, C4<0>, C4<0>;
+v00BDAFF0_0 .net *"_s1", 0 0, L_00BDB728; 1 drivers
+v00BDB048_0 .net *"_s10", 0 0, L_00BD2EA8; 1 drivers
+v00BDB0A0_0 .net *"_s12", 0 0, L_005EAAF0; 1 drivers
+v00BDB0F8_0 .net *"_s3", 0 0, L_00BDB780; 1 drivers
+v00BDB150_0 .net *"_s4", 0 0, L_00BDD458; 1 drivers
+v00BDB1A8_0 .net *"_s7", 0 0, L_00BDB7D8; 1 drivers
+v00BDB200_0 .net *"_s9", 0 0, L_00BDB830; 1 drivers
+v00BDB258_0 .net "a", 1 0, v00BDB620_0; 1 drivers
+v00BDB2B0_0 .net "b", 1 0, v00BDB678_0; 1 drivers
+v00BDB308_0 .net "c", 0 0, v00BDB5C8_0; 1 drivers
+v00BDB360_0 .alias "s", 0 0, v00BDB6D0_0;
+v00BDB3B8_0 .net "w1", 0 0, L_00BDFED0; 1 drivers
+v00BDB410_0 .net "w2", 0 0, L_00BDFFB0; 1 drivers
+v00BDB468_0 .net "w3", 0 0, L_00BDD4C8; 1 drivers
+v00BDB4C0_0 .net "w4", 0 0, L_00BDD500; 1 drivers
+v00BDB518_0 .net "w5", 0 0, L_00BD2F18; 1 drivers
+v00BDB570_0 .net "w6", 0 0, L_005EA9A0; 1 drivers
+L_00BDB728 .part v00BDB678_0, 1, 1;
+L_00BDB780 .part v00BDB620_0, 1, 1;
+L_00BDB7D8 .part v00BDB678_0, 0, 1;
+L_00BDB830 .part v00BDB620_0, 0, 1;
+    .scope S_00BD9430;
+T_0 ;
+    %vpi_call 2 34 "$display", "Exemplo0037 - Pedro Henrique Vilar Locatelli - 427453";
+    %vpi_call 2 35 "$display", "Test LU's module";
+    %vpi_call 2 36 "$display", "0-menor 1-maior";
+    %vpi_call 2 37 "$display", " a   b    op  result";
+    %set/v v00BDB620_0, 1, 2;
+    %movi 8, 1, 2;
+    %set/v v00BDB678_0, 8, 2;
+    %set/v v00BDB5C8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%3b %3b %3b %3b", v00BDB620_0, v00BDB678_0, v00BDB5C8_0, v00BDB6D0_0;
+    %set/v v00BDB5C8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%3b %3b %3b %3b", v00BDB620_0, v00BDB678_0, v00BDB5C8_0, v00BDB6D0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Baste\Downloads\Arq1\Guia03\Exemplo0037.v";

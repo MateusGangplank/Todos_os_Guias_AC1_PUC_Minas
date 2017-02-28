@@ -1,0 +1,76 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672D20 .scope module, "test" "test" 2 40;
+ .timescale 0 0;
+v006A3EF8_0 .var "d", 0 0;
+v006A3F70_0 .var "en", 0 0;
+v006A3FE8_0 .net "q", 0 0, L_006A4258; 1 drivers
+v006A4040_0 .net "qn", 0 0, L_006A4290; 1 drivers
+S_003EFB48 .scope module, "Latch1" "dlatch" 2 44, 2 24, S_00672D20;
+ .timescale 0 0;
+L_006A4098 .functor NAND 1, v006A3F70_0, v006A3EF8_0, C4<1>, C4<1>;
+L_006A4178 .functor NOT 1, v006A3EF8_0, C4<0>, C4<0>, C4<0>;
+L_006A41B0 .functor NAND 1, v006A3F70_0, L_006A4178, C4<1>, C4<1>;
+v006A3C20_0 .net "d", 0 0, v006A3EF8_0; 1 drivers
+v006A3C90_0 .net "en", 0 0, v006A3F70_0; 1 drivers
+v006A3D00_0 .alias "q", 0 0, v006A3FE8_0;
+v006A3D70_0 .alias "qn", 0 0, v006A4040_0;
+v006A3DC8_0 .net "s1", 0 0, L_006A4098; 1 drivers
+v006A3E20_0 .net "s2", 0 0, L_006A4178; 1 drivers
+v006A3E78_0 .net "s3", 0 0, L_006A41B0; 1 drivers
+S_003EFBC8 .scope module, "C1" "SRlatch" 2 32, 2 11, S_003EFB48;
+ .timescale 0 0;
+L_006A4258 .functor NAND 1, L_006A41B0, L_006A4290, C4<1>, C4<1>;
+L_006A4290 .functor NAND 1, L_006A4098, L_006A4258, C4<1>, C4<1>;
+v003EFC48_0 .alias "q", 0 0, v006A3FE8_0;
+v006A3AB8_0 .alias "qn", 0 0, v006A4040_0;
+v006A3B28_0 .alias "r", 0 0, v006A3DC8_0;
+v006A3BB0_0 .alias "s", 0 0, v006A3E78_0;
+S_003EFAC8 .scope begin, "start" "start" 2 46, 2 46, S_00672D20;
+ .timescale 0 0;
+S_003EFA48 .scope begin, "main" "main" 2 51, 2 51, S_00672D20;
+ .timescale 0 0;
+    .scope S_00672D20;
+T_0 ;
+    %fork t_1, S_003EFAC8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A3EF8_0, 1, 1;
+    %set/v v006A3F70_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00672D20;
+T_1 ;
+    %fork t_3, S_003EFA48;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 53 "$display", "\012Exercicio 10-05 - Julio Cezar Taveira Araujo - 380776";
+    %vpi_call 2 54 "$display", "\012  En [b] | D [b] | Q = [b] |Q = [b]\012";
+    %vpi_call 2 55 "$monitor", "En [%b] | D [%b] | Q = [%b] |Q = [%b]", v006A3F70_0, v006A3EF8_0, v006A3FE8_0, v006A4040_0;
+    %delay 1, 0;
+    %set/v v006A3EF8_0, 0, 1;
+    %set/v v006A3F70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3EF8_0, 0, 1;
+    %set/v v006A3F70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3EF8_0, 0, 1;
+    %set/v v006A3F70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3EF8_0, 1, 1;
+    %set/v v006A3F70_0, 0, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\380776\Ex1005.v";

@@ -1,0 +1,168 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x86e1d78 .scope module, "testesubtrator" "testesubtrator" 2 48;
+ .timescale 0 0;
+v0x8700aa0_0 .var "a0", 0 0;
+v0x8700b10_0 .var "a1", 0 0;
+v0x8700b80_0 .var "b0", 0 0;
+v0x8700bf0_0 .var "b1", 0 0;
+v0x8700c60_0 .net "s0", 0 0, L_0x8700e88; 1 drivers
+v0x8700cd0_0 .net "s1", 0 0, L_0x87007d8; 1 drivers
+v0x8700d78_0 .net "s2", 0 0, L_0x8700e50; 1 drivers
+v0x8700e00_0 .net "s3", 0 0, L_0x8701358; 1 drivers
+S_0x86d2248 .scope module, "MULTIPLICADOR1" "multiplicador" 2 53, 2 30, S_0x86e1d78;
+ .timescale 0 0;
+L_0x8700e88 .functor AND 1, v0x8700aa0_0, v0x8700b80_0, C4<1>, C4<1>;
+L_0x8700f68 .functor AND 1, v0x8700aa0_0, v0x8700bf0_0, C4<1>, C4<1>;
+L_0x8701010 .functor AND 1, v0x8700b80_0, v0x8700b10_0, C4<1>, C4<1>;
+L_0x87010b8 .functor AND 1, v0x8700b10_0, v0x8700bf0_0, C4<1>, C4<1>;
+v0x8700548_0 .net "a0", 0 0, v0x8700aa0_0; 1 drivers
+v0x87005b8_0 .net "a1", 0 0, v0x8700b10_0; 1 drivers
+v0x8700618_0 .net "aux1", 0 0, L_0x8700f68; 1 drivers
+v0x8700688_0 .net "aux2", 0 0, L_0x8701010; 1 drivers
+v0x87006f8_0 .net "aux3", 0 0, L_0x87010b8; 1 drivers
+v0x8700768_0 .net "aux4", 0 0, L_0x8701160; 1 drivers
+v0x8700810_0 .net "b0", 0 0, v0x8700b80_0; 1 drivers
+v0x8700860_0 .net "b1", 0 0, v0x8700bf0_0; 1 drivers
+v0x87008d8_0 .alias "s0", 0 0, v0x8700c60_0;
+v0x8700928_0 .alias "s1", 0 0, v0x8700cd0_0;
+v0x87009a8_0 .alias "s2", 0 0, v0x8700d78_0;
+v0x87009f8_0 .alias "s3", 0 0, v0x8700e00_0;
+S_0x8700268 .scope module, "HA1" "ha" 2 39, 2 13, S_0x86d2248;
+ .timescale 0 0;
+L_0x8701128 .functor OR 1, L_0x8700f68, L_0x8701010, C4<0>, C4<0>;
+L_0x8701160 .functor AND 1, L_0x8700f68, L_0x8701010, C4<1>, C4<1>;
+L_0x8701048 .functor NOT 1, L_0x8701160, C4<0>, C4<0>, C4<0>;
+L_0x87007d8 .functor AND 1, L_0x8701048, L_0x8701128, C4<1>, C4<1>;
+v0x87002e8_0 .alias "s0", 0 0, v0x8700cd0_0;
+v0x8700358_0 .alias "s1", 0 0, v0x8700768_0;
+v0x87003c8_0 .net "s2", 0 0, L_0x8701048; 1 drivers
+v0x8700418_0 .net "s3", 0 0, L_0x8701128; 1 drivers
+v0x8700468_0 .alias "x", 0 0, v0x8700618_0;
+v0x87004c8_0 .alias "y", 0 0, v0x8700688_0;
+S_0x86d22c8 .scope module, "HA2" "ha" 2 40, 2 13, S_0x86d2248;
+ .timescale 0 0;
+L_0x8701320 .functor OR 1, L_0x87010b8, L_0x8701160, C4<0>, C4<0>;
+L_0x8701358 .functor AND 1, L_0x87010b8, L_0x8701160, C4<1>, C4<1>;
+L_0x87010f0 .functor NOT 1, L_0x8701358, C4<0>, C4<0>, C4<0>;
+L_0x8700e50 .functor AND 1, L_0x87010f0, L_0x8701320, C4<1>, C4<1>;
+v0x86e0d40_0 .alias "s0", 0 0, v0x8700d78_0;
+v0x8700060_0 .alias "s1", 0 0, v0x8700e00_0;
+v0x87000c0_0 .net "s2", 0 0, L_0x87010f0; 1 drivers
+v0x8700120_0 .net "s3", 0 0, L_0x8701320; 1 drivers
+v0x8700188_0 .alias "x", 0 0, v0x87006f8_0;
+v0x87001e8_0 .alias "y", 0 0, v0x8700768_0;
+S_0x86e0cc0 .scope begin, "start" "start" 2 56, 2 56, S_0x86e1d78;
+ .timescale 0 0;
+S_0x86e0c40 .scope begin, "main" "main" 2 62, 2 62, S_0x86e1d78;
+ .timescale 0 0;
+    .scope S_0x86e1d78;
+T_0 ;
+    %fork t_1, S_0x86e0cc0;
+    %jmp t_0;
+t_1 ;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x86e1d78;
+T_1 ;
+    %fork t_3, S_0x86e0c40;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 63 "$display", "Guia 04 - Gustavo Guimaraes - 405804";
+    %vpi_call 2 64 "$display", "Teste MULTIPLICADOR 2 BITS";
+    %vpi_call 2 65 "$display", "\012A      B  =  s3 s2 s1 s0\012";
+    %vpi_call 2 66 "$monitor", "%b%b     %b%b =   %b  %b  %b  %b", v0x8700b10_0, v0x8700aa0_0, v0x8700bf0_0, v0x8700b80_0, v0x8700e00_0, v0x8700d78_0, v0x8700cd0_0, v0x8700c60_0;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 0, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 0, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 0, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8700aa0_0, 1, 1;
+    %set/v v0x8700b10_0, 1, 1;
+    %set/v v0x8700b80_0, 1, 1;
+    %set/v v0x8700bf0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/gustavo/Computação/AC1/405804/Guia5- 405804/Multiplicador.v";

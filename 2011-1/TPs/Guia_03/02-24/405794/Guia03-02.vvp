@@ -1,0 +1,59 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF680 .scope module, "testeexercicio02" "testeexercicio02" 2 11;
+ .timescale 0 0;
+L_00673DC0 .functor NAND 1, v003EF700_0, v003EF700_0, C4<1>, C4<1>;
+L_006A3B50 .functor NAND 1, v006A3560_0, v006A3560_0, C4<1>, C4<1>;
+L_006A3BC0 .functor NAND 1, v003EF700_0, L_006A3B50, C4<1>, C4<1>;
+L_006A3C30 .functor NAND 1, L_00673DC0, v006A3560_0, C4<1>, C4<1>;
+L_006A3CA0 .functor NAND 1, L_006A3BC0, L_006A3BC0, C4<1>, C4<1>;
+L_006A3D10 .functor NAND 1, L_006A3C30, L_006A3C30, C4<1>, C4<1>;
+L_006A3D80 .functor NAND 1, L_006A3CA0, L_006A3D10, C4<1>, C4<1>;
+L_006A3E28 .functor NAND 1, L_006A3CA0, L_006A3D80, C4<1>, C4<1>;
+L_006A3E98 .functor NAND 1, L_006A3D10, L_006A3D80, C4<1>, C4<1>;
+L_006A3ED0 .functor NAND 1, L_006A3E98, L_006A3E28, C4<1>, C4<1>;
+L_006A3F78 .functor NAND 1, v003EF700_0, v006A3560_0, C4<1>, C4<1>;
+L_00673D88 .functor NAND 1, L_006A3F78, L_006A3F78, C4<1>, C4<1>;
+v003EF700_0 .var "a", 0 0;
+v006A3560_0 .var "b", 0 0;
+v006A35D0_0 .net "c1", 0 0, L_00673D88; 1 drivers
+v006A3658_0 .net "n0", 0 0, L_006A3F78; 1 drivers
+v006A36C8_0 .net "nand4", 0 0, L_006A3CA0; 1 drivers
+v006A3720_0 .net "nand5", 0 0, L_006A3D10; 1 drivers
+v006A3790_0 .net "notA", 0 0, L_00673DC0; 1 drivers
+v006A3828_0 .net "notB", 0 0, L_006A3B50; 1 drivers
+v006A3898_0 .net "s", 0 0, L_006A3ED0; 1 drivers
+v006A3908_0 .net "s0", 0 0, L_006A3E98; 1 drivers
+v006A3978_0 .net "s1", 0 0, L_006A3E28; 1 drivers
+v006A39E8_0 .net "s2", 0 0, L_006A3D80; 1 drivers
+v006A3A58_0 .net "sand", 0 0, L_006A3BC0; 1 drivers
+v006A3AC8_0 .net "snot", 0 0, L_006A3C30; 1 drivers
+    .scope S_003EF680;
+T_0 ;
+    %vpi_call 2 31 "$display", "Guia03-02 - Caio Ragacci Pimentel - 405794";
+    %vpi_call 2 32 "$display", "  MEIA SOMA.";
+    %vpi_call 2 33 "$display", "A  +  B  =  C  S";
+    %set/v v003EF700_0, 0, 1;
+    %set/v v006A3560_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$monitor", "%b  +  %b  =  %b  %b", v003EF700_0, v006A3560_0, v006A35D0_0, v006A3898_0;
+    %delay 1, 0;
+    %set/v v003EF700_0, 0, 1;
+    %set/v v006A3560_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003EF700_0, 1, 1;
+    %set/v v006A3560_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003EF700_0, 1, 1;
+    %set/v v006A3560_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_03\Guia03-02.v";

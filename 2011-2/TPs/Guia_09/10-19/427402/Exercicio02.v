@@ -1,0 +1,32 @@
+// --------------------
+// --- Contador Crescente
+// --- Felipe Ferreira Andrade do Carmo
+// --- Exercicio 02
+// --------------------
+
+`include "Flipflops.v"
+`include "clock.v"
+
+module Exercicio02;
+
+wire [3:0] x;
+reg y;
+reg pulse;
+reg p , c;
+wire qnot1,qnot2, qnot3, qnot4 , s1 , s2;
+
+ initial
+  begin
+   y = 1'b1;
+  end
+  
+and AND1 (s1, qnot1, qnot2, qnot3, qnot4);
+or  OR1  (s2, s1, y);
+
+tff etapa1 ( x[3], qnot1, y, pulse, s2,c );
+tff etapa2 ( x[2], qnot2, y, q1   , s2,c );
+tff etapa3 ( x[1], qnot3, y, q2   , s2,c );
+tff etapa4 ( x[0], qnot4, y, q3   , s2,c );
+
+
+endmodule

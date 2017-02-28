@@ -1,0 +1,162 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002893D0 .scope module, "testprova1" "testprova1" 2 27;
+ .timescale 0 0;
+v0028BC98_0 .var "a", 0 0;
+v0028BCF0_0 .var "b", 0 0;
+v0028BD48_0 .var "c", 0 0;
+v0028BDA0_0 .var "d", 0 0;
+v0028BDF8_0 .net "saida", 0 0, L_00615050; 1 drivers
+S_00289568 .scope module, "PROVAG" "metodoprovag" 2 31, 2 4, S_002893D0;
+ .timescale 0 0;
+L_00614F00 .functor NOT 1, v0028BCF0_0, C4<0>, C4<0>, C4<0>;
+L_00614F38 .functor AND 1, L_00614F00, v0028BCF0_0, v0028BD48_0, C4<1>;
+L_00614FE0 .functor NOT 1, v0028BD48_0, C4<0>, C4<0>, C4<0>;
+L_00615018 .functor AND 1, v0028BCF0_0, L_00614FE0, v0028BDA0_0, C4<1>;
+L_00615088 .functor NOT 1, v0028BC98_0, C4<0>, C4<0>, C4<0>;
+L_006150F8 .functor AND 1, L_00615088, v0028BCF0_0, v0028BD48_0, C4<1>;
+L_00614FA8 .functor NOT 1, v0028BCF0_0, C4<0>, C4<0>, C4<0>;
+L_00615168 .functor AND 1, v0028BC98_0, L_00614FA8, v0028BDA0_0, C4<1>;
+L_006151D8 .functor NOT 1, v0028BCF0_0, C4<0>, C4<0>, C4<0>;
+L_00615210 .functor AND 1, v0028BC98_0, L_006151D8, v0028BD48_0, C4<1>;
+L_00615248 .functor NOT 1, v0028BDA0_0, C4<0>, C4<0>, C4<0>;
+L_00615280 .functor AND 1, v0028BC98_0, v0028BCF0_0, L_00615248, C4<1>;
+L_00615050/0/0 .functor OR 1, L_00614F38, L_00615018, L_006150F8, L_00615168;
+L_00615050/0/4 .functor OR 1, L_00615210, L_00615280, C4<0>, C4<0>;
+L_00615050 .functor OR 1, L_00615050/0/0, L_00615050/0/4, C4<0>, C4<0>;
+v0028B6C0_0 .net "a", 0 0, v0028BC98_0; 1 drivers
+v0028B718_0 .net "b", 0 0, v0028BCF0_0; 1 drivers
+v0028B770_0 .net "c", 0 0, v0028BD48_0; 1 drivers
+v0028B7C8_0 .net "d", 0 0, v0028BDA0_0; 1 drivers
+v0028B820_0 .alias "saida", 0 0, v0028BDF8_0;
+v0028B878_0 .net "temp1", 0 0, L_00614F00; 1 drivers
+v0028B8D0_0 .net "temp10", 0 0, L_00615210; 1 drivers
+v0028B928_0 .net "temp11", 0 0, L_00615248; 1 drivers
+v0028B980_0 .net "temp12", 0 0, L_00615280; 1 drivers
+v0028B9D8_0 .net "temp2", 0 0, L_00614F38; 1 drivers
+v0028BA30_0 .net "temp3", 0 0, L_00614FE0; 1 drivers
+v0028BA88_0 .net "temp4", 0 0, L_00615018; 1 drivers
+v0028BAE0_0 .net "temp5", 0 0, L_00615088; 1 drivers
+v0028BB38_0 .net "temp6", 0 0, L_006150F8; 1 drivers
+v0028BB90_0 .net "temp7", 0 0, L_00614FA8; 1 drivers
+v0028BBE8_0 .net "temp8", 0 0, L_00615168; 1 drivers
+v0028BC40_0 .net "temp9", 0 0, L_006151D8; 1 drivers
+S_002894E0 .scope begin, "start" "start" 2 33, 2 33, S_002893D0;
+ .timescale 0 0;
+S_00289458 .scope begin, "main" "main" 2 37, 2 37, S_002893D0;
+ .timescale 0 0;
+    .scope S_002893D0;
+T_0 ;
+    %fork t_1, S_002894E0;
+    %jmp t_0;
+    .scope S_002894E0;
+t_1 ;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %end;
+    .scope S_002893D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002893D0;
+T_1 ;
+    %fork t_3, S_00289458;
+    %jmp t_2;
+    .scope S_00289458;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", " Circuito da questao g da prova ";
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", " a |  b |  c |  d  =  saida ";
+    %vpi_call 2 40 "$monitor", " %b  | %b  | %b |  %b  =   %b ", v0028BC98_0, v0028BCF0_0, v0028BD48_0, v0028BDA0_0, v0028BDF8_0;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 0, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 0, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 0, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0028BC98_0, 1, 1;
+    %set/v v0028BCF0_0, 1, 1;
+    %set/v v0028BD48_0, 1, 1;
+    %set/v v0028BDA0_0, 1, 1;
+    %end;
+    .scope S_002893D0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\Prova - 1\420120\questao G.v";

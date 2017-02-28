@@ -1,0 +1,66 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009FF490 .scope module, "testmeiasoma" "testmeiasoma" 2 28;
+ .timescale 0 0;
+v00325190_0 .var "a", 0 0;
+v003580F0_0 .var "b", 0 0;
+v00358148_0 .net "s0", 0 0, L_003591A0; 1 drivers
+v003581B8_0 .net "s1", 0 0, L_00359248; 1 drivers
+S_00324FB0 .scope module, "MEIASOMA1" "meiasoma" 2 32, 2 11, S_009FF490;
+ .timescale 0 0;
+L_009FF510 .functor OR 1, v00325190_0, v003580F0_0, C4<0>, C4<0>;
+L_00359210 .functor NAND 1, v00325190_0, v003580F0_0, C4<1>, C4<1>;
+L_00359248 .functor AND 1, v00325190_0, v003580F0_0, C4<1>, C4<1>;
+L_003591A0 .functor AND 1, L_009FF510, L_00359210, C4<1>, C4<1>;
+v009FE0B8_0 .net "a", 0 0, v00325190_0; 1 drivers
+v00324278_0 .net "b", 0 0, v003580F0_0; 1 drivers
+v00325030_0 .alias "s0", 0 0, v00358148_0;
+v00325088_0 .alias "s1", 0 0, v003581B8_0;
+v003250E0_0 .net "s2", 0 0, L_009FF510; 1 drivers
+v00325138_0 .net "s3", 0 0, L_00359210; 1 drivers
+S_009FE038 .scope begin, "start" "start" 2 34, 2 34, S_009FF490;
+ .timescale 0 0;
+S_009FDFB8 .scope begin, "main" "main" 2 39, 2 39, S_009FF490;
+ .timescale 0 0;
+    .scope S_009FF490;
+T_0 ;
+    %fork t_1, S_009FE038;
+    %jmp t_0;
+t_1 ;
+    %set/v v00325190_0, 0, 1;
+    %set/v v003580F0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_009FF490;
+T_1 ;
+    %fork t_3, S_009FDFB8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 40 "$display", "Guia 03_01 - Heitor Terozendi - 396698";
+    %vpi_call 2 41 "$display", "Test Meia Soma gate";
+    %vpi_call 2 42 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 43 "$monitor", " %b & %b = %b %b", v00325190_0, v003580F0_0, v00358148_0, v003581B8_0;
+    %delay 1, 0;
+    %set/v v00325190_0, 0, 1;
+    %set/v v003580F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00325190_0, 1, 1;
+    %set/v v003580F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00325190_0, 1, 1;
+    %set/v v003580F0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Heitor\Desktop\ARQ I\Guias\Guia 3\Guia 03_01.v";

@@ -1,0 +1,70 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8d9fd60 .scope module, "testhalfAdder" "testhalfAdder" 2 27;
+ .timescale 0 0;
+v0x8d9dbe8_0 .var "a", 0 0;
+v0x8d9dc68_0 .var "b", 0 0;
+v0x8d9dcd8_0 .net "s0", 0 0, L_0x8d9df28; 1 drivers
+v0x8d9dd48_0 .net "s1", 0 0, L_0x8d9de80; 1 drivers
+S_0x8d7dae8 .scope module, "HA1" "halfAdder" 2 31, 2 11, S_0x8d9fd60;
+ .timescale 0 0;
+L_0x8d9ddb8 .functor OR 1, v0x8d9dbe8_0, v0x8d9dc68_0, C4<0>, C4<0>;
+L_0x8d9de80 .functor AND 1, v0x8d9dbe8_0, v0x8d9dc68_0, C4<1>, C4<1>;
+L_0x8d9def0 .functor NOT 1, L_0x8d9de80, C4<0>, C4<0>, C4<0>;
+L_0x8d9df28 .functor AND 1, L_0x8d9ddb8, L_0x8d9def0, C4<1>, C4<1>;
+v0x8d7db68_0 .net "a", 0 0, v0x8d9dbe8_0; 1 drivers
+v0x8d9d9e0_0 .net "b", 0 0, v0x8d9dc68_0; 1 drivers
+v0x8d9da40_0 .alias "s0", 0 0, v0x8d9dcd8_0;
+v0x8d9daa0_0 .alias "s1", 0 0, v0x8d9dd48_0;
+v0x8d9db08_0 .net "x", 0 0, L_0x8d9ddb8; 1 drivers
+v0x8d9db68_0 .net "y", 0 0, L_0x8d9def0; 1 drivers
+S_0x8d7da68 .scope begin, "start" "start" 2 33, 2 33, S_0x8d9fd60;
+ .timescale 0 0;
+S_0x8d7d9e8 .scope begin, "main" "main" 2 38, 2 38, S_0x8d9fd60;
+ .timescale 0 0;
+    .scope S_0x8d9fd60;
+T_0 ;
+    %fork t_1, S_0x8d7da68;
+    %jmp t_0;
+    .scope S_0x8d7da68;
+t_1 ;
+    %set/v v0x8d9dbe8_0, 0, 1;
+    %set/v v0x8d9dc68_0, 0, 1;
+    %end;
+    .scope S_0x8d9fd60;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8d9fd60;
+T_1 ;
+    %fork t_3, S_0x8d7d9e8;
+    %jmp t_2;
+    .scope S_0x8d7d9e8;
+t_3 ;
+    %vpi_call 2 39 "$display", "Guia 03 - Exercicio 01 - Paulo Ricardo Bastos de Souza - 405828";
+    %vpi_call 2 40 "$display", "Test Half Adder";
+    %vpi_call 2 41 "$display", "\012a + b = s0 , s1\012";
+    %vpi_call 2 42 "$monitor", "%b + %b = %b , %b", v0x8d9dbe8_0, v0x8d9dc68_0, v0x8d9dcd8_0, v0x8d9dd48_0;
+    %delay 1, 0;
+    %set/v v0x8d9dbe8_0, 0, 1;
+    %set/v v0x8d9dc68_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8d9dbe8_0, 1, 1;
+    %set/v v0x8d9dc68_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8d9dbe8_0, 1, 1;
+    %set/v v0x8d9dc68_0, 1, 1;
+    %end;
+    .scope S_0x8d9fd60;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/Paulo/Faculdade/Arquitetura I/TPs/405828/Guia03/exercicio_01.v";

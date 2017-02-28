@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006B3000 .scope module, "testxnorgate" "testxnorgate" 2 18;
+ .timescale 0 0;
+v006BFF90_0 .var "a", 0 0;
+v006BED38_0 .var "b", 0 0;
+v006BED90_0 .net "s", 0 0, L_006BEE58; 1 drivers
+S_006B3588 .scope module, "XNOR1" "xnorgate" 2 25, 2 10, S_006B3000;
+ .timescale 0 0;
+L_006BF340 .functor XOR 1, v006BFF90_0, v006BED38_0, C4<0>, C4<0>;
+L_006BEE58 .functor NOT 1, L_006BF340, C4<0>, C4<0>, C4<0>;
+v006B3110_0 .net *"_s0", 0 0, L_006BF340; 1 drivers
+v006B3610_0 .net "p", 0 0, v006BFF90_0; 1 drivers
+v006BFEE0_0 .net "q", 0 0, v006BED38_0; 1 drivers
+v006BFF38_0 .alias "s", 0 0, v006BED90_0;
+S_006B3500 .scope begin, "start" "start" 2 28, 2 28, S_006B3000;
+ .timescale 0 0;
+S_006B3088 .scope begin, "main" "main" 2 34, 2 34, S_006B3000;
+ .timescale 0 0;
+    .scope S_006B3000;
+T_0 ;
+    %fork t_1, S_006B3500;
+    %jmp t_0;
+    .scope S_006B3500;
+t_1 ;
+    %set/v v006BFF90_0, 0, 1;
+    %set/v v006BED38_0, 0, 1;
+    %end;
+    .scope S_006B3000;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006B3000;
+T_1 ;
+    %fork t_3, S_006B3088;
+    %jmp t_2;
+    .scope S_006B3088;
+t_3 ;
+    %vpi_call 2 35 "$display", "Exemplo0008 - Mateus Lara Carvalho - 441700";
+    %vpi_call 2 36 "$display", "Test xnor gate";
+    %vpi_call 2 37 "$display", "\012 (a ^ b)' = s\012";
+    %vpi_call 2 38 "$monitor", "%b ^ %b = %b", v006BFF90_0, v006BED38_0, v006BED90_0;
+    %delay 1, 0;
+    %set/v v006BFF90_0, 0, 1;
+    %set/v v006BED38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006BFF90_0, 0, 1;
+    %set/v v006BED38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006BFF90_0, 1, 1;
+    %set/v v006BED38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006BFF90_0, 1, 1;
+    %set/v v006BED38_0, 1, 1;
+    %end;
+    .scope S_006B3000;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Mateus\Desktop\Mateus\Ciência da Computação\2013-1\Arquitetura\Trabalhos\ED 01\Exemplo0008.v";

@@ -1,0 +1,61 @@
+//--AC 1 - 2010
+//--TP 08_01
+//--Nome:Felipe Pacifico
+//--Matricula: 389868
+
+module Exer1(s0, a, b, c, d);
+
+ output s0;
+ input a, b, c, d;
+ wire s1, s2, s3, s4, s5, s6;
+
+and AND1(s4, s1, c);
+and AND2(s5, s2, c);
+and AND3(s6, a, b, s3);
+or OR1(s0, s4, s5, s6);
+not NOT1(s1, a);
+not NOT2(s2, b);
+not NOT3(s3, d);
+
+endmodule
+
+
+
+module teste;
+
+reg a, b, c, d;
+wire s0, s1, s2, s3, s4, s5, s6;
+Exer1 cir (s0, a, b, c, d);
+
+
+
+
+initial begin
+ $display("Felipe Pacifico - 389868");
+      $display("Guia 8");
+		 $display("AC - 2010");
+       $display("\na b c d = s0\n");
+       $monitor("%b %b %b %b = %b", a, b, c, d, s0);
+
+  a=0; b=0; c=0; d=0;
+ #1 a=0; b=0; c=0; d=1;
+ #1 a=0; b=0; c=1; d=0;
+ #1 a=0; b=0; c=1; d=1;
+ #1 a=0; b=1; c=0; d=0;
+ #1 a=0; b=1; c=0; d=1;
+ #1 a=0; b=1; c=1; d=0;
+ #1 a=0; b=1; c=1; d=1;
+ #1 a=1; b=0; c=0; d=0;
+ #1 a=1; b=0; c=0; d=1;
+ #1 a=1; b=0; c=1; d=0;
+ #1 a=1; b=0; c=1; d=1;
+ #1 a=1; b=1; c=0; d=0;
+ #1 a=1; b=1; c=0; d=1;
+ #1 a=1; b=1; c=1; d=0;
+ #1 a=1; b=1; c=1; d=1;
+
+end
+
+endmodule
+
+// OBS.: SE POSSIVEL, DEIXAR COPIA DO ARQUIVO COM EXTENSAO .v

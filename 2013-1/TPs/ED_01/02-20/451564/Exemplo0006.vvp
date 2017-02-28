@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003CE268 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v003C3310_0 .var "a", 0 0;
+v003CFDD8_0 .var "b", 0 0;
+v003CFE30_0 .net "s", 0 0, L_003CFEF8; 1 drivers
+S_003C2DA0 .scope module, "NAND1" "nandgate" 2 22, 2 9, S_003CE268;
+ .timescale 0 0;
+L_003CE2F0 .functor AND 1, v003C3310_0, v003CFDD8_0, C4<1>, C4<1>;
+L_003CFEF8 .functor NOT 1, L_003CE2F0, C4<0>, C4<0>, C4<0>;
+v003C2E28_0 .net *"_s0", 0 0, L_003CE2F0; 1 drivers
+v003C3208_0 .net "p", 0 0, v003C3310_0; 1 drivers
+v003C3260_0 .net "q", 0 0, v003CFDD8_0; 1 drivers
+v003C32B8_0 .alias "s", 0 0, v003CFE30_0;
+S_003C2D18 .scope begin, "start" "start" 2 24, 2 24, S_003CE268;
+ .timescale 0 0;
+    .scope S_003CE268;
+T_0 ;
+    %fork t_1, S_003C2D18;
+    %jmp t_0;
+    .scope S_003C2D18;
+t_1 ;
+    %set/v v003C3310_0, 0, 1;
+    %set/v v003CFDD8_0, 0, 1;
+    %end;
+    .scope S_003CE268;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003CE268;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0006 - Guilherme Augusto Bueno Borba - 451564";
+    %vpi_call 2 31 "$display", "Test NAND gate";
+    %vpi_call 2 32 "$display", "\012a & b = s\012";
+    %set/v v003C3310_0, 0, 1;
+    %set/v v003CFDD8_0, 0, 1;
+    %vpi_call 2 34 "$monitor", "(%b & %b)' = %b", v003C3310_0, v003CFDD8_0, v003CFE30_0;
+    %delay 1, 0;
+    %set/v v003C3310_0, 0, 1;
+    %set/v v003CFDD8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003C3310_0, 1, 1;
+    %set/v v003CFDD8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003C3310_0, 1, 1;
+    %set/v v003CFDD8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003C3310_0, 0, 1;
+    %set/v v003CFDD8_0, 0, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Desktop\Puc\3 periodo\AC\Exemplo0006.v";

@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00638EA0 .scope module, "test_comparador" "test_comparador" 2 31;
+ .timescale 0 0;
+v006AFF30_0 .net "comparado", 0 0, L_0063C110; 1 drivers
+v006AFF88_0 .var "x", 3 0;
+v006AFFE0_0 .var "y", 3 0;
+S_00638F28 .scope module, "modulo" "comparador" 2 37, 2 10, S_00638EA0;
+ .timescale 0 0;
+L_0063BE70 .functor XNOR 1, L_006B0038, L_006B0090, C4<0>, C4<0>;
+L_0063BF88 .functor XNOR 1, L_006B00E8, L_006B0140, C4<0>, C4<0>;
+L_0063C030 .functor XNOR 1, L_006B0198, L_006B01F0, C4<0>, C4<0>;
+L_0063BF50 .functor XNOR 1, L_006B0248, L_006B02A0, C4<0>, C4<0>;
+L_0063C110 .functor AND 1, L_0063BE70, L_0063BF88, L_0063C030, L_0063BF50;
+v0063CD80_0 .net *"_s1", 0 0, L_006B0038; 1 drivers
+v0063CDD8_0 .net *"_s11", 0 0, L_006B01F0; 1 drivers
+v0063CE30_0 .net *"_s13", 0 0, L_006B0248; 1 drivers
+v00632E58_0 .net *"_s15", 0 0, L_006B02A0; 1 drivers
+v00632EB0_0 .net *"_s3", 0 0, L_006B0090; 1 drivers
+v00632F08_0 .net *"_s5", 0 0, L_006B00E8; 1 drivers
+v0063FE28_0 .net *"_s7", 0 0, L_006B0140; 1 drivers
+v006AFC70_0 .net *"_s9", 0 0, L_006B0198; 1 drivers
+v006AFCC8_0 .net "a", 3 0, v006AFF88_0; 1 drivers
+v006AFD20_0 .net "b", 3 0, v006AFFE0_0; 1 drivers
+v006AFD78_0 .alias "s", 0 0, v006AFF30_0;
+v006AFDD0_0 .net "s0", 0 0, L_0063BE70; 1 drivers
+v006AFE28_0 .net "s1", 0 0, L_0063BF88; 1 drivers
+v006AFE80_0 .net "s2", 0 0, L_0063C030; 1 drivers
+v006AFED8_0 .net "s3", 0 0, L_0063BF50; 1 drivers
+L_006B0038 .part v006AFF88_0, 0, 1;
+L_006B0090 .part v006AFFE0_0, 0, 1;
+L_006B00E8 .part v006AFF88_0, 1, 1;
+L_006B0140 .part v006AFFE0_0, 1, 1;
+L_006B0198 .part v006AFF88_0, 2, 1;
+L_006B01F0 .part v006AFFE0_0, 2, 1;
+L_006B0248 .part v006AFF88_0, 3, 1;
+L_006B02A0 .part v006AFFE0_0, 3, 1;
+    .scope S_00638EA0;
+T_0 ;
+    %vpi_call 2 40 "$display", "Exemplo00040 - Samuel Eus\351bio da Silva - 435055";
+    %vpi_call 2 41 "$display", "Test ALU's comparador";
+    %vpi_call 2 45 "$monitor", "x = %3b \011 y = %3b\011  saida = %1b\012", v006AFF88_0, v006AFFE0_0, v006AFF30_0;
+    %delay 1, 0;
+    %set/v v006AFF88_0, 0, 4;
+    %set/v v006AFFE0_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v006AFF88_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v006AFFE0_0, 8, 4;
+    %delay 1, 0;
+    %set/v v006AFF88_0, 0, 4;
+    %movi 8, 1, 4;
+    %set/v v006AFFE0_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 7, 4;
+    %set/v v006AFF88_0, 8, 4;
+    %movi 8, 8, 4;
+    %set/v v006AFFE0_0, 8, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Samuel\Documents\Faculdade\Arquitetura de Computadores I\Guias\Guia04\Exemplo040.v";

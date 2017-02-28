@@ -1,0 +1,65 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00AB7C18 .scope module, "testandgate" "testandgate" 2 17;
+ .timescale 0 0;
+v00ABD660_0 .var "a", 0 0;
+v00ABD6B8_0 .var "b", 0 0;
+v00ABD710_0 .net "s", 0 0, L_00AB28C0; 1 drivers
+S_00AB2E78 .scope module, "AND1" "notgate" 2 24, 2 10, S_00AB7C18;
+ .timescale 0 0;
+L_00AB28C0 .functor AND 1, v00ABD660_0, v00ABD6B8_0, C4<1>, C4<1>;
+v00AB7CA0_0 .net "p", 0 0, v00ABD660_0; 1 drivers
+v00AB2F00_0 .net "q", 0 0, v00ABD6B8_0; 1 drivers
+v00AB2F58_0 .alias "s", 0 0, v00ABD710_0;
+S_00AB2838 .scope begin, "start" "start" 2 26, 2 26, S_00AB7C18;
+ .timescale 0 0;
+S_00AB27B0 .scope begin, "main" "main" 2 31, 2 31, S_00AB7C18;
+ .timescale 0 0;
+    .scope S_00AB7C18;
+T_0 ;
+    %fork t_1, S_00AB2838;
+    %jmp t_0;
+    .scope S_00AB2838;
+t_1 ;
+    %set/v v00ABD660_0, 0, 1;
+    %set/v v00ABD6B8_0, 0, 1;
+    %end;
+    .scope S_00AB7C18;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00AB7C18;
+T_1 ;
+    %fork t_3, S_00AB27B0;
+    %jmp t_2;
+    .scope S_00AB27B0;
+t_3 ;
+    %vpi_call 2 32 "$display", "Exemplo0003 - Mateus Lima Batista - 451410";
+    %vpi_call 2 33 "$display", "Test AND gate";
+    %vpi_call 2 34 "$display", "\012a&b=s\012";
+    %set/v v00ABD660_0, 0, 1;
+    %set/v v00ABD6B8_0, 0, 1;
+    %vpi_call 2 36 "$monitor", "%b & %b = %b", v00ABD660_0, v00ABD6B8_0, v00ABD710_0;
+    %delay 1, 0;
+    %set/v v00ABD660_0, 0, 1;
+    %set/v v00ABD6B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00ABD660_0, 1, 1;
+    %set/v v00ABD6B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00ABD660_0, 1, 1;
+    %set/v v00ABD6B8_0, 1, 1;
+    %end;
+    .scope S_00AB7C18;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Mozão\Exemplo0003.v";

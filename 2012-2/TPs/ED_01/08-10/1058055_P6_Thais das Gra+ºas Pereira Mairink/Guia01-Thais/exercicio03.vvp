@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009FF100 .scope module, "test_porta_xnor" "test_porta_xnor" 2 21;
+ .timescale 0 0;
+v009F4740_0 .var "a", 0 0;
+v009FFC90_0 .var "b", 0 0;
+v009FFCE8_0 .net "s", 0 0, L_009FFDE8; 1 drivers
+S_009F41B8 .scope module, "XNOR1" "porta_xnor" 2 28, 2 11, S_009FF100;
+ .timescale 0 0;
+L_009FFD40 .functor XOR 1, v009F4740_0, v009FFC90_0, C4<0>, C4<0>;
+L_009FFDE8 .functor NOT 1, L_009FFD40, C4<0>, C4<0>, C4<0>;
+v009F4240_0 .net *"_s0", 0 0, L_009FFD40; 1 drivers
+v009F4638_0 .net "p", 0 0, v009F4740_0; 1 drivers
+v009F4690_0 .net "q", 0 0, v009FFC90_0; 1 drivers
+v009F46E8_0 .alias "s", 0 0, v009FFCE8_0;
+S_009F4130 .scope begin, "start" "start" 2 31, 2 31, S_009FF100;
+ .timescale 0 0;
+S_009FF188 .scope begin, "main" "main" 2 36, 2 36, S_009FF100;
+ .timescale 0 0;
+    .scope S_009FF100;
+T_0 ;
+    %fork t_1, S_009F4130;
+    %jmp t_0;
+    .scope S_009F4130;
+t_1 ;
+    %set/v v009F4740_0, 0, 1;
+    %set/v v009FFC90_0, 0, 1;
+    %end;
+    .scope S_009FF100;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_009FF100;
+T_1 ;
+    %fork t_3, S_009FF188;
+    %jmp t_2;
+    .scope S_009FF188;
+t_3 ;
+    %vpi_call 2 37 "$display", "Exercicio02 - Thais Mairink - 441710";
+    %vpi_call 2 38 "$display", "Test porta_nor";
+    %vpi_call 2 39 "$display", "\012(~(a^b)) =  s\012";
+    %vpi_call 2 40 "$monitor", "%b ~^ %b = %b", v009F4740_0, v009FFC90_0, v009FFCE8_0;
+    %delay 1, 0;
+    %set/v v009F4740_0, 0, 1;
+    %set/v v009FFC90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009F4740_0, 0, 1;
+    %set/v v009FFC90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v009F4740_0, 1, 1;
+    %set/v v009FFC90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v009F4740_0, 1, 1;
+    %set/v v009FFC90_0, 1, 1;
+    %end;
+    .scope S_009FF100;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Thaís Mairink\Documents\thais\Arq1\exercicio03.V";

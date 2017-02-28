@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0038E958 .scope module, "testnandgate" "testnandgate" 2 11;
+ .timescale 0 0;
+v00383150_0 .var "a", 0 0;
+v003831A8_0 .var "b", 0 0;
+v0038EC58_0 .net "s", 0 0, L_0038ED20; 1 drivers
+S_00382C28 .scope module, "NAND1" "nandgate" 2 15, 2 7, S_0038E958;
+ .timescale 0 0;
+L_0038CCF8 .functor AND 1, v00383150_0, v003831A8_0, C4<1>, C4<1>;
+L_0038ED20 .functor NOT 1, L_0038CCF8, C4<0>, C4<0>, C4<0>;
+v0038FF90_0 .net *"_s0", 0 0, L_0038CCF8; 1 drivers
+v00382CB0_0 .net "p", 0 0, v00383150_0; 1 drivers
+v003830A0_0 .net "q", 0 0, v003831A8_0; 1 drivers
+v003830F8_0 .alias "s", 0 0, v0038EC58_0;
+S_00382BA0 .scope begin, "start" "start" 2 17, 2 17, S_0038E958;
+ .timescale 0 0;
+S_0038E9E0 .scope begin, "main" "main" 2 22, 2 22, S_0038E958;
+ .timescale 0 0;
+    .scope S_0038E958;
+T_0 ;
+    %fork t_1, S_00382BA0;
+    %jmp t_0;
+    .scope S_00382BA0;
+t_1 ;
+    %set/v v00383150_0, 0, 1;
+    %set/v v003831A8_0, 0, 1;
+    %end;
+    .scope S_0038E958;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0038E958;
+T_1 ;
+    %fork t_3, S_0038E9E0;
+    %jmp t_2;
+    .scope S_0038E9E0;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio01 - Roger Rubens Machado - 430533";
+    %vpi_call 2 24 "$display", "Test nand gate";
+    %vpi_call 2 25 "$display", "\012(~(a & b)) = s\012";
+    %set/v v00383150_0, 0, 1;
+    %set/v v003831A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 27 "$display", "(~(%b & %b)) = %b", v00383150_0, v003831A8_0, v0038EC58_0;
+    %set/v v00383150_0, 0, 1;
+    %set/v v003831A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 29 "$display", "(~(%b & %b)) = %b", v00383150_0, v003831A8_0, v0038EC58_0;
+    %set/v v00383150_0, 1, 1;
+    %set/v v003831A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "(~(%b & %b)) = %b", v00383150_0, v003831A8_0, v0038EC58_0;
+    %set/v v00383150_0, 1, 1;
+    %set/v v003831A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", "(~(%b & %b)) = %b", v00383150_0, v003831A8_0, v0038EC58_0;
+    %end;
+    .scope S_0038E958;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Roger Rubens\Documents\Ciência da Computação\Arquitetura de Computadores I\Guias resolvidos\Guia 01\Exercicio01.v";

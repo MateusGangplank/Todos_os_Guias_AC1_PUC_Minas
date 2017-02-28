@@ -1,0 +1,78 @@
+// -------------------------
+// Exemplo0033 - F4
+// Nome: Gabriel Benjamim de Carvalho
+// Matricula: 396690
+// -------------------------
+// -------------------------
+// f4_gate
+// -------------------------
+
+module f4 (output saida,output saida2,input chave,input a,input  b);
+// descrever por portas
+wire s0, s1, s2, s3, s4, s5;
+
+and AND1 (s0, ~chave, b);
+and AND2 (s1, a, ~b, ~chave);
+and AND3 (s2, ~b, chave, ~a);
+
+or OR1 (saida, s0, s1, s2);
+
+and AND4 (s3, a, ~chave, b);
+and AND5 (s4, chave, ~b);
+and AND6 (s5, ~a, chave, b);
+
+or OR2 (saida2, s3, s4, s5);
+
+endmodule // f4
+
+module test_f4;
+// ------------------------- definir dados
+reg x;
+reg y;
+reg chave;
+wire z; wire k;
+f4 modulo (z, k, chave, x, y);
+// ------------------------- parte principal
+
+initial begin
+$display("Exemplo0033 - Gabriel Benjamim de Carvalho - 396690");
+$display("Test LU's module");
+x = 1'b0; y = 1'b0; chave=1'b0;
+// projetar testes do modulo
+#1 $display("chave, x y -> Resultado");
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b0; y = 1'b1; chave=1'b0;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b1; y = 1'b0; chave=1'b0;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b1; y = 1'b1; chave=1'b0;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b0; y = 1'b0; chave=1'b1;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b0; y = 1'b1; chave=1'b1;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b1; y = 1'b0; chave=1'b1;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+x = 1'b1; y = 1'b1; chave=1'b1;
+#1 $display("%3b %3b %3b 	%3b %3b",chave,x,y,z,k);
+end
+endmodule // test_f4
+				//  or and
+//	c	    a   b   s0  s1 s2 s3  r
+	// 0		0   0   0   0   1  1  1
+	// 0		0   1	1	0	0  1  1
+	// 0		1	0	1	0	0  1  1
+	// 0		1	1	1	1	0  0  1
+	// 1		0   0   1	1	1  1  0
+	// 1		0   1	0	1   0  1  0
+	// 1		1	0	0	1	0  1  0
+	// 1		1	1	0	0   0  0  0
+
+	// s0 = !c!ab + !ca!b + !cab + c!a!b
+	// s0 = !cb + !ca!b + c!a!b
+	
+	// s1 = !cab + c!a!b + c!ab + ca!b
+	// s1 = !cab + c!b + c!ab
+
+        // OBS.: EXPERIMENTE USAR $monitor()
+        

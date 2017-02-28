@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00792D18 .scope module, "testandgate" "testandgate" 2 17;
+ .timescale 0 0;
+v00793230_0 .var "a", 0 0;
+v00793288_0 .var "b", 0 0;
+v007932E0_0 .net "s", 0 0, L_0079E238; 1 drivers
+S_0079E100 .scope module, "AND1" "andgate" 2 22, 2 9, S_00792D18;
+ .timescale 0 0;
+L_0079E238 .functor AND 1, v00793230_0, v00793288_0, C4<1>, C4<1>;
+v0079E188_0 .net "p", 0 0, v00793230_0; 1 drivers
+v0079E1E0_0 .net "q", 0 0, v00793288_0; 1 drivers
+v007931D8_0 .alias "s", 0 0, v007932E0_0;
+S_00792DA0 .scope begin, "start" "start" 2 24, 2 24, S_00792D18;
+ .timescale 0 0;
+    .scope S_00792D18;
+T_0 ;
+    %fork t_1, S_00792DA0;
+    %jmp t_0;
+    .scope S_00792DA0;
+t_1 ;
+    %set/v v00793230_0, 0, 1;
+    %set/v v00793288_0, 0, 1;
+    %end;
+    .scope S_00792D18;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00792D18;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0003 - Guilherme Augusto Bueno Borba - 451564";
+    %vpi_call 2 31 "$display", "Test AND gate";
+    %vpi_call 2 32 "$display", "\012a & b = s\012";
+    %set/v v00793230_0, 0, 1;
+    %set/v v00793288_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "%b & %b = %b", v00793230_0, v00793288_0, v007932E0_0;
+    %set/v v00793230_0, 0, 1;
+    %set/v v00793288_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "%b & %b = %b", v00793230_0, v00793288_0, v007932E0_0;
+    %set/v v00793230_0, 1, 1;
+    %set/v v00793288_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v00793230_0, v00793288_0, v007932E0_0;
+    %set/v v00793230_0, 1, 1;
+    %set/v v00793288_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v00793230_0, v00793288_0, v007932E0_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Guilherme\Desktop\Puc\3 periodo\AC\Exemplo0003.v";

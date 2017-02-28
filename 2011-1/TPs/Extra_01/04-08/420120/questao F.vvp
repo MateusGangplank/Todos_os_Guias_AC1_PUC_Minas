@@ -1,0 +1,168 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00599788 .scope module, "testprova1" "testprova1" 2 34;
+ .timescale 0 0;
+v005E3940_0 .var "a", 0 0;
+v005E3998_0 .var "b", 0 0;
+v005E39F0_0 .var "c", 0 0;
+v005E3A48_0 .var "d", 0 0;
+v005E3AA0_0 .net "saida", 0 0, L_005E66B0; 1 drivers
+S_00599920 .scope module, "PROVAF" "metodoprovaf" 2 38, 2 4, S_00599788;
+ .timescale 0 0;
+L_005E60C8 .functor NOT 1, v005E3998_0, C4<0>, C4<0>, C4<0>;
+L_005E6100 .functor NOT 1, v005E39F0_0, C4<0>, C4<0>, C4<0>;
+L_005E6170 .functor AND 1, L_005E60C8, L_005E6100, C4<1>, C4<1>;
+L_005E6218 .functor OR 1, v005E3940_0, v005E3998_0, C4<0>, C4<0>;
+L_005E6288 .functor AND 1, L_005E6170, L_005E6218, C4<1>, C4<1>;
+L_005E6330 .functor NOT 1, v005E3940_0, C4<0>, C4<0>, C4<0>;
+L_005E6368 .functor NOT 1, v005E3A48_0, C4<0>, C4<0>, C4<0>;
+L_005E63D8 .functor AND 1, L_005E6330, L_005E6368, C4<1>, C4<1>;
+L_005E6480 .functor OR 1, v005E3998_0, v005E39F0_0, C4<0>, C4<0>;
+L_005E6090 .functor AND 1, L_005E63D8, L_005E6480, C4<1>, C4<1>;
+L_005E6528 .functor AND 1, v005E39F0_0, v005E3A48_0, C4<1>, C4<1>;
+L_005E6560 .functor OR 1, v005E3940_0, v005E3998_0, C4<0>, C4<0>;
+L_005E6138 .functor AND 1, L_005E6528, L_005E6560, C4<1>, C4<1>;
+L_005E6250 .functor AND 1, v005E3940_0, v005E3998_0, C4<1>, C4<1>;
+L_005E6608 .functor OR 1, v005E39F0_0, v005E3A48_0, C4<0>, C4<0>;
+L_005E63A0 .functor AND 1, L_005E6250, L_005E6608, C4<1>, C4<1>;
+L_005E66B0 .functor OR 1, L_005E6288, L_005E6090, L_005E6138, L_005E63A0;
+v005E3208_0 .net "a", 0 0, v005E3940_0; 1 drivers
+v005E3260_0 .net "b", 0 0, v005E3998_0; 1 drivers
+v005E32B8_0 .net "c", 0 0, v005E39F0_0; 1 drivers
+v005E3310_0 .net "d", 0 0, v005E3A48_0; 1 drivers
+v005E3368_0 .alias "saida", 0 0, v005E3AA0_0;
+v005E33C0_0 .net "temp1", 0 0, L_005E60C8; 1 drivers
+v005E3418_0 .net "temp10", 0 0, L_005E6090; 1 drivers
+v005E3470_0 .net "temp11", 0 0, L_005E6528; 1 drivers
+v005E34C8_0 .net "temp12", 0 0, L_005E6560; 1 drivers
+v005E3520_0 .net "temp13", 0 0, L_005E6138; 1 drivers
+v005E3578_0 .net "temp14", 0 0, L_005E6250; 1 drivers
+v005E35D0_0 .net "temp15", 0 0, L_005E6608; 1 drivers
+v005E3628_0 .net "temp16", 0 0, L_005E63A0; 1 drivers
+v005E3680_0 .net "temp2", 0 0, L_005E6100; 1 drivers
+v005E36D8_0 .net "temp3", 0 0, L_005E6170; 1 drivers
+v005E3730_0 .net "temp4", 0 0, L_005E6218; 1 drivers
+v005E3788_0 .net "temp5", 0 0, L_005E6288; 1 drivers
+v005E37E0_0 .net "temp6", 0 0, L_005E6330; 1 drivers
+v005E3838_0 .net "temp7", 0 0, L_005E6368; 1 drivers
+v005E3890_0 .net "temp8", 0 0, L_005E63D8; 1 drivers
+v005E38E8_0 .net "temp9", 0 0, L_005E6480; 1 drivers
+S_00599898 .scope begin, "start" "start" 2 40, 2 40, S_00599788;
+ .timescale 0 0;
+S_00599810 .scope begin, "main" "main" 2 44, 2 44, S_00599788;
+ .timescale 0 0;
+    .scope S_00599788;
+T_0 ;
+    %fork t_1, S_00599898;
+    %jmp t_0;
+    .scope S_00599898;
+t_1 ;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %end;
+    .scope S_00599788;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00599788;
+T_1 ;
+    %fork t_3, S_00599810;
+    %jmp t_2;
+    .scope S_00599810;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", " Circuito da questao f da prova ";
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", " a |  b |  c |  d  =  saida ";
+    %vpi_call 2 47 "$monitor", " %b  | %b  | %b |  %b  =   %b ", v005E3940_0, v005E3998_0, v005E39F0_0, v005E3A48_0, v005E3AA0_0;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 0, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 0, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 0, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005E3940_0, 1, 1;
+    %set/v v005E3998_0, 1, 1;
+    %set/v v005E39F0_0, 1, 1;
+    %set/v v005E3A48_0, 1, 1;
+    %end;
+    .scope S_00599788;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\Prova - 1\420120\questao F.v";

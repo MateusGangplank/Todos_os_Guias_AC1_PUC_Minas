@@ -1,0 +1,56 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00570ED8 .scope module, "testxnorgate" "testxnorgate" 2 18;
+ .timescale 0 0;
+v003C2E08_0 .var "a", 0 0;
+v003C2E60_0 .var "b", 0 0;
+v005B5C88_0 .net "s", 0 0, L_005B5D88; 1 drivers
+S_003CFC90 .scope module, "XNOR1" "xnorgate" 2 23, 2 12, S_00570ED8;
+ .timescale 0 0;
+L_005B5CE0 .functor XOR 1, v003C2E08_0, v003C2E60_0, C4<0>, C4<0>;
+L_005B5D88 .functor NOT 1, L_005B5CE0, C4<0>, C4<0>, C4<0>;
+v003CFD18_0 .net *"_s0", 0 0, L_005B5CE0; 1 drivers
+v003CFD70_0 .net "a", 0 0, v003C2E08_0; 1 drivers
+v003C2D58_0 .net "b", 0 0, v003C2E60_0; 1 drivers
+v003C2DB0_0 .alias "s", 0 0, v005B5C88_0;
+S_00570F60 .scope begin, "start" "start" 2 25, 2 25, S_00570ED8;
+ .timescale 0 0;
+    .scope S_00570ED8;
+T_0 ;
+    %fork t_1, S_00570F60;
+    %jmp t_0;
+    .scope S_00570F60;
+t_1 ;
+    %set/v v003C2E08_0, 0, 1;
+    %set/v v003C2E60_0, 0, 1;
+    %end;
+    .scope S_00570ED8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00570ED8;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exercicio01 -  Milton teles da silva - 2751";
+    %vpi_call 2 31 "$display", "Test XNOR gate";
+    %vpi_call 2 32 "$display", "a ^ b = s";
+    %vpi_call 2 33 "$monitor", "%b   %b = %b", v003C2E08_0, v003C2E60_0, v005B5C88_0;
+    %delay 1, 0;
+    %set/v v003C2E08_0, 1, 1;
+    %set/v v003C2E60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003C2E08_0, 0, 1;
+    %set/v v003C2E60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003C2E08_0, 1, 1;
+    %set/v v003C2E60_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\COMPUTAÇAO  2011 2º SEMESTRE\A. C.  I\Milton teles 2751\Exercicio03.v";

@@ -1,0 +1,89 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00369D60 .scope module, "test_LU" "test_LU" 2 24;
+ .timescale 0 0;
+v005C5A70_0 .var "key", 0 0;
+v005C5AC8_0 .var "x", 0 0;
+v005C5B20_0 .var "y", 0 0;
+v005C5B78_0 .net "z", 0 0, L_005C6918; 1 drivers
+S_00369DE8 .scope module, "modulo" "LU" 2 27, 2 9, S_00369D60;
+ .timescale 0 0;
+L_00362C30 .functor AND 1, v005C5AC8_0, v005C5B20_0, C4<1>, C4<1>;
+L_00362D10 .functor OR 1, v005C5AC8_0, v005C5B20_0, C4<0>, C4<0>;
+L_00591228 .functor AND 1, L_005C5CD8, v005C5A70_0, C4<1>, C4<1>;
+L_005C6800 .functor AND 1, L_005C5D88, L_005C68A8, C4<1>, C4<1>;
+L_005C68A8 .functor NOT 1, v005C5A70_0, C4<0>, C4<0>, C4<0>;
+L_005C6918 .functor OR 1, L_005C5DE0, L_005C5E38, C4<0>, C4<0>;
+v0036CCB0_0 .net *"_s0", 0 0, L_00362C30; 1 drivers
+v0036CD08_0 .net *"_s11", 0 0, L_005C5D88; 1 drivers
+v0036CD60_0 .net *"_s12", 0 0, L_005C68A8; 1 drivers
+v00364560_0 .net *"_s15", 0 0, L_005C5DE0; 1 drivers
+v003645B8_0 .net *"_s17", 0 0, L_005C5E38; 1 drivers
+v00364610_0 .net *"_s2", 0 0, L_00362D10; 1 drivers
+v005C5758_0 .net *"_s4", 0 0, L_00591228; 1 drivers
+v005C57B0_0 .net *"_s7", 0 0, L_005C5CD8; 1 drivers
+v005C5808_0 .net *"_s8", 0 0, L_005C6800; 1 drivers
+v005C5860_0 .net "a", 0 0, v005C5AC8_0; 1 drivers
+v005C58B8_0 .net "b", 0 0, v005C5B20_0; 1 drivers
+RS_0059343C .resolv tri, L_005C5BD0, L_005C5C80, C4<zz>, C4<zz>;
+v005C5910_0 .net8 "c", 1 0, RS_0059343C; 2 drivers
+RS_00593454 .resolv tri, L_005C5C28, L_005C5D30, C4<zz>, C4<zz>;
+v005C5968_0 .net8 "d", 1 0, RS_00593454; 2 drivers
+v005C59C0_0 .net "key", 0 0, v005C5A70_0; 1 drivers
+v005C5A18_0 .alias "s", 0 0, v005C5B78_0;
+L_005C5BD0 .part/pv L_00362C30, 0, 1, 2;
+L_005C5C28 .part/pv L_00362D10, 0, 1, 2;
+L_005C5C80 .part/pv L_00591228, 1, 1, 2;
+L_005C5CD8 .part RS_0059343C, 0, 1;
+L_005C5D30 .part/pv L_005C6800, 1, 1, 2;
+L_005C5D88 .part RS_00593454, 0, 1;
+L_005C5DE0 .part RS_0059343C, 1, 1;
+L_005C5E38 .part RS_00593454, 1, 1;
+    .scope S_00369D60;
+T_0 ;
+    %vpi_call 2 31 "$display", "Exemplo0032 - Jenifer Henrique - 427420";
+    %vpi_call 2 32 "$display", "Test LU's module";
+    %vpi_call 2 33 "$display", "\012 A | B | KEY | Resultado";
+    %vpi_call 2 34 "$monitor", "%1b    %1b    %1b    %1b ", v005C5AC8_0, v005C5B20_0, v005C5A70_0, v005C5B78_0;
+    %set/v v005C5AC8_0, 0, 1;
+    %set/v v005C5B20_0, 0, 1;
+    %set/v v005C5A70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 0, 1;
+    %set/v v005C5B20_0, 1, 1;
+    %set/v v005C5A70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 1, 1;
+    %set/v v005C5B20_0, 0, 1;
+    %set/v v005C5A70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 1, 1;
+    %set/v v005C5B20_0, 1, 1;
+    %set/v v005C5A70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 0, 1;
+    %set/v v005C5B20_0, 0, 1;
+    %set/v v005C5A70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 0, 1;
+    %set/v v005C5B20_0, 1, 1;
+    %set/v v005C5A70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 1, 1;
+    %set/v v005C5B20_0, 0, 1;
+    %set/v v005C5A70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C5AC8_0, 1, 1;
+    %set/v v005C5B20_0, 1, 1;
+    %set/v v005C5A70_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0032.v";

@@ -1,0 +1,70 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0068FE58 .scope module, "testmeiasoma" "testmeiasoma" 2 29;
+ .timescale 0 0;
+v00708870_0 .var "a", 0 0;
+v007088C8_0 .var "b", 0 0;
+v00708920_0 .net "s0", 0 0, L_006D4CB0; 1 drivers
+v00708978_0 .net "s1", 0 0, L_006D52A8; 1 drivers
+S_006D4A98 .scope module, "MEIASOMA1" "meiasoma" 2 33, 2 11, S_0068FE58;
+ .timescale 0 0;
+L_0068FED8 .functor NAND 1, v00708870_0, v007088C8_0, C4<1>, C4<1>;
+L_006D52A8 .functor NAND 1, L_0068FED8, L_0068FED8, C4<1>, C4<1>;
+L_006D5350 .functor NAND 1, v00708870_0, v007088C8_0, C4<1>, C4<1>;
+L_006D5388 .functor NAND 1, v00708870_0, L_006D5350, C4<1>, C4<1>;
+L_006D5428 .functor NAND 1, L_006D5350, v007088C8_0, C4<1>, C4<1>;
+L_006D4CB0 .functor NAND 1, L_006D5388, L_006D5428, C4<1>, C4<1>;
+v0068E0B8_0 .net "a", 0 0, v00708870_0; 1 drivers
+v006D4B18_0 .net "b", 0 0, v007088C8_0; 1 drivers
+v006D4B70_0 .alias "s0", 0 0, v00708920_0;
+v006D4BC8_0 .alias "s1", 0 0, v00708978_0;
+v006D4C20_0 .net "s2", 0 0, L_0068FED8; 1 drivers
+v00708768_0 .net "s3", 0 0, L_006D5350; 1 drivers
+v007087C0_0 .net "s4", 0 0, L_006D5388; 1 drivers
+v00708818_0 .net "s5", 0 0, L_006D5428; 1 drivers
+S_0068E038 .scope begin, "start" "start" 2 35, 2 35, S_0068FE58;
+ .timescale 0 0;
+S_0068DFB8 .scope begin, "main" "main" 2 40, 2 40, S_0068FE58;
+ .timescale 0 0;
+    .scope S_0068FE58;
+T_0 ;
+    %fork t_1, S_0068E038;
+    %jmp t_0;
+t_1 ;
+    %set/v v00708870_0, 0, 1;
+    %set/v v007088C8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0068FE58;
+T_1 ;
+    %fork t_3, S_0068DFB8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 41 "$display", "Guia 03_02 - Heitor Terozendi - 396698";
+    %vpi_call 2 42 "$display", "Test Meia Soma NAND gate";
+    %vpi_call 2 43 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 44 "$monitor", " %b & %b = %b %b", v00708870_0, v007088C8_0, v00708920_0, v00708978_0;
+    %delay 1, 0;
+    %set/v v00708870_0, 0, 1;
+    %set/v v007088C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00708870_0, 1, 1;
+    %set/v v007088C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00708870_0, 1, 1;
+    %set/v v007088C8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Heitor\Desktop\ARQ I\Guias\Guia 3\Guia 03_02.v";

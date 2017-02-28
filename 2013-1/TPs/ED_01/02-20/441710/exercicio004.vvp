@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008C9930 .scope module, "test_nand_deMorgan" "test_nand_deMorgan" 2 21;
+ .timescale 0 0;
+v008C3F88_0 .var "a", 0 0;
+v008C3FE0_0 .var "b", 0 0;
+v008CE600_0 .net "s", 0 0, L_008CE690; 1 drivers
+S_008C9EC8 .scope module, "NANDM1" "nand_deMorgan" 2 28, 2 11, S_008C9930;
+ .timescale 0 0;
+L_008C4038 .functor NOT 1, v008C3F88_0, C4<0>, C4<0>, C4<0>;
+L_008C9A40 .functor NOT 1, v008C3FE0_0, C4<0>, C4<0>, C4<0>;
+L_008CE690 .functor OR 1, L_008C4038, L_008C9A40, C4<0>, C4<0>;
+v008C9F50_0 .net *"_s0", 0 0, L_008C4038; 1 drivers
+v008C3E28_0 .net *"_s2", 0 0, L_008C9A40; 1 drivers
+v008C3E80_0 .net "p", 0 0, v008C3F88_0; 1 drivers
+v008C3ED8_0 .net "q", 0 0, v008C3FE0_0; 1 drivers
+v008C3F30_0 .alias "s", 0 0, v008CE600_0;
+S_008C9E40 .scope begin, "start" "start" 2 31, 2 31, S_008C9930;
+ .timescale 0 0;
+S_008C99B8 .scope begin, "main" "main" 2 36, 2 36, S_008C9930;
+ .timescale 0 0;
+    .scope S_008C9930;
+T_0 ;
+    %fork t_1, S_008C9E40;
+    %jmp t_0;
+    .scope S_008C9E40;
+t_1 ;
+    %set/v v008C3F88_0, 0, 1;
+    %set/v v008C3FE0_0, 0, 1;
+    %end;
+    .scope S_008C9930;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008C9930;
+T_1 ;
+    %fork t_3, S_008C99B8;
+    %jmp t_2;
+    .scope S_008C99B8;
+t_3 ;
+    %vpi_call 2 37 "$display", "Exercicio04 - Thais Mairink - 441710";
+    %vpi_call 2 38 "$display", "Test nand_deMorgan";
+    %vpi_call 2 39 "$display", "\012(~a|~b) =  s\012";
+    %vpi_call 2 40 "$monitor", "%b ~& %b = %b", v008C3F88_0, v008C3FE0_0, v008CE600_0;
+    %delay 1, 0;
+    %set/v v008C3F88_0, 0, 1;
+    %set/v v008C3FE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008C3F88_0, 0, 1;
+    %set/v v008C3FE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008C3F88_0, 1, 1;
+    %set/v v008C3FE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008C3F88_0, 1, 1;
+    %set/v v008C3FE0_0, 1, 1;
+    %end;
+    .scope S_008C9930;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Thaís Mairink\Desktop\1°-2013\ac1-2013\Guia1\exercicio004.V";

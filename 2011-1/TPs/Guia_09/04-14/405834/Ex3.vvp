@@ -1,0 +1,54 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672F30 .scope module, "teste" "teste" 2 29;
+ .timescale 0 0;
+v006A1190_0 .net "clock", 0 0, v006A1128_0; 1 drivers
+v006A1230_0 .net "saida", 0 0, v006A1038_0; 1 drivers
+S_006A10A8 .scope module, "cck1" "clock" 2 32, 2 4, S_00672F30;
+ .timescale 0 0;
+v006A1128_0 .var "clk", 0 0;
+S_00672FB0 .scope module, "EX3" "Exercicio3" 2 35, 2 17, S_00672F30;
+ .timescale 0 0;
+v00673030_0 .alias "clock", 0 0, v006A1190_0;
+v006A1038_0 .var "signal", 0 0;
+E_003EDBD8 .event edge, v00673030_0;
+    .scope S_006A10A8;
+T_0 ;
+    %set/v v006A1128_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_006A10A8;
+T_1 ;
+    %delay 1, 0;
+    %load/v 8, v006A1128_0, 1;
+    %inv 8, 1;
+    %set/v v006A1128_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00672FB0;
+T_2 ;
+    %wait E_003EDBD8;
+    %set/v v006A1038_0, 0, 1;
+    %delay 6, 0;
+    %set/v v006A1038_0, 1, 1;
+    %delay 6, 0;
+    %set/v v006A1038_0, 0, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_00672F30;
+T_3 ;
+    %vpi_call 2 38 "$display", "Rafael Moreira Melo-405834";
+    %vpi_call 2 39 "$dumpvars", 2'sb01, v006A1190_0, v006A1230_0;
+    %delay 120, 0;
+    %vpi_call 2 40 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Computaçao\ARQ1\Guia09\Ex3.v";

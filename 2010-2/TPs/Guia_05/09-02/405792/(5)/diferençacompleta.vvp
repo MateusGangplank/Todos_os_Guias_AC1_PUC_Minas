@@ -1,0 +1,251 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00673CD8 .scope module, "testmastersubtractor" "testmastersubtractor" 2 118;
+ .timescale 0 0;
+v006B60B0_0 .var "a0", 0 0;
+v006B6170_0 .var "a1", 0 0;
+v006B61C8_0 .var "b0", 0 0;
+v006B6288_0 .var "b1", 0 0;
+v006B62E0_0 .net "s0", 0 0, L_006B6770; 1 drivers
+v006B6338_0 .net "s1", 0 0, L_006B72D8; 1 drivers
+v006B6390_0 .net "s2", 0 0, L_006B7230; 1 drivers
+S_00673D58 .scope module, "MS" "masterSubtractor" 2 123, 2 103, S_00673CD8;
+ .timescale 0 0;
+v006B5D60_0 .net "a0", 0 0, v006B60B0_0; 1 drivers
+v006B5DB8_0 .net "a1", 0 0, v006B6170_0; 1 drivers
+v006B5E10_0 .net "b0", 0 0, v006B61C8_0; 1 drivers
+v006B5E68_0 .net "b1", 0 0, v006B6288_0; 1 drivers
+v006B5F28_0 .alias "s0", 0 0, v006B62E0_0;
+v006B5F80_0 .alias "s1", 0 0, v006B6338_0;
+v006B5FD8_0 .alias "s2", 0 0, v006B6390_0;
+v006B6058_0 .net "s3", 0 0, L_006806D0; 1 drivers
+S_006B5358 .scope module, "HS1" "halfSubtractor" 2 108, 2 73, S_00673D58;
+ .timescale 0 0;
+v006B5B38_0 .alias "a", 0 0, v006B5D60_0;
+v006B5B90_0 .alias "b", 0 0, v006B5E10_0;
+v006B5C20_0 .net "s", 0 0, L_00680708; 1 drivers
+v006B5CB0_0 .alias "s3", 0 0, v006B6058_0;
+v006B5D08_0 .alias "s4", 0 0, v006B62E0_0;
+S_006B5A08 .scope module, "NOT1" "notgate" 2 78, 2 12, S_006B5358;
+ .timescale 0 0;
+L_00680708 .functor NOR 1, v006B60B0_0, v006B60B0_0, C4<0>, C4<0>;
+v006B5A88_0 .alias "a", 0 0, v006B5D60_0;
+v006B5AE0_0 .alias "s", 0 0, v006B5C20_0;
+S_006B5788 .scope module, "AND1" "andgate" 2 79, 2 25, S_006B5358;
+ .timescale 0 0;
+L_006B5BE8 .functor NOR 1, L_00680708, L_00680708, C4<0>, C4<0>;
+L_006B5C78 .functor NOR 1, v006B61C8_0, v006B61C8_0, C4<0>, C4<0>;
+L_006806D0 .functor NOR 1, L_006B5BE8, L_006B5C78, C4<0>, C4<0>;
+v006B5808_0 .alias "a", 0 0, v006B5C20_0;
+v006B5878_0 .alias "b", 0 0, v006B5E10_0;
+v006B58D0_0 .net "s0", 0 0, L_006B5BE8; 1 drivers
+v006B5940_0 .net "s1", 0 0, L_006B5C78; 1 drivers
+v006B59B0_0 .alias "s2", 0 0, v006B6058_0;
+S_006B53D8 .scope module, "XOR1" "xorgate" 2 80, 2 55, S_006B5358;
+ .timescale 0 0;
+L_006B6560 .functor NOR 1, v006B60B0_0, v006B60B0_0, C4<0>, C4<0>;
+L_006B6598 .functor NOR 1, v006B61C8_0, v006B61C8_0, C4<0>, C4<0>;
+L_006B65D0 .functor NOR 1, v006B60B0_0, L_006B6598, C4<0>, C4<0>;
+L_006B6640 .functor NOR 1, v006B61C8_0, L_006B6560, C4<0>, C4<0>;
+L_006B66C8 .functor NOR 1, L_006B65D0, L_006B6640, C4<0>, C4<0>;
+L_006B6770 .functor NOR 1, L_006B66C8, L_006B66C8, C4<0>, C4<0>;
+v006B5458_0 .alias "a", 0 0, v006B5D60_0;
+v006B54B0_0 .alias "b", 0 0, v006B5E10_0;
+v006B5508_0 .net "s1", 0 0, L_006B6560; 1 drivers
+v006B5560_0 .net "s2", 0 0, L_006B6598; 1 drivers
+v006B55B8_0 .net "s3", 0 0, L_006B65D0; 1 drivers
+v006B5610_0 .net "s4", 0 0, L_006B6640; 1 drivers
+v006B5680_0 .net "s5", 0 0, L_006B66C8; 1 drivers
+v006B5718_0 .alias "s6", 0 0, v006B62E0_0;
+S_003EC718 .scope module, "HS2" "fullSubtractor" 2 109, 2 88, S_00673D58;
+ .timescale 0 0;
+v006B5070_0 .alias "a", 0 0, v006B5DB8_0;
+v006B50C8_0 .alias "b", 0 0, v006B5E68_0;
+v006B5120_0 .alias "c1", 0 0, v006B6058_0;
+v006B5178_0 .net "s0", 0 0, L_006B6840; 1 drivers
+v006B51D0_0 .net "s1", 0 0, L_006B6CE8; 1 drivers
+v006B5228_0 .net "s2", 0 0, L_006B6F80; 1 drivers
+v006B5280_0 .alias "s3", 0 0, v006B6390_0;
+v006B5300_0 .alias "s5", 0 0, v006B6338_0;
+S_006B4610 .scope module, "HS1" "halfSubtractor" 2 93, 2 73, S_003EC718;
+ .timescale 0 0;
+v006B4DD8_0 .alias "a", 0 0, v006B5DB8_0;
+v006B4E68_0 .alias "b", 0 0, v006B5E68_0;
+v006B4EF8_0 .net "s", 0 0, L_006B67A8; 1 drivers
+v006B4F88_0 .alias "s3", 0 0, v006B5178_0;
+v006B5018_0 .alias "s4", 0 0, v006B51D0_0;
+S_006B4CA8 .scope module, "NOT1" "notgate" 2 78, 2 12, S_006B4610;
+ .timescale 0 0;
+L_006B67A8 .functor NOR 1, v006B6170_0, v006B6170_0, C4<0>, C4<0>;
+v006B4D28_0 .alias "a", 0 0, v006B5DB8_0;
+v006B4D80_0 .alias "s", 0 0, v006B4EF8_0;
+S_006B4A28 .scope module, "AND1" "andgate" 2 79, 2 25, S_006B4610;
+ .timescale 0 0;
+L_006B67E0 .functor NOR 1, L_006B67A8, L_006B67A8, C4<0>, C4<0>;
+L_006B4F50 .functor NOR 1, v006B6288_0, v006B6288_0, C4<0>, C4<0>;
+L_006B6840 .functor NOR 1, L_006B67E0, L_006B4F50, C4<0>, C4<0>;
+v006B4AA8_0 .alias "a", 0 0, v006B4EF8_0;
+v006B4B18_0 .alias "b", 0 0, v006B5E68_0;
+v006B4B70_0 .net "s0", 0 0, L_006B67E0; 1 drivers
+v006B4BE0_0 .net "s1", 0 0, L_006B4F50; 1 drivers
+v006B4C50_0 .alias "s2", 0 0, v006B5178_0;
+S_006B4690 .scope module, "XOR1" "xorgate" 2 80, 2 55, S_006B4610;
+ .timescale 0 0;
+L_006B6930 .functor NOR 1, v006B6170_0, v006B6170_0, C4<0>, C4<0>;
+L_006B6A48 .functor NOR 1, v006B6288_0, v006B6288_0, C4<0>, C4<0>;
+L_006B6B48 .functor NOR 1, v006B6170_0, L_006B6A48, C4<0>, C4<0>;
+L_006B6BB8 .functor NOR 1, v006B6288_0, L_006B6930, C4<0>, C4<0>;
+L_006B6C40 .functor NOR 1, L_006B6B48, L_006B6BB8, C4<0>, C4<0>;
+L_006B6CE8 .functor NOR 1, L_006B6C40, L_006B6C40, C4<0>, C4<0>;
+v006B4710_0 .alias "a", 0 0, v006B5DB8_0;
+v006B4768_0 .alias "b", 0 0, v006B5E68_0;
+v006B47C0_0 .net "s1", 0 0, L_006B6930; 1 drivers
+v006B4818_0 .net "s2", 0 0, L_006B6A48; 1 drivers
+v006B4870_0 .net "s3", 0 0, L_006B6B48; 1 drivers
+v006B48C8_0 .net "s4", 0 0, L_006B6BB8; 1 drivers
+v006B4938_0 .net "s5", 0 0, L_006B6C40; 1 drivers
+v006B49D0_0 .alias "s6", 0 0, v006B51D0_0;
+S_006B3BB8 .scope module, "HS2" "halfSubtractor" 2 94, 2 73, S_003EC718;
+ .timescale 0 0;
+v006B43E8_0 .alias "a", 0 0, v006B51D0_0;
+v006B4440_0 .alias "b", 0 0, v006B6058_0;
+v006B4498_0 .net "s", 0 0, L_006B6D58; 1 drivers
+v006B4528_0 .alias "s3", 0 0, v006B5228_0;
+v006B45B8_0 .alias "s4", 0 0, v006B6390_0;
+S_006B42B8 .scope module, "NOT1" "notgate" 2 78, 2 12, S_006B3BB8;
+ .timescale 0 0;
+L_006B6D58 .functor NOR 1, L_006B6CE8, L_006B6CE8, C4<0>, C4<0>;
+v006B4338_0 .alias "a", 0 0, v006B51D0_0;
+v006B4390_0 .alias "s", 0 0, v006B4498_0;
+S_006B4038 .scope module, "AND1" "andgate" 2 79, 2 25, S_006B3BB8;
+ .timescale 0 0;
+L_006B6E58 .functor NOR 1, L_006B6D58, L_006B6D58, C4<0>, C4<0>;
+L_006B44F0 .functor NOR 1, L_006806D0, L_006806D0, C4<0>, C4<0>;
+L_006B6F80 .functor NOR 1, L_006B6E58, L_006B44F0, C4<0>, C4<0>;
+v006B40B8_0 .alias "a", 0 0, v006B4498_0;
+v006B4128_0 .alias "b", 0 0, v006B6058_0;
+v006B4180_0 .net "s0", 0 0, L_006B6E58; 1 drivers
+v006B41F0_0 .net "s1", 0 0, L_006B44F0; 1 drivers
+v006B4260_0 .alias "s2", 0 0, v006B5228_0;
+S_006B3C38 .scope module, "XOR1" "xorgate" 2 80, 2 55, S_006B3BB8;
+ .timescale 0 0;
+L_006B7008 .functor NOR 1, L_006B6CE8, L_006B6CE8, C4<0>, C4<0>;
+L_006B7058 .functor NOR 1, L_006806D0, L_006806D0, C4<0>, C4<0>;
+L_006B7090 .functor NOR 1, L_006B6CE8, L_006B7058, C4<0>, C4<0>;
+L_006B7100 .functor NOR 1, L_006806D0, L_006B7008, C4<0>, C4<0>;
+L_006B7188 .functor NOR 1, L_006B7090, L_006B7100, C4<0>, C4<0>;
+L_006B7230 .functor NOR 1, L_006B7188, L_006B7188, C4<0>, C4<0>;
+v006B3CB8_0 .alias "a", 0 0, v006B51D0_0;
+v006B3D28_0 .alias "b", 0 0, v006B6058_0;
+v006B3D98_0 .net "s1", 0 0, L_006B7008; 1 drivers
+v006B3E20_0 .net "s2", 0 0, L_006B7058; 1 drivers
+v006B3E90_0 .net "s3", 0 0, L_006B7090; 1 drivers
+v006B3EE8_0 .net "s4", 0 0, L_006B7100; 1 drivers
+v006B3F58_0 .net "s5", 0 0, L_006B7188; 1 drivers
+v006B3FC8_0 .alias "s6", 0 0, v006B6390_0;
+S_003EC798 .scope module, "OR1" "orgate" 2 95, 2 40, S_003EC718;
+ .timescale 0 0;
+L_006B72A0 .functor NOR 1, L_006B6F80, L_006B6840, C4<0>, C4<0>;
+L_006B72D8 .functor NOR 1, L_006B72A0, L_006B72A0, C4<0>, C4<0>;
+v006808A8_0 .alias "a", 0 0, v006B5228_0;
+v00680850_0 .alias "b", 0 0, v006B5178_0;
+v006B3AC0_0 .net "s0", 0 0, L_006B72A0; 1 drivers
+v006B3B48_0 .alias "s1", 0 0, v006B6338_0;
+    .scope S_00673CD8;
+T_0 ;
+    %vpi_call 2 127 "$display", "Bruno Santiago Pinheiro";
+    %vpi_call 2 128 "$display", "Matricula: 405792";
+    %vpi_call 2 129 "$display", "Circuito de diferença completa com 2 numeros de 2 bits cada usando apenas NOR.";
+    %vpi_call 2 130 "$display";
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 0, 1;
+    %vpi_call 2 132 "$monitor", " %b%b - %b%b = %b%b%b", v006B6170_0, v006B60B0_0, v006B6288_0, v006B61C8_0, v006B6390_0, v006B6338_0, v006B62E0_0;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 0, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 0, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 0, 1;
+    %set/v v006B6288_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B60B0_0, 1, 1;
+    %set/v v006B6170_0, 1, 1;
+    %set/v v006B61C8_0, 1, 1;
+    %set/v v006B6288_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "diferençacompleta.v";

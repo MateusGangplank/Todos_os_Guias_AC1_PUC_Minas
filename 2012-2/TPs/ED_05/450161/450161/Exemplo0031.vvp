@@ -1,0 +1,131 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x967aa58 .scope module, "test_Exemplo033" "test_Exemplo033" 2 43;
+ .timescale 0 0;
+v0x96a8be0_0 .var "carry", 0 0;
+RS_0x968e4f4 .resolv tri, L_0x96a9670, L_0x96a9b30, L_0x96aa0e8, C4<zzz>;
+v0x96a8c78_0 .net8 "carry1", 2 0, RS_0x968e4f4; 3 drivers
+RS_0x968e50c .resolv tri, L_0x96a95b0, L_0x96a9aa8, L_0x96a9fe8, C4<zzz>;
+v0x96a8cc8_0 .net8 "re", 2 0, RS_0x968e50c; 3 drivers
+v0x96a8d38_0 .var "x", 2 0;
+v0x96a8da8_0 .var "y", 2 0;
+S_0x967ae50 .scope module, "e1" "Exemplo0033" 2 51, 2 26, S_0x967aa58;
+ .timescale 0 0;
+L_0x96a8ea8 .functor XOR 1, L_0x96a8f18, v0x96a8be0_0, C4<0>, C4<0>;
+L_0x96a9060 .functor XOR 1, L_0x96a9138, v0x96a8be0_0, C4<0>, C4<0>;
+L_0x96a91f0 .functor XOR 1, L_0x96a9260, v0x96a8be0_0, C4<0>, C4<0>;
+v0x96a8718_0 .net *"_s1", 0 0, L_0x96a8ea8; 1 drivers
+v0x96a8788_0 .net *"_s11", 0 0, L_0x96a91f0; 1 drivers
+v0x96a87e8_0 .net *"_s14", 0 0, L_0x96a9260; 1 drivers
+v0x96a8848_0 .net *"_s4", 0 0, L_0x96a8f18; 1 drivers
+v0x96a8898_0 .net *"_s6", 0 0, L_0x96a9060; 1 drivers
+v0x96a88f8_0 .net *"_s9", 0 0, L_0x96a9138; 1 drivers
+v0x96a8958_0 .net "a", 2 0, v0x96a8d38_0; 1 drivers
+v0x96a89b8_0 .net "b", 2 0, v0x96a8da8_0; 1 drivers
+v0x96a8a18_0 .net "cin", 0 0, v0x96a8be0_0; 1 drivers
+v0x96a8a68_0 .alias "cout", 2 0, v0x96a8c78_0;
+v0x96a8ae8_0 .alias "resp", 2 0, v0x96a8cc8_0;
+RS_0x968e524 .resolv tri, L_0x96a8e18, L_0x96a8fd8, L_0x96a91a0, C4<zzz>;
+v0x96a8b48_0 .net8 "s", 2 0, RS_0x968e524; 3 drivers
+L_0x96a8e18 .part/pv L_0x96a8ea8, 0, 1, 3;
+L_0x96a8f18 .part v0x96a8da8_0, 0, 1;
+L_0x96a8fd8 .part/pv L_0x96a9060, 1, 1, 3;
+L_0x96a9138 .part v0x96a8da8_0, 1, 1;
+L_0x96a91a0 .part/pv L_0x96a91f0, 2, 1, 3;
+L_0x96a9260 .part v0x96a8da8_0, 2, 1;
+L_0x96a95b0 .part/pv L_0x96a9370, 0, 1, 3;
+L_0x96a9670 .part/pv L_0x96a94e8, 0, 1, 3;
+L_0x96a9730 .part v0x96a8d38_0, 0, 1;
+L_0x96a97e8 .part RS_0x968e524, 0, 1;
+L_0x96a9aa8 .part/pv L_0x96a9400, 1, 1, 3;
+L_0x96a9b30 .part/pv L_0x96a9a00, 1, 1, 3;
+L_0x96a9bf0 .part v0x96a8d38_0, 1, 1;
+L_0x96a9ca8 .part RS_0x968e524, 1, 1;
+L_0x96a9da0 .part RS_0x968e4f4, 0, 1;
+L_0x96a9fe8 .part/pv L_0x96a9bb8, 2, 1, 3;
+L_0x96aa0e8 .part/pv L_0x96a9f20, 2, 1, 3;
+L_0x96aa170 .part v0x96a8d38_0, 2, 1;
+L_0x96aa2e0 .part RS_0x968e524, 2, 1;
+L_0x96aa398 .part RS_0x968e4f4, 1, 1;
+S_0x96a82a8 .scope module, "soma1" "fullAdder" 2 34, 2 9, S_0x967ae50;
+ .timescale 0 0;
+L_0x96a8fa0 .functor XOR 1, L_0x96a9730, L_0x96a97e8, C4<0>, C4<0>;
+L_0x96a9370 .functor XOR 1, L_0x96a9730, L_0x96a97e8, C4<0>, C4<0>;
+L_0x96a9438 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0x96a9490 .functor AND 1, L_0x96a9730, L_0x96a97e8, C4<1>, C4<1>;
+L_0x96a94e8 .functor OR 1, L_0x96a9438, L_0x96a9490, C4<0>, C4<0>;
+v0x96a8328_0 .net "a", 0 0, L_0x96a9730; 1 drivers
+v0x96a8398_0 .net "and1", 0 0, L_0x96a9438; 1 drivers
+v0x96a83f8_0 .net "and2", 0 0, L_0x96a9490; 1 drivers
+v0x96a8458_0 .net "axor", 0 0, C4<z>; 0 drivers
+v0x96a84a8_0 .net "axorb", 0 0, L_0x96a8fa0; 1 drivers
+v0x96a8508_0 .net "b", 0 0, L_0x96a97e8; 1 drivers
+v0x96a8568_0 .alias "carryIn", 0 0, v0x96a8a18_0;
+v0x96a85c8_0 .net "carryOut", 0 0, L_0x96a94e8; 1 drivers
+v0x96a8628_0 .net "caryIn", 0 0, C4<z>; 0 drivers
+v0x96a8688_0 .net "s", 0 0, L_0x96a9370; 1 drivers
+S_0x96a7e38 .scope module, "soma2" "fullAdder" 2 35, 2 9, S_0x967ae50;
+ .timescale 0 0;
+L_0x96a9028 .functor XOR 1, L_0x96a9bf0, L_0x96a9ca8, C4<0>, C4<0>;
+L_0x96a9400 .functor XOR 1, L_0x96a9bf0, L_0x96a9ca8, C4<0>, C4<0>;
+L_0x96a9978 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0x96a99b0 .functor AND 1, L_0x96a9bf0, L_0x96a9ca8, C4<1>, C4<1>;
+L_0x96a9a00 .functor OR 1, L_0x96a9978, L_0x96a99b0, C4<0>, C4<0>;
+v0x96a7eb8_0 .net "a", 0 0, L_0x96a9bf0; 1 drivers
+v0x96a7f28_0 .net "and1", 0 0, L_0x96a9978; 1 drivers
+v0x96a7f88_0 .net "and2", 0 0, L_0x96a99b0; 1 drivers
+v0x96a7fe8_0 .net "axor", 0 0, C4<z>; 0 drivers
+v0x96a8038_0 .net "axorb", 0 0, L_0x96a9028; 1 drivers
+v0x96a8098_0 .net "b", 0 0, L_0x96a9ca8; 1 drivers
+v0x96a80f8_0 .net "carryIn", 0 0, L_0x96a9da0; 1 drivers
+v0x96a8158_0 .net "carryOut", 0 0, L_0x96a9a00; 1 drivers
+v0x96a81b8_0 .net "caryIn", 0 0, C4<z>; 0 drivers
+v0x96a8218_0 .net "s", 0 0, L_0x96a9400; 1 drivers
+S_0x967afe0 .scope module, "soma3" "fullAdder" 2 36, 2 9, S_0x967ae50;
+ .timescale 0 0;
+L_0x96a96c0 .functor XOR 1, L_0x96aa170, L_0x96aa2e0, C4<0>, C4<0>;
+L_0x96a9bb8 .functor XOR 1, L_0x96aa170, L_0x96aa2e0, C4<0>, C4<0>;
+L_0x96a9e58 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0x96a9eb0 .functor AND 1, L_0x96aa170, L_0x96aa2e0, C4<1>, C4<1>;
+L_0x96a9f20 .functor OR 1, L_0x96a9e58, L_0x96a9eb0, C4<0>, C4<0>;
+v0x967a8b8_0 .net "a", 0 0, L_0x96aa170; 1 drivers
+v0x96a7a58_0 .net "and1", 0 0, L_0x96a9e58; 1 drivers
+v0x96a7ab8_0 .net "and2", 0 0, L_0x96a9eb0; 1 drivers
+v0x96a7b18_0 .net "axor", 0 0, C4<z>; 0 drivers
+v0x96a7b80_0 .net "axorb", 0 0, L_0x96a96c0; 1 drivers
+v0x96a7be0_0 .net "b", 0 0, L_0x96aa2e0; 1 drivers
+v0x96a7c60_0 .net "carryIn", 0 0, L_0x96aa398; 1 drivers
+v0x96a7cc0_0 .net "carryOut", 0 0, L_0x96a9f20; 1 drivers
+v0x96a7d48_0 .net "caryIn", 0 0, C4<z>; 0 drivers
+v0x96a7da8_0 .net "s", 0 0, L_0x96a9bb8; 1 drivers
+    .scope S_0x967aa58;
+T_0 ;
+    %vpi_call 2 55 "$display", "Exemplo0021 - Guilherme alves de oliveira - 450161";
+    %vpi_call 2 56 "$display", "Test";
+    %ix/load 0, 0, 0;
+    %set/x0 v0x96a8d38_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x96a8d38_0, 0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x96a8d38_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x96a8da8_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x96a8da8_0, 0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x96a8da8_0, 1, 1;
+    %set/v v0x96a8be0_0, 1, 1;
+    %vpi_call 2 59 "$monitor", " ", &PV<v0x96a8d38_0, 0, 1>, &PV<v0x96a8d38_0, 1, 1>, &PV<v0x96a8d38_0, 2, 1>, "\012", &PV<v0x96a8da8_0, 0, 1>, &PV<v0x96a8da8_0, 1, 1>, &PV<v0x96a8da8_0, 2, 1>;
+    %delay 1, 0;
+    %vpi_call 2 61 "$monitor", "=", &PV<v0x96a8cc8_0, 0, 1>, &PV<v0x96a8cc8_0, 1, 1>, &PV<v0x96a8cc8_0, 2, 1>;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/guilherme/Área de Trabalho/area/tp5/Exemplo0033.v";

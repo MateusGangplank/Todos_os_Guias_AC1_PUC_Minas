@@ -1,0 +1,143 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0034B3A8 .scope module, "Exemplo0057" "Exemplo0057" 2 14;
+ .timescale 0 0;
+v005D16D8_0 .net "a", 0 0, v0034D388_0; 1 drivers
+v005D1730_0 .net "anot", 0 0, v0034D4B0_0; 1 drivers
+v005D1788_0 .net "b", 0 0, v003499C8_0; 1 drivers
+v005D17E0_0 .net "bnot", 0 0, v0034A458_0; 1 drivers
+v005D1838_0 .net "c", 0 0, v0034A560_0; 1 drivers
+v005D1890_0 .var "clock", 0 0;
+v005D18E8_0 .net "cnot", 0 0, v0059E2D0_0; 1 drivers
+v005D1940_0 .net "d", 0 0, v0059E3D8_0; 1 drivers
+v005D1998_0 .var "data", 0 0;
+v005D19F0_0 .net "dnot", 0 0, v0059E430_0; 1 drivers
+v005D1A48_0 .net "e", 0 0, v005D1628_0; 1 drivers
+v005D1AA0_0 .net "enot", 0 0, v005D1680_0; 1 drivers
+S_0034B650 .scope module, "dff01" "dff" 2 17, 2 5, S_0034B3A8;
+ .timescale 0 0;
+v0059E488_0 .net "clk", 0 0, v005D1890_0; 1 drivers
+v005D15D0_0 .net "d", 0 0, v005D1998_0; 1 drivers
+v005D1628_0 .var "q", 0 0;
+v005D1680_0 .var "qnot", 0 0;
+S_0034B5C8 .scope module, "dff02" "dff" 2 18, 2 5, S_0034B3A8;
+ .timescale 0 0;
+v0059E328_0 .alias "clk", 0 0, v0059E488_0;
+v0059E380_0 .alias "d", 0 0, v005D1A48_0;
+v0059E3D8_0 .var "q", 0 0;
+v0059E430_0 .var "qnot", 0 0;
+S_0034B540 .scope module, "dff03" "dff" 2 19, 2 5, S_0034B3A8;
+ .timescale 0 0;
+v0034A4B0_0 .alias "clk", 0 0, v0059E488_0;
+v0034A508_0 .alias "d", 0 0, v005D1940_0;
+v0034A560_0 .var "q", 0 0;
+v0059E2D0_0 .var "qnot", 0 0;
+S_0034B4B8 .scope module, "dff04" "dff" 2 20, 2 5, S_0034B3A8;
+ .timescale 0 0;
+v00349918_0 .alias "clk", 0 0, v0059E488_0;
+v00349970_0 .alias "d", 0 0, v005D1838_0;
+v003499C8_0 .var "q", 0 0;
+v0034A458_0 .var "qnot", 0 0;
+S_0034B430 .scope module, "dff05" "dff" 2 21, 2 5, S_0034B3A8;
+ .timescale 0 0;
+v0034D298_0 .alias "clk", 0 0, v0059E488_0;
+v00344F08_0 .alias "d", 0 0, v005D1788_0;
+v0034D388_0 .var "q", 0 0;
+v0034D4B0_0 .var "qnot", 0 0;
+E_0034D730 .event posedge, v0034D298_0;
+    .scope S_0034B650;
+T_0 ;
+    %wait E_0034D730;
+    %load/v 8, v005D15D0_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005D1628_0, 0, 8;
+    %load/v 8, v005D15D0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v005D1680_0, 0, 8;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0034B5C8;
+T_1 ;
+    %wait E_0034D730;
+    %load/v 8, v0059E380_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0059E3D8_0, 0, 8;
+    %load/v 8, v0059E380_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0059E430_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0034B540;
+T_2 ;
+    %wait E_0034D730;
+    %load/v 8, v0034A508_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0034A560_0, 0, 8;
+    %load/v 8, v0034A508_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0059E2D0_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0034B4B8;
+T_3 ;
+    %wait E_0034D730;
+    %load/v 8, v00349970_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003499C8_0, 0, 8;
+    %load/v 8, v00349970_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0034A458_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0034B430;
+T_4 ;
+    %wait E_0034D730;
+    %load/v 8, v00344F08_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0034D388_0, 0, 8;
+    %load/v 8, v00344F08_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0034D4B0_0, 0, 8;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0034B3A8;
+T_5 ;
+    %vpi_call 2 24 "$display", "Nome: Tiago Matta Machado Zaidan - 451620";
+    %vpi_call 2 25 "$display", "data   a  b  c  d  e";
+    %set/v v005D1890_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005D1998_0, 1, 1;
+    %delay 10, 0;
+    %set/v v005D1998_0, 0, 1;
+    %delay 60, 0;
+    %vpi_call 2 31 "$finish";
+    %end;
+    .thread T_5;
+    .scope S_0034B3A8;
+T_6 ;
+    %delay 5, 0;
+    %load/v 8, v005D1890_0, 1;
+    %inv 8, 1;
+    %set/v v005D1890_0, 8, 1;
+    %jmp T_6;
+    .thread T_6;
+    .scope S_0034B3A8;
+T_7 ;
+    %wait E_0034D730;
+    %vpi_call 2 37 "$display", "%b        %b  %b  %b  %b  %b", v005D1998_0, v005D16D8_0, v005D1788_0, v005D1838_0, v005D1940_0, v005D1A48_0;
+    %jmp T_7;
+    .thread T_7;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc_2_Periodo\Arquitetura_1\Exercicios_Resolvidos\Guia08\Exemplo0057.v";

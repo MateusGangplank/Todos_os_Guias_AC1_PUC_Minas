@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0075EFF0 .scope module, "testorgate" "testorgate" 2 19;
+ .timescale 0 0;
+v00754660_0 .var "a", 0 0;
+v007546B8_0 .var "b", 0 0;
+v00754710_0 .net "s", 0 0, L_0075EB78; 1 drivers
+S_00754138 .scope module, "OR1" "orgate" 2 26, 2 11, S_0075EFF0;
+ .timescale 0 0;
+L_0075EB78 .functor OR 1, v00754660_0, v007546B8_0, C4<0>, C4<0>;
+v007541C0_0 .net "p", 0 0, v00754660_0; 1 drivers
+v00754218_0 .net "q", 0 0, v007546B8_0; 1 drivers
+v00754608_0 .alias "s", 0 0, v00754710_0;
+S_0075F078 .scope begin, "start" "start" 2 29, 2 29, S_0075EFF0;
+ .timescale 0 0;
+    .scope S_0075EFF0;
+T_0 ;
+    %fork t_1, S_0075F078;
+    %jmp t_0;
+    .scope S_0075F078;
+t_1 ;
+    %set/v v00754660_0, 0, 1;
+    %set/v v007546B8_0, 0, 1;
+    %end;
+    .scope S_0075EFF0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0075EFF0;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exemplo0004 - Thais Mairink - 441710";
+    %vpi_call 2 36 "$display", "Test OR gate";
+    %vpi_call 2 37 "$display", "\012a | b = s\012";
+    %set/v v00754660_0, 0, 1;
+    %set/v v007546B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "%b | %b = %b", v00754660_0, v007546B8_0, v00754710_0;
+    %set/v v00754660_0, 0, 1;
+    %set/v v007546B8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b | %b = %b", v00754660_0, v007546B8_0, v00754710_0;
+    %set/v v00754660_0, 1, 1;
+    %set/v v007546B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b | %b = %b", v00754660_0, v007546B8_0, v00754710_0;
+    %set/v v00754660_0, 1, 1;
+    %set/v v007546B8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b | %b = %b", v00754660_0, v007546B8_0, v00754710_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Thaís Mairink\Documents\thais\Arq1\Exemplo0004.V";

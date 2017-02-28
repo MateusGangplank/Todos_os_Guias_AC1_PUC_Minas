@@ -1,0 +1,74 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EB1C8 .scope module, "testeExercicio03" "testeExercicio03" 2 34;
+ .timescale 0 0;
+v005DFA18_0 .var "a", 0 0;
+v005DFA70_0 .var "b", 0 0;
+v005DFAC8_0 .net "d", 0 0, L_005DFCC0; 1 drivers
+v005DFB58_0 .net "vin", 0 0, L_005DF988; 1 drivers
+S_005E34B8 .scope module, "HALFSUBTRACTOR" "Exercicio03" 2 38, 2 1, S_003EB1C8;
+ .timescale 0 0;
+v005DF7D8_0 .net "a", 0 0, v005DFA18_0; 1 drivers
+v005DF830_0 .net "b", 0 0, v005DFA70_0; 1 drivers
+v005DF8C0_0 .alias "d", 0 0, v005DFAC8_0;
+v005DF930_0 .net "t1", 0 0, L_005DFD68; 1 drivers
+v005DF9C0_0 .alias "vin", 0 0, v005DFB58_0;
+S_005DF528 .scope module, "XOR1" "XorNand" 2 5, 2 18, S_005E34B8;
+ .timescale 0 0;
+L_005DFBE8 .functor NAND 1, v005DFA18_0, v005DFA70_0, C4<1>, C4<1>;
+L_005DF888 .functor NAND 1, L_005DFBE8, v005DFA18_0, C4<1>, C4<1>;
+L_005DFC88 .functor NAND 1, L_005DFBE8, v005DFA70_0, C4<1>, C4<1>;
+L_005DFCC0 .functor NAND 1, L_005DF888, L_005DFC88, C4<1>, C4<1>;
+v005DF5B0_0 .alias "a", 0 0, v005DF7D8_0;
+v005DF608_0 .alias "b", 0 0, v005DF830_0;
+v005DF660_0 .alias "s", 0 0, v005DFAC8_0;
+v005DF6B8_0 .net "t1", 0 0, L_005DFBE8; 1 drivers
+v005DF710_0 .net "t2", 0 0, L_005DF888; 1 drivers
+v005DF768_0 .net "t3", 0 0, L_005DFC88; 1 drivers
+S_005DF3D8 .scope module, "NOT1" "NotNand" 2 6, 2 28, S_005E34B8;
+ .timescale 0 0;
+L_005DFD68 .functor NAND 1, v005DFA18_0, v005DFA18_0, C4<1>, C4<1>;
+v005DF460_0 .alias "a", 0 0, v005DF7D8_0;
+v005DF4D0_0 .alias "s", 0 0, v005DF930_0;
+S_005E3540 .scope module, "AND1" "AndNand" 2 7, 2 10, S_005E34B8;
+ .timescale 0 0;
+L_005DFDB8 .functor NAND 1, L_005DFD68, v005DFA70_0, C4<1>, C4<1>;
+L_005DF988 .functor NAND 1, L_005DFDB8, L_005DFDB8, C4<1>, C4<1>;
+v005E17F8_0 .alias "a", 0 0, v005DF930_0;
+v005DF270_0 .alias "b", 0 0, v005DF830_0;
+v005DF2E0_0 .alias "s", 0 0, v005DFB58_0;
+v005DF368_0 .net "t1", 0 0, L_005DFDB8; 1 drivers
+    .scope S_003EB1C8;
+T_0 ;
+    %set/v v005DFA18_0, 0, 1;
+    %set/v v005DFA70_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003EB1C8;
+T_1 ;
+    %vpi_call 2 47 "$display", "Exercicio 03 - Douglas Borges - 417889";
+    %vpi_call 2 48 "$display", "Circuito Meio-Diferenciador com portas NAND\012";
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "  a - b = Vin Dif";
+    %delay 1, 0;
+    %vpi_call 2 51 "$monitor", "  %d - %d =  %d   %d", v005DFA18_0, v005DFA70_0, v005DFB58_0, v005DFAC8_0;
+    %delay 1, 0;
+    %set/v v005DFA18_0, 0, 1;
+    %set/v v005DFA70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005DFA18_0, 1, 1;
+    %set/v v005DFA70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005DFA18_0, 1, 1;
+    %set/v v005DFA70_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Documentos\PUC\Arquitetura de Computadores\Verilog\Eclipse\Guia03\Exercicio03.v";

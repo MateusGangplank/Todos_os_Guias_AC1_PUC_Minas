@@ -1,0 +1,38 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00394260 .scope module, "testclock01a" "testclock01a" 2 21;
+ .timescale 0 0;
+v00393C70_0 .net "clk", 0 0, v00393C18_0; 1 drivers
+S_00393B90 .scope module, "CLK1" "clock" 2 24, 2 5, S_00394260;
+ .timescale 0 0;
+v00393C18_0 .var "clk", 0 0;
+    .scope S_00393B90;
+T_0 ;
+    %set/v v00393C18_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00393B90;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00393C18_0, 1;
+    %inv 8, 1;
+    %set/v v00393C18_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00394260;
+T_2 ;
+    %vpi_call 2 27 "$dumpfile", "testclock01a.vcd";
+    %vpi_call 2 28 "$dumpvars";
+    %delay 120, 0;
+    %vpi_call 2 30 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Washington Luis\Documents\Architecture\Guia09\aula_05\testclock01a.v";

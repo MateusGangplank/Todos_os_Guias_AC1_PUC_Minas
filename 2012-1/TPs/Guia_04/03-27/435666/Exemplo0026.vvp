@@ -1,0 +1,94 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008B9DA8 .scope module, "test_soma" "test_soma" 2 46;
+ .timescale 0 0;
+v009103E8_0 .var "carryIn", 5 0;
+v0090CC00_0 .var "constante", 5 0;
+v0090CC58_0 .net "s1", 5 0, L_00936DD0; 1 drivers
+v0090CCB0_0 .net "s2", 5 0, L_00936E78; 1 drivers
+v0090CD08_0 .net "s3", 5 0, L_00936FC8; 1 drivers
+v0090CD60_0 .net "s4", 5 0, L_009370E0; 1 drivers
+v0090CDB8_0 .var "w", 5 0;
+v0090CE10_0 .var "z", 5 0;
+S_008B9E30 .scope module, "ERROR" "soma" 2 57, 2 6, S_008B9DA8;
+ .timescale 0 0;
+L_008BCD88 .functor AND 6, v009103E8_0, v0090CE10_0, C4<111111>, C4<111111>;
+L_008FF480 .functor AND 6, v009103E8_0, v0090CDB8_0, C4<111111>, C4<111111>;
+L_008FF4F0 .functor NOT 6, v009103E8_0, C4<000000>, C4<000000>, C4<000000>;
+L_008FF528 .functor AND 6, L_008FF4F0, v0090CE10_0, C4<111111>, C4<111111>;
+L_008BFCD0 .functor NOT 6, v0090CDB8_0, C4<000000>, C4<000000>, C4<000000>;
+L_008BFD08 .functor AND 6, L_008FF4F0, v0090CDB8_0, C4<111111>, C4<111111>;
+L_008FF4B8 .functor AND 6, v009103E8_0, v0090CC00_0, C4<111111>, C4<111111>;
+L_008BFD78 .functor AND 6, L_008BCD88, L_008FF480, C4<111111>, C4<111111>;
+L_00936C10 .functor AND 6, v0090CC00_0, L_008FF4F0, C4<111111>, C4<111111>;
+L_00936C48 .functor AND 6, L_008BFD08, L_008FF528, C4<111111>, C4<111111>;
+L_00936CF0 .functor XOR 6, L_008BCD88, L_008FF480, C4<000000>, C4<000000>;
+L_00936D28 .functor XOR 6, L_008BFD08, L_008FF528, C4<000000>, C4<000000>;
+L_00936D60 .functor AND 6, L_008BCD88, L_00936CF0, C4<111111>, C4<111111>;
+L_00936DD0 .functor XOR 6, L_008FF4B8, L_00936CF0, C4<000000>, C4<000000>;
+L_00936E78 .functor OR 6, L_00936D60, L_008BFD78, C4<000000>, C4<000000>;
+L_00936F58 .functor NOT 6, L_00936D28, C4<000000>, C4<000000>, C4<000000>;
+L_00936FC8 .functor XOR 6, L_00936D28, L_00936C10, C4<000000>, C4<000000>;
+L_00937070 .functor AND 6, L_00936F58, L_00936C10, C4<111111>, C4<111111>;
+L_009370E0 .functor OR 6, L_00937070, L_00936C48, C4<000000>, C4<000000>;
+v0090FC00_0 .net "a", 5 0, v0090CDB8_0; 1 drivers
+v0090FC58_0 .net "b", 5 0, v0090CE10_0; 1 drivers
+v0090FCB0_0 .net "carryIn", 5 0, v009103E8_0; 1 drivers
+v0090FD08_0 .net "const", 5 0, v0090CC00_0; 1 drivers
+v0090FD60_0 .net "nota", 5 0, L_008BFCD0; 1 drivers
+v0090FDB8_0 .net "notcarry", 5 0, L_008FF4F0; 1 drivers
+v0090FE10_0 .net "notxor", 5 0, L_00936F58; 1 drivers
+v0090FE68_0 .alias "s1", 5 0, v0090CC58_0;
+v0090FEC0_0 .alias "s2", 5 0, v0090CCB0_0;
+v0090FF18_0 .alias "s3", 5 0, v0090CD08_0;
+v0090FF70_0 .alias "s4", 5 0, v0090CD60_0;
+v0090FFC8_0 .net "sand1", 5 0, L_008BCD88; 1 drivers
+v00910020_0 .net "sand10", 5 0, L_00937070; 1 drivers
+v00910078_0 .net "sand2", 5 0, L_008FF480; 1 drivers
+v009100D0_0 .net "sand3", 5 0, L_008FF528; 1 drivers
+v00910128_0 .net "sand4", 5 0, L_008BFD08; 1 drivers
+v00910180_0 .net "sand5", 5 0, L_008FF4B8; 1 drivers
+v009101D8_0 .net "sand6", 5 0, L_008BFD78; 1 drivers
+v00910230_0 .net "sand7", 5 0, L_00936C10; 1 drivers
+v00910288_0 .net "sand8", 5 0, L_00936C48; 1 drivers
+v009102E0_0 .net "sand9", 5 0, L_00936D60; 1 drivers
+v00910338_0 .net "sxor1", 5 0, L_00936CF0; 1 drivers
+v00910390_0 .net "sxor2", 5 0, L_00936D28; 1 drivers
+    .scope S_008B9DA8;
+T_0 ;
+    %set/v v0090CDB8_0, 0, 6;
+    %set/v v0090CE10_0, 1, 6;
+    %set/v v009103E8_0, 0, 6;
+    %set/v v0090CC00_0, 0, 6;
+    %vpi_call 2 64 "$display", "Exemplo0026 - Julio Machado -435666";
+    %vpi_call 2 65 "$display", "SOMADOR";
+    %vpi_call 2 66 "$display", "CarryIn 0 = Diferen\347a \012CarryIn 1 = Soma \012";
+    %vpi_call 2 67 "$monitor", "w=%b\011z=%b\011CarryIn=%b\011\012Soma=%b\011CarryOut=%b\011\012Diferen\347a=%b\011CarryOut=%b\012\012", v0090CDB8_0, v0090CE10_0, v009103E8_0, v0090CC58_0, v0090CCB0_0, v0090CD08_0, v0090CD60_0;
+    %delay 1, 0;
+    %movi 8, 9, 6;
+    %set/v v0090CDB8_0, 8, 6;
+    %movi 8, 59, 6;
+    %set/v v0090CE10_0, 8, 6;
+    %delay 1, 0;
+    %set/v v009103E8_0, 1, 6;
+    %delay 1, 0;
+    %movi 8, 15, 6;
+    %set/v v0090CDB8_0, 8, 6;
+    %movi 8, 13, 6;
+    %set/v v0090CE10_0, 8, 6;
+    %delay 1, 0;
+    %movi 8, 17, 6;
+    %set/v v0090CDB8_0, 8, 6;
+    %movi 8, 59, 6;
+    %set/v v0090CE10_0, 8, 6;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0026.v";

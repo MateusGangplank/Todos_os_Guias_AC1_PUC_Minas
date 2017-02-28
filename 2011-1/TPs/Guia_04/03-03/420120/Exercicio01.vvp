@@ -1,0 +1,94 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00674F88 .scope module, "testmeiasomanand" "testmeiasomanand" 2 49;
+ .timescale 0 0;
+v006A5848_0 .net "carry", 0 0, L_006A5BC0; 1 drivers
+v006A58A0_0 .var "e1", 0 0;
+v006A58F8_0 .var "e2", 0 0;
+v006A5950_0 .net "soma", 0 0, L_006A5810; 1 drivers
+S_00675088 .scope module, "meiasoma" "metodoMeiaSomaNands" 2 54, 2 37, S_00674F88;
+ .timescale 0 0;
+v006A55C8_0 .alias "carry", 0 0, v006A5848_0;
+v006A5620_0 .net "e1", 0 0, v006A58A0_0; 1 drivers
+v006A5678_0 .net "e2", 0 0, v006A58F8_0; 1 drivers
+v006A56D0_0 .alias "soma", 0 0, v006A5950_0;
+v006A5728_0 .net "temp1", 0 0, L_003EFB88; 1 drivers
+v006A57B8_0 .net "temp2", 0 0, L_006A5C60; 1 drivers
+S_006A5350 .scope module, "OR1" "ornand" 2 42, 2 4, S_00675088;
+ .timescale 0 0;
+L_006A59E0 .functor NAND 1, v006A58A0_0, v006A58A0_0, C4<1>, C4<1>;
+L_003EFB50 .functor NAND 1, v006A58F8_0, v006A58F8_0, C4<1>, C4<1>;
+L_003EFB88 .functor NAND 1, L_006A59E0, L_003EFB50, C4<1>, C4<1>;
+v006A53D0_0 .alias "e1", 0 0, v006A5620_0;
+v006A5428_0 .alias "e2", 0 0, v006A5678_0;
+v006A5480_0 .alias "saida", 0 0, v006A5728_0;
+v006A54F8_0 .net "temp1", 0 0, L_006A59E0; 1 drivers
+v006A5550_0 .net "temp2", 0 0, L_003EFB50; 1 drivers
+S_006A5140 .scope module, "AND1" "andnand" 2 43, 2 15, S_00675088;
+ .timescale 0 0;
+L_006A5B70 .functor NAND 1, v006A58A0_0, v006A58F8_0, C4<1>, C4<1>;
+L_006A5BC0 .functor NAND 1, L_006A5B70, L_006A5B70, C4<1>, C4<1>;
+v006A51C0_0 .alias "e1", 0 0, v006A5620_0;
+v006A5218_0 .alias "e2", 0 0, v006A5678_0;
+v006A5288_0 .alias "saida", 0 0, v006A5848_0;
+v006A52F8_0 .net "temp1", 0 0, L_006A5B70; 1 drivers
+S_006A4FF8 .scope module, "NOT1" "notnand" 2 44, 2 25, S_00675088;
+ .timescale 0 0;
+L_006A5C60 .functor NAND 1, L_006A5BC0, L_006A5BC0, C4<1>, C4<1>;
+v006A5078_0 .alias "e", 0 0, v006A5848_0;
+v006A50E8_0 .alias "saida", 0 0, v006A57B8_0;
+S_00675108 .scope module, "AND2" "andnand" 2 45, 2 15, S_00675088;
+ .timescale 0 0;
+L_006A5CC0 .functor NAND 1, L_003EFB88, L_006A5C60, C4<1>, C4<1>;
+L_006A5810 .functor NAND 1, L_006A5CC0, L_006A5CC0, C4<1>, C4<1>;
+v006720D8_0 .alias "e1", 0 0, v006A5728_0;
+v006A4E90_0 .alias "e2", 0 0, v006A57B8_0;
+v006A4F00_0 .alias "saida", 0 0, v006A5950_0;
+v006A4F88_0 .net "temp1", 0 0, L_006A5CC0; 1 drivers
+S_00675008 .scope begin, "start" "start" 2 56, 2 56, S_00674F88;
+ .timescale 0 0;
+S_00672058 .scope begin, "main" "main" 2 62, 2 62, S_00674F88;
+ .timescale 0 0;
+    .scope S_00674F88;
+T_0 ;
+    %fork t_1, S_00675008;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A58A0_0, 0, 1;
+    %set/v v006A58F8_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00674F88;
+T_1 ;
+    %fork t_3, S_00672058;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 64 "$display", "Circuito Meia-soma com portas NAND";
+    %delay 1, 0;
+    %vpi_call 2 65 "$display", "  a + b =  carry  soma";
+    %delay 1, 0;
+    %vpi_call 2 66 "$monitor", "  %d + %d =   %d    %d", v006A58A0_0, v006A58F8_0, v006A5848_0, v006A5950_0;
+    %delay 1, 0;
+    %set/v v006A58A0_0, 0, 1;
+    %set/v v006A58F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A58A0_0, 1, 1;
+    %set/v v006A58F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A58A0_0, 1, 1;
+    %set/v v006A58F8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\guia4\Exercicio01.v";

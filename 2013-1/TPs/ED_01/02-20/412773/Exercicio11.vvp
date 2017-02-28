@@ -1,0 +1,180 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BB9178 .scope module, "testnorgate" "testnorgate" 2 11;
+ .timescale 0 0;
+v005C80B0_0 .var "a", 7 0;
+v005C8108_0 .net "s", 0 0, L_005A0588; 1 drivers
+S_00BB9288 .scope module, "NOR1" "norgate" 2 14, 2 7, S_00BB9178;
+ .timescale 0 0;
+L_00BBFC20 .functor OR 1, L_005C8160, L_005C81B8, C4<0>, C4<0>;
+L_00BBFC58 .functor OR 1, L_00BBFC20, L_005C8210, C4<0>, C4<0>;
+L_00BBFD70 .functor OR 1, L_00BBFC58, L_005C8268, C4<0>, C4<0>;
+L_00BBFE18 .functor OR 1, L_00BBFD70, L_005C82C0, C4<0>, C4<0>;
+L_00BBFEC0 .functor OR 1, L_00BBFE18, L_005C8318, C4<0>, C4<0>;
+L_005A0438 .functor OR 1, L_00BBFEC0, L_005C8370, C4<0>, C4<0>;
+L_005A04E0 .functor OR 1, L_005A0438, L_005C83C8, C4<0>, C4<0>;
+L_005A0588 .functor NOT 1, L_005A04E0, C4<0>, C4<0>, C4<0>;
+v00BB4B20_0 .net *"_s1", 0 0, L_005C8160; 1 drivers
+v00BB4B78_0 .net *"_s11", 0 0, L_005C8268; 1 drivers
+v00BB4BD0_0 .net *"_s12", 0 0, L_00BBFD70; 1 drivers
+v00BB2CD8_0 .net *"_s15", 0 0, L_005C82C0; 1 drivers
+v00BB2D30_0 .net *"_s16", 0 0, L_00BBFE18; 1 drivers
+v00BB2D88_0 .net *"_s19", 0 0, L_005C8318; 1 drivers
+v00BB2DE0_0 .net *"_s20", 0 0, L_00BBFEC0; 1 drivers
+v005A4990_0 .net *"_s23", 0 0, L_005C8370; 1 drivers
+v005A49E8_0 .net *"_s24", 0 0, L_005A0438; 1 drivers
+v005C7DF0_0 .net *"_s27", 0 0, L_005C83C8; 1 drivers
+v005C7E48_0 .net *"_s28", 0 0, L_005A04E0; 1 drivers
+v005C7EA0_0 .net *"_s3", 0 0, L_005C81B8; 1 drivers
+v005C7EF8_0 .net *"_s4", 0 0, L_00BBFC20; 1 drivers
+v005C7F50_0 .net *"_s7", 0 0, L_005C8210; 1 drivers
+v005C7FA8_0 .net *"_s8", 0 0, L_00BBFC58; 1 drivers
+v005C8000_0 .net "p", 7 0, v005C80B0_0; 1 drivers
+v005C8058_0 .alias "s", 0 0, v005C8108_0;
+L_005C8160 .part v005C80B0_0, 0, 1;
+L_005C81B8 .part v005C80B0_0, 1, 1;
+L_005C8210 .part v005C80B0_0, 2, 1;
+L_005C8268 .part v005C80B0_0, 3, 1;
+L_005C82C0 .part v005C80B0_0, 4, 1;
+L_005C8318 .part v005C80B0_0, 5, 1;
+L_005C8370 .part v005C80B0_0, 6, 1;
+L_005C83C8 .part v005C80B0_0, 7, 1;
+S_00BB9200 .scope begin, "start" "start" 2 16, 2 16, S_00BB9178;
+ .timescale 0 0;
+    .scope S_00BB9178;
+T_0 ;
+    %fork t_1, S_00BB9200;
+    %jmp t_0;
+    .scope S_00BB9200;
+t_1 ;
+    %set/v v005C80B0_0, 0, 8;
+    %end;
+    .scope S_00BB9178;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00BB9178;
+T_1 ;
+    %vpi_call 2 21 "$display", "Exercicio 11 - Silvino Henrique Santos de Souza - 412773";
+    %vpi_call 2 22 "$display", "Receber 1 byte e verificar se todos s\343o iguais a 0";
+    %vpi_call 2 23 "$display", "\012abcedfgh = s\012";
+    %vpi_call 2 24 "$monitor", "%8b = %b", v005C80B0_0, v005C8108_0;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 32, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 128, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 3, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 6, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 12, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 24, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 48, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 96, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 192, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 5, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 10, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 20, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 40, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 80, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 160, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 9, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 18, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 36, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 72, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 144, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 17, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 34, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 68, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 136, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 33, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 66, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 132, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 65, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 130, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 129, 8;
+    %set/v v005C80B0_0, 8, 8;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Dropbox\PUC\2013\1º Semestre 2013\AC\Guias\Guia 1\Exercicio11.v";

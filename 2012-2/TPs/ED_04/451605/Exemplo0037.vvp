@@ -1,0 +1,149 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01E24848 .scope module, "test_subtracao" "test_subtracao" 2 52;
+ .timescale 0 0;
+v01E1F1C0_0 .var "carry", 0 0;
+v01E1F218_0 .var "k", 2 0;
+RS_01E25094 .resolv tri, L_01E202E0, L_01E49E78, C4<z>, C4<z>;
+v01E1F270_0 .net8 "l", 0 0, RS_01E25094; 2 drivers
+RS_01E2537C .resolv tri, L_01E1F378, L_01E1F480, L_01E1F588, L_01E1F690;
+v01E1F2C8_0 .net8 "soma", 2 0, RS_01E2537C; 4 drivers
+v01E1F320_0 .var "w", 2 0;
+L_01E1F690 .part/pv L_01E1FC88, 0, 1, 3;
+L_01E1F6E8 .part v01E1F320_0, 0, 1;
+L_01E1F740 .part v01E1F218_0, 0, 1;
+S_01E249E0 .scope module, "modulo" "subtracao" 2 60, 2 13, S_01E24848;
+ .timescale 0 0;
+v01E1EF58_0 .net "a", 2 0, v01E1F320_0; 1 drivers
+v01E1EFB0_0 .net "b", 2 0, v01E1F218_0; 1 drivers
+v01E1F008_0 .net "carryIn", 0 0, v01E1F1C0_0; 1 drivers
+v01E1F060_0 .net "h", 0 0, L_01E1FBA8; 1 drivers
+v01E1F0B8_0 .net "j", 0 0, L_01E1FF98; 1 drivers
+v01E1F110_0 .alias "s", 2 0, v01E1F2C8_0;
+v01E1F168_0 .alias "s3", 0 0, v01E1F270_0;
+L_01E1F378 .part/pv L_0027FC88, 0, 1, 3;
+L_01E1F3D0 .part v01E1F320_0, 0, 1;
+L_01E1F428 .part v01E1F218_0, 0, 1;
+L_01E1F480 .part/pv L_01E1FD30, 1, 1, 3;
+L_01E1F4D8 .part v01E1F320_0, 1, 1;
+L_01E1F530 .part v01E1F218_0, 1, 1;
+L_01E1F588 .part/pv L_01E20078, 2, 1, 3;
+L_01E1F5E0 .part v01E1F320_0, 2, 1;
+L_01E1F638 .part v01E1F218_0, 2, 1;
+S_01E22F50 .scope module, "FA1" "FA" 2 25, 2 31, S_01E249E0;
+ .timescale 0 0;
+L_0027FC50 .functor XOR 1, L_01E1F3D0, L_01E1F428, C4<0>, C4<0>;
+L_0027FC88 .functor XOR 1, L_0027FC50, v01E1F1C0_0, C4<0>, C4<0>;
+L_0027C590 .functor NOT 1, L_01E1F3D0, C4<0>, C4<0>, C4<0>;
+L_0027DC10 .functor NOT 1, L_0027FC88, C4<0>, C4<0>, C4<0>;
+L_0027DC80 .functor AND 1, L_0027C590, L_01E1F428, C4<1>, C4<1>;
+L_01E1FB38 .functor AND 1, L_0027DC10, v01E1F1C0_0, C4<1>, C4<1>;
+L_01E1FBA8 .functor OR 1, L_0027DC80, L_01E1FB38, C4<0>, C4<0>;
+v01E1EBE8_0 .net "a", 0 0, L_0027FC50; 1 drivers
+v01E1EC40_0 .alias "c", 0 0, v01E1F008_0;
+v01E1EC98_0 .net "d", 0 0, L_01E1FB38; 1 drivers
+v01E1ECF0_0 .net "nota", 0 0, L_0027DC10; 1 drivers
+v01E1ED48_0 .net "notx", 0 0, L_0027C590; 1 drivers
+v01E1EDA0_0 .net "s", 0 0, L_0027DC80; 1 drivers
+v01E1EDF8_0 .net "s0", 0 0, L_0027FC88; 1 drivers
+v01E1EE50_0 .alias "s1", 0 0, v01E1F060_0;
+v01E1EEA8_0 .net "x", 0 0, L_01E1F3D0; 1 drivers
+v01E1EF00_0 .net "y", 0 0, L_01E1F428; 1 drivers
+S_01E246B0 .scope module, "FA2" "FA" 2 26, 2 31, S_01E249E0;
+ .timescale 0 0;
+L_01E1FCF8 .functor XOR 1, L_01E1F4D8, L_01E1F530, C4<0>, C4<0>;
+L_01E1FD30 .functor XOR 1, L_01E1FCF8, L_01E1FBA8, C4<0>, C4<0>;
+L_01E1FDA0 .functor NOT 1, L_01E1F4D8, C4<0>, C4<0>, C4<0>;
+L_01E1FE10 .functor NOT 1, L_01E1FD30, C4<0>, C4<0>, C4<0>;
+L_01E1FE80 .functor AND 1, L_01E1FDA0, L_01E1F530, C4<1>, C4<1>;
+L_01E1FF28 .functor AND 1, L_01E1FE10, L_01E1FBA8, C4<1>, C4<1>;
+L_01E1FF98 .functor OR 1, L_01E1FE80, L_01E1FF28, C4<0>, C4<0>;
+v0027BFE8_0 .net "a", 0 0, L_01E1FCF8; 1 drivers
+v0027C040_0 .alias "c", 0 0, v01E1F060_0;
+v0027C098_0 .net "d", 0 0, L_01E1FF28; 1 drivers
+v0027C0F0_0 .net "nota", 0 0, L_01E1FE10; 1 drivers
+v0027C148_0 .net "notx", 0 0, L_01E1FDA0; 1 drivers
+v0027C1A0_0 .net "s", 0 0, L_01E1FE80; 1 drivers
+v0027C1F8_0 .net "s0", 0 0, L_01E1FD30; 1 drivers
+v0027C250_0 .alias "s1", 0 0, v01E1F0B8_0;
+v01E1EB38_0 .net "x", 0 0, L_01E1F4D8; 1 drivers
+v01E1EB90_0 .net "y", 0 0, L_01E1F530; 1 drivers
+S_01E24958 .scope module, "FA3" "FA" 2 27, 2 31, S_01E249E0;
+ .timescale 0 0;
+L_01E20040 .functor XOR 1, L_01E1F5E0, L_01E1F638, C4<0>, C4<0>;
+L_01E20078 .functor XOR 1, L_01E20040, L_01E1FF98, C4<0>, C4<0>;
+L_01E200E8 .functor NOT 1, L_01E1F5E0, C4<0>, C4<0>, C4<0>;
+L_01E20158 .functor NOT 1, L_01E20078, C4<0>, C4<0>, C4<0>;
+L_01E201C8 .functor AND 1, L_01E200E8, L_01E1F638, C4<1>, C4<1>;
+L_01E20270 .functor AND 1, L_01E20158, L_01E1FF98, C4<1>, C4<1>;
+L_01E202E0 .functor OR 1, L_01E201C8, L_01E20270, C4<0>, C4<0>;
+v0027BC78_0 .net "a", 0 0, L_01E20040; 1 drivers
+v0027BCD0_0 .alias "c", 0 0, v01E1F0B8_0;
+v0027BD28_0 .net "d", 0 0, L_01E20270; 1 drivers
+v0027BD80_0 .net "nota", 0 0, L_01E20158; 1 drivers
+v0027BDD8_0 .net "notx", 0 0, L_01E200E8; 1 drivers
+v0027BE30_0 .net "s", 0 0, L_01E201C8; 1 drivers
+v0027BE88_0 .net "s0", 0 0, L_01E20078; 1 drivers
+v0027BEE0_0 .alias "s1", 0 0, v01E1F270_0;
+v0027BF38_0 .net "x", 0 0, L_01E1F5E0; 1 drivers
+v0027BF90_0 .net "y", 0 0, L_01E1F638; 1 drivers
+S_01E24738 .scope module, "FAx" "FA" 2 61, 2 31, S_01E24848;
+ .timescale 0 0;
+L_01E1FCC0 .functor XOR 1, L_01E1F6E8, L_01E1F740, C4<0>, C4<0>;
+L_01E1FC88 .functor XOR 1, L_01E1FCC0, v01E1F1C0_0, C4<0>, C4<0>;
+L_01E49C80 .functor NOT 1, L_01E1F6E8, C4<0>, C4<0>, C4<0>;
+L_01E49CF0 .functor NOT 1, L_01E1FC88, C4<0>, C4<0>, C4<0>;
+L_01E49D60 .functor AND 1, L_01E49C80, L_01E1F740, C4<1>, C4<1>;
+L_01E49E08 .functor AND 1, L_01E49CF0, v01E1F1C0_0, C4<1>, C4<1>;
+L_01E49E78 .functor OR 1, L_01E49D60, L_01E49E08, C4<0>, C4<0>;
+v0027B908_0 .net "a", 0 0, L_01E1FCC0; 1 drivers
+v0027B960_0 .alias "c", 0 0, v01E1F008_0;
+v0027B9B8_0 .net "d", 0 0, L_01E49E08; 1 drivers
+v0027BA10_0 .net "nota", 0 0, L_01E49CF0; 1 drivers
+v0027BA68_0 .net "notx", 0 0, L_01E49C80; 1 drivers
+v0027BAC0_0 .net "s", 0 0, L_01E49D60; 1 drivers
+v0027BB18_0 .net "s0", 0 0, L_01E1FC88; 1 drivers
+v0027BB70_0 .alias "s1", 0 0, v01E1F270_0;
+v0027BBC8_0 .net "x", 0 0, L_01E1F6E8; 1 drivers
+v0027BC20_0 .net "y", 0 0, L_01E1F740; 1 drivers
+S_01E247C0 .scope begin, "start" "start" 2 63, 2 63, S_01E24848;
+ .timescale 0 0;
+    .scope S_01E24848;
+T_0 ;
+    %fork t_1, S_01E247C0;
+    %jmp t_0;
+    .scope S_01E247C0;
+t_1 ;
+    %movi 8, 3, 3;
+    %set/v v01E1F320_0, 8, 3;
+    %movi 8, 1, 3;
+    %set/v v01E1F218_0, 8, 3;
+    %set/v v01E1F1C0_0, 0, 1;
+    %end;
+    .scope S_01E24848;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_01E24848;
+T_1 ;
+    %vpi_call 2 72 "$display", "Exemplo0036 - Pedro Henrique Lima Pinheiro - 451605";
+    %vpi_call 2 73 "$display", "Test ALU\222s subtracao";
+    %delay 1, 0;
+    %vpi_call 2 76 "$display", "%3b - %3b = %1b %3b", v01E1F320_0, v01E1F218_0, v01E1F270_0, v01E1F2C8_0;
+    %vpi_call 2 77 "$monitor", "%3b - %3b = %1b %3b", v01E1F320_0, v01E1F218_0, v01E1F270_0, v01E1F2C8_0;
+    %delay 1, 0;
+    %movi 8, 1, 3;
+    %set/v v01E1F320_0, 8, 3;
+    %set/v v01E1F218_0, 0, 3;
+    %set/v v01E1F1C0_0, 0, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0037.v";

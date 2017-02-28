@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008430B8 .scope module, "testxorgate" "testxorgate" 2 16;
+ .timescale 0 0;
+v0084F4A0_0 .var "a", 0 0;
+v0084F4F8_0 .var "b", 0 0;
+v0084F550_0 .net "s", 0 0, L_0079C8C8; 1 drivers
+S_0084FCB8 .scope module, "XOR1" "xorgate" 2 23, 2 9, S_008430B8;
+ .timescale 0 0;
+L_0084DA80 .functor NOT 1, v0084F4A0_0, C4<0>, C4<0>, C4<0>;
+L_0084F5A8 .functor AND 1, L_0084DA80, v0084F4F8_0, C4<1>, C4<1>;
+L_0084F650 .functor NOT 1, v0084F4F8_0, C4<0>, C4<0>, C4<0>;
+L_0079C858 .functor AND 1, v0084F4A0_0, L_0084F650, C4<1>, C4<1>;
+L_0079C8C8 .functor OR 1, L_0084F5A8, L_0079C858, C4<0>, C4<0>;
+v0084FD40_0 .net *"_s0", 0 0, L_0084DA80; 1 drivers
+v00843E28_0 .net *"_s2", 0 0, L_0084F5A8; 1 drivers
+v00843E80_0 .net *"_s4", 0 0, L_0084F650; 1 drivers
+v00843ED8_0 .net *"_s6", 0 0, L_0079C858; 1 drivers
+v00843F30_0 .net "p", 0 0, v0084F4A0_0; 1 drivers
+v0084F3F0_0 .net "q", 0 0, v0084F4F8_0; 1 drivers
+v0084F448_0 .alias "s", 0 0, v0084F550_0;
+S_0084FC30 .scope begin, "start" "start" 2 26, 2 26, S_008430B8;
+ .timescale 0 0;
+S_00843140 .scope begin, "main" "main" 2 33, 2 33, S_008430B8;
+ .timescale 0 0;
+    .scope S_008430B8;
+T_0 ;
+    %fork t_1, S_0084FC30;
+    %jmp t_0;
+    .scope S_0084FC30;
+t_1 ;
+    %set/v v0084F4A0_0, 0, 1;
+    %set/v v0084F4F8_0, 0, 1;
+    %end;
+    .scope S_008430B8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008430B8;
+T_1 ;
+    %fork t_3, S_00843140;
+    %jmp t_2;
+    .scope S_00843140;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exemplo0011 - Rafael Santos Moura - 441705";
+    %vpi_call 2 35 "$display", "Test xor gate";
+    %vpi_call 2 36 "$display", "\012 a ^ b = s\012";
+    %vpi_call 2 37 "$monitor", " %b ^ %b = %b", v0084F4A0_0, v0084F4F8_0, v0084F550_0;
+    %delay 1, 0;
+    %set/v v0084F4A0_0, 0, 1;
+    %set/v v0084F4F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0084F4A0_0, 0, 1;
+    %set/v v0084F4F8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0084F4A0_0, 1, 1;
+    %set/v v0084F4F8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0084F4A0_0, 1, 1;
+    %set/v v0084F4F8_0, 1, 1;
+    %end;
+    .scope S_008430B8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Mateus\Desktop\Rafael\ED 1\Exemplo0011.v";

@@ -1,0 +1,68 @@
+// -------------------------
+// Exemplo0034 - DECREMENTO DE 1
+// Nome: Camila Guedes Silveira 
+// Matricula: 427393 
+// ------------------------- 
+
+// ------------------------- 
+// decremento
+// ------------------------- 
+
+module decremento (output [5:0]s, input [5:0]a); 
+	// descrever por portas 
+	
+	wire [5:0] b = 1;
+	assign carryIn = 0;
+	
+	assign c1 = ~(a[0] ^ b[0]) & carryIn | (~(a[0]) & b[0]);
+	 assign s[0] = carryIn ^ (a[0] ^ b[0]);	
+	 assign c2 = ~(a[1] ^ b[1]) & c1 | (~(a[1]) & b[1]);
+	 assign s[1] = c1 ^ (a[1] ^ b[1]);	
+	 assign c3 = ~(a[2] ^ b[2]) & c2 | (~(a[2]) & b[2]);
+	 assign s[2] = c2 ^ (a[2] ^ b[2]);	
+	 assign c4 = ~(a[3] ^ b[3]) & c3 | (~(a[3]) & b[3]);
+	 assign s[3] = c3 ^ (a[3] ^ b[3]);	
+	 assign c5 = ~(a[4] ^ b[4]) & c4 | (~(a[4]) & b[4]);
+	 assign s[4] = c4 ^ (a[4] ^ b[4]);
+	 assign c6 = ~(a[5] ^ b[5]) & c5 | (~(a[5]) & b[5]);
+	 assign s[5] = c5 ^ (a[5] ^ b[5]);
+	 assign carryOut = ~(a[6] ^ b[6]) & c6 | (~(a[6]) & b[6]);	
+	
+endmodule // decremento 
+
+module test_decremento; 
+// ------------------------- definir dados 
+	reg [5:0] x; 
+	wire [5:0]s; 
+	
+	
+// ------------------------- instancia
+	decremento modulo(s, x);
+
+// ------------------------- parte principal 
+	initial begin 
+		$display("Exemplo0032 - Camila Guedes Silveira - 427393"); 
+		$display("Teste Decremento de 1"); 
+		
+		x = 6'b000001;
+		
+		
+		#1 $display("%b = %b", x, s);
+		
+		x = 6'b100000;
+			
+		
+		#1 $display("%b = %b", x, s);
+		
+		x = 6'b000111;
+						
+		#1 $display("%b = %b", x, s);
+		
+		x = 6'b000001;
+						
+		#1 $display("%b = %b", x, s);
+	
+	end 
+endmodule // test_decremento
+
+// OBS.: EXPERIMENTAR DEFINICOES POR PORTAS.

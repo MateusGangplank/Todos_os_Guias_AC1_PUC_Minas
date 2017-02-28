@@ -1,0 +1,90 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005F2A78 .scope module, "test_f4" "test_f4" 2 32;
+ .timescale 0 0;
+v005F1E90_0 .var "c", 0 0;
+v005F1EE8_0 .var "x", 0 0;
+v005F1F40_0 .var "y", 0 0;
+RS_00618EE4 .resolv tri, L_006141D8, L_00614248, C4<z>, C4<z>;
+v005F1F98_0 .net8 "z", 0 0, RS_00618EE4; 2 drivers
+S_005F2B00 .scope module, "modulo" "f4" 2 38, 2 9, S_005F2A78;
+ .timescale 0 0;
+L_005D3ED0 .functor AND 1, v005F1EE8_0, v005F1F40_0, C4<1>, C4<1>;
+L_005D3F78 .functor AND 1, v005F1EE8_0, v005F1F40_0, C4<1>, C4<1>;
+L_005F0050 .functor OR 1, v005F1EE8_0, v005F1F40_0, C4<0>, C4<0>;
+L_005F0158 .functor OR 1, v005F1EE8_0, v005F1F40_0, C4<0>, C4<0>;
+RS_00618EFC .resolv tri, L_005D3ED0, L_005D3F78, C4<z>, C4<z>;
+L_005D3F40 .functor AND 1, RS_00618EFC, v005F1E90_0, C4<1>, C4<1>;
+L_00613FE0 .functor AND 1, RS_00618EFC, v005F1E90_0, C4<1>, C4<1>;
+RS_00618F14 .resolv tri, L_005F0050, L_005F0158, C4<z>, C4<z>;
+L_00614050 .functor AND 1, RS_00618F14, L_00614088, C4<1>, C4<1>;
+L_00614088 .functor NOT 1, v005F1E90_0, C4<0>, C4<0>, C4<0>;
+L_006140F8 .functor AND 1, RS_00618F14, L_00614168, C4<1>, C4<1>;
+L_00614168 .functor NOT 1, v005F1E90_0, C4<0>, C4<0>, C4<0>;
+RS_00618F2C .resolv tri, L_005D3F40, L_00613FE0, C4<z>, C4<z>;
+RS_00618F44 .resolv tri, L_00614050, L_006140F8, C4<z>, C4<z>;
+L_006141D8 .functor OR 1, RS_00618F2C, RS_00618F44, C4<0>, C4<0>;
+L_00614248 .functor OR 1, RS_00618F2C, RS_00618F44, C4<0>, C4<0>;
+v005F1B20_0 .net *"_s0", 0 0, L_00614088; 1 drivers
+v005F1B78_0 .net *"_s2", 0 0, L_00614168; 1 drivers
+v005F1BD0_0 .net "a", 0 0, v005F1EE8_0; 1 drivers
+v005F1C28_0 .net "b", 0 0, v005F1F40_0; 1 drivers
+v005F1C80_0 .net "ch", 0 0, v005F1E90_0; 1 drivers
+v005F1CD8_0 .alias "s", 0 0, v005F1F98_0;
+v005F1D30_0 .net8 "s1", 0 0, RS_00618EFC; 2 drivers
+v005F1D88_0 .net8 "s2", 0 0, RS_00618F14; 2 drivers
+v005F1DE0_0 .net8 "s3", 0 0, RS_00618F2C; 2 drivers
+v005F1E38_0 .net8 "s4", 0 0, RS_00618F44; 2 drivers
+    .scope S_005F2A78;
+T_0 ;
+    %vpi_call 2 42 "$display", "Exemplo003 - Milton costa teles da silva - 002751";
+    %vpi_call 2 43 "$display", "Test LU's module";
+    %set/v v005F1EE8_0, 0, 1;
+    %set/v v005F1F40_0, 0, 1;
+    %set/v v005F1E90_0, 0, 1;
+    %vpi_call 2 46 "$display", "a b ch  s";
+    %vpi_call 2 47 "$monitor", "%b %b  %b  %b", v005F1EE8_0, v005F1F40_0, v005F1E90_0, v005F1F98_0;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 0, 1;
+    %set/v v005F1F40_0, 0, 1;
+    %set/v v005F1E90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 0, 1;
+    %set/v v005F1F40_0, 1, 1;
+    %set/v v005F1E90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 1, 1;
+    %set/v v005F1F40_0, 0, 1;
+    %set/v v005F1E90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 1, 1;
+    %set/v v005F1F40_0, 1, 1;
+    %set/v v005F1E90_0, 0, 1;
+    %vpi_call 2 52 "$display", "a b ch  s";
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 0, 1;
+    %set/v v005F1F40_0, 0, 1;
+    %set/v v005F1E90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 0, 1;
+    %set/v v005F1F40_0, 1, 1;
+    %set/v v005F1E90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 1, 1;
+    %set/v v005F1F40_0, 0, 1;
+    %set/v v005F1E90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005F1EE8_0, 1, 1;
+    %set/v v005F1F40_0, 1, 1;
+    %set/v v005F1E90_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\COMPUTAÇAO 2° SEMESTRE 2012\AC-1\GUIA-03\Exemplo0032.v";

@@ -1,0 +1,92 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xa17ba38 .scope module, "testxorgate" "testxorgate" 2 20;
+ .timescale 0 0;
+v0xa179f70_0 .var "a", 0 3;
+v0xa179ff0_0 .var "b", 0 3;
+v0xa17a060_0 .net "s", 0 3, L_0xa17a2b0; 1 drivers
+S_0xa159dc0 .scope module, "XOR1" "xorgate" 2 27, 2 10, S_0xa17ba38;
+ .timescale 0 0;
+L_0xa17a0d0 .functor NOT 4, v0xa179f70_0, C4<0000>, C4<0000>, C4<0000>;
+L_0xa17a160 .functor AND 4, L_0xa17a0d0, v0xa179ff0_0, C4<1111>, C4<1111>;
+L_0xa17a208 .functor NOT 4, v0xa179ff0_0, C4<0000>, C4<0000>, C4<0000>;
+L_0xa17a240 .functor AND 4, v0xa179f70_0, L_0xa17a208, C4<1111>, C4<1111>;
+L_0xa17a2b0 .functor OR 4, L_0xa17a160, L_0xa17a240, C4<0000>, C4<0000>;
+v0xa17bb38_0 .net *"_s0", 3 0, L_0xa17a0d0; 1 drivers
+v0xa179d08_0 .net *"_s2", 3 0, L_0xa17a160; 1 drivers
+v0xa179d68_0 .net *"_s4", 3 0, L_0xa17a208; 1 drivers
+v0xa179dc8_0 .net *"_s6", 3 0, L_0xa17a240; 1 drivers
+v0xa179e30_0 .net "p", 0 3, v0xa179f70_0; 1 drivers
+v0xa179e90_0 .net "q", 0 3, v0xa179ff0_0; 1 drivers
+v0xa179f10_0 .alias "s", 0 3, v0xa17a060_0;
+S_0xa159d40 .scope begin, "start" "start" 2 30, 2 30, S_0xa17ba38;
+ .timescale 0 0;
+S_0xa17bab8 .scope begin, "main" "main" 2 37, 2 37, S_0xa17ba38;
+ .timescale 0 0;
+    .scope S_0xa17ba38;
+T_0 ;
+    %fork t_1, S_0xa159d40;
+    %jmp t_0;
+    .scope S_0xa159d40;
+t_1 ;
+    %movi 8, 3, 4;
+    %set/v v0xa179f70_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0xa179ff0_0, 8, 4;
+    %end;
+    .scope S_0xa17ba38;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0xa17ba38;
+T_1 ;
+    %fork t_3, S_0xa17bab8;
+    %jmp t_2;
+    .scope S_0xa17bab8;
+t_3 ;
+    %vpi_call 2 39 "$display", "Exemplo 0011 - DavidsonFrancis - 466499";
+    %vpi_call 2 40 "$display", "Test XOR gate:";
+    %vpi_call 2 41 "$display", "\012(~a & b) | (a & ~b) = s\012";
+    %vpi_call 2 42 "$monitor", "%b ^ %b = %b", v0xa179f70_0, v0xa179ff0_0, v0xa17a060_0;
+    %delay 1, 0;
+    %set/v v0xa179f70_0, 0, 4;
+    %set/v v0xa179ff0_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v0xa179f70_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v0xa179ff0_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v0xa179f70_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0xa179ff0_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v0xa179f70_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v0xa179ff0_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v0xa179f70_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0xa179ff0_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 9, 4;
+    %set/v v0xa179f70_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0xa179ff0_0, 8, 4;
+    %end;
+    .scope S_0xa17ba38;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/arquivos/puc/2PERIODO/ARQUITETURA DE COMPUTADORES I - 3806.1.00/proj_verilog/466499_ED01/Exemplo0011.v";

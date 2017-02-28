@@ -1,0 +1,108 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF030 .scope module, "testeMNAND" "testeMNAND" 2 18;
+ .timescale 0 0;
+v006A69F8_0 .var "a", 0 0;
+v006A6A50_0 .var "b", 0 0;
+v006A6AA8_0 .var "c", 0 0;
+v006A6B00_0 .net "s1", 0 0, L_006A6DA0; 1 drivers
+v006A6B90_0 .net "s2", 0 0, L_006A6EF8; 1 drivers
+v006A6C20_0 .net "s3", 0 0, L_006A7050; 1 drivers
+v006A6CB0_0 .net "s4", 0 0, L_006A6C78; 1 drivers
+S_006A6718 .scope module, "MNAND1" "Exercicio01" 2 22, 2 11, S_003EF030;
+ .timescale 0 0;
+L_006A6D30 .functor AND 1, v006A69F8_0, v006A69F8_0, C4<1>, C4<1>;
+L_006A6968 .functor AND 1, L_006A6D30, v006A69F8_0, C4<1>, C4<1>;
+L_006A6DA0 .functor NOT 1, L_006A6968, C4<0>, C4<0>, C4<0>;
+v006A6798_0 .net *"_s0", 0 0, L_006A6D30; 1 drivers
+v006A67F0_0 .net *"_s2", 0 0, L_006A6968; 1 drivers
+v006A6848_0 .net "a", 0 0, v006A69F8_0; 1 drivers
+v006A68B8_0 .alias "b", 0 0, v006A6848_0;
+v006A6910_0 .alias "c", 0 0, v006A6848_0;
+v006A69A0_0 .alias "s4", 0 0, v006A6B00_0;
+S_00674008 .scope module, "MNAND2" "Exercicio01" 2 23, 2 11, S_003EF030;
+ .timescale 0 0;
+L_006A6E20 .functor AND 1, v006A6A50_0, v006A6A50_0, C4<1>, C4<1>;
+L_00674470 .functor AND 1, L_006A6E20, v006A6A50_0, C4<1>, C4<1>;
+L_006A6EF8 .functor NOT 1, L_00674470, C4<0>, C4<0>, C4<0>;
+v006A64F0_0 .net *"_s0", 0 0, L_006A6E20; 1 drivers
+v006A6548_0 .net *"_s2", 0 0, L_00674470; 1 drivers
+v006A65A0_0 .net "a", 0 0, v006A6A50_0; 1 drivers
+v006A6610_0 .alias "b", 0 0, v006A65A0_0;
+v006A6668_0 .alias "c", 0 0, v006A65A0_0;
+v006A66C0_0 .alias "s4", 0 0, v006A6B90_0;
+S_003EFA90 .scope module, "MNAND3" "Exercicio01" 2 24, 2 11, S_003EF030;
+ .timescale 0 0;
+L_006A6F78 .functor AND 1, v006A6AA8_0, v006A6AA8_0, C4<1>, C4<1>;
+L_006744A8 .functor AND 1, L_006A6F78, v006A6AA8_0, C4<1>, C4<1>;
+L_006A7050 .functor NOT 1, L_006744A8, C4<0>, C4<0>, C4<0>;
+v006A6280_0 .net *"_s0", 0 0, L_006A6F78; 1 drivers
+v006A62F0_0 .net *"_s2", 0 0, L_006744A8; 1 drivers
+v006A6360_0 .net "a", 0 0, v006A6AA8_0; 1 drivers
+v006A63E8_0 .alias "b", 0 0, v006A6360_0;
+v006A6440_0 .alias "c", 0 0, v006A6360_0;
+v006A6498_0 .alias "s4", 0 0, v006A6C20_0;
+S_003EF560 .scope module, "MNAND4" "Exercicio01" 2 25, 2 11, S_003EF030;
+ .timescale 0 0;
+L_006A70D0 .functor AND 1, L_006A6DA0, L_006A6EF8, C4<1>, C4<1>;
+L_006A6BE8 .functor AND 1, L_006A70D0, L_006A7050, C4<1>, C4<1>;
+L_006A6C78 .functor NOT 1, L_006A6BE8, C4<0>, C4<0>, C4<0>;
+v006760B0_0 .net *"_s0", 0 0, L_006A70D0; 1 drivers
+v006A6050_0 .net *"_s2", 0 0, L_006A6BE8; 1 drivers
+v006A60C0_0 .alias "a", 0 0, v006A6B00_0;
+v006A6148_0 .alias "b", 0 0, v006A6B90_0;
+v006A61B8_0 .alias "c", 0 0, v006A6C20_0;
+v006A6210_0 .alias "s4", 0 0, v006A6CB0_0;
+    .scope S_003EF030;
+T_0 ;
+    %set/v v006A69F8_0, 0, 1;
+    %set/v v006A6A50_0, 0, 1;
+    %set/v v006A6AA8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003EF030;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", " Larissa Fernandes Leijoto - 410476 ";
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", " a | b | c = s4 ";
+    %vpi_call 2 36 "$monitor", " %b | %b | %b = %b ", v006A69F8_0, v006A6A50_0, v006A6AA8_0, v006A6CB0_0;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 0, 1;
+    %set/v v006A6A50_0, 0, 1;
+    %set/v v006A6AA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 0, 1;
+    %set/v v006A6A50_0, 1, 1;
+    %set/v v006A6AA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 0, 1;
+    %set/v v006A6A50_0, 1, 1;
+    %set/v v006A6AA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 1, 1;
+    %set/v v006A6A50_0, 0, 1;
+    %set/v v006A6AA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 1, 1;
+    %set/v v006A6A50_0, 0, 1;
+    %set/v v006A6AA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 1, 1;
+    %set/v v006A6A50_0, 1, 1;
+    %set/v v006A6AA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A69F8_0, 1, 1;
+    %set/v v006A6A50_0, 1, 1;
+    %set/v v006A6AA8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\2º periodo\Arquitetura de computadores\guia_02\guia02exercicio01.v";

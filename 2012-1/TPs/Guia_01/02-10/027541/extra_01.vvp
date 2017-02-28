@@ -1,0 +1,110 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00571A70 .scope module, "andgate" "andgate" 2 19;
+ .timescale 0 0;
+L_00753A48 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_00753A80 .functor AND 1, L_00753A48, C4<z>, C4<1>, C4<1>;
+L_007540C0 .functor AND 1, L_00753A80, C4<z>, C4<1>, C4<1>;
+v00753960_0 .net *"_s0", 0 0, L_00753A48; 1 drivers
+v007539B8_0 .net *"_s2", 0 0, L_00753A80; 1 drivers
+v005BDC10_0 .net "p", 0 0, C4<z>; 0 drivers
+v005BDC68_0 .net "q", 0 0, C4<z>; 0 drivers
+v005BDCC0_0 .net "r", 0 0, C4<z>; 0 drivers
+v005BDD18_0 .net "s", 0 0, L_007540C0; 1 drivers
+v005BDD70_0 .net "s2", 0 0, C4<z>; 0 drivers
+v005BDDC8_0 .net "t", 0 0, C4<z>; 0 drivers
+S_005718D8 .scope module, "circuito" "circuito" 2 29;
+ .timescale 0 0;
+L_00754130 .functor OR 1, v005BDE20_0, v005BDE78_0, v005BDED0_0, v005BDF28_0;
+L_00754168 .functor AND 1, v005BDF80_0, v005BDFD8_0, v005BE030_0, v005BE088_0;
+L_007541A0 .functor NOR 1, L_00754130, L_00754168, C4<0>, C4<0>;
+v005BDE20_0 .var "a", 0 0;
+v005BDE78_0 .var "b", 0 0;
+v005BDED0_0 .var "c", 0 0;
+v005BDF28_0 .var "d", 0 0;
+v005BDF80_0 .var "e", 0 0;
+v005BDFD8_0 .var "f", 0 0;
+v005BE030_0 .var "g", 0 0;
+v005BE088_0 .var "h", 0 0;
+v005BE0E0_0 .net "s", 0 0, L_007541A0; 1 drivers
+v005BE138_0 .net "s1", 0 0, L_00754130; 1 drivers
+v005BE190_0 .net "s2", 0 0, L_00754168; 1 drivers
+S_00571E28 .scope begin, "start" "start" 2 38, 2 38, S_005718D8;
+ .timescale 0 0;
+S_00571DA0 .scope begin, "main" "main" 2 42, 2 42, S_005718D8;
+ .timescale 0 0;
+S_00571C90 .scope module, "norgate" "norgate" 2 25;
+ .timescale 0 0;
+L_005700C0 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_005700F8 .functor NOT 1, L_005700C0, C4<0>, C4<0>, C4<0>;
+L_00594260 .functor NOT 1, L_005700F8, C4<0>, C4<0>, C4<0>;
+v005BE1E8_0 .net *"_s0", 0 0, L_005700C0; 1 drivers
+v005BE240_0 .net *"_s2", 0 0, L_005700F8; 1 drivers
+v005BE298_0 .net "p", 0 0, C4<z>; 0 drivers
+v005BE2F0_0 .net "q", 0 0, C4<z>; 0 drivers
+v005BE348_0 .net "s", 0 0, L_00594260; 1 drivers
+S_00571D18 .scope module, "orgate" "orgate" 2 13;
+ .timescale 0 0;
+L_005942D0 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_00594308 .functor OR 1, L_005942D0, C4<z>, C4<0>, C4<0>;
+L_00594378 .functor OR 1, L_00594308, C4<z>, C4<0>, C4<0>;
+v005BE3A0_0 .net *"_s0", 0 0, L_005942D0; 1 drivers
+v005BE3F8_0 .net *"_s2", 0 0, L_00594308; 1 drivers
+v005BE450_0 .net "p", 0 0, C4<z>; 0 drivers
+v005BE4A8_0 .net "q", 0 0, C4<z>; 0 drivers
+v005BE500_0 .net "r", 0 0, C4<z>; 0 drivers
+v005BE558_0 .net "s", 0 0, L_00594378; 1 drivers
+v005BE5B0_0 .net "s1", 0 0, C4<z>; 0 drivers
+v005BE608_0 .net "t", 0 0, C4<z>; 0 drivers
+    .scope S_005718D8;
+T_0 ;
+    %fork t_1, S_00571E28;
+    %jmp t_0;
+    .scope S_00571E28;
+t_1 ;
+    %set/v v005BDE20_0, 0, 1;
+    %set/v v005BDE78_0, 0, 1;
+    %set/v v005BDED0_0, 0, 1;
+    %set/v v005BDF28_0, 0, 1;
+    %set/v v005BDF80_0, 0, 1;
+    %set/v v005BDFD8_0, 0, 1;
+    %set/v v005BE030_0, 0, 1;
+    %set/v v005BE088_0, 0, 1;
+    %end;
+    .scope S_005718D8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005718D8;
+T_1 ;
+    %fork t_3, S_00571DA0;
+    %jmp t_2;
+    .scope S_00571DA0;
+t_3 ;
+    %vpi_call 2 43 "$display", "Exercicio04 -  Milton teles da silva - 002751";
+    %vpi_call 2 44 "$display", "Test circuito gate";
+    %vpi_call 2 45 "$display", "\012a b c d e f g h = s\012";
+    %vpi_call 2 46 "$monitor", "%b %b %b %b %b %b %b %b = %b", v005BDE20_0, v005BDE78_0, v005BDED0_0, v005BDF28_0, v005BDF80_0, v005BDFD8_0, v005BE030_0, v005BE088_0, v005BE0E0_0;
+    %delay 1, 0;
+    %set/v v005BDE20_0, 0, 1;
+    %set/v v005BDE78_0, 0, 1;
+    %set/v v005BDED0_0, 0, 1;
+    %set/v v005BDF28_0, 0, 1;
+    %set/v v005BDF80_0, 0, 1;
+    %set/v v005BDFD8_0, 0, 1;
+    %set/v v005BE030_0, 0, 1;
+    %set/v v005BE088_0, 0, 1;
+    %end;
+    .scope S_005718D8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\computação 1°semestre 2012\AC I\guia-01 0027541\extra_01.v";

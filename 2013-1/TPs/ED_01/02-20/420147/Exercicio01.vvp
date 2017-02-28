@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1001f40 .scope module, "testnandgate" "testnandgate" 2 17;
+ .timescale 0 0;
+v0x10157c0_0 .var "a", 0 0;
+v0x1015890_0 .var "b", 0 0;
+v0x1015940_0 .net "s", 0 0, L_0x1015b20; 1 drivers
+S_0x1002af0 .scope module, "NAND1" "nandgate" 2 24, 2 9, S_0x1001f40;
+ .timescale 0 0;
+L_0x10159f0 .functor AND 1, v0x10157c0_0, v0x1015890_0, C4<1>, C4<1>;
+L_0x1015b20 .functor NOT 1, L_0x10159f0, C4<0>, C4<0>, C4<0>;
+v0x1002be0_0 .net *"_s0", 0 0, L_0x10159f0; 1 drivers
+v0x10155d0_0 .net "p", 0 0, v0x10157c0_0; 1 drivers
+v0x1015670_0 .net "q", 0 0, v0x1015890_0; 1 drivers
+v0x1015710_0 .alias "s", 0 0, v0x1015940_0;
+S_0x1002a00 .scope begin, "start" "start" 2 26, 2 26, S_0x1001f40;
+ .timescale 0 0;
+S_0x1002030 .scope begin, "main" "main" 2 32, 2 32, S_0x1001f40;
+ .timescale 0 0;
+    .scope S_0x1001f40;
+T_0 ;
+    %fork t_1, S_0x1002a00;
+    %jmp t_0;
+    .scope S_0x1002a00;
+t_1 ;
+    %set/v v0x10157c0_0, 0, 1;
+    %set/v v0x1015890_0, 0, 1;
+    %end;
+    .scope S_0x1001f40;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x1001f40;
+T_1 ;
+    %fork t_3, S_0x1002030;
+    %jmp t_2;
+    .scope S_0x1002030;
+t_3 ;
+    %vpi_call 2 34 "$display", "Exercicio 01 - Victor Raphael Machado de Amorim - 420147";
+    %vpi_call 2 35 "$display", "Test NAND gate:";
+    %vpi_call 2 36 "$display", "\012a = s\012";
+    %set/v v0x10157c0_0, 0, 1;
+    %set/v v0x1015890_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "%b & %b = %b", v0x10157c0_0, v0x1015890_0, v0x1015940_0;
+    %set/v v0x10157c0_0, 0, 1;
+    %set/v v0x1015890_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "%b & %b = %b", v0x10157c0_0, v0x1015890_0, v0x1015940_0;
+    %set/v v0x10157c0_0, 1, 1;
+    %set/v v0x1015890_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "%b & %b = %b", v0x10157c0_0, v0x1015890_0, v0x1015940_0;
+    %set/v v0x10157c0_0, 1, 1;
+    %set/v v0x1015890_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "%b & %b = %b", v0x10157c0_0, v0x1015890_0, v0x1015940_0;
+    %end;
+    .scope S_0x1001f40;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/victor/Dropbox/Primeiro Semestre 2013/AC/Exercicios/Exercicio01.v";

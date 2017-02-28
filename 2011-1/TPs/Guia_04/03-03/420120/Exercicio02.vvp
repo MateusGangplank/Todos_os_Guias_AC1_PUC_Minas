@@ -1,0 +1,103 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00675928 .scope module, "testsomacompleta" "testsomacompleta" 2 27;
+ .timescale 0 0;
+v006A61F0_0 .var "carryin", 0 0;
+v006A6248_0 .net "carryout", 0 0, L_003EF928; 1 drivers
+v006A62A0_0 .var "e1", 0 0;
+v006A62F8_0 .var "e2", 0 0;
+v006A6388_0 .net "soma", 0 0, L_006A6350; 1 drivers
+S_00675AA8 .scope module, "SomaCompleta" "metodosomacompleta" 2 31, 2 14, S_00675928;
+ .timescale 0 0;
+L_003EF928 .functor OR 1, L_003EF848, L_006A6450, C4<0>, C4<0>;
+v006A5F08_0 .net "carry", 0 0, L_006A6450; 1 drivers
+v006A5F60_0 .net "carry2", 0 0, L_003EF848; 1 drivers
+v006A5FB8_0 .net "carryin", 0 0, v006A61F0_0; 1 drivers
+v006A6010_0 .alias "carryout", 0 0, v006A6248_0;
+v006A6068_0 .net "e1", 0 0, v006A62A0_0; 1 drivers
+v006A60C0_0 .net "e2", 0 0, v006A62F8_0; 1 drivers
+v006A6118_0 .net "saida", 0 0, L_006A6418; 1 drivers
+v006A6198_0 .alias "soma", 0 0, v006A6388_0;
+S_006A5CC8 .scope module, "MeiaSoma1" "metodomeiasoma" 2 19, 2 4, S_00675AA8;
+ .timescale 0 0;
+L_006A6418 .functor XOR 1, v006A62A0_0, v006A62F8_0, C4<0>, C4<0>;
+L_006A6450 .functor AND 1, v006A62A0_0, v006A62F8_0, C4<1>, C4<1>;
+v006A5D48_0 .alias "carry", 0 0, v006A5F08_0;
+v006A5DB8_0 .alias "e1", 0 0, v006A6068_0;
+v006A5E28_0 .alias "e2", 0 0, v006A60C0_0;
+v006A5EB0_0 .alias "saida", 0 0, v006A6118_0;
+S_00675B28 .scope module, "MeiaSoma2" "metodomeiasoma" 2 20, 2 4, S_00675AA8;
+ .timescale 0 0;
+L_006A6350 .functor XOR 1, L_006A6418, v006A61F0_0, C4<0>, C4<0>;
+L_003EF848 .functor AND 1, L_006A6418, v006A61F0_0, C4<1>, C4<1>;
+v00675BA8_0 .alias "carry", 0 0, v006A5F60_0;
+v006A5B60_0 .alias "e1", 0 0, v006A6118_0;
+v006A5BD0_0 .alias "e2", 0 0, v006A5FB8_0;
+v006A5C58_0 .alias "saida", 0 0, v006A6388_0;
+S_00675A28 .scope begin, "start" "start" 2 34, 2 34, S_00675928;
+ .timescale 0 0;
+S_006759A8 .scope begin, "main" "main" 2 40, 2 40, S_00675928;
+ .timescale 0 0;
+    .scope S_00675928;
+T_0 ;
+    %fork t_1, S_00675A28;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A62A0_0, 0, 1;
+    %set/v v006A62F8_0, 0, 1;
+    %set/v v006A61F0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00675928;
+T_1 ;
+    %fork t_3, S_006759A8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 42 "$display", "Circuito Meia-soma com portas NAND";
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "  e1 + e2  + carryin =  soma  carryout ";
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "  %d + %d  +  %d    =         %d      %b", v006A62A0_0, v006A62F8_0, v006A61F0_0, v006A6388_0, v006A6248_0;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 0, 1;
+    %set/v v006A62F8_0, 0, 1;
+    %set/v v006A61F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 0, 1;
+    %set/v v006A62F8_0, 1, 1;
+    %set/v v006A61F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 0, 1;
+    %set/v v006A62F8_0, 1, 1;
+    %set/v v006A61F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 1, 1;
+    %set/v v006A62F8_0, 0, 1;
+    %set/v v006A61F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 1, 1;
+    %set/v v006A62F8_0, 0, 1;
+    %set/v v006A61F0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 1, 1;
+    %set/v v006A62F8_0, 1, 1;
+    %set/v v006A61F0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A62A0_0, 1, 1;
+    %set/v v006A62F8_0, 1, 1;
+    %set/v v006A61F0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\guia4\Exercicio02.v";

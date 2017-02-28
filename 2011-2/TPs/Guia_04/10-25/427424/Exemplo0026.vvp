@@ -1,0 +1,94 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00809E20 .scope module, "test_soma" "test_soma" 2 46;
+ .timescale 0 0;
+v007303E8_0 .var "carryIn", 5 0;
+v0072D060_0 .var "constante", 5 0;
+v0072D0B8_0 .net "s1", 5 0, L_007571E0; 1 drivers
+v0072D110_0 .net "s2", 5 0, L_00757288; 1 drivers
+v0072D168_0 .net "s3", 5 0, L_007573D8; 1 drivers
+v0072D1C0_0 .net "s4", 5 0, L_007574F0; 1 drivers
+v0072D218_0 .var "w", 5 0;
+v0072D270_0 .var "z", 5 0;
+S_00809EA8 .scope module, "ERROR" "soma" 2 57, 2 6, S_00809E20;
+ .timescale 0 0;
+L_0080C198 .functor AND 6, v007303E8_0, v0072D270_0, C4<111111>, C4<111111>;
+L_007304C8 .functor AND 6, v007303E8_0, v0072D218_0, C4<111111>, C4<111111>;
+L_00730538 .functor NOT 6, v007303E8_0, C4<000000>, C4<000000>, C4<000000>;
+L_00730458 .functor AND 6, L_00730538, v0072D270_0, C4<111111>, C4<111111>;
+L_00802EB8 .functor NOT 6, v0072D218_0, C4<000000>, C4<000000>, C4<000000>;
+L_00802EF0 .functor AND 6, L_00730538, v0072D218_0, C4<111111>, C4<111111>;
+L_00730500 .functor AND 6, v007303E8_0, v0072D060_0, C4<111111>, C4<111111>;
+L_00802F60 .functor AND 6, L_0080C198, L_007304C8, C4<111111>, C4<111111>;
+L_00757020 .functor AND 6, v0072D060_0, L_00730538, C4<111111>, C4<111111>;
+L_00757058 .functor AND 6, L_00802EF0, L_00730458, C4<111111>, C4<111111>;
+L_00757100 .functor XOR 6, L_0080C198, L_007304C8, C4<000000>, C4<000000>;
+L_00757138 .functor XOR 6, L_00802EF0, L_00730458, C4<000000>, C4<000000>;
+L_00757170 .functor AND 6, L_0080C198, L_00757100, C4<111111>, C4<111111>;
+L_007571E0 .functor XOR 6, L_00730500, L_00757100, C4<000000>, C4<000000>;
+L_00757288 .functor OR 6, L_00757170, L_00802F60, C4<000000>, C4<000000>;
+L_00757368 .functor NOT 6, L_00757138, C4<000000>, C4<000000>, C4<000000>;
+L_007573D8 .functor XOR 6, L_00757138, L_00757020, C4<000000>, C4<000000>;
+L_00757480 .functor AND 6, L_00757368, L_00757020, C4<111111>, C4<111111>;
+L_007574F0 .functor OR 6, L_00757480, L_00757058, C4<000000>, C4<000000>;
+v0072FC00_0 .net "a", 5 0, v0072D218_0; 1 drivers
+v0072FC58_0 .net "b", 5 0, v0072D270_0; 1 drivers
+v0072FCB0_0 .net "carryIn", 5 0, v007303E8_0; 1 drivers
+v0072FD08_0 .net "const", 5 0, v0072D060_0; 1 drivers
+v0072FD60_0 .net "nota", 5 0, L_00802EB8; 1 drivers
+v0072FDB8_0 .net "notcarry", 5 0, L_00730538; 1 drivers
+v0072FE10_0 .net "notxor", 5 0, L_00757368; 1 drivers
+v0072FE68_0 .alias "s1", 5 0, v0072D0B8_0;
+v0072FEC0_0 .alias "s2", 5 0, v0072D110_0;
+v0072FF18_0 .alias "s3", 5 0, v0072D168_0;
+v0072FF70_0 .alias "s4", 5 0, v0072D1C0_0;
+v0072FFC8_0 .net "sand1", 5 0, L_0080C198; 1 drivers
+v00730020_0 .net "sand10", 5 0, L_00757480; 1 drivers
+v00730078_0 .net "sand2", 5 0, L_007304C8; 1 drivers
+v007300D0_0 .net "sand3", 5 0, L_00730458; 1 drivers
+v00730128_0 .net "sand4", 5 0, L_00802EF0; 1 drivers
+v00730180_0 .net "sand5", 5 0, L_00730500; 1 drivers
+v007301D8_0 .net "sand6", 5 0, L_00802F60; 1 drivers
+v00730230_0 .net "sand7", 5 0, L_00757020; 1 drivers
+v00730288_0 .net "sand8", 5 0, L_00757058; 1 drivers
+v007302E0_0 .net "sand9", 5 0, L_00757170; 1 drivers
+v00730338_0 .net "sxor1", 5 0, L_00757100; 1 drivers
+v00730390_0 .net "sxor2", 5 0, L_00757138; 1 drivers
+    .scope S_00809E20;
+T_0 ;
+    %set/v v0072D218_0, 0, 6;
+    %set/v v0072D270_0, 1, 6;
+    %set/v v007303E8_0, 0, 6;
+    %set/v v0072D060_0, 0, 6;
+    %vpi_call 2 64 "$display", "Exemplo0026 - Jonatas Sena Ferreira - 427424";
+    %vpi_call 2 65 "$display", "SOMADOR";
+    %vpi_call 2 66 "$display", "CarryIn 0 = Diferen\347a \012CarryIn 1 = Soma \012";
+    %vpi_call 2 67 "$monitor", "w=%b\011z=%b\011CarryIn=%b\011\012Soma=%b\011CarryOut=%b\011\012Diferen\347a=%b\011CarryOut=%b\012\012", v0072D218_0, v0072D270_0, v007303E8_0, v0072D0B8_0, v0072D110_0, v0072D168_0, v0072D1C0_0;
+    %delay 1, 0;
+    %movi 8, 9, 6;
+    %set/v v0072D218_0, 8, 6;
+    %movi 8, 59, 6;
+    %set/v v0072D270_0, 8, 6;
+    %delay 1, 0;
+    %set/v v007303E8_0, 1, 6;
+    %delay 1, 0;
+    %movi 8, 15, 6;
+    %set/v v0072D218_0, 8, 6;
+    %movi 8, 13, 6;
+    %set/v v0072D270_0, 8, 6;
+    %delay 1, 0;
+    %movi 8, 17, 6;
+    %set/v v0072D218_0, 8, 6;
+    %movi 8, 59, 6;
+    %set/v v0072D270_0, 8, 6;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Jonatas\Desktop\AC1 GUIAS FALTANTES\Guia04\Exemplo0026.v";

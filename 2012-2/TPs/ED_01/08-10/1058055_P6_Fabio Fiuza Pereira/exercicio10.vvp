@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0073AD20 .scope module, "testorgate" "testorgate" 2 29;
+ .timescale 0 0;
+v0073FA50_0 .var "a", 0 0;
+v007330A8_0 .var "b", 0 0;
+v00733100_0 .net "s", 0 0, L_0073FAA8; 1 drivers
+S_0073AE30 .scope module, "OR1" "andgate" 2 34, 2 9, S_0073AD20;
+ .timescale 0 0;
+L_0073FAA8 .functor OR 1, v0073FA50_0, v007330A8_0, C4<0>, C4<0>;
+v0073F820_0 .alias "s", 0 0, v00733100_0;
+v0073F9A0_0 .net "x", 0 0, v0073FA50_0; 1 drivers
+v0073F9F8_0 .net "y", 0 0, v007330A8_0; 1 drivers
+S_0073ADA8 .scope begin, "start" "start" 2 36, 2 36, S_0073AD20;
+ .timescale 0 0;
+    .scope S_0073AD20;
+T_0 ;
+    %fork t_1, S_0073ADA8;
+    %jmp t_0;
+    .scope S_0073ADA8;
+t_1 ;
+    %set/v v0073FA50_0, 0, 1;
+    %set/v v007330A8_0, 0, 1;
+    %end;
+    .scope S_0073AD20;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0073AD20;
+T_1 ;
+    %vpi_call 2 43 "$display", "Exercicio09 - F\341bio Fiuza Pereira - 406087";
+    %vpi_call 2 44 "$display", "Test AND gate";
+    %vpi_call 2 45 "$display", "\012a & b = s\012";
+    %set/v v0073FA50_0, 0, 1;
+    %set/v v007330A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b & %b = %b", v0073FA50_0, v007330A8_0, v00733100_0;
+    %set/v v0073FA50_0, 0, 1;
+    %set/v v007330A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "%b & %b = %b", v0073FA50_0, v007330A8_0, v00733100_0;
+    %set/v v0073FA50_0, 1, 1;
+    %set/v v007330A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "%b & %b = %b", v0073FA50_0, v007330A8_0, v00733100_0;
+    %set/v v0073FA50_0, 1, 1;
+    %set/v v007330A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 53 "$display", "%b & %b = %b", v0073FA50_0, v007330A8_0, v00733100_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio10.v";

@@ -1,0 +1,126 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00676B70 .scope module, "testeprograma1" "testeprograma1" 2 14;
+ .timescale 0 0;
+L_00676C18 .functor XOR 1, v00676DF0_0, v006AAE58_0, C4<0>, C4<0>;
+L_00677820 .functor AND 1, v00676DF0_0, v006AAE58_0, C4<1>, C4<1>;
+L_006AB468 .functor XOR 1, v00676D98_0, v006AAE58_0, C4<0>, C4<0>;
+L_006AB4A0 .functor AND 1, v00676D98_0, v006AAE58_0, C4<1>, C4<1>;
+L_006AB430 .functor XOR 1, L_006AB468, L_00677820, C4<0>, C4<0>;
+L_006AB580 .functor AND 1, L_006AB468, L_00677820, C4<1>, C4<1>;
+L_006AB5B8 .functor OR 1, L_006AB4A0, L_006AB580, C4<0>, C4<0>;
+L_006AB660 .functor XOR 1, v006AAD60_0, v006AAEB0_0, C4<0>, C4<0>;
+L_006AB6D0 .functor AND 1, v006AAD60_0, v006AAEB0_0, C4<1>, C4<1>;
+RS_0067AFB4 .resolv tri, L_006AB5B8, L_006AB660, C4<z>, C4<z>;
+L_006AB778 .functor XOR 1, RS_0067AFB4, RS_0067AFB4, C4<0>, C4<0>;
+L_006AB698 .functor AND 1, RS_0067AFB4, RS_0067AFB4, C4<1>, C4<1>;
+L_006AB7E8 .functor OR 1, L_006AB6D0, L_006AB698, C4<0>, C4<0>;
+v00676DF0_0 .var "a1", 0 0;
+v00676D98_0 .var "a2", 0 0;
+v006AAD60_0 .var "a3", 0 0;
+v006AADE8_0 .var "b1", 0 0;
+v006AAE58_0 .var "b2", 0 0;
+v006AAEB0_0 .var "b3", 0 0;
+v006AAF20_0 .net "s1", 0 0, L_00676C18; 1 drivers
+v006AAFB8_0 .net "s10", 0 0, L_006AB698; 1 drivers
+v006AB028_0 .net "s11", 0 0, L_006AB7E8; 1 drivers
+v006AB098_0 .net "s2", 0 0, L_00677820; 1 drivers
+v006AB108_0 .net "s3", 0 0, L_006AB468; 1 drivers
+v006AB178_0 .net "s4", 0 0, L_006AB4A0; 1 drivers
+v006AB1E8_0 .net "s5", 0 0, L_006AB430; 1 drivers
+v006AB258_0 .net "s6", 0 0, L_006AB580; 1 drivers
+v006AB2C8_0 .net8 "s7", 0 0, RS_0067AFB4; 2 drivers
+v006AB338_0 .net "s8", 0 0, L_006AB6D0; 1 drivers
+v006AB3A8_0 .net "s9", 0 0, L_006AB778; 1 drivers
+S_00676EC8 .scope begin, "main" "main" 2 39, 2 39, S_00676B70;
+ .timescale 0 0;
+    .scope S_00676B70;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_00676B70;
+T_1 ;
+    %fork t_1, S_00676EC8;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 40 "$display", "Guia05 - Programa1";
+    %vpi_call 2 41 "$display", "Criar um circuito lógico para realizar uma soma completa de\012dois valores bin\3777ÿÿÿÛ‘|ÛÁÀwÆjrios com tr\3777ÿÿÿÛ‘|ÛÁÀwtÇjs bits cada\012";
+    %vpi_call 2 42 "$display", "Aluno: Tiago Menegaz de Melo Garcia\011\011Matr\3777ÿÿÿÛ‘|ÛÁÀwmgcula:405844\012";
+    %vpi_call 2 43 "$display", "Relatório de Testes";
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 0, 1;
+    %set/v v006AAD60_0, 0, 1;
+    %set/v v006AADE8_0, 0, 1;
+    %set/v v006AAE58_0, 0, 1;
+    %set/v v006AAEB0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$monitor", "%b %b %b + %b %b %b  = %b %b %b %b", v006AAD60_0, v00676D98_0, v00676DF0_0, v006AAEB0_0, v006AAE58_0, v006AADE8_0, v006AB028_0, v006AB3A8_0, v006AB1E8_0, v006AAF20_0;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 1, 1;
+    %set/v v00676D98_0, 0, 1;
+    %set/v v006AAD60_0, 0, 1;
+    %set/v v006AADE8_0, 1, 1;
+    %set/v v006AAE58_0, 0, 1;
+    %set/v v006AAEB0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 1, 1;
+    %set/v v006AAD60_0, 0, 1;
+    %set/v v006AADE8_0, 0, 1;
+    %set/v v006AAE58_0, 1, 1;
+    %set/v v006AAEB0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 0, 1;
+    %set/v v006AAD60_0, 1, 1;
+    %set/v v006AADE8_0, 0, 1;
+    %set/v v006AAE58_0, 0, 1;
+    %set/v v006AAEB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 1, 1;
+    %set/v v006AAD60_0, 1, 1;
+    %set/v v006AADE8_0, 1, 1;
+    %set/v v006AAE58_0, 0, 1;
+    %set/v v006AAEB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 1, 1;
+    %set/v v00676D98_0, 1, 1;
+    %set/v v006AAD60_0, 1, 1;
+    %set/v v006AADE8_0, 1, 1;
+    %set/v v006AAE58_0, 1, 1;
+    %set/v v006AAEB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 1, 1;
+    %set/v v006AAD60_0, 1, 1;
+    %set/v v006AADE8_0, 1, 1;
+    %set/v v006AAE58_0, 0, 1;
+    %set/v v006AAEB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 1, 1;
+    %set/v v006AAD60_0, 1, 1;
+    %set/v v006AADE8_0, 0, 1;
+    %set/v v006AAE58_0, 1, 1;
+    %set/v v006AAEB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00676DF0_0, 0, 1;
+    %set/v v00676D98_0, 0, 1;
+    %set/v v006AAD60_0, 1, 1;
+    %set/v v006AADE8_0, 0, 1;
+    %set/v v006AAE58_0, 1, 1;
+    %set/v v006AAEB0_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio01.v";

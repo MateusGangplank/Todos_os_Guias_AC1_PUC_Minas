@@ -1,0 +1,124 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003DA960 .scope module, "testandgate" "testandgate" 2 20;
+ .timescale 0 0;
+v00324868_0 .var "a", 7 0;
+v003248C0_0 .net "s", 0 0, L_003257B0; 1 drivers
+v00324918_0 .net "z0", 0 0, L_003254A0; 1 drivers
+v00324970_0 .net "z1", 0 0, L_00325580; 1 drivers
+v003249C8_0 .net "z2", 0 0, L_00325548; 1 drivers
+v00324A20_0 .net "z3", 0 0, L_00325698; 1 drivers
+v00324A78_0 .net "z4", 0 0, L_00325740; 1 drivers
+v00324AD0_0 .net "z5", 0 0, L_00325778; 1 drivers
+L_00324B28 .part v00324868_0, 0, 1;
+L_00324B80 .part v00324868_0, 1, 1;
+L_00324BD8 .part v00324868_0, 2, 1;
+L_00324C30 .part v00324868_0, 3, 1;
+L_00324C88 .part v00324868_0, 4, 1;
+L_00324CE0 .part v00324868_0, 5, 1;
+L_00324D38 .part v00324868_0, 6, 1;
+L_00324D90 .part v00324868_0, 7, 1;
+S_003DA9E8 .scope module, "AND1" "and2gate" 2 26, 2 13, S_003DA960;
+ .timescale 0 0;
+L_003254A0 .functor AND 1, L_00324B28, L_00324B80, C4<1>, C4<1>;
+v00324760_0 .net "p", 0 0, L_00324B28; 1 drivers
+v003247B8_0 .net "q", 0 0, L_00324B80; 1 drivers
+v00324810_0 .alias "s", 0 0, v00324918_0;
+S_003DA850 .scope module, "AND2" "and2gate" 2 27, 2 13, S_003DA960;
+ .timescale 0 0;
+L_00325580 .functor AND 1, L_00324BD8, L_00324C30, C4<1>, C4<1>;
+v00324658_0 .net "p", 0 0, L_00324BD8; 1 drivers
+v003246B0_0 .net "q", 0 0, L_00324C30; 1 drivers
+v00324708_0 .alias "s", 0 0, v00324970_0;
+S_003DA6B8 .scope module, "AND3" "and2gate" 2 28, 2 13, S_003DA960;
+ .timescale 0 0;
+L_00325548 .functor AND 1, L_00324C88, L_00324CE0, C4<1>, C4<1>;
+v00324550_0 .net "p", 0 0, L_00324C88; 1 drivers
+v003245A8_0 .net "q", 0 0, L_00324CE0; 1 drivers
+v00324600_0 .alias "s", 0 0, v003249C8_0;
+S_003DA740 .scope module, "AND4" "and2gate" 2 29, 2 13, S_003DA960;
+ .timescale 0 0;
+L_00325698 .functor AND 1, L_00324D38, L_00324D90, C4<1>, C4<1>;
+v003DD6F0_0 .net "p", 0 0, L_00324D38; 1 drivers
+v003244A0_0 .net "q", 0 0, L_00324D90; 1 drivers
+v003244F8_0 .alias "s", 0 0, v00324A20_0;
+S_003DAAF8 .scope module, "AND5" "and2gate" 2 30, 2 13, S_003DA960;
+ .timescale 0 0;
+L_00325740 .functor AND 1, L_003254A0, L_00325580, C4<1>, C4<1>;
+v003D3028_0 .alias "p", 0 0, v00324918_0;
+v003D3080_0 .alias "q", 0 0, v00324970_0;
+v003D30D8_0 .alias "s", 0 0, v00324A78_0;
+S_003DAC08 .scope module, "AND6" "and2gate" 2 31, 2 13, S_003DA960;
+ .timescale 0 0;
+L_00325778 .functor AND 1, L_00325548, L_00325698, C4<1>, C4<1>;
+v003D3548_0 .alias "p", 0 0, v003249C8_0;
+v003D35A0_0 .alias "q", 0 0, v00324A20_0;
+v003D2FD0_0 .alias "s", 0 0, v00324AD0_0;
+S_003DAC90 .scope module, "AND7" "and2gate" 2 32, 2 13, S_003DA960;
+ .timescale 0 0;
+L_003257B0 .functor AND 1, L_00325740, L_00325778, C4<1>, C4<1>;
+v002F0A20_0 .alias "p", 0 0, v00324A78_0;
+v003D3498_0 .alias "q", 0 0, v00324AD0_0;
+v003D34F0_0 .alias "s", 0 0, v003248C0_0;
+S_003DA7C8 .scope begin, "start" "start" 2 35, 2 35, S_003DA960;
+ .timescale 0 0;
+S_003DA8D8 .scope begin, "main" "main" 2 40, 2 40, S_003DA960;
+ .timescale 0 0;
+    .scope S_003DA960;
+T_0 ;
+    %fork t_1, S_003DA7C8;
+    %jmp t_0;
+    .scope S_003DA7C8;
+t_1 ;
+    %set/v v00324868_0, 0, 8;
+    %end;
+    .scope S_003DA960;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003DA960;
+T_1 ;
+    %fork t_3, S_003DA8D8;
+    %jmp t_2;
+    .scope S_003DA8D8;
+t_3 ;
+    %vpi_call 2 41 "$display", "Extra 0002 - ANA CRISTINA - 427385";
+    %vpi_call 2 42 "$display", "Test and gate";
+    %vpi_call 2 44 "$monitor", "%8b = %b", v00324868_0, v003248C0_0;
+    %delay 1, 0;
+    %movi 8, 1, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 2, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 4, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 16, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 32, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 64, 8;
+    %set/v v00324868_0, 8, 8;
+    %delay 1, 0;
+    %set/v v00324868_0, 1, 8;
+    %end;
+    .scope S_003DA960;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\desktop\427385\Desktop\Guia 01\Guia 01\Extra0002.v";

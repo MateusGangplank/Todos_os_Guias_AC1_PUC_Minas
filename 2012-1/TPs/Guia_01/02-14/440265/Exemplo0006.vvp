@@ -1,0 +1,62 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE920 .scope module, "testNandGate" "testNandGate" 2 14;
+ .timescale 0 0;
+v003E30F8_0 .var "a", 0 0;
+v003E3150_0 .var "b", 0 0;
+v003E31A8_0 .net "s", 0 0, L_003EF208; 1 drivers
+S_003E2BB0 .scope module, "NAND1" "nandgate" 2 20, 2 10, S_003EE920;
+ .timescale 0 0;
+L_003E2CE8 .functor AND 1, v003E30F8_0, v003E3150_0, C4<1>, C4<1>;
+L_003EF208 .functor NOT 1, L_003E2CE8, C4<0>, C4<0>, C4<0>;
+v003EEA30_0 .net *"_s0", 0 0, L_003E2CE8; 1 drivers
+v003E2C38_0 .net "p", 0 0, v003E30F8_0; 1 drivers
+v003E2C90_0 .net "q", 0 0, v003E3150_0; 1 drivers
+v003E30A0_0 .alias "s", 0 0, v003E31A8_0;
+S_003EE9A8 .scope begin, "start" "start" 2 23, 2 23, S_003EE920;
+ .timescale 0 0;
+    .scope S_003EE920;
+T_0 ;
+    %fork t_1, S_003EE9A8;
+    %jmp t_0;
+    .scope S_003EE9A8;
+t_1 ;
+    %set/v v003E30F8_0, 0, 1;
+    %set/v v003E3150_0, 0, 1;
+    %end;
+    .scope S_003EE920;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EE920;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exemplo0006 - Sad - 440265";
+    %vpi_call 2 31 "$display", "Teste NAND gate";
+    %vpi_call 2 32 "$display", "\012~(a & b) = s\012";
+    %set/v v003E30F8_0, 0, 1;
+    %set/v v003E3150_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~(%b & %b) = %b", v003E30F8_0, v003E3150_0, v003E31A8_0;
+    %set/v v003E30F8_0, 0, 1;
+    %set/v v003E3150_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "~(%b & %b) = %b", v003E30F8_0, v003E3150_0, v003E31A8_0;
+    %set/v v003E30F8_0, 1, 1;
+    %set/v v003E3150_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~(%b & %b) = %b", v003E30F8_0, v003E3150_0, v003E31A8_0;
+    %set/v v003E30F8_0, 1, 1;
+    %set/v v003E3150_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "~(%b & %b) = %b", v003E30F8_0, v003E3150_0, v003E31A8_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Alexandre\PUC\2_periodo\Arquitetura I\TPs\Guia001\Exemplo0006.v";

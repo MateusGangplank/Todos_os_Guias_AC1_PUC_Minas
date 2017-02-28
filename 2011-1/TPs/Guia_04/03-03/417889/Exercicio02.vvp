@@ -1,0 +1,90 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000372F0 .scope module, "testeExercicio02" "testeExercicio02" 2 17;
+ .timescale 0 0;
+v005FDE50_0 .var "a", 0 0;
+v005FDEA8_0 .var "b", 0 0;
+v005FDF38_0 .var "cin", 0 0;
+v005FDFC8_0 .net "cout", 0 0, L_005FDF90; 1 drivers
+v005FE020_0 .net "s", 0 0, L_005FDF00; 1 drivers
+S_00037378 .scope module, "FULLADDER" "Exercicio02" 2 21, 2 1, S_000372F0;
+ .timescale 0 0;
+L_005FDF90 .functor OR 1, L_00036AC8, L_005FE0E8, C4<0>, C4<0>;
+v005FDB68_0 .net "a", 0 0, v005FDE50_0; 1 drivers
+v005FDBC0_0 .net "b", 0 0, v005FDEA8_0; 1 drivers
+v005FDC18_0 .net "cin", 0 0, v005FDF38_0; 1 drivers
+v005FDC70_0 .alias "cout", 0 0, v005FDFC8_0;
+v005FDCC8_0 .alias "s", 0 0, v005FE020_0;
+v005FDD20_0 .net "t1", 0 0, L_005FE0B0; 1 drivers
+v005FDD78_0 .net "t2", 0 0, L_005FE0E8; 1 drivers
+v005FDDF8_0 .net "t3", 0 0, L_00036AC8; 1 drivers
+S_005FD920 .scope module, "MS1" "meiaSoma" 2 5, 2 10, S_00037378;
+ .timescale 0 0;
+L_005FE0B0 .functor XOR 1, v005FDE50_0, v005FDEA8_0, C4<0>, C4<0>;
+L_005FE0E8 .functor AND 1, v005FDE50_0, v005FDEA8_0, C4<1>, C4<1>;
+v005FD9A8_0 .alias "a", 0 0, v005FDB68_0;
+v005FDA18_0 .alias "b", 0 0, v005FDBC0_0;
+v005FDA88_0 .alias "cout", 0 0, v005FDD78_0;
+v005FDB10_0 .alias "s", 0 0, v005FDD20_0;
+S_00037400 .scope module, "MS2" "meiaSoma" 2 6, 2 10, S_00037378;
+ .timescale 0 0;
+L_005FDF00 .functor XOR 1, L_005FE0B0, v005FDF38_0, C4<0>, C4<0>;
+L_00036AC8 .functor AND 1, L_005FE0B0, v005FDF38_0, C4<1>, C4<1>;
+v005E1B28_0 .alias "a", 0 0, v005FDD20_0;
+v005FD7B8_0 .alias "b", 0 0, v005FDC18_0;
+v005FD828_0 .alias "cout", 0 0, v005FDDF8_0;
+v005FD8B0_0 .alias "s", 0 0, v005FE020_0;
+    .scope S_000372F0;
+T_0 ;
+    %set/v v005FDF38_0, 0, 1;
+    %set/v v005FDE50_0, 0, 1;
+    %set/v v005FDEA8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_000372F0;
+T_1 ;
+    %vpi_call 2 31 "$display", "Exercicio 02 - Douglas Borges - 417889";
+    %vpi_call 2 32 "$display", "Circuito Somador Completo\012";
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "  a + b + Cin  =  Cout Soma";
+    %delay 1, 0;
+    %vpi_call 2 35 "$monitor", "  %b   %b    %b       %d    %d", v005FDE50_0, v005FDEA8_0, v005FDF38_0, v005FDFC8_0, v005FE020_0;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 0, 1;
+    %set/v v005FDE50_0, 0, 1;
+    %set/v v005FDEA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 0, 1;
+    %set/v v005FDE50_0, 1, 1;
+    %set/v v005FDEA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 0, 1;
+    %set/v v005FDE50_0, 1, 1;
+    %set/v v005FDEA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 1, 1;
+    %set/v v005FDE50_0, 0, 1;
+    %set/v v005FDEA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 1, 1;
+    %set/v v005FDE50_0, 0, 1;
+    %set/v v005FDEA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 1, 1;
+    %set/v v005FDE50_0, 1, 1;
+    %set/v v005FDEA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FDF38_0, 1, 1;
+    %set/v v005FDE50_0, 1, 1;
+    %set/v v005FDEA8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Douglas Borges\Meus documentos\Documentos\PUC\Arquitetura de Computadores\Verilog\Eclipse\Guia04\Exercicio02.v";

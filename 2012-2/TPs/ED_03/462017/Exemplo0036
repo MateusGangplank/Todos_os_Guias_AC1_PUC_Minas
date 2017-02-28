@@ -1,0 +1,100 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003F9838 .scope module, "test_LU" "test_LU" 2 24;
+ .timescale 0 0;
+v0034B290_0 .var "chave", 0 0;
+v0034B2E8_0 .var "x", 3 0;
+v0034B340_0 .var "y", 3 0;
+RS_00319FA4 .resolv tri, L_0034B3F0, L_0034B4F8, L_0034B600, L_0034B708;
+v0034B398_0 .net8 "z", 3 0, RS_00319FA4; 4 drivers
+S_003F97B0 .scope module, "LU" "lu4" 2 30, 2 17, S_003F9838;
+ .timescale 0 0;
+v0034B130_0 .net "a", 3 0, v0034B2E8_0; 1 drivers
+v0034B188_0 .net "b", 3 0, v0034B340_0; 1 drivers
+v0034B1E0_0 .net "chave", 0 0, v0034B290_0; 1 drivers
+v0034B238_0 .alias "z", 3 0, v0034B398_0;
+L_0034B3F0 .part/pv L_00319380, 0, 1, 4;
+L_0034B448 .part v0034B2E8_0, 0, 1;
+L_0034B4A0 .part v0034B340_0, 0, 1;
+L_0034B4F8 .part/pv L_0034BA80, 1, 1, 4;
+L_0034B550 .part v0034B2E8_0, 1, 1;
+L_0034B5A8 .part v0034B340_0, 1, 1;
+L_0034B600 .part/pv L_0034BC40, 2, 1, 4;
+L_0034B658 .part v0034B2E8_0, 2, 1;
+L_0034B6B0 .part v0034B340_0, 2, 1;
+L_0034B708 .part/pv L_0034BDC8, 3, 1, 4;
+L_0034B760 .part v0034B2E8_0, 3, 1;
+L_0034B7B8 .part v0034B340_0, 3, 1;
+S_003F9B68 .scope module, "LU1" "lu" 2 18, 2 9, S_003F97B0;
+ .timescale 0 0;
+L_003FC240 .functor XOR 1, L_0034B448, L_0034B4A0, C4<0>, C4<0>;
+L_003FC278 .functor XOR 1, L_003FC240, v0034B290_0, C4<0>, C4<0>;
+L_00319380 .functor NOT 1, L_003FC278, C4<0>, C4<0>, C4<0>;
+v0034AF20_0 .net "a", 0 0, L_0034B448; 1 drivers
+v0034AF78_0 .net "b", 0 0, L_0034B4A0; 1 drivers
+v0034AFD0_0 .alias "chave", 0 0, v0034B1E0_0;
+v0034B028_0 .net "s0", 0 0, L_003FC240; 1 drivers
+v0034B080_0 .net "s1", 0 0, L_003FC278; 1 drivers
+v0034B0D8_0 .net "z", 0 0, L_00319380; 1 drivers
+S_003F9BF0 .scope module, "LU2" "lu" 2 19, 2 9, S_003F97B0;
+ .timescale 0 0;
+L_0034B9D8 .functor XOR 1, L_0034B550, L_0034B5A8, C4<0>, C4<0>;
+L_0034BA10 .functor XOR 1, L_0034B9D8, v0034B290_0, C4<0>, C4<0>;
+L_0034BA80 .functor NOT 1, L_0034BA10, C4<0>, C4<0>, C4<0>;
+v0034AD10_0 .net "a", 0 0, L_0034B550; 1 drivers
+v0034AD68_0 .net "b", 0 0, L_0034B5A8; 1 drivers
+v0034ADC0_0 .alias "chave", 0 0, v0034B1E0_0;
+v0034AE18_0 .net "s0", 0 0, L_0034B9D8; 1 drivers
+v0034AE70_0 .net "s1", 0 0, L_0034BA10; 1 drivers
+v0034AEC8_0 .net "z", 0 0, L_0034BA80; 1 drivers
+S_003F9C78 .scope module, "LU3" "lu" 2 20, 2 9, S_003F97B0;
+ .timescale 0 0;
+L_0034BB98 .functor XOR 1, L_0034B658, L_0034B6B0, C4<0>, C4<0>;
+L_0034BBD0 .functor XOR 1, L_0034BB98, v0034B290_0, C4<0>, C4<0>;
+L_0034BC40 .functor NOT 1, L_0034BBD0, C4<0>, C4<0>, C4<0>;
+v0034AB00_0 .net "a", 0 0, L_0034B658; 1 drivers
+v0034AB58_0 .net "b", 0 0, L_0034B6B0; 1 drivers
+v0034ABB0_0 .alias "chave", 0 0, v0034B1E0_0;
+v0034AC08_0 .net "s0", 0 0, L_0034BB98; 1 drivers
+v0034AC60_0 .net "s1", 0 0, L_0034BBD0; 1 drivers
+v0034ACB8_0 .net "z", 0 0, L_0034BC40; 1 drivers
+S_003F9728 .scope module, "LU4" "lu" 2 21, 2 9, S_003F97B0;
+ .timescale 0 0;
+L_0034B9A0 .functor XOR 1, L_0034B760, L_0034B7B8, C4<0>, C4<0>;
+L_0034BD58 .functor XOR 1, L_0034B9A0, v0034B290_0, C4<0>, C4<0>;
+L_0034BDC8 .functor NOT 1, L_0034BD58, C4<0>, C4<0>, C4<0>;
+v00318518_0 .net "a", 0 0, L_0034B760; 1 drivers
+v003FC1E8_0 .net "b", 0 0, L_0034B7B8; 1 drivers
+v0034A9A0_0 .alias "chave", 0 0, v0034B1E0_0;
+v0034A9F8_0 .net "s0", 0 0, L_0034B9A0; 1 drivers
+v0034AA50_0 .net "s1", 0 0, L_0034BD58; 1 drivers
+v0034AAA8_0 .net "z", 0 0, L_0034BDC8; 1 drivers
+    .scope S_003F9838;
+T_0 ;
+    %vpi_call 2 34 "$display", "Exemplo0036 - Breno Macena - 462017";
+    %vpi_call 2 35 "$display", "Test LU's module";
+    %movi 8, 6, 4;
+    %set/v v0034B2E8_0, 8, 4;
+    %movi 8, 10, 4;
+    %set/v v0034B340_0, 8, 4;
+    %delay 1, 0;
+    %set/v v0034B290_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "chave = ", v0034B290_0;
+    %vpi_call 2 42 "$display", "%3b   %3b = %3b", v0034B2E8_0, v0034B340_0, v0034B398_0;
+    %delay 1, 0;
+    %set/v v0034B290_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "chave = ", v0034B290_0;
+    %vpi_call 2 47 "$display", "%3b   %3b = %3b", v0034B2E8_0, v0034B340_0, v0034B398_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0036.v";

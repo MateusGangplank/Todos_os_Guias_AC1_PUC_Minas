@@ -1,0 +1,77 @@
+// ---------------------
+//	Programação em Verilog
+//
+// PUC - MG
+// Nome: Tiago Menegaz de Melo Garcia
+// Matricula: 405844
+//
+//	Guia 10		Implementação 03
+//	Implementar um latch D com portas NAND,PRESET e CLEAR.
+//
+// ---------------------
+
+module implementacao03;
+	reg d,c,c1,preset;
+	wire w1,w2,w3,		q,q1;
+	
+	nand NAND1 (w1,d,c);
+	nand NAND2 (w2,d);
+	nand NAND3 (w3,w2,c);
+	nand NAND4 (q,preset,w1,q1);
+	nand NAND5 (q1,c1,w3,q);
+	
+initial begin:start
+end
+	
+//---------------------
+//---PARTE PRINCIPAL---
+//---------------------
+
+initial begin:main
+	$display ("Guia 10		Implementação 03");
+	$display ("Implementar um latch D com portas NAND,PRESET e CLEAR.\n");
+	$display ("Aluno: Tiago Menegaz de Melo Garcia		Matrícula:405844\n");
+	$display ("Relatório de Testes");
+	#2 d = 0; c = 0; c1 = 0; preset = 0;
+	$monitor ("D[%b] C[%b] 		C'[%b] Preset[%b]	 	Q[%b] Q'[%b]", d,c,c1,preset,q,q1 );
+
+	#2 d = 0; c = 0; c1 = 0; preset = 0;
+	#2 d = 0; c = 0; c1 = 0; preset = 1;
+	#2 d = 0; c = 0; c1 = 1; preset = 0;
+	#2 d = 0; c = 0; c1 = 1; preset = 1;
+	#2 d = 0; c = 1; c1 = 0; preset = 0;
+	#2 d = 0; c = 1; c1 = 0; preset = 1;
+	#2 d = 0; c = 1; c1 = 1; preset = 0;
+	#2 d = 0; c = 1; c1 = 1; preset = 1;
+	#2 d = 1; c = 0; c1 = 0; preset = 0;
+	#2 d = 1; c = 0; c1 = 0; preset = 1;
+	#2 d = 1; c = 0; c1 = 1; preset = 0;
+	#2 d = 1; c = 0; c1 = 1; preset = 1;
+	#2 d = 1; c = 1; c1 = 0; preset = 0;
+	#2 d = 1; c = 1; c1 = 0; preset = 1;
+	#2 d = 1; c = 1; c1 = 1; preset = 0;
+	#2 d = 1; c = 1; c1 = 1; preset = 1;
+	
+end//end parte principal
+endmodule
+
+/*
+Relatório de Testes
+
+	 D[0] C[0] 		C'[0] Preset[0]	 	Q[1] Q'[1]
+    D[0] C[0] 		C'[0] Preset[1]	 	Q[0] Q'[1]
+    D[0] C[0] 		C'[1] Preset[0]	 	Q[1] Q'[0]
+    D[0] C[0] 		C'[1] Preset[1]	 	Q[1] Q'[0]
+    D[0] C[1] 		C'[0] Preset[0]	 	Q[1] Q'[1]
+    D[0] C[1] 		C'[0] Preset[1]	 	Q[0] Q'[1]
+    D[0] C[1] 		C'[1] Preset[0]	 	Q[1] Q'[1]
+    D[0] C[1] 		C'[1] Preset[1]	 	Q[0] Q'[1]
+    D[1] C[0] 		C'[0] Preset[0]	 	Q[1] Q'[1]
+    D[1] C[0] 		C'[0] Preset[1]	 	Q[0] Q'[1]
+    D[1] C[0] 		C'[1] Preset[0]	 	Q[1] Q'[0]
+    D[1] C[0] 		C'[1] Preset[1]	 	Q[1] Q'[0]
+    D[1] C[1] 		C'[0] Preset[0]	 	Q[1] Q'[1]
+    D[1] C[1] 		C'[0] Preset[1]	 	Q[1] Q'[1]
+    D[1] C[1] 		C'[1] Preset[0]	 	Q[1] Q'[0]
+    D[1] C[1] 		C'[1] Preset[1]	 	Q[1] Q'[0]
+*/

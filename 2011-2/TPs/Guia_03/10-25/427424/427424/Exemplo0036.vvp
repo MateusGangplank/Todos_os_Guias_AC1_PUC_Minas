@@ -1,0 +1,122 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00809408 .scope module, "test_f4" "test_f4" 2 26;
+ .timescale 0 0;
+v006DDA38_0 .var "c", 0 0;
+v006DDA90_0 .var "x", 3 0;
+v006DDAE8_0 .var "y", 3 0;
+v006DDB40_0 .net "z", 0 0, L_007033A0; 1 drivers
+S_00809490 .scope module, "modulo" "f4" 2 32, 2 9, S_00809408;
+ .timescale 0 0;
+L_0080CCD0 .functor XNOR 1, L_006DDBF0, L_006DDC48, C4<0>, C4<0>;
+L_00702FE8 .functor XNOR 1, L_006DDCF8, L_006DDD50, C4<0>, C4<0>;
+L_007030C8 .functor XNOR 1, L_006DDE00, L_006DDE58, C4<0>, C4<0>;
+L_007031A8 .functor XNOR 1, L_006DDF08, L_006DDF60, C4<0>, C4<0>;
+L_00703250 .functor AND 1, L_006DDFB8, L_006DE010, L_006DE068, L_006DE0C0;
+L_007033A0 .functor XOR 1, v006DDA38_0, L_00703250, C4<0>, C4<0>;
+v0080CE78_0 .net *"_s0", 0 0, L_0080CCD0; 1 drivers
+v0080CC78_0 .net *"_s11", 0 0, L_006DDD50; 1 drivers
+v0080CED0_0 .net *"_s12", 0 0, L_007030C8; 1 drivers
+v0080CF28_0 .net *"_s15", 0 0, L_006DDE00; 1 drivers
+v00702EE0_0 .net *"_s17", 0 0, L_006DDE58; 1 drivers
+v006DD460_0 .net *"_s18", 0 0, L_007031A8; 1 drivers
+v006DD4B8_0 .net *"_s21", 0 0, L_006DDF08; 1 drivers
+v006DD510_0 .net *"_s23", 0 0, L_006DDF60; 1 drivers
+v006DD568_0 .net *"_s25", 0 0, L_006DDFB8; 1 drivers
+v006DD5C0_0 .net *"_s27", 0 0, L_006DE010; 1 drivers
+v006DD618_0 .net *"_s29", 0 0, L_006DE068; 1 drivers
+v006DD670_0 .net *"_s3", 0 0, L_006DDBF0; 1 drivers
+v006DD6C8_0 .net *"_s31", 0 0, L_006DE0C0; 1 drivers
+v006DD720_0 .net *"_s5", 0 0, L_006DDC48; 1 drivers
+v006DD778_0 .net *"_s6", 0 0, L_00702FE8; 1 drivers
+v006DD7D0_0 .net *"_s9", 0 0, L_006DDCF8; 1 drivers
+v006DD828_0 .net "a", 3 0, v006DDA90_0; 1 drivers
+v006DD880_0 .net "b", 3 0, v006DDAE8_0; 1 drivers
+v006DD8D8_0 .net "c", 0 0, v006DDA38_0; 1 drivers
+RS_006E1C9C .resolv tri, L_006DDB98, L_006DDCA0, L_006DDDA8, L_006DDEB0;
+v006DD930_0 .net8 "fioXNOR", 3 0, RS_006E1C9C; 4 drivers
+v006DD988_0 .alias "s", 0 0, v006DDB40_0;
+v006DD9E0_0 .net "sand", 0 0, L_00703250; 1 drivers
+L_006DDB98 .part/pv L_0080CCD0, 0, 1, 4;
+L_006DDBF0 .part v006DDA90_0, 0, 1;
+L_006DDC48 .part v006DDAE8_0, 0, 1;
+L_006DDCA0 .part/pv L_00702FE8, 1, 1, 4;
+L_006DDCF8 .part v006DDA90_0, 1, 1;
+L_006DDD50 .part v006DDAE8_0, 1, 1;
+L_006DDDA8 .part/pv L_007030C8, 2, 1, 4;
+L_006DDE00 .part v006DDA90_0, 2, 1;
+L_006DDE58 .part v006DDAE8_0, 2, 1;
+L_006DDEB0 .part/pv L_007031A8, 3, 1, 4;
+L_006DDF08 .part v006DDA90_0, 3, 1;
+L_006DDF60 .part v006DDAE8_0, 3, 1;
+L_006DDFB8 .part RS_006E1C9C, 0, 1;
+L_006DE010 .part RS_006E1C9C, 1, 1;
+L_006DE068 .part RS_006E1C9C, 2, 1;
+L_006DE0C0 .part RS_006E1C9C, 3, 1;
+    .scope S_00809408;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exemplo0036 - Ursula Rosa - 427468";
+    %vpi_call 2 36 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v006DDA90_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$monitor", "%3b %3b option: %1b = %3b", v006DDA90_0, v006DDAE8_0, v006DDA38_0, v006DDB40_0;
+    %delay 1, 0;
+    %set/v v006DDA38_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v006DDA90_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v006DDA90_0, 8, 4;
+    %movi 8, 13, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006DDA90_0, 1, 4;
+    %set/v v006DDAE8_0, 1, 4;
+    %set/v v006DDA38_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006DDA90_0, 1, 4;
+    %set/v v006DDAE8_0, 1, 4;
+    %set/v v006DDA38_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006DDA90_0, 0, 4;
+    %movi 8, 8, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v006DDA90_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 1, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v006DDA90_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v006DDA90_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v006DDAE8_0, 8, 4;
+    %set/v v006DDA38_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Jonatas\Desktop\AC1 GUIAS FALTANTES\Guia03\Exemplo0036.v";

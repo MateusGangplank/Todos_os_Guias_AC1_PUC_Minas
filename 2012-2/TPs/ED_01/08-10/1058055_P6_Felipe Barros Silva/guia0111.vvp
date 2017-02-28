@@ -1,0 +1,97 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00F59360 .scope module, "testeBinario" "testeBinario" 2 17;
+ .timescale 0 0;
+v002F2AC0_0 .var "a8", 7 0;
+v002F2B18_0 .var/i "n", 31 0;
+v002F2B70_0 .net "s", 0 0, L_002F3B10; 1 drivers
+S_00F593E8 .scope module, "bs" "binarios" 2 26, 2 9, S_00F59360;
+ .timescale 0 0;
+L_00F54980 .functor OR 1, L_002F2BC8, L_002F2C20, C4<0>, C4<0>;
+L_00F5FEB8 .functor OR 1, L_00F54980, L_002F2C78, C4<0>, C4<0>;
+L_00F5B8B8 .functor OR 1, L_00F5FEB8, L_002F2CD0, C4<0>, C4<0>;
+L_002F3870 .functor OR 1, L_00F5B8B8, L_002F2D28, C4<0>, C4<0>;
+L_002F3918 .functor OR 1, L_002F3870, L_002F2D80, C4<0>, C4<0>;
+L_002F39C0 .functor OR 1, L_002F3918, L_002F2DD8, C4<0>, C4<0>;
+L_002F3A68 .functor OR 1, L_002F39C0, L_002F2E30, C4<0>, C4<0>;
+L_002F3B10 .functor NOT 1, L_002F3A68, C4<0>, C4<0>, C4<0>;
+v00F5FF80_0 .net *"_s1", 0 0, L_002F2BC8; 1 drivers
+v00F5FE60_0 .net *"_s11", 0 0, L_002F2CD0; 1 drivers
+v00F54878_0 .net *"_s12", 0 0, L_00F5B8B8; 1 drivers
+v00F548D0_0 .net *"_s15", 0 0, L_002F2D28; 1 drivers
+v00F54928_0 .net *"_s16", 0 0, L_002F3870; 1 drivers
+v00F52E58_0 .net *"_s19", 0 0, L_002F2D80; 1 drivers
+v00F52EB0_0 .net *"_s20", 0 0, L_002F3918; 1 drivers
+v00F52F08_0 .net *"_s23", 0 0, L_002F2DD8; 1 drivers
+v00F5B718_0 .net *"_s24", 0 0, L_002F39C0; 1 drivers
+v002F2800_0 .net *"_s27", 0 0, L_002F2E30; 1 drivers
+v002F2858_0 .net *"_s28", 0 0, L_002F3A68; 1 drivers
+v002F28B0_0 .net *"_s3", 0 0, L_002F2C20; 1 drivers
+v002F2908_0 .net *"_s4", 0 0, L_00F54980; 1 drivers
+v002F2960_0 .net *"_s7", 0 0, L_002F2C78; 1 drivers
+v002F29B8_0 .net *"_s8", 0 0, L_00F5FEB8; 1 drivers
+v002F2A10_0 .net "p1", 7 0, v002F2AC0_0; 1 drivers
+v002F2A68_0 .alias "s", 0 0, v002F2B70_0;
+L_002F2BC8 .part v002F2AC0_0, 0, 1;
+L_002F2C20 .part v002F2AC0_0, 1, 1;
+L_002F2C78 .part v002F2AC0_0, 2, 1;
+L_002F2CD0 .part v002F2AC0_0, 3, 1;
+L_002F2D28 .part v002F2AC0_0, 4, 1;
+L_002F2D80 .part v002F2AC0_0, 5, 1;
+L_002F2DD8 .part v002F2AC0_0, 6, 1;
+L_002F2E30 .part v002F2AC0_0, 7, 1;
+S_00F59140 .scope begin, "start" "start" 2 30, 2 30, S_00F59360;
+ .timescale 0 0;
+    .scope S_00F59360;
+T_0 ;
+    %fork t_1, S_00F59140;
+    %jmp t_0;
+    .scope S_00F59140;
+t_1 ;
+    %set/v v002F2AC0_0, 0, 8;
+    %end;
+    .scope S_00F59360;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00F59360;
+T_1 ;
+    %set/v v002F2B18_0, 0, 32;
+    %end;
+    .thread T_1;
+    .scope S_00F59360;
+T_2 ;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "guia0111 - Felipe Barros - 376508";
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "todos bits 0 que retorna 1 bits";
+    %delay 1, 0;
+    %vpi_call 2 40 "$display", "abcdefgh  s";
+T_2.0 ;
+    %load/v 8, v002F2B18_0, 32;
+   %cmpi/s 8, 255, 32;
+    %jmp/0xz T_2.1, 5;
+    %delay 1, 0;
+    %vpi_call 2 42 "$monitor", "%b  %b", v002F2AC0_0, v002F2B70_0;
+    %delay 1, 0;
+    %load/v 8, v002F2AC0_0, 8;
+    %mov 16, 0, 24;
+    %addi 8, 1, 32;
+    %set/v v002F2AC0_0, 8, 8;
+    %load/v 8, v002F2B18_0, 32;
+    %mov 40, 39, 1;
+    %addi 8, 1, 33;
+    %set/v v002F2B18_0, 8, 32;
+    %jmp T_2.0;
+T_2.1 ;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\guia0101\guia0111.v";

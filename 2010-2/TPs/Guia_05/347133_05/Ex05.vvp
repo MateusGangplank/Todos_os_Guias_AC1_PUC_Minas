@@ -1,0 +1,293 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00679AE0 .scope module, "testOperacao" "testOperacao" 2 65;
+ .timescale 0 0;
+v006B7E10_0 .var "a0", 0 0;
+v006B7E68_0 .var "a1", 0 0;
+v006B7EC0_0 .var "a2", 0 0;
+v006B7F18_0 .var "b0", 0 0;
+v006B7FA8_0 .var "b1", 0 0;
+v006B8008_0 .var "b2", 0 0;
+v006B8060_0 .net "s00", 0 0, L_006B8568; 1 drivers
+v006B80F0_0 .net "s10", 0 0, L_006B9008; 1 drivers
+v006B8148_0 .net "s20", 0 0, L_006B9C58; 1 drivers
+v006B81A0_0 .net "s30", 0 0, L_006B9D88; 1 drivers
+S_00685528 .scope module, "OP1" "operacao" 2 70, 2 47, S_00679AE0;
+ .timescale 0 0;
+L_006B9D88 .functor BUFZ 1, L_006B9CE0, C4<0>, C4<0>, C4<0>;
+v006B7810_0 .net "a0", 0 0, v006B7E10_0; 1 drivers
+v006B7868_0 .net "a1", 0 0, v006B7E68_0; 1 drivers
+v006B78F8_0 .net "a2", 0 0, v006B7EC0_0; 1 drivers
+v006B7988_0 .net "b0", 0 0, v006B7F18_0; 1 drivers
+v006B79E0_0 .net "b1", 0 0, v006B7FA8_0; 1 drivers
+v006B7A70_0 .net "b2", 0 0, v006B8008_0; 1 drivers
+v006B7B00_0 .alias "s00", 0 0, v006B8060_0;
+v006B7B58_0 .net "s01", 0 0, L_006B8460; 1 drivers
+v006B7BB0_0 .alias "s10", 0 0, v006B80F0_0;
+v006B7C40_0 .net "s11", 0 0, L_006B9090; 1 drivers
+v006B7C98_0 .alias "s20", 0 0, v006B8148_0;
+v006B7D60_0 .net "s21", 0 0, L_006B9CE0; 1 drivers
+v006B7DB8_0 .alias "s30", 0 0, v006B81A0_0;
+S_006B7270 .scope module, "MD0" "meiaDiferenca" 2 53, 2 11, S_00685528;
+ .timescale 0 0;
+L_006B81F8 .functor NOR 1, v006B7E10_0, v006B7E10_0, C4<0>, C4<0>;
+L_006B7CF0 .functor NOR 1, v006B7F18_0, v006B7F18_0, C4<0>, C4<0>;
+L_006B7F70 .functor NOR 1, v006B7E10_0, v006B7E10_0, C4<0>, C4<0>;
+L_006B8230 .functor NOR 1, L_006B81F8, v006B7F18_0, C4<0>, C4<0>;
+L_006B82A0 .functor NOR 1, L_006B7CF0, v006B7E10_0, C4<0>, C4<0>;
+L_006B8310 .functor NOR 1, v006B7F18_0, v006B7F18_0, C4<0>, C4<0>;
+L_006B8348 .functor NOR 1, L_006B7F70, L_006B7F70, C4<0>, C4<0>;
+L_006B83B8 .functor NOR 1, L_006B8230, L_006B82A0, C4<0>, C4<0>;
+L_006B8460 .functor NOR 1, L_006B8310, L_006B8348, C4<0>, C4<0>;
+L_006B8568 .functor NOR 1, L_006B83B8, L_006B83B8, C4<0>, C4<0>;
+v006B72F0_0 .alias "a", 0 0, v006B7810_0;
+v006B7348_0 .alias "b", 0 0, v006B7988_0;
+v006B73A0_0 .alias "s0", 0 0, v006B8060_0;
+v006B73F8_0 .alias "s1", 0 0, v006B7B58_0;
+v006B7488_0 .net "s2", 0 0, L_006B81F8; 1 drivers
+v006B74E0_0 .net "s3", 0 0, L_006B7CF0; 1 drivers
+v006B7538_0 .net "s4", 0 0, L_006B7F70; 1 drivers
+v006B75A8_0 .net "s5", 0 0, L_006B8230; 1 drivers
+v006B7618_0 .net "s6", 0 0, L_006B82A0; 1 drivers
+v006B7688_0 .net "s7", 0 0, L_006B8310; 1 drivers
+v006B76F8_0 .net "s8", 0 0, L_006B8348; 1 drivers
+v006B77A0_0 .net "s9", 0 0, L_006B83B8; 1 drivers
+S_006B6308 .scope module, "DC1" "diferencaCompleta" 2 54, 2 31, S_00685528;
+ .timescale 0 0;
+L_006B9040 .functor NOR 1, L_006B8910, L_006B8EF0, C4<0>, C4<0>;
+L_006B9090 .functor NOR 1, L_006B9040, L_006B9040, C4<0>, C4<0>;
+v006B6EE8_0 .alias "a", 0 0, v006B7868_0;
+v006B6F40_0 .alias "b", 0 0, v006B79E0_0;
+v006B6F98_0 .alias "c", 0 0, v006B7B58_0;
+v006B6FF0_0 .alias "s0", 0 0, v006B80F0_0;
+v006B7048_0 .alias "s1", 0 0, v006B7C40_0;
+v006B70D8_0 .net "s2", 0 0, L_006B8A20; 1 drivers
+v006B7168_0 .net "s3", 0 0, L_006B8910; 1 drivers
+v006B71C0_0 .net "s4", 0 0, L_006B8EF0; 1 drivers
+v006B7218_0 .net "s5", 0 0, L_006B9040; 1 drivers
+S_006B6920 .scope module, "MD1" "meiaDiferenca" 2 36, 2 11, S_006B6308;
+ .timescale 0 0;
+L_006B85D8 .functor NOR 1, v006B7E68_0, v006B7E68_0, C4<0>, C4<0>;
+L_006B78C0 .functor NOR 1, v006B7FA8_0, v006B7FA8_0, C4<0>, C4<0>;
+L_006B7A38 .functor NOR 1, v006B7E68_0, v006B7E68_0, C4<0>, C4<0>;
+L_006B86E0 .functor NOR 1, L_006B85D8, v006B7FA8_0, C4<0>, C4<0>;
+L_006B8750 .functor NOR 1, L_006B78C0, v006B7E68_0, C4<0>, C4<0>;
+L_006B87C0 .functor NOR 1, v006B7FA8_0, v006B7FA8_0, C4<0>, C4<0>;
+L_006B87F8 .functor NOR 1, L_006B7A38, L_006B7A38, C4<0>, C4<0>;
+L_006B8868 .functor NOR 1, L_006B86E0, L_006B8750, C4<0>, C4<0>;
+L_006B8910 .functor NOR 1, L_006B87C0, L_006B87F8, C4<0>, C4<0>;
+L_006B8A20 .functor NOR 1, L_006B8868, L_006B8868, C4<0>, C4<0>;
+v006B69A0_0 .alias "a", 0 0, v006B7868_0;
+v006B6A10_0 .alias "b", 0 0, v006B79E0_0;
+v006B6A80_0 .alias "s0", 0 0, v006B70D8_0;
+v006B6AF0_0 .alias "s1", 0 0, v006B7168_0;
+v006B6B48_0 .net "s2", 0 0, L_006B85D8; 1 drivers
+v006B6BA0_0 .net "s3", 0 0, L_006B78C0; 1 drivers
+v006B6C10_0 .net "s4", 0 0, L_006B7A38; 1 drivers
+v006B6C80_0 .net "s5", 0 0, L_006B86E0; 1 drivers
+v006B6CF0_0 .net "s6", 0 0, L_006B8750; 1 drivers
+v006B6D60_0 .net "s7", 0 0, L_006B87C0; 1 drivers
+v006B6DD0_0 .net "s8", 0 0, L_006B87F8; 1 drivers
+v006B6E78_0 .net "s9", 0 0, L_006B8868; 1 drivers
+S_006B6388 .scope module, "MD2" "meiaDiferenca" 2 37, 2 11, S_006B6308;
+ .timescale 0 0;
+L_006B8A90 .functor NOR 1, L_006B8A20, L_006B8A20, C4<0>, C4<0>;
+L_006B7130 .functor NOR 1, L_006B8460, L_006B8460, C4<0>, C4<0>;
+L_006B8AE0 .functor NOR 1, L_006B8A20, L_006B8A20, C4<0>, C4<0>;
+L_006B8B18 .functor NOR 1, L_006B8A90, L_006B8460, C4<0>, C4<0>;
+L_006B8BA0 .functor NOR 1, L_006B7130, L_006B8A20, C4<0>, C4<0>;
+L_006B8CD8 .functor NOR 1, L_006B8460, L_006B8460, C4<0>, C4<0>;
+L_006B8DD8 .functor NOR 1, L_006B8AE0, L_006B8AE0, C4<0>, C4<0>;
+L_006B8E48 .functor NOR 1, L_006B8B18, L_006B8BA0, C4<0>, C4<0>;
+L_006B8EF0 .functor NOR 1, L_006B8CD8, L_006B8DD8, C4<0>, C4<0>;
+L_006B9008 .functor NOR 1, L_006B8E48, L_006B8E48, C4<0>, C4<0>;
+v006B6408_0 .alias "a", 0 0, v006B70D8_0;
+v006B6460_0 .alias "b", 0 0, v006B7B58_0;
+v006B64B8_0 .alias "s0", 0 0, v006B80F0_0;
+v006B6510_0 .alias "s1", 0 0, v006B71C0_0;
+v006B6580_0 .net "s2", 0 0, L_006B8A90; 1 drivers
+v006B65D8_0 .net "s3", 0 0, L_006B7130; 1 drivers
+v006B6648_0 .net "s4", 0 0, L_006B8AE0; 1 drivers
+v006B66B8_0 .net "s5", 0 0, L_006B8B18; 1 drivers
+v006B6728_0 .net "s6", 0 0, L_006B8BA0; 1 drivers
+v006B6798_0 .net "s7", 0 0, L_006B8CD8; 1 drivers
+v006B6808_0 .net "s8", 0 0, L_006B8DD8; 1 drivers
+v006B68B0_0 .net "s9", 0 0, L_006B8E48; 1 drivers
+S_006855A8 .scope module, "DC2" "diferencaCompleta" 2 55, 2 31, S_00685528;
+ .timescale 0 0;
+L_006B9C90 .functor NOR 1, L_006B9568, L_006B9B48, C4<0>, C4<0>;
+L_006B9CE0 .functor NOR 1, L_006B9C90, L_006B9C90, C4<0>, C4<0>;
+v006B5FB8_0 .alias "a", 0 0, v006B78F8_0;
+v006B6010_0 .alias "b", 0 0, v006B7A70_0;
+v006B6068_0 .alias "c", 0 0, v006B7C40_0;
+v006B60C0_0 .alias "s0", 0 0, v006B8148_0;
+v006B6118_0 .alias "s1", 0 0, v006B7D60_0;
+v006B6170_0 .net "s2", 0 0, L_006B9678; 1 drivers
+v006B6200_0 .net "s3", 0 0, L_006B9568; 1 drivers
+v006B6258_0 .net "s4", 0 0, L_006B9B48; 1 drivers
+v006B62B0_0 .net "s5", 0 0, L_006B9C90; 1 drivers
+S_006B5A28 .scope module, "MD1" "meiaDiferenca" 2 36, 2 11, S_006855A8;
+ .timescale 0 0;
+L_006B90C8 .functor NOR 1, v006B7EC0_0, v006B7EC0_0, C4<0>, C4<0>;
+L_006B7950 .functor NOR 1, v006B8008_0, v006B8008_0, C4<0>, C4<0>;
+L_006B7AC8 .functor NOR 1, v006B7EC0_0, v006B7EC0_0, C4<0>, C4<0>;
+L_006B9190 .functor NOR 1, L_006B90C8, v006B8008_0, C4<0>, C4<0>;
+L_006B9218 .functor NOR 1, L_006B7950, v006B7EC0_0, C4<0>, C4<0>;
+L_006B9350 .functor NOR 1, v006B8008_0, v006B8008_0, C4<0>, C4<0>;
+L_006B9450 .functor NOR 1, L_006B7AC8, L_006B7AC8, C4<0>, C4<0>;
+L_006B94C0 .functor NOR 1, L_006B9190, L_006B9218, C4<0>, C4<0>;
+L_006B9568 .functor NOR 1, L_006B9350, L_006B9450, C4<0>, C4<0>;
+L_006B9678 .functor NOR 1, L_006B94C0, L_006B94C0, C4<0>, C4<0>;
+v006B5AA8_0 .alias "a", 0 0, v006B78F8_0;
+v006B5B18_0 .alias "b", 0 0, v006B7A70_0;
+v006B5B88_0 .alias "s0", 0 0, v006B6170_0;
+v006B5BF8_0 .alias "s1", 0 0, v006B6200_0;
+v006B5C50_0 .net "s2", 0 0, L_006B90C8; 1 drivers
+v006B5CA8_0 .net "s3", 0 0, L_006B7950; 1 drivers
+v006B5D18_0 .net "s4", 0 0, L_006B7AC8; 1 drivers
+v006B5D88_0 .net "s5", 0 0, L_006B9190; 1 drivers
+v006B5DF8_0 .net "s6", 0 0, L_006B9218; 1 drivers
+v006B5E68_0 .net "s7", 0 0, L_006B9350; 1 drivers
+v006B5ED8_0 .net "s8", 0 0, L_006B9450; 1 drivers
+v006B5F48_0 .net "s9", 0 0, L_006B94C0; 1 drivers
+S_00685628 .scope module, "MD2" "meiaDiferenca" 2 37, 2 11, S_006855A8;
+ .timescale 0 0;
+L_006B96E8 .functor NOR 1, L_006B9678, L_006B9678, C4<0>, C4<0>;
+L_006B61C8 .functor NOR 1, L_006B9090, L_006B9090, C4<0>, C4<0>;
+L_006B9738 .functor NOR 1, L_006B9678, L_006B9678, C4<0>, C4<0>;
+L_006B9770 .functor NOR 1, L_006B96E8, L_006B9090, C4<0>, C4<0>;
+L_006B97F8 .functor NOR 1, L_006B61C8, L_006B9678, C4<0>, C4<0>;
+L_006B9930 .functor NOR 1, L_006B9090, L_006B9090, C4<0>, C4<0>;
+L_006B9A30 .functor NOR 1, L_006B9738, L_006B9738, C4<0>, C4<0>;
+L_006B9AA0 .functor NOR 1, L_006B9770, L_006B97F8, C4<0>, C4<0>;
+L_006B9B48 .functor NOR 1, L_006B9930, L_006B9A30, C4<0>, C4<0>;
+L_006B9C58 .functor NOR 1, L_006B9AA0, L_006B9AA0, C4<0>, C4<0>;
+v006856A8_0 .alias "a", 0 0, v006B6170_0;
+v006B5530_0 .alias "b", 0 0, v006B7C40_0;
+v006B55A0_0 .alias "s0", 0 0, v006B8148_0;
+v006B5628_0 .alias "s1", 0 0, v006B6258_0;
+v006B5698_0 .net "s2", 0 0, L_006B96E8; 1 drivers
+v006B56F0_0 .net "s3", 0 0, L_006B61C8; 1 drivers
+v006B5760_0 .net "s4", 0 0, L_006B9738; 1 drivers
+v006B57F8_0 .net "s5", 0 0, L_006B9770; 1 drivers
+v006B5868_0 .net "s6", 0 0, L_006B97F8; 1 drivers
+v006B58D8_0 .net "s7", 0 0, L_006B9930; 1 drivers
+v006B5948_0 .net "s8", 0 0, L_006B9A30; 1 drivers
+v006B59B8_0 .net "s9", 0 0, L_006B9AA0; 1 drivers
+S_006854A8 .scope begin, "start" "start" 2 72, 2 72, S_00679AE0;
+ .timescale 0 0;
+S_00680920 .scope begin, "main" "main" 2 77, 2 77, S_00679AE0;
+ .timescale 0 0;
+    .scope S_00679AE0;
+T_0 ;
+    %fork t_1, S_006854A8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7EC0_0, 0, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %set/v v006B8008_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00679AE0;
+T_1 ;
+    %fork t_3, S_00680920;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 78 "$display", "Guia 05 - Exercicio 05 - Eduardo de Abreu Fortes - 384047";
+    %vpi_call 2 79 "$display", "Henrique Carvalho Parreira - 347133";
+    %vpi_call 2 80 "$display", "Test Diferenca Completa com 2 bits usando apenas portar NOR";
+    %vpi_call 2 81 "$display", "\012a2 a1 a0 - b2 b1 b0 = s30 s20 s10 s00\012";
+    %vpi_call 2 82 "$monitor", "%b %b %b  -  %b %b %b  =  %b %b %b %b", v006B7EC0_0, v006B7E68_0, v006B7E10_0, v006B8008_0, v006B7FA8_0, v006B7F18_0, v006B81A0_0, v006B8148_0, v006B80F0_0, v006B8060_0;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 0, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 0, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 0, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006B7E10_0, 1, 1;
+    %set/v v006B7E68_0, 1, 1;
+    %set/v v006B7F18_0, 1, 1;
+    %set/v v006B7FA8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\temp\Henrique\Guia05 - 347133\Ex05.V";

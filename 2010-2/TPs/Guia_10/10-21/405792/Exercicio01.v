@@ -1,0 +1,41 @@
+//--Guia 10
+//--Nome: Bruno Santiago Pinheiro
+//--Matricula: 405792
+//--Data: 18/10/2010
+
+//-----------------
+//--Module SRlatch
+//-----------------
+module SRlatch ( qn, q, r, s );
+	input  r, s;
+	output qn, q;	
+	
+	nor NOR1(qn,s,q);
+	nor NOR2(q,r,qn);
+	
+endmodule
+
+//----------------------
+//--Test module SrLatch
+//----------------------
+
+module test;
+SRlatch srlatch (p1,q1,r1,s1);
+
+reg  r1, s1;
+wire p1, q1;
+
+initial begin
+
+r1=0; s1=0;
+$display("Bruno Santiago Pinheiro - 405792");
+$display("Guia 10 - exercicio 01");
+$monitor("r = %b; s = %b: Q' = %b; Q = %b",r1,s1,p1,q1);
+#1 r1=1; s1=0;
+#1 r1=0;s1=0;
+#1 r1=0;s1=1;
+#1 r1=0;s1=0;
+#1 r1=1;s1=0;
+
+end
+endmodule

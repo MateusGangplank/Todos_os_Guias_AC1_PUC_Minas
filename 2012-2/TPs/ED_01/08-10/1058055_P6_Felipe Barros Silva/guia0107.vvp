@@ -1,0 +1,87 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00329030 .scope module, "testeXor" "testeXor" 2 21;
+ .timescale 0 0;
+v005C3C58_0 .var "a", 0 0;
+v005C3CB0_0 .var "b", 0 0;
+v005C3D08_0 .net "s1", 0 0, L_005C4CA8; 1 drivers
+v005C3D60_0 .net "s2", 0 0, L_005C4CE0; 1 drivers
+v005C3DB8_0 .net "s3", 0 0, L_005C4C00; 1 drivers
+v005C3E10_0 .net "snot1", 0 0, L_005C4C38; 1 drivers
+v005C3E68_0 .net "snot2", 0 0, L_005C4C70; 1 drivers
+S_00329360 .scope module, "not1" "PortaNot" 2 27, 2 12, S_00329030;
+ .timescale 0 0;
+L_005C4C38 .functor NOT 1, v005C3C58_0, C4<0>, C4<0>, C4<0>;
+v00323358_0 .net "p1", 0 0, v005C3C58_0; 1 drivers
+v005C3C00_0 .alias "s1", 0 0, v005C3E10_0;
+S_003292D8 .scope module, "not2" "PortaNot" 2 28, 2 12, S_00329030;
+ .timescale 0 0;
+L_005C4C70 .functor NOT 1, v005C3CB0_0, C4<0>, C4<0>, C4<0>;
+v003243A0_0 .net "p1", 0 0, v005C3CB0_0; 1 drivers
+v00323300_0 .alias "s1", 0 0, v005C3E68_0;
+S_00329250 .scope module, "and1" "PortaAnd" 2 29, 2 16, S_00329030;
+ .timescale 0 0;
+L_005C4CA8 .functor AND 1, v005C3C58_0, v005C3CB0_0, C4<1>, C4<1>;
+v00324298_0 .alias "p2", 0 0, v00323358_0;
+v003242F0_0 .alias "q2", 0 0, v003243A0_0;
+v00324348_0 .alias "s2", 0 0, v005C3D08_0;
+S_003291C8 .scope module, "and2" "PortaAnd" 2 30, 2 16, S_00329030;
+ .timescale 0 0;
+L_005C4CE0 .functor AND 1, L_005C4C38, L_005C4C70, C4<1>, C4<1>;
+v00322E58_0 .alias "p2", 0 0, v005C3E10_0;
+v00322EB0_0 .alias "q2", 0 0, v005C3E68_0;
+v00322F08_0 .alias "s2", 0 0, v005C3D60_0;
+S_00329140 .scope module, "or1" "PortaOr" 2 31, 2 8, S_00329030;
+ .timescale 0 0;
+L_005C4C00 .functor OR 1, L_005C4CA8, L_005C4CE0, C4<0>, C4<0>;
+v00324620_0 .alias "p", 0 0, v005C3D08_0;
+v00324678_0 .alias "q", 0 0, v005C3D60_0;
+v003246D0_0 .alias "s", 0 0, v005C3DB8_0;
+S_003290B8 .scope begin, "start" "start" 2 35, 2 35, S_00329030;
+ .timescale 0 0;
+    .scope S_00329030;
+T_0 ;
+    %fork t_1, S_003290B8;
+    %jmp t_0;
+    .scope S_003290B8;
+t_1 ;
+    %set/v v005C3C58_0, 0, 1;
+    %set/v v005C3CB0_0, 0, 1;
+    %end;
+    .scope S_00329030;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00329030;
+T_1 ;
+    %delay 1, 0;
+    %vpi_call 2 42 "$display", "guia0106 - Felipe Barros - 376508 ";
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "expressao ab' & a'b ";
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "a  b   ab  a'b'  s";
+    %delay 1, 0;
+    %vpi_call 2 45 "$monitor", "%b  %b   %b     %b   %b", v005C3C58_0, v005C3CB0_0, v005C3D08_0, v005C3D60_0, v005C3DB8_0;
+    %delay 1, 0;
+    %set/v v005C3C58_0, 0, 1;
+    %set/v v005C3CB0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C3C58_0, 0, 1;
+    %set/v v005C3CB0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C3C58_0, 1, 1;
+    %set/v v005C3CB0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C3C58_0, 1, 1;
+    %set/v v005C3CB0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\guia0101\guia0107.v";

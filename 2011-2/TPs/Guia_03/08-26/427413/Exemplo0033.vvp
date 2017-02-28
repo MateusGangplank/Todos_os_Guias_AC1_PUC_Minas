@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006C9330 .scope module, "test_f4" "test_f4" 2 28;
+ .timescale 0 0;
+v005CFE10_0 .var "chave", 3 0;
+v005CFE68_0 .net "k", 3 0, C4<zzzz>; 0 drivers
+v005CFEC0_0 .net "l", 3 0, L_005D0B50; 1 drivers
+v005CFF18_0 .var "x", 3 0;
+v005CFF70_0 .var "y", 3 0;
+v005CFFC8_0 .net "z", 3 0, L_006C47E0; 1 drivers
+S_006C9660 .scope module, "modulo" "f4" 2 36, 2 16, S_006C9330;
+ .timescale 0 0;
+L_006C47A8 .functor OR 4, v005CFF18_0, v005CFF70_0, C4<0000>, C4<0000>;
+L_006C47E0 .functor NOT 4, L_006C47A8, C4<0000>, C4<0000>, C4<0000>;
+v005CFCB0_0 .net *"_s0", 3 0, L_006C47A8; 1 drivers
+v005CFD08_0 .net "a", 3 0, v005CFF18_0; 1 drivers
+v005CFD60_0 .net "b", 3 0, v005CFF70_0; 1 drivers
+v005CFDB8_0 .alias "s", 3 0, v005CFFC8_0;
+S_006C95D8 .scope module, "modulo2" "f3" 2 37, 2 22, S_006C9330;
+ .timescale 0 0;
+L_006C4850 .functor AND 4, v005CFF18_0, v005CFF70_0, C4<1111>, C4<1111>;
+L_006C4888 .functor NOT 4, L_006C4850, C4<0000>, C4<0000>, C4<0000>;
+v006C44E8_0 .net *"_s0", 3 0, L_006C4850; 1 drivers
+v006C4540_0 .net *"_s2", 3 0, L_006C4888; 1 drivers
+v005CFB50_0 .alias "a", 3 0, v005CFD08_0;
+v005CFBA8_0 .alias "b", 3 0, v005CFD60_0;
+v005CFC00_0 .net "s1", 0 0, L_005D0020; 1 drivers
+v005CFC58_0 .alias "s2", 3 0, v005CFE68_0;
+L_005D0020 .part L_006C4888, 0, 1;
+S_006C9550 .scope module, "modulo3" "f5" 2 38, 2 10, S_006C9330;
+ .timescale 0 0;
+L_0059E458 .functor NOT 4, v005CFE10_0, C4<0000>, C4<0000>, C4<0000>;
+L_0059E4C8 .functor AND 4, C4<zzzz>, L_0059E458, C4<1111>, C4<1111>;
+L_0059E538 .functor AND 4, L_006C47E0, v005CFE10_0, C4<1111>, C4<1111>;
+L_005D0B50 .functor OR 4, L_0059E4C8, L_0059E538, C4<0000>, C4<0000>;
+v006C4A50_0 .net *"_s0", 3 0, L_0059E458; 1 drivers
+v006C4AA8_0 .net *"_s2", 3 0, L_0059E4C8; 1 drivers
+v006C4B00_0 .net *"_s4", 3 0, L_0059E538; 1 drivers
+v006C2DE0_0 .alias "a", 3 0, v005CFFC8_0;
+v006C2E38_0 .alias "b", 3 0, v005CFE68_0;
+v006C2E90_0 .net "c", 3 0, v005CFE10_0; 1 drivers
+v006C4490_0 .alias "s3", 3 0, v005CFEC0_0;
+    .scope S_006C9330;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0033 - Gustavo Jota Resende - 427413";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005CFF18_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005CFF70_0, 8, 4;
+    %delay 1, 0;
+    %set/v v005CFE10_0, 1, 4;
+    %vpi_call 2 45 "$monitor", "%b (& ou |) %b com chave %b = %b", v005CFF70_0, v005CFF18_0, v005CFE10_0, v005CFEC0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\jotar\Documents\Gustavo\PUC\Segundo Período\Arquitetura de Computadores 1\427413\Guia 03.2\Exemplo0033.v";

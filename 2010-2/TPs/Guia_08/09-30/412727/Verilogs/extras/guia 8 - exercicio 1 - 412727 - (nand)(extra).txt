@@ -1,0 +1,75 @@
+module exercicio1 (a , b , c , d , s);
+
+input a , b, ,c , d;
+
+output s;
+
+wire w0 , w1 , w2 , w3 , na , nb , nd;
+
+nand(na , a);
+nand(nb , b);
+nand(nd , d);
+
+nand(w0 , a , b , nd);
+nand(w1 , c , nd);
+nand(w2 , c , nb);
+nand(w3 , na , c);
+nand(s , w0 , w1 , w2 , w3);
+
+
+
+endmodule
+
+
+
+
+
+
+module teste;
+
+output s;
+
+reg a , b, c , d;
+
+exercicio1 ex1 (s , a , b , c , d);
+
+
+
+initial begin
+
+a=0;b=0;c=0;d=0;
+
+end
+
+initial begin: start
+
+$display ("Augusto Ferreira Andrade do Carmo - Guia 8 - 412727 - Exercicio 1 - (nand - extra)");
+$monitor ("%b %b %b %b   %b", a , b , c , d , s); 
+$display ("%b %b %b %b   %b", a , b , c , d , s); 
+
+#1 a=0;b=0;c=0;d=0;
+#1 a=0;b=0;c=0;d=1;
+#1 a=0;b=0;c=1;d=0;
+#1 a=0;b=0;c=1;d=1;
+#1 a=0;b=1;c=0;d=0;
+#1 a=0;b=1;c=0;d=1;
+#1 a=0;b=1;c=1;d=0;
+#1 a=0;b=1;c=1;d=1;
+#1 a=1;b=0;c=0;d=0;
+#1 a=1;b=0;c=0;d=1;
+#1 a=1;b=0;c=1;d=0;
+#1 a=1;b=0;c=1;d=1;
+#1 a=1;b=1;c=0;d=0;
+#1 a=1;b=1;c=0;d=1;
+#1 a=1;b=1;c=1;d=0;
+#1 a=1;b=1;c=1;d=1;
+
+
+end
+
+
+endmodule
+
+
+
+

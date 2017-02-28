@@ -1,0 +1,88 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003DA450 .scope module, "test_fullSubtractor" "test_fullSubtractor" 2 22;
+ .timescale 0 0;
+v006BCEC8_0 .var "c", 0 0;
+v006BCF20_0 .net "s1", 0 0, L_006C0B38; 1 drivers
+v006BCF78_0 .net "s2", 0 0, L_003D2D68; 1 drivers
+v006BCFD0_0 .var "x", 0 0;
+v006BD028_0 .var "y", 0 0;
+S_003DA560 .scope module, "modulo" "fullSubtractor" 2 30, 2 10, S_003DA450;
+ .timescale 0 0;
+L_006BFE68 .functor NOT 1, v006BCFD0_0, C4<0>, C4<0>, C4<0>;
+L_003DD040 .functor XOR 1, v006BD028_0, v006BCEC8_0, C4<0>, C4<0>;
+L_003D2DD8 .functor AND 1, L_003DD040, L_006BFE68, C4<1>, C4<1>;
+L_003D2E80 .functor AND 1, v006BD028_0, v006BCEC8_0, C4<1>, C4<1>;
+L_006C0A58 .functor XOR 1, v006BCFD0_0, v006BD028_0, C4<0>, C4<0>;
+L_003D2D68 .functor OR 1, L_003D2DD8, L_003D2E80, C4<0>, C4<0>;
+L_006C0B38 .functor XOR 1, L_006C0A58, v006BCEC8_0, C4<0>, C4<0>;
+v006BFDB8_0 .net "a", 0 0, v006BCFD0_0; 1 drivers
+v006BFE10_0 .net "and1", 0 0, L_003D2DD8; 1 drivers
+v003DCFB0_0 .net "and2", 0 0, L_003D2E80; 1 drivers
+v006BCC60_0 .net "b", 0 0, v006BD028_0; 1 drivers
+v006BCCB8_0 .net "c", 0 0, v006BCEC8_0; 1 drivers
+v006BCD10_0 .net "not1", 0 0, L_006BFE68; 1 drivers
+v006BCD68_0 .alias "s1", 0 0, v006BCF20_0;
+v006BCDC0_0 .alias "s2", 0 0, v006BCF78_0;
+v006BCE18_0 .net "xor1", 0 0, L_006C0A58; 1 drivers
+v006BCE70_0 .net "xor2", 0 0, L_003DD040; 1 drivers
+S_003DA4D8 .scope begin, "start" "start" 2 32, 2 32, S_003DA450;
+ .timescale 0 0;
+    .scope S_003DA450;
+T_0 ;
+    %fork t_1, S_003DA4D8;
+    %jmp t_0;
+    .scope S_003DA4D8;
+t_1 ;
+    %set/v v006BCFD0_0, 0, 1;
+    %set/v v006BD028_0, 0, 1;
+    %set/v v006BCEC8_0, 0, 1;
+    %end;
+    .scope S_003DA450;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003DA450;
+T_1 ;
+    %vpi_call 2 40 "$display", "Exemplo0022 - Gabriel Carlos Damasceno Arriel - 451557";
+    %vpi_call 2 41 "$display", "Test ALU's full subtractor";
+    %vpi_call 2 42 "$monitor", "%b(a) - %b(b) - %b(c) = %b(s2)  %b(s1)", v006BCFD0_0, v006BD028_0, v006BCEC8_0, v006BCF78_0, v006BCF20_0;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 0, 1;
+    %set/v v006BD028_0, 0, 1;
+    %set/v v006BCEC8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 0, 1;
+    %set/v v006BD028_0, 1, 1;
+    %set/v v006BCEC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 0, 1;
+    %set/v v006BD028_0, 1, 1;
+    %set/v v006BCEC8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 1, 1;
+    %set/v v006BD028_0, 0, 1;
+    %set/v v006BCEC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 1, 1;
+    %set/v v006BD028_0, 0, 1;
+    %set/v v006BCEC8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 1, 1;
+    %set/v v006BD028_0, 1, 1;
+    %set/v v006BCEC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006BCFD0_0, 1, 1;
+    %set/v v006BD028_0, 1, 1;
+    %set/v v006BCEC8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gabriel\Desktop\Ciencias da Computação\Arquiterura de Computadores I\Guia04\Exemplo0022.v";

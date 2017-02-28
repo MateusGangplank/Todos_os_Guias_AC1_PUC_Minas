@@ -1,0 +1,103 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00036848 .scope module, "primeiro" "primeiro" 2 12;
+ .timescale 0 0;
+v0069EE40_0 .var "a", 0 0;
+v0069EE98_0 .var "b", 0 0;
+v0069EEF0_0 .net "s0", 0 0, L_00661400; 1 drivers
+S_00034EA0 .scope module, "XOR1" "xorgate" 2 16, 2 6, S_00036848;
+ .timescale 0 0;
+L_00661400 .functor OR 1, v0069EE40_0, v0069EE98_0, C4<0>, C4<0>;
+v00034F28_0 .net "a", 0 0, v0069EE40_0; 1 drivers
+v0069ED48_0 .net "b", 0 0, v0069EE98_0; 1 drivers
+v0069EDB8_0 .alias "s0", 0 0, v0069EEF0_0;
+S_00671B40 .scope module, "segundaparte" "segundaparte" 2 41;
+ .timescale 0 0;
+v0069F108_0 .var "a", 0 0;
+v0069F160_0 .var "b", 0 0;
+v0069F1B8_0 .net "s1", 0 0, L_0069F528; 1 drivers
+S_0069EF48 .scope module, "AND1" "andgate" 2 44, 2 35, S_00671B40;
+ .timescale 0 0;
+L_0069F528 .functor AND 1, v0069F108_0, v0069F160_0, C4<1>, C4<1>;
+v0069EFD0_0 .net "a", 0 0, v0069F108_0; 1 drivers
+v0069F028_0 .net "b", 0 0, v0069F160_0; 1 drivers
+v0069F080_0 .alias "s1", 0 0, v0069F1B8_0;
+S_00682C50 .scope module, "terceiraparte" "terceiraparte" 2 68;
+ .timescale 0 0;
+v0069F3D0_0 .var "b", 0 0;
+v0069F428_0 .net "s1", 0 0, L_0069F698; 1 drivers
+S_0069F210 .scope module, "NOT1" "notgate" 2 71, 2 63, S_00682C50;
+ .timescale 0 0;
+L_0069F698 .functor NOT 1, L_0069F608, C4<0>, C4<0>, C4<0>;
+v0069F298_0 .net *"_s1", 0 0, L_0069F608; 1 drivers
+v0069F2F0_0 .net "b", 0 0, v0069F3D0_0; 1 drivers
+v0069F348_0 .alias "s1", 0 0, v0069F428_0;
+L_0069F608 .reduce/and v0069F3D0_0;
+    .scope S_00036848;
+T_0 ;
+    %vpi_call 2 20 "$display", "exercicioguia_05_02";
+    %vpi_call 2 21 "$display", "xorgate";
+    %vpi_call 2 22 "$display", "\012a | b=s0 \012";
+    %set/v v0069EE40_0, 0, 1;
+    %set/v v0069EE98_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 24 "$display", "%b |%b=%b ", v0069EE40_0, v0069EE98_0, v0069EEF0_0;
+    %set/v v0069EE40_0, 0, 1;
+    %set/v v0069EE98_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 26 "$display", "%b |%b=%b ", v0069EE40_0, v0069EE98_0, v0069EEF0_0;
+    %set/v v0069EE40_0, 1, 1;
+    %set/v v0069EE98_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 28 "$display", "%b |%b=%b ", v0069EE40_0, v0069EE98_0, v0069EEF0_0;
+    %set/v v0069EE40_0, 1, 1;
+    %set/v v0069EE98_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 30 "$display", "%b |%b=%b ", v0069EE40_0, v0069EE98_0, v0069EEF0_0;
+    %end;
+    .thread T_0;
+    .scope S_00671B40;
+T_1 ;
+    %vpi_call 2 48 "$display", "exercicioguia_04_02";
+    %vpi_call 2 49 "$display", "andgate";
+    %vpi_call 2 50 "$display", "\012a & b=s1 \012 ";
+    %set/v v0069F108_0, 0, 1;
+    %set/v v0069F160_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%b & %b\011=%b ", v0069F108_0, v0069F160_0, v0069F1B8_0;
+    %set/v v0069F108_0, 0, 1;
+    %set/v v0069F160_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 54 "$display", "%b & %b\011=%b ", v0069F108_0, v0069F160_0, v0069F1B8_0;
+    %set/v v0069F108_0, 1, 1;
+    %set/v v0069F160_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 56 "$display", "%b & %b\011=%b ", v0069F108_0, v0069F160_0, v0069F1B8_0;
+    %set/v v0069F108_0, 1, 1;
+    %set/v v0069F160_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 58 "$display", "%b & %b\011=%b ", v0069F108_0, v0069F160_0, v0069F1B8_0;
+    %end;
+    .thread T_1;
+    .scope S_00682C50;
+T_2 ;
+    %vpi_call 2 74 "$display", "exercicioguia_04_02";
+    %vpi_call 2 75 "$display", "notgate";
+    %vpi_call 2 76 "$display", "\012a ~ b=s1\012";
+    %set/v v0069F3D0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 78 "$display", "%b~ =%b", v0069F3D0_0, v0069F428_0;
+    %set/v v0069F3D0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 80 "$display", "%b~ =%b", v0069F3D0_0, v0069F428_0;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\documentos\DOCUMENTOS ENÉAS\diciplinas2010\dicip.2010.seg.sem\arquitetura de comp\guia05\exercicioguia_05_02.vhdl";

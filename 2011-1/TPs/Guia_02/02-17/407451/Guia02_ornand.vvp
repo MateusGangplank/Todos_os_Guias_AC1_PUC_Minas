@@ -1,0 +1,52 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008BA798 .scope module, "testornand" "testornand" 2 27;
+ .timescale 0 0;
+v008B2A28_0 .net "s", 0 0, L_008BE7A0; 1 drivers
+v008B3CA0_0 .var "x", 0 0;
+v008B3CF8_0 .var "y", 0 0;
+S_008BA820 .scope module, "ORN1" "ORnand" 2 31, 2 10, S_008BA798;
+ .timescale 0 0;
+L_008B2A80 .functor AND 1, v008B3CA0_0, v008B3CA0_0, C4<1>, C4<1>;
+L_008B3D50 .functor NOT 1, L_008B2A80, C4<0>, C4<0>, C4<0>;
+L_008B3DC0 .functor AND 1, v008B3CF8_0, v008B3CF8_0, C4<1>, C4<1>;
+L_008BE688 .functor NOT 1, L_008B3DC0, C4<0>, C4<0>, C4<0>;
+L_008BE6F8 .functor AND 1, L_008B3D50, L_008BE688, C4<1>, C4<1>;
+L_008BE7A0 .functor NOT 1, L_008BE6F8, C4<0>, C4<0>, C4<0>;
+v008BF4E0_0 .net *"_s0", 0 0, L_008B2A80; 1 drivers
+v008BE370_0 .net *"_s4", 0 0, L_008B3DC0; 1 drivers
+v008BE170_0 .net *"_s8", 0 0, L_008BE6F8; 1 drivers
+v008BE570_0 .alias "s", 0 0, v008B2A28_0;
+v008BCEF8_0 .net "tem1", 0 0, L_008B3D50; 1 drivers
+v008BCF50_0 .net "tem2", 0 0, L_008BE688; 1 drivers
+v008B2978_0 .net "x", 0 0, v008B3CA0_0; 1 drivers
+v008B29D0_0 .net "y", 0 0, v008B3CF8_0; 1 drivers
+    .scope S_008BA798;
+T_0 ;
+    %vpi_call 2 34 "$display", "Guia 02 - Karen Alves Pereira - 407451";
+    %vpi_call 2 35 "$display", "Tabela-verdade da porta OR construida atraves de portas NAND.";
+    %vpi_call 2 36 "$display", "Teste ORNAND.";
+    %vpi_call 2 37 "$display", "\012~(~x & ~y) = s\012";
+    %vpi_call 2 38 "$monitor", " ~(%b & %b) = %b", v008B3CA0_0, v008B3CF8_0, v008B2A28_0;
+    %set/v v008B3CA0_0, 0, 1;
+    %set/v v008B3CF8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008B3CA0_0, 0, 1;
+    %set/v v008B3CF8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008B3CA0_0, 1, 1;
+    %set/v v008B3CF8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008B3CA0_0, 1, 1;
+    %set/v v008B3CF8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 02\Guia02_ornand.v";

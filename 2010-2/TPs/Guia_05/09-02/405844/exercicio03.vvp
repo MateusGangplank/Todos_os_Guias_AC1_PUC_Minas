@@ -1,0 +1,92 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EFAE0 .scope module, "testeprograma1" "testeprograma1" 2 14;
+ .timescale 0 0;
+L_003EFB88 .functor AND 1, v006A6CC8_0, v006A6DC0_0, C4<1>, C4<1>;
+L_003EFBC0 .functor AND 1, v006A6CC8_0, v006A6E18_0, C4<1>, C4<1>;
+L_006A73D8 .functor AND 1, v006A6D50_0, v006A6E18_0, C4<1>, C4<1>;
+L_006A7448 .functor AND 1, v006A6D50_0, v006A6E18_0, C4<1>, C4<1>;
+L_006A74B8 .functor XOR 1, L_003EFBC0, L_006A73D8, C4<0>, C4<0>;
+L_006A7560 .functor AND 1, L_003EFBC0, L_006A73D8, C4<1>, C4<1>;
+L_006A7598 .functor XOR 1, C4<0>, L_006A7448, C4<0>, C4<0>;
+L_006A7640 .functor AND 1, C4<0>, L_006A7448, C4<1>, C4<1>;
+L_006A76B0 .functor XOR 1, L_006A7598, L_006A7560, C4<0>, C4<0>;
+L_006A7758 .functor AND 1, L_006A7598, L_006A7560, C4<1>, C4<1>;
+L_006A7790 .functor OR 1, L_006A7640, L_006A7758, C4<0>, C4<0>;
+v003EFD60_0 .net/s *"_s0", 0 0, C4<0>; 1 drivers
+v003EFD08_0 .net/s *"_s2", 0 0, C4<0>; 1 drivers
+v006A6CC8_0 .var "a1", 0 0;
+v006A6D50_0 .var "a2", 0 0;
+v006A6DC0_0 .var "b1", 0 0;
+v006A6E18_0 .var "b2", 0 0;
+v006A6E88_0 .net "s1", 0 0, L_003EFB88; 1 drivers
+v006A6F20_0 .net "s10", 0 0, L_006A7758; 1 drivers
+v006A6F90_0 .net "s11", 0 0, L_006A7790; 1 drivers
+v006A7008_0 .net "s2", 0 0, L_003EFBC0; 1 drivers
+v006A7078_0 .net "s3", 0 0, L_006A73D8; 1 drivers
+v006A70E8_0 .net "s4", 0 0, L_006A7448; 1 drivers
+v006A7158_0 .net "s5", 0 0, L_006A74B8; 1 drivers
+v006A71C8_0 .net "s6", 0 0, L_006A7560; 1 drivers
+v006A7238_0 .net "s7", 0 0, L_006A7598; 1 drivers
+v006A72A8_0 .net "s8", 0 0, L_006A7640; 1 drivers
+v006A7318_0 .net "s9", 0 0, L_006A76B0; 1 drivers
+S_003EFE38 .scope begin, "main" "main" 2 40, 2 40, S_003EFAE0;
+ .timescale 0 0;
+    .scope S_003EFAE0;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_003EFAE0;
+T_1 ;
+    %fork t_1, S_003EFE38;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 41 "$display", "Guia05 - Programa 3";
+    %vpi_call 2 42 "$display", "Criar um circuito lógico para realizar uma multiplicação de\012dois valores bin\3777ÿÿÿÛ‘|ÛÁÀwÜ2grios com dois bits cada\012";
+    %vpi_call 2 43 "$display", "Aluno: Tiago Menegaz de Melo Garcia\011\011Matr\3777ÿÿÿÛ‘|ÛÁÀw„ü>cula:405844\012";
+    %vpi_call 2 44 "$display", "Relatório de Testes";
+    %delay 1, 0;
+    %set/v v006A6CC8_0, 0, 1;
+    %set/v v006A6D50_0, 0, 1;
+    %set/v v006A6DC0_0, 0, 1;
+    %set/v v006A6E18_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$monitor", "%b %b * %b %b  = %b %b %b", v006A6D50_0, v006A6CC8_0, v006A6E18_0, v006A6DC0_0, v006A6F90_0, v006A7318_0, v006A7158_0, v006A6E88_0;
+    %delay 1, 0;
+    %set/v v006A6CC8_0, 1, 1;
+    %set/v v006A6D50_0, 0, 1;
+    %set/v v006A6DC0_0, 1, 1;
+    %set/v v006A6E18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A6CC8_0, 1, 1;
+    %set/v v006A6D50_0, 1, 1;
+    %set/v v006A6DC0_0, 1, 1;
+    %set/v v006A6E18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A6CC8_0, 1, 1;
+    %set/v v006A6D50_0, 1, 1;
+    %set/v v006A6DC0_0, 1, 1;
+    %set/v v006A6E18_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A6CC8_0, 0, 1;
+    %set/v v006A6D50_0, 1, 1;
+    %set/v v006A6DC0_0, 1, 1;
+    %set/v v006A6E18_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A6CC8_0, 1, 1;
+    %set/v v006A6D50_0, 1, 1;
+    %set/v v006A6DC0_0, 0, 1;
+    %set/v v006A6E18_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio03.v";

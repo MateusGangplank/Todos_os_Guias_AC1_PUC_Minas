@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00904130 .scope module, "testxor" "testxor" 2 21;
+ .timescale 0 0;
+v0090FCE8_0 .var "a", 0 0;
+v0090FD40_0 .var "b", 0 0;
+v0090FD98_0 .net "s", 0 0, L_0090FF78; 1 drivers
+S_00904F10 .scope module, "XOR2" "xor_expressao" 2 27, 2 11, S_00904130;
+ .timescale 0 0;
+L_0090F0C8 .functor NOT 1, v0090FCE8_0, C4<0>, C4<0>, C4<0>;
+L_0090FE28 .functor AND 1, L_0090F0C8, v0090FD40_0, C4<1>, C4<1>;
+L_0090FED0 .functor NOT 1, v0090FD40_0, C4<0>, C4<0>, C4<0>;
+L_0090FF08 .functor AND 1, v0090FCE8_0, L_0090FED0, C4<1>, C4<1>;
+L_0090FF78 .functor OR 1, L_0090FE28, L_0090FF08, C4<0>, C4<0>;
+v00904240_0 .net *"_s0", 0 0, L_0090F0C8; 1 drivers
+v00904F98_0 .net *"_s2", 0 0, L_0090FE28; 1 drivers
+v0090F3B0_0 .net *"_s4", 0 0, L_0090FED0; 1 drivers
+v0090F408_0 .net *"_s6", 0 0, L_0090FF08; 1 drivers
+v0090F460_0 .net "p", 0 0, v0090FCE8_0; 1 drivers
+v0090F4B8_0 .net "q", 0 0, v0090FD40_0; 1 drivers
+v0090F510_0 .alias "s", 0 0, v0090FD98_0;
+S_00904E88 .scope begin, "start" "start" 2 30, 2 30, S_00904130;
+ .timescale 0 0;
+S_009041B8 .scope begin, "main" "main" 2 36, 2 36, S_00904130;
+ .timescale 0 0;
+    .scope S_00904130;
+T_0 ;
+    %fork t_1, S_00904E88;
+    %jmp t_0;
+    .scope S_00904E88;
+t_1 ;
+    %set/v v0090FCE8_0, 0, 1;
+    %set/v v0090FD40_0, 0, 1;
+    %end;
+    .scope S_00904130;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00904130;
+T_1 ;
+    %fork t_3, S_009041B8;
+    %jmp t_2;
+    .scope S_009041B8;
+t_3 ;
+    %vpi_call 2 37 "$display", "Exercicio06 - Thais Mairink - 441710";
+    %vpi_call 2 38 "$display", "Test xor ";
+    %vpi_call 2 39 "$display", "\012 ((~a)&b)|(a&(~b) = s\012";
+    %vpi_call 2 40 "$monitor", "%b ^ %b = %b", v0090FCE8_0, v0090FD40_0, v0090FD98_0;
+    %delay 1, 0;
+    %set/v v0090FCE8_0, 0, 1;
+    %set/v v0090FD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090FCE8_0, 0, 1;
+    %set/v v0090FD40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0090FCE8_0, 1, 1;
+    %set/v v0090FD40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0090FCE8_0, 1, 1;
+    %set/v v0090FD40_0, 1, 1;
+    %end;
+    .scope S_00904130;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Thaís Mairink\Documents\thais\Arq1\exercicio06.V";

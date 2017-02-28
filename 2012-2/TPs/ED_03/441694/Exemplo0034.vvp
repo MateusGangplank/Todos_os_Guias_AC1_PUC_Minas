@@ -1,0 +1,141 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B4B0F8 .scope module, "test_f4" "test_f4" 2 35;
+ .timescale 0 0;
+v0059E308_0 .net "s", 0 0, L_005D7448; 1 drivers
+v0059E360_0 .var "x", 0 0;
+v0059E3B8_0 .var "y", 0 0;
+v0059E410_0 .var "z", 1 0;
+S_00B4B180 .scope module, "modulo1" "BOX2" 2 40, 2 24, S_00B4B0F8;
+ .timescale 0 0;
+L_00B4A3D0 .functor OR 1, v0059E360_0, v0059E3B8_0, C4<0>, C4<0>;
+L_005D7058 .functor NOR 1, v0059E360_0, v0059E3B8_0, C4<0>, C4<0>;
+L_005D70C8 .functor XOR 1, v0059E360_0, v0059E3B8_0, C4<0>, C4<0>;
+L_005D7020 .functor XNOR 1, v0059E360_0, v0059E3B8_0, C4<0>, C4<0>;
+v0059E048_0 .net "CH", 1 0, v0059E410_0; 1 drivers
+v0059E0A0_0 .net "a", 0 0, v0059E360_0; 1 drivers
+v0059E0F8_0 .net "b", 0 0, v0059E3B8_0; 1 drivers
+v0059E150_0 .net "e1", 0 0, L_00B4A3D0; 1 drivers
+v0059E1A8_0 .net "e2", 0 0, L_005D7058; 1 drivers
+v0059E200_0 .net "e3", 0 0, L_005D70C8; 1 drivers
+v0059E258_0 .net "e4", 0 0, L_005D7020; 1 drivers
+v0059E2B0_0 .alias "s", 0 0, v0059E308_0;
+S_00B4B208 .scope module, "selec" "BOX1" 2 32, 2 9, S_00B4B180;
+ .timescale 0 0;
+L_005D7138 .functor NOT 1, L_0059E468, C4<0>, C4<0>, C4<0>;
+L_005D71A8 .functor NOT 1, L_0059E4C0, C4<0>, C4<0>, C4<0>;
+L_005D7218 .functor AND 1, L_00B4A3D0, L_005D7138, L_005D71A8, C4<1>;
+L_005D72C0 .functor AND 1, L_005D7058, L_005D71A8, L_0059E518, C4<1>;
+L_005D7330 .functor AND 1, L_005D70C8, L_0059E570, L_005D7138, C4<1>;
+L_005D73A0 .functor AND 1, L_005D7020, L_0059E5C8, L_0059E620, C4<1>;
+L_005D7448 .functor OR 1, L_005D7218, L_005D72C0, L_005D7330, L_005D73A0;
+v0059DA18_0 .net *"_s1", 0 0, L_0059E468; 1 drivers
+v0059DA70_0 .net *"_s11", 0 0, L_0059E620; 1 drivers
+v0059DAC8_0 .net *"_s3", 0 0, L_0059E4C0; 1 drivers
+v0059DB20_0 .net *"_s5", 0 0, L_0059E518; 1 drivers
+v0059DB78_0 .net *"_s7", 0 0, L_0059E570; 1 drivers
+v0059DBD0_0 .net *"_s9", 0 0, L_0059E5C8; 1 drivers
+v0059DC28_0 .alias "c1", 1 0, v0059E048_0;
+v0059DC80_0 .alias "e1", 0 0, v0059E150_0;
+v0059DCD8_0 .alias "e2", 0 0, v0059E1A8_0;
+v0059DD30_0 .alias "e3", 0 0, v0059E200_0;
+v0059DD88_0 .alias "e4", 0 0, v0059E258_0;
+v0059DDE0_0 .net "notc0", 0 0, L_005D7138; 1 drivers
+v0059DE38_0 .net "notc1", 0 0, L_005D71A8; 1 drivers
+v0059DE90_0 .alias "s1", 0 0, v0059E308_0;
+v0059DEE8_0 .net "temp1", 0 0, L_005D7218; 1 drivers
+v0059DF40_0 .net "temp2", 0 0, L_005D72C0; 1 drivers
+v0059DF98_0 .net "temp3", 0 0, L_005D7330; 1 drivers
+v0059DFF0_0 .net "temp4", 0 0, L_005D73A0; 1 drivers
+L_0059E468 .part v0059E410_0, 0, 1;
+L_0059E4C0 .part v0059E410_0, 1, 1;
+L_0059E518 .part v0059E410_0, 0, 1;
+L_0059E570 .part v0059E410_0, 1, 1;
+L_0059E5C8 .part v0059E410_0, 0, 1;
+L_0059E620 .part v0059E410_0, 1, 1;
+    .scope S_00B4B0F8;
+T_0 ;
+    %vpi_call 2 43 "$display", "Exemplo0034 - Lucas Cardoso - 441694";
+    %vpi_call 2 44 "$display", "Test LU's module";
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %set/v v0059E410_0, 0, 2;
+    %vpi_call 2 47 "$display", "\012a b CH s";
+    %delay 1, 0;
+    %vpi_call 2 48 "$monitor", "%b %b %b %b", v0059E360_0, v0059E3B8_0, v0059E410_0, v0059E308_0;
+    %delay 1, 0;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %set/v v0059E410_0, 0, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %set/v v0059E410_0, 0, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %set/v v0059E410_0, 0, 2;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %movi 8, 1, 2;
+    %set/v v0059E410_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %movi 8, 1, 2;
+    %set/v v0059E410_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %movi 8, 1, 2;
+    %set/v v0059E410_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %movi 8, 1, 2;
+    %set/v v0059E410_0, 8, 2;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %movi 8, 2, 2;
+    %set/v v0059E410_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %movi 8, 2, 2;
+    %set/v v0059E410_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %movi 8, 2, 2;
+    %set/v v0059E410_0, 8, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %movi 8, 2, 2;
+    %set/v v0059E410_0, 8, 2;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %set/v v0059E410_0, 1, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 0, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %set/v v0059E410_0, 1, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 0, 1;
+    %set/v v0059E410_0, 1, 2;
+    %delay 1, 0;
+    %set/v v0059E360_0, 1, 1;
+    %set/v v0059E3B8_0, 1, 1;
+    %set/v v0059E410_0, 1, 2;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Lucas\Puc\441694\AC1\Guia03\Exemplo0034.v";

@@ -1,0 +1,53 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003436B0 .scope module, "Exemplo0047" "Exemplo0047" 2 25;
+ .timescale 0 0;
+v003444A8_0 .net "clock", 0 0, v00344450_0; 1 drivers
+v00344500_0 .net "p1", 0 0, v00342D08_0; 1 drivers
+S_00342D60 .scope module, "clk" "clock" 2 28, 3 7, S_003436B0;
+ .timescale 0 0;
+v00344450_0 .var "clk", 0 0;
+S_00343738 .scope module, "pulse1" "pulse" 2 31, 2 9, S_003436B0;
+ .timescale 0 0;
+v00342CB0_0 .alias "clock", 0 0, v003444A8_0;
+v00342D08_0 .var "signal", 0 0;
+E_0034D0F8 .event negedge, v00342CB0_0;
+    .scope S_00342D60;
+T_0 ;
+    %set/v v00344450_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00342D60;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00344450_0, 1;
+    %inv 8, 1;
+    %set/v v00344450_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00343738;
+T_2 ;
+    %wait E_0034D0F8;
+    %set/v v00342D08_0, 1, 1;
+    %delay 5, 0;
+    %set/v v00342D08_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_003436B0;
+T_3 ;
+    %vpi_call 2 35 "$dumpfile", "Exemplo0047.vcd";
+    %vpi_call 2 36 "$dumpvars", 2'sb01, v003444A8_0, v00344500_0;
+    %delay 120, 0;
+    %vpi_call 2 37 "$finish";
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C:\Lucas\Arquivos PUC\441694\AC\Guia06\Exemplo0047.v";
+    "./clock.v";

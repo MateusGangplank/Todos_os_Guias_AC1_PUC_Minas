@@ -1,0 +1,69 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00674178 .scope module, "testeDiferencaCompleta" "testeDiferencaCompleta" 2 40;
+ .timescale 0 0;
+v006A4970_0 .var "Cin", 0 0;
+v006A49C8_0 .net "Cout", 0 0, L_00672330; 1 drivers
+v006A4A20_0 .net "Resultado", 0 0, L_003EE658; 1 drivers
+v006A4AB0_0 .var "a", 0 0;
+v006A4B40_0 .var "b", 0 0;
+S_006741F8 .scope module, "SOMA" "DiferencaCompleta" 2 46, 2 24, S_00674178;
+ .timescale 0 0;
+L_00672330 .functor OR 1, L_006A4BD0, L_006A4B98, C4<0>, C4<0>;
+v006A45E8_0 .net "Cin", 0 0, v006A4970_0; 1 drivers
+v006A4640_0 .alias "Cout", 0 0, v006A49C8_0;
+v006A4698_0 .alias "Resultado", 0 0, v006A4A20_0;
+v006A4710_0 .net "a", 0 0, v006A4AB0_0; 1 drivers
+v006A4788_0 .net "b", 0 0, v006A4B40_0; 1 drivers
+v006A4820_0 .net "temp1", 0 0, L_006A4BD0; 1 drivers
+v006A4898_0 .net "temp2", 0 0, L_006A4CC0; 1 drivers
+v006A4918_0 .net "temp3", 0 0, L_006A4B98; 1 drivers
+S_006A4338 .scope module, "SOMA1" "meiaDiferencacompacto" 2 31, 2 13, S_006741F8;
+ .timescale 0 0;
+L_006A4BD0 .functor AND 1, L_006A4C40, v006A4B40_0, C4<1>, C4<1>;
+L_006A4C40 .functor NOT 1, v006A4AB0_0, C4<0>, C4<0>, C4<0>;
+L_006A4CC0 .functor XOR 1, v006A4AB0_0, v006A4B40_0, C4<0>, C4<0>;
+v006A43B8_0 .net *"_s1", 0 0, L_006A4C40; 1 drivers
+v006A4428_0 .alias "a", 0 0, v006A4710_0;
+v006A4498_0 .alias "b", 0 0, v006A4788_0;
+v006A4520_0 .alias "s0", 0 0, v006A4820_0;
+v006A4590_0 .alias "s1", 0 0, v006A4898_0;
+S_00674278 .scope module, "SOMA2" "meiaDiferencacompacto" 2 32, 2 13, S_006741F8;
+ .timescale 0 0;
+L_006A4B98 .functor AND 1, L_006A4DC8, v006A4970_0, C4<1>, C4<1>;
+L_006A4DC8 .functor NOT 1, L_006A4CC0, C4<0>, C4<0>, C4<0>;
+L_003EE658 .functor XOR 1, L_006A4CC0, v006A4970_0, C4<0>, C4<0>;
+v006742F8_0 .net *"_s1", 0 0, L_006A4DC8; 1 drivers
+v006A4178_0 .alias "a", 0 0, v006A4898_0;
+v006A41E8_0 .alias "b", 0 0, v006A45E8_0;
+v006A4270_0 .alias "s0", 0 0, v006A4918_0;
+v006A42E0_0 .alias "s1", 0 0, v006A4A20_0;
+    .scope S_00674178;
+T_0 ;
+    %vpi_call 2 50 "$display", "\012 Guia 04 - 03 - Caio Ragacci Pimentel - 405794 ";
+    %vpi_call 2 51 "$display", "\012 SUBTRATOR COMPLETO";
+    %vpi_call 2 52 "$display", "\012 A - B = s0 s1 \012";
+    %set/v v006A4AB0_0, 0, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %set/v v006A4970_0, 0, 1;
+    %vpi_call 2 55 "$monitor", " %b - %b = %b %b", v006A4AB0_0, v006A4B40_0, v006A49C8_0, v006A4A20_0;
+    %delay 1, 0;
+    %set/v v006A4AB0_0, 0, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4AB0_0, 1, 1;
+    %set/v v006A4B40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4AB0_0, 1, 1;
+    %set/v v006A4B40_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_04\Guia04-03.v";

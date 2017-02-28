@@ -1,0 +1,110 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00289310 .scope module, "testdiferencacompleta" "testdiferencacompleta" 2 43;
+ .timescale 0 0;
+v005C6030_0 .var "a", 0 0;
+v005C6088_0 .var "b", 0 0;
+v005C60E0_0 .net "s0", 0 0, L_005A0438; 1 drivers
+v005C6138_0 .net "s1", 0 0, L_005A0550; 1 drivers
+v005C6190_0 .var "v", 0 0;
+S_002894A8 .scope module, "DIFERENCACOMPLETA1" "diferencacompleta" 2 47, 2 27, S_00289310;
+ .timescale 0 0;
+L_005A0550 .functor OR 1, L_00282C08, L_005A04A8, C4<0>, C4<0>;
+v005C5D70_0 .net "a", 0 0, v005C6030_0; 1 drivers
+v005C5DC8_0 .net "b", 0 0, v005C6088_0; 1 drivers
+v005C5E20_0 .net "q0", 0 0, L_0028D0F0; 1 drivers
+v005C5E78_0 .net "q1", 0 0, L_00282C08; 1 drivers
+v005C5ED0_0 .net "q2", 0 0, L_005A04A8; 1 drivers
+v005C5F28_0 .alias "s0", 0 0, v005C60E0_0;
+v005C5F80_0 .alias "s1", 0 0, v005C6138_0;
+v005C5FD8_0 .net "v", 0 0, v005C6190_0; 1 drivers
+S_002895B8 .scope module, "MD1" "meiadiferenca" 2 33, 2 11, S_002894A8;
+ .timescale 0 0;
+L_0028D0F0 .functor XOR 1, v005C6030_0, v005C6088_0, C4<0>, C4<0>;
+L_0028D128 .functor NOT 1, v005C6030_0, C4<0>, C4<0>, C4<0>;
+L_00282C08 .functor AND 1, L_0028D128, v005C6088_0, C4<1>, C4<1>;
+v005A3A60_0 .alias "a", 0 0, v005C5D70_0;
+v005C5C10_0 .alias "b", 0 0, v005C5DC8_0;
+v005C5C68_0 .net "q0", 0 0, L_0028D128; 1 drivers
+v005C5CC0_0 .alias "s0", 0 0, v005C5E20_0;
+v005C5D18_0 .alias "s1", 0 0, v005C5E78_0;
+S_00289530 .scope module, "MD2" "meiadiferenca" 2 34, 2 11, S_002894A8;
+ .timescale 0 0;
+L_005A0438 .functor XOR 1, v005C6190_0, L_0028D0F0, C4<0>, C4<0>;
+L_005A0470 .functor NOT 1, v005C6190_0, C4<0>, C4<0>, C4<0>;
+L_005A04A8 .functor AND 1, L_005A0470, L_0028D0F0, C4<1>, C4<1>;
+v00282B00_0 .alias "a", 0 0, v005C5FD8_0;
+v00282B58_0 .alias "b", 0 0, v005C5E20_0;
+v00282BB0_0 .net "q0", 0 0, L_005A0470; 1 drivers
+v005A39B0_0 .alias "s0", 0 0, v005C60E0_0;
+v005A3A08_0 .alias "s1", 0 0, v005C5ED0_0;
+S_00289420 .scope begin, "start" "start" 2 49, 2 49, S_00289310;
+ .timescale 0 0;
+S_00289398 .scope begin, "main" "main" 2 54, 2 54, S_00289310;
+ .timescale 0 0;
+    .scope S_00289310;
+T_0 ;
+    %fork t_1, S_00289420;
+    %jmp t_0;
+    .scope S_00289420;
+t_1 ;
+    %set/v v005C6030_0, 0, 1;
+    %set/v v005C6088_0, 0, 1;
+    %set/v v005C6190_0, 0, 1;
+    %end;
+    .scope S_00289310;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00289310;
+T_1 ;
+    %fork t_3, S_00289398;
+    %jmp t_2;
+    .scope S_00289398;
+t_3 ;
+    %vpi_call 2 55 "$display", "Guia 04_03 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 56 "$display", "Operador Diferenca-Completa usando dois circuitos Meia-Diferenca.";
+    %vpi_call 2 57 "$display", "\012v a b = s1 s0\012";
+    %vpi_call 2 58 "$monitor", " %b %b %b = %b %b", v005C6190_0, v005C6030_0, v005C6088_0, v005C6138_0, v005C60E0_0;
+    %delay 1, 0;
+    %set/v v005C6030_0, 0, 1;
+    %set/v v005C6088_0, 1, 1;
+    %set/v v005C6190_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C6030_0, 1, 1;
+    %set/v v005C6088_0, 0, 1;
+    %set/v v005C6190_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C6030_0, 1, 1;
+    %set/v v005C6088_0, 1, 1;
+    %set/v v005C6190_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C6030_0, 0, 1;
+    %set/v v005C6088_0, 0, 1;
+    %set/v v005C6190_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6030_0, 0, 1;
+    %set/v v005C6088_0, 1, 1;
+    %set/v v005C6190_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6030_0, 1, 1;
+    %set/v v005C6088_0, 0, 1;
+    %set/v v005C6190_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C6030_0, 1, 1;
+    %set/v v005C6088_0, 1, 1;
+    %set/v v005C6190_0, 1, 1;
+    %end;
+    .scope S_00289310;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Ciência da Computação\AC I - 2\Guias\Guia04\guia04_03.v";

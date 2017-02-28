@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006A9198 .scope module, "test_f4" "test_f4" 2 39;
+ .timescale 0 0;
+v005B13A8_0 .var "c", 0 0;
+v005B1400_0 .net "s", 0 0, L_005AD508; 1 drivers
+v005B1458_0 .var "x", 0 0;
+v005B14B0_0 .var "y", 0 0;
+S_006A9220 .scope module, "modulo" "f4" 2 46, 2 9, S_006A9198;
+ .timescale 0 0;
+L_006AB630 .functor AND 1, v005B1458_0, v005B14B0_0, C4<1>, C4<1>;
+L_006AD888 .functor AND 1, L_005AD658, L_005AD700, C4<1>, C4<1>;
+L_006AD8C0 .functor AND 1, L_005AD498, L_005AD700, C4<1>, C4<1>;
+L_006AD930 .functor AND 1, L_005AD690, v005B13A8_0, C4<1>, C4<1>;
+L_006A3C60 .functor AND 1, L_005AD658, v005B13A8_0, C4<1>, C4<1>;
+L_005AD498 .functor OR 1, v005B1458_0, v005B14B0_0, C4<0>, C4<0>;
+L_005AD508 .functor OR 1, L_006AD888, L_006AD8C0, L_006AD930, L_006A3C60;
+L_005AD658 .functor NAND 1, v005B1458_0, v005B14B0_0, C4<1>, C4<1>;
+L_005AD690 .functor NOR 1, v005B1458_0, v005B14B0_0, C4<0>, C4<0>;
+L_005AD700 .functor NOT 1, v005B13A8_0, C4<0>, C4<0>, C4<0>;
+v005B0F30_0 .net "a", 0 0, v005B1458_0; 1 drivers
+v005B0F88_0 .net "b", 0 0, v005B14B0_0; 1 drivers
+v005B0FE0_0 .net "chave", 0 0, v005B13A8_0; 1 drivers
+v005B1038_0 .alias "s", 0 0, v005B1400_0;
+v005B1090_0 .net "s_and1", 0 0, L_006AB630; 1 drivers
+v005B10E8_0 .net "s_and2", 0 0, L_006AD888; 1 drivers
+v005B1140_0 .net "s_and3", 0 0, L_006AD8C0; 1 drivers
+v005B1198_0 .net "s_and4", 0 0, L_006AD930; 1 drivers
+v005B11F0_0 .net "s_and5", 0 0, L_006A3C60; 1 drivers
+v005B1248_0 .net "s_nand1", 0 0, L_005AD658; 1 drivers
+v005B12A0_0 .net "s_nor1", 0 0, L_005AD690; 1 drivers
+v005B12F8_0 .net "s_not1", 0 0, L_005AD700; 1 drivers
+v005B1350_0 .net "s_or1", 0 0, L_005AD498; 1 drivers
+    .scope S_006A9198;
+T_0 ;
+    %vpi_call 2 49 "$display", "Exemplo0033 - Jenifer Henrique Moreira Borges - 427420.";
+    %vpi_call 2 50 "$display", "Test LU's module";
+    %delay 1, 0;
+    %vpi_call 2 53 "$monitor", " x: %2b \011 y: %2b \011 Resultado: %4b", v005B1458_0, v005B14B0_0, v005B1400_0, v005B13A8_0;
+    %delay 1, 0;
+    %set/v v005B1458_0, 1, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 1, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 1, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 1, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 1, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 1, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 0, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005B1458_0, 0, 1;
+    %set/v v005B14B0_0, 0, 1;
+    %set/v v005B13A8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Jenifer\Dropbox\Arquitetura de Computadores I\Guia03\Exemplo0033.v";

@@ -1,0 +1,65 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E6340 .scope module, "testorgate" "testorgate" 2 24;
+ .timescale 0 0;
+v006995F8_0 .var "a", 0 0;
+v00699650_0 .var "b", 0 0;
+v006996A8_0 .net "s", 0 0, L_00661338; 1 drivers
+S_003E64D8 .scope module, "OR1" "orgate" 2 32, 2 14, S_003E6340;
+ .timescale 0 0;
+L_00661338 .functor OR 1, v006995F8_0, v00699650_0, C4<0>, C4<0>;
+v003E6560_0 .net "p", 0 0, v006995F8_0; 1 drivers
+v00699500_0 .net "q", 0 0, v00699650_0; 1 drivers
+v00699570_0 .alias "s", 0 0, v006996A8_0;
+S_003E6450 .scope begin, "start" "start" 2 34, 2 34, S_003E6340;
+ .timescale 0 0;
+S_003E63C8 .scope begin, "main" "main" 2 40, 2 40, S_003E6340;
+ .timescale 0 0;
+    .scope S_003E6340;
+T_0 ;
+    %fork t_1, S_003E6450;
+    %jmp t_0;
+t_1 ;
+    %set/v v006995F8_0, 0, 1;
+    %set/v v00699650_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E6340;
+T_1 ;
+    %fork t_3, S_003E63C8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 42 "$display", "Exemplo 0004 - xxx yyy zzz - 999999";
+    %vpi_call 2 43 "$display", "Test OR gate:";
+    %vpi_call 2 44 "$display", "\012a | b= s\012";
+    %set/v v006995F8_0, 0, 1;
+    %set/v v00699650_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "%b | %b = %b", v006995F8_0, v00699650_0, v006996A8_0;
+    %set/v v006995F8_0, 0, 1;
+    %set/v v00699650_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "%b | %b = %b", v006995F8_0, v00699650_0, v006996A8_0;
+    %set/v v006995F8_0, 1, 1;
+    %set/v v00699650_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "%b | %b = %b", v006995F8_0, v00699650_0, v006996A8_0;
+    %set/v v006995F8_0, 1, 1;
+    %set/v v00699650_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "%b | %b = %b", v006995F8_0, v00699650_0, v006996A8_0;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\pT\AC\guia01\Exemplo0004.v";

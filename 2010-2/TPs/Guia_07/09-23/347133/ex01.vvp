@@ -1,0 +1,101 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEBD8 .scope module, "testeguia07" "testeguia07" 2 24;
+ .timescale 0 0;
+v006A7DC0_0 .var "a0", 0 0;
+v006A7E18_0 .var "a1", 0 0;
+v006A7E70_0 .var "a2", 0 0;
+v006A7EC8_0 .var "a3", 0 0;
+v006A7F20_0 .var "b0", 0 0;
+v006A7F78_0 .var "b1", 0 0;
+v006A7FD0_0 .var "b2", 0 0;
+v006A8050_0 .var "b3", 0 0;
+v006A80A8_0 .net "w1", 0 0, L_006A8510; 1 drivers
+v006A8100_0 .net "w2", 0 0, L_006A8458; 1 drivers
+v006A8158_0 .net "w3", 0 0, L_006A83A0; 1 drivers
+v006A81B0_0 .net "w4", 0 0, L_00674898; 1 drivers
+v006A8208_0 .net "w5", 0 0, L_006A87F0; 1 drivers
+v006A8260_0 .net "w6", 0 0, L_006A8738; 1 drivers
+v006A82B8_0 .net "w7", 0 0, L_006A8680; 1 drivers
+v006A8310_0 .net "w8", 0 0, L_006A85B8; 1 drivers
+S_006A7998 .scope module, "COMP1" "complemento1" 2 28, 2 9, S_003EEBD8;
+ .timescale 0 0;
+L_00674898 .functor NOT 1, v006A7DC0_0, C4<0>, C4<0>, C4<0>;
+L_006A83A0 .functor NOT 1, v006A7E18_0, C4<0>, C4<0>, C4<0>;
+L_006A8458 .functor NOT 1, v006A7E70_0, C4<0>, C4<0>, C4<0>;
+L_006A8510 .functor NOT 1, v006A7EC8_0, C4<0>, C4<0>, C4<0>;
+v006A7A18_0 .net "a0", 0 0, v006A7DC0_0; 1 drivers
+v006A7A88_0 .net "a1", 0 0, v006A7E18_0; 1 drivers
+v006A7AF8_0 .net "a2", 0 0, v006A7E70_0; 1 drivers
+v006A7B80_0 .net "a3", 0 0, v006A7EC8_0; 1 drivers
+v006A7BF0_0 .alias "s0", 0 0, v006A81B0_0;
+v006A7C48_0 .alias "s1", 0 0, v006A8158_0;
+v006A7CB8_0 .alias "s2", 0 0, v006A8100_0;
+v006A7D50_0 .alias "s3", 0 0, v006A80A8_0;
+S_003EF958 .scope module, "COMP2" "complemento1" 2 29, 2 9, S_003EEBD8;
+ .timescale 0 0;
+L_006A85B8 .functor NOT 1, v006A7F20_0, C4<0>, C4<0>, C4<0>;
+L_006A8680 .functor NOT 1, v006A7F78_0, C4<0>, C4<0>, C4<0>;
+L_006A8738 .functor NOT 1, v006A7FD0_0, C4<0>, C4<0>, C4<0>;
+L_006A87F0 .functor NOT 1, v006A8050_0, C4<0>, C4<0>, C4<0>;
+v006761F0_0 .net "a0", 0 0, v006A7F20_0; 1 drivers
+v00676198_0 .net "a1", 0 0, v006A7F78_0; 1 drivers
+v006A76F8_0 .net "a2", 0 0, v006A7FD0_0; 1 drivers
+v006A7780_0 .net "a3", 0 0, v006A8050_0; 1 drivers
+v006A77F0_0 .alias "s0", 0 0, v006A8310_0;
+v006A7848_0 .alias "s1", 0 0, v006A82B8_0;
+v006A78B8_0 .alias "s2", 0 0, v006A8260_0;
+v006A7928_0 .alias "s3", 0 0, v006A8208_0;
+S_003EF298 .scope begin, "main" "main" 2 38, 2 38, S_003EEBD8;
+ .timescale 0 0;
+    .scope S_003EEBD8;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_003EEBD8;
+T_1 ;
+    %fork t_1, S_003EF298;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 39 "$display", "Guia07 - Programa1";
+    %vpi_call 2 40 "$display", "InclusAo na ALU de 4 bits a operaCAo de complemento de 1\012";
+    %vpi_call 2 41 "$display", "Aluno: Henrique Carvalho Parreira\011\011Matricula:347133\012";
+    %vpi_call 2 42 "$display", "Relatorio de Testes";
+    %delay 1, 0;
+    %set/v v006A7EC8_0, 0, 1;
+    %set/v v006A7E70_0, 0, 1;
+    %set/v v006A7E18_0, 0, 1;
+    %set/v v006A7DC0_0, 0, 1;
+    %set/v v006A8050_0, 0, 1;
+    %set/v v006A7FD0_0, 0, 1;
+    %set/v v006A7F78_0, 0, 1;
+    %set/v v006A7F20_0, 0, 1;
+    %vpi_call 2 44 "$monitor", "A[%b | %b %b %b] => Ac[%b | %b %b %b] \011\011B[%b | %b %b %b] => Bc[%b | %b %b %b]", v006A7EC8_0, v006A7E70_0, v006A7E18_0, v006A7DC0_0, v006A80A8_0, v006A8100_0, v006A8158_0, v006A81B0_0, v006A8050_0, v006A7FD0_0, v006A7F78_0, v006A7F20_0, v006A8208_0, v006A8260_0, v006A82B8_0, v006A8310_0;
+    %delay 1, 0;
+    %set/v v006A7DC0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7F20_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7DC0_0, 0, 1;
+    %set/v v006A7E18_0, 1, 1;
+    %set/v v006A7FD0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7E70_0, 1, 1;
+    %set/v v006A7EC8_0, 1, 1;
+    %set/v v006A7E18_0, 0, 1;
+    %set/v v006A7FD0_0, 0, 1;
+    %set/v v006A7F78_0, 1, 1;
+    %set/v v006A7F20_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Temp\Henrique\ex01.v";

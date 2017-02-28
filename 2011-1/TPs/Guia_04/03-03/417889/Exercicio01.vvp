@@ -1,0 +1,81 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0003B108 .scope module, "testeExercicio01" "testeExercicio01" 2 34;
+ .timescale 0 0;
+v005FD040_0 .var "a", 0 0;
+v005FD098_0 .var "b", 0 0;
+v005FD0F0_0 .net "cout", 0 0, L_005DFDE8; 1 drivers
+v005FD148_0 .net "s", 0 0, L_005FD008; 1 drivers
+S_005E3848 .scope module, "HALFADDER" "Exercicio01" 2 38, 2 1, S_0003B108;
+ .timescale 0 0;
+v005DFD38_0 .net "a", 0 0, v005FD040_0; 1 drivers
+v005DFD90_0 .net "b", 0 0, v005FD098_0; 1 drivers
+v005DFE20_0 .alias "cout", 0 0, v005FD0F0_0;
+v005DFEB0_0 .alias "s", 0 0, v005FD148_0;
+v005DFF08_0 .net "t1", 0 0, L_005FD380; 1 drivers
+v005DFF98_0 .net "t2", 0 0, L_005FD440; 1 drivers
+S_005DFB10 .scope module, "AND1" "AndNand" 2 5, 2 11, S_005E3848;
+ .timescale 0 0;
+L_005FD1D8 .functor NAND 1, v005FD040_0, v005FD098_0, C4<1>, C4<1>;
+L_005DFDE8 .functor NAND 1, L_005FD1D8, L_005FD1D8, C4<1>, C4<1>;
+v005DFB98_0 .alias "a", 0 0, v005DFD38_0;
+v005DFBF0_0 .alias "b", 0 0, v005DFD90_0;
+v005DFC68_0 .alias "s", 0 0, v005FD0F0_0;
+v005DFCE0_0 .net "t1", 0 0, L_005FD1D8; 1 drivers
+S_005DF8A0 .scope module, "OR1" "OrNand" 2 6, 2 19, S_005E3848;
+ .timescale 0 0;
+L_00036AC8 .functor NAND 1, v005FD040_0, v005FD040_0, C4<1>, C4<1>;
+L_005FD348 .functor NAND 1, v005FD098_0, v005FD098_0, C4<1>, C4<1>;
+L_005FD380 .functor NAND 1, L_00036AC8, L_005FD348, C4<1>, C4<1>;
+v005DF928_0 .alias "a", 0 0, v005DFD38_0;
+v005DF980_0 .alias "b", 0 0, v005DFD90_0;
+v005DF9F0_0 .alias "s", 0 0, v005DFF08_0;
+v005DFA60_0 .net "t1", 0 0, L_00036AC8; 1 drivers
+v005DFAB8_0 .net "t2", 0 0, L_005FD348; 1 drivers
+S_005DF750 .scope module, "NOT1" "NotNand" 2 7, 2 28, S_005E3848;
+ .timescale 0 0;
+L_005FD440 .functor NAND 1, L_005DFDE8, L_005DFDE8, C4<1>, C4<1>;
+v005DF7D8_0 .alias "a", 0 0, v005FD0F0_0;
+v005DF848_0 .alias "s", 0 0, v005DFF98_0;
+S_005E38D0 .scope module, "AND2" "AndNand" 2 8, 2 11, S_005E3848;
+ .timescale 0 0;
+L_005FD490 .functor NAND 1, L_005FD380, L_005FD440, C4<1>, C4<1>;
+L_005FD008 .functor NAND 1, L_005FD490, L_005FD490, C4<1>, C4<1>;
+v005E1C58_0 .alias "a", 0 0, v005DFF08_0;
+v005DF5E8_0 .alias "b", 0 0, v005DFF98_0;
+v005DF658_0 .alias "s", 0 0, v005FD148_0;
+v005DF6E0_0 .net "t1", 0 0, L_005FD490; 1 drivers
+    .scope S_0003B108;
+T_0 ;
+    %set/v v005FD040_0, 0, 1;
+    %set/v v005FD098_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0003B108;
+T_1 ;
+    %vpi_call 2 47 "$display", "Exercicio 01 - Douglas Borges - 417889";
+    %vpi_call 2 48 "$display", "Circuito Meio-Somador com portas NAND\012";
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "  a + b = Cout Soma";
+    %delay 1, 0;
+    %vpi_call 2 51 "$monitor", "  %d   %d    %d    %d", v005FD040_0, v005FD098_0, v005FD0F0_0, v005FD148_0;
+    %delay 1, 0;
+    %set/v v005FD040_0, 0, 1;
+    %set/v v005FD098_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FD040_0, 1, 1;
+    %set/v v005FD098_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FD040_0, 1, 1;
+    %set/v v005FD098_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Douglas Borges\Meus documentos\Documentos\PUC\Arquitetura de Computadores\Verilog\Eclipse\Guia04\Exercicio01.v";

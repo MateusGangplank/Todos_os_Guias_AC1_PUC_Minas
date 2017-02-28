@@ -1,0 +1,65 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E4B80 .scope module, "testeandgate" "testeandgate" 2 21;
+ .timescale 0 0;
+v0069A6C8_0 .var "p", 0 0;
+v0069A720_0 .var "q", 0 0;
+v0069A778_0 .net "s", 0 0, L_0069A880; 1 drivers
+v0069A7D0_0 .net "s1", 0 0, L_00661390; 1 drivers
+v0069A828_0 .net "s2", 0 0, L_00660CA8; 1 drivers
+S_0069A4C8 .scope module, "NOR1" "norgate" 2 25, 2 11, S_003E4B80;
+ .timescale 0 0;
+L_0069A8B8 .functor OR 1, v0069A6C8_0, v0069A6C8_0, C4<0>, C4<0>;
+L_00661390 .functor NOT 1, L_0069A8B8, C4<0>, C4<0>, C4<0>;
+v0069A550_0 .net *"_s0", 0 0, L_0069A8B8; 1 drivers
+v0069A5A8_0 .net "p", 0 0, v0069A6C8_0; 1 drivers
+v0069A600_0 .alias "q", 0 0, v0069A5A8_0;
+v0069A670_0 .alias "s", 0 0, v0069A7D0_0;
+S_0069A298 .scope module, "NOR2" "norgate" 2 26, 2 11, S_003E4B80;
+ .timescale 0 0;
+L_0069A990 .functor OR 1, v0069A720_0, v0069A720_0, C4<0>, C4<0>;
+L_00660CA8 .functor NOT 1, L_0069A990, C4<0>, C4<0>, C4<0>;
+v0069A320_0 .net *"_s0", 0 0, L_0069A990; 1 drivers
+v0069A390_0 .net "p", 0 0, v0069A720_0; 1 drivers
+v0069A400_0 .alias "q", 0 0, v0069A390_0;
+v0069A470_0 .alias "s", 0 0, v0069A828_0;
+S_00660430 .scope module, "NOR3" "norgate" 2 27, 2 11, S_003E4B80;
+ .timescale 0 0;
+L_0069AA68 .functor OR 1, L_00661390, L_00660CA8, C4<0>, C4<0>;
+L_0069A880 .functor NOT 1, L_0069AA68, C4<0>, C4<0>, C4<0>;
+v003E7240_0 .net *"_s0", 0 0, L_0069AA68; 1 drivers
+v0069A130_0 .alias "p", 0 0, v0069A7D0_0;
+v0069A1A0_0 .alias "q", 0 0, v0069A828_0;
+v0069A228_0 .alias "s", 0 0, v0069A778_0;
+    .scope S_003E4B80;
+T_0 ;
+    %vpi_call 2 31 "$display", "Guia 02 - Exercicio 02";
+    %vpi_call 2 32 "$display", "Bruno Cesar Lopes Silva - 415985";
+    %vpi_call 2 33 "$display", "Teset And gate using nor";
+    %vpi_call 2 34 "$display", "\012(p & q) = s\012";
+    %set/v v0069A6C8_0, 0, 1;
+    %set/v v0069A720_0, 0, 1;
+    %vpi_call 2 36 "$monitor", " %b & %b = %b", v0069A6C8_0, v0069A720_0, v0069A778_0;
+    %delay 1, 0;
+    %set/v v0069A6C8_0, 0, 1;
+    %set/v v0069A720_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069A6C8_0, 0, 1;
+    %set/v v0069A720_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069A6C8_0, 1, 1;
+    %set/v v0069A720_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069A6C8_0, 1, 1;
+    %set/v v0069A720_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Bruno\Desktop\Exercicio 02.v";

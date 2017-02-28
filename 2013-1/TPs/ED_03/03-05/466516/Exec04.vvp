@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009296F8 .scope module, "test_f4" "test_f4" 2 29;
+ .timescale 0 0;
+v005918F0_0 .var "v", 1 0;
+v00591948_0 .var "x", 0 0;
+v005919A0_0 .var "y", 0 0;
+v005919F8_0 .net "z", 0 0, L_005C5FA0; 1 drivers
+S_00929780 .scope module, "Teste" "f4" 2 35, 2 9, S_009296F8;
+ .timescale 0 0;
+L_0092CD40 .functor OR 1, v00591948_0, v005919A0_0, C4<0>, C4<0>;
+L_00924A90 .functor XOR 1, v00591948_0, v005919A0_0, C4<0>, C4<0>;
+L_00924AC8 .functor NOT 1, L_00591AA8, C4<0>, C4<0>, C4<0>;
+L_00922C78 .functor NOT 1, L_00591B58, C4<0>, C4<0>, C4<0>;
+L_005C5C20 .functor AND 1, L_0092CD40, L_00591BB0, C4<1>, C4<1>;
+L_005C5CC8 .functor AND 1, L_00924A90, L_00591C08, C4<1>, C4<1>;
+L_005C5D70 .functor OR 1, L_005C5C20, L_005C5CC8, C4<0>, C4<0>;
+L_005C5E18 .functor NOT 1, L_005C5D70, C4<0>, C4<0>, C4<0>;
+L_005C5E88 .functor AND 1, L_005C5D70, L_00591C60, C4<1>, C4<1>;
+L_005C5EF8 .functor AND 1, L_005C5E18, L_00591CB8, C4<1>, C4<1>;
+L_005C5FA0 .functor OR 1, L_005C5E88, L_005C5EF8, C4<0>, C4<0>;
+v005911B8_0 .net *"_s0", 0 0, L_00924AC8; 1 drivers
+v00591210_0 .net *"_s11", 0 0, L_00591C08; 1 drivers
+v00591268_0 .net *"_s13", 0 0, L_00591C60; 1 drivers
+v005912C0_0 .net *"_s15", 0 0, L_00591CB8; 1 drivers
+v00591318_0 .net *"_s3", 0 0, L_00591AA8; 1 drivers
+v00591370_0 .net *"_s4", 0 0, L_00922C78; 1 drivers
+v005913C8_0 .net *"_s7", 0 0, L_00591B58; 1 drivers
+v00591420_0 .net *"_s9", 0 0, L_00591BB0; 1 drivers
+v00591478_0 .net "a", 0 0, v00591948_0; 1 drivers
+v005914D0_0 .net "b", 0 0, v005919A0_0; 1 drivers
+v00591528_0 .net "key", 1 0, v005918F0_0; 1 drivers
+RS_00593104 .resolv tri, L_00591A50, L_00591B00, C4<zz>, C4<zz>;
+v00591580_0 .net8 "keytemp", 1 0, RS_00593104; 2 drivers
+v005915D8_0 .alias "s", 0 0, v005919F8_0;
+v00591630_0 .net "temp0", 0 0, L_0092CD40; 1 drivers
+v00591688_0 .net "temp1", 0 0, L_00924A90; 1 drivers
+v005916E0_0 .net "temp3", 0 0, L_005C5C20; 1 drivers
+v00591738_0 .net "temp4", 0 0, L_005C5CC8; 1 drivers
+v00591790_0 .net "temp5", 0 0, L_005C5D70; 1 drivers
+v005917E8_0 .net "temp6", 0 0, L_005C5E18; 1 drivers
+v00591840_0 .net "temp7", 0 0, L_005C5E88; 1 drivers
+v00591898_0 .net "temp8", 0 0, L_005C5EF8; 1 drivers
+L_00591A50 .part/pv L_00924AC8, 0, 1, 2;
+L_00591AA8 .part v005918F0_0, 1, 1;
+L_00591B00 .part/pv L_00922C78, 1, 1, 2;
+L_00591B58 .part v005918F0_0, 0, 1;
+L_00591BB0 .part RS_00593104, 0, 1;
+L_00591C08 .part v005918F0_0, 0, 1;
+L_00591C60 .part RS_00593104, 1, 1;
+L_00591CB8 .part v005918F0_0, 1, 1;
+    .scope S_009296F8;
+T_0 ;
+    %vpi_call 2 39 "$display", "Exemplo0034 - Matheus de Souza Castro Santos - 466516";
+    %vpi_call 2 40 "$display", "Test LU's module";
+    %set/v v00591948_0, 1, 1;
+    %set/v v005919A0_0, 0, 1;
+    %set/v v005918F0_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "x or y = ", v005919F8_0;
+    %movi 8, 1, 2;
+    %set/v v005918F0_0, 8, 2;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "x nor y = ", v005919F8_0;
+    %movi 8, 2, 2;
+    %set/v v005918F0_0, 8, 2;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "x xor y = ", v005919F8_0;
+    %set/v v005918F0_0, 1, 2;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "x xnor y = ", v005919F8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Gilson\Desktop\ED 03 - 466516\Exec04.vhdl";

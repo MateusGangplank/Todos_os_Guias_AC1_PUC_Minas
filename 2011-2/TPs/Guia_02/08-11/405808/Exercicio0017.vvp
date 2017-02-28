@@ -1,0 +1,68 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00ADFEA0 .scope module, "test_base_07" "test_base_07" 2 13;
+ .timescale 0 0;
+v00AD30D8_0 .var "a", 7 0;
+v009F1C20_0 .net "ai", 7 0, L_009F1D80; 1 drivers
+S_00AD9610 .scope module, "COMP1" "byt_inv2" 2 17, 2 9, S_00ADFEA0;
+ .timescale 0 0;
+L_00ADE478 .functor NOT 9, L_009F1C78, C4<000000000>, C4<000000000>, C4<000000000>;
+v00ADFF28_0 .net *"_s0", 8 0, L_009F1C78; 1 drivers
+v00ADFF80_0 .net *"_s10", 22 0, C4<00000000000000000000000>; 1 drivers
+v00AD38C8_0 .net *"_s11", 31 0, L_009F1CD0; 1 drivers
+v00AD3920_0 .net *"_s12", 31 0, L_009F1D28; 1 drivers
+v00AD3978_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v00AD39D0_0 .net *"_s4", 8 0, L_00ADE478; 1 drivers
+v00AD2FD0_0 .net *"_s6", 31 0, C4<00000000000000000000000000000001>; 1 drivers
+v00AD3028_0 .net "e", 7 0, v00AD30D8_0; 1 drivers
+v00AD3080_0 .alias "s", 7 0, v009F1C20_0;
+L_009F1C78 .concat [ 8 1 0 0], v00AD30D8_0, C4<0>;
+L_009F1CD0 .concat [ 9 23 0 0], L_00ADE478, C4<00000000000000000000000>;
+L_009F1D28 .arith/sum 32, L_009F1CD0, C4<00000000000000000000000000000001>;
+L_009F1D80 .part L_009F1D28, 0, 8;
+S_00AD9588 .scope begin, "start" "start" 2 19, 2 19, S_00ADFEA0;
+ .timescale 0 0;
+    .scope S_00ADFEA0;
+T_0 ;
+    %fork t_1, S_00AD9588;
+    %jmp t_0;
+    .scope S_00AD9588;
+t_1 ;
+    %movi 8, 77, 8;
+    %set/v v00AD30D8_0, 8, 8;
+    %end;
+    .scope S_00ADFEA0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00ADFEA0;
+T_1 ;
+    %vpi_call 2 24 "$display", "Exercicio0017 - Jose Ferreira Reis Fonseca - 405808";
+    %vpi_call 2 25 "$display", "Test byte inverter 2's complement";
+    %vpi_call 2 26 "$display", "\0122's Complements";
+    %vpi_call 2 27 "$monitor", "a = %8b = %8b", v00AD30D8_0, v009F1C20_0;
+    %movi 8, 77, 8;
+    %set/v v00AD30D8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 95, 8;
+    %set/v v00AD30D8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 97, 8;
+    %set/v v00AD30D8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 103, 8;
+    %set/v v00AD30D8_0, 8, 8;
+    %delay 1, 0;
+    %movi 8, 8, 8;
+    %set/v v00AD30D8_0, 8, 8;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\José F. R. Fonseca\Documents\Profissionais\Ativos\PUC\Semestre IV\ACI\Guias\Guia01\Exercicio0017.v";

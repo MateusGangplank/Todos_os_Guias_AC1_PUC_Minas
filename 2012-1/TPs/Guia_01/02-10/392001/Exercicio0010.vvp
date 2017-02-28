@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0002FBB0 .scope module, "testorgate" "testorgate" 2 19;
+ .timescale 0 0;
+v00023590_0 .var "a", 0 0;
+v0002FE60_0 .var "b", 0 0;
+v0002FEB8_0 .var "c", 0 0;
+v0002FF10_0 .net "s", 0 0, L_00028D40; 1 drivers
+S_00022F50 .scope module, "OR1" "orgate" 2 24, 2 10, S_0002FBB0;
+ .timescale 0 0;
+L_0002FF68 .functor OR 1, v00023590_0, v0002FE60_0, C4<0>, C4<0>;
+L_00028D40 .functor OR 1, L_0002FF68, v0002FEB8_0, C4<0>, C4<0>;
+v00022FD8_0 .net *"_s0", 0 0, L_0002FF68; 1 drivers
+v00023030_0 .net "a", 0 0, v00023590_0; 1 drivers
+v00023488_0 .net "b", 0 0, v0002FE60_0; 1 drivers
+v000234E0_0 .net "c", 0 0, v0002FEB8_0; 1 drivers
+v00023538_0 .alias "s", 0 0, v0002FF10_0;
+S_0002FC38 .scope begin, "start" "start" 2 26, 2 26, S_0002FBB0;
+ .timescale 0 0;
+    .scope S_0002FBB0;
+T_0 ;
+    %fork t_1, S_0002FC38;
+    %jmp t_0;
+    .scope S_0002FC38;
+t_1 ;
+    %set/v v00023590_0, 0, 1;
+    %set/v v0002FE60_0, 0, 1;
+    %set/v v0002FEB8_0, 0, 1;
+    %end;
+    .scope S_0002FBB0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0002FBB0;
+T_1 ;
+    %vpi_call 2 33 "$display", "Exercicio0010 - Flavio Andrade Amaral Motta - 392001";
+    %vpi_call 2 34 "$display", "Test OR gate";
+    %vpi_call 2 35 "$display", "\012a | b | c = s\012";
+    %set/v v00023590_0, 0, 1;
+    %set/v v0002FE60_0, 0, 1;
+    %vpi_call 2 37 "$monitor", "%b %b %b = %b", v00023590_0, v0002FE60_0, v0002FEB8_0, v0002FF10_0;
+    %delay 1, 0;
+    %set/v v0002FEB8_0, 1, 1;
+    %delay 2, 0;
+    %set/v v0002FEB8_0, 0, 1;
+    %delay 2, 0;
+    %set/v v0002FE60_0, 1, 1;
+    %delay 3, 0;
+    %set/v v0002FEB8_0, 1, 1;
+    %delay 4, 0;
+    %set/v v00023590_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0002FE60_0, 0, 1;
+    %delay 4, 0;
+    %set/v v0002FEB8_0, 0, 1;
+    %delay 4, 0;
+    %set/v v0002FE60_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0002FEB8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Erika\Desktop\PUC\PUC\Programas\Exercicio0010.v";

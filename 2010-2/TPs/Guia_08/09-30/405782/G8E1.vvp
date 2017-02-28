@@ -1,0 +1,145 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8b35610 .scope module, "test" "test" 2 52;
+ .timescale 0 0;
+v0x8b52fd8_0 .var "a", 0 0;
+v0x8b53038_0 .var "b", 0 0;
+v0x8b530a8_0 .var "c", 0 0;
+v0x8b53118_0 .var "d", 0 0;
+v0x8b53188_0 .net "s0", 0 0, L_0x8b53570; 1 drivers
+S_0x8b25508 .scope module, "C1" "circuit" 2 56, 2 32, S_0x8b35610;
+ .timescale 0 0;
+L_0x8b531f8 .functor NOT 1, v0x8b53118_0, C4<0>, C4<0>, C4<0>;
+L_0x8b53288 .functor NOT 1, v0x8b53038_0, C4<0>, C4<0>, C4<0>;
+L_0x8b532f8 .functor NOT 1, v0x8b52fd8_0, C4<0>, C4<0>, C4<0>;
+L_0x8b53368 .functor AND 1, L_0x8b532f8, v0x8b530a8_0, C4<1>, C4<1>;
+L_0x8b53428 .functor AND 1, L_0x8b53288, v0x8b530a8_0, C4<1>, C4<1>;
+L_0x8b53498 .functor AND 1, L_0x8b531f8, v0x8b530a8_0, C4<1>, C4<1>;
+L_0x8b533d8 .functor AND 1, v0x8b52fd8_0, v0x8b53038_0, L_0x8b531f8, C4<1>;
+L_0x8b53570 .functor OR 1, L_0x8b53368, L_0x8b53428, L_0x8b53498, L_0x8b533d8;
+v0x8b34330_0 .net "a", 0 0, v0x8b52fd8_0; 1 drivers
+v0x8b52b00_0 .net "a1", 0 0, L_0x8b53368; 1 drivers
+v0x8b52b60_0 .net "a2", 0 0, L_0x8b53428; 1 drivers
+v0x8b52bc0_0 .net "a3", 0 0, L_0x8b53498; 1 drivers
+v0x8b52c28_0 .net "a4", 0 0, L_0x8b533d8; 1 drivers
+v0x8b52c88_0 .net "b", 0 0, v0x8b53038_0; 1 drivers
+v0x8b52d08_0 .net "c", 0 0, v0x8b530a8_0; 1 drivers
+v0x8b52d68_0 .net "d", 0 0, v0x8b53118_0; 1 drivers
+v0x8b52df0_0 .net "na", 0 0, L_0x8b532f8; 1 drivers
+v0x8b52e50_0 .net "nb", 0 0, L_0x8b53288; 1 drivers
+v0x8b52ee0_0 .net "nd", 0 0, L_0x8b531f8; 1 drivers
+v0x8b52f40_0 .alias "s0", 0 0, v0x8b53188_0;
+S_0x8b342b0 .scope begin, "start" "start" 2 58, 2 58, S_0x8b35610;
+ .timescale 0 0;
+S_0x8b34230 .scope begin, "main" "main" 2 63, 2 63, S_0x8b35610;
+ .timescale 0 0;
+    .scope S_0x8b35610;
+T_0 ;
+    %fork t_1, S_0x8b342b0;
+    %jmp t_0;
+t_1 ;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x8b35610;
+T_1 ;
+    %fork t_3, S_0x8b34230;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 64 "$display", "Guia_08_01 - Alan Diniz Nogueira Machado - 405782";
+    %vpi_call 2 65 "$display", "Test Circuito min( 2, 3, 6, 7, 10, 11, 12, 14 )";
+    %vpi_call 2 66 "$display", "\012| a | b | c | d | S |\012";
+    %vpi_call 2 67 "$monitor", "| %b | %b | %b | %b | %b |", v0x8b52fd8_0, v0x8b53038_0, v0x8b530a8_0, v0x8b53118_0, v0x8b53188_0;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 0, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 0, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 0, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x8b52fd8_0, 1, 1;
+    %set/v v0x8b53038_0, 1, 1;
+    %set/v v0x8b530a8_0, 1, 1;
+    %set/v v0x8b53118_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/ALAN/PUC/AC I/Guia_08/G8E1.v";

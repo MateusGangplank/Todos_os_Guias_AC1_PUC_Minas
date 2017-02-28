@@ -1,0 +1,49 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E6598 .scope module, "testemeiasoma" "testemeiasoma" 2 9;
+ .timescale 0 0;
+L_00661370 .functor NAND 1, v003E6620_0, v003E6620_0, C4<1>, C4<1>;
+L_003E4A38 .functor NAND 1, v00699518_0, v00699518_0, C4<1>, C4<1>;
+L_00699940 .functor NAND 1, L_00661370, v00699518_0, C4<1>, C4<1>;
+L_006999B0 .functor NAND 1, v003E6620_0, L_003E4A38, C4<1>, C4<1>;
+L_00699A20 .functor NAND 1, L_00699940, L_006999B0, C4<1>, C4<1>;
+L_00699AC8 .functor NAND 1, v003E6620_0, v00699518_0, C4<1>, C4<1>;
+L_00699908 .functor NAND 1, L_00699AC8, L_00699AC8, C4<1>, C4<1>;
+v003E6620_0 .var "a", 0 0;
+v00699518_0 .var "b", 0 0;
+v00699588_0 .net "s", 0 0, L_00699A20; 1 drivers
+v00699610_0 .net "s0", 0 0, L_00699908; 1 drivers
+v00699680_0 .net "s1", 0 0, L_00661370; 1 drivers
+v006996D8_0 .net "s2", 0 0, L_003E4A38; 1 drivers
+v00699748_0 .net "s3", 0 0, L_00699940; 1 drivers
+v006997E0_0 .net "s4", 0 0, L_006999B0; 1 drivers
+v00699850_0 .net "s5", 0 0, L_00699AC8; 1 drivers
+    .scope S_003E6598;
+T_0 ;
+    %vpi_call 2 23 "$display", "Guia 04 - Exercicio 01";
+    %vpi_call 2 24 "$display", "Bruno Cesar Lopes Silva - 415985";
+    %vpi_call 2 25 "$display", "Meia Soma usando Nand";
+    %vpi_call 2 26 "$display", "\012 a + b = s / vai um\012";
+    %set/v v003E6620_0, 0, 1;
+    %set/v v00699518_0, 0, 1;
+    %vpi_call 2 28 "$monitor", " %b + %b = %b / %b", v003E6620_0, v00699518_0, v00699588_0, v00699610_0;
+    %delay 1, 0;
+    %set/v v003E6620_0, 0, 1;
+    %set/v v00699518_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003E6620_0, 1, 1;
+    %set/v v00699518_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003E6620_0, 1, 1;
+    %set/v v00699518_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Bruno\Desktop\Exercicio 01.v";

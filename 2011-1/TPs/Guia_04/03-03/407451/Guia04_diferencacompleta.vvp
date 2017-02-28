@@ -1,0 +1,88 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0062F730 .scope module, "tesdiferenca" "tesdiferenca" 2 32;
+ .timescale 0 0;
+v0062B028_0 .var "e1", 0 0;
+v0062B080_0 .net "s0", 0 0, L_00373BC8; 1 drivers
+v0062B0D8_0 .net "s1", 0 0, L_00652D10; 1 drivers
+v0062B130_0 .var "x", 0 0;
+v0062B188_0 .var "y", 0 0;
+S_0062F7B8 .scope module, "DF" "diferencacompleta" 2 36, 2 18, S_0062F730;
+ .timescale 0 0;
+L_00652D10 .functor OR 1, L_00373C70, L_00372A90, C4<0>, C4<0>;
+v0062AD68_0 .net "e1", 0 0, v0062B028_0; 1 drivers
+v0062ADC0_0 .alias "s0", 0 0, v0062B080_0;
+v0062AE18_0 .alias "s1", 0 0, v0062B0D8_0;
+v0062AE70_0 .net "s2", 0 0, L_00373C38; 1 drivers
+v0062AEC8_0 .net "s3", 0 0, L_00373C70; 1 drivers
+v0062AF20_0 .net "s4", 0 0, L_00372A90; 1 drivers
+v0062AF78_0 .net "x", 0 0, v0062B130_0; 1 drivers
+v0062AFD0_0 .net "y", 0 0, v0062B188_0; 1 drivers
+S_0062F8C8 .scope module, "FU1" "meiadiferenca" 2 22, 2 9, S_0062F7B8;
+ .timescale 0 0;
+L_00373C38 .functor XOR 1, v0062B130_0, v0062B188_0, C4<0>, C4<0>;
+L_00373C70 .functor AND 1, L_00373C00, v0062B188_0, C4<1>, C4<1>;
+L_00373C00 .functor NOT 1, v0062B130_0, C4<0>, C4<0>, C4<0>;
+v003729E0_0 .net *"_s0", 0 0, L_00373C00; 1 drivers
+v00372A38_0 .alias "s0", 0 0, v0062AE70_0;
+v0062AC60_0 .alias "s1", 0 0, v0062AEC8_0;
+v0062ACB8_0 .alias "x", 0 0, v0062AF78_0;
+v0062AD10_0 .alias "y", 0 0, v0062AFD0_0;
+S_0062F840 .scope module, "FU2" "meiadiferenca" 2 23, 2 9, S_0062F7B8;
+ .timescale 0 0;
+L_00373BC8 .functor XOR 1, L_00373C38, v0062B028_0, C4<0>, C4<0>;
+L_00372A90 .functor AND 1, L_0037D4D0, v0062B028_0, C4<1>, C4<1>;
+L_0037D4D0 .functor NOT 1, L_00373C38, C4<0>, C4<0>, C4<0>;
+v00631A28_0 .net *"_s0", 0 0, L_0037D4D0; 1 drivers
+v0037D3C8_0 .alias "s0", 0 0, v0062B080_0;
+v0037D420_0 .alias "s1", 0 0, v0062AF20_0;
+v0037D478_0 .alias "x", 0 0, v0062AE70_0;
+v00372988_0 .alias "y", 0 0, v0062AD68_0;
+    .scope S_0062F730;
+T_0 ;
+    %vpi_call 2 39 "$display", "Guia 04 - Karen Alves Pereira - 407451";
+    %vpi_call 2 40 "$display", "Operador de diferenca-completa";
+    %vpi_call 2 41 "$display", "\012x y e1 s0 s1";
+    %vpi_call 2 42 "$monitor", "%b %b %b  %b  %b", v0062B130_0, v0062B188_0, v0062B028_0, v0062B080_0, v0062B0D8_0;
+    %set/v v0062B130_0, 0, 1;
+    %set/v v0062B188_0, 0, 1;
+    %set/v v0062B028_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 0, 1;
+    %set/v v0062B188_0, 0, 1;
+    %set/v v0062B028_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 0, 1;
+    %set/v v0062B188_0, 1, 1;
+    %set/v v0062B028_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 0, 1;
+    %set/v v0062B188_0, 1, 1;
+    %set/v v0062B028_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 1, 1;
+    %set/v v0062B188_0, 0, 1;
+    %set/v v0062B028_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 1, 1;
+    %set/v v0062B188_0, 0, 1;
+    %set/v v0062B028_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 1, 1;
+    %set/v v0062B188_0, 1, 1;
+    %set/v v0062B028_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0062B130_0, 1, 1;
+    %set/v v0062B188_0, 1, 1;
+    %set/v v0062B028_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\arquivos\407451\Guia04_diferencacompleta.v";

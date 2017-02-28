@@ -1,0 +1,47 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00852BE8 .scope module, "testenandgate" "testenandgate" 2 8;
+ .timescale 0 0;
+v00853208_0 .var "a", 0 0;
+v0085E080_0 .var "b", 0 0;
+v0085E0D8_0 .net "s", 0 0, L_0085C328; 1 drivers
+S_00852C70 .scope module, "nor1" "nandgate" 2 12, 2 4, S_00852BE8;
+ .timescale 0 0;
+L_0085E130 .functor NOT 1, v00853208_0, C4<0>, C4<0>, C4<0>;
+L_0085E1A0 .functor NOT 1, v0085E080_0, C4<0>, C4<0>, C4<0>;
+L_0085C328 .functor OR 1, L_0085E130, L_0085E1A0, C4<0>, C4<0>;
+v00852CF8_0 .net *"_s0", 0 0, L_0085E130; 1 drivers
+v0085FF90_0 .net *"_s2", 0 0, L_0085E1A0; 1 drivers
+v00853100_0 .net "p", 0 0, v00853208_0; 1 drivers
+v00853158_0 .net "q", 0 0, v0085E080_0; 1 drivers
+v008531B0_0 .alias "s", 0 0, v0085E0D8_0;
+    .scope S_00852BE8;
+T_0 ;
+    %set/v v00853208_0, 0, 1;
+    %set/v v0085E080_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00852BE8;
+T_1 ;
+    %vpi_call 2 18 "$display", "blabla";
+    %vpi_call 2 19 "$monitor", "%b | %b = %b", v00853208_0, v0085E080_0, v0085E0D8_0;
+    %delay 1, 0;
+    %set/v v00853208_0, 0, 1;
+    %set/v v0085E080_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00853208_0, 1, 1;
+    %set/v v0085E080_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00853208_0, 1, 1;
+    %set/v v0085E080_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Matheus\Documents\exemplo0009.v";

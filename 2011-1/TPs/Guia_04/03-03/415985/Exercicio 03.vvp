@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E6280 .scope module, "testediferencacompleta" "testediferencacompleta" 2 19;
+ .timescale 0 0;
+L_0069CEB0 .functor OR 1, L_0069CCB8, L_0069CE08, C4<0>, C4<0>;
+v0069C8E0_0 .var "a", 0 0;
+v0069C938_0 .var "b", 0 0;
+v0069C9B0_0 .net "s", 0 0, L_0069CD60; 1 drivers
+v0069CA28_0 .net "s1", 0 0, L_0069CEB0; 1 drivers
+v0069CA80_0 .net "s2", 0 0, L_003E7348; 1 drivers
+v0069CAF8_0 .net "s3", 0 0, L_0069CCB8; 1 drivers
+v0069CB50_0 .net "s4", 0 0, L_0069CE08; 1 drivers
+v0069CBD0_0 .var "vemum", 0 0;
+S_003E6698 .scope module, "M1" "meiadiferenca" 2 23, 2 9, S_003E6280;
+ .timescale 0 0;
+L_003E7348 .functor XOR 1, v0069C8E0_0, v0069C938_0, C4<0>, C4<0>;
+L_0069CC80 .functor NOT 1, v0069C8E0_0, C4<0>, C4<0>, C4<0>;
+L_0069CCB8 .functor AND 1, L_0069CC80, v0069C938_0, C4<1>, C4<1>;
+v0069C6C8_0 .net *"_s2", 0 0, L_0069CC80; 1 drivers
+v0069C738_0 .net "p", 0 0, v0069C8E0_0; 1 drivers
+v0069C7A8_0 .net "q", 0 0, v0069C938_0; 1 drivers
+v0069C830_0 .alias "s", 0 0, v0069CA80_0;
+v0069C888_0 .alias "s1", 0 0, v0069CAF8_0;
+S_003E69F0 .scope module, "M2" "meiadiferenca" 2 24, 2 9, S_003E6280;
+ .timescale 0 0;
+L_0069CD60 .functor XOR 1, L_003E7348, v0069CBD0_0, C4<0>, C4<0>;
+L_0069CDD0 .functor NOT 1, L_003E7348, C4<0>, C4<0>, C4<0>;
+L_0069CE08 .functor AND 1, L_0069CDD0, v0069CBD0_0, C4<1>, C4<1>;
+v003E96C0_0 .net *"_s2", 0 0, L_0069CDD0; 1 drivers
+v0069C508_0 .alias "p", 0 0, v0069CA80_0;
+v0069C578_0 .net "q", 0 0, v0069CBD0_0; 1 drivers
+v0069C600_0 .alias "s", 0 0, v0069C9B0_0;
+v0069C670_0 .alias "s1", 0 0, v0069CB50_0;
+    .scope S_003E6280;
+T_0 ;
+    %vpi_call 2 29 "$display", "Guia 04 - Exercicio 03";
+    %vpi_call 2 30 "$display", "Bruno Cesar Lopes Silva - 415985";
+    %vpi_call 2 31 "$display", "Diferenca Completa";
+    %vpi_call 2 32 "$display", "\012 a - b - cIn = s / cOut\012";
+    %set/v v0069C8E0_0, 0, 1;
+    %set/v v0069C938_0, 0, 1;
+    %set/v v0069CBD0_0, 0, 1;
+    %vpi_call 2 34 "$monitor", " %b - %b - %b =   %b / %b", v0069C8E0_0, v0069C938_0, v0069CBD0_0, v0069C9B0_0, v0069CA28_0;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 0, 1;
+    %set/v v0069C938_0, 0, 1;
+    %set/v v0069CBD0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 0, 1;
+    %set/v v0069C938_0, 1, 1;
+    %set/v v0069CBD0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 0, 1;
+    %set/v v0069C938_0, 1, 1;
+    %set/v v0069CBD0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 1, 1;
+    %set/v v0069C938_0, 0, 1;
+    %set/v v0069CBD0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 1, 1;
+    %set/v v0069C938_0, 0, 1;
+    %set/v v0069CBD0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 1, 1;
+    %set/v v0069C938_0, 1, 1;
+    %set/v v0069CBD0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069C8E0_0, 1, 1;
+    %set/v v0069C938_0, 1, 1;
+    %set/v v0069CBD0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\Documents and Settings\Bruno\Desktop\Exercicio 03.v";

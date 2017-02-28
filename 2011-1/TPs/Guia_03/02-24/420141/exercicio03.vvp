@@ -1,0 +1,73 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EEF70 .scope module, "testMD" "testMD" 2 21;
+ .timescale 0 0;
+v006A33C8_0 .var "a", 0 0;
+v006A3420_0 .var "b", 0 0;
+v006A3478_0 .net "s0", 0 0, L_006A3868; 1 drivers
+v006A34D0_0 .net "s1", 0 0, L_006A35B8; 1 drivers
+S_003EF0F0 .scope module, "MD" "operadorMD" 2 25, 2 5, S_003EEF70;
+ .timescale 0 0;
+L_006A3528 .functor NAND 1, v006A33C8_0, v006A3420_0, C4<1>, C4<1>;
+L_006A35F0 .functor NAND 1, L_006A3528, v006A33C8_0, C4<1>, C4<1>;
+L_006A3660 .functor NAND 1, L_006A3528, v006A3420_0, C4<1>, C4<1>;
+L_006A3698 .functor NAND 1, v006A33C8_0, v006A33C8_0, C4<1>, C4<1>;
+L_006A3580 .functor NAND 1, L_006A3698, v006A3420_0, C4<1>, C4<1>;
+L_006A35B8 .functor NAND 1, L_006A3580, L_006A3580, C4<1>, C4<1>;
+L_006A3868 .functor NAND 1, L_006A35F0, L_006A3660, C4<1>, C4<1>;
+v003EF170_0 .net "a", 0 0, v006A33C8_0; 1 drivers
+v006A3020_0 .net "b", 0 0, v006A3420_0; 1 drivers
+v006A3090_0 .alias "s0", 0 0, v006A3478_0;
+v006A3118_0 .alias "s1", 0 0, v006A34D0_0;
+v006A3188_0 .net "s2", 0 0, L_006A3580; 1 drivers
+v006A31E0_0 .net "s3", 0 0, L_006A3698; 1 drivers
+v006A3250_0 .net "s4", 0 0, L_006A3660; 1 drivers
+v006A32E8_0 .net "s5", 0 0, L_006A35F0; 1 drivers
+v006A3358_0 .net "s6", 0 0, L_006A3528; 1 drivers
+S_003EF070 .scope begin, "start" "start" 2 27, 2 27, S_003EEF70;
+ .timescale 0 0;
+S_003EEFF0 .scope begin, "main" "main" 2 31, 2 31, S_003EEF70;
+ .timescale 0 0;
+    .scope S_003EEF70;
+T_0 ;
+    %fork t_1, S_003EF070;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A33C8_0, 0, 1;
+    %set/v v006A3420_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EEF70;
+T_1 ;
+    %fork t_3, S_003EEFF0;
+    %jmp t_2;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 33 "$display", " Modelo Tradicional ";
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "a - b = s0 s1";
+    %vpi_call 2 35 "$monitor", "%b - %b = %b  %b ", v006A33C8_0, v006A3420_0, v006A3478_0, v006A34D0_0;
+    %delay 1, 0;
+    %set/v v006A33C8_0, 0, 1;
+    %set/v v006A3420_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A33C8_0, 1, 1;
+    %set/v v006A3420_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A33C8_0, 1, 1;
+    %set/v v006A3420_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Arq. I\Guia03\exercicio03.v";

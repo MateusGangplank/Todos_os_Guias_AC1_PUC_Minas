@@ -1,0 +1,135 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00609958 .scope module, "test" "test" 2 27;
+ .timescale 0 0;
+v0079B238_0 .var "clk", 0 0;
+v0079B290_0 .var "data", 0 0;
+v0079B2E8_0 .net "w", 0 0, v0060C958_0; 1 drivers
+v0079B340_0 .net "x", 0 0, v00602E98_0; 1 drivers
+v0079B398_0 .net "y", 0 0, v00603988_0; 1 drivers
+v0079B3F0_0 .net "z", 0 0, v0060C228_0; 1 drivers
+S_006098D0 .scope module, "rsr1" "rsr" 2 31, 2 16, S_00609958;
+ .timescale 0 0;
+v0060CA08_0 .alias "a", 0 0, v0079B2E8_0;
+v0079AF20_0 .alias "b", 0 0, v0079B340_0;
+v0079AF78_0 .alias "c", 0 0, v0079B398_0;
+v0079AFD0_0 .net "clk", 0 0, v0079B238_0; 1 drivers
+v0079B028_0 .alias "d", 0 0, v0079B3F0_0;
+v0079B080_0 .net "data", 0 0, v0079B290_0; 1 drivers
+v0079B0D8_0 .net "s1", 0 0, v0060C9B0_0; 1 drivers
+v0079B130_0 .net "s2", 0 0, v00602EF0_0; 1 drivers
+v0079B188_0 .net "s3", 0 0, v006039E0_0; 1 drivers
+v0079B1E0_0 .net "s4", 0 0, v0060D4F8_0; 1 drivers
+S_0060A480 .scope module, "dff1" "dff" 2 20, 2 7, S_006098D0;
+ .timescale 0 0;
+v0060C8A8_0 .alias "clk", 0 0, v0079AFD0_0;
+v0060C900_0 .alias "d", 0 0, v0079B080_0;
+v0060C958_0 .var "q", 0 0;
+v0060C9B0_0 .var "qnot", 0 0;
+S_0060A3F8 .scope module, "dff2" "dff" 2 21, 2 7, S_006098D0;
+ .timescale 0 0;
+v00603A38_0 .alias "clk", 0 0, v0079AFD0_0;
+v00602E40_0 .alias "d", 0 0, v0079B2E8_0;
+v00602E98_0 .var "q", 0 0;
+v00602EF0_0 .var "qnot", 0 0;
+S_0060A370 .scope module, "dff3" "dff" 2 22, 2 7, S_006098D0;
+ .timescale 0 0;
+v0060D550_0 .alias "clk", 0 0, v0079AFD0_0;
+v0060D5A8_0 .alias "d", 0 0, v0079B340_0;
+v00603988_0 .var "q", 0 0;
+v006039E0_0 .var "qnot", 0 0;
+S_0060A2E8 .scope module, "dff4" "dff" 2 23, 2 7, S_006098D0;
+ .timescale 0 0;
+v0060BFD8_0 .alias "clk", 0 0, v0079AFD0_0;
+v0060C100_0 .alias "d", 0 0, v0079B398_0;
+v0060C228_0 .var "q", 0 0;
+v0060D4F8_0 .var "qnot", 0 0;
+E_0060BD20 .event posedge, v0060BFD8_0;
+    .scope S_0060A480;
+T_0 ;
+    %wait E_0060BD20;
+    %load/v 8, v0060C900_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0060C958_0, 0, 8;
+    %load/v 8, v0060C958_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0060C9B0_0, 0, 8;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0060A3F8;
+T_1 ;
+    %wait E_0060BD20;
+    %load/v 8, v00602E40_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00602E98_0, 0, 8;
+    %load/v 8, v00602E98_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00602EF0_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0060A370;
+T_2 ;
+    %wait E_0060BD20;
+    %load/v 8, v0060D5A8_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00603988_0, 0, 8;
+    %load/v 8, v00603988_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006039E0_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0060A2E8;
+T_3 ;
+    %wait E_0060BD20;
+    %load/v 8, v0060C100_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0060C228_0, 0, 8;
+    %load/v 8, v0060C228_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0060D4F8_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00609958;
+T_4 ;
+    %vpi_call 2 34 "$display", "Guia08Exerc02 - Pedro Henrique Vilar Locatelli - 427453";
+    %set/v v0079B238_0, 0, 1;
+    %set/v v0079B290_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0079B290_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0079B290_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0079B290_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0079B290_0, 0, 1;
+    %delay 30, 0;
+    %vpi_call 2 42 "$finish";
+    %end;
+    .thread T_4;
+    .scope S_00609958;
+T_5 ;
+    %delay 5, 0;
+    %load/v 8, v0079B238_0, 1;
+    %inv 8, 1;
+    %set/v v0079B238_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_00609958;
+T_6 ;
+    %wait E_0060BD20;
+    %vpi_call 2 50 "$display", "%4d\011%1b\011%1b\011%1b%1b%1b%1b", $time, v0079B238_0, v0079B290_0, v0079B2E8_0, v0079B340_0, v0079B398_0, v0079B3F0_0;
+    %jmp T_6;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Baste\Downloads\Arq1\Guia08\Guia08Exerc02.v";

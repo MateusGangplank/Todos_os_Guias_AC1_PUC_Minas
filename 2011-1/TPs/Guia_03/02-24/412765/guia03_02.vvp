@@ -1,0 +1,72 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00672AA8 .scope module, "halfAddertest" "halfAddertest" 2 26;
+ .timescale 0 0;
+v006A3CE8_0 .var "a", 0 0;
+v006A3D40_0 .var "b", 0 0;
+v006A3D98_0 .net "s1", 0 0, L_006A4100; 1 drivers
+v006A3DF0_0 .net "s2", 0 0, L_006A3F48; 1 drivers
+S_00673388 .scope module, "HALF" "halfAdder" 2 32, 2 8, S_00672AA8;
+ .timescale 0 0;
+L_003EE008 .functor NAND 1, v006A3CE8_0, v006A3D40_0, C4<1>, C4<1>;
+L_006A3EA0 .functor NAND 1, v006A3CE8_0, L_003EE008, C4<1>, C4<1>;
+L_006A3F10 .functor NAND 1, v006A3D40_0, L_003EE008, C4<1>, C4<1>;
+L_006A3F48 .functor NAND 1, L_006A3EA0, L_006A3F10, C4<1>, C4<1>;
+L_006A4028 .functor NAND 1, L_003EE008, L_003EE008, C4<1>, C4<1>;
+L_006A3ED8 .functor NAND 1, L_006A4028, L_006A4028, C4<1>, C4<1>;
+L_006A4100 .functor NAND 1, L_006A3ED8, L_006A3ED8, C4<1>, C4<1>;
+v003EFBA8_0 .net "p", 0 0, v006A3CE8_0; 1 drivers
+v006A3968_0 .net "q", 0 0, v006A3D40_0; 1 drivers
+v006A39D8_0 .alias "s0", 0 0, v006A3DF0_0;
+v006A3A60_0 .alias "s1", 0 0, v006A3D98_0;
+v006A3AD0_0 .net "s2", 0 0, L_003EE008; 1 drivers
+v006A3B28_0 .net "s3", 0 0, L_006A3EA0; 1 drivers
+v006A3B98_0 .net "s4", 0 0, L_006A3F10; 1 drivers
+v006A3C08_0 .net "s5", 0 0, L_006A4028; 1 drivers
+v006A3C78_0 .net "s6", 0 0, L_006A3ED8; 1 drivers
+S_00673448 .scope begin, "start" "start" 2 34, 2 34, S_00672AA8;
+ .timescale 0 0;
+S_00673508 .scope begin, "main" "main" 2 41, 2 41, S_00672AA8;
+ .timescale 0 0;
+    .scope S_00672AA8;
+T_0 ;
+    %fork t_1, S_00673448;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A3CE8_0, 0, 1;
+    %set/v v006A3D40_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00672AA8;
+T_1 ;
+    %fork t_3, S_00673508;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 43 "$display", "\012Guia 03 - exercicio 02 - Paulo Henrique - 412765";
+    %vpi_call 2 44 "$display", "\012Teste Half Adder(NAND) gate";
+    %vpi_call 2 45 "$display", "\012a + b = s";
+    %vpi_call 2 46 "$monitor", "%b + %b = %b%b", v006A3CE8_0, v006A3D40_0, v006A3D98_0, v006A3DF0_0;
+    %delay 1, 0;
+    %set/v v006A3CE8_0, 0, 1;
+    %set/v v006A3D40_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A3CE8_0, 1, 1;
+    %set/v v006A3D40_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A3CE8_0, 1, 1;
+    %set/v v006A3D40_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_03\412765\guia03_02.v";

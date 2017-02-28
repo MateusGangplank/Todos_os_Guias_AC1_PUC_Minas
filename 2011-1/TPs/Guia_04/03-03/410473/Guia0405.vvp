@@ -1,0 +1,102 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7ED0 .scope module, "testex05" "testex05" 2 30;
+ .timescale 0 0;
+L_0069F218 .functor OR 1, L_0069EEF0, L_0069EB58, C4<0>, C4<0>;
+v0069E780_0 .var "a", 0 0;
+v0069E7D8_0 .var "b", 0 0;
+v0069E830_0 .var "c", 0 0;
+v0069E888_0 .net "cOut", 0 0, L_0069F218; 1 drivers
+v0069E8E0_0 .net "s0", 0 0, L_0069ED38; 1 drivers
+v0069E938_0 .net "s1", 0 0, L_0069EB58; 1 drivers
+v0069E990_0 .net "s2", 0 0, L_0069F170; 1 drivers
+v0069E9E8_0 .net "s3", 0 0, L_0069EEF0; 1 drivers
+S_0069E298 .scope module, "um" "halfSubtractor" 2 33, 2 13, S_003E7ED0;
+ .timescale 0 0;
+L_00683278 .functor NOR 1, v0069E780_0, v0069E780_0, C4<0>, C4<0>;
+L_0069EA78 .functor NOR 1, v0069E7D8_0, v0069E7D8_0, C4<0>, C4<0>;
+L_0069EAE8 .functor NOR 1, L_00683278, L_00683278, C4<0>, C4<0>;
+L_0069EB58 .functor NOR 1, L_0069EAE8, L_0069EA78, C4<0>, C4<0>;
+L_0069EC38 .functor NOR 1, v0069E780_0, L_0069EA78, C4<0>, C4<0>;
+L_0069EA40 .functor NOR 1, L_00683278, v0069E7D8_0, C4<0>, C4<0>;
+L_0069EAB0 .functor NOR 1, L_0069EC38, L_0069EA40, C4<0>, C4<0>;
+L_0069ED38 .functor NOR 1, L_0069EAB0, L_0069EAB0, C4<0>, C4<0>;
+v0069E320_0 .net "a", 0 0, v0069E780_0; 1 drivers
+v0069E390_0 .net "b", 0 0, v0069E7D8_0; 1 drivers
+v0069E400_0 .alias "c", 0 0, v0069E938_0;
+v0069E488_0 .net "notA", 0 0, L_00683278; 1 drivers
+v0069E4F8_0 .net "notB", 0 0, L_0069EA78; 1 drivers
+v0069E550_0 .net "notC", 0 0, L_0069EAE8; 1 drivers
+v0069E5C0_0 .alias "s", 0 0, v0069E8E0_0;
+v0069E618_0 .net "s0", 0 0, L_0069EAB0; 1 drivers
+v0069E670_0 .net "s1", 0 0, L_0069EC38; 1 drivers
+v0069E710_0 .net "s2", 0 0, L_0069EA40; 1 drivers
+S_003E7F58 .scope module, "dois" "halfSubtractor" 2 34, 2 13, S_003E7ED0;
+ .timescale 0 0;
+L_0069EDA8 .functor NOR 1, L_0069ED38, L_0069ED38, C4<0>, C4<0>;
+L_00661320 .functor NOR 1, v0069E830_0, v0069E830_0, C4<0>, C4<0>;
+L_0069EE80 .functor NOR 1, L_0069EDA8, L_0069EDA8, C4<0>, C4<0>;
+L_0069EEF0 .functor NOR 1, L_0069EE80, L_00661320, C4<0>, C4<0>;
+L_0069EFD0 .functor NOR 1, L_0069ED38, L_00661320, C4<0>, C4<0>;
+L_0069F008 .functor NOR 1, L_0069EDA8, v0069E830_0, C4<0>, C4<0>;
+L_0069EE48 .functor NOR 1, L_0069EFD0, L_0069F008, C4<0>, C4<0>;
+L_0069F170 .functor NOR 1, L_0069EE48, L_0069EE48, C4<0>, C4<0>;
+v00683C80_0 .alias "a", 0 0, v0069E8E0_0;
+v00683DB8_0 .net "b", 0 0, v0069E830_0; 1 drivers
+v0069DEC0_0 .alias "c", 0 0, v0069E9E8_0;
+v0069DF48_0 .net "notA", 0 0, L_0069EDA8; 1 drivers
+v0069DFB8_0 .net "notB", 0 0, L_00661320; 1 drivers
+v0069E010_0 .net "notC", 0 0, L_0069EE80; 1 drivers
+v0069E080_0 .alias "s", 0 0, v0069E990_0;
+v0069E118_0 .net "s0", 0 0, L_0069EE48; 1 drivers
+v0069E188_0 .net "s1", 0 0, L_0069EFD0; 1 drivers
+v0069E228_0 .net "s2", 0 0, L_0069F008; 1 drivers
+    .scope S_003E7ED0;
+T_0 ;
+    %vpi_call 2 39 "$display", "Exercicio 05 - Pedro Tronbin - 410473";
+    %vpi_call 2 40 "$display", "Teste Operador Diferenca Completa usando Meia Diferenca NOR.";
+    %vpi_call 2 41 "$display", "A  -  B  -  C  =  C0  S";
+    %set/v v0069E780_0, 0, 1;
+    %set/v v0069E7D8_0, 0, 1;
+    %set/v v0069E830_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "%b  -  %b  -  %b  =  %b  %b", v0069E780_0, v0069E7D8_0, v0069E830_0, v0069E888_0, v0069E990_0;
+    %delay 1, 0;
+    %set/v v0069E780_0, 0, 1;
+    %set/v v0069E7D8_0, 0, 1;
+    %set/v v0069E830_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E780_0, 0, 1;
+    %set/v v0069E7D8_0, 1, 1;
+    %set/v v0069E830_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069E780_0, 0, 1;
+    %set/v v0069E7D8_0, 1, 1;
+    %set/v v0069E830_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E780_0, 1, 1;
+    %set/v v0069E7D8_0, 0, 1;
+    %set/v v0069E830_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069E780_0, 1, 1;
+    %set/v v0069E7D8_0, 0, 1;
+    %set/v v0069E830_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069E780_0, 1, 1;
+    %set/v v0069E7D8_0, 1, 1;
+    %set/v v0069E830_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0069E780_0, 1, 1;
+    %set/v v0069E7D8_0, 1, 1;
+    %set/v v0069E830_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\410473\Guia0405.V";

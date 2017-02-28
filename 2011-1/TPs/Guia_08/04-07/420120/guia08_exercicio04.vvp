@@ -1,0 +1,156 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002C9228 .scope module, "testguia8" "testguia8" 2 24;
+ .timescale 0 0;
+v002CBAA0_0 .var "a", 0 0;
+v002CBAF8_0 .var "b", 0 0;
+v002CBB50_0 .var "c", 0 0;
+v002CBBA8_0 .var "d", 0 0;
+v002CBC00_0 .net "saida", 0 0, L_00314470; 1 drivers
+S_002C93C0 .scope module, "REDUZIRQUINENAND" "metodoreduzirquinenand" 2 28, 2 4, S_002C9228;
+ .timescale 0 0;
+L_003140F0 .functor NAND 1, v002CBB50_0, v002CBB50_0, C4<1>, C4<1>;
+L_00314128 .functor NAND 1, v002CBAA0_0, v002CBB50_0, v002CBBA8_0, C4<1>;
+L_00314198 .functor NAND 1, L_00314128, L_00314128, C4<1>, C4<1>;
+L_00314208 .functor NAND 1, v002CBAA0_0, v002CBAA0_0, C4<1>, C4<1>;
+L_00314160 .functor NAND 1, L_00314208, v002CBB50_0, C4<1>, C4<1>;
+L_00314278 .functor NAND 1, L_00314160, L_00314160, C4<1>, C4<1>;
+L_003142E8 .functor NAND 1, v002CBAF8_0, v002CBBA8_0, C4<1>, C4<1>;
+L_00314358 .functor NAND 1, L_003142E8, L_003142E8, C4<1>, C4<1>;
+L_003143C8 .functor NAND 1, v002CBAF8_0, v002CBB50_0, C4<1>, C4<1>;
+L_00314400 .functor NAND 1, L_003143C8, L_003143C8, C4<1>, C4<1>;
+L_00314470 .functor NAND 1, L_00314198, L_00314278, L_00314358, L_00314400;
+v002CB578_0 .net "a", 0 0, v002CBAA0_0; 1 drivers
+v002CB5D0_0 .net "b", 0 0, v002CBAF8_0; 1 drivers
+v002CB628_0 .net "c", 0 0, v002CBB50_0; 1 drivers
+v002CB680_0 .net "d", 0 0, v002CBBA8_0; 1 drivers
+v002CB6D8_0 .alias "saida", 0 0, v002CBC00_0;
+v002CB730_0 .net "temp1", 0 0, L_003140F0; 1 drivers
+v002CB788_0 .net "temp10", 0 0, L_00314198; 1 drivers
+v002CB7E0_0 .net "temp2", 0 0, L_00314128; 1 drivers
+v002CB838_0 .net "temp3", 0 0, L_00314208; 1 drivers
+v002CB890_0 .net "temp4", 0 0, L_00314160; 1 drivers
+v002CB8E8_0 .net "temp5", 0 0, L_00314278; 1 drivers
+v002CB940_0 .net "temp6", 0 0, L_003142E8; 1 drivers
+v002CB998_0 .net "temp7", 0 0, L_00314358; 1 drivers
+v002CB9F0_0 .net "temp8", 0 0, L_003143C8; 1 drivers
+v002CBA48_0 .net "temp9", 0 0, L_00314400; 1 drivers
+S_002C9338 .scope begin, "start" "start" 2 30, 2 30, S_002C9228;
+ .timescale 0 0;
+S_002C92B0 .scope begin, "main" "main" 2 34, 2 34, S_002C9228;
+ .timescale 0 0;
+    .scope S_002C9228;
+T_0 ;
+    %fork t_1, S_002C9338;
+    %jmp t_0;
+    .scope S_002C9338;
+t_1 ;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %end;
+    .scope S_002C9228;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002C9228;
+T_1 ;
+    %fork t_3, S_002C92B0;
+    %jmp t_2;
+    .scope S_002C92B0;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", " Circuito do exercicio 04-guia8 com portas NAND'S ";
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", " a |  b |  c |  d  =  saida ";
+    %vpi_call 2 37 "$monitor", " %b  | %b  | %b |  %b  =   %b ", v002CBAA0_0, v002CBAF8_0, v002CBB50_0, v002CBBA8_0, v002CBC00_0;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 0, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 0, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 0, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002CBAA0_0, 1, 1;
+    %set/v v002CBAF8_0, 1, 1;
+    %set/v v002CBB50_0, 1, 1;
+    %set/v v002CBBA8_0, 1, 1;
+    %end;
+    .scope S_002C9228;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\guia08\guia08_exercicio04.v";

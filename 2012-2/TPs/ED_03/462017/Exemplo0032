@@ -1,0 +1,131 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003FB8A0 .scope module, "test_LU" "test_LU" 2 31;
+ .timescale 0 0;
+v0034DEF0_0 .var "chave", 0 0;
+v0034DF48_0 .var "x", 3 0;
+v0034DFA0_0 .var "y", 3 0;
+RS_0031D0F4 .resolv tri, L_0034E050, L_0034E158, L_0034E260, L_0034E368;
+v0034DFF8_0 .net8 "z", 3 0, RS_0031D0F4; 4 drivers
+S_003FB818 .scope module, "LU" "lu4" 2 37, 2 22, S_003FB8A0;
+ .timescale 0 0;
+v0034DD90_0 .net "a", 3 0, v0034DF48_0; 1 drivers
+v0034DDE8_0 .net "b", 3 0, v0034DFA0_0; 1 drivers
+v0034DE40_0 .net "chave", 0 0, v0034DEF0_0; 1 drivers
+v0034DE98_0 .alias "s", 3 0, v0034DFF8_0;
+L_0034E050 .part/pv L_003F2C00, 0, 1, 4;
+L_0034E0A8 .part v0034DF48_0, 0, 1;
+L_0034E100 .part v0034DFA0_0, 0, 1;
+L_0034E158 .part/pv L_0034ED60, 1, 1, 4;
+L_0034E1B0 .part v0034DF48_0, 1, 1;
+L_0034E208 .part v0034DFA0_0, 1, 1;
+L_0034E260 .part/pv L_0034F0E0, 2, 1, 4;
+L_0034E2B8 .part v0034DF48_0, 2, 1;
+L_0034E310 .part v0034DFA0_0, 2, 1;
+L_0034E368 .part/pv L_0034F3D8, 3, 1, 4;
+L_0034E3C0 .part v0034DF48_0, 3, 1;
+L_0034E418 .part v0034DFA0_0, 3, 1;
+S_003FBBD0 .scope module, "LU1" "lu" 2 24, 2 9, S_003FB818;
+ .timescale 0 0;
+L_0031A0A8 .functor AND 1, L_0034E0A8, L_0034E100, C4<1>, C4<1>;
+L_0031BE10 .functor OR 1, L_0034E0A8, L_0034E100, C4<0>, C4<0>;
+L_0031BEB8 .functor NOT 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_003FD5A8 .functor BUF 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_003FD5E0 .functor AND 1, L_0031A0A8, L_0031BEB8, C4<1>, C4<1>;
+L_003FD688 .functor AND 1, L_0031BE10, L_003FD5A8, C4<1>, C4<1>;
+L_003F2C00 .functor OR 1, L_003FD5E0, L_003FD688, C4<0>, C4<0>;
+v0034DA20_0 .net "a", 0 0, L_0034E0A8; 1 drivers
+v0034DA78_0 .net "b", 0 0, L_0034E100; 1 drivers
+v0034DAD0_0 .alias "chave", 0 0, v0034DE40_0;
+v0034DB28_0 .net "s", 0 0, L_003F2C00; 1 drivers
+v0034DB80_0 .net "s0", 0 0, L_0031A0A8; 1 drivers
+v0034DBD8_0 .net "s1", 0 0, L_0031BE10; 1 drivers
+v0034DC30_0 .net "s2", 0 0, L_0031BEB8; 1 drivers
+v0034DC88_0 .net "s3", 0 0, L_003FD5A8; 1 drivers
+v0034DCE0_0 .net "s4", 0 0, L_003FD5E0; 1 drivers
+v0034DD38_0 .net "s5", 0 0, L_003FD688; 1 drivers
+S_003FBC58 .scope module, "LU2" "lu" 2 25, 2 9, S_003FB818;
+ .timescale 0 0;
+L_0034EAC0 .functor AND 1, L_0034E1B0, L_0034E208, C4<1>, C4<1>;
+L_0034EAF8 .functor OR 1, L_0034E1B0, L_0034E208, C4<0>, C4<0>;
+L_0034EBA0 .functor NOT 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_0034EBD8 .functor BUF 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_0034EC10 .functor AND 1, L_0034EAC0, L_0034EBA0, C4<1>, C4<1>;
+L_0034ECB8 .functor AND 1, L_0034EAF8, L_0034EBD8, C4<1>, C4<1>;
+L_0034ED60 .functor OR 1, L_0034EC10, L_0034ECB8, C4<0>, C4<0>;
+v00319B00_0 .net "a", 0 0, L_0034E1B0; 1 drivers
+v00319B58_0 .net "b", 0 0, L_0034E208; 1 drivers
+v00319BB0_0 .alias "chave", 0 0, v0034DE40_0;
+v00319C08_0 .net "s", 0 0, L_0034ED60; 1 drivers
+v00319C60_0 .net "s0", 0 0, L_0034EAC0; 1 drivers
+v00319CB8_0 .net "s1", 0 0, L_0034EAF8; 1 drivers
+v00319D10_0 .net "s2", 0 0, L_0034EBA0; 1 drivers
+v00319D68_0 .net "s3", 0 0, L_0034EBD8; 1 drivers
+v0034D970_0 .net "s4", 0 0, L_0034EC10; 1 drivers
+v0034D9C8_0 .net "s5", 0 0, L_0034ECB8; 1 drivers
+S_003FBCE0 .scope module, "LU3" "lu" 2 26, 2 9, S_003FB818;
+ .timescale 0 0;
+L_0034EE40 .functor AND 1, L_0034E2B8, L_0034E310, C4<1>, C4<1>;
+L_0034EE78 .functor OR 1, L_0034E2B8, L_0034E310, C4<0>, C4<0>;
+L_0034EF20 .functor NOT 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_0034EF58 .functor BUF 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_0034EF90 .functor AND 1, L_0034EE40, L_0034EF20, C4<1>, C4<1>;
+L_0034F038 .functor AND 1, L_0034EE78, L_0034EF58, C4<1>, C4<1>;
+L_0034F0E0 .functor OR 1, L_0034EF90, L_0034F038, C4<0>, C4<0>;
+v00319790_0 .net "a", 0 0, L_0034E2B8; 1 drivers
+v003197E8_0 .net "b", 0 0, L_0034E310; 1 drivers
+v00319840_0 .alias "chave", 0 0, v0034DE40_0;
+v00319898_0 .net "s", 0 0, L_0034F0E0; 1 drivers
+v003198F0_0 .net "s0", 0 0, L_0034EE40; 1 drivers
+v00319948_0 .net "s1", 0 0, L_0034EE78; 1 drivers
+v003199A0_0 .net "s2", 0 0, L_0034EF20; 1 drivers
+v003199F8_0 .net "s3", 0 0, L_0034EF58; 1 drivers
+v00319A50_0 .net "s4", 0 0, L_0034EF90; 1 drivers
+v00319AA8_0 .net "s5", 0 0, L_0034F038; 1 drivers
+S_003FB790 .scope module, "LU4" "lu" 2 27, 2 9, S_003FB818;
+ .timescale 0 0;
+L_0034EA88 .functor AND 1, L_0034E3C0, L_0034E418, C4<1>, C4<1>;
+L_0034EA50 .functor OR 1, L_0034E3C0, L_0034E418, C4<0>, C4<0>;
+L_0034F218 .functor NOT 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_0034F250 .functor BUF 1, v0034DEF0_0, C4<0>, C4<0>, C4<0>;
+L_0034F288 .functor AND 1, L_0034EA88, L_0034F218, C4<1>, C4<1>;
+L_0034F330 .functor AND 1, L_0034EA50, L_0034F250, C4<1>, C4<1>;
+L_0034F3D8 .functor OR 1, L_0034F288, L_0034F330, C4<0>, C4<0>;
+v00319420_0 .net "a", 0 0, L_0034E3C0; 1 drivers
+v00319478_0 .net "b", 0 0, L_0034E418; 1 drivers
+v003194D0_0 .alias "chave", 0 0, v0034DE40_0;
+v00319528_0 .net "s", 0 0, L_0034F3D8; 1 drivers
+v00319580_0 .net "s0", 0 0, L_0034EA88; 1 drivers
+v003195D8_0 .net "s1", 0 0, L_0034EA50; 1 drivers
+v00319630_0 .net "s2", 0 0, L_0034F218; 1 drivers
+v00319688_0 .net "s3", 0 0, L_0034F250; 1 drivers
+v003196E0_0 .net "s4", 0 0, L_0034F288; 1 drivers
+v00319738_0 .net "s5", 0 0, L_0034F330; 1 drivers
+    .scope S_003FB8A0;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0032 - Breno Macena - 462017";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v0034DF48_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v0034DFA0_0, 8, 4;
+    %set/v v0034DEF0_0, 0, 1;
+    %vpi_call 2 46 "$display", "chave = ", v0034DEF0_0;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%3b   %3b = %3b", v0034DF48_0, v0034DFA0_0, v0034DFF8_0;
+    %delay 1, 0;
+    %set/v v0034DEF0_0, 1, 1;
+    %vpi_call 2 49 "$display", "chave = ", v0034DEF0_0;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "%3b   %3b = %3b", v0034DF48_0, v0034DFA0_0, v0034DFF8_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0032.v";

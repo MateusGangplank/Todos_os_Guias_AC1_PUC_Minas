@@ -1,0 +1,61 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_002E2EE0 .scope module, "tff" "tff" 2 1;
+ .timescale 0 0;
+v002E9860_0 .net "clear", 0 0, C4<z>; 0 drivers
+v002EFCB8_0 .net "clk", 0 0, C4<z>; 0 drivers
+v002EFD10_0 .var "q", 0 0;
+v002EFD68_0 .var "qnot", 0 0;
+v002EFDC0_0 .net "t", 0 0, C4<z>; 0 drivers
+E_00AA0D68 .event posedge, v002EFCB8_0;
+S_002E97D8 .scope begin, "start" "start" 2 4, 2 4, S_002E2EE0;
+ .timescale 0 0;
+    .scope S_002E2EE0;
+T_0 ;
+    %fork t_1, S_002E97D8;
+    %jmp t_0;
+    .scope S_002E97D8;
+t_1 ;
+    %set/v v002EFD10_0, 0, 1;
+    %end;
+    .scope S_002E2EE0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_002E2EE0;
+T_1 ;
+    %wait E_00AA0D68;
+    %load/v 8, v002E9860_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v002EFD10_0, 0, 0;
+    %load/v 8, v002EFD10_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v002EFD68_0, 0, 8;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v002EFDC0_0, 1;
+    %jmp/0xz  T_1.2, 8;
+    %load/v 8, v002EFD10_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v002EFD10_0, 0, 8;
+    %load/v 8, v002EFD10_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v002EFD68_0, 0, 8;
+T_1.2 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "J:\Guia09\tff.v";

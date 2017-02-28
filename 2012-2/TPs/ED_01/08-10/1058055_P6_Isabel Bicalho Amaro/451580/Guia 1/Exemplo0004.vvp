@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00AAFF40 .scope module, "testorgate" "testorgate" 2 19;
+ .timescale 0 0;
+v00AA35A0_0 .var "a", 0 0;
+v00AA35F8_0 .var "b", 0 0;
+v00AAEC28_0 .net "s", 0 0, L_00AAEC80; 1 drivers
+S_00AA3098 .scope module, "OR1" "orgate" 2 26, 2 11, S_00AAFF40;
+ .timescale 0 0;
+L_00AAEC80 .functor OR 1, v00AA35A0_0, v00AA35F8_0, C4<0>, C4<0>;
+v00AA3120_0 .net "p", 0 0, v00AA35A0_0; 1 drivers
+v00AA34F0_0 .net "q", 0 0, v00AA35F8_0; 1 drivers
+v00AA3548_0 .alias "s", 0 0, v00AAEC28_0;
+S_00AA3010 .scope begin, "start" "start" 2 29, 2 29, S_00AAFF40;
+ .timescale 0 0;
+    .scope S_00AAFF40;
+T_0 ;
+    %fork t_1, S_00AA3010;
+    %jmp t_0;
+    .scope S_00AA3010;
+t_1 ;
+    %set/v v00AA35A0_0, 0, 1;
+    %set/v v00AA35F8_0, 0, 1;
+    %end;
+    .scope S_00AAFF40;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00AAFF40;
+T_1 ;
+    %vpi_call 2 37 "$display", "Exemplo0004 - Isabel Bicalho Amaro";
+    %vpi_call 2 38 "$display", "Test OR gate";
+    %vpi_call 2 39 "$display", "\012a | b = s\012";
+    %set/v v00AA35A0_0, 0, 1;
+    %set/v v00AA35F8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "%b | %b = %b", v00AA35A0_0, v00AA35F8_0, v00AAEC28_0;
+    %set/v v00AA35A0_0, 0, 1;
+    %set/v v00AA35F8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "%b | %b = %b", v00AA35A0_0, v00AA35F8_0, v00AAEC28_0;
+    %set/v v00AA35A0_0, 1, 1;
+    %set/v v00AA35F8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%b | %b = %b", v00AA35A0_0, v00AA35F8_0, v00AAEC28_0;
+    %set/v v00AA35A0_0, 1, 1;
+    %set/v v00AA35F8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b | %b = %b", v00AA35A0_0, v00AA35F8_0, v00AAEC28_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Isabel\Documents\PUC\2º Período\Arquitetura de Computadores\Guias\Guia 1\Exemplo0004.v";

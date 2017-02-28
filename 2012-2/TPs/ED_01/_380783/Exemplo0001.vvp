@@ -1,0 +1,55 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00799C68 .scope module, "testbuffer" "testbuffer" 2 17;
+ .timescale 0 0;
+v00793180_0 .var "a", 0 0;
+v007931D8_0 .net "s", 0 0, L_00792E30; 1 drivers
+S_00792DA8 .scope module, "BF1" "buffer" 2 24, 2 10, S_00799C68;
+ .timescale 0 0;
+L_00792E30 .functor BUFZ 1, v00793180_0, C4<0>, C4<0>, C4<0>;
+v007930D0_0 .net "p", 0 0, v00793180_0; 1 drivers
+v00793128_0 .alias "s", 0 0, v007931D8_0;
+S_00792D20 .scope begin, "start" "start" 2 26, 2 26, S_00799C68;
+ .timescale 0 0;
+S_00799CF0 .scope begin, "main" "main" 2 30, 2 30, S_00799C68;
+ .timescale 0 0;
+    .scope S_00799C68;
+T_0 ;
+    %fork t_1, S_00792D20;
+    %jmp t_0;
+    .scope S_00792D20;
+t_1 ;
+    %set/v v00793180_0, 0, 1;
+    %end;
+    .scope S_00799C68;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00799C68;
+T_1 ;
+    %fork t_3, S_00799CF0;
+    %jmp t_2;
+    .scope S_00799CF0;
+t_3 ;
+    %vpi_call 2 32 "$display", "Exemplo 0001 - Lucas Siqueira Chagas - 380783";
+    %vpi_call 2 33 "$display", "Test buffer:";
+    %vpi_call 2 34 "$display", "\011 time\011a = s";
+    %vpi_call 2 36 "$monitor", "%d\011%b = %b", $time, v00793180_0, v007931D8_0;
+    %delay 1, 0;
+    %set/v v00793180_0, 0, 1;
+    %delay 2, 0;
+    %set/v v00793180_0, 1, 1;
+    %end;
+    .scope S_00799C68;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0001.v";

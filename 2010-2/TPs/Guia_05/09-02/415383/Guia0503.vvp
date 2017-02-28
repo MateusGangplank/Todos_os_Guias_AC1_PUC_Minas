@@ -1,0 +1,155 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A09880 .scope module, "testex3" "testex3" 2 39;
+ .timescale 0 0;
+v0031F538_0 .var "a", 1 0;
+v0031F590_0 .var "b", 1 0;
+RS_0032513C .resolv tri, L_0031F640, L_0031F698, L_0031F6F0, L_0031F748;
+v0031F5E8_0 .net8 "s", 3 0, RS_0032513C; 4 drivers
+L_0031F7A0 .part v0031F538_0, 1, 1;
+L_0031F7F8 .part v0031F538_0, 0, 1;
+L_0031F850 .part v0031F590_0, 1, 1;
+L_0031F8A8 .part v0031F590_0, 0, 1;
+S_00A097F8 .scope module, "M1" "multiplicacao" 2 43, 2 24, S_00A09880;
+ .timescale 0 0;
+L_00323270 .functor AND 1, L_0031F7F8, L_0031F850, C4<1>, C4<1>;
+L_00323318 .functor AND 1, L_0031F7A0, L_0031F8A8, C4<1>, C4<1>;
+L_00323388 .functor AND 1, L_0031F7A0, L_0031F850, C4<1>, C4<1>;
+L_00323548 .functor AND 1, L_0031F7F8, L_0031F8A8, C4<1>, C4<1>;
+L_00323628 .functor BUFZ 1, L_003234A0, C4<0>, C4<0>, C4<0>;
+L_003233C0 .functor BUFZ 1, L_003232A8, C4<0>, C4<0>, C4<0>;
+L_003236D0 .functor BUFZ 1, L_00323350, C4<0>, C4<0>, C4<0>;
+v0031EFB8_0 .net *"_s11", 0 0, L_003233C0; 1 drivers
+v0031F010_0 .net *"_s15", 0 0, L_003236D0; 1 drivers
+v0031F068_0 .net *"_s2", 0 0, L_00323548; 1 drivers
+v0031F0C0_0 .net *"_s7", 0 0, L_00323628; 1 drivers
+v0031F118_0 .net "a0", 0 0, L_0031F7F8; 1 drivers
+v0031F170_0 .net "a1", 0 0, L_0031F7A0; 1 drivers
+v0031F1C8_0 .net "and1", 0 0, L_00323270; 1 drivers
+v0031F220_0 .net "and2", 0 0, L_00323318; 1 drivers
+v0031F278_0 .net "and3", 0 0, L_00323388; 1 drivers
+v0031F2D0_0 .net "b0", 0 0, L_0031F8A8; 1 drivers
+v0031F328_0 .net "b1", 0 0, L_0031F850; 1 drivers
+v0031F380_0 .net "carry1", 0 0, L_00323468; 1 drivers
+v0031F3D8_0 .net "carry2", 0 0, L_00323350; 1 drivers
+v0031F430_0 .alias "s", 3 0, v0031F5E8_0;
+v0031F488_0 .net "soma1", 0 0, L_003234A0; 1 drivers
+v0031F4E0_0 .net "soma2", 0 0, L_003232A8; 1 drivers
+L_0031F640 .part/pv L_00323548, 0, 1, 4;
+L_0031F698 .part/pv L_00323628, 1, 1, 4;
+L_0031F6F0 .part/pv L_003233C0, 2, 1, 4;
+L_0031F748 .part/pv L_003236D0, 3, 1, 4;
+S_00A09440 .scope module, "HA1" "meiasoma" 2 31, 2 16, S_00A097F8;
+ .timescale 0 0;
+L_00323468 .functor AND 1, L_00323270, L_00323318, C4<1>, C4<1>;
+L_003234A0 .functor XOR 1, L_00323270, L_00323318, C4<0>, C4<0>;
+v0031EE58_0 .alias "a", 0 0, v0031F1C8_0;
+v0031EEB0_0 .alias "b", 0 0, v0031F220_0;
+v0031EF08_0 .alias "carry", 0 0, v0031F380_0;
+v0031EF60_0 .alias "s", 0 0, v0031F488_0;
+S_00A09550 .scope module, "HA2" "meiasoma" 2 32, 2 16, S_00A097F8;
+ .timescale 0 0;
+L_00323350 .functor AND 1, L_00323388, L_00323468, C4<1>, C4<1>;
+L_003232A8 .functor XOR 1, L_00323388, L_00323468, C4<0>, C4<0>;
+v00A0D9A0_0 .alias "a", 0 0, v0031F278_0;
+v00A0D9F8_0 .alias "b", 0 0, v0031F380_0;
+v0031EDA8_0 .alias "carry", 0 0, v0031F3D8_0;
+v0031EE00_0 .alias "s", 0 0, v0031F4E0_0;
+    .scope S_00A09880;
+T_0 ;
+    %vpi_call 2 45 "$display", "Exercicio 03 - Lucas Teixeira Santos - 415383";
+    %vpi_call 2 46 "$display", "Multiplicacao 2 Bits.";
+    %vpi_call 2 47 "$display", "AA  *  BB  =  CCCC";
+    %set/v v0031F538_0, 0, 2;
+    %set/v v0031F590_0, 0, 2;
+    %delay 1, 0;
+    %vpi_call 2 50 "$monitor", "%b  *  %b  =  %b", v0031F538_0, v0031F590_0, v0031F5E8_0;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F538_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F538_0, 8, 2;
+    %set/v v0031F590_0, 0, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F538_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F538_0, 8, 2;
+    %set/v v0031F590_0, 0, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F538_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F538_0, 8, 2;
+    %set/v v0031F590_0, 0, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %delay 1, 0;
+    %load/v 8, v0031F590_0, 2;
+    %mov 10, 0, 30;
+   %addi 8, 1, 32;
+    %set/v v0031F590_0, 8, 2;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Lucas\Documents\PUC\2\ARQ\Aulas\Guia05\Guia0503.V";

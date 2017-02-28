@@ -1,0 +1,222 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0087ABF8 .scope module, "test_d" "test_d" 2 32;
+ .timescale 0 0;
+L_0087C318 .functor AND 1, v007457A8_0, L_00745C78, C4<1>, C4<1>;
+L_0087C3C0 .functor AND 1, v007457A8_0, L_00745CD0, C4<1>, C4<1>;
+L_0087C4D8 .functor AND 1, v007457A8_0, L_00745D28, C4<1>, C4<1>;
+L_0087C580 .functor AND 1, v007457A8_0, L_00745D80, C4<1>, C4<1>;
+v007455F0_0 .net *"_s1", 0 0, L_00745C78; 1 drivers
+v00745648_0 .net *"_s3", 0 0, L_00745CD0; 1 drivers
+v007456A0_0 .net *"_s5", 0 0, L_00745D28; 1 drivers
+v007456F8_0 .net *"_s7", 0 0, L_00745D80; 1 drivers
+v00745750_0 .var "clk", 0 0;
+v007457A8_0 .var "load", 0 0;
+v00745800_0 .net "p1", 0 0, L_0087C318; 1 drivers
+v00745858_0 .net "p2", 0 0, L_0087C3C0; 1 drivers
+v007458B0_0 .net "p3", 0 0, L_0087C4D8; 1 drivers
+v00745908_0 .net "p4", 0 0, L_0087C580; 1 drivers
+v00745960_0 .net "q", 0 0, v00744F10_0; 1 drivers
+v007459B8_0 .net "q1", 0 0, v00745540_0; 1 drivers
+v00745A10_0 .net "q2", 0 0, v00745330_0; 1 drivers
+v00745A68_0 .net "q3", 0 0, v00745120_0; 1 drivers
+v00745AC0_0 .net "qn1", 0 0, v00745598_0; 1 drivers
+v00745B18_0 .net "qn2", 0 0, v00745388_0; 1 drivers
+v00745B70_0 .net "qn3", 0 0, v00745178_0; 1 drivers
+v00745BC8_0 .net "qn4", 0 0, v00744F68_0; 1 drivers
+v00745C20_0 .var "y", 3 0;
+L_00745C78 .part v00745C20_0, 0, 1;
+L_00745CD0 .part v00745C20_0, 1, 1;
+L_00745D28 .part v00745C20_0, 2, 1;
+L_00745D80 .part v00745C20_0, 3, 1;
+S_0087AC80 .scope module, "dff1" "dff" 2 42, 2 9, S_0087ABF8;
+ .timescale 0 0;
+v007453E0_0 .net "clear", 0 0, C4<0>; 1 drivers
+v00745438_0 .net "clk", 0 0, v00745750_0; 1 drivers
+v00745490_0 .net "d", 0 0, C4<0>; 1 drivers
+v007454E8_0 .alias "preset", 0 0, v00745800_0;
+v00745540_0 .var "q", 0 0;
+v00745598_0 .var "qnot", 0 0;
+S_0087AA60 .scope module, "dff2" "dff" 2 43, 2 9, S_0087ABF8;
+ .timescale 0 0;
+v007451D0_0 .net "clear", 0 0, C4<0>; 1 drivers
+v00745228_0 .alias "clk", 0 0, v00745438_0;
+v00745280_0 .alias "d", 0 0, v007459B8_0;
+v007452D8_0 .alias "preset", 0 0, v00745858_0;
+v00745330_0 .var "q", 0 0;
+v00745388_0 .var "qnot", 0 0;
+S_0087AAE8 .scope module, "dff3" "dff" 2 44, 2 9, S_0087ABF8;
+ .timescale 0 0;
+v00744FC0_0 .net "clear", 0 0, C4<0>; 1 drivers
+v00745018_0 .alias "clk", 0 0, v00745438_0;
+v00745070_0 .alias "d", 0 0, v00745A10_0;
+v007450C8_0 .alias "preset", 0 0, v007458B0_0;
+v00745120_0 .var "q", 0 0;
+v00745178_0 .var "qnot", 0 0;
+S_0087AB70 .scope module, "dff4" "dff" 2 45, 2 9, S_0087ABF8;
+ .timescale 0 0;
+v0087CCA0_0 .net "clear", 0 0, C4<0>; 1 drivers
+v0071F020_0 .alias "clk", 0 0, v00745438_0;
+v007205E0_0 .alias "d", 0 0, v00745A68_0;
+v00721818_0 .alias "preset", 0 0, v00745908_0;
+v00744F10_0 .var "q", 0 0;
+v00744F68_0 .var "qnot", 0 0;
+E_00720DE0 .event posedge, v0071F020_0;
+    .scope S_0087AC80;
+T_0 ;
+    %wait E_00720DE0;
+    %load/v 8, v007453E0_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745540_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745598_0, 0, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v007454E8_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745540_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745598_0, 0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v00745490_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745540_0, 0, 8;
+    %load/v 8, v00745490_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745598_0, 0, 8;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0087AA60;
+T_1 ;
+    %wait E_00720DE0;
+    %load/v 8, v007451D0_0, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745330_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745388_0, 0, 1;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v007452D8_0, 1;
+    %jmp/0xz  T_1.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745330_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745388_0, 0, 0;
+    %jmp T_1.3;
+T_1.2 ;
+    %load/v 8, v00745280_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745330_0, 0, 8;
+    %load/v 8, v00745280_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745388_0, 0, 8;
+T_1.3 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0087AAE8;
+T_2 ;
+    %wait E_00720DE0;
+    %load/v 8, v00744FC0_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745120_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745178_0, 0, 1;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/v 8, v007450C8_0, 1;
+    %jmp/0xz  T_2.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745120_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745178_0, 0, 0;
+    %jmp T_2.3;
+T_2.2 ;
+    %load/v 8, v00745070_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745120_0, 0, 8;
+    %load/v 8, v00745070_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00745178_0, 0, 8;
+T_2.3 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0087AB70;
+T_3 ;
+    %wait E_00720DE0;
+    %load/v 8, v0087CCA0_0, 1;
+    %jmp/0xz  T_3.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00744F10_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00744F68_0, 0, 1;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/v 8, v00721818_0, 1;
+    %jmp/0xz  T_3.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00744F10_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00744F68_0, 0, 0;
+    %jmp T_3.3;
+T_3.2 ;
+    %load/v 8, v007205E0_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00744F10_0, 0, 8;
+    %load/v 8, v007205E0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v00744F68_0, 0, 8;
+T_3.3 ;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0087ABF8;
+T_4 ;
+    %vpi_call 2 50 "$display", "Time-Load-Y-q1-q2-q3-q";
+    %set/v v00745750_0, 1, 1;
+    %set/v v007457A8_0, 0, 1;
+    %movi 8, 13, 4;
+    %set/v v00745C20_0, 8, 4;
+    %delay 10, 0;
+    %set/v v007457A8_0, 1, 1;
+    %delay 10, 0;
+    %set/v v007457A8_0, 0, 1;
+    %delay 60, 0;
+    %vpi_call 2 64 "$finish";
+    %end;
+    .thread T_4;
+    .scope S_0087ABF8;
+T_5 ;
+    %delay 5, 0;
+    %load/v 8, v00745750_0, 1;
+    %inv 8, 1;
+    %set/v v00745750_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_0087ABF8;
+T_6 ;
+    %wait E_00720DE0;
+    %vpi_call 2 70 "$display", "%4d %b %b %b %b %b", $time, v007457A8_0, v00745C20_0, v007459B8_0, v00745A10_0, v00745A68_0, v00745960_0;
+    %jmp T_6;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Lucas\Puc\441694\AC1\Guia08\Exercicio05.v";

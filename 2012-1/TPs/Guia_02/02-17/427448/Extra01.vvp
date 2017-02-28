@@ -1,0 +1,46 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A72E98 .scope module, "testcomplemento1" "testcomplemento1" 2 20;
+ .timescale 0 0;
+v00A7DCA8_0 .var "a", 7 0;
+v00A7DD00_0 .net "s", 7 0, L_00A73478; 1 drivers
+S_00A73340 .scope module, "C1" "complemento1" 2 29, 2 12, S_00A72E98;
+ .timescale 0 0;
+L_00A73478 .functor NOT 8, v00A7DCA8_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v00A733C8_0 .net "p", 7 0, v00A7DCA8_0; 1 drivers
+v00A73420_0 .alias "s", 7 0, v00A7DD00_0;
+S_00A72F20 .scope begin, "start" "start" 2 33, 2 33, S_00A72E98;
+ .timescale 0 0;
+    .scope S_00A72E98;
+T_0 ;
+    %fork t_1, S_00A72F20;
+    %jmp t_0;
+    .scope S_00A72F20;
+t_1 ;
+    %set/v v00A7DCA8_0, 0, 8;
+    %end;
+    .scope S_00A72E98;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00A72E98;
+T_1 ;
+    %vpi_call 2 40 "$display", "Extra01 - Michelle da Costa Silva - 427448";
+    %vpi_call 2 41 "$display", "Complemento de 1";
+    %vpi_call 2 42 "$monitor", "%8b = %8b", v00A7DCA8_0, v00A7DD00_0;
+    %delay 1, 0;
+    %set/v v00A7DCA8_0, 1, 8;
+    %delay 1, 0;
+    %movi 8, 170, 8;
+    %set/v v00A7DCA8_0, 8, 8;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Terceiro Periodo\AC1\427448\Guia2\Extra01.v";

@@ -1,0 +1,33 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E2F00 .scope module, "flip_flop_d" "flip_flop_d" 2 11;
+ .timescale 0 0;
+v003E4750_0 .net "clk", 0 0, C4<z>; 0 drivers
+v003E4BA8_0 .net "data", 0 0, C4<z>; 0 drivers
+v003E4C00_0 .var "q", 0 0;
+v003E4C58_0 .net "reset", 0 0, C4<z>; 0 drivers
+E_002E0D18 .event posedge, v003E4750_0;
+    .scope S_003E2F00;
+T_0 ;
+    %wait E_002E0D18;
+    %load/v 8, v003E4BA8_0, 1;
+    %load/v 9, v003E4C58_0, 1;
+    %inv 9, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.0, 8;
+    %set/v v003E4C00_0, 1, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %set/v v003E4C00_0, 0, 1;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\PUC\3º Período\Exercícios resolvidos (AC II)\Guia 08\flip_flop_d.v";

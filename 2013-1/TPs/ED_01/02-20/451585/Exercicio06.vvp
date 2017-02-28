@@ -1,0 +1,57 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x276ab40 .scope module, "testxorgate" "testxorgate" 2 21;
+ .timescale 0 0;
+v0x277c5a0_0 .var "a", 0 0;
+v0x277c640_0 .var "b", 0 0;
+v0x277c6f0_0 .net "s", 0 0, L_0x277ca90; 1 drivers
+S_0x2769ef0 .scope module, "XOR1" "xorgate" 2 26, 2 11, S_0x276ab40;
+ .timescale 0 0;
+L_0x277c7a0 .functor NOT 1, v0x277c5a0_0, C4<0>, C4<0>, C4<0>;
+L_0x277c880 .functor AND 1, L_0x277c7a0, v0x277c640_0, C4<1>, C4<1>;
+L_0x277c980 .functor NOT 1, v0x277c640_0, C4<0>, C4<0>, C4<0>;
+L_0x277c9e0 .functor AND 1, v0x277c5a0_0, L_0x277c980, C4<1>, C4<1>;
+L_0x277ca90 .functor OR 1, L_0x277c880, L_0x277c9e0, C4<0>, C4<0>;
+v0x2747a50_0 .net *"_s0", 0 0, L_0x277c7a0; 1 drivers
+v0x277c190_0 .net *"_s2", 0 0, L_0x277c880; 1 drivers
+v0x277c230_0 .net *"_s4", 0 0, L_0x277c980; 1 drivers
+v0x277c2d0_0 .net *"_s6", 0 0, L_0x277c9e0; 1 drivers
+v0x277c380_0 .net "p", 0 0, v0x277c5a0_0; 1 drivers
+v0x277c420_0 .net "q", 0 0, v0x277c640_0; 1 drivers
+v0x277c500_0 .alias "s", 0 0, v0x277c6f0_0;
+S_0x276ac30 .scope begin, "main" "main" 2 28, 2 28, S_0x276ab40;
+ .timescale 0 0;
+    .scope S_0x276ab40;
+T_0 ;
+    %fork t_1, S_0x276ac30;
+    %jmp t_0;
+    .scope S_0x276ac30;
+t_1 ;
+    %vpi_call 2 29 "$display", "test xor:";
+    %vpi_call 2 30 "$display", "\012  ( (~(p) & q) | (p & ~(q)) ) = s \012";
+    %vpi_call 2 31 "$monitor", " ( (~(%b) & %b) | (%b & ~(%b)) )", v0x277c5a0_0, v0x277c640_0, v0x277c5a0_0, v0x277c640_0, v0x277c6f0_0;
+    %set/v v0x277c5a0_0, 0, 1;
+    %set/v v0x277c640_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x277c5a0_0, 0, 1;
+    %set/v v0x277c640_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x277c5a0_0, 1, 1;
+    %set/v v0x277c640_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x277c5a0_0, 1, 1;
+    %set/v v0x277c640_0, 1, 1;
+    %end;
+    .scope S_0x276ab40;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio06.v";

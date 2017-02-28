@@ -1,0 +1,44 @@
+; --------------------------------------
+; This program operates integers,
+; calculates the remainder between them
+; and outputs the result
+; OBS.: PC and MA must begin with 10100
+; --------------------------------------
+
+HALT: 
+K0:     jump HALT       ; no more operations
+K1:     jump START      ; program begin
+M2:     .data 2 0	;
+M3:	.data 2 7	; data1 = (06)
+M4:     .data 2 2	; data2 = (02)
+M5:	.data 2 0	; result
+M6:	.data 2 0	; temp
+M7:	.data 2 0	;
+M8:	.data 2 0	;
+M9:	.data 2 0	;
+	
+START:  load  M3        ; AC <- M3
+        store M6        ; M6 <- AC
+REP01:	
+        load  M6        ; AC <- M6
+        jumpZ ENDR01	; while M6 > 0
+        jumpS ENDR02    ;
+        
+        sub   M4	; AC <- AC - M4
+	store M6 	; M6 <- AC
+
+	load  M5	; AC <- M5
+        inc     	; AC <- AC + 1
+	store M5 	; M5 <- AC
+
+        jump  REP01     ; repeat from REP01
+ENDR02:	load  M6	; AC <- M6
+        add   M4  	; AC <- AC - M4
+	store M6 	; M6 <- AC
+ENDR01:	load  M6 	; AC <- M5
+	out 		; OUT <- AC
+	halt  		; stop running
+
+
+
+

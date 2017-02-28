@@ -1,0 +1,91 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EFC88 .scope module, "testorgate" "testorgate" 2 18;
+ .timescale 0 0;
+v002F7B98_0 .var "a", 0 0;
+v002F7BF0_0 .var "b", 0 0;
+v002F7C48_0 .var "c", 0 0;
+v00319C08_0 .net "s", 0 0, L_002F24B8; 1 drivers
+S_002D10F0 .scope module, "OR1" "orgate" 2 23, 2 12, S_003EFC88;
+ .timescale 0 0;
+L_002F7CA0 .functor OR 1, v002F7B98_0, v002F7BF0_0, C4<0>, C4<0>;
+L_00319C98 .functor OR 1, L_002F7CA0, v002F7C48_0, C4<0>, C4<0>;
+L_00319D40 .functor NOT 1, L_00319C98, C4<0>, C4<0>, C4<0>;
+L_002F24B8 .functor NOT 1, L_00319D40, C4<0>, C4<0>, C4<0>;
+v003E3658_0 .net *"_s0", 0 0, L_002F7CA0; 1 drivers
+v003E36B0_0 .net *"_s2", 0 0, L_00319C98; 1 drivers
+v003E3708_0 .net *"_s4", 0 0, L_00319D40; 1 drivers
+v003E3760_0 .net "a", 0 0, v002F7B98_0; 1 drivers
+v002F7A90_0 .net "b", 0 0, v002F7BF0_0; 1 drivers
+v002F7AE8_0 .net "c", 0 0, v002F7C48_0; 1 drivers
+v002F7B40_0 .alias "s", 0 0, v00319C08_0;
+S_002D1068 .scope begin, "start" "start" 2 25, 2 25, S_003EFC88;
+ .timescale 0 0;
+S_003EFD10 .scope begin, "main" "main" 2 29, 2 29, S_003EFC88;
+ .timescale 0 0;
+    .scope S_003EFC88;
+T_0 ;
+    %fork t_1, S_002D1068;
+    %jmp t_0;
+    .scope S_002D1068;
+t_1 ;
+    %set/v v002F7B98_0, 0, 1;
+    %set/v v002F7BF0_0, 0, 1;
+    %set/v v002F7C48_0, 0, 1;
+    %end;
+    .scope S_003EFC88;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EFC88;
+T_1 ;
+    %fork t_3, S_003EFD10;
+    %jmp t_2;
+    .scope S_003EFD10;
+t_3 ;
+    %vpi_call 2 30 "$display", "Exercicio04 -  Milton teles da silva - 2751";
+    %vpi_call 2 31 "$display", "Test OR gate";
+    %vpi_call 2 32 "$display", "a|b|c = s";
+    %vpi_call 2 33 "$monitor", "%b %b %b = %b", v002F7B98_0, v002F7BF0_0, v002F7C48_0, v00319C08_0;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 1, 1;
+    %set/v v002F7BF0_0, 0, 1;
+    %set/v v002F7C48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 0, 1;
+    %set/v v002F7BF0_0, 1, 1;
+    %set/v v002F7C48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 0, 1;
+    %set/v v002F7BF0_0, 0, 1;
+    %set/v v002F7C48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 1, 1;
+    %set/v v002F7BF0_0, 1, 1;
+    %set/v v002F7C48_0, 0, 1;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 1, 1;
+    %set/v v002F7BF0_0, 0, 1;
+    %set/v v002F7C48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 0, 1;
+    %set/v v002F7BF0_0, 1, 1;
+    %set/v v002F7C48_0, 1, 1;
+    %delay 1, 0;
+    %set/v v002F7B98_0, 1, 1;
+    %set/v v002F7BF0_0, 1, 1;
+    %set/v v002F7C48_0, 1, 1;
+    %end;
+    .scope S_003EFC88;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Vesa\Documents\COMPUTAÇAO  2011 2º SEMESTRE\A. C.  I\Milton teles 2751\Exercicio05.v";

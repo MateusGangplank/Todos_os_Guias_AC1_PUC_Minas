@@ -1,0 +1,76 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C2DF0 .scope module, "novo" "novo" 2 12;
+ .timescale 0 0;
+v003CFBA0_0 .var "a", 0 0;
+v003CFBF8_0 .var "b", 0 0;
+v003C8C60_0 .var "c", 0 0;
+v003C8CB8_0 .net "u", 0 0, L_003C8D10; 1 drivers
+S_003C3390 .scope module, "pendrive" "ANDtriplo" 2 16, 2 8, S_003C2DF0;
+ .timescale 0 0;
+L_003CFC50 .functor AND 1, v003CFBA0_0, v003CFBF8_0, C4<1>, C4<1>;
+L_003C8D10 .functor AND 1, L_003CFC50, v003C8C60_0, C4<1>, C4<1>;
+v003C3418_0 .net *"_s0", 0 0, L_003CFC50; 1 drivers
+v003C3470_0 .net "h", 0 0, v003CFBA0_0; 1 drivers
+v003CFA98_0 .net "j", 0 0, v003CFBF8_0; 1 drivers
+v003CFAF0_0 .net "o", 0 0, v003C8C60_0; 1 drivers
+v003CFB48_0 .alias "u", 0 0, v003C8CB8_0;
+S_003C2E78 .scope begin, "start" "start" 2 17, 2 17, S_003C2DF0;
+ .timescale 0 0;
+    .scope S_003C2DF0;
+T_0 ;
+    %fork t_1, S_003C2E78;
+    %jmp t_0;
+    .scope S_003C2E78;
+t_1 ;
+    %set/v v003CFBA0_0, 0, 1;
+    %set/v v003CFBF8_0, 0, 1;
+    %set/v v003C8C60_0, 0, 1;
+    %end;
+    .scope S_003C2DF0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003C2DF0;
+T_1 ;
+    %vpi_call 2 23 "$display", "Miller - 449048";
+    %vpi_call 2 24 "$display", "Porta AND com 3 entradas";
+    %vpi_call 2 25 "$display", " ";
+    %vpi_call 2 27 "$monitor", " %b & %b & %b = %b", v003CFBA0_0, v003CFBF8_0, v003C8C60_0, v003C8CB8_0;
+    %delay 1, 0;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 0, 1;
+    %set/v v003CFBF8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 0, 1;
+    %set/v v003CFBF8_0, 0, 1;
+    %set/v v003C8C60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 1, 1;
+    %set/v v003CFBF8_0, 1, 1;
+    %set/v v003C8C60_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 1, 1;
+    %set/v v003CFBF8_0, 0, 1;
+    %set/v v003C8C60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 0, 1;
+    %set/v v003CFBF8_0, 1, 1;
+    %set/v v003C8C60_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003CFBA0_0, 1, 1;
+    %set/v v003CFBF8_0, 1, 1;
+    %set/v v003C8C60_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Exercicio 8.v";

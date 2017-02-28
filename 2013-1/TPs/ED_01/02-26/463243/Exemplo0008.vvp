@@ -1,0 +1,71 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005DE958 .scope module, "testxnorgate" "testxnorgate" 2 24;
+ .timescale 0 0;
+v005DEE88_0 .var "a", 0 0;
+v005DEEE0_0 .var "b", 0 0;
+v005DEF38_0 .net "s", 0 0, L_005DFDF0; 1 drivers
+S_005D3498 .scope module, "XNOR1" "xnorgate" 2 33, 2 15, S_005DE958;
+ .timescale 0 0;
+L_005D35D0 .functor XOR 1, v005DEE88_0, v005DEEE0_0, C4<0>, C4<0>;
+L_005DFDF0 .functor NOT 1, L_005D35D0, C4<0>, C4<0>, C4<0>;
+v005DE9E0_0 .net *"_s0", 0 0, L_005D35D0; 1 drivers
+v005D3520_0 .net "p", 0 0, v005DEE88_0; 1 drivers
+v005D3578_0 .net "q", 0 0, v005DEEE0_0; 1 drivers
+v005DEE30_0 .alias "s", 0 0, v005DEF38_0;
+S_005D3060 .scope begin, "start" "start" 2 35, 2 35, S_005DE958;
+ .timescale 0 0;
+S_005D2FD8 .scope begin, "main" "main" 2 41, 2 41, S_005DE958;
+ .timescale 0 0;
+    .scope S_005DE958;
+T_0 ;
+    %fork t_1, S_005D3060;
+    %jmp t_0;
+    .scope S_005D3060;
+t_1 ;
+    %set/v v005DEE88_0, 0, 1;
+    %set/v v005DEEE0_0, 0, 1;
+    %end;
+    .scope S_005DE958;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005DE958;
+T_1 ;
+    %fork t_3, S_005D2FD8;
+    %jmp t_2;
+    .scope S_005D2FD8;
+t_3 ;
+    %vpi_call 2 42 "$display", "Exemplo 0008 - Izabela Caldeira Borges - 463243";
+    %vpi_call 2 43 "$display", "Test XNOR gate";
+    %vpi_call 2 44 "$display", "\012(~(a ^ b)) = s\012";
+    %set/v v005DEE88_0, 0, 1;
+    %set/v v005DEEE0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "~( %b ^ %b )= %b", v005DEE88_0, v005DEEE0_0, v005DEF38_0;
+    %set/v v005DEE88_0, 0, 1;
+    %set/v v005DEEE0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "~( %b ^ %b )= %b", v005DEE88_0, v005DEEE0_0, v005DEF38_0;
+    %set/v v005DEE88_0, 1, 1;
+    %set/v v005DEEE0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "~( %b ^ %b )= %b", v005DEE88_0, v005DEEE0_0, v005DEF38_0;
+    %set/v v005DEE88_0, 1, 1;
+    %set/v v005DEEE0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "~( %b ^ %b )= %b", v005DEE88_0, v005DEEE0_0, v005DEF38_0;
+    %end;
+    .scope S_005DE958;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G:\Ciência da Computação\Arquitetura de Computadores\Guia01\Exemplo0008.v";

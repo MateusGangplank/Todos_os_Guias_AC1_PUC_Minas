@@ -1,0 +1,97 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0083A2B8 .scope module, "test_fullAdder" "test_fullAdder" 2 33;
+ .timescale 0 0;
+v0070EEC0_0 .var "carry", 0 0;
+v0070EF18_0 .net "cout", 0 0, L_00742E60; 1 drivers
+RS_0071201C .resolv tri, L_0070F078, L_0070F180, L_0070F288, C4<zzz>;
+v0070EF70_0 .net8 "soma", 2 0, RS_0071201C; 3 drivers
+v0070EFC8_0 .var "x", 2 0;
+v0070F020_0 .var "y", 2 0;
+S_0083A230 .scope module, "f1" "fullAdder" 2 40, 2 25, S_0083A2B8;
+ .timescale 0 0;
+v0070EC58_0 .net "a", 2 0, v0070EFC8_0; 1 drivers
+v0070ECB0_0 .net "b", 2 0, v0070F020_0; 1 drivers
+v0070ED08_0 .net "carryIn", 0 0, v0070EEC0_0; 1 drivers
+v0070ED60_0 .alias "carryOut", 0 0, v0070EF18_0;
+v0070EDB8_0 .alias "s", 2 0, v0070EF70_0;
+v0070EE10_0 .net "w1", 0 0, L_00711018; 1 drivers
+v0070EE68_0 .net "w2", 0 0, L_00742BF8; 1 drivers
+L_0070F078 .part/pv L_0083D700, 0, 1, 3;
+L_0070F0D0 .part v0070EFC8_0, 0, 1;
+L_0070F128 .part v0070F020_0, 0, 1;
+L_0070F180 .part/pv L_00742AA8, 1, 1, 3;
+L_0070F1D8 .part v0070EFC8_0, 1, 1;
+L_0070F230 .part v0070F020_0, 1, 1;
+L_0070F288 .part/pv L_00742D10, 2, 1, 3;
+L_00743200 .part v0070EFC8_0, 2, 1;
+L_00743258 .part v0070F020_0, 2, 1;
+S_0083A4D8 .scope module, "h0" "halfAdder" 2 27, 2 11, S_0083A230;
+ .timescale 0 0;
+L_00711088 .functor XOR 1, L_0070F0D0, L_0070F128, C4<0>, C4<0>;
+L_0083D700 .functor XOR 1, L_00711088, v0070EEC0_0, C4<0>, C4<0>;
+L_0083D770 .functor AND 1, L_0070F0D0, L_0070F128, C4<1>, C4<1>;
+L_0083D818 .functor AND 1, L_00711088, v0070EEC0_0, C4<1>, C4<1>;
+L_00711018 .functor OR 1, L_0083D770, L_0083D818, C4<0>, C4<0>;
+v0070E998_0 .net "a", 0 0, L_0070F0D0; 1 drivers
+v0070E9F0_0 .net "b", 0 0, L_0070F128; 1 drivers
+v0070EA48_0 .alias "cin", 0 0, v0070ED08_0;
+v0070EAA0_0 .alias "cout", 0 0, v0070EE10_0;
+v0070EAF8_0 .net "s", 0 0, L_0083D700; 1 drivers
+v0070EB50_0 .net "w1", 0 0, L_00711088; 1 drivers
+v0070EBA8_0 .net "w3", 0 0, L_0083D770; 1 drivers
+v0070EC00_0 .net "w4", 0 0, L_0083D818; 1 drivers
+S_0083A560 .scope module, "h1" "halfAdder" 2 29, 2 11, S_0083A230;
+ .timescale 0 0;
+L_00742A70 .functor XOR 1, L_0070F1D8, L_0070F230, C4<0>, C4<0>;
+L_00742AA8 .functor XOR 1, L_00742A70, L_00711018, C4<0>, C4<0>;
+L_00742B18 .functor AND 1, L_0070F1D8, L_0070F230, C4<1>, C4<1>;
+L_00742BC0 .functor AND 1, L_00742A70, L_00711018, C4<1>, C4<1>;
+L_00742BF8 .functor OR 1, L_00742B18, L_00742BC0, C4<0>, C4<0>;
+v0070E6D8_0 .net "a", 0 0, L_0070F1D8; 1 drivers
+v0070E730_0 .net "b", 0 0, L_0070F230; 1 drivers
+v0070E788_0 .alias "cin", 0 0, v0070EE10_0;
+v0070E7E0_0 .alias "cout", 0 0, v0070EE68_0;
+v0070E838_0 .net "s", 0 0, L_00742AA8; 1 drivers
+v0070E890_0 .net "w1", 0 0, L_00742A70; 1 drivers
+v0070E8E8_0 .net "w3", 0 0, L_00742B18; 1 drivers
+v0070E940_0 .net "w4", 0 0, L_00742BC0; 1 drivers
+S_0083A1A8 .scope module, "h2" "halfAdder" 2 30, 2 11, S_0083A230;
+ .timescale 0 0;
+L_00742CD8 .functor XOR 1, L_00743200, L_00743258, C4<0>, C4<0>;
+L_00742D10 .functor XOR 1, L_00742CD8, L_00742BF8, C4<0>, C4<0>;
+L_00742D80 .functor AND 1, L_00743200, L_00743258, C4<1>, C4<1>;
+L_00742E28 .functor AND 1, L_00742CD8, L_00742BF8, C4<1>, C4<1>;
+L_00742E60 .functor OR 1, L_00742D80, L_00742E28, C4<0>, C4<0>;
+v0070E418_0 .net "a", 0 0, L_00743200; 1 drivers
+v0070E470_0 .net "b", 0 0, L_00743258; 1 drivers
+v0070E4C8_0 .alias "cin", 0 0, v0070EE68_0;
+v0070E520_0 .alias "cout", 0 0, v0070EF18_0;
+v0070E578_0 .net "s", 0 0, L_00742D10; 1 drivers
+v0070E5D0_0 .net "w1", 0 0, L_00742CD8; 1 drivers
+v0070E628_0 .net "w3", 0 0, L_00742D80; 1 drivers
+v0070E680_0 .net "w4", 0 0, L_00742E28; 1 drivers
+    .scope S_0083A2B8;
+T_0 ;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "exemplo0021 - Andre Campolina - 381217";
+    %delay 1, 0;
+    %vpi_call 2 44 "$display", "Full Adder";
+    %movi 8, 2, 3;
+    %set/v v0070EFC8_0, 8, 3;
+    %movi 8, 3, 3;
+    %set/v v0070F020_0, 8, 3;
+    %set/v v0070EEC0_0, 0, 1;
+    %delay 4, 0;
+    %vpi_call 2 52 "$display", "%3b %3b %b = %3b %b", v0070EFC8_0, v0070F020_0, v0070EEC0_0, v0070EF70_0, v0070EF18_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\André\Documents\PUC\Ciencia da Computação\2 Periodo\Arquitetura 1\Exercicios\Guia04\Exemplo0021.vhdl";

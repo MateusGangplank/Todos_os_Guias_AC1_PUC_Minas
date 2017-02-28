@@ -1,0 +1,49 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00660E98 .scope module, "testex04" "testex04" 2 14;
+ .timescale 0 0;
+L_003E4288 .functor NOR 1, v00660F20_0, v00660F20_0, C4<0>, C4<0>;
+L_00699090 .functor NOR 1, v00698CA0_0, v00698CA0_0, C4<0>, C4<0>;
+L_00699100 .functor NOR 1, L_003E4288, L_00699090, C4<0>, C4<0>;
+L_006991A8 .functor NOR 1, v00660F20_0, L_00699090, C4<0>, C4<0>;
+L_006991E0 .functor NOR 1, L_003E4288, v00698CA0_0, C4<0>, C4<0>;
+L_00699218 .functor NOR 1, L_006991A8, L_006991E0, C4<0>, C4<0>;
+L_006992E0 .functor NOR 1, L_00699218, L_00699218, C4<0>, C4<0>;
+v00660F20_0 .var "a", 0 0;
+v00698CA0_0 .var "b", 0 0;
+v00698D10_0 .net "c", 0 0, L_00699100; 1 drivers
+v00698D98_0 .net "notA", 0 0, L_003E4288; 1 drivers
+v00698E08_0 .net "notB", 0 0, L_00699090; 1 drivers
+v00698E60_0 .net "s", 0 0, L_006992E0; 1 drivers
+v00698ED0_0 .net "s0", 0 0, L_00699218; 1 drivers
+v00698F68_0 .net "s1", 0 0, L_006991A8; 1 drivers
+v00698FD8_0 .net "s2", 0 0, L_006991E0; 1 drivers
+    .scope S_00660E98;
+T_0 ;
+    %vpi_call 2 29 "$display", "Exercicio 04 - Pedro Tronbin - 410473";
+    %vpi_call 2 30 "$display", "Half Adder Test.";
+    %vpi_call 2 31 "$display", "A  +  B  =  C  S";
+    %set/v v00660F20_0, 0, 1;
+    %set/v v00698CA0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$monitor", "%b  +  %b  =  %b  %b", v00660F20_0, v00698CA0_0, v00698D10_0, v00698E60_0;
+    %delay 1, 0;
+    %set/v v00660F20_0, 0, 1;
+    %set/v v00698CA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00660F20_0, 1, 1;
+    %set/v v00698CA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00660F20_0, 1, 1;
+    %set/v v00698CA0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Documents and Settings\Administrador\Desktop\Guia03\Guia0304.V";

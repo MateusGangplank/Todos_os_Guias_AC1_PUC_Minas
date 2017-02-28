@@ -1,0 +1,151 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005CA460 .scope module, "teste_compareComSelecao" "teste_compareComSelecao" 2 43;
+ .timescale 0 0;
+v007337B0_0 .var "a", 3 0;
+v00733808_0 .var "b", 3 0;
+v00733860_0 .var "chave", 3 0;
+v007338B8_0 .net "resp", 3 0, L_00740C88; 1 drivers
+S_005CA3D8 .scope module, "COMPARADORCOMSELECAO" "comparadorComSelecao" 2 52, 2 26, S_005CA460;
+ .timescale 0 0;
+L_00740B00 .functor NOT 4, v00733860_0, C4<0000>, C4<0000>, C4<0000>;
+RS_00745274 .resolv tri, L_0076CC10, L_0076CD18, L_0076CE20, L_0076CF28;
+L_00740BE0 .functor AND 4, RS_00745274, L_00740B00, C4<1111>, C4<1111>;
+RS_0074513C .resolv tri, L_0076D030, L_0076D138, L_0076D240, L_0076D348;
+L_00740C50 .functor AND 4, RS_0074513C, v00733860_0, C4<1111>, C4<1111>;
+L_00740C88 .functor OR 4, L_00740BE0, L_00740C50, C4<0000>, C4<0000>;
+v00733498_0 .net *"_s0", 3 0, L_00740B00; 1 drivers
+v007334F0_0 .net "a", 3 0, v007337B0_0; 1 drivers
+v00733548_0 .net "b", 3 0, v00733808_0; 1 drivers
+v007335A0_0 .net "chave", 3 0, v00733860_0; 1 drivers
+v007335F8_0 .alias "s", 3 0, v007338B8_0;
+v00733650_0 .net8 "tmp0", 3 0, RS_00745274; 4 drivers
+v007336A8_0 .net8 "tmp1", 3 0, RS_0074513C; 4 drivers
+v00733700_0 .net "tmp2", 3 0, L_00740BE0; 1 drivers
+v00733758_0 .net "tmp3", 3 0, L_00740C50; 1 drivers
+S_005CA5F8 .scope module, "COMPARADOR0" "comparador" 2 31, 2 7, S_005CA3D8;
+ .timescale 0 0;
+L_005CE898 .functor XNOR 1, L_0076CC68, L_0076CCC0, C4<0>, C4<0>;
+L_005CCDF8 .functor XNOR 1, L_0076CD70, L_0076CDC8, C4<0>, C4<0>;
+L_007405C0 .functor XNOR 1, L_0076CE78, L_0076CED0, C4<0>, C4<0>;
+L_007406A0 .functor XNOR 1, L_0076CF80, L_0076CFD8, C4<0>, C4<0>;
+v00732F70_0 .net *"_s0", 0 0, L_005CE898; 1 drivers
+v00732FC8_0 .net *"_s11", 0 0, L_0076CDC8; 1 drivers
+v00733020_0 .net *"_s12", 0 0, L_007405C0; 1 drivers
+v00733078_0 .net *"_s15", 0 0, L_0076CE78; 1 drivers
+v007330D0_0 .net *"_s17", 0 0, L_0076CED0; 1 drivers
+v00733128_0 .net *"_s18", 0 0, L_007406A0; 1 drivers
+v00733180_0 .net *"_s21", 0 0, L_0076CF80; 1 drivers
+v007331D8_0 .net *"_s23", 0 0, L_0076CFD8; 1 drivers
+v00733230_0 .net *"_s3", 0 0, L_0076CC68; 1 drivers
+v00733288_0 .net *"_s5", 0 0, L_0076CCC0; 1 drivers
+v007332E0_0 .net *"_s6", 0 0, L_005CCDF8; 1 drivers
+v00733338_0 .net *"_s9", 0 0, L_0076CD70; 1 drivers
+v00733390_0 .alias "a", 3 0, v007334F0_0;
+v007333E8_0 .alias "b", 3 0, v00733548_0;
+v00733440_0 .alias "s", 3 0, v00733650_0;
+L_0076CC10 .part/pv L_005CE898, 0, 1, 4;
+L_0076CC68 .part v007337B0_0, 0, 1;
+L_0076CCC0 .part v00733808_0, 0, 1;
+L_0076CD18 .part/pv L_005CCDF8, 1, 1, 4;
+L_0076CD70 .part v007337B0_0, 1, 1;
+L_0076CDC8 .part v00733808_0, 1, 1;
+L_0076CE20 .part/pv L_007405C0, 2, 1, 4;
+L_0076CE78 .part v007337B0_0, 2, 1;
+L_0076CED0 .part v00733808_0, 2, 1;
+L_0076CF28 .part/pv L_007406A0, 3, 1, 4;
+L_0076CF80 .part v007337B0_0, 3, 1;
+L_0076CFD8 .part v00733808_0, 3, 1;
+S_005CA570 .scope module, "COMPARADORDIFERENCA" "comparadorDiferenca" 2 32, 2 17, S_005CA3D8;
+ .timescale 0 0;
+L_007407F0 .functor XOR 1, L_0076D088, L_0076D0E0, C4<0>, C4<0>;
+L_007408D0 .functor XOR 1, L_0076D190, L_0076D1E8, C4<0>, C4<0>;
+L_00740748 .functor XOR 1, L_0076D298, L_0076D2F0, C4<0>, C4<0>;
+L_00740A58 .functor XOR 1, L_0076D3A0, L_0076D3F8, C4<0>, C4<0>;
+v00732A48_0 .net *"_s0", 0 0, L_007407F0; 1 drivers
+v00732AA0_0 .net *"_s11", 0 0, L_0076D1E8; 1 drivers
+v00732AF8_0 .net *"_s12", 0 0, L_00740748; 1 drivers
+v00732B50_0 .net *"_s15", 0 0, L_0076D298; 1 drivers
+v00732BA8_0 .net *"_s17", 0 0, L_0076D2F0; 1 drivers
+v00732C00_0 .net *"_s18", 0 0, L_00740A58; 1 drivers
+v00732C58_0 .net *"_s21", 0 0, L_0076D3A0; 1 drivers
+v00732CB0_0 .net *"_s23", 0 0, L_0076D3F8; 1 drivers
+v00732D08_0 .net *"_s3", 0 0, L_0076D088; 1 drivers
+v00732D60_0 .net *"_s5", 0 0, L_0076D0E0; 1 drivers
+v00732DB8_0 .net *"_s6", 0 0, L_007408D0; 1 drivers
+v00732E10_0 .net *"_s9", 0 0, L_0076D190; 1 drivers
+v00732E68_0 .alias "a", 3 0, v007334F0_0;
+v00732EC0_0 .alias "b", 3 0, v00733548_0;
+v00732F18_0 .alias "s", 3 0, v007336A8_0;
+L_0076D030 .part/pv L_007407F0, 0, 1, 4;
+L_0076D088 .part v007337B0_0, 0, 1;
+L_0076D0E0 .part v00733808_0, 0, 1;
+L_0076D138 .part/pv L_007408D0, 1, 1, 4;
+L_0076D190 .part v007337B0_0, 1, 1;
+L_0076D1E8 .part v00733808_0, 1, 1;
+L_0076D240 .part/pv L_00740748, 2, 1, 4;
+L_0076D298 .part v007337B0_0, 2, 1;
+L_0076D2F0 .part v00733808_0, 2, 1;
+L_0076D348 .part/pv L_00740A58, 3, 1, 4;
+L_0076D3A0 .part v007337B0_0, 3, 1;
+L_0076D3F8 .part v00733808_0, 3, 1;
+    .scope S_005CA460;
+T_0 ;
+    %vpi_call 2 57 "$display", "Exemplo0027 - Alvaro Henrique de Araujo Rungue - 395487";
+    %vpi_call 2 58 "$display", "\012Test ALU's Comparador Com Diferenca:\012";
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v00733808_0, 8, 4;
+    %set/v v00733860_0, 0, 4;
+    %vpi_call 2 63 "$monitor", "a = %b , b =  %b , Resposta : %b *** Chave = %b", v007337B0_0, v00733808_0, v007338B8_0, v00733860_0;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %set/v v00733808_0, 1, 4;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00733808_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00733808_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00733808_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %set/v v00733808_0, 1, 4;
+    %set/v v00733860_0, 1, 4;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00733808_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00733808_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v007337B0_0, 8, 4;
+    %movi 8, 11, 4;
+    %set/v v00733808_0, 8, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\HENRIQUE\Desktop\Guia 04 -395487\Exemplo0027.v";

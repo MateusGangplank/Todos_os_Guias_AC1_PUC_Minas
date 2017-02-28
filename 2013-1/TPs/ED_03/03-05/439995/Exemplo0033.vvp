@@ -1,0 +1,90 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00AF90C8 .scope module, "test_f4" "test_f4" 2 29;
+ .timescale 0 0;
+v00AFB478_0 .var "chave", 0 0;
+v00AFB4D0_0 .net "saida", 0 0, L_005AD630; 1 drivers
+v00AFB528_0 .net "saida2", 0 0, L_005AD710; 1 drivers
+v00AFB580_0 .var "x", 0 0;
+v00AFB5D8_0 .var "y", 0 0;
+S_00AF9150 .scope module, "Exercicio0033" "Exercicio33" 2 34, 2 9, S_00AF90C8;
+ .timescale 0 0;
+L_005D4F30 .functor AND 1, v00AFB580_0, v00AFB5D8_0, C4<1>, C4<1>;
+L_00AFD3D8 .functor NAND 1, v00AFB580_0, v00AFB5D8_0, C4<1>, C4<1>;
+L_00AFD410 .functor OR 1, v00AFB580_0, v00AFB5D8_0, C4<0>, C4<0>;
+L_005D4F68 .functor NOR 1, v00AFB580_0, v00AFB5D8_0, C4<0>, C4<0>;
+L_005D4FA0 .functor AND 1, L_005D4F30, L_00AFD480, C4<1>, C4<1>;
+L_00AFD480 .functor NOT 1, v00AFB478_0, C4<0>, C4<0>, C4<0>;
+L_005AD4A8 .functor AND 1, L_00AFD3D8, v00AFB478_0, C4<1>, C4<1>;
+L_005AD518 .functor AND 1, L_00AFD410, L_005AD588, C4<1>, C4<1>;
+L_005AD588 .functor NOT 1, v00AFB478_0, C4<0>, C4<0>, C4<0>;
+L_005AD470 .functor AND 1, v00AFB478_0, L_005D4F68, C4<1>, C4<1>;
+L_005AD630 .functor OR 1, L_005D4FA0, L_005AD4A8, C4<0>, C4<0>;
+L_005AD710 .functor OR 1, L_005AD518, L_005AD470, C4<0>, C4<0>;
+v00AFAF50_0 .net *"_s0", 0 0, L_00AFD480; 1 drivers
+v00AFAFA8_0 .net *"_s2", 0 0, L_005AD588; 1 drivers
+v00AFB000_0 .net "a", 0 0, v00AFB580_0; 1 drivers
+v00AFB058_0 .net "b", 0 0, v00AFB5D8_0; 1 drivers
+v00AFB0B0_0 .net "ch", 0 0, v00AFB478_0; 1 drivers
+v00AFB108_0 .alias "s1", 0 0, v00AFB4D0_0;
+v00AFB160_0 .alias "s2", 0 0, v00AFB528_0;
+v00AFB1B8_0 .net "w1", 0 0, L_005D4F30; 1 drivers
+v00AFB210_0 .net "w2", 0 0, L_00AFD3D8; 1 drivers
+v00AFB268_0 .net "w3", 0 0, L_00AFD410; 1 drivers
+v00AFB2C0_0 .net "w4", 0 0, L_005D4F68; 1 drivers
+v00AFB318_0 .net "w5", 0 0, L_005D4FA0; 1 drivers
+v00AFB370_0 .net "w6", 0 0, L_005AD4A8; 1 drivers
+v00AFB3C8_0 .net "w7", 0 0, L_005AD518; 1 drivers
+v00AFB420_0 .net "w8", 0 0, L_005AD470; 1 drivers
+    .scope S_00AF90C8;
+T_0 ;
+    %vpi_call 2 39 "$display", "Exemplo0033 - Thauan Velasco Cunha - 439995";
+    %vpi_call 2 40 "$display", "Test LU's module";
+    %delay 1, 0;
+    %set/v v00AFB580_0, 0, 1;
+    %set/v v00AFB5D8_0, 0, 1;
+    %set/v v00AFB478_0, 0, 1;
+    %vpi_call 2 44 "$monitor", "Chave = %1b A = %1b B = %1b Saida = %1b  Saida = %1b", v00AFB478_0, v00AFB580_0, v00AFB5D8_0, v00AFB4D0_0, v00AFB528_0;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 0, 1;
+    %set/v v00AFB5D8_0, 0, 1;
+    %set/v v00AFB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 0, 1;
+    %set/v v00AFB5D8_0, 1, 1;
+    %set/v v00AFB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 1, 1;
+    %set/v v00AFB5D8_0, 0, 1;
+    %set/v v00AFB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 1, 1;
+    %set/v v00AFB5D8_0, 1, 1;
+    %set/v v00AFB478_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 0, 1;
+    %set/v v00AFB5D8_0, 0, 1;
+    %set/v v00AFB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 0, 1;
+    %set/v v00AFB5D8_0, 1, 1;
+    %set/v v00AFB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 1, 1;
+    %set/v v00AFB5D8_0, 0, 1;
+    %set/v v00AFB478_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00AFB580_0, 1, 1;
+    %set/v v00AFB5D8_0, 1, 1;
+    %set/v v00AFB478_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\AC1\ED03-439995\Exemplo0033.v";

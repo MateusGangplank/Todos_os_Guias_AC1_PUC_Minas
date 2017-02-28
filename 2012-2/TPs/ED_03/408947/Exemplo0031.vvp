@@ -1,0 +1,93 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00679E78 .scope module, "test_f4" "test_f4" 2 12;
+ .timescale 0 0;
+v005D11D8_0 .var "a", 0 0;
+v005D1230_0 .var "b", 0 0;
+v005D1288_0 .var "c", 0 0;
+v005D12E0_0 .var "c1", 0 0;
+v005D1338_0 .var "c2", 0 0;
+v005D1390_0 .var "d", 0 0;
+v005D13E8_0 .net "s", 0 0, L_005D3FE8; 1 drivers
+S_00679F00 .scope module, "modulo1" "f4" 2 21, 2 9, S_00679E78;
+ .timescale 0 0;
+L_00674870 .functor NOT 1, v005D12E0_0, C4<0>, C4<0>, C4<0>;
+L_00672C68 .functor AND 1, v005D11D8_0, L_00674870, C4<1>, C4<1>;
+L_00672D10 .functor NOT 1, v005D1338_0, C4<0>, C4<0>, C4<0>;
+L_00672D80 .functor AND 1, L_00672C68, L_00672D10, C4<1>, C4<1>;
+L_0067CAD8 .functor NOT 1, v005D12E0_0, C4<0>, C4<0>, C4<0>;
+L_005D3B50 .functor AND 1, v005D1230_0, L_0067CAD8, C4<1>, C4<1>;
+L_005D3BF8 .functor AND 1, L_005D3B50, v005D1338_0, C4<1>, C4<1>;
+L_005D3C68 .functor OR 1, L_00672D80, L_005D3BF8, C4<0>, C4<0>;
+L_005D3D10 .functor AND 1, v005D1288_0, v005D12E0_0, C4<1>, C4<1>;
+L_005D3D80 .functor NOT 1, v005D1338_0, C4<0>, C4<0>, C4<0>;
+L_005D3DB8 .functor AND 1, L_005D3D10, L_005D3D80, C4<1>, C4<1>;
+L_005D3E60 .functor OR 1, L_005D3C68, L_005D3DB8, C4<0>, C4<0>;
+L_005D3F08 .functor AND 1, v005D1390_0, v005D12E0_0, C4<1>, C4<1>;
+L_005D3F78 .functor AND 1, L_005D3F08, v005D1338_0, C4<1>, C4<1>;
+L_005D3FE8 .functor OR 1, L_005D3E60, L_005D3F78, C4<0>, C4<0>;
+v0067CED8_0 .net *"_s0", 0 0, L_00674870; 1 drivers
+v006747B8_0 .net *"_s10", 0 0, L_005D3B50; 1 drivers
+v005D0B50_0 .net *"_s12", 0 0, L_005D3BF8; 1 drivers
+v005D0BA8_0 .net *"_s14", 0 0, L_005D3C68; 1 drivers
+v005D0C00_0 .net *"_s16", 0 0, L_005D3D10; 1 drivers
+v005D0C58_0 .net *"_s18", 0 0, L_005D3D80; 1 drivers
+v005D0CB0_0 .net *"_s2", 0 0, L_00672C68; 1 drivers
+v005D0D08_0 .net *"_s20", 0 0, L_005D3DB8; 1 drivers
+v005D0D60_0 .net *"_s22", 0 0, L_005D3E60; 1 drivers
+v005D0DB8_0 .net *"_s24", 0 0, L_005D3F08; 1 drivers
+v005D0E10_0 .net *"_s26", 0 0, L_005D3F78; 1 drivers
+v005D0E68_0 .net *"_s4", 0 0, L_00672D10; 1 drivers
+v005D0EC0_0 .net *"_s6", 0 0, L_00672D80; 1 drivers
+v005D0F18_0 .net *"_s8", 0 0, L_0067CAD8; 1 drivers
+v005D0F70_0 .net "a", 0 0, v005D11D8_0; 1 drivers
+v005D0FC8_0 .net "b", 0 0, v005D1230_0; 1 drivers
+v005D1020_0 .net "c", 0 0, v005D1288_0; 1 drivers
+v005D1078_0 .net "c1", 0 0, v005D12E0_0; 1 drivers
+v005D10D0_0 .net "c2", 0 0, v005D1338_0; 1 drivers
+v005D1128_0 .net "d", 0 0, v005D1390_0; 1 drivers
+v005D1180_0 .alias "s", 0 0, v005D13E8_0;
+    .scope S_00679E78;
+T_0 ;
+    %vpi_call 2 24 "$display", "Exemplo0031 - Guilherme Moreira Nunes - 408947";
+    %vpi_call 2 25 "$display", "Test LU's module";
+    %set/v v005D11D8_0, 1, 1;
+    %set/v v005D1230_0, 1, 1;
+    %set/v v005D1288_0, 0, 1;
+    %set/v v005D1390_0, 1, 1;
+    %set/v v005D12E0_0, 0, 1;
+    %set/v v005D1338_0, 0, 1;
+    %vpi_call 2 27 "$display", "S0 S1 S2 S3 |C1 C2| S";
+    %vpi_call 2 28 "$monitor", "%b  %b  %b  %b  |%b   %b|  %b", v005D11D8_0, v005D1230_0, v005D1288_0, v005D1390_0, v005D12E0_0, v005D1338_0, v005D13E8_0;
+    %delay 1, 0;
+    %set/v v005D11D8_0, 1, 1;
+    %set/v v005D1230_0, 0, 1;
+    %set/v v005D1288_0, 0, 1;
+    %set/v v005D1390_0, 1, 1;
+    %set/v v005D12E0_0, 0, 1;
+    %set/v v005D1338_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005D11D8_0, 1, 1;
+    %set/v v005D1230_0, 0, 1;
+    %set/v v005D1288_0, 1, 1;
+    %set/v v005D1390_0, 0, 1;
+    %set/v v005D12E0_0, 1, 1;
+    %set/v v005D1338_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005D11D8_0, 1, 1;
+    %set/v v005D1230_0, 0, 1;
+    %set/v v005D1288_0, 1, 1;
+    %set/v v005D1390_0, 0, 1;
+    %set/v v005D12E0_0, 1, 1;
+    %set/v v005D1338_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\PROGESP\Documents\CC - 2012-1\Arquitetura 01\Lista 03\Exemplo0031.v";

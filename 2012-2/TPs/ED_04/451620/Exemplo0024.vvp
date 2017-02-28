@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_009F99A0 .scope module, "test_comparadorDiferenca" "test_comparadorDiferenca" 2 24;
+ .timescale 0 0;
+v005AB1C0_0 .var "carry", 0 0;
+v005AB218_0 .net "diferenca", 0 0, L_005D2D98; 1 drivers
+v005AB270_0 .var "x", 0 0;
+v005AB2C8_0 .var "y", 0 0;
+S_009FB218 .scope module, "fa1" "comparadorDiferenca" 2 31, 2 9, S_009F99A0;
+ .timescale 0 0;
+L_009FEA00 .functor XNOR 1, v005AB270_0, v005AB2C8_0, C4<0>, C4<0>;
+L_005AEA00 .functor XNOR 1, v005AB270_0, v005AB1C0_0, C4<0>, C4<0>;
+L_005AEA70 .functor XNOR 1, v005AB2C8_0, v005AB1C0_0, C4<0>, C4<0>;
+L_005AEAA8 .functor AND 1, L_005AEA00, L_009FEA00, C4<1>, C4<1>;
+L_005D2CF0 .functor AND 1, L_005AEAA8, L_005AEA70, C4<1>, C4<1>;
+L_005D2D98 .functor NOT 1, L_005D2CF0, C4<0>, C4<0>, C4<0>;
+v009FA750_0 .net "a", 0 0, v005AB270_0; 1 drivers
+v009FA7A8_0 .net "b", 0 0, v005AB2C8_0; 1 drivers
+v009FA800_0 .net "carry", 0 0, v005AB1C0_0; 1 drivers
+v009FA858_0 .alias "s", 0 0, v005AB218_0;
+v005AE970_0 .net "temp1", 0 0, L_009FEA00; 1 drivers
+v005AB060_0 .net "temp2", 0 0, L_005AEA00; 1 drivers
+v005AB0B8_0 .net "temp3", 0 0, L_005AEA70; 1 drivers
+v005AB110_0 .net "temp4", 0 0, L_005AEAA8; 1 drivers
+v005AB168_0 .net "temp5", 0 0, L_005D2CF0; 1 drivers
+    .scope S_009F99A0;
+T_0 ;
+    %vpi_call 2 35 "$display", "Exemplo0024 - TIAGO MATTA MACHADO ZAIDAN - 451620";
+    %vpi_call 2 36 "$display", "Test ALU\222s comparador Diferenca";
+    %set/v v005AB270_0, 0, 1;
+    %set/v v005AB2C8_0, 0, 1;
+    %set/v v005AB1C0_0, 0, 1;
+    %vpi_call 2 40 "$display", "a  b  carry  s  ";
+    %delay 1, 0;
+    %vpi_call 2 41 "$monitor", "%b  %b     %b     %b", v005AB270_0, v005AB2C8_0, v005AB1C0_0, v005AB218_0;
+    %delay 1, 0;
+    %set/v v005AB270_0, 0, 1;
+    %set/v v005AB2C8_0, 0, 1;
+    %set/v v005AB1C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AB270_0, 0, 1;
+    %set/v v005AB2C8_0, 1, 1;
+    %set/v v005AB1C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005AB270_0, 0, 1;
+    %set/v v005AB2C8_0, 1, 1;
+    %set/v v005AB1C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AB270_0, 1, 1;
+    %set/v v005AB2C8_0, 0, 1;
+    %set/v v005AB1C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005AB270_0, 1, 1;
+    %set/v v005AB2C8_0, 0, 1;
+    %set/v v005AB1C0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005AB270_0, 1, 1;
+    %set/v v005AB2C8_0, 1, 1;
+    %set/v v005AB1C0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005AB270_0, 1, 1;
+    %set/v v005AB2C8_0, 1, 1;
+    %set/v v005AB1C0_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\USUARIO\Desktop\Puc_2_periodo\Arquitetura_1\Exercicios_Resolvidos\Guia04\Exemplo0024.v";

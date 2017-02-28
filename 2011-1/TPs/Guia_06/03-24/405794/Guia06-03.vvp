@@ -1,0 +1,95 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF3F8 .scope module, "teste" "teste" 2 26;
+ .timescale 0 0;
+v006A38E8_0 .var "A", 3 0;
+v006A3940_0 .var "B", 3 0;
+RS_00674024 .resolv tri, L_006A3A08, L_006A3B38, L_006A3C90, L_006A3E28;
+v006A3998_0 .net8 "Complemento", 3 0, RS_00674024; 4 drivers
+S_003EF478 .scope module, "C" "complemento1" 2 32, 2 13, S_003EF3F8;
+ .timescale 0 0;
+L_00673C28 .functor NOT 1, L_006A3A70, C4<0>, C4<0>, C4<0>;
+L_006A3B90 .functor NOT 1, L_006A3C00, C4<0>, C4<0>, C4<0>;
+L_00673B40 .functor NOT 1, L_006A3D30, C4<0>, C4<0>, C4<0>;
+L_006A3B00 .functor NOT 1, L_006A3EB8, C4<0>, C4<0>, C4<0>;
+v003EF4F8_0 .net "A", 3 0, v006A38E8_0; 1 drivers
+v006A34D0_0 .alias "Saida", 3 0, v006A3998_0;
+v006A3540_0 .net *"_s0", 0 0, L_00673C28; 1 drivers
+v006A35C8_0 .net *"_s11", 0 0, L_006A3D30; 1 drivers
+v006A3638_0 .net *"_s12", 0 0, L_006A3B00; 1 drivers
+v006A3690_0 .net *"_s15", 0 0, L_006A3EB8; 1 drivers
+v006A3700_0 .net *"_s3", 0 0, L_006A3A70; 1 drivers
+v006A3798_0 .net *"_s4", 0 0, L_006A3B90; 1 drivers
+v006A3808_0 .net *"_s7", 0 0, L_006A3C00; 1 drivers
+v006A3878_0 .net *"_s8", 0 0, L_00673B40; 1 drivers
+L_006A3A08 .part/pv L_00673C28, 0, 1, 4;
+L_006A3A70 .part v006A38E8_0, 0, 1;
+L_006A3B38 .part/pv L_006A3B90, 1, 1, 4;
+L_006A3C00 .part v006A38E8_0, 1, 1;
+L_006A3C90 .part/pv L_00673B40, 2, 1, 4;
+L_006A3D30 .part v006A38E8_0, 2, 1;
+L_006A3E28 .part/pv L_006A3B00, 3, 1, 4;
+L_006A3EB8 .part v006A38E8_0, 3, 1;
+    .scope S_003EF3F8;
+T_0 ;
+    %vpi_call 2 36 "$display", "Guia 06- 03";
+    %vpi_call 2 37 "$display", "Caio Ragacci Pimentel - 405794";
+    %vpi_call 2 38 "$display", "~~~~ALU~~~~";
+    %vpi_call 2 39 "$display", " Complemento A  ";
+    %set/v v006A38E8_0, 0, 4;
+    %set/v v006A3940_0, 0, 4;
+T_0.0 ;
+    %load/v 8, v006A38E8_0, 4;
+    %mov 12, 0, 1;
+    %cmpi/u 8, 15, 5;
+    %inv 4, 1;
+    %jmp/0xz T_0.1, 4;
+    %load/v 8, v006A3940_0, 4;
+    %cmpi/u 8, 0, 4;
+    %mov 8, 4, 1;
+    %jmp/0  T_0.2, 8;
+    %load/v 9, v006A38E8_0, 4;
+    %mov 13, 0, 28;
+    %jmp/1  T_0.4, 8;
+T_0.2 ; End of true expr.
+    %load/v 41, v006A38E8_0, 4;
+    %mov 45, 0, 28;
+   %addi 41, 1, 32;
+    %jmp/0  T_0.3, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_0.4;
+T_0.3 ;
+    %mov 9, 41, 32; Return false value
+T_0.4 ;
+    %set/v v006A38E8_0, 9, 4;
+    %set/v v006A3940_0, 0, 4;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "%b ", v006A3998_0;
+T_0.5 ;
+    %load/v 8, v006A3940_0, 4;
+    %mov 12, 0, 1;
+    %cmpi/u 8, 15, 5;
+    %inv 4, 1;
+    %jmp/0xz T_0.6, 4;
+    %load/v 8, v006A3940_0, 4;
+    %mov 12, 0, 28;
+   %addi 8, 1, 32;
+    %set/v v006A3940_0, 8, 4;
+    %delay 1, 0;
+    %vpi_call 2 51 "$display", "%b ", v006A3998_0;
+    %jmp T_0.5;
+T_0.6 ;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC - Ciencia da Computaçao\Arquitetura\Guias\Guia_06\Guia06-03.v";

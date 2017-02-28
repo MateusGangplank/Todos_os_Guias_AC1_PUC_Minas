@@ -1,0 +1,38 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007D3070 .scope module, "Exemplo0044" "Exemplo0044" 2 16;
+ .timescale 0 0;
+v007D36C8_0 .net "clk", 0 0, v007D3670_0; 1 drivers
+S_007D35E8 .scope module, "CLK1" "clock" 2 18, 2 4, S_007D3070;
+ .timescale 0 0;
+v007D3670_0 .var "clk", 0 0;
+    .scope S_007D35E8;
+T_0 ;
+    %set/v v007D3670_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_007D35E8;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v007D3670_0, 1;
+    %inv 8, 1;
+    %set/v v007D3670_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_007D3070;
+T_2 ;
+    %vpi_call 2 20 "$dumpfile", "Exemplo0041.vcd";
+    %vpi_call 2 21 "$dumpvars";
+    %delay 120, 0;
+    %vpi_call 2 22 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0041.v";

@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006A1000 .scope module, "modulos" "modulos" 2 11;
+ .timescale 0 0;
+L_0081EF98 .functor AND 1, v008190B8_0, v008194D8_0, C4<1>, C4<1>;
+L_0081CED0 .functor OR 1, v008190B8_0, v008194D8_0, C4<0>, C4<0>;
+L_0081FE90 .functor NAND 1, v008190B8_0, v008194D8_0, C4<1>, C4<1>;
+L_0081FEC8 .functor NOR 1, v008190B8_0, v008194D8_0, C4<0>, C4<0>;
+L_0081CF08 .functor NOT 1, v00819060_0, C4<0>, C4<0>, C4<0>;
+L_0081CF40 .functor BUF 1, v00819060_0, C4<0>, C4<0>, C4<0>;
+L_00812D20 .functor OR 1, C4<z>, L_0081CED0, C4<0>, C4<0>;
+L_00812D90 .functor OR 1, L_0081FE90, L_0081FEC8, C4<0>, C4<0>;
+L_0081B718 .functor AND 1, L_0081CF08, L_00812D20, C4<1>, C4<1>;
+L_0081B7F0 .functor AND 1, L_0081CF40, L_00812D90, C4<1>, C4<1>;
+v00819060_0 .var "chave", 0 0;
+v008190B8_0 .var "q", 0 0;
+v00819110_0 .net "s0", 0 0, L_0081EF98; 1 drivers
+v00819168_0 .net "s1", 0 0, C4<z>; 0 drivers
+v008191C0_0 .net "s10", 0 0, L_0081B7F0; 1 drivers
+v00819218_0 .net "s2", 0 0, L_0081CED0; 1 drivers
+v00819270_0 .net "s3", 0 0, L_0081FE90; 1 drivers
+v008192C8_0 .net "s4", 0 0, L_0081FEC8; 1 drivers
+v00819320_0 .net "s5", 0 0, L_0081CF08; 1 drivers
+v00819378_0 .net "s6", 0 0, L_0081CF40; 1 drivers
+v008193D0_0 .net "s7", 0 0, L_00812D20; 1 drivers
+v00819428_0 .net "s8", 0 0, L_00812D90; 1 drivers
+v00819480_0 .net "s9", 0 0, L_0081B718; 1 drivers
+v008194D8_0 .var "y", 0 0;
+    .scope S_006A1000;
+T_0 ;
+    %set/v v008190B8_0, 0, 1;
+    %set/v v008194D8_0, 1, 1;
+    %set/v v00819060_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_006A1000;
+T_1 ;
+    %vpi_call 2 52 "$display", "Exemplo 0033";
+    %vpi_call 2 53 "$display", "Autor: Rodolfo Herman";
+    %vpi_call 2 54 "$display", "Test LU's module";
+    %vpi_call 2 56 "$display", "\012chave = 0 \012(OR/AND)";
+    %delay 1, 0;
+    %vpi_call 2 57 "$display", "a = %4b\011 b = %4b\011 S = %4b ", v008190B8_0, v008194D8_0, v00819480_0;
+    %vpi_call 2 58 "$display", "(NOR/NAND)";
+    %delay 1, 0;
+    %vpi_call 2 59 "$display", "a = %4b\011 b = %4b\011 S = %4b ", v008190B8_0, v008194D8_0, v008191C0_0;
+    %vpi_call 2 60 "$display", "\012chave = 1 \012(NOR/NAND)";
+    %set/v v00819060_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 63 "$display", "a = %4b\011 b = %4b\011 S = %4b ", v008190B8_0, v008194D8_0, v008191C0_0;
+    %vpi_call 2 64 "$display", "(OR/AND)";
+    %delay 1, 0;
+    %vpi_call 2 65 "$display", "a = %4b\011 b = %4b\011 S = %4b ", v008190B8_0, v008194D8_0, v00819480_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exemplo0033.v";

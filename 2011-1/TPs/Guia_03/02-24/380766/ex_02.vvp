@@ -1,0 +1,50 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EF330 .scope module, "ex_02" "ex_02" 2 11;
+ .timescale 0 0;
+v006A3908_0 .net "a", 0 0, C4<z>; 0 drivers
+v006A3998_0 .net "b", 0 0, C4<z>; 0 drivers
+v006A3A28_0 .net "f1", 0 0, L_006A39F0; 1 drivers
+v006A3AB8_0 .net "f2", 0 0, L_006A3E50; 1 drivers
+v006A3B48_0 .net "s0", 0 0, L_006A3C68; 1 drivers
+v006A3BD8_0 .net "s1", 0 0, L_006A3B10; 1 drivers
+S_006A36E8 .scope module, "NAND1" "andNand" 2 17, 2 24, S_003EF330;
+ .timescale 0 0;
+L_006A3C30 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A3C68 .functor NAND 1, L_006A3C30, L_006A3C30, C4<1>, C4<1>;
+v006A3768_0 .alias "a", 0 0, v006A3908_0;
+v006A37C0_0 .alias "b", 0 0, v006A3998_0;
+v006A3838_0 .net "f1", 0 0, L_006A3C30; 1 drivers
+v006A3890_0 .alias "s", 0 0, v006A3B48_0;
+S_006A3450 .scope module, "OR1" "orNand" 2 18, 2 34, S_003EF330;
+ .timescale 0 0;
+L_006A3CD8 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A3960 .functor NAND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_006A39F0 .functor NAND 1, L_006A3CD8, L_006A3960, C4<1>, C4<1>;
+v006A34D0_0 .alias "a", 0 0, v006A3908_0;
+v006A3528_0 .alias "b", 0 0, v006A3998_0;
+v006A3598_0 .net "f1", 0 0, L_006A3CD8; 1 drivers
+v006A3620_0 .net "f2", 0 0, L_006A3960; 1 drivers
+v006A3690_0 .alias "s", 0 0, v006A3A28_0;
+S_006A3308 .scope module, "NOT1" "notNand" 2 19, 2 46, S_003EF330;
+ .timescale 0 0;
+L_006A3E50 .functor NAND 1, L_006A3C68, L_006A3C68, C4<1>, C4<1>;
+v006A3388_0 .alias "a", 0 0, v006A3B48_0;
+v006A33F8_0 .alias "s", 0 0, v006A3AB8_0;
+S_003EF3B0 .scope module, "AND2" "andNand" 2 20, 2 24, S_003EF330;
+ .timescale 0 0;
+L_006A3BA0 .functor NAND 1, L_006A39F0, L_006A3E50, C4<1>, C4<1>;
+L_006A3B10 .functor NAND 1, L_006A3BA0, L_006A3BA0, C4<1>, C4<1>;
+v003EF430_0 .alias "a", 0 0, v006A3A28_0;
+v006A31A0_0 .alias "b", 0 0, v006A3AB8_0;
+v006A3210_0 .net "f1", 0 0, L_006A3BA0; 1 drivers
+v006A3298_0 .alias "s", 0 0, v006A3BD8_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\AC\Guia 3\ex_02.v";

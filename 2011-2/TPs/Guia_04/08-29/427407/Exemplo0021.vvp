@@ -1,0 +1,43 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006C2B58 .scope module, "test_fullAdder" "test_fullAdder" 2 26;
+ .timescale 0 0;
+v006C39B8_0 .var "a", 5 0;
+v006CEDF0_0 .var "b", 5 0;
+v006CEE48_0 .net "carry", 2 0, L_006CEAA8; 1 drivers
+v006CEEA0_0 .net "soma", 2 0, L_006CEEF8; 1 drivers
+S_0072E010 .scope module, "bonanza" "xorGate" 2 32, 2 14, S_006C2B58;
+ .timescale 0 0;
+L_006C4590 .functor XOR 6, v006C39B8_0, v006CEDF0_0, C4<000000>, C4<000000>;
+v006CFF28_0 .net *"_s0", 5 0, L_006C4590; 1 drivers
+v006CFF80_0 .net "a", 5 0, v006C39B8_0; 1 drivers
+v006C3908_0 .net "b", 5 0, v006CEDF0_0; 1 drivers
+v006C3960_0 .alias "s1", 2 0, v006CEEA0_0;
+L_006CEEF8 .part L_006C4590, 0, 3;
+S_006C2BE0 .scope module, "danubio" "andGate" 2 33, 2 20, S_006C2B58;
+ .timescale 0 0;
+L_006CE9A0 .functor AND 6, v006C39B8_0, v006CEDF0_0, C4<111111>, C4<111111>;
+v006C4488_0 .net *"_s0", 5 0, L_006CE9A0; 1 drivers
+v006C44E0_0 .alias "a", 5 0, v006CFF80_0;
+v006C4538_0 .alias "b", 5 0, v006C3908_0;
+v006CFED0_0 .alias "s2", 2 0, v006CEE48_0;
+L_006CEAA8 .part L_006CE9A0, 0, 3;
+    .scope S_006C2B58;
+T_0 ;
+    %vpi_call 2 37 "$display", "Exemplo0021 - Guilherme Terra - 427407";
+    %vpi_call 2 38 "$display", "Test ALU's full adder";
+    %set/v v006C39B8_0, 0, 6;
+    %movi 8, 1, 6;
+    %set/v v006CEDF0_0, 8, 6;
+    %vpi_call 2 42 "$display", "\012%b + %b = %b%b", v006C39B8_0, v006CEDF0_0, v006CEE48_0, v006CEEA0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\CIÊNCIA_DA_COMPUTAÇÃO\2_Periodo\ARQ_I\Guias\Concluídas\Guia_04\Exemplo0021.v";

@@ -1,0 +1,104 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00684780 .scope module, "EXS" "EXS" 2 9;
+ .timescale 0 0;
+L_00683828 .functor AND 1, v00638ED8_0, v00638F30_0, C4<1>, C4<1>;
+L_006837F0 .functor XOR 1, v00638ED8_0, v00638F30_0, C4<0>, C4<0>;
+L_006838D0 .functor NAND 1, v00638ED8_0, v00638F30_0, C4<1>, C4<1>;
+L_00683908 .functor NAND 1, L_006838D0, L_006838D0, C4<1>, C4<1>;
+L_00683978 .functor NAND 1, v00638ED8_0, v00638F30_0, C4<1>, C4<1>;
+L_00683898 .functor NAND 1, L_00683978, v00638ED8_0, C4<1>, C4<1>;
+L_006839B0 .functor NAND 1, L_00683978, v00638F30_0, C4<1>, C4<1>;
+L_006839E8 .functor NAND 1, L_006839B0, L_00683898, C4<1>, C4<1>;
+L_00683A90 .functor NOT 1, v00638ED8_0, C4<0>, C4<0>, C4<0>;
+L_00683AC8 .functor NAND 1, L_00683A90, v00638F30_0, C4<1>, C4<1>;
+L_00683B38 .functor NAND 1, L_00683AC8, L_00683AC8, C4<1>, C4<1>;
+v00638ED8_0 .var "a", 0 0;
+v00638F30_0 .var "b", 0 0;
+v00638F88_0 .net "s01", 0 0, L_00683828; 1 drivers
+v00638FE0_0 .net "s02", 0 0, L_00683908; 1 drivers
+v00639038_0 .net "s03", 0 0, L_00683B38; 1 drivers
+v00639090_0 .net "s11", 0 0, L_006837F0; 1 drivers
+v006390E8_0 .net "s12", 0 0, L_006839E8; 1 drivers
+v00639140_0 .net "sdown2", 0 0, L_006839B0; 1 drivers
+v00639198_0 .net "sm2", 0 0, L_006838D0; 1 drivers
+v006391F0_0 .net "sm3", 0 0, L_00683AC8; 1 drivers
+v00639248_0 .net "smeio2", 0 0, L_00683978; 1 drivers
+v006392A0_0 .net "sn3", 0 0, L_00683A90; 1 drivers
+v006392F8_0 .net "sup2", 0 0, L_00683898; 1 drivers
+    .scope S_00684780;
+T_0 ;
+    %vpi_call 2 41 "$display", "PUC Minas - ARQ1 - Jose Fonseca - 405808 - 20/02/11";
+    %vpi_call 2 42 "$display", "";
+    %vpi_call 2 44 "$display", "Exercicio 01 - Realizar a simula\377\377o de um operador de meia-soma";
+    %delay 1, 0;
+    %set/v v00638ED8_0, 0, 1;
+    %set/v v00638F30_0, 0, 1;
+    %vpi_call 2 46 "$monitor", " %b + %b = %b %b", v00638ED8_0, v00638F30_0, v00638F88_0, v00639090_0;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 0, 1;
+    %set/v v00638F30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 1, 1;
+    %set/v v00638F30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 1, 1;
+    %set/v v00638F30_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "";
+    %vpi_call 2 51 "$display", "FIM DA TABELA -----------------------------------";
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "";
+    %vpi_call 2 54 "$display", "PUC Minas - ARQ1 - Jose Fonseca - 405808 - 20/02/11";
+    %vpi_call 2 55 "$display", "";
+    %vpi_call 2 57 "$display", "Exercicio 02 - Realizar a simula\377\377o de um operador de meia-soma utilizando apenas portas NAND";
+    %delay 1, 0;
+    %set/v v00638ED8_0, 0, 1;
+    %set/v v00638F30_0, 0, 1;
+    %vpi_call 2 59 "$monitor", " %b + %b = %b %b", v00638ED8_0, v00638F30_0, v00638FE0_0, v006390E8_0;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 0, 1;
+    %set/v v00638F30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 1, 1;
+    %set/v v00638F30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 1, 1;
+    %set/v v00638F30_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 63 "$display", "";
+    %vpi_call 2 64 "$display", "FIM DA TABELA -----------------------------------";
+    %delay 1, 0;
+    %vpi_call 2 65 "$display", "";
+    %vpi_call 2 67 "$display", "PUC Minas - ARQ1 - Jose Fonseca - 405808 - 20/02/11";
+    %vpi_call 2 68 "$display", "";
+    %vpi_call 2 70 "$display", "Exercicio 03 - Realizar a simula\377\377o de um operador de meia-SUBTRA\377\377O utilizando apenas portas NAND";
+    %delay 1, 0;
+    %set/v v00638ED8_0, 0, 1;
+    %set/v v00638F30_0, 0, 1;
+    %vpi_call 2 72 "$monitor", " %b - %b = %b %b", v00638ED8_0, v00638F30_0, v00639038_0, v006390E8_0;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 0, 1;
+    %set/v v00638F30_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 1, 1;
+    %set/v v00638F30_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00638ED8_0, 1, 1;
+    %set/v v00638F30_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 76 "$display", "";
+    %vpi_call 2 77 "$display", "FIM DA TABELA -----------------------------------";
+    %delay 1, 0;
+    %vpi_call 2 78 "$display", "";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\José F. R. Fonseca\Documents\Profissionais\Ativos\PUC\Semestre III\Arquitetura de Computadores I\New Folder\guia03.v";

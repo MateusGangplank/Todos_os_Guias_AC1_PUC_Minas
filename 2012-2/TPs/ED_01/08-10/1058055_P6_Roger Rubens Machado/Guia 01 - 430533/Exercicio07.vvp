@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0031E4A0 .scope module, "testxnorgate" "testxnorgate" 2 11;
+ .timescale 0 0;
+v0031E870_0 .var "a", 0 0;
+v0031E8C8_0 .var "b", 0 0;
+v0031E920_0 .net "s", 0 0, L_0031F058; 1 drivers
+S_00313918 .scope module, "XNOR1" "xnorgate" 2 15, 2 7, S_0031E4A0;
+ .timescale 0 0;
+L_00313A50 .functor AND 1, v0031E870_0, v0031E8C8_0, C4<1>, C4<1>;
+L_0031EF40 .functor NOT 1, v0031E870_0, C4<0>, C4<0>, C4<0>;
+L_0031EF78 .functor NOT 1, v0031E8C8_0, C4<0>, C4<0>, C4<0>;
+L_0031EFB0 .functor AND 1, L_0031EF40, L_0031EF78, C4<1>, C4<1>;
+L_0031F058 .functor OR 1, L_00313A50, L_0031EFB0, C4<0>, C4<0>;
+v00312CB0_0 .net *"_s0", 0 0, L_00313A50; 1 drivers
+v003139A0_0 .net *"_s2", 0 0, L_0031EF40; 1 drivers
+v003139F8_0 .net *"_s4", 0 0, L_0031EF78; 1 drivers
+v0031E710_0 .net *"_s6", 0 0, L_0031EFB0; 1 drivers
+v0031E768_0 .net "p", 0 0, v0031E870_0; 1 drivers
+v0031E7C0_0 .net "q", 0 0, v0031E8C8_0; 1 drivers
+v0031E818_0 .alias "s", 0 0, v0031E920_0;
+S_00312C28 .scope begin, "start" "start" 2 17, 2 17, S_0031E4A0;
+ .timescale 0 0;
+S_00312BA0 .scope begin, "main" "main" 2 22, 2 22, S_0031E4A0;
+ .timescale 0 0;
+    .scope S_0031E4A0;
+T_0 ;
+    %fork t_1, S_00312C28;
+    %jmp t_0;
+    .scope S_00312C28;
+t_1 ;
+    %set/v v0031E870_0, 0, 1;
+    %set/v v0031E8C8_0, 0, 1;
+    %end;
+    .scope S_0031E4A0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0031E4A0;
+T_1 ;
+    %fork t_3, S_00312BA0;
+    %jmp t_2;
+    .scope S_00312BA0;
+t_3 ;
+    %vpi_call 2 23 "$display", "Exercicio07 - Roger Rubens Machado - 430533";
+    %vpi_call 2 24 "$display", "Test xnor gate";
+    %vpi_call 2 25 "$display", "\012\011\011\011((a&b)|(~a&~b)) = s\012";
+    %vpi_call 2 26 "$monitor", "%d\011((%b&%b)|(~%b&~%b)) = %b", $time, v0031E870_0, v0031E8C8_0, v0031E870_0, v0031E8C8_0, v0031E920_0;
+    %delay 1, 0;
+    %set/v v0031E870_0, 0, 1;
+    %set/v v0031E8C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0031E870_0, 0, 1;
+    %set/v v0031E8C8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0031E870_0, 1, 1;
+    %set/v v0031E8C8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0031E870_0, 1, 1;
+    %set/v v0031E8C8_0, 1, 1;
+    %end;
+    .scope S_0031E4A0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Roger Rubens\Documents\Ciência da Computação\Arquitetura de Computadores I\Guias resolvidos\Guia 01\Exercicio07.v";

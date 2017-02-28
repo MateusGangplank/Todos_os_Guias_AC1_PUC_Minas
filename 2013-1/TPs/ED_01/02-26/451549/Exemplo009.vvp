@@ -1,0 +1,70 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003F2EE0 .scope module, "testnandgate" "testnandgate" 2 19;
+ .timescale 0 0;
+v003F8650_0 .var "a", 0 0;
+v003F86A8_0 .var "b", 0 0;
+v003F8700_0 .net "s", 0 0, L_003FE358; 1 drivers
+S_003F2838 .scope module, "mar" "nandgate" 2 24, 2 11, S_003F2EE0;
+ .timescale 0 0;
+L_003F8758 .functor NOT 1, v003F8650_0, C4<0>, C4<0>, C4<0>;
+L_003F87C8 .functor NOT 1, v003F86A8_0, C4<0>, C4<0>, C4<0>;
+L_003FE358 .functor OR 1, L_003F8758, L_003F87C8, C4<0>, C4<0>;
+v003F28C0_0 .net *"_s0", 0 0, L_003F8758; 1 drivers
+v003F2FF0_0 .net *"_s2", 0 0, L_003F87C8; 1 drivers
+v003F8B40_0 .net "a", 0 0, v003F8650_0; 1 drivers
+v003F85A0_0 .net "b", 0 0, v003F86A8_0; 1 drivers
+v003F85F8_0 .alias "s", 0 0, v003F8700_0;
+S_003F27B0 .scope begin, "start" "start" 2 26, 2 26, S_003F2EE0;
+ .timescale 0 0;
+S_003F2F68 .scope begin, "main" "main" 2 30, 2 30, S_003F2EE0;
+ .timescale 0 0;
+    .scope S_003F2EE0;
+T_0 ;
+    %fork t_1, S_003F27B0;
+    %jmp t_0;
+    .scope S_003F27B0;
+t_1 ;
+    %set/v v003F8650_0, 0, 1;
+    %set/v v003F86A8_0, 0, 1;
+    %end;
+    .scope S_003F2EE0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003F2EE0;
+T_1 ;
+    %fork t_3, S_003F2F68;
+    %jmp t_2;
+    .scope S_003F2F68;
+t_3 ;
+    %vpi_call 2 31 "$display", "\012Exemplo 0009 - Debora Deslandes de Almeida";
+    %vpi_call 2 32 "$display", "\012Matricula : 451549";
+    %vpi_call 2 33 "$display", "\012Test NAND gate";
+    %vpi_call 2 34 "$display", "\012((~a)|(~b)) = s";
+    %set/v v003F8650_0, 0, 1;
+    %set/v v003F86A8_0, 0, 1;
+    %vpi_call 2 36 "$monitor", "\012((~%b)|(~%b) = %b", v003F8650_0, v003F86A8_0, v003F8700_0;
+    %delay 1, 0;
+    %set/v v003F8650_0, 1, 1;
+    %set/v v003F86A8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003F8650_0, 0, 1;
+    %set/v v003F86A8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003F8650_0, 1, 1;
+    %set/v v003F86A8_0, 1, 1;
+    %end;
+    .scope S_003F2EE0;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Débora\Documents\PUC\Arquitetura de Computadores\Guias\Guia01\Exemplo009.v";

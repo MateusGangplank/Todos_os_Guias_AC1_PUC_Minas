@@ -1,0 +1,88 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006F3830 .scope module, "testenorgate" "testenorgate" 2 14;
+ .timescale 0 0;
+v00345890_0 .var "a", 0 3;
+v003458E8_0 .var "b", 0 3;
+v00345940_0 .net "s", 0 3, L_003459D0; 1 drivers
+S_006FFE48 .scope module, "NOR1" "norgate" 2 19, 2 8, S_006F3830;
+ .timescale 0 0;
+L_00326518 .functor NOT 4, v00345890_0, C4<0000>, C4<0000>, C4<0000>;
+L_006F3940 .functor NOT 4, v003458E8_0, C4<0000>, C4<0000>, C4<0000>;
+L_003459D0 .functor AND 4, L_00326518, L_006F3940, C4<1111>, C4<1111>;
+v003263B8_0 .net *"_s0", 3 0, L_00326518; 1 drivers
+v00326410_0 .net *"_s2", 3 0, L_006F3940; 1 drivers
+v00326468_0 .net "p", 0 3, v00345890_0; 1 drivers
+v003264C0_0 .net "q", 0 3, v003458E8_0; 1 drivers
+v00345838_0 .alias "s", 0 3, v00345940_0;
+S_006FFDC0 .scope begin, "start" "start" 2 21, 2 21, S_006F3830;
+ .timescale 0 0;
+S_006F38B8 .scope begin, "main" "main" 2 26, 2 26, S_006F3830;
+ .timescale 0 0;
+    .scope S_006F3830;
+T_0 ;
+    %fork t_1, S_006FFDC0;
+    %jmp t_0;
+    .scope S_006FFDC0;
+t_1 ;
+    %movi 8, 1, 4;
+    %set/v v00345890_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v003458E8_0, 8, 4;
+    %end;
+    .scope S_006F3830;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_006F3830;
+T_1 ;
+    %fork t_3, S_006F38B8;
+    %jmp t_2;
+    .scope S_006F38B8;
+t_3 ;
+    %vpi_call 2 27 "$display", "Exercicio0005- Fernando Silva  - 414506";
+    %vpi_call 2 28 "$display", "Test nor gate";
+    %vpi_call 2 29 "$display", "\012 a | b = s\012";
+    %vpi_call 2 30 "$monitor", "%b | %b = %b", v00345890_0, v003458E8_0, v00345940_0;
+    %delay 1, 0;
+    %set/v v00345890_0, 0, 4;
+    %set/v v003458E8_0, 0, 4;
+    %delay 1, 0;
+    %movi 8, 2, 4;
+    %set/v v00345890_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v003458E8_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 1, 4;
+    %set/v v00345890_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v003458E8_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 5, 4;
+    %set/v v00345890_0, 8, 4;
+    %movi 8, 2, 4;
+    %set/v v003458E8_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 10, 4;
+    %set/v v00345890_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v003458E8_0, 8, 4;
+    %delay 1, 0;
+    %movi 8, 9, 4;
+    %set/v v00345890_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v003458E8_0, 8, 4;
+    %end;
+    .scope S_006F3830;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsilv\Documents\Guia01\Exercicio0005.v";

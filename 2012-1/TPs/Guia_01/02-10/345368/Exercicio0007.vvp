@@ -1,0 +1,64 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0075E528 .scope module, "testxnorgate" "testxnorgate" 2 15;
+ .timescale 0 0;
+v0075FE68_0 .var "a", 0 0;
+v0075FEC0_0 .var "b", 0 0;
+v0075FF18_0 .net "s", 0 0, L_0063C5A8; 1 drivers
+S_00752E90 .scope module, "XNOR1" "xnorgate" 2 21, 2 9, S_0075E528;
+ .timescale 0 0;
+L_0075FF70 .functor AND 1, v0075FE68_0, v0075FEC0_0, C4<1>, C4<1>;
+L_0063C490 .functor NOT 1, v0075FE68_0, C4<0>, C4<0>, C4<0>;
+L_0063C4C8 .functor NOT 1, v0075FEC0_0, C4<0>, C4<0>, C4<0>;
+L_0063C500 .functor AND 1, L_0063C490, L_0063C4C8, C4<1>, C4<1>;
+L_0063C5A8 .functor OR 1, L_0075FF70, L_0063C500, C4<0>, C4<0>;
+v00752F18_0 .net *"_s0", 0 0, L_0075FF70; 1 drivers
+v00752F70_0 .net *"_s2", 0 0, L_0063C490; 1 drivers
+v00753BB8_0 .net *"_s4", 0 0, L_0063C4C8; 1 drivers
+v00753C10_0 .net *"_s6", 0 0, L_0063C500; 1 drivers
+v00753C68_0 .net "p", 0 0, v0075FE68_0; 1 drivers
+v00753CC0_0 .net "q", 0 0, v0075FEC0_0; 1 drivers
+v0075FE10_0 .alias "s", 0 0, v0075FF18_0;
+S_0075E5B0 .scope begin, "start" "start" 2 23, 2 23, S_0075E528;
+ .timescale 0 0;
+    .scope S_0075E528;
+T_0 ;
+    %fork t_1, S_0075E5B0;
+    %jmp t_0;
+    .scope S_0075E5B0;
+t_1 ;
+    %set/v v0075FE68_0, 0, 1;
+    %set/v v0075FEC0_0, 0, 1;
+    %end;
+    .scope S_0075E528;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0075E528;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exercicio0007 - Marcio Santana Correa";
+    %vpi_call 2 31 "$display", "Test XNOR gate de Morgan";
+    %vpi_call 2 32 "$display", "\012~a + ~b = s\012";
+    %set/v v0075FE68_0, 0, 1;
+    %set/v v0075FEC0_0, 0, 1;
+    %vpi_call 2 34 "$monitor", "%b + %b = %b", v0075FE68_0, v0075FEC0_0, v0075FF18_0;
+    %delay 1, 0;
+    %set/v v0075FE68_0, 0, 1;
+    %set/v v0075FEC0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0075FE68_0, 1, 1;
+    %set/v v0075FEC0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0075FE68_0, 1, 1;
+    %set/v v0075FEC0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2012-1\TPs\Guia_01\345368\Exercicio0007.v";

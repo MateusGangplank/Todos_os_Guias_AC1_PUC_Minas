@@ -1,0 +1,85 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00673900 .scope module, "testeportaor" "testeportaor" 2 40;
+ .timescale 0 0;
+v006A4110_0 .var "a", 0 0;
+v006A4168_0 .var "b", 0 0;
+v006A41C0_0 .net "s", 0 0, L_006A40D8; 1 drivers
+S_003EF9A8 .scope module, "OR1" "portaor" 2 45, 2 24, S_00673900;
+ .timescale 0 0;
+v006A3E90_0 .net "b", 0 0, C4<z>; 0 drivers
+v006A3EE8_0 .net "p", 0 0, v006A4110_0; 1 drivers
+v006A3F40_0 .net "q", 0 0, v006A4168_0; 1 drivers
+v006A3F98_0 .alias "s0", 0 0, v006A41C0_0;
+v006A3FF0_0 .net "s1", 0 0, L_003EE3F8; 1 drivers
+v006A4080_0 .net "s2", 0 0, L_003EE430; 1 drivers
+S_006A3C98 .scope module, "NAND1" "portanand" 2 30, 2 11, S_003EF9A8;
+ .timescale 0 0;
+L_006A4250 .functor AND 1, v006A4110_0, v006A4110_0, C4<1>, C4<1>;
+L_003EE3F8 .functor NOT 1, L_006A4250, C4<0>, C4<0>, C4<0>;
+v006A3D18_0 .net *"_s0", 0 0, L_006A4250; 1 drivers
+v006A3D70_0 .alias "p", 0 0, v006A3EE8_0;
+v006A3DC8_0 .alias "q", 0 0, v006A3EE8_0;
+v006A3E38_0 .alias "s", 0 0, v006A3FF0_0;
+S_006A3A70 .scope module, "NAND2" "portanand" 2 31, 2 11, S_003EF9A8;
+ .timescale 0 0;
+L_006A4328 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_003EE430 .functor NOT 1, L_006A4328, C4<0>, C4<0>, C4<0>;
+v006A3AF0_0 .net *"_s0", 0 0, L_006A4328; 1 drivers
+v006A3B60_0 .alias "p", 0 0, v006A3E90_0;
+v006A3BD0_0 .alias "q", 0 0, v006A3E90_0;
+v006A3C40_0 .alias "s", 0 0, v006A4080_0;
+S_003EFA28 .scope module, "NAND3" "portanand" 2 32, 2 11, S_003EF9A8;
+ .timescale 0 0;
+L_006A4400 .functor AND 1, L_003EE3F8, L_003EE430, C4<1>, C4<1>;
+L_006A40D8 .functor NOT 1, L_006A4400, C4<0>, C4<0>, C4<0>;
+v003EFAA8_0 .net *"_s0", 0 0, L_006A4400; 1 drivers
+v006A3908_0 .alias "p", 0 0, v006A3FF0_0;
+v006A3978_0 .alias "q", 0 0, v006A4080_0;
+v006A3A00_0 .alias "s", 0 0, v006A41C0_0;
+S_003EE008 .scope begin, "start" "start" 2 47, 2 47, S_00673900;
+ .timescale 0 0;
+S_00673C50 .scope begin, "main" "main" 2 52, 2 52, S_00673900;
+ .timescale 0 0;
+    .scope S_00673900;
+T_0 ;
+    %fork t_1, S_003EE008;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A4110_0, 0, 1;
+    %set/v v006A4168_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00673900;
+T_1 ;
+    %fork t_3, S_00673C50;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 53 "$display", "Guia 02 - Guilherme Lucindo - 380766";
+    %vpi_call 2 54 "$display", "teste porta OR";
+    %vpi_call 2 55 "$display", "\012 s = ~(~a & ~b)\012";
+    %vpi_call 2 56 "$monitor", "%b = ~(~%a & ~%b)";
+    %delay 1, 0;
+    %set/v v006A4110_0, 0, 1;
+    %set/v v006A4168_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4110_0, 1, 1;
+    %set/v v006A4168_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4110_0, 1, 1;
+    %set/v v006A4168_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_02\380766\portanand.v";

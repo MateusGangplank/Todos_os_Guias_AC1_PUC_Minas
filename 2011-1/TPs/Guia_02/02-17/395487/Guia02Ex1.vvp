@@ -1,0 +1,125 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005A3298 .scope module, "testorgate" "testorgate" 2 39;
+ .timescale 0 0;
+v005C68D8_0 .var "a", 0 0;
+v005C6930_0 .var "b", 0 0;
+v005C6988_0 .var "c", 0 0;
+v005C69E0_0 .net "s", 0 0, L_005C8330; 1 drivers
+S_005A35C8 .scope module, "OR1" "orgate" 2 43, 2 23, S_005A3298;
+ .timescale 0 0;
+v005C6670_0 .net "p", 0 0, v005C68D8_0; 1 drivers
+v005C66C8_0 .net "q", 0 0, v005C6930_0; 1 drivers
+v005C6720_0 .net "r", 0 0, v005C6988_0; 1 drivers
+v005C6778_0 .alias "s0", 0 0, v005C69E0_0;
+v005C67D0_0 .net "s1", 0 0, L_005C7FE8; 1 drivers
+v005C6828_0 .net "s2", 0 0, L_005C8100; 1 drivers
+v005C6880_0 .net "s3", 0 0, L_005C8218; 1 drivers
+S_005A37E8 .scope module, "NAND1" "nandgate" 2 28, 2 11, S_005A35C8;
+ .timescale 0 0;
+L_0035D4E0 .functor AND 1, v005C68D8_0, v005C68D8_0, C4<1>, C4<1>;
+L_00352BE0 .functor AND 1, L_0035D4E0, v005C68D8_0, C4<1>, C4<1>;
+L_005C7FE8 .functor NOT 1, L_00352BE0, C4<0>, C4<0>, C4<0>;
+v005C6460_0 .net *"_s0", 0 0, L_0035D4E0; 1 drivers
+v005C64B8_0 .net *"_s2", 0 0, L_00352BE0; 1 drivers
+v005C6510_0 .alias "p", 0 0, v005C6670_0;
+v005C6568_0 .alias "q", 0 0, v005C6670_0;
+v005C65C0_0 .alias "r", 0 0, v005C6670_0;
+v005C6618_0 .alias "s", 0 0, v005C67D0_0;
+S_005A3760 .scope module, "NAND2" "nandgate" 2 29, 2 11, S_005A35C8;
+ .timescale 0 0;
+L_005C8058 .functor AND 1, v005C6930_0, v005C6930_0, C4<1>, C4<1>;
+L_005C8090 .functor AND 1, L_005C8058, v005C6930_0, C4<1>, C4<1>;
+L_005C8100 .functor NOT 1, L_005C8090, C4<0>, C4<0>, C4<0>;
+v005C6250_0 .net *"_s0", 0 0, L_005C8058; 1 drivers
+v005C62A8_0 .net *"_s2", 0 0, L_005C8090; 1 drivers
+v005C6300_0 .alias "p", 0 0, v005C66C8_0;
+v005C6358_0 .alias "q", 0 0, v005C66C8_0;
+v005C63B0_0 .alias "r", 0 0, v005C66C8_0;
+v005C6408_0 .alias "s", 0 0, v005C6828_0;
+S_005A36D8 .scope module, "NAND3" "nandgate" 2 30, 2 11, S_005A35C8;
+ .timescale 0 0;
+L_005C8170 .functor AND 1, v005C6988_0, v005C6988_0, C4<1>, C4<1>;
+L_005C81A8 .functor AND 1, L_005C8170, v005C6988_0, C4<1>, C4<1>;
+L_005C8218 .functor NOT 1, L_005C81A8, C4<0>, C4<0>, C4<0>;
+v005C6040_0 .net *"_s0", 0 0, L_005C8170; 1 drivers
+v005C6098_0 .net *"_s2", 0 0, L_005C81A8; 1 drivers
+v005C60F0_0 .alias "p", 0 0, v005C6720_0;
+v005C6148_0 .alias "q", 0 0, v005C6720_0;
+v005C61A0_0 .alias "r", 0 0, v005C6720_0;
+v005C61F8_0 .alias "s", 0 0, v005C6880_0;
+S_005A3650 .scope module, "NAND4" "nandgate" 2 31, 2 11, S_005A35C8;
+ .timescale 0 0;
+L_005C8288 .functor AND 1, L_005C7FE8, L_005C8100, C4<1>, C4<1>;
+L_005C82C0 .functor AND 1, L_005C8288, L_005C8218, C4<1>, C4<1>;
+L_005C8330 .functor NOT 1, L_005C82C0, C4<0>, C4<0>, C4<0>;
+v00359758_0 .net *"_s0", 0 0, L_005C8288; 1 drivers
+v003597B0_0 .net *"_s2", 0 0, L_005C82C0; 1 drivers
+v0035D3D8_0 .alias "p", 0 0, v005C67D0_0;
+v0035D430_0 .alias "q", 0 0, v005C6828_0;
+v0035D488_0 .alias "r", 0 0, v005C6880_0;
+v005C5FE8_0 .alias "s", 0 0, v005C69E0_0;
+S_005A3430 .scope begin, "start" "start" 2 45, 2 45, S_005A3298;
+ .timescale 0 0;
+    .scope S_005A3298;
+T_0 ;
+    %fork t_1, S_005A3430;
+    %jmp t_0;
+    .scope S_005A3430;
+t_1 ;
+    %set/v v005C68D8_0, 0, 1;
+    %set/v v005C6930_0, 0, 1;
+    %set/v v005C6988_0, 0, 1;
+    %end;
+    .scope S_005A3298;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_005A3298;
+T_1 ;
+    %vpi_call 2 51 "$display", "Exemplo01 - Alvaro - 395487";
+    %vpi_call 2 52 "$display", "Test or gate";
+    %vpi_call 2 53 "$monitor", " %b | %b  | %b = %b", v005C68D8_0, v005C6930_0, v005C6988_0, v005C69E0_0;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 0, 1;
+    %set/v v005C6930_0, 0, 1;
+    %set/v v005C6988_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 0, 1;
+    %set/v v005C6930_0, 0, 1;
+    %set/v v005C6988_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 0, 1;
+    %set/v v005C6930_0, 1, 1;
+    %set/v v005C6988_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 0, 1;
+    %set/v v005C6930_0, 1, 1;
+    %set/v v005C6988_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 1, 1;
+    %set/v v005C6930_0, 0, 1;
+    %set/v v005C6988_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 1, 1;
+    %set/v v005C6930_0, 0, 1;
+    %set/v v005C6988_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 1, 1;
+    %set/v v005C6930_0, 1, 1;
+    %set/v v005C6988_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005C68D8_0, 1, 1;
+    %set/v v005C6930_0, 1, 1;
+    %set/v v005C6988_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\AC 1\Nova pasta\Guia02Ex1.v";

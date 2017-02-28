@@ -1,0 +1,60 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003D9220 .scope module, "test_f4" "test_f4" 2 28;
+ .timescale 0 0;
+v005CFB40_0 .var "chave", 3 0;
+v005CFB98_0 .net "k", 3 0, C4<zzzz>; 0 drivers
+v005CFBF0_0 .net "l", 3 0, L_003D4820; 1 drivers
+v005CFC48_0 .var "x", 3 0;
+v005CFCA0_0 .var "y", 3 0;
+v005CFCF8_0 .net "z", 3 0, L_003D4858; 1 drivers
+S_003D9550 .scope module, "modulo" "f4" 2 36, 2 16, S_003D9220;
+ .timescale 0 0;
+L_003D4858 .functor OR 4, v005CFC48_0, v005CFCA0_0, C4<0000>, C4<0000>;
+v005CFA38_0 .net "a", 3 0, v005CFC48_0; 1 drivers
+v005CFA90_0 .net "b", 3 0, v005CFCA0_0; 1 drivers
+v005CFAE8_0 .alias "s", 3 0, v005CFCF8_0;
+S_003D94C8 .scope module, "modulo2" "f3" 2 37, 2 22, S_003D9220;
+ .timescale 0 0;
+L_003D4890 .functor AND 4, v005CFC48_0, v005CFCA0_0, C4<1111>, C4<1111>;
+v003D44E8_0 .net *"_s0", 3 0, L_003D4890; 1 drivers
+v003D4540_0 .alias "a", 3 0, v005CFA38_0;
+v003D4770_0 .alias "b", 3 0, v005CFA90_0;
+v003D47C8_0 .net "s1", 0 0, L_005CFD50; 1 drivers
+v005CF9E0_0 .alias "s2", 3 0, v005CFB98_0;
+L_005CFD50 .part L_003D4890, 0, 1;
+S_003D9440 .scope module, "modulo3" "f5" 2 38, 2 10, S_003D9220;
+ .timescale 0 0;
+L_003D2EE8 .functor NOT 4, v005CFB40_0, C4<0000>, C4<0000>, C4<0000>;
+L_003DCE28 .functor AND 4, C4<zzzz>, L_003D2EE8, C4<1111>, C4<1111>;
+L_003DCE98 .functor AND 4, L_003D4858, v005CFB40_0, C4<1111>, C4<1111>;
+L_003D4820 .functor OR 4, L_003DCE28, L_003DCE98, C4<0000>, C4<0000>;
+v003D4A50_0 .net *"_s0", 3 0, L_003D2EE8; 1 drivers
+v003D4AA8_0 .net *"_s2", 3 0, L_003DCE28; 1 drivers
+v003D4B00_0 .net *"_s4", 3 0, L_003DCE98; 1 drivers
+v003D2DE0_0 .alias "a", 3 0, v005CFCF8_0;
+v003D2E38_0 .alias "b", 3 0, v005CFB98_0;
+v003D2E90_0 .net "c", 3 0, v005CFB40_0; 1 drivers
+v003D4490_0 .alias "s3", 3 0, v005CFBF0_0;
+    .scope S_003D9220;
+T_0 ;
+    %vpi_call 2 41 "$display", "Exemplo0032 - Gustavo Jota Resende - 427413";
+    %vpi_call 2 42 "$display", "Test LU's module";
+    %movi 8, 3, 4;
+    %set/v v005CFC48_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005CFCA0_0, 8, 4;
+    %delay 1, 0;
+    %set/v v005CFB40_0, 1, 4;
+    %vpi_call 2 45 "$monitor", "%b (& ou |) %b com chave %b = %b", v005CFCA0_0, v005CFC48_0, v005CFB40_0, v005CFBF0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\jotar\Documents\Gustavo\PUC\Segundo Período\Arquitetura de Computadores 1\427413\Guia 03.2\Exemplo0032.v";

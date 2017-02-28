@@ -1,0 +1,198 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0036B108 .scope module, "Teste" "Teste" 2 33;
+ .timescale 0 0;
+v0065B160_0 .var "a0", 0 0;
+v0065B1B8_0 .var "a1", 0 0;
+v0065B210_0 .var "b0", 0 0;
+v0065B268_0 .var "b1", 0 0;
+v0065B2C0_0 .net "s0", 0 0, L_006322C0; 1 drivers
+v0065B318_0 .net "s1", 0 0, L_006324F0; 1 drivers
+v0065B370_0 .net "s2", 0 0, L_006325D0; 1 drivers
+v0065B3C8_0 .net "s3", 0 0, L_00632608; 1 drivers
+S_0036B328 .scope module, "M1" "multiplicador" 2 36, 2 21, S_0036B108;
+ .timescale 0 0;
+L_006322C0 .functor AND 1, v0065B160_0, v0065B210_0, C4<1>, C4<1>;
+L_006323A0 .functor AND 1, v0065B1B8_0, v0065B210_0, C4<1>, C4<1>;
+L_00632410 .functor AND 1, v0065B268_0, v0065B160_0, C4<1>, C4<1>;
+L_00632480 .functor AND 1, v0065B268_0, v0065B1B8_0, C4<1>, C4<1>;
+v0061E970_0 .net "a0", 0 0, v0065B160_0; 1 drivers
+v0061E9C8_0 .net "a1", 0 0, v0065B1B8_0; 1 drivers
+v0061EA20_0 .net "b0", 0 0, v0065B210_0; 1 drivers
+v0061EA78_0 .net "b1", 0 0, v0065B268_0; 1 drivers
+v0061EAD0_0 .net "q0", 0 0, L_006323A0; 1 drivers
+v0061EB28_0 .net "q1", 0 0, L_00632410; 1 drivers
+v0061EB80_0 .net "q2", 0 0, L_00632480; 1 drivers
+v0061EBD8_0 .net "q3", 0 0, L_00632560; 1 drivers
+v0065B000_0 .alias "s0", 0 0, v0065B2C0_0;
+v0065B058_0 .alias "s1", 0 0, v0065B318_0;
+v0065B0B0_0 .alias "s2", 0 0, v0065B370_0;
+v0065B108_0 .alias "s3", 0 0, v0065B3C8_0;
+S_0036B548 .scope module, "AD1" "Adder" 2 29, 2 12, S_0036B328;
+ .timescale 0 0;
+L_00632560 .functor OR 1, L_00632170, L_00632100, C4<0>, C4<0>;
+v0061E6B0_0 .alias "a", 0 0, v0061EAD0_0;
+v0061E708_0 .alias "b", 0 0, v0061EB28_0;
+v0061E760_0 .net "c", 0 0, C4<0>; 1 drivers
+v0061E7B8_0 .net "q0", 0 0, L_006324B8; 1 drivers
+v0061E810_0 .net "q1", 0 0, L_00632170; 1 drivers
+v0061E868_0 .net "q3", 0 0, L_00632100; 1 drivers
+v0061E8C0_0 .alias "s0", 0 0, v0065B318_0;
+v0061E918_0 .alias "s1", 0 0, v0061EBD8_0;
+S_0036B658 .scope module, "HA1" "Half_adder" 2 16, 2 5, S_0036B548;
+ .timescale 0 0;
+L_006324B8 .functor XOR 1, L_006323A0, L_00632410, C4<0>, C4<0>;
+L_00632170 .functor AND 1, L_006323A0, L_00632410, C4<1>, C4<1>;
+v0061E550_0 .alias "a", 0 0, v0061EAD0_0;
+v0061E5A8_0 .alias "b", 0 0, v0061EB28_0;
+v0061E600_0 .alias "s0", 0 0, v0061E7B8_0;
+v0061E658_0 .alias "s1", 0 0, v0061E810_0;
+S_0036B5D0 .scope module, "HA2" "Half_adder" 2 17, 2 5, S_0036B548;
+ .timescale 0 0;
+L_006324F0 .functor XOR 1, C4<0>, L_006324B8, C4<0>, C4<0>;
+L_00632100 .functor AND 1, C4<0>, L_006324B8, C4<1>, C4<1>;
+v0061E3F0_0 .alias "a", 0 0, v0061E760_0;
+v0061E448_0 .alias "b", 0 0, v0061E7B8_0;
+v0061E4A0_0 .alias "s0", 0 0, v0065B318_0;
+v0061E4F8_0 .alias "s1", 0 0, v0061E868_0;
+S_0036B3B0 .scope module, "AD2" "Adder" 2 30, 2 12, S_0036B328;
+ .timescale 0 0;
+L_00632608 .functor OR 1, L_00632090, L_006320C8, C4<0>, C4<0>;
+v0061E130_0 .alias "a", 0 0, v0061EB80_0;
+v0061E188_0 .net "b", 0 0, C4<0>; 1 drivers
+v0061E1E0_0 .alias "c", 0 0, v0061EBD8_0;
+v0061E238_0 .net "q0", 0 0, L_006321E0; 1 drivers
+v0061E290_0 .net "q1", 0 0, L_00632090; 1 drivers
+v0061E2E8_0 .net "q3", 0 0, L_006320C8; 1 drivers
+v0061E340_0 .alias "s0", 0 0, v0065B370_0;
+v0061E398_0 .alias "s1", 0 0, v0065B3C8_0;
+S_0036B4C0 .scope module, "HA1" "Half_adder" 2 16, 2 5, S_0036B3B0;
+ .timescale 0 0;
+L_006321E0 .functor XOR 1, L_00632480, C4<0>, C4<0>, C4<0>;
+L_00632090 .functor AND 1, L_00632480, C4<0>, C4<1>, C4<1>;
+v0061DFD0_0 .alias "a", 0 0, v0061EB80_0;
+v0061E028_0 .alias "b", 0 0, v0061E188_0;
+v0061E080_0 .alias "s0", 0 0, v0061E238_0;
+v0061E0D8_0 .alias "s1", 0 0, v0061E290_0;
+S_0036B438 .scope module, "HA2" "Half_adder" 2 17, 2 5, S_0036B3B0;
+ .timescale 0 0;
+L_006325D0 .functor XOR 1, L_00632560, L_006321E0, C4<0>, C4<0>;
+L_006320C8 .functor AND 1, L_00632560, L_006321E0, C4<1>, C4<1>;
+v0061DE70_0 .alias "a", 0 0, v0061EBD8_0;
+v0061DEC8_0 .alias "b", 0 0, v0061E238_0;
+v0061DF20_0 .alias "s0", 0 0, v0065B370_0;
+v0061DF78_0 .alias "s1", 0 0, v0061E2E8_0;
+S_0036B2A0 .scope begin, "start" "start" 2 37, 2 37, S_0036B108;
+ .timescale 0 0;
+S_0036B218 .scope begin, "main" "main" 2 41, 2 41, S_0036B108;
+ .timescale 0 0;
+    .scope S_0036B108;
+T_0 ;
+    %fork t_1, S_0036B2A0;
+    %jmp t_0;
+t_1 ;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0036B108;
+T_1 ;
+    %fork t_3, S_0036B218;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 42 "$display", "Nome: Jonathan Felipe Xavier \011Matricula:415704";
+    %vpi_call 2 43 "$display", "Circuito multiplicador de dois bits";
+    %vpi_call 2 44 "$display", "\012 a1 | a0 | b1 | b0 | = | s3 | s2 | s1 | s0 |";
+    %vpi_call 2 45 "$monitor", " %b | %b | %b | %b | = | %2b | %2b | %2b | %2b |", v0065B1B8_0, v0065B160_0, v0065B268_0, v0065B210_0, v0065B3C8_0, v0065B370_0, v0065B318_0, v0065B2C0_0;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 0, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 0, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 0, 1;
+    %set/v v0065B268_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0065B160_0, 1, 1;
+    %set/v v0065B1B8_0, 1, 1;
+    %set/v v0065B210_0, 1, 1;
+    %set/v v0065B268_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\Arquitetura I\Tps\Guia05\Exercicio03.v";

@@ -1,0 +1,77 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E8358 .scope module, "testmeiadiferencanor" "testmeiadiferencanor" 2 22;
+ .timescale 0 0;
+v005FAA88_0 .var "e1", 0 0;
+v005FAAE0_0 .var "e2", 0 0;
+v005FAB38_0 .net "saida", 0 0, L_005FAC08; 1 drivers
+v005FAB90_0 .net "sinal", 0 0, L_005FAEA0; 1 drivers
+S_003E84F0 .scope module, "meiadiferenca" "metodomeiadiferencanor" 2 26, 2 5, S_003E8358;
+ .timescale 0 0;
+L_003E6BB8 .functor NOR 1, v005FAAE0_0, v005FAAE0_0, C4<0>, C4<0>;
+L_005FAC40 .functor NOR 1, v005FAA88_0, v005FAA88_0, C4<0>, C4<0>;
+L_005FACB0 .functor NOR 1, L_003E6BB8, L_005FAC40, C4<0>, C4<0>;
+L_005FAD58 .functor NOR 1, v005FAA88_0, v005FAAE0_0, C4<0>, C4<0>;
+L_005FAC08 .functor NOR 1, L_005FACB0, L_005FAD58, C4<0>, C4<0>;
+L_005FAE68 .functor NOR 1, v005FAAE0_0, v005FAAE0_0, C4<0>, C4<0>;
+L_005FAEA0 .functor NOR 1, v005FAA88_0, L_005FAE68, C4<0>, C4<0>;
+v005D0E40_0 .net "e1", 0 0, v005FAA88_0; 1 drivers
+v005FA6B0_0 .net "e2", 0 0, v005FAAE0_0; 1 drivers
+v005FA720_0 .alias "saida", 0 0, v005FAB38_0;
+v005FA7A8_0 .alias "sinal", 0 0, v005FAB90_0;
+v005FA818_0 .net "temp1", 0 0, L_003E6BB8; 1 drivers
+v005FA870_0 .net "temp2", 0 0, L_005FAC40; 1 drivers
+v005FA8E0_0 .net "temp3", 0 0, L_005FACB0; 1 drivers
+v005FA978_0 .net "temp4", 0 0, L_005FAD58; 1 drivers
+v005FA9E8_0 .net "temp5", 0 0, L_005FAE68; 1 drivers
+S_003E8468 .scope begin, "start" "start" 2 28, 2 28, S_003E8358;
+ .timescale 0 0;
+S_003E83E0 .scope begin, "main" "main" 2 33, 2 33, S_003E8358;
+ .timescale 0 0;
+    .scope S_003E8358;
+T_0 ;
+    %fork t_1, S_003E8468;
+    %jmp t_0;
+    .scope S_003E8468;
+t_1 ;
+    %set/v v005FAA88_0, 0, 1;
+    %set/v v005FAAE0_0, 0, 1;
+    %end;
+    .scope S_003E8358;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003E8358;
+T_1 ;
+    %fork t_3, S_003E83E0;
+    %jmp t_2;
+    .scope S_003E83E0;
+t_3 ;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", " Circuito da meia-diferença com portas NOR ";
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", " e1 - e2 = sinal   saida ";
+    %vpi_call 2 37 "$monitor", " %b  - %b  =   %b      %b", v005FAA88_0, v005FAAE0_0, v005FAB90_0, v005FAB38_0;
+    %delay 1, 0;
+    %set/v v005FAA88_0, 0, 1;
+    %set/v v005FAAE0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005FAA88_0, 1, 1;
+    %set/v v005FAAE0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005FAA88_0, 1, 1;
+    %set/v v005FAAE0_0, 1, 1;
+    %end;
+    .scope S_003E8358;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\ArQuitetura\Tps\guia3\Exercicio05.v";

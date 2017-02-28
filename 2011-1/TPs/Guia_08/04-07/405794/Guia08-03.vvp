@@ -1,0 +1,138 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00677EB0 .scope module, "testeex3" "testeex3" 2 28;
+ .timescale 0 0;
+v006A8558_0 .var "a", 0 0;
+v006A85B0_0 .var "b", 0 0;
+v006A8608_0 .var "c", 0 0;
+v006A8660_0 .var "d", 0 0;
+v006A86B8_0 .var "e", 0 0;
+v006A8710_0 .var/i "i", 31 0;
+v006A8768_0 .var/i "j", 31 0;
+v006A87C0_0 .var/i "k", 31 0;
+v006A8818_0 .var/i "l", 31 0;
+v006A8870_0 .var/i "m", 31 0;
+v006A88E0_0 .var/i "numero", 31 0;
+v006A8950_0 .net "s", 0 0, L_006A89A8; 1 drivers
+S_00677F30 .scope module, "EX3" "ex3" 2 34, 2 11, S_00677EB0;
+ .timescale 0 0;
+L_00675688 .functor NOT 1, v006A8558_0, C4<0>, C4<0>, C4<0>;
+L_006A89E0 .functor NOT 1, v006A85B0_0, C4<0>, C4<0>, C4<0>;
+L_006A8A60 .functor NOT 1, v006A8608_0, C4<0>, C4<0>, C4<0>;
+L_006A8AE0 .functor NOT 1, v006A8660_0, C4<0>, C4<0>, C4<0>;
+L_006A8B50 .functor AND 1, L_006A89E0, v006A86B8_0, C4<1>, C4<1>;
+L_006A8BF8 .functor AND 1, v006A8608_0, v006A86B8_0, C4<1>, C4<1>;
+L_006A8C30 .functor AND 1, L_00675688, L_006A8A60, L_006A8AE0, C4<1>;
+L_006A8D10 .functor AND 1, v006A8558_0, v006A8608_0, L_006A8AE0, C4<1>;
+L_006A8AA8 .functor AND 1, v006A8558_0, L_006A89E0, L_006A8A60, v006A8660_0;
+L_006A89A8/0/0 .functor OR 1, L_006A8B50, L_006A8BF8, L_006A8C30, L_006A8D10;
+L_006A89A8/0/4 .functor OR 1, L_006A8AA8, C4<0>, C4<0>, C4<0>;
+L_006A89A8 .functor OR 1, L_006A89A8/0/0, L_006A89A8/0/4, C4<0>, C4<0>;
+v00677FB0_0 .net "a", 0 0, v006A8558_0; 1 drivers
+v006A7F08_0 .net "b", 0 0, v006A85B0_0; 1 drivers
+v006A7F78_0 .net "c", 0 0, v006A8608_0; 1 drivers
+v006A8008_0 .net "c1", 0 0, L_006A8B50; 1 drivers
+v006A8078_0 .net "c2", 0 0, L_006A8BF8; 1 drivers
+v006A80D0_0 .net "c3", 0 0, L_006A8C30; 1 drivers
+v006A8140_0 .net "c4", 0 0, L_006A8D10; 1 drivers
+v006A81D8_0 .net "c5", 0 0, L_006A8AA8; 1 drivers
+v006A8248_0 .net "d", 0 0, v006A8660_0; 1 drivers
+v006A82B8_0 .net "e", 0 0, v006A86B8_0; 1 drivers
+v006A8328_0 .net "n1", 0 0, L_00675688; 1 drivers
+v006A8398_0 .net "n2", 0 0, L_006A89E0; 1 drivers
+v006A8408_0 .net "n3", 0 0, L_006A8A60; 1 drivers
+v006A8478_0 .net "n4", 0 0, L_006A8AE0; 1 drivers
+v006A84E8_0 .alias "s", 0 0, v006A8950_0;
+    .scope S_00677EB0;
+T_0 ;
+    %set/v v006A8558_0, 0, 1;
+    %set/v v006A85B0_0, 0, 1;
+    %set/v v006A8608_0, 0, 1;
+    %set/v v006A8660_0, 0, 1;
+    %set/v v006A86B8_0, 0, 1;
+    %set/v v006A88E0_0, 1, 32;
+    %end;
+    .thread T_0;
+    .scope S_00677EB0;
+T_1 ;
+    %vpi_call 2 46 "$display", "Guia08-03 - Caio Ragacci Pimentel - 405794 \012";
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "   a b c d e Out";
+    %set/v v006A8710_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v006A8710_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v006A8710_0, 32;
+    %set/v v006A8558_0, 8, 1;
+    %set/v v006A8768_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v006A8768_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.3, 5;
+    %load/v 8, v006A8768_0, 32;
+    %set/v v006A85B0_0, 8, 1;
+    %set/v v006A87C0_0, 0, 32;
+T_1.4 ;
+    %load/v 8, v006A87C0_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.5, 5;
+    %load/v 8, v006A87C0_0, 32;
+    %set/v v006A8608_0, 8, 1;
+    %set/v v006A8818_0, 0, 32;
+T_1.6 ;
+    %load/v 8, v006A8818_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.7, 5;
+    %load/v 8, v006A8818_0, 32;
+    %set/v v006A8660_0, 8, 1;
+    %set/v v006A8870_0, 0, 32;
+T_1.8 ;
+    %load/v 8, v006A8870_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.9, 5;
+    %delay 1, 0;
+    %load/v 8, v006A8870_0, 32;
+    %set/v v006A86B8_0, 8, 1;
+    %load/v 8, v006A88E0_0, 32;
+    %mov 40, 39, 1;
+   %addi 8, 1, 33;
+    %set/v v006A88E0_0, 8, 32;
+    %delay 1, 0;
+    %vpi_call 2 60 "$display", "%2d %b %b %b %b %b  %b", v006A88E0_0, v006A8558_0, v006A85B0_0, v006A8608_0, v006A8660_0, v006A86B8_0, v006A8950_0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A8870_0, 32;
+    %set/v v006A8870_0, 8, 32;
+    %jmp T_1.8;
+T_1.9 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A8818_0, 32;
+    %set/v v006A8818_0, 8, 32;
+    %jmp T_1.6;
+T_1.7 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A87C0_0, 32;
+    %set/v v006A87C0_0, 8, 32;
+    %jmp T_1.4;
+T_1.5 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A8768_0, 32;
+    %set/v v006A8768_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v006A8710_0, 32;
+    %set/v v006A8710_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_08\405794\Guia08-03.v";

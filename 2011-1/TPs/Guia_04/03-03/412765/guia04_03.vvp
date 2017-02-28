@@ -1,0 +1,106 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00676EA8 .scope module, "fullDifferencetest" "fullDifferencetest" 2 48;
+ .timescale 0 0;
+v006A7790_0 .var "a", 0 0;
+v006A77E8_0 .var "b", 0 0;
+v006A7878_0 .var "s1", 0 0;
+v006A7908_0 .net "s2", 0 0, L_00674848; 1 drivers
+v006A7998_0 .net "s3", 0 0, L_006A7C30; 1 drivers
+S_00677028 .scope module, "FULL" "fullDifference" 2 54, 2 35, S_00676EA8;
+ .timescale 0 0;
+L_006A7C30 .functor OR 1, L_006A7B58, L_00674810, C4<0>, C4<0>;
+v006A74A8_0 .net "p", 0 0, v006A7790_0; 1 drivers
+v006A7500_0 .net "q", 0 0, v006A77E8_0; 1 drivers
+v006A7558_0 .net "s1", 0 0, v006A7878_0; 1 drivers
+v006A75B0_0 .alias "s2", 0 0, v006A7908_0;
+v006A7608_0 .alias "s3", 0 0, v006A7998_0;
+v006A7660_0 .net "s4", 0 0, L_006A7A38; 1 drivers
+v006A76B8_0 .net "s5", 0 0, L_00674810; 1 drivers
+v006A7738_0 .net "s6", 0 0, L_006A7B58; 1 drivers
+S_006A7228 .scope module, "HALF2" "halfDifference1" 2 40, 2 8, S_00677028;
+ .timescale 0 0;
+L_006A79F0 .functor NOT 1, v006A7790_0, C4<0>, C4<0>, C4<0>;
+L_006A7A38 .functor XOR 1, v006A7790_0, v006A77E8_0, C4<0>, C4<0>;
+L_00674810 .functor AND 1, L_006A79F0, v006A77E8_0, C4<1>, C4<1>;
+v006A72A8_0 .alias "p", 0 0, v006A74A8_0;
+v006A7318_0 .alias "q", 0 0, v006A7500_0;
+v006A7388_0 .alias "s1", 0 0, v006A7660_0;
+v006A73F8_0 .alias "s2", 0 0, v006A76B8_0;
+v006A7450_0 .net "s3", 0 0, L_006A79F0; 1 drivers
+S_006770A8 .scope module, "HALF1" "halfDifference2" 2 41, 2 21, S_00677028;
+ .timescale 0 0;
+L_006A7840 .functor NOT 1, L_006A7A38, C4<0>, C4<0>, C4<0>;
+L_00674848 .functor XOR 1, v006A7878_0, L_006A7A38, C4<0>, C4<0>;
+L_006A7B58 .functor AND 1, v006A7878_0, L_006A7840, C4<1>, C4<1>;
+v00677128_0 .alias "p", 0 0, v006A7558_0;
+v006A7068_0 .alias "q", 0 0, v006A7660_0;
+v006A70D8_0 .alias "s1", 0 0, v006A7908_0;
+v006A7160_0 .alias "s2", 0 0, v006A7738_0;
+v006A71D0_0 .net "s3", 0 0, L_006A7840; 1 drivers
+S_00676FA8 .scope begin, "start" "start" 2 56, 2 56, S_00676EA8;
+ .timescale 0 0;
+S_00676F28 .scope begin, "main" "main" 2 65, 2 65, S_00676EA8;
+ .timescale 0 0;
+    .scope S_00676EA8;
+T_0 ;
+    %fork t_1, S_00676FA8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A7790_0, 0, 1;
+    %set/v v006A77E8_0, 0, 1;
+    %set/v v006A7878_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00676EA8;
+T_1 ;
+    %fork t_3, S_00676F28;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 67 "$display", "\012Guia 04 - exercicio 03 - Paulo Henrique - 412765";
+    %vpi_call 2 68 "$display", "\012Teste Full Difference gate";
+    %vpi_call 2 69 "$display", "\012Cin a - b = s";
+    %vpi_call 2 70 "$monitor", "%b %b - %b = %b%b", v006A7878_0, v006A7790_0, v006A77E8_0, v006A7908_0, v006A7998_0;
+    %delay 1, 0;
+    %set/v v006A7878_0, 1, 1;
+    %set/v v006A7790_0, 0, 1;
+    %set/v v006A77E8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7878_0, 0, 1;
+    %set/v v006A7790_0, 1, 1;
+    %set/v v006A77E8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7878_0, 1, 1;
+    %set/v v006A7790_0, 1, 1;
+    %set/v v006A77E8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A7878_0, 0, 1;
+    %set/v v006A7790_0, 0, 1;
+    %set/v v006A77E8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7878_0, 1, 1;
+    %set/v v006A7790_0, 0, 1;
+    %set/v v006A77E8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7878_0, 0, 1;
+    %set/v v006A7790_0, 1, 1;
+    %set/v v006A77E8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A7878_0, 1, 1;
+    %set/v v006A7790_0, 1, 1;
+    %set/v v006A77E8_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\Arquitetura\TPS\guia04\guia04_03.v";

@@ -1,0 +1,68 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00313E70 .scope module, "testmeiasoma" "testmeiasoma" 2 28;
+ .timescale 0 0;
+v00641810_0 .var "a", 0 0;
+v00641868_0 .var "b", 0 0;
+v006418C0_0 .net "s0", 0 0, L_0031EE50; 1 drivers
+v00641918_0 .net "s1", 0 0, L_0031EE88; 1 drivers
+S_003199F8 .scope module, "MEIASOMA1" "meiasoma" 2 32, 2 11, S_00313E70;
+ .timescale 0 0;
+L_00313F80 .functor NOR 1, v00641810_0, v00641810_0, C4<0>, C4<0>;
+L_0031EE18 .functor NOR 1, v00641868_0, v00641868_0, C4<0>, C4<0>;
+L_0031EE88 .functor NOR 1, L_00313F80, L_0031EE18, C4<0>, C4<0>;
+L_0031EF68 .functor NOR 1, v00641810_0, v00641868_0, C4<0>, C4<0>;
+L_0031EE50 .functor NOR 1, L_0031EE88, L_0031EF68, C4<0>, C4<0>;
+v003129C8_0 .net "a", 0 0, v00641810_0; 1 drivers
+v00312A20_0 .net "b", 0 0, v00641868_0; 1 drivers
+v0031CDE0_0 .alias "s0", 0 0, v006418C0_0;
+v0031CE38_0 .alias "s1", 0 0, v00641918_0;
+v0031CE90_0 .net "s2", 0 0, L_00313F80; 1 drivers
+v0031CEE8_0 .net "s3", 0 0, L_0031EE18; 1 drivers
+v0031CF40_0 .net "s4", 0 0, L_0031EF68; 1 drivers
+S_00312940 .scope begin, "start" "start" 2 34, 2 34, S_00313E70;
+ .timescale 0 0;
+S_00313EF8 .scope begin, "main" "main" 2 39, 2 39, S_00313E70;
+ .timescale 0 0;
+    .scope S_00313E70;
+T_0 ;
+    %fork t_1, S_00312940;
+    %jmp t_0;
+t_1 ;
+    %set/v v00641810_0, 0, 1;
+    %set/v v00641868_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00313E70;
+T_1 ;
+    %fork t_3, S_00313EF8;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 40 "$display", "Guia 03_04 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 41 "$display", "Test Meia Soma NOR gate";
+    %vpi_call 2 42 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 43 "$monitor", " %b & %b = %b %b", v00641810_0, v00641868_0, v006418C0_0, v00641918_0;
+    %delay 1, 0;
+    %set/v v00641810_0, 0, 1;
+    %set/v v00641868_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00641810_0, 1, 1;
+    %set/v v00641868_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00641810_0, 1, 1;
+    %set/v v00641868_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Ciência da Computação\AC I - 2\Guias\Guia03\guia03_04.v";

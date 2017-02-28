@@ -1,0 +1,80 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.4 " "(v0_9_4)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00398D98 .scope module, "Mem_1por1" "Mem_1por1" 2 43;
+ .timescale 0 0;
+L_0039FD90 .functor AND 1, C4<z>, C4<z>, C4<z>, C4<1>;
+L_0039FE00 .functor AND 1, C4<z>, v0039CFE0_0, C4<1>, C4<1>;
+v0039F688_0 .net "addr", 0 0, C4<z>; 0 drivers
+v0039F6E0_0 .net "clk", 0 0, C4<z>; 0 drivers
+v0039F738_0 .net "clr", 0 0, C4<z>; 0 drivers
+v0039F790_0 .net "entrada", 0 0, C4<z>; 0 drivers
+v0039F7E8_0 .net "q", 0 0, v0039CFE0_0; 1 drivers
+v0039F840_0 .net "qnot", 0 0, v0039D038_0; 1 drivers
+v0039FD38_0 .net "rw", 0 0, C4<z>; 0 drivers
+v008E1410_0 .net "s", 0 0, L_0039FD90; 1 drivers
+v008E1468_0 .net "saida", 0 0, L_0039FE00; 1 drivers
+S_00398E20 .scope module, "JKFF1" "jkff" 2 49, 2 11, S_00398D98;
+ .timescale 0 0;
+v00392EA0_0 .alias "clk", 0 0, v0039F6E0_0;
+v00392EF8_0 .alias "clr", 0 0, v0039F738_0;
+v00392F50_0 .alias "j", 0 0, v0039F790_0;
+v0039CF88_0 .alias "k", 0 0, v0039F790_0;
+v0039CFE0_0 .var "q", 0 0;
+v0039D038_0 .var "qnot", 0 0;
+E_008A0DD8 .event posedge, v00392EF8_0, v00392EA0_0;
+    .scope S_00398E20;
+T_0 ;
+    %wait E_008A0DD8;
+    %load/v 8, v00392EF8_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %set/v v0039CFE0_0, 0, 1;
+    %set/v v0039D038_0, 1, 1;
+T_0.0 ;
+    %load/v 8, v00392F50_0, 1;
+    %load/v 9, v0039CF88_0, 1;
+    %inv 9, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0039CFE0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0039D038_0, 0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v00392F50_0, 1;
+    %inv 8, 1;
+    %load/v 9, v0039CF88_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.4, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0039CFE0_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0039D038_0, 0, 1;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/v 8, v00392F50_0, 1;
+    %load/v 9, v0039CF88_0, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_0.6, 8;
+    %load/v 8, v0039CFE0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0039CFE0_0, 0, 8;
+    %load/v 8, v0039D038_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0039D038_0, 0, 8;
+T_0.6 ;
+T_0.5 ;
+T_0.3 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Michelle\Documents\Faculdade\Terceiro Periodo\AC1\427448\Guia10\1x1.v";

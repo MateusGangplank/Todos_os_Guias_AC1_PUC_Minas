@@ -1,0 +1,116 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00BB6B88 .scope module, "testeex2" "testeex2" 2 18;
+ .timescale 0 0;
+v00BE7108_0 .var "a", 0 0;
+v00BE7160_0 .var "b", 0 0;
+v00BE71B8_0 .var "c", 0 0;
+v00BE7210_0 .var "d", 0 0;
+v00BE7268_0 .var/i "i", 31 0;
+v00BE72C0_0 .var/i "j", 31 0;
+v00BE7318_0 .var/i "k", 31 0;
+v00BE7370_0 .var/i "l", 31 0;
+v00BE73C8_0 .var/i "num", 31 0;
+v00BE7438_0 .net "s", 0 0, L_00BE77F0; 1 drivers
+S_00BB6C08 .scope module, "EX2" "ex2" 2 23, 2 4, S_00BB6B88;
+ .timescale 0 0;
+L_00BB4468 .functor NOT 1, v00BE7108_0, C4<0>, C4<0>, C4<0>;
+L_00BE74C8 .functor NOT 1, v00BE7160_0, C4<0>, C4<0>, C4<0>;
+L_00BE7548 .functor NOT 1, v00BE71B8_0, C4<0>, C4<0>, C4<0>;
+L_00BE75C8 .functor NOT 1, v00BE7210_0, C4<0>, C4<0>, C4<0>;
+L_00BE7638 .functor AND 1, L_00BB4468, L_00BE75C8, C4<1>, C4<1>;
+L_00BE76E0 .functor AND 1, v00BE7108_0, v00BE7210_0, C4<1>, C4<1>;
+L_00BE7718 .functor AND 1, v00BE7108_0, L_00BE74C8, L_00BE7548, C4<1>;
+L_00BE77F0 .functor OR 1, L_00BE7638, L_00BE76E0, L_00BE7718, C4<0>;
+v00BB6C88_0 .net "a", 0 0, v00BE7108_0; 1 drivers
+v00BE6C10_0 .net "b", 0 0, v00BE7160_0; 1 drivers
+v00BE6C80_0 .net "c", 0 0, v00BE71B8_0; 1 drivers
+v00BE6D08_0 .net "c1", 0 0, L_00BE7638; 1 drivers
+v00BE6D78_0 .net "c2", 0 0, L_00BE76E0; 1 drivers
+v00BE6DD0_0 .net "c3", 0 0, L_00BE7718; 1 drivers
+v00BE6E40_0 .net "d", 0 0, v00BE7210_0; 1 drivers
+v00BE6ED8_0 .net "n1", 0 0, L_00BB4468; 1 drivers
+v00BE6F48_0 .net "n2", 0 0, L_00BE74C8; 1 drivers
+v00BE6FB8_0 .net "n3", 0 0, L_00BE7548; 1 drivers
+v00BE7028_0 .net "n4", 0 0, L_00BE75C8; 1 drivers
+v00BE7098_0 .alias "s", 0 0, v00BE7438_0;
+    .scope S_00BB6B88;
+T_0 ;
+    %set/v v00BE7108_0, 0, 1;
+    %set/v v00BE7160_0, 0, 1;
+    %set/v v00BE71B8_0, 0, 1;
+    %set/v v00BE7210_0, 0, 1;
+    %set/v v00BE73C8_0, 1, 32;
+    %end;
+    .thread T_0;
+    .scope S_00BB6B88;
+T_1 ;
+    %vpi_call 2 34 "$display", "Exercicio 02 - Paulo Henrique de Almeida Amorim - 412765 \012";
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "   a b c d  Out";
+    %set/v v00BE7268_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v00BE7268_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v00BE7268_0, 32;
+    %set/v v00BE7108_0, 8, 1;
+    %set/v v00BE72C0_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v00BE72C0_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.3, 5;
+    %load/v 8, v00BE72C0_0, 32;
+    %set/v v00BE7160_0, 8, 1;
+    %set/v v00BE7318_0, 0, 32;
+T_1.4 ;
+    %load/v 8, v00BE7318_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.5, 5;
+    %load/v 8, v00BE7318_0, 32;
+    %set/v v00BE71B8_0, 8, 1;
+    %set/v v00BE7370_0, 0, 32;
+T_1.6 ;
+    %load/v 8, v00BE7370_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.7, 5;
+    %delay 1, 0;
+    %load/v 8, v00BE7370_0, 32;
+    %set/v v00BE7210_0, 8, 1;
+    %load/v 8, v00BE73C8_0, 32;
+    %mov 40, 39, 1;
+   %addi 8, 1, 33;
+    %set/v v00BE73C8_0, 8, 32;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "%2d %b %b %b %b  %b", v00BE73C8_0, v00BE7108_0, v00BE7160_0, v00BE71B8_0, v00BE7210_0, v00BE7438_0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v00BE7370_0, 32;
+    %set/v v00BE7370_0, 8, 32;
+    %jmp T_1.6;
+T_1.7 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v00BE7318_0, 32;
+    %set/v v00BE7318_0, 8, 32;
+    %jmp T_1.4;
+T_1.5 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v00BE72C0_0, 32;
+    %set/v v00BE72C0_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v00BE7268_0, 32;
+    %set/v v00BE7268_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_08\412765\guia08_2.v";

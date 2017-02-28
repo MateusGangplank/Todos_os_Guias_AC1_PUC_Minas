@@ -1,0 +1,86 @@
+//----------------
+//@autor: Rafael de Freitas Queiroz Matosinhos
+//@Guia 03 - Exemplo 001
+//@Matricula: 420139
+//----------------
+
+//----------------
+//--- NOT GATE ---
+//----------------
+
+module notgate (s1, e1);
+   output s1;
+   input  e1;
+	assign s1 = ~e1;
+endmodule
+
+//----------------
+//--- AND GATE ---
+//----------------
+
+module andgate (s1, e1, e2);
+   output s1;
+   input  e1, e2;
+	assign s1 = (e1&e2);
+endmodule
+
+//----------------
+//--- OR GATE ---
+//----------------
+
+module orgate (s1, e1, e2);
+   output s1;
+   input  e1, e2;
+	assign s1 = (e1|e2);
+endmodule
+
+//----------------
+//--- NOR GATE ---
+//----------------
+
+module norgate (s1, e1, e2);
+   output s1;
+   input  e1, e2;
+	assign s1 = ~(e1|e2);
+endmodule
+
+
+module meioSomador;
+reg e1, e2;
+wire sResp0, sResp1, s1, s2, s3;
+
+andgate and1 (sResp0, e1, e2);
+
+//-- XOR
+andgate and2(s1, e1, e2);
+notgate not1(s2, s1);
+orgate or1(s3, e1, e2);
+andgate and3(sResp1, s2, s3);
+
+initial begin: start
+ 	e1 = 0;
+ 	e2 = 0;
+end
+
+initial begin: main
+
+$display("Guia 03 - Exemplo 01");
+      $display("Meio Somador");
+		$monitor("(%b + %b) = %b %b", e1, e2, sResp0, sResp1);
+		
+		#1 e1 = 0; e2 = 1;
+		#1 e1 = 1; e2 = 0;
+		#1 e1 = 1; e2 = 1;
+		
+end
+	
+endmodule
+
+
+//---- TESTES -----
+//--Guia 03 - Exemplo 01
+//--Meio Somador
+//--(0 + 0) = 0 0
+//--(0 + 1) = 0 1
+//--(1 + 0) = 0 1
+//--(1 + 1) = 1 0

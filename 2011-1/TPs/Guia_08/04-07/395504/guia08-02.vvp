@@ -1,0 +1,116 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003E7790 .scope module, "testeex2" "testeex2" 2 26;
+ .timescale 0 0;
+v005FDFC8_0 .var "a", 0 0;
+v005FE020_0 .var "b", 0 0;
+v005FE078_0 .var "c", 0 0;
+v005FE0D0_0 .var "d", 0 0;
+v005FE128_0 .var/i "i", 31 0;
+v005FE180_0 .var/i "j", 31 0;
+v005FE1D8_0 .var/i "k", 31 0;
+v005FE230_0 .var/i "l", 31 0;
+v005FE288_0 .var/i "numero", 31 0;
+v005FE2F8_0 .net "s", 0 0, L_005FE670; 1 drivers
+S_003E7930 .scope module, "EX2" "ex2" 2 31, 2 12, S_003E7790;
+ .timescale 0 0;
+L_005FE350 .functor NOT 1, v005FDFC8_0, C4<0>, C4<0>, C4<0>;
+L_005FE3C0 .functor NOT 1, v005FE020_0, C4<0>, C4<0>, C4<0>;
+L_005FE430 .functor NOT 1, v005FE078_0, C4<0>, C4<0>, C4<0>;
+L_005FE4B0 .functor NOT 1, v005FE0D0_0, C4<0>, C4<0>, C4<0>;
+L_005FE520 .functor AND 1, L_005FE350, L_005FE4B0, C4<1>, C4<1>;
+L_005FE5C8 .functor AND 1, v005FDFC8_0, v005FE0D0_0, C4<1>, C4<1>;
+L_005FE600 .functor AND 1, v005FDFC8_0, L_005FE3C0, L_005FE430, C4<1>;
+L_005FE670 .functor OR 1, L_005FE520, L_005FE5C8, L_005FE600, C4<0>;
+v005E2618_0 .net "a", 0 0, v005FDFC8_0; 1 drivers
+v005FDAA0_0 .net "b", 0 0, v005FE020_0; 1 drivers
+v005FDB10_0 .net "c", 0 0, v005FE078_0; 1 drivers
+v005FDB98_0 .net "c1", 0 0, L_005FE520; 1 drivers
+v005FDC08_0 .net "c2", 0 0, L_005FE5C8; 1 drivers
+v005FDC60_0 .net "c3", 0 0, L_005FE600; 1 drivers
+v005FDCD0_0 .net "d", 0 0, v005FE0D0_0; 1 drivers
+v005FDD68_0 .net "n1", 0 0, L_005FE350; 1 drivers
+v005FDDD8_0 .net "n2", 0 0, L_005FE3C0; 1 drivers
+v005FDE78_0 .net "n3", 0 0, L_005FE430; 1 drivers
+v005FDEE8_0 .net "n4", 0 0, L_005FE4B0; 1 drivers
+v005FDF58_0 .alias "s", 0 0, v005FE2F8_0;
+    .scope S_003E7790;
+T_0 ;
+    %set/v v005FDFC8_0, 0, 1;
+    %set/v v005FE020_0, 0, 1;
+    %set/v v005FE078_0, 0, 1;
+    %set/v v005FE0D0_0, 0, 1;
+    %set/v v005FE288_0, 1, 32;
+    %end;
+    .thread T_0;
+    .scope S_003E7790;
+T_1 ;
+    %vpi_call 2 42 "$display", "Guia08-02 - Thaise Souto Martins - 395504 \012";
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "   a b c d  Out";
+    %set/v v005FE128_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v005FE128_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v005FE128_0, 32;
+    %set/v v005FDFC8_0, 8, 1;
+    %set/v v005FE180_0, 0, 32;
+T_1.2 ;
+    %load/v 8, v005FE180_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.3, 5;
+    %load/v 8, v005FE180_0, 32;
+    %set/v v005FE020_0, 8, 1;
+    %set/v v005FE1D8_0, 0, 32;
+T_1.4 ;
+    %load/v 8, v005FE1D8_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.5, 5;
+    %load/v 8, v005FE1D8_0, 32;
+    %set/v v005FE078_0, 8, 1;
+    %set/v v005FE230_0, 0, 32;
+T_1.6 ;
+    %load/v 8, v005FE230_0, 32;
+   %cmpi/s 8, 2, 32;
+    %jmp/0xz T_1.7, 5;
+    %delay 1, 0;
+    %load/v 8, v005FE230_0, 32;
+    %set/v v005FE0D0_0, 8, 1;
+    %load/v 8, v005FE288_0, 32;
+    %mov 40, 39, 1;
+    %addi 8, 1, 33;
+    %set/v v005FE288_0, 8, 32;
+    %delay 1, 0;
+    %vpi_call 2 53 "$display", "%2d %b %b %b %b  %b", v005FE288_0, v005FDFC8_0, v005FE020_0, v005FE078_0, v005FE0D0_0, v005FE2F8_0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005FE230_0, 32;
+    %set/v v005FE230_0, 8, 32;
+    %jmp T_1.6;
+T_1.7 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005FE1D8_0, 32;
+    %set/v v005FE1D8_0, 8, 32;
+    %jmp T_1.4;
+T_1.5 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005FE180_0, 32;
+    %set/v v005FE180_0, 8, 32;
+    %jmp T_1.2;
+T_1.3 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v005FE128_0, 32;
+    %set/v v005FE128_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_08\395504\guia08-02.v";

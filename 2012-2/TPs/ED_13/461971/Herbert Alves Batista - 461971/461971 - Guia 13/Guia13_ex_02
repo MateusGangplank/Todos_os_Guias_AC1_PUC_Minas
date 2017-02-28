@@ -1,0 +1,69 @@
+//
+// Herbert Alves Batista  - Matrícula 461971
+//
+// Programa para calcular uma expressão do tipo
+// dado04 = dado01 - dado02 - dado03
+// usando complemento de 2 em uma das operações
+// e dados com 16 bits.
+//
+// dado04(resultado) sera salvo nas posicoes de memoria C056 e C057
+//
+// dado01 devera ser inserido manualmente nas posicoes de memoria C050 e C051
+// dado02 devera ser inserido manualmente nas posicoes de memoria C052 e C053
+// dado03 devera ser inserido manualmente nas posicoes de memoria C054 e C055
+
+LDA C051;
+MVI H,C0;
+MVI L,53;
+SUB M;
+MOV C,A;
+
+LDA C050;
+MVI H,C0;
+MVI L,52;
+SUB M;
+MOV B,A;
+
+LDA C055;
+CMA;
+INR A;
+JC C023;
+MOV E,A;
+LDA C054;
+CMA;
+MOV D,A;
+JMP C029;
+
+LDA C054;
+CMA;
+INR A;
+MOV D,A;
+
+MOV A,C;
+ADD E;
+JC C039;
+STA C057;
+MOV A,B;
+ADD D;
+STA C056;
+JMP C042;
+
+STA C057;
+MOV A,B;
+ADD D;
+INR A;
+STA C056
+
+HLT;
+
+
+
+
+
+
+
+
+
+
+
+

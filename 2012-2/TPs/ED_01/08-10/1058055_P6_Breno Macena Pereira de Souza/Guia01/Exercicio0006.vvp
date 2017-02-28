@@ -1,0 +1,77 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00372BC8 .scope module, "testxorgate" "testxorgate" 2 17;
+ .timescale 0 0;
+v0037F7D8_0 .var "a", 0 0;
+v0037F830_0 .var "b", 0 0;
+v0037F888_0 .net "s", 0 0, L_00378D30; 1 drivers
+S_0037A988 .scope module, "XOR1" "xorgate" 2 22, 2 10, S_00372BC8;
+ .timescale 0 0;
+L_0037FFA8 .functor NOT 1, v0037F7D8_0, C4<0>, C4<0>, C4<0>;
+L_00373A48 .functor AND 1, L_0037FFA8, v0037F830_0, C4<1>, C4<1>;
+L_0037F950 .functor NOT 1, v0037F830_0, C4<0>, C4<0>, C4<0>;
+L_0037F988 .functor AND 1, L_0037F950, v0037F7D8_0, C4<1>, C4<1>;
+L_00378D30 .functor OR 1, L_00373A48, L_0037F988, C4<0>, C4<0>;
+v00373998_0 .net *"_s0", 0 0, L_0037FFA8; 1 drivers
+v003739F0_0 .net *"_s2", 0 0, L_00373A48; 1 drivers
+v0037F448_0 .net *"_s4", 0 0, L_0037F950; 1 drivers
+v0037F4A0_0 .net *"_s6", 0 0, L_0037F988; 1 drivers
+v0037F4F8_0 .net "p", 0 0, v0037F7D8_0; 1 drivers
+v0037F550_0 .net "q", 0 0, v0037F830_0; 1 drivers
+v0037F5A8_0 .alias "s", 0 0, v0037F888_0;
+S_00373910 .scope begin, "start" "start" 2 24, 2 24, S_00372BC8;
+ .timescale 0 0;
+S_00372C50 .scope begin, "main" "main" 2 30, 2 30, S_00372BC8;
+ .timescale 0 0;
+    .scope S_00372BC8;
+T_0 ;
+    %fork t_1, S_00373910;
+    %jmp t_0;
+    .scope S_00373910;
+t_1 ;
+    %set/v v0037F7D8_0, 0, 1;
+    %set/v v0037F830_0, 0, 1;
+    %end;
+    .scope S_00372BC8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00372BC8;
+T_1 ;
+    %fork t_3, S_00372C50;
+    %jmp t_2;
+    .scope S_00372C50;
+t_3 ;
+    %vpi_call 2 31 "$display", "Exerc\355cio 0006 - Breno Macena - 462017";
+    %vpi_call 2 32 "$display", "Test XOR gate:";
+    %vpi_call 2 33 "$display", "\012~a & b | ~b & a = s\012";
+    %set/v v0037F7D8_0, 0, 1;
+    %set/v v0037F830_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "~%b & %b | ~%b & %b = %b", v0037F7D8_0, v0037F830_0, v0037F830_0, v0037F7D8_0, v0037F888_0;
+    %set/v v0037F7D8_0, 0, 1;
+    %set/v v0037F830_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 37 "$display", "~%b & %b | ~%b & %b = %b", v0037F7D8_0, v0037F830_0, v0037F830_0, v0037F7D8_0, v0037F888_0;
+    %set/v v0037F7D8_0, 1, 1;
+    %set/v v0037F830_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 39 "$display", "~%b & %b | ~%b & %b = %b", v0037F7D8_0, v0037F830_0, v0037F830_0, v0037F7D8_0, v0037F888_0;
+    %set/v v0037F7D8_0, 1, 1;
+    %set/v v0037F830_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 41 "$display", "~%b & %b | ~%b & %b = %b", v0037F7D8_0, v0037F830_0, v0037F830_0, v0037F7D8_0, v0037F888_0;
+    %end;
+    .scope S_00372BC8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\BRENO\Desktop\Guia01\Exercicio0006.v";

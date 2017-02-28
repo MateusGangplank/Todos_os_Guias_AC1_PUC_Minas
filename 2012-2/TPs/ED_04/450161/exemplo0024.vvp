@@ -1,0 +1,65 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xa0e71b8 .scope module, "test_fullAdder" "test_fullAdder" 2 27;
+ .timescale 0 0;
+v0xa0e56e0_0 .net "s", 0 0, L_0xa0e5a88; 1 drivers
+v0xa0e5740_0 .var "x", 2 0;
+v0xa0e57b0_0 .var "y", 2 0;
+S_0xa0c5208 .scope module, "di" "dif" 2 34, 2 9, S_0xa0e71b8;
+ .timescale 0 0;
+L_0xa0e5598 .functor NOT 1, L_0xa0e5860, C4<0>, C4<0>, C4<0>;
+L_0xa0e5920 .functor XOR 1, L_0xa0e5978, L_0xa0e5a00, C4<0>, C4<0>;
+L_0xa0e5ac0 .functor XOR 1, L_0xa0e5af8, L_0xa0e5be8, C4<0>, C4<0>;
+L_0xa0e5c38 .functor XOR 1, L_0xa0e5ca8, L_0xa0e5d30, C4<0>, C4<0>;
+L_0xa0e5a88 .functor OR 1, L_0xa0e5920, L_0xa0e5ac0, L_0xa0e5c38, C4<0>;
+v0xa0c5288_0 .net *"_s10", 0 0, L_0xa0e5af8; 1 drivers
+v0xa0e5108_0 .net *"_s12", 0 0, L_0xa0e5be8; 1 drivers
+v0xa0e5168_0 .net *"_s15", 0 0, L_0xa0e5ca8; 1 drivers
+v0xa0e51c8_0 .net *"_s17", 0 0, L_0xa0e5d30; 1 drivers
+v0xa0e5230_0 .net *"_s2", 0 0, L_0xa0e5860; 1 drivers
+v0xa0e5290_0 .net *"_s5", 0 0, L_0xa0e5978; 1 drivers
+v0xa0e5310_0 .net *"_s7", 0 0, L_0xa0e5a00; 1 drivers
+v0xa0e5370_0 .net "a", 2 0, v0xa0e5740_0; 1 drivers
+v0xa0e53f8_0 .net "b", 2 0, v0xa0e57b0_0; 1 drivers
+v0xa0e5458_0 .net "nota", 0 0, L_0xa0e5598; 1 drivers
+v0xa0e54e8_0 .alias "s", 0 0, v0xa0e56e0_0;
+v0xa0e5548_0 .net "xor1", 0 0, L_0xa0e5920; 1 drivers
+v0xa0e55e0_0 .net "xor2", 0 0, L_0xa0e5ac0; 1 drivers
+v0xa0e5640_0 .net "xor3", 0 0, L_0xa0e5c38; 1 drivers
+L_0xa0e5860 .part v0xa0e5740_0, 0, 1;
+L_0xa0e5978 .part v0xa0e5740_0, 0, 1;
+L_0xa0e5a00 .part v0xa0e57b0_0, 0, 1;
+L_0xa0e5af8 .part v0xa0e5740_0, 1, 1;
+L_0xa0e5be8 .part v0xa0e57b0_0, 1, 1;
+L_0xa0e5ca8 .part v0xa0e5740_0, 2, 1;
+L_0xa0e5d30 .part v0xa0e57b0_0, 2, 1;
+    .scope S_0xa0e71b8;
+T_0 ;
+    %vpi_call 2 38 "$display", "Exemplo0024 - guilherme alves - 450161";
+    %vpi_call 2 39 "$display", "Test ALU\222s full adder";
+    %ix/load 0, 0, 0;
+    %set/x0 v0xa0e5740_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0xa0e5740_0, 0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0xa0e5740_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0xa0e57b0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0xa0e57b0_0, 0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0xa0e57b0_0, 0, 1;
+    %vpi_call 2 42 "$monitor", " ", &PV<v0xa0e5740_0, 0, 1>, &PV<v0xa0e5740_0, 1, 1>, &PV<v0xa0e5740_0, 2, 1>, "\012", "<>", &PV<v0xa0e57b0_0, 0, 1>, &PV<v0xa0e57b0_0, 1, 1>, &PV<v0xa0e57b0_0, 2, 1>;
+    %delay 1, 0;
+    %vpi_call 2 44 "$monitor", "=", v0xa0e56e0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/XP_USB/guia4/exemplo0024.v";

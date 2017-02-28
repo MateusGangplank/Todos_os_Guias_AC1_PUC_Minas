@@ -1,0 +1,68 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0003FF20 .scope module, "testxnorgate" "testxnorgate" 2 19;
+ .timescale 0 0;
+v0003ED98_0 .var "a", 0 0;
+v0003EDF0_0 .var "b", 0 0;
+v0003EE48_0 .net "s", 0 0, L_0003EEA0; 1 drivers
+S_00033520 .scope module, "XNOR1" "xnorgate" 2 28, 2 11, S_0003FF20;
+ .timescale 0 0;
+L_0003FFA8 .functor XOR 1, v0003ED98_0, v0003EDF0_0, C4<0>, C4<0>;
+L_0003EEA0 .functor NOT 1, L_0003FFA8, C4<0>, C4<0>, C4<0>;
+v00033120_0 .net *"_s0", 0 0, L_0003FFA8; 1 drivers
+v000335A8_0 .net "a", 0 0, v0003ED98_0; 1 drivers
+v00033600_0 .net "b", 0 0, v0003EDF0_0; 1 drivers
+v0003ED40_0 .alias "s", 0 0, v0003EE48_0;
+S_00033098 .scope begin, "start" "start" 2 32, 2 32, S_0003FF20;
+ .timescale 0 0;
+S_00033010 .scope begin, "main" "main" 2 39, 2 39, S_0003FF20;
+ .timescale 0 0;
+    .scope S_0003FF20;
+T_0 ;
+    %fork t_1, S_00033098;
+    %jmp t_0;
+    .scope S_00033098;
+t_1 ;
+    %set/v v0003ED98_0, 0, 1;
+    %set/v v0003EDF0_0, 0, 1;
+    %end;
+    .scope S_0003FF20;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0003FF20;
+T_1 ;
+    %fork t_3, S_00033010;
+    %jmp t_2;
+    .scope S_00033010;
+t_3 ;
+    %vpi_call 2 40 "$display", "Exemplo0008 - Isabel Bicalho Amaro - 451580";
+    %vpi_call 2 41 "$display", "Test xnor gate";
+    %vpi_call 2 42 "$display", "\012a  ~(a^b)  b  =  s\012";
+    %vpi_call 2 43 "$monitor", "%b  ~(a^b)  %b  =  %b", v0003ED98_0, v0003EDF0_0, v0003EE48_0;
+    %delay 1, 0;
+    %set/v v0003ED98_0, 0, 1;
+    %set/v v0003EDF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0003ED98_0, 0, 1;
+    %set/v v0003EDF0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0003ED98_0, 1, 1;
+    %set/v v0003EDF0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0003ED98_0, 1, 1;
+    %set/v v0003EDF0_0, 1, 1;
+    %end;
+    .scope S_0003FF20;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Isabel\Documents\PUC\2º Período\Arquitetura de Computadores\Guias\Guia 1\Exemplo0008.v";

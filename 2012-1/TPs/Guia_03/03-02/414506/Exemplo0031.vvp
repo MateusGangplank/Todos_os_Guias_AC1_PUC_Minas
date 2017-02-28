@@ -1,0 +1,99 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00572078 .scope module, "test_f4" "test_f4" 2 27;
+ .timescale 0 0;
+v00591690_0 .var "x", 3 0;
+v005916E8_0 .var "y", 3 0;
+v00591740_0 .net "z", 3 0, L_00592528; 1 drivers
+S_00572210 .scope module, "modulo" "f4" 2 33, 2 10, S_00572078;
+ .timescale 0 0;
+L_005740A8 .functor AND 1, L_00591798, L_005918F8, C4<1>, C4<1>;
+L_005740E0 .functor AND 1, L_005917F0, L_00591950, C4<1>, C4<1>;
+L_005951C0 .functor AND 1, L_00591848, L_005919A8, C4<1>, C4<1>;
+L_005951F8 .functor AND 1, L_005918A0, L_00591A00, C4<1>, C4<1>;
+L_00592528 .functor OR 4, v00591690_0, v005916E8_0, C4<0000>, C4<0000>;
+RS_0059650C .resolv tri, L_005740A8, L_005740E0, L_005951C0, L_005951F8;
+v006E4188_0 .net8 "G", 0 0, RS_0059650C; 4 drivers
+v006E41E0_0 .net *"_s11", 0 0, L_005918F8; 1 drivers
+v006E4238_0 .net *"_s13", 0 0, L_00591950; 1 drivers
+v006EFDD0_0 .net *"_s15", 0 0, L_005919A8; 1 drivers
+v006EFE28_0 .net *"_s17", 0 0, L_00591A00; 1 drivers
+v006EFE80_0 .net *"_s3", 0 0, L_00591798; 1 drivers
+v00573FC0_0 .net *"_s5", 0 0, L_005917F0; 1 drivers
+v00574018_0 .net *"_s7", 0 0, L_00591848; 1 drivers
+v00591480_0 .net *"_s9", 0 0, L_005918A0; 1 drivers
+v005914D8_0 .net "a", 3 0, v00591690_0; 1 drivers
+v00591530_0 .net "b", 3 0, v005916E8_0; 1 drivers
+v00591588_0 .net8 "ground", 3 0, C8<770770770770>; 1 drivers, strength-aware
+v005915E0_0 .alias "out", 3 0, v00591740_0;
+v00591638_0 .net8 "power", 3 0, C8<771771771771>; 1 drivers, strength-aware
+L_00591798 .part v00591690_0, 0, 1;
+L_005917F0 .part v00591690_0, 1, 1;
+L_00591848 .part v00591690_0, 2, 1;
+L_005918A0 .part v00591690_0, 3, 1;
+L_005918F8 .part v005916E8_0, 0, 1;
+L_00591950 .part v005916E8_0, 1, 1;
+L_005919A8 .part v005916E8_0, 2, 1;
+L_00591A00 .part v005916E8_0, 3, 1;
+S_00572188 .scope begin, "start" "start" 2 35, 2 35, S_00572078;
+ .timescale 0 0;
+S_00572100 .scope begin, "main" "main" 2 40, 2 40, S_00572078;
+ .timescale 0 0;
+    .scope S_00572078;
+T_0 ;
+    %fork t_1, S_00572188;
+    %jmp t_0;
+    .scope S_00572188;
+t_1 ;
+    %movi 8, 1, 4;
+    %set/v v00591690_0, 8, 4;
+    %movi 8, 1, 4;
+    %set/v v005916E8_0, 8, 4;
+    %end;
+    .scope S_00572078;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00572078;
+T_1 ;
+    %fork t_3, S_00572100;
+    %jmp t_2;
+    .scope S_00572100;
+t_3 ;
+    %vpi_call 2 42 "$display", "Exemplo0031 - Fernando Silva - 414506";
+    %vpi_call 2 43 "$display", "Test LU's module";
+    %vpi_call 2 44 "$monitor", "%3b %3b %3b", v00591690_0, v005916E8_0, v00591740_0;
+    %delay 1, 0;
+    %movi 8, 3, 4;
+    %set/v v00591690_0, 8, 4;
+    %movi 8, 5, 4;
+    %set/v v005916E8_0, 8, 4;
+    %delay 2, 0;
+    %movi 8, 1, 4;
+    %set/v v00591690_0, 8, 4;
+    %movi 8, 8, 4;
+    %set/v v005916E8_0, 8, 4;
+    %delay 3, 0;
+    %movi 8, 5, 4;
+    %set/v v00591690_0, 8, 4;
+    %movi 8, 14, 4;
+    %set/v v005916E8_0, 8, 4;
+    %delay 4, 0;
+    %movi 8, 12, 4;
+    %set/v v00591690_0, 8, 4;
+    %movi 8, 10, 4;
+    %set/v v005916E8_0, 8, 4;
+    %end;
+    .scope S_00572078;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsilv\Documents\Nova pasta\Exemplo0031.v";

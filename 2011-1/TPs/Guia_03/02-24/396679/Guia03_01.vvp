@@ -1,0 +1,70 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007BE1C8 .scope module, "testhalfadder" "testhalfadder" 2 28;
+ .timescale 0 0;
+v007BE930_0 .var "a", 0 0;
+v007BE988_0 .var "b", 0 0;
+v007BE9E0_0 .net "s0", 0 0, L_007B4DD0; 1 drivers
+v008CEC70_0 .net "s1", 0 0, L_007BEA70; 1 drivers
+S_007B9498 .scope module, "ha1" "halfadder" 2 32, 2 11, S_007BE1C8;
+ .timescale 0 0;
+L_007BCBF8 .functor OR 1, v007BE930_0, v007BE988_0, C4<0>, C4<0>;
+L_007BEA38 .functor NAND 1, v007BE930_0, v007BE988_0, C4<1>, C4<1>;
+L_007BEA70 .functor AND 1, v007BE930_0, v007BE988_0, C4<1>, C4<1>;
+L_007B4DD0 .functor AND 1, L_007BCBF8, L_007BEA38, C4<1>, C4<1>;
+v007B42A8_0 .net "a", 0 0, v007BE930_0; 1 drivers
+v007B4300_0 .net "b", 0 0, v007BE988_0; 1 drivers
+v007B2E08_0 .alias "s0", 0 0, v007BE9E0_0;
+v007B2E60_0 .alias "s1", 0 0, v008CEC70_0;
+v007B2EB8_0 .net "s2", 0 0, L_007BCBF8; 1 drivers
+v007BE8D8_0 .net "s3", 0 0, L_007BEA38; 1 drivers
+S_007B9410 .scope begin, "start" "start" 2 34, 2 34, S_007BE1C8;
+ .timescale 0 0;
+S_007B4220 .scope begin, "main" "main" 2 39, 2 39, S_007BE1C8;
+ .timescale 0 0;
+    .scope S_007BE1C8;
+T_0 ;
+    %fork t_1, S_007B9410;
+    %jmp t_0;
+    .scope S_007B9410;
+t_1 ;
+    %set/v v007BE930_0, 0, 1;
+    %set/v v007BE988_0, 0, 1;
+    %end;
+    .scope S_007BE1C8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007BE1C8;
+T_1 ;
+    %fork t_3, S_007B4220;
+    %jmp t_2;
+    .scope S_007B4220;
+t_3 ;
+    %vpi_call 2 40 "$display", "Guia03_01 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 41 "$display", "Test Half-Adder)";
+    %vpi_call 2 42 "$display", "\012 a & b = s0 s1\012";
+    %vpi_call 2 43 "$monitor", " %b & %b = %b %b", v007BE930_0, v007BE988_0, v007BE9E0_0, v008CEC70_0;
+    %delay 1, 0;
+    %set/v v007BE930_0, 0, 1;
+    %set/v v007BE988_0, 1, 1;
+    %delay 1, 0;
+    %set/v v007BE930_0, 1, 1;
+    %set/v v007BE988_0, 0, 1;
+    %delay 1, 0;
+    %set/v v007BE930_0, 1, 1;
+    %set/v v007BE988_0, 1, 1;
+    %end;
+    .scope S_007BE1C8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Y:\AULA\2011\AC I\Guia03\Guia03_01.v";

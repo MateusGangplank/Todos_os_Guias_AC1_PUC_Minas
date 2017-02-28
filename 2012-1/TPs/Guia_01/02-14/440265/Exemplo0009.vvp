@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003EE8D0 .scope module, "testNandGate" "testNandGate" 2 19;
+ .timescale 0 0;
+v003E3120_0 .var "a", 0 0;
+v003E3178_0 .var "b", 0 0;
+v003E31D0_0 .net "s", 0 0, L_003EE328; 1 drivers
+S_003E2BB0 .scope module, "NAND1" "nandGate" 2 25, 2 11, S_003EE8D0;
+ .timescale 0 0;
+L_003E2CE8 .functor NOT 1, v003E3120_0, C4<0>, C4<0>, C4<0>;
+L_003EE2B8 .functor NOT 1, v003E3178_0, C4<0>, C4<0>, C4<0>;
+L_003EE328 .functor OR 1, L_003E2CE8, L_003EE2B8, C4<0>, C4<0>;
+v003EE958_0 .net *"_s0", 0 0, L_003E2CE8; 1 drivers
+v003EFF78_0 .net *"_s2", 0 0, L_003EE2B8; 1 drivers
+v003E2C38_0 .net "p", 0 0, v003E3120_0; 1 drivers
+v003E2C90_0 .net "q", 0 0, v003E3178_0; 1 drivers
+v003E30C8_0 .alias "s", 0 0, v003E31D0_0;
+S_003EFEF0 .scope begin, "start" "start" 2 28, 2 28, S_003EE8D0;
+ .timescale 0 0;
+    .scope S_003EE8D0;
+T_0 ;
+    %fork t_1, S_003EFEF0;
+    %jmp t_0;
+    .scope S_003EFEF0;
+t_1 ;
+    %set/v v003E3120_0, 0, 1;
+    %set/v v003E3178_0, 0, 1;
+    %end;
+    .scope S_003EE8D0;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_003EE8D0;
+T_1 ;
+    %vpi_call 2 35 "$display", "Exemplo0009 - Sad - 440265";
+    %vpi_call 2 36 "$display", "Teste NAND gate com Morgan: ";
+    %vpi_call 2 37 "$display", "\012~a | ~b = s\012";
+    %vpi_call 2 39 "$monitor", "~%b | ~%b = %b", v003E3120_0, v003E3178_0, v003E31D0_0;
+    %delay 1, 0;
+    %set/v v003E3120_0, 0, 1;
+    %set/v v003E3178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003E3120_0, 0, 1;
+    %set/v v003E3178_0, 1, 1;
+    %delay 1, 0;
+    %set/v v003E3120_0, 1, 1;
+    %set/v v003E3178_0, 0, 1;
+    %delay 1, 0;
+    %set/v v003E3120_0, 1, 1;
+    %set/v v003E3178_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Alexandre\PUC\2_periodo\Arquitetura I\TPs\Guia001\Exemplo0009.v";

@@ -1,0 +1,48 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00671F68 .scope module, "testnotgate" "testnotgate" 2 36;
+ .timescale 0 0;
+v006A17B0_0 .var "a", 0 0;
+v006A1808_0 .net "s", 0 0, L_00672340; 1 drivers
+S_00673548 .scope module, "NOT1" "notgate" 2 40, 2 23, S_00671F68;
+ .timescale 0 0;
+v006A1700_0 .net "p", 0 0, v006A17B0_0; 1 drivers
+v006A1758_0 .alias "s", 0 0, v006A1808_0;
+S_006735C8 .scope module, "NAND1" "nandgate" 2 27, 2 11, S_00673548;
+ .timescale 0 0;
+L_006A1860 .functor AND 1, v006A17B0_0, v006A17B0_0, C4<1>, C4<1>;
+L_00672340 .functor NOT 1, L_006A1860, C4<0>, C4<0>, C4<0>;
+v00673648_0 .net *"_s0", 0 0, L_006A1860; 1 drivers
+v006A1608_0 .alias "p", 0 0, v006A1700_0;
+v006A1678_0 .alias "s", 0 0, v006A1808_0;
+S_006734C8 .scope begin, "start" "start" 2 42, 2 42, S_00671F68;
+ .timescale 0 0;
+    .scope S_00671F68;
+T_0 ;
+    %fork t_1, S_006734C8;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A17B0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00671F68;
+T_1 ;
+    %vpi_call 2 48 "$display", "Guia 02_03 - Anderson Belchior de Carvalho - 396673";
+    %vpi_call 2 49 "$display", "Test NOT gate";
+    %vpi_call 2 50 "$display", "\012~a = s\012";
+    %vpi_call 2 51 "$monitor", "~%b = %b", v006A17B0_0, v006A1808_0;
+    %delay 1, 0;
+    %set/v v006A17B0_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "W:\Ciencia_da_Computacao\2_Periodo\ARQ1\2011-1\TPs\Guia_02\396673\guia02_03.v";

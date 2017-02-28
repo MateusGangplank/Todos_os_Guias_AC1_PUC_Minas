@@ -1,0 +1,54 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003AA290 .scope module, "testhalfAddernor" "testhalfAddernor" 2 31;
+ .timescale 0 0;
+v0064EE80_0 .var "a", 0 0;
+v0064EED8_0 .var "b", 0 0;
+v0064EF30_0 .net "s", 0 0, L_0064FCA8; 1 drivers
+v0064EF88_0 .net "v1", 0 0, L_003A9418; 1 drivers
+S_003AA318 .scope module, "NOR1" "halfAddernor" 2 35, 2 9, S_003AA290;
+ .timescale 0 0;
+L_003AEE18 .functor NOR 1, v0064EE80_0, v0064EE80_0, C4<0>, C4<0>;
+L_003A93A8 .functor NOR 1, v0064EED8_0, v0064EED8_0, C4<0>, C4<0>;
+L_003A9418 .functor NOR 1, L_003AEE18, L_003A93A8, C4<0>, C4<0>;
+L_003A2978 .functor NOR 1, v0064EE80_0, v0064EED8_0, C4<0>, C4<0>;
+L_003A93E0 .functor NOR 1, L_003A2978, L_003A2978, C4<0>, C4<0>;
+L_003A2A50 .functor NOR 1, L_003A93E0, L_003A93E0, C4<0>, C4<0>;
+L_0064FCA8 .functor NOR 1, L_003A9418, L_003A2A50, C4<0>, C4<0>;
+v003A47A8_0 .net "a", 0 0, v0064EE80_0; 1 drivers
+v003A4800_0 .net "b", 0 0, v0064EED8_0; 1 drivers
+v003A4858_0 .alias "s", 0 0, v0064EF30_0;
+v0064EC70_0 .net "tem1", 0 0, L_003AEE18; 1 drivers
+v0064ECC8_0 .net "tem2", 0 0, L_003A93A8; 1 drivers
+v0064ED20_0 .net "tem3", 0 0, L_003A2978; 1 drivers
+v0064ED78_0 .net "tem4", 0 0, L_003A93E0; 1 drivers
+v0064EDD0_0 .net "tem5", 0 0, L_003A2A50; 1 drivers
+v0064EE28_0 .alias "v1", 0 0, v0064EF88_0;
+    .scope S_003AA290;
+T_0 ;
+    %vpi_call 2 38 "$display", "Guia 03 - Karen Alves Pereira - 407451";
+    %vpi_call 2 39 "$display", "Operador de meia-soma apenas com portas NOR";
+    %vpi_call 2 40 "$display", "\012a b s v1";
+    %vpi_call 2 41 "$monitor", "%b %b %b %b", v0064EE80_0, v0064EED8_0, v0064EF30_0, v0064EF88_0;
+    %set/v v0064EE80_0, 0, 1;
+    %set/v v0064EED8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064EE80_0, 0, 1;
+    %set/v v0064EED8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0064EE80_0, 1, 1;
+    %set/v v0064EED8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0064EE80_0, 1, 1;
+    %set/v v0064EED8_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\teste\Documents\Meus Documentos\Ciencia da Computacao\2011 - 1º\Arquitetura de Computadores\Exercicios\Guia 03\Guia03_meiasomanor.v";

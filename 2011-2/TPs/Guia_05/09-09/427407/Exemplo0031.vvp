@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003C9850 .scope module, "test_sumsub" "test_sumsub" 2 29;
+ .timescale 0 0;
+v00735090_0 .var "a", 0 0;
+v007350E8_0 .var "b", 0 0;
+v00735140_0 .net "cout", 0 0, L_003C3490; 1 drivers
+v00735198_0 .var "op", 0 0;
+v007351F0_0 .net "s0", 0 0, L_00735E20; 1 drivers
+v00735248_0 .net "s1", 0 0, L_00701740; 1 drivers
+v007352A0_0 .net "sx1", 0 0, L_003C34C8; 1 drivers
+S_003C9C08 .scope module, "bonanza" "xorGate" 2 36, 2 14, S_003C9850;
+ .timescale 0 0;
+L_003C34C8 .functor XOR 1, v007350E8_0, v00735198_0, C4<0>, C4<0>;
+v00734F88_0 .net "a", 0 0, v007350E8_0; 1 drivers
+v00734FE0_0 .net "b", 0 0, v00735198_0; 1 drivers
+v00735038_0 .alias "sx", 0 0, v007352A0_0;
+S_003C9B80 .scope module, "danubio" "fullAdder" 2 37, 2 20, S_003C9850;
+ .timescale 0 0;
+L_003C4ED0 .functor XOR 1, L_003C34C8, v00735090_0, C4<0>, C4<0>;
+L_00735E20 .functor XOR 1, L_003C4ED0, v00735198_0, C4<0>, C4<0>;
+L_00735EC8 .functor AND 1, L_003C34C8, v00735090_0, C4<1>, C4<1>;
+L_00735F00 .functor AND 1, L_003C34C8, v00735198_0, C4<1>, C4<1>;
+L_00735F38 .functor OR 1, L_00735EC8, L_00735F00, C4<0>, C4<0>;
+L_00701630 .functor AND 1, v00735090_0, v00735198_0, C4<1>, C4<1>;
+L_003C3490 .functor OR 1, L_00735F38, L_00701630, C4<0>, C4<0>;
+v003C3078_0 .net *"_s0", 0 0, L_003C4ED0; 1 drivers
+v003C4DC8_0 .net *"_s10", 0 0, L_00701630; 1 drivers
+v003C4E20_0 .net *"_s4", 0 0, L_00735EC8; 1 drivers
+v003C4E78_0 .net *"_s6", 0 0, L_00735F00; 1 drivers
+v003C3438_0 .net *"_s8", 0 0, L_00735F38; 1 drivers
+v00734DD0_0 .alias "a", 0 0, v007352A0_0;
+v00734E28_0 .net "b", 0 0, v00735090_0; 1 drivers
+v00734E80_0 .alias "cin", 0 0, v00734FE0_0;
+v00734ED8_0 .alias "cout", 0 0, v00735140_0;
+v00734F30_0 .alias "s", 0 0, v007351F0_0;
+S_003C9AF8 .scope module, "bilara" "xorGate" 2 38, 2 14, S_003C9850;
+ .timescale 0 0;
+L_00701740 .functor XOR 1, L_003C3490, v00735198_0, C4<0>, C4<0>;
+v003CFF78_0 .alias "a", 0 0, v00735140_0;
+v003C2FC8_0 .alias "b", 0 0, v00734FE0_0;
+v003C3020_0 .alias "sx", 0 0, v00735248_0;
+    .scope S_003C9850;
+T_0 ;
+    %vpi_call 2 42 "$display", "Exemplo0031 - Guilherme Terra - 427407";
+    %vpi_call 2 43 "$display", "Test ALU's sum/sub";
+    %set/v v00735090_0, 0, 1;
+    %set/v v007350E8_0, 1, 1;
+    %set/v v00735198_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 46 "$display", "\012%b (+ ou -) %b com op %b = %b%b", v00735090_0, v007350E8_0, v00735198_0, v00735248_0, v007351F0_0;
+    %set/v v00735090_0, 1, 1;
+    %set/v v007350E8_0, 0, 1;
+    %set/v v00735198_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 48 "$display", "\012%b (+ ou -) %b com op %b = %b%b", v00735090_0, v007350E8_0, v00735198_0, v00735248_0, v007351F0_0;
+    %set/v v00735090_0, 1, 1;
+    %set/v v007350E8_0, 1, 1;
+    %set/v v00735198_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "\012%b (+ ou -) %b com op %b = %b%b", v00735090_0, v007350E8_0, v00735198_0, v00735248_0, v007351F0_0;
+    %set/v v00735090_0, 1, 1;
+    %set/v v007350E8_0, 0, 1;
+    %set/v v00735198_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "\012%b (+ ou -) %b com op %b = %b%b", v00735090_0, v007350E8_0, v00735198_0, v00735248_0, v007351F0_0;
+    %set/v v00735090_0, 0, 1;
+    %set/v v007350E8_0, 1, 1;
+    %set/v v00735198_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 54 "$display", "\012%b (+ ou -) %b com op %b = %b%b", v00735090_0, v007350E8_0, v00735198_0, v00735248_0, v007351F0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "F:\CIÊNCIA_DA_COMPUTAÇÃO\2_Periodo\ARQ_I\Guias\Concluídas\Guia_05\Exemplo0031.v";

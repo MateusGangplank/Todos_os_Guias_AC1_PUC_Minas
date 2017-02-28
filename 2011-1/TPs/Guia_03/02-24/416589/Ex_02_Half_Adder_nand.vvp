@@ -1,0 +1,82 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00674700 .scope module, "testhalfadder_nand" "testhalfadder_nand" 2 47;
+ .timescale 0 0;
+v006A4D48_0 .var "a", 0 0;
+v006A4DA0_0 .var "b", 0 0;
+v006A4DF8_0 .net "s0", 0 0, L_006A50A8; 1 drivers
+v006A4E50_0 .net "s1", 0 0, L_006A5188; 1 drivers
+S_00674880 .scope module, "HA1" "halfadder_nand" 2 52, 2 11, S_00674700;
+ .timescale 0 0;
+v006A4BD0_0 .net "a", 0 0, v006A4D48_0; 1 drivers
+v006A4C28_0 .net "b", 0 0, v006A4DA0_0; 1 drivers
+v006A4C80_0 .alias "s0", 0 0, v006A4DF8_0;
+v006A4CF0_0 .alias "s1", 0 0, v006A4E50_0;
+S_006A4878 .scope module, "XOR1" "xor_nand" 2 15, 2 20, S_00674880;
+ .timescale 0 0;
+L_006A4EE0 .functor NAND 1, v006A4DA0_0, v006A4DA0_0, C4<1>, C4<1>;
+L_003EEE28 .functor NAND 1, v006A4D48_0, v006A4D48_0, C4<1>, C4<1>;
+L_003EECF8 .functor NAND 1, v006A4D48_0, L_006A4EE0, C4<1>, C4<1>;
+L_006A5020 .functor NAND 1, v006A4DA0_0, L_003EEE28, C4<1>, C4<1>;
+L_006A50A8 .functor NAND 1, L_003EECF8, L_006A5020, C4<1>, C4<1>;
+v006A48F8_0 .alias "a", 0 0, v006A4BD0_0;
+v006A4950_0 .alias "b", 0 0, v006A4C28_0;
+v006A49A8_0 .alias "s", 0 0, v006A4DF8_0;
+v006A4A00_0 .net "temp1", 0 0, L_006A4EE0; 1 drivers
+v006A4A70_0 .net "temp2", 0 0, L_003EECF8; 1 drivers
+v006A4AC8_0 .net "temp3", 0 0, L_003EEE28; 1 drivers
+v006A4B38_0 .net "temp4", 0 0, L_006A5020; 1 drivers
+S_00674900 .scope module, "AND1" "and_nand" 2 16, 2 33, S_00674880;
+ .timescale 0 0;
+L_006A5150 .functor NAND 1, v006A4D48_0, v006A4DA0_0, C4<1>, C4<1>;
+L_006A5188 .functor NAND 1, L_006A5150, L_006A5150, C4<1>, C4<1>;
+v00674980_0 .alias "a", 0 0, v006A4BD0_0;
+v006A4710_0 .alias "b", 0 0, v006A4C28_0;
+v006A4780_0 .alias "s", 0 0, v006A4E50_0;
+v006A4808_0 .net "temp1", 0 0, L_006A5150; 1 drivers
+S_00674800 .scope begin, "start" "start" 2 54, 2 54, S_00674700;
+ .timescale 0 0;
+S_00674780 .scope begin, "main" "main" 2 59, 2 59, S_00674700;
+ .timescale 0 0;
+    .scope S_00674700;
+T_0 ;
+    %fork t_1, S_00674800;
+    %jmp t_0;
+t_1 ;
+    %set/v v006A4D48_0, 0, 1;
+    %set/v v006A4DA0_0, 0, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00674700;
+T_1 ;
+    %fork t_3, S_00674780;
+    %jmp t_2;
+t_3 ;
+    %vpi_call 2 60 "$display", "Guia 03_02 - Alyson Deives - 416589";
+    %vpi_call 2 61 "$display", "HALF ADDER com portas NAND\012";
+    %vpi_call 2 62 "$display", "\012A + B = S\012";
+    %vpi_call 2 63 "$monitor", "%b + %b = %b%b", v006A4D48_0, v006A4DA0_0, v006A4E50_0, v006A4DF8_0;
+    %delay 1, 0;
+    %set/v v006A4D48_0, 0, 1;
+    %set/v v006A4DA0_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006A4D48_0, 1, 1;
+    %set/v v006A4DA0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006A4D48_0, 1, 1;
+    %set/v v006A4DA0_0, 1, 1;
+    %end;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\PUC-MG\2° Periodo\Arquitetura I\Workspace\Guia_03\Ex_02_Half_Adder_nand.v";

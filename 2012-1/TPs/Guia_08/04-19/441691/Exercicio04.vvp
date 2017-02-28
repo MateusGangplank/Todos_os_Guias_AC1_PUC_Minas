@@ -1,0 +1,141 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_003DAE48 .scope module, "test_flip_flop" "test_flip_flop" 2 19;
+ .timescale 0 0;
+v00641628_0 .net "a", 0 0, v003D36E8_0; 1 drivers
+v00641680_0 .net "b", 0 0, v003D44D8_0; 1 drivers
+v006416D8_0 .net "c", 0 0, v003DDB80_0; 1 drivers
+v00641730_0 .net "clock", 0 0, v006415D0_0; 1 drivers
+v00641788_0 .net "d", 0 0, v003DC450_0; 1 drivers
+v006417E0_0 .var "x", 0 0;
+S_003DB178 .scope module, "clk" "clock" 2 22, 3 1, S_003DAE48;
+ .timescale 0 0;
+v006415D0_0 .var "clk", 0 0;
+S_003DAED0 .scope module, "SHR4_1" "SHR4" 2 23, 2 10, S_003DAE48;
+ .timescale 0 0;
+L_006421B0 .functor OR 1, v003DC450_0, v006417E0_0, C4<0>, C4<0>;
+v00641208_0 .net "W", 0 0, L_006421B0; 1 drivers
+v00641260_0 .alias "a", 0 0, v00641628_0;
+v006412B8_0 .alias "b", 0 0, v00641680_0;
+v00641310_0 .alias "c", 0 0, v006416D8_0;
+v00641368_0 .alias "clk", 0 0, v00641730_0;
+v006413C0_0 .alias "d", 0 0, v00641788_0;
+v00641418_0 .net "in", 0 0, v006417E0_0; 1 drivers
+v00641470_0 .net "qn0", 0 0, v006411B0_0; 1 drivers
+v006414C8_0 .net "qn1", 0 0, v003D4530_0; 1 drivers
+v00641520_0 .net "qn2", 0 0, v003D2C68_0; 1 drivers
+v00641578_0 .net "qn3", 0 0, v003DCB60_0; 1 drivers
+S_003DB0F0 .scope module, "FPD1" "FlipflopD" 2 13, 2 2, S_003DAED0;
+ .timescale 0 0;
+v003D4588_0 .alias "clk", 0 0, v00641730_0;
+v003D3690_0 .alias "d", 0 0, v00641208_0;
+v003D36E8_0 .var "q", 0 0;
+v006411B0_0 .var "qnot", 0 0;
+S_003DB068 .scope module, "FPD2" "FlipflopD" 2 14, 2 2, S_003DAED0;
+ .timescale 0 0;
+v003D2CC0_0 .alias "clk", 0 0, v00641730_0;
+v003D2D18_0 .alias "d", 0 0, v00641628_0;
+v003D44D8_0 .var "q", 0 0;
+v003D4530_0 .var "qnot", 0 0;
+S_003DAFE0 .scope module, "FPD3" "FlipflopD" 2 15, 2 2, S_003DAED0;
+ .timescale 0 0;
+v003DDAD0_0 .alias "clk", 0 0, v00641730_0;
+v003DDB28_0 .alias "d", 0 0, v00641680_0;
+v003DDB80_0 .var "q", 0 0;
+v003D2C68_0 .var "qnot", 0 0;
+S_003DAF58 .scope module, "FPD4" "FlipflopD" 2 16, 2 2, S_003DAED0;
+ .timescale 0 0;
+v003DC6A0_0 .alias "clk", 0 0, v00641730_0;
+v003DCD50_0 .alias "d", 0 0, v006416D8_0;
+v003DC450_0 .var "q", 0 0;
+v003DCB60_0 .var "qnot", 0 0;
+E_003D91B0 .event posedge, v003DC6A0_0;
+    .scope S_003DB178;
+T_0 ;
+    %set/v v006415D0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_003DB178;
+T_1 ;
+    %delay 6, 0;
+    %load/v 8, v006415D0_0, 1;
+    %inv 8, 1;
+    %set/v v006415D0_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_003DB0F0;
+T_2 ;
+    %wait E_003D91B0;
+    %load/v 8, v003D3690_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003D36E8_0, 0, 8;
+    %load/v 8, v003D36E8_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v006411B0_0, 0, 8;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_003DB068;
+T_3 ;
+    %wait E_003D91B0;
+    %load/v 8, v003D2D18_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003D44D8_0, 0, 8;
+    %load/v 8, v003D44D8_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003D4530_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_003DAFE0;
+T_4 ;
+    %wait E_003D91B0;
+    %load/v 8, v003DDB28_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003DDB80_0, 0, 8;
+    %load/v 8, v003DDB80_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003D2C68_0, 0, 8;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_003DAF58;
+T_5 ;
+    %wait E_003D91B0;
+    %load/v 8, v003DCD50_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003DC450_0, 0, 8;
+    %load/v 8, v003DC450_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v003DCB60_0, 0, 8;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_003DAE48;
+T_6 ;
+    %set/v v006417E0_0, 0, 1;
+    %vpi_call 2 26 "$display", "Guia 08 - Exercicio 04 - SHC - Gabriel Luiz M. G. Vieira ~ 441691";
+    %vpi_call 2 28 "$display", "D  Q0 Q1 Q2 Q3";
+    %vpi_call 2 29 "$monitor", "%b  %b %b %b %b", v006417E0_0, v00641788_0, v006416D8_0, v00641680_0, v00641628_0;
+    %delay 12, 0;
+    %set/v v006417E0_0, 1, 1;
+    %delay 12, 0;
+    %set/v v006417E0_0, 1, 1;
+    %delay 12, 0;
+    %set/v v006417E0_0, 0, 1;
+    %delay 12, 0;
+    %set/v v006417E0_0, 0, 1;
+    %delay 24, 0;
+    %vpi_call 2 34 "$finish";
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "D:\Gabriel\PUC\2º\ARQ\Guia08\Exercicio04.v";
+    "./clock.v";

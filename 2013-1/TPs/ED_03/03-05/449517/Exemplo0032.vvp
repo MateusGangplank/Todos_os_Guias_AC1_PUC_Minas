@@ -1,0 +1,59 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x94f3fd0 .scope module, "teste" "teste" 2 23;
+ .timescale 0 0;
+v0x94f1c98_0 .var "a", 0 0;
+v0x94f1cf8_0 .var "chave", 0 0;
+v0x94f1d68_0 .net "s", 0 0, L_0x94f2078; 1 drivers
+S_0x94d1b30 .scope module, "test" "LU" 2 28, 2 5, S_0x94f3fd0;
+ .timescale 0 0;
+L_0x94f1dd8 .functor AND 1, v0x94f1c98_0, v0x94f1cf8_0, C4<1>, C4<1>;
+L_0x94f1ea0 .functor OR 1, v0x94f1c98_0, v0x94f1cf8_0, C4<0>, C4<0>;
+L_0x94f1ed8 .functor AND 1, L_0x94f1dd8, C4<1>, C4<1>, C4<1>;
+L_0x94f1f48 .functor NOT 1, v0x94f1cf8_0, C4<0>, C4<0>, C4<0>;
+L_0x94f1e68 .functor AND 1, L_0x94f1ea0, L_0x94f1f48, C4<1>, C4<1>;
+L_0x94f2078 .functor OR 1, L_0x94f1ed8, L_0x94f1e68, C4<0>, C4<0>;
+v0x94d0f10_0 .net "a", 0 0, v0x94f1c98_0; 1 drivers
+v0x94f19a8_0 .net "chave", 0 0, v0x94f1cf8_0; 1 drivers
+v0x94f1a08_0 .net "notchave", 0 0, L_0x94f1f48; 1 drivers
+v0x94f1a68_0 .alias "s", 0 0, v0x94f1d68_0;
+v0x94f1ad0_0 .net "s0", 0 0, L_0x94f1dd8; 1 drivers
+v0x94f1b30_0 .net "s1", 0 0, L_0x94f1ea0; 1 drivers
+v0x94f1bb0_0 .net "s2", 0 0, L_0x94f1ed8; 1 drivers
+v0x94f1c10_0 .net "s3", 0 0, L_0x94f1e68; 1 drivers
+S_0x94f4050 .scope begin, "main" "main" 2 30, 2 30, S_0x94f3fd0;
+ .timescale 0 0;
+    .scope S_0x94f3fd0;
+T_0 ;
+    %fork t_1, S_0x94f4050;
+    %jmp t_0;
+    .scope S_0x94f4050;
+t_1 ;
+    %vpi_call 2 32 "$display", "Exemplo0032 - Ana Carolina - 449517";
+    %vpi_call 2 33 "$display", "ULA teste";
+    %set/v v0x94f1cf8_0, 0, 1;
+    %set/v v0x94f1c98_0, 0, 1;
+    %vpi_call 2 37 "$display", "\012chave = 0 (operacao and) chave = 1 (operacao or)";
+    %delay 1, 0;
+    %vpi_call 2 39 "$monitor", "%b = saida %b chave = %b", v0x94f1c98_0, v0x94f1d68_0, v0x94f1cf8_0;
+    %delay 1, 0;
+    %set/v v0x94f1cf8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x94f1cf8_0, 0, 1;
+    %set/v v0x94f1c98_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x94f1cf8_0, 1, 1;
+    %end;
+    .scope S_0x94f3fd0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/media/14B2-A77F/Arquitetura I - 2013/Eds Arquitetura I/ED 03 -/Exemplo0032.v";

@@ -1,0 +1,108 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_007A9428 .scope module, "andgate" "andgate" 2 20;
+ .timescale 0 0;
+L_007A2F00 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_007A2F38 .functor AND 1, L_007A2F00, C4<z>, C4<1>, C4<1>;
+L_007AD298 .functor AND 1, L_007A2F38, C4<z>, C4<1>, C4<1>;
+v00614F58_0 .net *"_s0", 0 0, L_007A2F00; 1 drivers
+v007A2E70_0 .net *"_s2", 0 0, L_007A2F38; 1 drivers
+v00610400_0 .net "a", 0 0, C4<z>; 0 drivers
+v00610458_0 .net "b", 0 0, C4<z>; 0 drivers
+v006104B0_0 .net "c", 0 0, C4<z>; 0 drivers
+v00610508_0 .net "d", 0 0, C4<z>; 0 drivers
+v00610560_0 .net "s", 0 0, L_007AD298; 1 drivers
+S_007A9290 .scope module, "circuito" "circuito" 2 34;
+ .timescale 0 0;
+L_007AD308 .functor OR 1, v006105B8_0, v00610610_0, v00610668_0, v006106C0_0;
+L_007AD340 .functor AND 1, v00610718_0, v00610770_0, v006107C8_0, v00610928_0;
+L_007AD378 .functor NOR 1, L_007AD308, L_007AD340, C4<0>, C4<0>;
+v006105B8_0 .var "a", 0 0;
+v00610610_0 .var "b", 0 0;
+v00610668_0 .var "c", 0 0;
+v006106C0_0 .var "d", 0 0;
+v00610718_0 .var "p", 0 0;
+v00610770_0 .var "q", 0 0;
+v006107C8_0 .var "r", 0 0;
+v00610820_0 .net "s", 0 0, L_007AD378; 1 drivers
+v00610878_0 .net "s1", 0 0, L_007AD308; 1 drivers
+v006108D0_0 .net "s2", 0 0, L_007AD340; 1 drivers
+v00610928_0 .var "t", 0 0;
+S_007A97E0 .scope begin, "start" "start" 2 43, 2 43, S_007A9290;
+ .timescale 0 0;
+S_007A9758 .scope begin, "main" "main" 2 47, 2 47, S_007A9290;
+ .timescale 0 0;
+S_007A9648 .scope module, "norgate" "norgate" 2 27;
+ .timescale 0 0;
+L_007A4100 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_00637FD8 .functor NOT 1, L_007A4100, C4<0>, C4<0>, C4<0>;
+L_00638048 .functor NOT 1, L_00637FD8, C4<0>, C4<0>, C4<0>;
+v00610980_0 .net *"_s0", 0 0, L_007A4100; 1 drivers
+v006109D8_0 .net *"_s2", 0 0, L_00637FD8; 1 drivers
+v00610A30_0 .net "p", 0 0, C4<z>; 0 drivers
+v00610A88_0 .net "q", 0 0, C4<z>; 0 drivers
+v00610AE0_0 .net "s", 0 0, L_00638048; 1 drivers
+S_007A96D0 .scope module, "orgate" "orgate" 2 13;
+ .timescale 0 0;
+L_006380B8 .functor OR 1, C4<z>, C4<z>, C4<0>, C4<0>;
+L_006380F0 .functor OR 1, L_006380B8, C4<z>, C4<0>, C4<0>;
+L_00638160 .functor OR 1, L_006380F0, C4<z>, C4<0>, C4<0>;
+v00610B38_0 .net *"_s0", 0 0, L_006380B8; 1 drivers
+v00610B90_0 .net *"_s2", 0 0, L_006380F0; 1 drivers
+v00610BE8_0 .net "a", 0 0, C4<z>; 0 drivers
+v00610C40_0 .net "b", 0 0, C4<z>; 0 drivers
+v00610C98_0 .net "c", 0 0, C4<z>; 0 drivers
+v00610CF0_0 .net "d", 0 0, C4<z>; 0 drivers
+v00610D48_0 .net "s", 0 0, L_00638160; 1 drivers
+    .scope S_007A9290;
+T_0 ;
+    %fork t_1, S_007A97E0;
+    %jmp t_0;
+    .scope S_007A97E0;
+t_1 ;
+    %set/v v006105B8_0, 0, 1;
+    %set/v v00610610_0, 0, 1;
+    %set/v v00610668_0, 0, 1;
+    %set/v v006106C0_0, 0, 1;
+    %set/v v00610718_0, 0, 1;
+    %set/v v00610770_0, 0, 1;
+    %set/v v006107C8_0, 0, 1;
+    %set/v v00610928_0, 0, 1;
+    %end;
+    .scope S_007A9290;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_007A9290;
+T_1 ;
+    %fork t_3, S_007A9758;
+    %jmp t_2;
+    .scope S_007A9758;
+t_3 ;
+    %vpi_call 2 48 "$display", "Extra0001 - Ana Cristina Pereira Teixeira - 427385";
+    %vpi_call 2 49 "$display", "Teste Circuito";
+    %vpi_call 2 50 "$display", "(a | b | c | d) = s1\012(p & q & r & t) = s2\012~(~(s1 | s2)) = s";
+    %vpi_call 2 51 "$monitor", "(%b %b %b %b) = %b\012(%b %b %b %b) = %b\012~(~(s1 | s2)) = %b", v006105B8_0, v00610610_0, v00610668_0, v006106C0_0, v00610878_0, v00610718_0, v00610770_0, v006107C8_0, v00610928_0, v006108D0_0, v00610820_0;
+    %delay 1, 0;
+    %set/v v006105B8_0, 0, 1;
+    %set/v v00610610_0, 0, 1;
+    %set/v v00610668_0, 0, 1;
+    %set/v v006106C0_0, 0, 1;
+    %set/v v00610718_0, 0, 1;
+    %set/v v00610770_0, 0, 1;
+    %set/v v006107C8_0, 0, 1;
+    %set/v v00610928_0, 0, 1;
+    %end;
+    .scope S_007A9290;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "E:\1-2012\arq\guias\guia_01\Extra0001.v";

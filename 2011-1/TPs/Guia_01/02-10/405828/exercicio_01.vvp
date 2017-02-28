@@ -1,0 +1,73 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x86fcbc8 .scope module, "testnorgate" "testnorgate" 2 27;
+ .timescale 0 0;
+v0x86fad98_0 .var "a", 0 0;
+v0x86fae18_0 .var "b", 0 0;
+v0x86fae88_0 .var "c", 0 0;
+v0x86faef8_0 .net "s", 0 0, L_0x86fb0d8; 1 drivers
+S_0x86dacc0 .scope module, "NOR1" "norgate" 2 31, 2 11, S_0x86fcbc8;
+ .timescale 0 0;
+L_0x86faf68 .functor OR 1, v0x86fad98_0, v0x86fae18_0, C4<0>, C4<0>;
+L_0x86fb030 .functor OR 1, L_0x86faf68, v0x86fae88_0, C4<0>, C4<0>;
+L_0x86fb0d8 .functor NOT 1, L_0x86fb030, C4<0>, C4<0>, C4<0>;
+v0x86fccc8_0 .net "p", 0 0, v0x86fad98_0; 1 drivers
+v0x86fab90_0 .net "q", 0 0, v0x86fae18_0; 1 drivers
+v0x86fabf0_0 .net "r", 0 0, v0x86fae88_0; 1 drivers
+v0x86fac50_0 .alias "s", 0 0, v0x86faef8_0;
+v0x86facb8_0 .net "temp1", 0 0, L_0x86faf68; 1 drivers
+v0x86fad18_0 .net "temp2", 0 0, L_0x86fb030; 1 drivers
+S_0x86dac40 .scope begin, "start" "start" 2 33, 2 33, S_0x86fcbc8;
+ .timescale 0 0;
+S_0x86fcc48 .scope begin, "main" "main" 2 38, 2 38, S_0x86fcbc8;
+ .timescale 0 0;
+    .scope S_0x86fcbc8;
+T_0 ;
+    %fork t_1, S_0x86dac40;
+    %jmp t_0;
+    .scope S_0x86dac40;
+t_1 ;
+    %set/v v0x86fad98_0, 0, 1;
+    %set/v v0x86fae18_0, 0, 1;
+    %set/v v0x86fae88_0, 0, 1;
+    %end;
+    .scope S_0x86fcbc8;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_0x86fcbc8;
+T_1 ;
+    %fork t_3, S_0x86fcc48;
+    %jmp t_2;
+    .scope S_0x86fcc48;
+t_3 ;
+    %vpi_call 2 39 "$display", "Guia 01 - Exercicio 01 - Paulo Ricardo Bastos de Souza - 405828";
+    %vpi_call 2 40 "$display", "Test nor gate";
+    %vpi_call 2 41 "$display", "\012~(a & b & c) = s\012";
+    %vpi_call 2 42 "$monitor", "~(%b & %b & %b) = %b", v0x86fad98_0, v0x86fae18_0, v0x86fae88_0, v0x86faef8_0;
+    %delay 1, 0;
+    %set/v v0x86fad98_0, 0, 1;
+    %set/v v0x86fae18_0, 1, 1;
+    %set/v v0x86fae88_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x86fad98_0, 1, 1;
+    %set/v v0x86fae18_0, 0, 1;
+    %set/v v0x86fae88_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0x86fad98_0, 1, 1;
+    %set/v v0x86fae18_0, 1, 1;
+    %set/v v0x86fae88_0, 1, 1;
+    %end;
+    .scope S_0x86fcbc8;
+t_2 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "/home/paulo/Documentos/Faculdade/Arquitetura/Guia_01/exercicio_01.v";

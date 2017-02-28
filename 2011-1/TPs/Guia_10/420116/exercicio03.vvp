@@ -1,0 +1,102 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.1" "(v0_9_1)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_020262D8 .scope module, "testbench" "testbench" 2 28;
+ .timescale 0 0;
+v02059200_0 .var "A", 0 0;
+v02059258_0 .net "CLK_SIG", 0 0, v020591A8_0; 1 drivers
+v020592B0_0 .net "S", 0 0, L_0205C740; 1 drivers
+S_0205A4A0 .scope module, "CLOCK" "clock" 2 32, 2 2, S_020262D8;
+ .timescale 0 0;
+P_02000DFC .param/l "delay" 2 2, +C4<0101>;
+v020591A8_0 .var "SIGNAL", 0 0;
+S_02023808 .scope module, "FSM" "mealy_fsm" 2 33, 2 12, S_020262D8;
+ .timescale 0 0;
+L_0205C4D8 .functor NOT 1, L_02059308, C4<0>, C4<0>, C4<0>;
+L_0205C548 .functor AND 1, v02059200_0, L_0205C4D8, C4<1>, C4<1>;
+L_0205C628 .functor AND 1, L_0205C548, L_02059360, C4<1>, C4<1>;
+L_0205C6D0 .functor NOT 1, L_020593B8, C4<0>, C4<0>, C4<0>;
+L_0205C740 .functor AND 1, L_0205C628, L_0205C6D0, C4<1>, C4<1>;
+v0063F100_0 .net "A", 0 0, v02059200_0; 1 drivers
+v0063EF78_0 .alias "CLK", 0 0, v02059258_0;
+v0063EFD0_0 .var "FF", 2 0;
+v0063F028_0 .alias "S", 0 0, v020592B0_0;
+v0063F628_0 .net *"_s1", 0 0, L_02059308; 1 drivers
+v0063F680_0 .net *"_s11", 0 0, L_020593B8; 1 drivers
+v0063F6D8_0 .net *"_s12", 0 0, L_0205C6D0; 1 drivers
+v0063F730_0 .net *"_s2", 0 0, L_0205C4D8; 1 drivers
+v020590A0_0 .net *"_s4", 0 0, L_0205C548; 1 drivers
+v020590F8_0 .net *"_s7", 0 0, L_02059360; 1 drivers
+v02059150_0 .net *"_s8", 0 0, L_0205C628; 1 drivers
+E_020244A8 .event posedge, v0063EF78_0;
+L_02059308 .part v0063EFD0_0, 2, 1;
+L_02059360 .part v0063EFD0_0, 1, 1;
+L_020593B8 .part v0063EFD0_0, 0, 1;
+    .scope S_0205A4A0;
+T_0 ;
+    %set/v v020591A8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0205A4A0;
+T_1 ;
+    %delay 5, 0;
+    %load/v 8, v020591A8_0, 1;
+    %inv 8, 1;
+    %set/v v020591A8_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_02023808;
+T_2 ;
+    %set/v v0063EFD0_0, 0, 3;
+    %end;
+    .thread T_2;
+    .scope S_02023808;
+T_3 ;
+    %wait E_020244A8;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %load/x1p 8, v0063EFD0_0, 1;
+; Save base=8 wid=1 in lookaside.
+    %ix/load 0, 0, 0;
+    %set/x0 v0063EFD0_0, 8, 1;
+    %delay 1, 0;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %load/x1p 8, v0063EFD0_0, 1;
+; Save base=8 wid=1 in lookaside.
+    %ix/load 0, 1, 0;
+    %set/x0 v0063EFD0_0, 8, 1;
+    %delay 1, 0;
+    %load/v 8, v0063F100_0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0063EFD0_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_020262D8;
+T_4 ;
+    %vpi_call 2 36 "$dumpvars";
+    %set/v v02059200_0, 1, 1;
+    %delay 10, 0;
+    %set/v v02059200_0, 0, 1;
+    %delay 10, 0;
+    %set/v v02059200_0, 1, 1;
+    %delay 10, 0;
+    %set/v v02059200_0, 0, 1;
+    %delay 10, 0;
+    %set/v v02059200_0, 1, 1;
+    %delay 10, 0;
+    %set/v v02059200_0, 0, 1;
+    %delay 10, 0;
+    %set/v v02059200_0, 0, 1;
+    %delay 30, 0;
+    %vpi_call 2 44 "$finish";
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "exercicio03.v";

@@ -1,0 +1,86 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_018B1C80 .scope module, "test_Comparador" "test_Comparador" 2 21;
+ .timescale 0 0;
+v018AD960_0 .var "c", 0 0;
+v018AD9B8_0 .net "s", 0 0, L_018AE8E0; 1 drivers
+v018ADA10_0 .var "x", 0 0;
+v018ADA68_0 .var "y", 0 0;
+S_018B1D90 .scope module, "diferenca" "Comparador" 2 28, 2 10, S_018B1C80;
+ .timescale 0 0;
+L_003FDC50 .functor NOT 1, v018ADA10_0, C4<0>, C4<0>, C4<0>;
+L_003F32F8 .functor NOT 1, v018AD960_0, C4<0>, C4<0>, C4<0>;
+L_003F5078 .functor XOR 1, v018ADA10_0, v018ADA68_0, C4<0>, C4<0>;
+L_018AE800 .functor AND 1, L_003FDC50, v018AD960_0, C4<1>, C4<1>;
+L_018AE870 .functor AND 1, v018ADA68_0, L_003F32F8, C4<1>, C4<1>;
+L_018AE8E0 .functor OR 1, L_003F5078, L_018AE800, L_018AE870, C4<0>;
+v003FA170_0 .net "a", 0 0, v018ADA10_0; 1 drivers
+v003FDBA0_0 .net "and1", 0 0, L_018AE800; 1 drivers
+v003FDBF8_0 .net "and2", 0 0, L_018AE870; 1 drivers
+v003F3210_0 .net "b", 0 0, v018ADA68_0; 1 drivers
+v003F3268_0 .net "c", 0 0, v018AD960_0; 1 drivers
+v018AD800_0 .net "notA", 0 0, L_003FDC50; 1 drivers
+v018AD858_0 .net "notC", 0 0, L_003F32F8; 1 drivers
+v018AD8B0_0 .alias "s", 0 0, v018AD9B8_0;
+v018AD908_0 .net "xorAB", 0 0, L_003F5078; 1 drivers
+S_018B1D08 .scope begin, "start" "start" 2 30, 2 30, S_018B1C80;
+ .timescale 0 0;
+    .scope S_018B1C80;
+T_0 ;
+    %fork t_1, S_018B1D08;
+    %jmp t_0;
+    .scope S_018B1D08;
+t_1 ;
+    %set/v v018ADA10_0, 0, 1;
+    %set/v v018ADA68_0, 0, 1;
+    %set/v v018AD960_0, 0, 1;
+    %end;
+    .scope S_018B1C80;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_018B1C80;
+T_1 ;
+    %vpi_call 2 38 "$display", "Exemplo0024 - Marcio Santana Correa -  345368";
+    %vpi_call 2 39 "$display", "Test ALU's comparador";
+    %vpi_call 2 40 "$display", "a b c = s";
+    %vpi_call 2 41 "$monitor", "%b %b %b = %b", v018ADA10_0, v018ADA68_0, v018AD960_0, v018AD9B8_0;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 0, 1;
+    %set/v v018ADA68_0, 0, 1;
+    %set/v v018AD960_0, 1, 1;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 0, 1;
+    %set/v v018ADA68_0, 1, 1;
+    %set/v v018AD960_0, 0, 1;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 0, 1;
+    %set/v v018ADA68_0, 1, 1;
+    %set/v v018AD960_0, 1, 1;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 1, 1;
+    %set/v v018ADA68_0, 0, 1;
+    %set/v v018AD960_0, 0, 1;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 1, 1;
+    %set/v v018ADA68_0, 0, 1;
+    %set/v v018AD960_0, 1, 1;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 1, 1;
+    %set/v v018ADA68_0, 1, 1;
+    %set/v v018AD960_0, 0, 1;
+    %delay 1, 0;
+    %set/v v018ADA10_0, 1, 1;
+    %set/v v018ADA68_0, 1, 1;
+    %set/v v018AD960_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "D:\PucMinas\ArqComp 1\Guias\382175\Exemplo0024.v";

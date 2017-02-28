@@ -1,0 +1,101 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.2 " "(v0_9_2)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006811E0 .scope module, "testeguia07" "testeguia07" 2 28;
+ .timescale 0 0;
+v0069ECF8_0 .var "a0", 0 0;
+v0069ED50_0 .var "a1", 0 0;
+v0069EDA8_0 .var "a2", 0 0;
+v0069EE00_0 .var "a3", 0 0;
+v0069EE58_0 .var "b0", 0 0;
+v0069EEB0_0 .var "b1", 0 0;
+v0069EF08_0 .var "b2", 0 0;
+v0069EF88_0 .var "b3", 0 0;
+v0069EFE0_0 .net "w1", 0 0, L_0069F478; 1 drivers
+v0069F068_0 .net "w2", 0 0, L_0069F3C0; 1 drivers
+v0069F0C0_0 .net "w3", 0 0, L_0069F308; 1 drivers
+v0069F118_0 .net "w4", 0 0, L_006827E0; 1 drivers
+v0069F170_0 .net "w5", 0 0, L_0069F758; 1 drivers
+v0069F1C8_0 .net "w6", 0 0, L_0069F6A0; 1 drivers
+v0069F220_0 .net "w7", 0 0, L_0069F5E8; 1 drivers
+v0069F278_0 .net "w8", 0 0, L_0069F520; 1 drivers
+S_0069E8C8 .scope module, "COMP1" "complemento1" 2 32, 2 13, S_006811E0;
+ .timescale 0 0;
+L_006827E0 .functor NOT 1, v0069ECF8_0, C4<0>, C4<0>, C4<0>;
+L_0069F308 .functor NOT 1, v0069ED50_0, C4<0>, C4<0>, C4<0>;
+L_0069F3C0 .functor NOT 1, v0069EDA8_0, C4<0>, C4<0>, C4<0>;
+L_0069F478 .functor NOT 1, v0069EE00_0, C4<0>, C4<0>, C4<0>;
+v0069E950_0 .net "a0", 0 0, v0069ECF8_0; 1 drivers
+v0069E9C0_0 .net "a1", 0 0, v0069ED50_0; 1 drivers
+v0069EA30_0 .net "a2", 0 0, v0069EDA8_0; 1 drivers
+v0069EAB8_0 .net "a3", 0 0, v0069EE00_0; 1 drivers
+v0069EB28_0 .alias "s0", 0 0, v0069F118_0;
+v0069EB80_0 .alias "s1", 0 0, v0069F0C0_0;
+v0069EBF0_0 .alias "s2", 0 0, v0069F068_0;
+v0069EC88_0 .alias "s3", 0 0, v0069EFE0_0;
+S_003D7E80 .scope module, "COMP2" "complemento1" 2 33, 2 13, S_006811E0;
+ .timescale 0 0;
+L_0069F520 .functor NOT 1, v0069EE58_0, C4<0>, C4<0>, C4<0>;
+L_0069F5E8 .functor NOT 1, v0069EEB0_0, C4<0>, C4<0>, C4<0>;
+L_0069F6A0 .functor NOT 1, v0069EF08_0, C4<0>, C4<0>, C4<0>;
+L_0069F758 .functor NOT 1, v0069EF88_0, C4<0>, C4<0>, C4<0>;
+v003D6988_0 .net "a0", 0 0, v0069EE58_0; 1 drivers
+v003D6930_0 .net "a1", 0 0, v0069EEB0_0; 1 drivers
+v0069E628_0 .net "a2", 0 0, v0069EF08_0; 1 drivers
+v0069E6B0_0 .net "a3", 0 0, v0069EF88_0; 1 drivers
+v0069E720_0 .alias "s0", 0 0, v0069F278_0;
+v0069E778_0 .alias "s1", 0 0, v0069F220_0;
+v0069E7E8_0 .alias "s2", 0 0, v0069F1C8_0;
+v0069E858_0 .alias "s3", 0 0, v0069F170_0;
+S_006818E8 .scope begin, "main" "main" 2 42, 2 42, S_006811E0;
+ .timescale 0 0;
+    .scope S_006811E0;
+T_0 ;
+    %end;
+    .thread T_0;
+    .scope S_006811E0;
+T_1 ;
+    %fork t_1, S_006818E8;
+    %jmp t_0;
+t_1 ;
+    %vpi_call 2 43 "$display", "Guia07 - Programa1";
+    %vpi_call 2 44 "$display", "InclusAo na ALU de 4 bits a operaCAo de complemento de 1\012";
+    %vpi_call 2 45 "$display", "Aluno: Tiago Menegaz de Melo Garcia\011\011Matricula:405844\012";
+    %vpi_call 2 46 "$display", "Relatorio de Testes";
+    %delay 1, 0;
+    %set/v v0069EE00_0, 0, 1;
+    %set/v v0069EDA8_0, 0, 1;
+    %set/v v0069ED50_0, 0, 1;
+    %set/v v0069ECF8_0, 0, 1;
+    %set/v v0069EF88_0, 0, 1;
+    %set/v v0069EF08_0, 0, 1;
+    %set/v v0069EEB0_0, 0, 1;
+    %set/v v0069EE58_0, 0, 1;
+    %vpi_call 2 48 "$monitor", "A[%b | %b %b %b] => Ac[%b | %b %b %b] \011\011B[%b | %b %b %b] => Bc[%b | %b %b %b]", v0069EE00_0, v0069EDA8_0, v0069ED50_0, v0069ECF8_0, v0069EFE0_0, v0069F068_0, v0069F0C0_0, v0069F118_0, v0069EF88_0, v0069EF08_0, v0069EEB0_0, v0069EE58_0, v0069F170_0, v0069F1C8_0, v0069F220_0, v0069F278_0;
+    %delay 1, 0;
+    %set/v v0069ECF8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069EE58_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069ECF8_0, 0, 1;
+    %set/v v0069ED50_0, 1, 1;
+    %set/v v0069EF08_0, 1, 1;
+    %delay 1, 0;
+    %set/v v0069EDA8_0, 1, 1;
+    %set/v v0069EE00_0, 1, 1;
+    %set/v v0069ED50_0, 0, 1;
+    %set/v v0069EF08_0, 0, 1;
+    %set/v v0069EEB0_0, 1, 1;
+    %set/v v0069EE58_0, 1, 1;
+    %end;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "H:\Arquitetura\Guia_07\exercicio01.v";

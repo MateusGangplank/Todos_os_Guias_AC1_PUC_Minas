@@ -1,0 +1,61 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00036A00 .scope module, "testnandDeMorgan" "testnandDeMorgan" 2 19;
+ .timescale 0 0;
+v006393E0_0 .var "a", 0 0;
+v00639438_0 .var "b", 0 0;
+v00639490_0 .net "s", 0 0, L_006395B0; 1 drivers
+S_00036B10 .scope module, "NAND1" "nandgateDeMorgan" 2 25, 2 11, S_00036A00;
+ .timescale 0 0;
+L_00036778 .functor NOT 1, v006393E0_0, C4<0>, C4<0>, C4<0>;
+L_00639540 .functor NOT 1, v00639438_0, C4<0>, C4<0>, C4<0>;
+L_006395B0 .functor OR 1, L_00036778, L_00639540, C4<0>, C4<0>;
+v00034A88_0 .net *"_s0", 0 0, L_00036778; 1 drivers
+v00639220_0 .net *"_s2", 0 0, L_00639540; 1 drivers
+v00639290_0 .net "a", 0 0, v006393E0_0; 1 drivers
+v00639318_0 .net "b", 0 0, v00639438_0; 1 drivers
+v00639388_0 .alias "s", 0 0, v00639490_0;
+S_00036A88 .scope begin, "start" "start" 2 27, 2 27, S_00036A00;
+ .timescale 0 0;
+    .scope S_00036A00;
+T_0 ;
+    %fork t_1, S_00036A88;
+    %jmp t_0;
+    .scope S_00036A88;
+t_1 ;
+    %set/v v006393E0_0, 0, 1;
+    %set/v v00639438_0, 0, 1;
+    %end;
+    .scope S_00036A00;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00036A00;
+T_1 ;
+    %vpi_call 2 33 "$display", "Exercicio04 - Ana Carolina - 449517 ";
+    %vpi_call 2 34 "$display", "Test NandDeMorgan gate";
+    %vpi_call 2 35 "$display", "\012 ~(a|b) = s \012";
+    %vpi_call 2 37 "$monitor", " ~(%b | %b) = %b", v006393E0_0, v00639438_0, v00639490_0;
+    %delay 1, 0;
+    %set/v v006393E0_0, 0, 1;
+    %set/v v00639438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006393E0_0, 0, 1;
+    %set/v v00639438_0, 1, 1;
+    %delay 1, 0;
+    %set/v v006393E0_0, 1, 1;
+    %set/v v00639438_0, 0, 1;
+    %delay 1, 0;
+    %set/v v006393E0_0, 1, 1;
+    %set/v v00639438_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "I:\Arquitetura I - 2013\Eds Arquitetura I\ED-01\Exercicio04.v";

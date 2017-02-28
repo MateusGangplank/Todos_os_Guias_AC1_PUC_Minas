@@ -1,0 +1,21 @@
+// Exercicio07
+// Wadson Gomes Ferreira
+// 460631
+
+module complementoDois(output[7:0] s,input[7:0] a);
+       assign s=(~a)+8'b00000001;
+endmodule
+
+module teste;
+        reg[7:0] entrada;
+        wire[7:0] saida;
+        complementoDois C2(saida,entrada);
+        initial begin
+                #1 //declarando monitor, valores indeterminados. (x)
+                   $monitor("entrada=%b -> saida=%b",entrada,saida);
+                #1 //teste 1
+                   entrada=8'b00000001;
+                #1 //teste 2
+                   entrada=8'b11111111;
+        end
+endmodule

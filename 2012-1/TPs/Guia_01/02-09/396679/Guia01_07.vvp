@@ -1,0 +1,70 @@
+# MinGW does not support an executable header.
+:ivl_version "0.9.3 " "(v0_9_3)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_005B2B50 .scope module, "testxnorgate" "testxnorgate" 2 20;
+ .timescale 0 0;
+v005BFF38_0 .var "a", 0 0;
+v005BFF90_0 .var "b", 0 0;
+v00797918_0 .net "s", 0 0, L_00797AC0; 1 drivers
+S_005B38D0 .scope module, "XNOR1" "xnorgate" 2 25, 2 10, S_005B2B50;
+ .timescale 0 0;
+L_005BCE28 .functor AND 1, v005BFF38_0, v005BFF90_0, C4<1>, C4<1>;
+L_007979A8 .functor NOT 1, v005BFF38_0, C4<0>, C4<0>, C4<0>;
+L_007979E0 .functor NOT 1, v005BFF90_0, C4<0>, C4<0>, C4<0>;
+L_00797A18 .functor AND 1, L_007979A8, L_007979E0, C4<1>, C4<1>;
+L_00797AC0 .functor OR 1, L_005BCE28, L_00797A18, C4<0>, C4<0>;
+v005B2C60_0 .net *"_s0", 0 0, L_005BCE28; 1 drivers
+v005B3958_0 .net *"_s2", 0 0, L_007979A8; 1 drivers
+v005B39B0_0 .net *"_s4", 0 0, L_007979E0; 1 drivers
+v005BFDD8_0 .net *"_s6", 0 0, L_00797A18; 1 drivers
+v005BFE30_0 .net "a", 0 0, v005BFF38_0; 1 drivers
+v005BFE88_0 .net "b", 0 0, v005BFF90_0; 1 drivers
+v005BFEE0_0 .alias "s", 0 0, v00797918_0;
+S_005B2BD8 .scope begin, "main" "main" 2 28, 2 28, S_005B2B50;
+ .timescale 0 0;
+    .scope S_005B2B50;
+T_0 ;
+    %fork t_1, S_005B2BD8;
+    %jmp t_0;
+    .scope S_005B2BD8;
+t_1 ;
+    %set/v v005BFF38_0, 0, 1;
+    %set/v v005BFF90_0, 0, 1;
+    %vpi_call 2 30 "$display", "Guia01_07 - Bruno Cezar Andrade Viallet - 396679";
+    %vpi_call 2 31 "$display", "Test xnor gate";
+    %vpi_call 2 32 "$display", "\012 a ~^ b = s\012";
+    %vpi_call 2 33 "$monitor", "%b ~^ %b = %b", v005BFF38_0, v005BFF90_0, v00797918_0;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 0, 1;
+    %set/v v005BFF90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 0, 1;
+    %set/v v005BFF90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 0, 1;
+    %set/v v005BFF90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 1, 1;
+    %set/v v005BFF90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 1, 1;
+    %set/v v005BFF90_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 1, 1;
+    %set/v v005BFF90_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BFF38_0, 1, 1;
+    %set/v v005BFF90_0, 1, 1;
+    %end;
+    .scope S_005B2B50;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\PUC\AC I\Guia 01\Guia01_07.v";

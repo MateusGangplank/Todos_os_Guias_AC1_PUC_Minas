@@ -1,0 +1,87 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00313120 .scope module, "test_AU" "test_AU" 2 18;
+ .timescale 0 0;
+v005BB0B8_0 .var "ch", 0 0;
+v005BB110_0 .net "w", 0 0, L_005BC0D0; 1 drivers
+v005BB168_0 .var "x", 0 0;
+v005BB1C0_0 .var "y", 0 0;
+v005BB218_0 .net "z", 0 0, L_005E2E98; 1 drivers
+S_0031A420 .scope module, "modulo" "AU" 2 26, 2 7, S_00313120;
+ .timescale 0 0;
+L_0031DB80 .functor NOT 1, v005BB0B8_0, C4<0>, C4<0>, C4<0>;
+L_005E2DB8 .functor XOR 1, v005BB168_0, v005BB1C0_0, C4<0>, C4<0>;
+L_005E2E60 .functor XNOR 1, v005BB168_0, v005BB1C0_0, C4<0>, C4<0>;
+L_005E2E98 .functor AND 1, L_005E2DB8, v005BB0B8_0, C4<1>, C4<1>;
+L_005BC0D0 .functor AND 1, L_005E2E60, L_0031DB80, C4<1>, C4<1>;
+v003131A8_0 .net "a", 0 0, v005BB168_0; 1 drivers
+v00313200_0 .net "b", 0 0, v005BB1C0_0; 1 drivers
+v00314EB8_0 .net "ch", 0 0, v005BB0B8_0; 1 drivers
+v00314F10_0 .net "notCH", 0 0, L_0031DB80; 1 drivers
+v00314F68_0 .alias "sDF", 0 0, v005BB218_0;
+v00314FC0_0 .alias "sIG", 0 0, v005BB110_0;
+v005E2D28_0 .net "xnorAB", 0 0, L_005E2E60; 1 drivers
+v005BB060_0 .net "xorAB", 0 0, L_005E2DB8; 1 drivers
+S_0031A398 .scope begin, "start" "start" 2 28, 2 28, S_00313120;
+ .timescale 0 0;
+    .scope S_00313120;
+T_0 ;
+    %fork t_1, S_0031A398;
+    %jmp t_0;
+    .scope S_0031A398;
+t_1 ;
+    %set/v v005BB168_0, 0, 1;
+    %set/v v005BB1C0_0, 0, 1;
+    %set/v v005BB0B8_0, 0, 1;
+    %end;
+    .scope S_00313120;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_00313120;
+T_1 ;
+    %vpi_call 2 36 "$display", "Exemplo0036 - Mateus Lara Carvalho - 441700";
+    %vpi_call 2 37 "$display", "Test LU's module";
+    %vpi_call 2 38 "$display", "--- CHAVE = 0 ---";
+    %vpi_call 2 39 "$monitor", "a = %b b = %b sIG = %b", v005BB168_0, v005BB1C0_0, v005BB110_0;
+    %delay 1, 0;
+    %set/v v005BB168_0, 0, 1;
+    %set/v v005BB1C0_0, 1, 1;
+    %set/v v005BB0B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005BB168_0, 1, 1;
+    %set/v v005BB1C0_0, 0, 1;
+    %set/v v005BB0B8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v005BB168_0, 1, 1;
+    %set/v v005BB1C0_0, 1, 1;
+    %set/v v005BB0B8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "--- CHAVE = 1 ---";
+    %vpi_call 2 48 "$monitor", "a = %b b = %b sDIF = %b", v005BB168_0, v005BB1C0_0, v005BB218_0;
+    %set/v v005BB168_0, 0, 1;
+    %set/v v005BB1C0_0, 0, 1;
+    %set/v v005BB0B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BB168_0, 0, 1;
+    %set/v v005BB1C0_0, 1, 1;
+    %set/v v005BB0B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BB168_0, 1, 1;
+    %set/v v005BB1C0_0, 0, 1;
+    %set/v v005BB0B8_0, 1, 1;
+    %delay 1, 0;
+    %set/v v005BB168_0, 1, 1;
+    %set/v v005BB1C0_0, 1, 1;
+    %set/v v005BB0B8_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Batatinha\Documents\Mateus\Ciência da Computação\2013-1\Arquitetura\Trabalhos\ED 03\Exemplo0036.v";

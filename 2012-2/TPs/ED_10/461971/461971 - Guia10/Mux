@@ -1,0 +1,36 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_006D3070 .scope module, "mux" "mux" 2 10;
+ .timescale 0 0;
+v006D4E88_0 .net "d1", 3 0, C4<zzzz>; 0 drivers
+v006D4EE0_0 .net "d2", 3 0, C4<zzzz>; 0 drivers
+v006D4F38_0 .var "s", 3 0;
+v006D4F90_0 .net "selec", 0 0, C4<z>; 0 drivers
+E_006D92B0/0 .event negedge, v006D4F90_0;
+E_006D92B0/1 .event posedge, v006D4F90_0;
+E_006D92B0 .event/or E_006D92B0/0, E_006D92B0/1;
+    .scope S_006D3070;
+T_0 ;
+    %wait E_006D92B0;
+    %load/v 8, v006D4F90_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v006D4E88_0, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v006D4F38_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v006D4E88_0, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v006D4F38_0, 0, 8;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Mux.v";

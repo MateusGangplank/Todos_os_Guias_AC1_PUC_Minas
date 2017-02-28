@@ -1,0 +1,93 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00B74E00 .scope module, "Exemplo0042" "Exemplo0042" 2 55;
+ .timescale 0 0;
+v00B73A78_0 .net "clk", 0 0, v00B73A20_0; 1 drivers
+v00B73AD0_0 .net "clock", 0 0, C4<z>; 0 drivers
+v00B73B28_0 .var "p", 0 0;
+v00B7C388_0 .net "p1", 0 0, v00B73118_0; 1 drivers
+v00B7C3E0_0 .net "t1", 0 0, v00B73068_0; 1 drivers
+S_005CCCF8 .scope module, "CLK1" "clock" 2 58, 2 10, S_00B74E00;
+ .timescale 0 0;
+v00B73A20_0 .var "clk", 0 0;
+S_005CCC70 .scope module, "pulse1" "pulse" 2 62, 2 26, S_00B74E00;
+ .timescale 0 0;
+v00B730C0_0 .alias "clock", 0 0, v00B73AD0_0;
+v00B73118_0 .var "signal", 0 0;
+E_00B7DAF0 .event edge, v00B7E5A0_0;
+S_00B7E4C0 .scope module, "trigger1" "trigger" 2 63, 2 42, S_00B74E00;
+ .timescale 0 0;
+L_00B7EE88 .functor AND 1, C4<z>, v00B73B28_0, C4<1>, C4<1>;
+v00B7E548_0 .net *"_s1", 0 0, L_00B7EE88; 1 drivers
+v00B7E5A0_0 .alias "clock", 0 0, v00B73AD0_0;
+v00B73010_0 .net "on", 0 0, v00B73B28_0; 1 drivers
+v00B73068_0 .var "signal", 0 0;
+E_00B7DB10 .event posedge, L_00B7EE88;
+    .scope S_005CCCF8;
+T_0 ;
+    %set/v v00B73A20_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_005CCCF8;
+T_1 ;
+    %delay 12, 0;
+    %load/v 8, v00B73A20_0, 1;
+    %inv 8, 1;
+    %set/v v00B73A20_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_005CCC70;
+T_2 ;
+    %wait E_00B7DAF0;
+    %set/v v00B73118_0, 1, 1;
+    %delay 3, 0;
+    %set/v v00B73118_0, 0, 1;
+    %delay 3, 0;
+    %set/v v00B73118_0, 1, 1;
+    %delay 3, 0;
+    %set/v v00B73118_0, 0, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_00B7E4C0;
+T_3 ;
+    %wait E_00B7DB10;
+    %delay 60, 0;
+    %set/v v00B73068_0, 1, 1;
+    %delay 60, 0;
+    %set/v v00B73068_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00B74E00;
+T_4 ;
+    %set/v v00B73B28_0, 0, 1;
+    %end;
+    .thread T_4;
+    .scope S_00B74E00;
+T_5 ;
+    %vpi_call 2 70 "$dumpfile", "Exemplo0042.vcd";
+    %vpi_call 2 71 "$dumpvars", 2'sb01, v00B73AD0_0, v00B7C388_0, v00B73B28_0, v00B7C3E0_0;
+    %delay 60, 0;
+    %set/v v00B73B28_0, 1, 1;
+    %delay 120, 0;
+    %set/v v00B73B28_0, 0, 1;
+    %delay 180, 0;
+    %set/v v00B73B28_0, 1, 1;
+    %delay 240, 0;
+    %set/v v00B73B28_0, 0, 1;
+    %delay 300, 0;
+    %set/v v00B73B28_0, 1, 1;
+    %delay 360, 0;
+    %set/v v00B73B28_0, 0, 1;
+    %delay 376, 0;
+    %vpi_call 2 79 "$finish";
+    %end;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Isabel\Documents\PUC\2º Período\Arquitetura de Computadores\Guias\Guia 6\Exemplo0042.v";

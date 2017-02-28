@@ -1,0 +1,59 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008AE730 .scope module, "testnandgate" "testnandgate" 2 14;
+ .timescale 0 0;
+v008AFF70_0 .var "a", 0 0;
+v008A3248_0 .var "b", 0 0;
+v008A32A0_0 .net "s", 0 0, L_008A3368; 1 drivers
+S_008A2D48 .scope module, "NAND1" "nandgate" 2 22, 2 7, S_008AE730;
+ .timescale 0 0;
+L_008A2E80 .functor AND 1, v008AFF70_0, v008A3248_0, C4<1>, C4<1>;
+L_008A3368 .functor NOT 1, L_008A2E80, C4<0>, C4<0>, C4<0>;
+v008A2DD0_0 .net *"_s0", 0 0, L_008A2E80; 1 drivers
+v008A2E28_0 .net "p", 0 0, v008AFF70_0; 1 drivers
+v008AFEC0_0 .net "q", 0 0, v008A3248_0; 1 drivers
+v008AFF18_0 .alias "s", 0 0, v008A32A0_0;
+S_008AE7B8 .scope begin, "start" "start" 2 24, 2 24, S_008AE730;
+ .timescale 0 0;
+    .scope S_008AE730;
+T_0 ;
+    %fork t_1, S_008AE7B8;
+    %jmp t_0;
+    .scope S_008AE7B8;
+t_1 ;
+    %set/v v008AFF70_0, 0, 1;
+    %set/v v008A3248_0, 0, 1;
+    %end;
+    .scope S_008AE730;
+t_0 %join;
+    %end;
+    .thread T_0;
+    .scope S_008AE730;
+T_1 ;
+    %vpi_call 2 30 "$display", "Exercicio01 - Luiz Henrique da Costa Silva - 449800";
+    %vpi_call 2 31 "$display", "Test NAND gate:";
+    %vpi_call 2 32 "$display", "\012 ~(a & b) = s\012";
+    %vpi_call 2 33 "$monitor", "%b & %b = %b", v008AFF70_0, v008A3248_0, v008A32A0_0;
+    %delay 1, 0;
+    %set/v v008AFF70_0, 0, 1;
+    %set/v v008A3248_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008AFF70_0, 0, 1;
+    %set/v v008A3248_0, 1, 1;
+    %delay 1, 0;
+    %set/v v008AFF70_0, 1, 1;
+    %set/v v008A3248_0, 0, 1;
+    %delay 1, 0;
+    %set/v v008AFF70_0, 1, 1;
+    %set/v v008A3248_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Dropbox\note to PC\PUC Minas\2º Período\Arquitetura de Computadores I\Atividades feitas\Guia01\Exercicio01.v";

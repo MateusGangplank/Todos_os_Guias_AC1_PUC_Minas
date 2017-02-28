@@ -1,0 +1,91 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00571F68 .scope module, "test_selecionavel" "test_selecionavel" 2 42;
+ .timescale 0 0;
+v00584D18_0 .net "a", 0 0, L_00586400; 1 drivers
+v00584D70_0 .var "c", 0 0;
+RS_005990D4 .resolv tri, L_00585138, L_00585190, C4<zz>, C4<zz>;
+v00584DC8_0 .net8 "h", 1 0, RS_005990D4; 2 drivers
+v00584E20_0 .net "k", 0 0, L_00586320; 1 drivers
+RS_005990EC .resolv tri, L_005851E8, L_00585240, C4<zz>, C4<zz>;
+v00584E78_0 .net8 "p", 1 0, RS_005990EC; 2 drivers
+v00584ED0_0 .net "r", 0 0, L_00586390; 1 drivers
+v00584F28_0 .net "s", 0 0, L_005862E8; 1 drivers
+v00584F80_0 .net "s0", 0 0, L_00586470; 1 drivers
+v00584FD8_0 .net "s1", 0 0, L_00586438; 1 drivers
+v00585030_0 .net "w", 0 0, L_00586240; 1 drivers
+v00585088_0 .var "x", 0 0;
+v005850E0_0 .var "y", 0 0;
+S_00571FF0 .scope module, "modulo" "selecionavel" 2 58, 2 10, S_00571F68;
+ .timescale 0 0;
+L_00586240 .functor AND 1, v00585088_0, v005850E0_0, C4<1>, C4<1>;
+L_00586320 .functor OR 1, v00585088_0, v005850E0_0, C4<0>, C4<0>;
+L_00586390 .functor NAND 1, v00585088_0, v005850E0_0, C4<1>, C4<1>;
+L_005862E8 .functor NOR 1, v00585088_0, v005850E0_0, C4<0>, C4<0>;
+L_00586400 .functor NOT 1, v00584D70_0, C4<0>, C4<0>, C4<0>;
+L_005864E0 .functor AND 1, L_00586240, L_00586400, C4<1>, C4<1>;
+L_00586550 .functor AND 1, L_00586320, L_00586400, C4<1>, C4<1>;
+L_005865C0 .functor AND 1, L_00586390, v00584D70_0, C4<1>, C4<1>;
+L_00586630 .functor AND 1, L_005862E8, v00584D70_0, C4<1>, C4<1>;
+L_00586470 .functor OR 1, L_00585298, L_005852F0, C4<0>, C4<0>;
+L_00586438 .functor OR 1, L_00585348, L_005853A0, C4<0>, C4<0>;
+v00584638_0 .net *"_s0", 0 0, L_005864E0; 1 drivers
+v00584690_0 .net *"_s11", 0 0, L_005852F0; 1 drivers
+v005846E8_0 .net *"_s13", 0 0, L_00585348; 1 drivers
+v00584740_0 .net *"_s15", 0 0, L_005853A0; 1 drivers
+v00584798_0 .net *"_s2", 0 0, L_00586550; 1 drivers
+v005847F0_0 .net *"_s4", 0 0, L_005865C0; 1 drivers
+v00584848_0 .net *"_s6", 0 0, L_00586630; 1 drivers
+v005848A0_0 .net *"_s9", 0 0, L_00585298; 1 drivers
+v005848F8_0 .net "chave", 0 0, v00584D70_0; 1 drivers
+v00584950_0 .net "entrada1", 0 0, v00585088_0; 1 drivers
+v005849A8_0 .net "entrada2", 0 0, v005850E0_0; 1 drivers
+v00584A00_0 .alias "s1", 1 0, v00584DC8_0;
+v00584A58_0 .alias "s2", 1 0, v00584E78_0;
+v00584AB0_0 .alias "saida0", 0 0, v00584F80_0;
+v00584B08_0 .alias "saida1", 0 0, v00584FD8_0;
+v00584B60_0 .alias "saida_and", 0 0, v00585030_0;
+v00584BB8_0 .alias "saida_nand", 0 0, v00584ED0_0;
+v00584C10_0 .alias "saida_nor", 0 0, v00584F28_0;
+v00584C68_0 .alias "saida_not", 0 0, v00584D18_0;
+v00584CC0_0 .alias "saida_or", 0 0, v00584E20_0;
+L_00585138 .part/pv L_005864E0, 0, 1, 2;
+L_00585190 .part/pv L_00586550, 1, 1, 2;
+L_005851E8 .part/pv L_005865C0, 0, 1, 2;
+L_00585240 .part/pv L_00586630, 1, 1, 2;
+L_00585298 .part RS_005990D4, 0, 1;
+L_005852F0 .part RS_005990EC, 0, 1;
+L_00585348 .part RS_005990D4, 1, 1;
+L_005853A0 .part RS_005990EC, 1, 1;
+    .scope S_00571F68;
+T_0 ;
+    %vpi_call 2 62 "$display", "Exemplo0033 - Fernando dos Santos Silva - 414506";
+    %vpi_call 2 63 "$display", "Test LU's module:\012";
+    %delay 1, 0;
+    %set/v v00585088_0, 0, 1;
+    %set/v v005850E0_0, 0, 1;
+    %set/v v00584D70_0, 0, 1;
+    %vpi_call 2 65 "$monitor", "\011Chave = %1b\012 x = %1b  y = %1b  Resultado = %1b  Sa\355da ==> %1b\012", v00584D70_0, v00585088_0, v005850E0_0, v00584F80_0, v00584FD8_0;
+    %delay 1, 0;
+    %set/v v00585088_0, 0, 1;
+    %set/v v005850E0_0, 1, 1;
+    %set/v v00584D70_0, 1, 1;
+    %delay 1, 0;
+    %set/v v00585088_0, 1, 1;
+    %set/v v005850E0_0, 0, 1;
+    %set/v v00584D70_0, 0, 1;
+    %delay 1, 0;
+    %set/v v00585088_0, 1, 1;
+    %set/v v005850E0_0, 0, 1;
+    %set/v v00584D70_0, 1, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "C:\Users\Fsil\Desktop\Guia03\Exemplo0033.v";

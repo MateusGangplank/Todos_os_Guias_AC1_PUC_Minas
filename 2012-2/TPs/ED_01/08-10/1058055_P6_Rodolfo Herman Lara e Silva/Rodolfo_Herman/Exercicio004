@@ -1,0 +1,54 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0078E9F8 .scope module, "testador" "testador" 2 19;
+ .timescale 0 0;
+v00783250_0 .var "a", 0 0;
+v007832A8_0 .var "b", 0 0;
+v0078FE08_0 .net "s", 0 0, L_0078FF08; 1 drivers
+S_00782C80 .scope module, "NAND2" "pnand" 2 26, 2 10, S_0078E9F8;
+ .timescale 0 0;
+L_0078CF08 .functor NOT 1, v00783250_0, C4<0>, C4<0>, C4<0>;
+L_0078FE98 .functor NOT 1, v007832A8_0, C4<0>, C4<0>, C4<0>;
+L_0078FF08 .functor OR 1, L_0078CF08, L_0078FE98, C4<0>, C4<0>;
+v0078EA80_0 .net *"_s0", 0 0, L_0078CF08; 1 drivers
+v00782D08_0 .net *"_s2", 0 0, L_0078FE98; 1 drivers
+v00782D60_0 .net "p", 0 0, v00783250_0; 1 drivers
+v007831A0_0 .net "q", 0 0, v007832A8_0; 1 drivers
+v007831F8_0 .alias "s", 0 0, v0078FE08_0;
+    .scope S_0078E9F8;
+T_0 ;
+    %set/v v00783250_0, 0, 1;
+    %set/v v007832A8_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0078E9F8;
+T_1 ;
+    %vpi_call 2 39 "$display", "Exercicio 004";
+    %vpi_call 2 40 "$display", "Autor: Rodolfo Herman";
+    %vpi_call 2 41 "$display", "Testar porta NAND";
+    %vpi_call 2 42 "$display", "(~a | ~b) = s \012";
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "(~%b | ~%b) = %b", v00783250_0, v007832A8_0, v0078FE08_0;
+    %set/v v00783250_0, 0, 1;
+    %set/v v007832A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "(~%b | ~%b) = %b", v00783250_0, v007832A8_0, v0078FE08_0;
+    %set/v v00783250_0, 1, 1;
+    %set/v v007832A8_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 47 "$display", "(~%b | ~%b) = %b", v00783250_0, v007832A8_0, v0078FE08_0;
+    %set/v v00783250_0, 1, 1;
+    %set/v v007832A8_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 49 "$display", "(~%b | ~%b) = %b", v00783250_0, v007832A8_0, v0078FE08_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Exercicio004.v";
